@@ -2,7 +2,7 @@ import * as trpc from '@trpc/server';
 import { Prisma } from '@prisma/client';
 import { getErrorCode } from '$lib/errorCode';
 
-const prismaErrorHandler = (e: unknown) => {
+const pe = (e: unknown) => {
 	console.log(e);
 	if (e instanceof Prisma.PrismaClientKnownRequestError)
 		throw new trpc.TRPCError({
@@ -26,4 +26,4 @@ const prismaErrorHandler = (e: unknown) => {
 		});
 };
 
-export default prismaErrorHandler;
+export default pe;

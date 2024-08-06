@@ -35,7 +35,7 @@ export const tce = <T>(
 	callback?: (e: TRPCHandlerError<T>) => void,
 	{ stopLoading = true, showToast = true }: TRPCClientErrorHandlerOptions = {}
 ) => {
-	const { code, message, zodErrors } = trpcErrorhandler<T>(e);
+	const { code, message, zodErrors } = te<T>(e);
 
 	if (callback) callback({ code, message, zodErrors });
 
@@ -46,11 +46,11 @@ export const tce = <T>(
 };
 
 export const tse = (e: unknown) => {
-	const { code, message } = trpcErrorhandler(e);
+	const { code, message } = te(e);
 	throw error(code, { message });
 };
 
-export const trpcErrorhandler = <T>(e: unknown): TRPCHandlerError<T> => {
+export const te = <T>(e: unknown): TRPCHandlerError<T> => {
 	console.log(e);
 	if (e instanceof TRPCClientError) {
 		try {
