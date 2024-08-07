@@ -7,5 +7,17 @@ export default {
 		extend: {}
 	},
 	plugins: [daisyui],
-	daisyui: { themes: true }
+	daisyui: {
+		themes: [
+			{
+				velenova: {
+					primary: '#008734',
+					secondary: '#FE8A01',
+					accent: '#4500F0',
+					neutral: '#3d4451',
+					'base-100': '#ffffff'
+				}
+			}
+		]
+	}
 };
