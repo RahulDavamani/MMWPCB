@@ -6,3 +6,45 @@ datasource db {
    provider = "sqlite"
    url      = env("DATABASE_URL")
 }
+
+model User {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   email      String  @unique
+   firstName  String
+   lastName   String
+   phone      String
+   profilePic String?
+   role       String
+
+   accounts Account[]
+   sessions Session[]
+}
+
+model Account {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   provider      String
+   providerId    String?
+   emailVerified Boolean?
+   passwordHash  String?
+
+   userId String
+   user   User   @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
+model Session {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   expiresAt  DateTime
+   profilePic String?
+
+   userId String
+   user   User   @relation(references: [id], fields: [userId], onDelete: Cascade)
+}

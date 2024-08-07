@@ -1,7 +1,6 @@
 import { writable } from 'svelte/store';
 
 export interface UI {
-	theme: string;
 	loader?: Loader;
 	toast?: Toast;
 	alertModal?: AlertModal;
@@ -42,17 +41,9 @@ export interface AlertModalAction {
 }
 
 export const ui = (() => {
-	const { subscribe, set, update } = writable<UI>({
-		theme: ''
-	});
+	const { subscribe, set, update } = writable<UI>({});
 
 	// Methods
-	const setTheme = (th?: string) => {
-		const theme = th ?? localStorage.getItem('theme') ?? 'autumn';
-		document.querySelector('html')?.setAttribute('data-theme', theme);
-		localStorage.setItem('theme', theme);
-		update((state) => ({ ...state, theme }));
-	};
 	const setLoader = (loader?: Loader) => update((state) => ({ ...state, loader }));
 	const setToast = (toast?: Toast) => update((state) => ({ ...state, toast }));
 	const setAlertModal = (alertModal?: AlertModal) => update((state) => ({ ...state, alertModal }));
@@ -70,7 +61,6 @@ export const ui = (() => {
 		subscribe,
 		set,
 		update,
-		setTheme,
 		setLoader,
 		setToast,
 		setAlertModal,

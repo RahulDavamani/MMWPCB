@@ -1,6 +1,4 @@
-<script>
-	import Footer from './components/layout/Footer.svelte';
-	import Navbar from './components/layout/Navbar.svelte';
+<script lang="ts">
 	import 'nprogress/nprogress.css';
 	import NProgress from 'nprogress';
 	import { navigating } from '$app/stores';
@@ -12,12 +10,6 @@
 	else NProgress.done();
 </script>
 
-<div class="min-h-screen flex flex-col">
-	<Navbar />
-	<main class="flex-grow container mx-auto p-5">
-		<slot />
-	</main>
-	<Footer />
-</div>
-
 <Ui />
+
+<slot />

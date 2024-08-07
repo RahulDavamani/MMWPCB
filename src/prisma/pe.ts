@@ -1,6 +1,6 @@
 import * as trpc from '@trpc/server';
 import { Prisma } from '@prisma/client';
-import { getErrorCode } from '$lib/errorCode';
+import { getErrorCode } from '$lib/data/errorCode';
 
 const pe = (e: unknown) => {
 	console.log(e);
