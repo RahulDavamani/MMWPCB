@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"prisma": {
-		"schema": "src/prisma/schema.prisma"
+		"schema": "src/prisma/schema"
 	},
 	"scripts": {
 		"dev": "vite dev",
@@ -52,6 +52,7 @@
 		"nprogress": "^0.2.0",
 		"superjson": "^2.2.1",
 		"svelte-flatpickr": "^3.3.4",
+		"svelte-i18n": "^4.0.0",
 		"trpc-sveltekit": "^3.6.2"
 	}
 }
