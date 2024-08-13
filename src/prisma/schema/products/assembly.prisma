@@ -1,0 +1,49 @@
+model Assembly {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   flexibleOption ASFlexibleOption
+   boardType      ASBoardType
+   side           ASSide
+
+   quantitiy       Int
+   sensitiveParts  Boolean
+   alternatesChina Boolean
+
+   uniqueParts      Int
+   smdParts         Int
+   bgaParts         Int
+   throughHoleParts Int
+
+   depanelBoards       Boolean
+   functionTest        Boolean
+   conformalCoating    Boolean
+   firmwareLoading     Boolean
+   pressFit            Boolean
+   boxBuild            Boolean
+   cableWireHarness    Boolean
+   packageBox          Boolean
+   xrayTest            Int
+   detailedInformation String
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id])
+}
+
+enum ASFlexibleOption {
+   TURNKEY
+   KITTED
+   COMBO
+}
+
+enum ASBoardType {
+   SINGLE_PIECES
+   PANELIZED_PCBS
+}
+
+enum ASSide {
+   TOP_SIDE
+   BOTTOM_SIDE
+   BOTH_SIDES
+}

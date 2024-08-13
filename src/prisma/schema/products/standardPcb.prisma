@@ -1,0 +1,217 @@
+model StandardPcb {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   boardType         SPBoardType
+   xoutAllowance     Boolean?
+   breakAwayRail     Boolean?
+   panelRequirements String?
+   routeProcess      SPRouteProcess?
+
+   differentDesign Int
+   length          Float
+   width           Float
+   quantity        Int
+
+   layers      Int
+   layerOrder  String[]
+   copperLayer SPCopperLayer?
+   solderMask  SPSolderMask?
+   silkScreen  SPSilkScreen?
+
+   material                 SPMaterial
+   fr4TG                    SPFr4TG?
+   thermalConductivity      Float?
+   thermoElectricSeparation Boolean?
+   rogers                   SPRogers?
+   structureOfMCPCB         SPStrucureMCPCB?
+
+   thickness   Float
+   minTrack    Float
+   minHoleSize Float
+
+   solderMaskColor SPSolderMaskColor
+   silkScreenColor SPSilkScreenColor
+   uvPrinting      SPUVPrinting
+   edgeConnector   Boolean
+
+   surfaceFinish    SPSurfaceFinish
+   sufraceThickness Float?
+   acceptHASLChange Boolean?
+
+   viaProcess      SPViaProcess
+   finishedCopper  Float
+   initialCopper   Float?
+   removeProductNo SPRemoveProductNo
+
+   peelableSolderMask  SPPeelableSolderMask
+   holeCopperThickness Float
+   ulMarking           SPUlMarking?
+   dateCode            SPDateCode
+   dateCodeDescription String?
+
+   customizedServices SPCustomizedServices[]
+   specialRequests    String
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id])
+}
+
+enum SPBoardType {
+   SINGLE_PIECES
+   PANEL_BY_CUSTOMER
+   PANEL_BY_VELENOVA
+}
+
+enum SPRouteProcess {
+   VELENOVA_PREFER
+   V_SCORING
+   TAB_ROUTE
+   V_SCORING_AND_TAB_ROUTE
+}
+
+enum SPCopperLayer {
+   TOP_LAYER
+   BOTTOM_LAYER
+   NONE
+}
+
+enum SPSolderMask {
+   TOP_SIDE
+   BOTTOM_SIDE
+   BOTH_SIDES
+   NONE
+}
+
+enum SPSilkScreen {
+   TOP_SIDE
+   BOTTOM_SIDE
+   BOTH_SIDES
+   NONE
+}
+
+enum SPMaterial {
+   FR_4
+   ALUMINIUM
+   ROGERS
+   HDI
+   COPPER_BASE
+}
+
+enum SPFr4TG {
+   TG130_140
+   TG150_160
+   TG170_180
+   S1000H_TG150
+   S1000_2M_TG170
+}
+
+enum SPRogers {
+   ROGERS_4003C
+   ROGERS_4350B
+}
+
+enum SPStrucureMCPCB {
+   METAL_CORE_MIDDLE
+   METAIL_BASE_BOTTOM
+}
+
+enum SPSolderMaskColor {
+   GREEN
+   RED
+   YELLOW
+   BLUE
+   WHITE
+   BLACK
+   PURPLE
+   MATTE_BLACK
+   MATTE_GREEN
+   NONE
+}
+
+enum SPSilkScreenColor {
+   WHITE
+   BLACK
+   YELLOW
+   NONE
+}
+
+enum SPUVPrinting {
+   SINGLE_SIDED_TOP
+   SINGLE_SIDED_BOTTOM
+   DOUBLE_SIDED
+   NONE
+}
+
+enum SPSurfaceFinish {
+   HASL_WITH_LEAD
+   HASL_LEAD_FREE
+   IMMERSION_GOLD
+   OSP
+   HARD_GOLD
+   IMMERSION_SILVER
+   IMMERSION_TIN
+   HASL_LEAD_FREE_SELECTIVE_IMMERSION_GOLD
+   HASL_LEAD_FREE_SELECTIVE_HARD_GOLD
+   IMMERSION_GOLD_SELECTIVE_HARD_GOLD
+   ENEPIG
+   PLAIN_COPPER
+}
+
+enum SPViaProcess {
+   TENTING_VIAS
+   PLUGGED_VIAS_WITH_SOLDER_MASK
+   VIAS_NOT_COVERED
+}
+
+enum SPRemoveProductNo {
+   YES
+   NO
+   SPECIFY_LOCATION
+}
+
+enum SPPeelableSolderMask {
+   TOP_SIDE
+   BOTTOM_SIDE
+   BOTH_SIDES
+   NONE
+}
+
+enum SPUlMarking {
+   TOP_SILK_SCREEN
+   BOTTOM_SILK_SCREEN
+   TOP_SOLDER_MASK
+   BOTTOM_SOLDER_MASK
+   TOP_COPPER
+   BOTTOM_COPPER
+   DEFAULT
+   NONE
+}
+
+enum SPDateCode {
+   VELENOVA_PREFER
+   CUSTOMER_REQUIRED
+   UPDATE_DESIGNED_DATE_CODE
+}
+
+enum SPCustomizedServices {
+   HALF_CUT
+   EDGE_PLATING
+   IMPEDANCE_CONTROL
+   HALOGEN_FREE
+   CUSTOM_STACKUP
+   CARBON_INK
+   ALL_VIAS_FILLED_WITH_RESIN_AND_CAPPED
+   VIA_IN_PAD
+   PRESS_FIT_HOLES
+   COUNTERSINK
+   Z_AXIS_MILLING
+   BLACK_FR4
+   EMBEDDED_COPPER_PCB
+   CAVITY_PCB
+   SEMI_FLEX_PCB
+   WHOLE_PARTIALLY_HYBRID_PCB
+   BACK_DRILL_PCB
+   LEADLESS_PARTIALLY_PLATED_HARD_GOLD
+}

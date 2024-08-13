@@ -1,0 +1,161 @@
+model FlexiblePcb {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   pcbType           FPType
+   boardType         FPBoardType
+   xoutAllowance     Boolean?
+   breakAwayRail     Boolean?
+   panelRequirements String?
+   routeProcess      FPRouteProcess?
+
+   differentDesign Int
+   length          Float
+   width           Float
+   quantity        Int
+   layers          Int
+
+   material FPMaterial
+   petType  FPPetType?
+
+   thickness   Float
+   minTrack    Float
+   minHoleSize Float
+
+   solderMaskColor FPSolderMaskColor
+   silkScreenColor FPSilkScreenColor
+   edgeConnector   Boolean
+   stiffener       FPStiffener
+
+   surfaceFinish    FPSurfaceFinish
+   sufraceThickness Float?
+   finishedCopper   Float
+
+   etest            Boolean
+   tape             FPTape
+   doubleSidedTape  FPDoubleSidedTape
+   emiShieldingFilm FPEmiShieldingFilm
+
+   peelableSolderMask  FPPeelableSolderMask
+   ulMarking           FPUlMarking
+   dateCode            FPDateCode
+   dateCodeDescription String?
+
+   customizedServices FPCustomizedServices[]
+   specialRequests    String
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id])
+}
+
+enum FPType {
+   FLEXIBLE
+   RIGID_FLEX
+}
+
+enum FPBoardType {
+   SINGLE_PIECES
+   PANEL_BY_CUSTOMER
+   PANEL_BY_VELENOVA
+}
+
+enum FPRouteProcess {
+   VELENOVA_PREFER
+   V_SCORING
+   TAB_ROUTE
+   V_SCORING_AND_TAB_ROUTE
+}
+
+enum FPMaterial {
+   POLYMIDE_FLEX
+   PET
+   HIGH_FREQUENCY
+}
+
+enum FPPetType {
+   TRANSPARENT
+   TRANSLUCENT
+}
+
+enum FPSolderMaskColor {
+   YELLOW_COVERLAY
+   WHITE_COVERLAY
+   BLACK_COVERLAY
+   TRANSPARENT
+   NONE
+}
+
+enum FPSilkScreenColor {
+   WHITE
+   BLACK
+   NONE
+}
+
+enum FPStiffener {
+   TOP_SIDE
+   BOTTOM_SIDE
+   BOTH_SIDES
+   NONE
+}
+
+enum FPSurfaceFinish {
+   IMMERSION_GOLD
+   OSP
+   HARD_GOLD
+   IMMERSION_SILVER
+   IMMERSION_TIN
+   IMMERSION_GOLD_SELECTIVE_HARD_GOLD
+   ENEPIG
+}
+
+enum FPTape {
+   THREEM_467
+   TESA_8853
+   TESA_8854
+   THREEM_9495LE
+   NONE
+}
+
+enum FPDoubleSidedTape {
+   HT_A1134
+   NONE
+}
+
+enum FPEmiShieldingFilm {
+   NONE
+}
+
+enum FPPeelableSolderMask {
+   TOP_SIDE
+   BOTTOM_SIDE
+   BOTH_SIDES
+   NONE
+}
+
+enum FPUlMarking {
+   TOP_SILK_SCREEN
+   BOTTOM_SILK_SCREEN
+   TOP_SOLDER_MASK
+   BOTTOM_SOLDER_MASK
+   TOP_COPPER
+   BOTTOM_COPPER
+   DEFAULT
+   NONE
+}
+
+enum FPDateCode {
+   VELENOVA_PREFER
+   CUSTOMER_REQUIRED
+   UPDATE_DESIGNED_DATE_CODE
+}
+
+enum FPCustomizedServices {
+   HALF_CUT
+   EDGE_PLATING
+   IMPEDANCE_CONTROL
+   VIA_FILLED_WITH_COPPER
+   FPC_WITH_AIRGAP
+   SINGLE_SIDE_DOUBLE_ACCESS
+   STIFFENER_BETWEEN_EDGE_CONNECTOR
+}
