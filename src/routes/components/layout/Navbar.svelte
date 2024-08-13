@@ -4,6 +4,9 @@
 	import NavUser from './NavUser.svelte';
 	import { l } from '../../../stores/i18n.store';
 	import I18N from './I18N.svelte';
+	import type { PageData } from '../../$types';
+
+	$: ({ session } = $page.data as PageData);
 
 	$: route = $page.url.pathname;
 	$: navItems = [
@@ -37,7 +40,9 @@
 
 			<div class="indicator">
 				<Icon icon="mdi:cart-outline" width={28} class="text-white" />
-				<span class="indicator-item badge badge-sm badge-secondary font-bold text-white">2</span>
+				<span class="indicator-item badge badge-sm badge-secondary font-bold text-white">
+					{session?.cartCount ?? 0}
+				</span>
 			</div>
 
 			<NavUser />

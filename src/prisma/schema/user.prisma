@@ -41,6 +41,7 @@ model Session {
 
    expiresAt  DateTime
    profilePic String?
+   cartCount  Int
 
    userId String
    user   User   @relation(references: [id], fields: [userId], onDelete: Cascade)
