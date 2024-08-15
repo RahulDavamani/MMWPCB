@@ -16,7 +16,7 @@
 		<Navbar />
 	{/if}
 
-	<main class="flex-grow container mx-auto p-5">
+	<main class="flex-grow container mx-auto p-5 pb-10">
 		<slot />
 	</main>
 

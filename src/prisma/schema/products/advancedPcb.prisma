@@ -7,9 +7,9 @@ model AdvancedPcb {
    boardSpec         APBoardSpec
    boardType         APBoardType
    xoutAllowance     Boolean?
+   routeProcess      APRouteProcess?
    breakAwayRail     Boolean?
    panelRequirements String?
-   routeProcess      APRouteProcess?
 
    differentDesign Int
    length          Float
@@ -20,7 +20,7 @@ model AdvancedPcb {
    layerOrder  String[]
    copperLayer APCopperLayer?
    solderMask  APSolderMask?
-   silkScreen  APSilkScreen?
+   silkscreen  APSilkscreen?
 
    material      APMaterial
    highSpeed     String?
@@ -31,13 +31,13 @@ model AdvancedPcb {
    minHoleSize Float
 
    solderMaskColor APSolderMaskColor
-   silkScreenColor APSilkScreenColor
+   silkscreenColor APSilkscreenColor
    edgeConnector   Boolean
 
    surfaceFinish    APSurfaceFinish
-   sufraceThickness Float?
+   surfaceThickness Float?
    finishedCopper   Float
-   initialCopper    Float?
+   innerCopper      Float?
 
    peelableSolderMask  APPeelableSolderMask
    holeCopperThickness Float
@@ -92,7 +92,7 @@ enum APSolderMask {
    NONE
 }
 
-enum APSilkScreen {
+enum APSilkscreen {
    TOP_SIDE
    BOTTOM_SIDE
    BOTH_SIDES
@@ -112,7 +112,8 @@ enum APMaterial {
 }
 
 enum APSolderMaskColor {
-   GREENRED
+   GREEN
+   RED
    YELLOW
    BLUE
    WHITE
@@ -129,7 +130,7 @@ enum APSolderMaskColor {
    NONE
 }
 
-enum APSilkScreenColor {
+enum APSilkscreenColor {
    WHITE
    BLACK
    YELLOW
@@ -174,6 +175,7 @@ enum APDateCode {
    VELENOVA_PREFER
    CUSTOMER_REQUIRED
    UPDATE_DESIGNED_DATE_CODE
+   NONE
 }
 
 enum APCustomizedServices {
@@ -202,6 +204,6 @@ enum APFinalInspectionReport {
    MICROSECTION_INSPECTION_REPORT
    SOLDERABILITY_INSPECTION_REPORT
    THERMAL_STRESS_INSPECTION_REPORT
-   IMPEADANCE_INSPECTION_REPORT
+   IMPEDANCE_INSPECTION_REPORT
    HUMIDITY_INDICATOR_CARD
 }

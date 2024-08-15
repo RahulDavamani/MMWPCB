@@ -2,18 +2,19 @@
 	import { page } from '$app/stores';
 	import Icon from '@iconify/svelte';
 	import NavUser from './NavUser.svelte';
-	import { l } from '../../../stores/i18n.store';
+	import { lg } from '../../../stores/i18n.store';
 	import I18N from './I18N.svelte';
 	import type { PageData } from '../../$types';
 
+	$: l = $lg.navbar;
 	$: ({ session } = $page.data as PageData);
 
 	$: route = $page.url.pathname;
 	$: navItems = [
-		{ name: $l.navbar.instantQuote, href: '/instant-quote' },
-		{ name: $l.navbar.products, href: '/products' },
-		{ name: $l.navbar.whyUs, href: '/why-us' },
-		{ name: $l.navbar.support, href: '/support' }
+		{ name: l.instantQuote, href: '/instant-quote' },
+		{ name: l.products, href: '/products' },
+		{ name: l.whyUs, href: '/why-us' },
+		{ name: l.support, href: '/support' }
 	];
 </script>
 

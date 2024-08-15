@@ -82,4 +82,4 @@ export const i18n = (() => {
 	};
 })();
 
-export const l = derived(i18n, ($i18n) => languages[$i18n.lang].locale);
+export const lg = derived(i18n, ($i18n) => languages[$i18n.lang].locale);

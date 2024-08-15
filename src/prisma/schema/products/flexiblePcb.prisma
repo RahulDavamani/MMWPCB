@@ -6,9 +6,9 @@ model FlexiblePcb {
    pcbType           FPType
    boardType         FPBoardType
    xoutAllowance     Boolean?
+   routeProcess      FPRouteProcess?
    breakAwayRail     Boolean?
    panelRequirements String?
-   routeProcess      FPRouteProcess?
 
    differentDesign Int
    length          Float
@@ -24,12 +24,12 @@ model FlexiblePcb {
    minHoleSize Float
 
    solderMaskColor FPSolderMaskColor
-   silkScreenColor FPSilkScreenColor
+   silkscreenColor FPSilkscreenColor
    edgeConnector   Boolean
    stiffener       FPStiffener
 
    surfaceFinish    FPSurfaceFinish
-   sufraceThickness Float?
+   surfaceThickness Float?
    finishedCopper   Float
 
    etest            Boolean
@@ -50,8 +50,8 @@ model FlexiblePcb {
 }
 
 enum FPType {
-   FLEXIBLE
-   RIGID_FLEX
+   FLEXIBLE_PCB
+   RIGID_FLEX_BOARD
 }
 
 enum FPBoardType {
@@ -68,7 +68,7 @@ enum FPRouteProcess {
 }
 
 enum FPMaterial {
-   POLYMIDE_FLEX
+   POLYIMIDE_FLEX
    PET
    HIGH_FREQUENCY
 }
@@ -86,7 +86,7 @@ enum FPSolderMaskColor {
    NONE
 }
 
-enum FPSilkScreenColor {
+enum FPSilkscreenColor {
    WHITE
    BLACK
    NONE
@@ -148,6 +148,7 @@ enum FPDateCode {
    VELENOVA_PREFER
    CUSTOMER_REQUIRED
    UPDATE_DESIGNED_DATE_CODE
+   NONE
 }
 
 enum FPCustomizedServices {

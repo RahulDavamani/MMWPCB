@@ -1,0 +1,136 @@
+import type { AdvancedPcb } from '../../../zod/products/advancedPcb.schema';
+import type { Assembly } from '../../../zod/products/assembly.schema';
+import type { FlexiblePcb } from '../../../zod/products/flexiblePcb.schema';
+import type { StandardPcb } from '../../../zod/products/standardPcb.schema';
+import type { Stencil } from '../../../zod/products/stencil.schema';
+
+const standardPcb: StandardPcb = {
+	id: null,
+	boardType: 'SINGLE_PIECES',
+	differentDesign: 1,
+	length: 0,
+	width: 0,
+	quantity: 5,
+	layers: 2,
+	layerOrder: [],
+	material: 'FR_4',
+	fr4TG: 'TG150_160',
+	thickness: 1.6,
+	minTrack: 6,
+	minHoleSize: 0.3,
+	solderMaskColor: 'GREEN',
+	silkscreenColor: 'WHITE',
+	uvPrinting: 'NONE',
+	edgeConnector: false,
+	surfaceFinish: 'HASL_WITH_LEAD',
+	viaProcess: 'TENTING_VIAS',
+	finishedCopper: 1,
+	removeProductNo: 'NO',
+	peelableSolderMask: 'NONE',
+	holeCopperThickness: 0,
+	ulMarking: 'NONE',
+	dateCode: 'NONE',
+	customizedServices: [],
+	specialRequests: ''
+};
+
+const advancedPcb: AdvancedPcb = {
+	id: null,
+	pcbType: 'THROUGH_HOLE',
+	boardSpec: 'IPC_6012_CLASS_2',
+	boardType: 'SINGLE_PIECES',
+	differentDesign: 1,
+	length: 0,
+	width: 0,
+	quantity: 0,
+	layers: 2,
+	layerOrder: [],
+	material: 'TG140_FR4',
+	thickness: 1.6,
+	minTrack: 8,
+	minHoleSize: 0.3,
+	solderMaskColor: 'GREEN',
+	silkscreenColor: 'WHITE',
+	edgeConnector: false,
+	surfaceFinish: 'IMMERSION_GOLD',
+	surfaceThickness: 2,
+	finishedCopper: 1,
+	peelableSolderMask: 'NONE',
+	holeCopperThickness: 0,
+	ulMarking: 'NONE',
+	dateCode: 'NONE',
+	customizedServices: [],
+	finalInspectionReport: ['DEFAULT_INSPECTION_REPORT'],
+	specialRequests: ''
+};
+
+const flexiblePcb: FlexiblePcb = {
+	id: null,
+	pcbType: 'FLEXIBLE_PCB',
+	boardType: 'SINGLE_PIECES',
+	differentDesign: 1,
+	length: 0,
+	width: 0,
+	quantity: 0,
+	layers: 1,
+	material: 'POLYIMIDE_FLEX',
+	thickness: 0.1,
+	minTrack: 0.006,
+	minHoleSize: 0.15,
+	solderMaskColor: 'YELLOW_COVERLAY',
+	silkscreenColor: 'BLACK',
+	edgeConnector: false,
+	stiffener: 'NONE',
+	surfaceFinish: 'IMMERSION_GOLD',
+	surfaceThickness: 1,
+	finishedCopper: 0.5,
+	etest: true,
+	tape: 'NONE',
+	doubleSidedTape: 'NONE',
+	emiShieldingFilm: 'NONE',
+	peelableSolderMask: 'NONE',
+	ulMarking: 'NONE',
+	dateCode: 'NONE',
+	customizedServices: [],
+	specialRequests: ''
+};
+
+const assembly: Assembly = {
+	id: null,
+	flexibleOption: 'TURNKEY',
+	boardType: 'SINGLE_PIECES',
+	side: 'TOP_SIDE',
+	quantity: 0,
+	sensitiveParts: false,
+	alternatesChina: false,
+	uniqueParts: 0,
+	smdParts: 0,
+	bgaParts: 0,
+	throughHoleParts: 0,
+	depanelBoards: false,
+	functionTest: false,
+	conformalCoating: false,
+	firmwareLoading: false,
+	pressFit: false,
+	boxBuild: false,
+	cableWireHarness: false,
+	packageBox: false,
+	xrayTest: 0,
+	detailedInformation: ''
+};
+
+const stencil: Stencil = {
+	id: null,
+	type: 'FRAMEWORK',
+	multiLevel: false,
+	length: 370,
+	width: 470,
+	side: 'TOP_SIDE',
+	quantity: 0,
+	thickness: 0.12,
+	existingFiducials: 'NONE',
+	electroPolishing: false,
+	specialRequests: ''
+};
+
+export const defaultProducts = { standardPcb, advancedPcb, flexiblePcb, assembly, stencil };

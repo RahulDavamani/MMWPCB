@@ -2,9 +2,33 @@
 	import { page } from '$app/stores';
 	import Icon from '@iconify/svelte';
 	import type { PageData } from '../../$types';
-	import { l } from '../../../stores/i18n.store';
+	import { lg } from '../../../stores/i18n.store';
 
+	$: l = $lg.navbar.user;
 	$: ({ user, session } = $page.data as PageData);
+
+	$: menuItems = [
+		{
+			name: l.orders,
+			icon: 'mdi:clipboard-text-outline',
+			href: '/orders'
+		},
+		{
+			name: l.profile,
+			icon: 'mdi:account-outline',
+			href: '/profile'
+		},
+		{
+			name: l.settings,
+			icon: 'mdi:settings-outline',
+			href: '/settings'
+		},
+		{
+			name: l.logout,
+			icon: 'mdi:logout',
+			href: '/logout'
+		}
+	];
 </script>
 
 {#if user}
@@ -31,36 +55,20 @@
 			</div>
 			<div class="divider px-4 m-0" />
 			<ul class="menu">
-				<li>
-					<a href="/orders" class="gap-3">
-						<Icon icon="mdi:clipboard-text-outline" width={20} />
-						{$l.navbar.user.orders}
-					</a>
-				</li>
-				<li>
-					<a href="/profile" class="gap-3">
-						<Icon icon="mdi:account-outline" width={20} />
-						{$l.navbar.user.profile}
-					</a>
-				</li>
-				<li>
-					<a href="/settings" class="gap-3">
-						<Icon icon="mdi:settings-outline" width={20} />
-						{$l.navbar.user.settings}
-					</a>
-				</li>
-				<li>
-					<a href="/logout" class="gap-3">
-						<Icon icon="mdi:logout" width={20} />
-						{$l.navbar.user.logout}
-					</a>
-				</li>
+				{#each menuItems as { name, icon, href }}
+					<li>
+						<a {href} class="gap-3">
+							<Icon {icon} width={20} />
+							{name}
+						</a>
+					</li>
+				{/each}
 			</ul>
 		</div>
 	</div>
 {:else}
 	<a href="/login" class="btn btn-primary">
 		<Icon icon="mdi:login" width={20} />
-		{$l.navbar.login}
+		{$lg.navbar.login}
 	</a>
 {/if}

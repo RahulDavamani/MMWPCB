@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import { currencies, i18n, l, languages } from '../../../stores/i18n.store';
+	import { currencies, i18n, lg, languages } from '../../../stores/i18n.store';
 
+	$: l = $lg.navbar.i18n;
 	$: ({ lang, currency } = $i18n);
 </script>
 
@@ -13,7 +14,7 @@
 		<Icon icon="mdi:keyboard-arrow-down" />
 	</div>
 	<div tabindex="0" class="dropdown-content bg-base-100 rounded-box z-[1] w-80 p-4 shadow text-sm">
-		<div class="font-bold mb-3">{$l.navbar.i18n.language}:</div>
+		<div class="font-bold mb-3">{l.language}:</div>
 		<div class="flex justify-around flex-wrap gap-4">
 			{#each Object.values(languages) as { id, name, icon }}
 				<button class="btn btn-sm w-32 {id === lang && 'btn-secondary text-white'}" on:click={() => i18n.setLang(id)}>
@@ -24,7 +25,7 @@
 		</div>
 
 		<div class="divider" />
-		<div class="font-bold mb-3">{$l.navbar.i18n.currency}:</div>
+		<div class="font-bold mb-3">{l.currency}:</div>
 		<div class="flex justify-around flex-wrap gap-4">
 			{#each Object.values(currencies) as { id, name, icon }}
 				<button

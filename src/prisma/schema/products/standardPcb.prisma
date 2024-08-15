@@ -5,9 +5,9 @@ model StandardPcb {
 
    boardType         SPBoardType
    xoutAllowance     Boolean?
+   routeProcess      SPRouteProcess?
    breakAwayRail     Boolean?
    panelRequirements String?
-   routeProcess      SPRouteProcess?
 
    differentDesign Int
    length          Float
@@ -18,31 +18,31 @@ model StandardPcb {
    layerOrder  String[]
    copperLayer SPCopperLayer?
    solderMask  SPSolderMask?
-   silkScreen  SPSilkScreen?
+   silkscreen  SPSilkscreen?
 
    material                 SPMaterial
    fr4TG                    SPFr4TG?
    thermalConductivity      Float?
    thermoElectricSeparation Boolean?
    rogers                   SPRogers?
-   structureOfMCPCB         SPStrucureMCPCB?
+   structureOfMCPCB         spStructureMCPCB?
 
    thickness   Float
    minTrack    Float
    minHoleSize Float
 
    solderMaskColor SPSolderMaskColor
-   silkScreenColor SPSilkScreenColor
+   silkscreenColor SPSilkscreenColor
    uvPrinting      SPUVPrinting
    edgeConnector   Boolean
 
    surfaceFinish    SPSurfaceFinish
-   sufraceThickness Float?
+   surfaceThickness Float?
    acceptHASLChange Boolean?
 
    viaProcess      SPViaProcess
    finishedCopper  Float
-   initialCopper   Float?
+   innerCopper     Float?
    removeProductNo SPRemoveProductNo
 
    peelableSolderMask  SPPeelableSolderMask
@@ -84,7 +84,7 @@ enum SPSolderMask {
    NONE
 }
 
-enum SPSilkScreen {
+enum SPSilkscreen {
    TOP_SIDE
    BOTTOM_SIDE
    BOTH_SIDES
@@ -93,7 +93,7 @@ enum SPSilkScreen {
 
 enum SPMaterial {
    FR_4
-   ALUMINIUM
+   ALUMINUM
    ROGERS
    HDI
    COPPER_BASE
@@ -112,9 +112,9 @@ enum SPRogers {
    ROGERS_4350B
 }
 
-enum SPStrucureMCPCB {
+enum spStructureMCPCB {
    METAL_CORE_MIDDLE
-   METAIL_BASE_BOTTOM
+   METAL_BASE_BOTTOM
 }
 
 enum SPSolderMaskColor {
@@ -130,7 +130,7 @@ enum SPSolderMaskColor {
    NONE
 }
 
-enum SPSilkScreenColor {
+enum SPSilkscreenColor {
    WHITE
    BLACK
    YELLOW
@@ -193,6 +193,7 @@ enum SPDateCode {
    VELENOVA_PREFER
    CUSTOMER_REQUIRED
    UPDATE_DESIGNED_DATE_CODE
+   NONE
 }
 
 enum SPCustomizedServices {

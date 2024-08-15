@@ -7,7 +7,7 @@ model Assembly {
    boardType      ASBoardType
    side           ASSide
 
-   quantitiy       Int
+   quantity        Int
    sensitiveParts  Boolean
    alternatesChina Boolean
 
