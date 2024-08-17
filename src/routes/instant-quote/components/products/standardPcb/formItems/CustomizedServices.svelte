@@ -37,11 +37,13 @@
 		imgSrc?: string;
 		value: StandardPcb['customizedServices'][number];
 	}[];
+
+	let collapseOpen = false;
 </script>
 
-<div class="collapse collapse-arrow mt-6 overflow-visible">
-	<input type="checkbox" class="peer" />
-	<div class="collapse-title bg-base-200 font-semibold">{l.title}</div>
+<div class="collapse collapse-arrow mt-6 {collapseOpen && 'overflow-visible'}">
+	<input type="checkbox" class="peer" bind:checked={collapseOpen} />
+	<div class="collapse-title bg-base-200 rounded-lg font-semibold">{l.title}</div>
 	<div class="collapse-content">
 		<div class="mt-4 text-sm">{l.description}</div>
 		<div class="flex flex-wrap gap-x-6">

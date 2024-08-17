@@ -1,0 +1,24 @@
+model ShippingMethod {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   name         String
+   price        Float
+   deliveryTime String
+   restriction  String
+
+   countryId String
+   country   ShippingCountry @relation(fields: [countryId], references: [id])
+
+   orders Order[]
+}
+
+model ShippingCountry {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   name    String
+   methods ShippingMethod[]
+}

@@ -92,6 +92,9 @@ export const spCustomizedServices = z.enum([
 
 export const standardPcbSchema = z.object({
 	id: z.string().nullable(),
+	buildTime: z.string(),
+	initialPrice: z.number(),
+	finalPrice: z.number().optional(),
 	boardType: spBoardType,
 	xoutAllowance: z.boolean().optional(),
 	routeProcess: spRouteProcess.optional(),

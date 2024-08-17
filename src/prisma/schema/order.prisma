@@ -8,6 +8,9 @@ model Order {
    userId String
    user   User   @relation(fields: [userId], references: [id])
 
+   shippingMethodId String?
+   shippingMethod   ShippingMethod? @relation(fields: [shippingMethodId], references: [id])
+
    timeline     OrderTimeline[]
    standardPcbs StandardPcb[]
    advancedPcbs AdvancedPcb[]

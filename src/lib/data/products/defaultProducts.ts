@@ -6,6 +6,8 @@ import type { Stencil } from '../../../zod/products/stencil.schema';
 
 const standardPcb: StandardPcb = {
 	id: null,
+	buildTime: '24 Hours',
+	initialPrice: 5,
 	boardType: 'SINGLE_PIECES',
 	differentDesign: 1,
 	length: 0,
@@ -36,6 +38,8 @@ const standardPcb: StandardPcb = {
 
 const advancedPcb: AdvancedPcb = {
 	id: null,
+	buildTime: '24 Hours',
+	initialPrice: 5,
 	pcbType: 'THROUGH_HOLE',
 	boardSpec: 'IPC_6012_CLASS_2',
 	boardType: 'SINGLE_PIECES',
@@ -66,6 +70,8 @@ const advancedPcb: AdvancedPcb = {
 
 const flexiblePcb: FlexiblePcb = {
 	id: null,
+	buildTime: '24 Hours',
+	initialPrice: 5,
 	pcbType: 'FLEXIBLE_PCB',
 	boardType: 'SINGLE_PIECES',
 	differentDesign: 1,
@@ -97,6 +103,8 @@ const flexiblePcb: FlexiblePcb = {
 
 const assembly: Assembly = {
 	id: null,
+	buildTime: '24 Hours',
+	initialPrice: 5,
 	flexibleOption: 'TURNKEY',
 	boardType: 'SINGLE_PIECES',
 	side: 'TOP_SIDE',
@@ -121,6 +129,8 @@ const assembly: Assembly = {
 
 const stencil: Stencil = {
 	id: null,
+	buildTime: '24 Hours',
+	initialPrice: 5,
 	type: 'FRAMEWORK',
 	multiLevel: false,
 	length: 370,

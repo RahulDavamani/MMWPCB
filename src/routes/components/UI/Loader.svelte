@@ -22,7 +22,9 @@
 	</slot>
 
 	<slot name="title">
-		<div class="font-semibold mt-5 bg-base-200 p-2 rounded-box {titleClass}">{title} ...</div>
+		<div class="font-semibold mt-5 p-2 px-4 rounded-box [text-shadow:_0_1px_0_rgb(0_0_0_/_50%)] {titleClass}">
+			{title} ...
+		</div>
 	</slot>
 </div>
 

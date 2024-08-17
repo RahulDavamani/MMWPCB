@@ -59,6 +59,9 @@ export const fpCustomizedServices = z.enum([
 
 export const flexiblePcbSchema = z.object({
 	id: z.string().nullable(),
+	buildTime: z.string(),
+	initialPrice: z.number(),
+	finalPrice: z.number().optional(),
 	pcbType: fpType,
 	boardType: fpBoardType,
 	xoutAllowance: z.boolean().optional(),

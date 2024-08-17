@@ -108,6 +108,9 @@ export const apFinalInspectionReport = z.enum([
 
 export const advancedPcbSchema = z.object({
 	id: z.string().nullable(),
+	buildTime: z.string(),
+	initialPrice: z.number(),
+	finalPrice: z.number().optional(),
 	pcbType: apType,
 	boardSpec: apBoardSpec,
 	boardType: apBoardType,

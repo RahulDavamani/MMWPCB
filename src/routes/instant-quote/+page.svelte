@@ -8,6 +8,7 @@
 	import StencilForm from './components/products/StencilForm.svelte';
 	import AssemblyForm from './components/products/AssemblyForm.svelte';
 	import FlexiblePcbForm from './components/products/FlexiblePcbForm.svelte';
+	import ShippingCard from './components/ShippingCard.svelte';
 
 	$: ({ product } = $quote);
 </script>
@@ -26,6 +27,9 @@
 		{:else}
 			<StencilForm />
 		{/if}
-		<PricingCard />
+		<div class="space-y-6">
+			<PricingCard />
+			<ShippingCard />
+		</div>
 	</div>
 </Layout>

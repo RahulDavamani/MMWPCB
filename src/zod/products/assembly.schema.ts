@@ -6,6 +6,9 @@ export const asSide = z.enum(['TOP_SIDE', 'BOTTOM_SIDE', 'BOTH_SIDES']);
 
 export const assemblySchema = z.object({
 	id: z.string().nullable(),
+	buildTime: z.string(),
+	initialPrice: z.number(),
+	finalPrice: z.number().optional(),
 	flexibleOption: asFlexibleOption,
 	boardType: asBoardType,
 	side: asSide,

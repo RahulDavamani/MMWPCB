@@ -3,6 +3,10 @@ model AdvancedPcb {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
+   buildTime    String
+   initialPrice Float
+   finalPrice   Float?
+
    pcbType           APType
    boardSpec         APBoardSpec
    boardType         APBoardType

@@ -3,6 +3,10 @@ model Assembly {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
+   buildTime    String
+   initialPrice Float
+   finalPrice   Float?
+
    flexibleOption ASFlexibleOption
    boardType      ASBoardType
    side           ASSide

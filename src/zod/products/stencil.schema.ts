@@ -6,6 +6,9 @@ export const stExistingFiducials = z.enum(['HALF_LASERED', 'LASERED_THROUGH', 'N
 
 export const stencilSchema = z.object({
 	id: z.string().nullable(),
+	buildTime: z.string(),
+	initialPrice: z.number(),
+	finalPrice: z.number().optional(),
 	type: stType,
 	multiLevel: z.boolean(),
 	side: stSide,
