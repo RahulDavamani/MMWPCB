@@ -1,20 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Icon from '@iconify/svelte';
 	import NavUser from './NavUser.svelte';
 	import { lg } from '../../../stores/i18n.store';
 	import I18N from './I18N.svelte';
-	import type { PageData } from '../../$types';
+	import Cart from './Cart.svelte';
 
 	$: l = $lg.navbar;
-	$: ({ cart } = $page.data as PageData);
-	$: cartCount = cart
-		? cart.standardPcbs.length +
-			cart.advancedPcbs.length +
-			cart.flexiblePcbs.length +
-			cart.assemblies.length +
-			cart.stencils.length
-		: 0;
 
 	$: route = $page.url.pathname;
 	$: navItems = [
@@ -46,12 +37,7 @@
 		<div class="flex items-center gap-6">
 			<I18N />
 
-			<div class="indicator">
-				<Icon icon="mdi:cart-outline" width={28} class="text-white" />
-				<span class="indicator-item badge badge-sm badge-secondary font-bold text-white">
-					{cartCount}
-				</span>
-			</div>
+			<Cart />
 
 			<NavUser />
 		</div>

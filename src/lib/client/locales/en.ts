@@ -29,6 +29,15 @@ export const en = {
 			language: 'Language',
 			currency: 'Currency'
 		},
+		cart: {
+			myCart: 'My Cart',
+			viewCart: 'View Cart',
+			name: 'Name',
+			buildTime: 'Build Time',
+			quantity: 'Quantity',
+			price: 'Price',
+			subTotal: 'Sub-Total'
+		},
 		user: {
 			orders: 'Orders',
 			profile: 'Profile',
@@ -59,15 +68,15 @@ export const en = {
 		signInGoogle: 'Sign In with Google'
 	},
 
-	instantQuote: {
-		products: {
-			standardPcb: 'Standard PCB',
-			advancedPcb: 'Advanced PCB',
-			flexiblePcb: 'FPC/Rigid-Flex',
-			assembly: 'Assembly',
-			stencil: 'SMD-Stencil'
-		},
+	products: {
+		standardPcb: 'Standard PCB',
+		advancedPcb: 'Advanced PCB',
+		flexiblePcb: 'FPC/Rigid-Flex',
+		assembly: 'Assembly',
+		stencil: 'SMD-Stencil'
+	},
 
+	instantQuote: {
 		pricing: {
 			title: 'Pricing and Build Time',
 			buildTime: 'Build Time',

@@ -2,7 +2,7 @@
 	import { lg } from '../../../stores/i18n.store';
 	import { quote, type Quote } from '../../../stores/quote.store';
 
-	$: l = $lg.instantQuote.products;
+	$: l = $lg.products;
 	$: ({ product } = $quote);
 
 	$: products = [
