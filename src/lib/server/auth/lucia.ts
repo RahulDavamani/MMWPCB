@@ -27,7 +27,6 @@ declare module 'lucia' {
 		};
 		DatabaseSessionAttributes: {
 			profilePic: string | null;
-			cartCount: number;
 		};
 	}
 }

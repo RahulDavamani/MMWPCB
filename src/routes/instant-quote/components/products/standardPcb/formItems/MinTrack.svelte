@@ -3,13 +3,13 @@
 	import { quote } from '../../../../../../stores/quote.store';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.minTrack;
+	$: ({ title, description } = $lg.instantQuote.standardPcb.minTrack);
 	$: ({ minTrack } = $quote.standardPcb);
 
 	$: values = [3, 4, 5, 6, 8];
 </script>
 
-<FormItem title={l.title} moreInfo={{ description: l.description, imgSrc: '' }}>
+<FormItem {title} moreInfo={{ description, imgSrc: '' }}>
 	<div class="flex flex-wrap gap-4">
 		{#each values as value}
 			<button

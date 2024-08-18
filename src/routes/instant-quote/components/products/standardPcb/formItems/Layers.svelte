@@ -1,10 +1,9 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import { lg } from '../../../../../../stores/i18n.store';
 	import { quote } from '../../../../../../stores/quote.store';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.layers;
+	$: ({ title, description, ...l } = $lg.instantQuote.standardPcb.layers);
 	$: ({ layers, material, fr4TG, structureOfMCPCB, innerCopper } = $quote.standardPcb);
 
 	$: layerValues = [
@@ -50,7 +49,7 @@
 	};
 </script>
 
-<FormItem title={l.title} moreInfo={{ description: l.description, url: '', imgSrc: '' }}>
+<FormItem {title} moreInfo={{ description, url: '', imgSrc: '' }}>
 	<div class="flex flex-wrap gap-4">
 		{#each layerValues as { name, value }}
 			{@const disabled =

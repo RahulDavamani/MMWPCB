@@ -3,13 +3,13 @@
 	import { quote } from '../../../../../../stores/quote.store';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.thickness;
+	$: ({ title, description } = $lg.instantQuote.standardPcb.thickness);
 	$: ({ thickness } = $quote.standardPcb);
 
 	$: values = [0.2, 0.3, 0.4, 0.6, 0.8, 1.0, 1.2, 1.6, 2.0, 2.4, 2.6, 2.8, 3.0, 3.2];
 </script>
 
-<FormItem title={l.title} moreInfo={{ description: l.description, imgSrc: '' }}>
+<FormItem {title} moreInfo={{ description, imgSrc: '' }}>
 	<div class="flex flex-wrap gap-4">
 		{#each values as value}
 			<button

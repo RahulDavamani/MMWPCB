@@ -1,5 +1,6 @@
 export const en = {
 	common: {
+		login: 'Login',
 		or: 'Or',
 		yes: 'Yes',
 		no: 'No',
@@ -14,8 +15,10 @@ export const en = {
 			purple: 'Purple',
 			matteBlack: 'Matte Black',
 			matteGreen: 'Matte Green'
-		}
+		},
+		typeHere: 'Type here...'
 	},
+
 	navbar: {
 		instantQuote: 'Instant Quote',
 		products: 'Products',
@@ -33,6 +36,7 @@ export const en = {
 			logout: 'Logout'
 		}
 	},
+
 	login: {
 		signIn: 'Sign In',
 		email: 'Email',
@@ -42,6 +46,7 @@ export const en = {
 		dontHaveAccount: "Don't have an account?",
 		signInGoogle: 'Sign In with Google'
 	},
+
 	register: {
 		signUp: 'Sign Up',
 		firstName: 'First Name',
@@ -53,6 +58,7 @@ export const en = {
 		alreadyHaveAccount: 'Already have an account?',
 		signInGoogle: 'Sign In with Google'
 	},
+
 	instantQuote: {
 		products: {
 			standardPcb: 'Standard PCB',
@@ -61,12 +67,37 @@ export const en = {
 			assembly: 'Assembly',
 			stencil: 'SMD-Stencil'
 		},
+
 		pricing: {
 			title: 'Pricing and Build Time',
+			buildTime: 'Build Time',
+			chargeDetails: 'Charge Details',
+			total: 'Total',
 			saveToCart: 'Save to Cart',
 			addToOrder: 'Add to Order'
 		},
+
+		shipping: {
+			title: 'Shipping Estimate',
+			selectShipping: 'Select Shipping Method',
+			shippingTo: 'Shipping to',
+			selectCountry: 'Select Country',
+			shippingMethod: 'Shipping Method',
+			price: 'Price',
+			deliveryTime: 'Delivery Time',
+			restriction: 'Restriction',
+			country: 'Country',
+			method: 'Method',
+			weight: 'Weight',
+			shippingCost: 'Shipping Cost'
+		},
+
 		standardPcb: {
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
 			boardType: {
 				title: 'Board Types',
 				description:
@@ -81,8 +112,10 @@ export const en = {
 				title: 'X-out Allowance in Panel',
 				description:
 					'Bad PCBs may exist in the panel, the quotation will increase by about 30% if X-out Allowance is not accepted.',
-				accept: 'Accept',
-				decline: 'Decline'
+				options: {
+					accept: 'Accept',
+					decline: 'Decline'
+				}
 			},
 			routeProcess: {
 				title: 'Route Process',
@@ -106,21 +139,25 @@ export const en = {
 			differentDesign: {
 				title: 'Different Design in Panel',
 				description:
-					'It means there are different designs in your files separated by v-cuts, stamp holes, milling slots or others. We will charge additional panel cost if there are different kinds of PCB designs in one Gerber file.'
+					'It means there are different designs in your files separated by v-cuts, stamp holes, milling slots or others. We will charge additional panel cost if there are different kinds of PCB designs in one Gerber file.',
+				error: 'Different design should be greater than 0'
 			},
 			size: {
 				title: 'Size (single)',
 				description:
 					'The board size refers to the length and width of the board ordered by the customer. If it is a circular board, the length and width are the diameter of the circle; If it is a board with irregular shape, the length and width are measured according to the largest shape range.',
-				length: 'Length',
-				width: 'Width'
+				error: 'Length and width should be greater than 0',
+				placeholder: {
+					length: 'Length',
+					width: 'Width'
+				}
 			},
 			quantity: {
 				title: 'Quantity (single)',
 				description:
 					'Please choose the number of single pieces you need. For standard PCB, the starting quantity is 5 pieces.',
-				pieces: 'Pieces',
-				quantity: 'Quantity'
+				placeholder: 'Quantity',
+				pieces: 'Pieces'
 			},
 			layers: {
 				title: 'Layers',
@@ -197,8 +234,10 @@ export const en = {
 				title: 'Structure of MCPCB',
 				description:
 					'This is for Double-sided / Multilayer metal substrate boards (Aluminum or Copper Base). There are two structures to choose from according to whether the metal base is in the middle or the bottom.',
-				metalCoreMiddle: 'Metal Core in the middle',
-				metalBaseBottom: 'Metal Base on the bottom side'
+				options: {
+					metalCoreMiddle: 'Metal Core in the middle',
+					metalBaseBottom: 'Metal Base on the bottom side'
+				}
 			},
 			thickness: {
 				title: 'Thickness',

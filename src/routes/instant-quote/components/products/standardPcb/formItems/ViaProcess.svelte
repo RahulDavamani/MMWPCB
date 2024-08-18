@@ -4,17 +4,17 @@
 	import type { StandardPcb } from '../../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.viaProcess;
+	$: ({ title, description, disclaimer, options } = $lg.instantQuote.standardPcb.viaProcess);
 	$: ({ viaProcess } = $quote.standardPcb);
 
 	$: values = [
-		{ name: l.options.tentingVias, value: 'TENTING_VIAS' },
-		{ name: l.options.pluggedVias, value: 'PLUGGED_VIAS_WITH_SOLDER_MASK' },
-		{ name: l.options.viasNotCovered, value: 'VIAS_NOT_COVERED' }
+		{ name: options.tentingVias, value: 'TENTING_VIAS' },
+		{ name: options.pluggedVias, value: 'PLUGGED_VIAS_WITH_SOLDER_MASK' },
+		{ name: options.viasNotCovered, value: 'VIAS_NOT_COVERED' }
 	] as { name: string; value: StandardPcb['viaProcess'] }[];
 </script>
 
-<FormItem title={l.title} moreInfo={{ description: l.description }}>
+<FormItem {title} moreInfo={{ description }} {disclaimer}>
 	<div class="flex flex-wrap gap-4">
 		{#each values as { name, value }}
 			<button
@@ -24,6 +24,3 @@
 		{/each}
 	</div>
 </FormItem>
-<div class="ml-44 text-sm text-secondary">
-	{l.disclaimer}
-</div>

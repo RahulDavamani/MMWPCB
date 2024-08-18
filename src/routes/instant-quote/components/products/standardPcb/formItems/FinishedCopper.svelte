@@ -3,13 +3,13 @@
 	import { quote } from '../../../../../../stores/quote.store';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.finishedCopper;
+	$: ({ title, description, disclaimer, ...l } = $lg.instantQuote.standardPcb.finishedCopper);
 	$: ({ finishedCopper } = $quote.standardPcb);
 
 	$: values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 </script>
 
-<FormItem title={l.title} moreInfo={{ description: l.description }}>
+<FormItem {title} moreInfo={{ description }} {disclaimer}>
 	<div class="flex flex-wrap gap-4">
 		<button
 			class="btn btn-sm btn-primary {finishedCopper !== 0 && 'btn-outline'}"
@@ -25,6 +25,3 @@
 		{/each}
 	</div>
 </FormItem>
-<div class="ml-44 text-sm text-secondary">
-	{l.disclaimer}
-</div>

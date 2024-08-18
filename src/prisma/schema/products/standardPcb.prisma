@@ -3,6 +3,9 @@ model StandardPcb {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
+   name     String
+   filesUrl String?
+
    buildTime    String
    initialPrice Float
    finalPrice   Float?

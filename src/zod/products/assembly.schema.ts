@@ -5,8 +5,10 @@ export const asBoardType = z.enum(['SINGLE_PIECES', 'PANELIZED_PCBS']);
 export const asSide = z.enum(['TOP_SIDE', 'BOTTOM_SIDE', 'BOTH_SIDES']);
 
 export const assemblySchema = z.object({
-	id: z.string().nullable(),
-	buildTime: z.string(),
+	id: z.string().optional(),
+	name: z.string().min(1),
+	filesUrl: z.string().min(1).optional(),
+	buildTime: z.string().min(1),
 	initialPrice: z.number(),
 	finalPrice: z.number().optional(),
 	flexibleOption: asFlexibleOption,

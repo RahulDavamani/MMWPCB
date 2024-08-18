@@ -3,8 +3,9 @@ import { createCallerFactory, createContext, router } from '../server';
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 import { test } from './test.router';
 import { shipping } from './shipping/shipping.router';
+import { order } from './order/order.router';
 
-export const appRouter = router({ test, shipping });
+export const appRouter = router({ test, shipping, order });
 export type AppRouter = typeof appRouter;
 
 export const createCaller = async (event: RequestEvent) => createCallerFactory(appRouter)(await createContext(event));

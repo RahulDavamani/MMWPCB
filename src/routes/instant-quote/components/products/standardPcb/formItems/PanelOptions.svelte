@@ -8,80 +8,80 @@
 	$: l = $lg.instantQuote.standardPcb;
 	$: ({ xoutAllowance, breakAwayRail, routeProcess, panelRequirements } = $quote.standardPcb);
 
+	$: xoutAllowanceValues = [
+		{ name: l.xoutAllowance.options.accept, value: true },
+		{ name: l.xoutAllowance.options.decline, value: false }
+	] as { name: string; value: StandardPcb['xoutAllowance'] }[];
+
 	$: routeProcessValues = [
 		{ name: l.routeProcess.options.velenovaPrefer, value: 'VELENOVA_PREFER' },
 		{ name: l.routeProcess.options.vScoring, value: 'V_SCORING' },
 		{ name: l.routeProcess.options.tabRoute, value: 'TAB_ROUTE' },
 		{ name: l.routeProcess.options.vScoringTabRoute, value: 'V_SCORING_AND_TAB_ROUTE' }
-	] as {
-		name: string;
-		value: StandardPcb['routeProcess'];
-	}[];
+	] as { name: string; value: StandardPcb['routeProcess'] }[];
+
+	$: breakAwayRailValues = [
+		{ name: $lg.common.yes, value: true },
+		{ name: $lg.common.no, value: false }
+	] as { name: string; value: StandardPcb['breakAwayRail'] }[];
 </script>
 
 {#if xoutAllowance !== undefined}
-	<FormItem title={l.xoutAllowance.title} moreInfo={{ description: l.xoutAllowance.description, url: '', imgSrc: '' }}>
+	{@const { title, description } = l.xoutAllowance}
+	<FormItem {title} moreInfo={{ description, url: '', imgSrc: '' }}>
 		<div class="flex text-sm">
-			<FormControl inputType="In" label={l.xoutAllowance.accept}>
-				<input
-					type="radio"
-					name="xoutAllowance"
-					class="radio radio-primary radio-xs"
-					value={true}
-					bind:group={$quote.standardPcb.xoutAllowance}
-				/>
-			</FormControl>
-			<FormControl inputType="In" label={l.xoutAllowance.decline}>
-				<input
-					type="radio"
-					name="xoutAllowance"
-					class="radio radio-primary radio-xs"
-					value={false}
-					bind:group={$quote.standardPcb.xoutAllowance}
-				/>
-			</FormControl>
+			{#each xoutAllowanceValues as { name, value }}
+				<FormControl inputType="In" label={name}>
+					<input
+						type="radio"
+						name="xoutAllowance"
+						class="radio radio-primary radio-xs"
+						{value}
+						bind:group={$quote.standardPcb.xoutAllowance}
+					/>
+				</FormControl>
+			{/each}
 		</div>
 	</FormItem>
 {/if}
 
 {#if routeProcess && breakAwayRail !== undefined}
 	<div class="grid grid-cols-2">
-		<FormItem title={l.routeProcess.title} moreInfo={{ description: l.routeProcess.description, imgSrc: '' }}>
-			<select class="select select-bordered select-sm" bind:value={$quote.standardPcb.routeProcess}>
-				{#each routeProcessValues as { name, value }}
-					<option {value}>{name}</option>
-				{/each}
-			</select>
-		</FormItem>
+		{#if routeProcess}
+			{@const { title, description } = l.routeProcess}
+			<FormItem {title} moreInfo={{ description, imgSrc: '' }}>
+				<select class="select select-bordered select-sm" bind:value={$quote.standardPcb.routeProcess}>
+					{#each routeProcessValues as { name, value }}
+						<option {value}>{name}</option>
+					{/each}
+				</select>
+			</FormItem>
+		{/if}
 
-		<FormItem title={l.breakAwayRail.title} moreInfo={{ description: l.breakAwayRail.description, imgSrc: '' }}>
-			<div class="flex text-sm">
-				<FormControl inputType="In" label={$lg.common.yes}>
-					<input
-						type="radio"
-						name="breakAwayRail"
-						class="radio radio-primary radio-xs"
-						value={true}
-						bind:group={$quote.standardPcb.breakAwayRail}
-					/>
-				</FormControl>
-				<FormControl inputType="In" label={$lg.common.no}>
-					<input
-						type="radio"
-						name="breakAwayRail"
-						class="radio radio-primary radio-xs"
-						value={false}
-						bind:group={$quote.standardPcb.breakAwayRail}
-					/>
-				</FormControl>
-			</div>
-		</FormItem>
+		{#if breakAwayRail}
+			{@const { title, description } = l.breakAwayRail}
+			<FormItem {title} moreInfo={{ description, imgSrc: '' }}>
+				<div class="flex text-sm">
+					{#each breakAwayRailValues as { name, value }}
+						<FormControl inputType="In" label={name}>
+							<input
+								type="radio"
+								name="breakAwayRail"
+								class="radio radio-primary radio-xs"
+								{value}
+								bind:group={$quote.standardPcb.breakAwayRail}
+							/>
+						</FormControl>
+					{/each}
+				</div>
+			</FormItem>
+		{/if}
 	</div>
 {/if}
 
 {#if panelRequirements !== undefined}
-	<FormItem title={l.panelRequirements.title}>
+	{@const { title, disclaimer } = l.panelRequirements}
+	<FormItem {title} {disclaimer}>
 		<textarea class="textarea textarea-bordered textarea-sm w-full" bind:value={$quote.standardPcb.panelRequirements} />
 	</FormItem>
-	<div class="ml-44 mb-6 text-secondary text-sm">{l.panelRequirements.disclaimer}</div>
 {/if}

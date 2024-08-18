@@ -4,17 +4,17 @@
 	import type { StandardPcb } from '../../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.structureOfMCPCB;
+	$: ({ title, description, options } = $lg.instantQuote.standardPcb.structureOfMCPCB);
 	$: ({ structureOfMCPCB } = $quote.standardPcb);
 
 	$: values = [
-		{ name: l.metalCoreMiddle, value: 'METAL_CORE_MIDDLE' },
-		{ name: l.metalBaseBottom, value: 'METAL_BASE_BOTTOM' }
+		{ name: options.metalCoreMiddle, value: 'METAL_CORE_MIDDLE' },
+		{ name: options.metalBaseBottom, value: 'METAL_BASE_BOTTOM' }
 	] as { name: string; value: StandardPcb['structureOfMCPCB'] }[];
 </script>
 
 {#if structureOfMCPCB}
-	<FormItem title={l.title} moreInfo={{ description: l.description }}>
+	<FormItem {title} moreInfo={{ description }}>
 		<div class="flex flex-wrap gap-4">
 			{#each values as { name, value }}
 				<button

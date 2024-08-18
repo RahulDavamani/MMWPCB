@@ -1,7 +1,13 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import FormControl from '../../components/FormControl.svelte';
-	import { quote } from '../../../stores/quote.store';
+	import { quote, quoteError } from '../../../stores/quote.store';
+	import { page } from '$app/stores';
+	import type { PageData } from '../$types';
+	import { lg } from '../../../stores/i18n.store';
+
+	$: ({ user } = $page.data as PageData);
+	$: l = $lg.instantQuote.pricing;
 
 	$: buildTimes = [
 		{ name: '24 Hours', value: '24 Hours', price: 5 },
@@ -12,16 +18,18 @@
 		{ name: 'PCB Cost', price: 5 },
 		{ name: 'Material', price: 0 }
 	];
+
+	$: disabled = Object.values($quoteError[$quote.product]).filter(Boolean).length > 0;
 </script>
 
 <div class="min-w-96 h-fit rounded shadow border p-4">
 	<div class=" flex gap-2 items-center">
 		<Icon icon="mdi:tag-multiple-outline" width={20} />
-		<div class="font-bold">Pricing and Build Time</div>
+		<div class="font-bold">{l.title}</div>
 	</div>
 	<div class="divider mt-0" />
 
-	<div class="font-semibold">Build Time:</div>
+	<div class="font-semibold">{l.buildTime}:</div>
 	<div class="text-sm mt-2 px-2">
 		{#each buildTimes as { name, value, price }}
 			<div class="flex justify-between">
@@ -39,7 +47,7 @@
 		{/each}
 	</div>
 
-	<div class="font-semibold mt-4">Charge Details:</div>
+	<div class="font-semibold mt-4">{l.chargeDetails}:</div>
 	<div class="text-sm space-y-2 mt-4 px-2">
 		{#each chargeDetails as { name, price }}
 			<div class="flex justify-between">
@@ -51,18 +59,28 @@
 
 	<div class="divider mb-0" />
 	<div class="flex justify-between font-bold mt-2 pr-2">
-		<div>Total</div>
+		<div>{l.total}</div>
 		<div class="font-mono">$5.00</div>
 	</div>
 
-	<div class="flex justify-between mt-6">
-		<div class="btn btn-secondary btn-outline text-base gap-4">
-			<Icon icon="mdi:bookmark-add-outline" width={22} />
-			Add to Order
+	{#if user}
+		<div class="flex justify-between mt-6">
+			<button class="btn btn-secondary btn-outline text-base gap-4 {disabled && 'btn-disabled'}">
+				<Icon icon="mdi:bookmark-add-outline" width={22} />
+				{l.addToOrder}
+			</button>
+			<button
+				class="btn btn-primary text-base gap-4 {disabled && 'btn-disabled'}"
+				on:click={() => quote.upsertProduct()}
+			>
+				<Icon icon="mdi:cart" width={22} />
+				{l.saveToCart}
+			</button>
 		</div>
-		<div class="btn btn-primary text-base gap-4">
-			<Icon icon="mdi:cart" width={22} />
-			Save to Cart
-		</div>
-	</div>
+	{:else}
+		<a href="/login" class="btn btn-accent btn-outline text-base gap-4 w-full mt-6">
+			<Icon icon="mdi:login" width={22} />
+			{$lg.common.login}
+		</a>
+	{/if}
 </div>

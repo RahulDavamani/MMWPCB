@@ -47,8 +47,7 @@ export const googleCallback = async ({ url, cookies }: RequestEvent) => {
 			select: {
 				id: true,
 				profilePic: true,
-				accounts: { where: { provider: 'google' }, select: { id: true } },
-				orders: { where: { status: 'CART' }, select: { id: true } }
+				accounts: { where: { provider: 'google' }, select: { id: true } }
 			}
 		});
 		if (!existingUser)
@@ -60,13 +59,13 @@ export const googleCallback = async ({ url, cookies }: RequestEvent) => {
 					firstName: user.given_name,
 					lastName: user.family_name,
 					phone: '',
-					accounts: { create: { provider: 'google', providerId: user.sub } }
+					accounts: { create: { provider: 'google', providerId: user.sub } },
+					orders: { create: { status: 'CART' } }
 				},
 				select: {
 					id: true,
 					profilePic: true,
-					accounts: { select: { id: true } },
-					orders: { where: { status: 'CART' }, select: { id: true } }
+					accounts: { select: { id: true } }
 				}
 			});
 		else if (existingUser.accounts.length === 0)
@@ -82,7 +81,7 @@ export const googleCallback = async ({ url, cookies }: RequestEvent) => {
 		const profilePic = existingUser.profilePic ?? user.picture ?? null;
 
 		// Create Session
-		const session = await lucia.createSession(existingUser.id, { profilePic, cartCount: existingUser.orders.length });
+		const session = await lucia.createSession(existingUser.id, { profilePic });
 		const sessionCookie = lucia.createSessionCookie(session.id);
 		cookies.set(sessionCookie.name, sessionCookie.value, { path: '.', ...sessionCookie.attributes });
 

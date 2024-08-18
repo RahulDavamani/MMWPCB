@@ -28,6 +28,7 @@
 	import RemoveProductNo from './formItems/RemoveProductNo.svelte';
 	import CustomizedServices from './formItems/CustomizedServices.svelte';
 	import SpecialRequest from './formItems/SpecialRequest.svelte';
+	import Name from './formItems/Name.svelte';
 </script>
 
 <div class="flex-grow rounded shadow border p-4">
@@ -43,6 +44,7 @@
 	</div>
 	<div class="divider mt-0" />
 
+	<Name />
 	<BoardType />
 	<PanelOptions />
 	<DifferentDesign />

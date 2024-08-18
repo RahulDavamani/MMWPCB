@@ -5,26 +5,26 @@
 	import FormControl from '../../../../../components/FormControl.svelte';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.surfaceFinish;
+	$: ({ title, description, options, ...l } = $lg.instantQuote.standardPcb.surfaceFinish);
 	$: ({ material, surfaceFinish } = $quote.standardPcb);
 
 	$: values = [
-		{ name: l.options.haslWithLead, value: 'HASL_WITH_LEAD' },
-		{ name: l.options.haslLeadFree, value: 'HASL_LEAD_FREE' },
-		{ name: l.options.immersionGold, value: 'IMMERSION_GOLD' },
-		{ name: l.options.osp, value: 'OSP' },
-		{ name: l.options.hardGold, value: 'HARD_GOLD' },
-		{ name: l.options.immersionSilver, value: 'IMMERSION_SILVER' },
-		{ name: l.options.immersionTin, value: 'IMMERSION_TIN' },
-		{ name: l.options.haslLeadFreeImmersionGold, value: 'HASL_LEAD_FREE_SELECTIVE_IMMERSION_GOLD' },
-		{ name: l.options.haslLeadFreeHardGold, value: 'HASL_LEAD_FREE_SELECTIVE_HARD_GOLD' },
-		{ name: l.options.immersionGoldHardGold, value: 'IMMERSION_GOLD_SELECTIVE_HARD_GOLD' },
-		{ name: l.options.enepig, value: 'ENEPIG' },
-		{ name: l.options.plainCopper, value: 'PLAIN_COPPER' }
+		{ name: options.haslWithLead, value: 'HASL_WITH_LEAD' },
+		{ name: options.haslLeadFree, value: 'HASL_LEAD_FREE' },
+		{ name: options.immersionGold, value: 'IMMERSION_GOLD' },
+		{ name: options.osp, value: 'OSP' },
+		{ name: options.hardGold, value: 'HARD_GOLD' },
+		{ name: options.immersionSilver, value: 'IMMERSION_SILVER' },
+		{ name: options.immersionTin, value: 'IMMERSION_TIN' },
+		{ name: options.haslLeadFreeImmersionGold, value: 'HASL_LEAD_FREE_SELECTIVE_IMMERSION_GOLD' },
+		{ name: options.haslLeadFreeHardGold, value: 'HASL_LEAD_FREE_SELECTIVE_HARD_GOLD' },
+		{ name: options.immersionGoldHardGold, value: 'IMMERSION_GOLD_SELECTIVE_HARD_GOLD' },
+		{ name: options.enepig, value: 'ENEPIG' },
+		{ name: options.plainCopper, value: 'PLAIN_COPPER' }
 	] as { name: string; value: StandardPcb['surfaceFinish'] }[];
 </script>
 
-<FormItem title={l.title} moreInfo={{ description: l.description }}>
+<FormItem {title} moreInfo={{ description }}>
 	<div class="flex flex-wrap gap-4">
 		{#each values as { name, value }}
 			{@const disabled = (material === 'HDI' || material === 'COPPER_BASE') && value.includes('HASL')}

@@ -4,13 +4,13 @@
 	import type { StandardPcb } from '../../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.boardType;
+	$: ({ title, description, options } = $lg.instantQuote.standardPcb.boardType);
 	$: ({ boardType } = $quote.standardPcb);
 
 	$: values = [
-		{ name: l.options.singlePieces, value: 'SINGLE_PIECES' },
-		{ name: l.options.panelByCustomer, value: 'PANEL_BY_CUSTOMER' },
-		{ name: l.options.panelByVelenova, value: 'PANEL_BY_VELENOVA' }
+		{ name: options.singlePieces, value: 'SINGLE_PIECES' },
+		{ name: options.panelByCustomer, value: 'PANEL_BY_CUSTOMER' },
+		{ name: options.panelByVelenova, value: 'PANEL_BY_VELENOVA' }
 	] as { name: string; value: StandardPcb['boardType'] }[];
 
 	const selectBoardType = (value: StandardPcb['boardType']) => {
@@ -51,7 +51,7 @@
 	};
 </script>
 
-<FormItem title={l.title} moreInfo={{ description: l.description, url: '', imgSrc: '' }}>
+<FormItem {title} moreInfo={{ description, url: '', imgSrc: '' }}>
 	<div class="flex flex-wrap gap-4">
 		{#each values as { name, value }}
 			<button

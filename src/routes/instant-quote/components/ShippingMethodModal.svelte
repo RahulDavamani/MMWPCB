@@ -7,6 +7,9 @@
 	import Loader from '../../components/UI/Loader.svelte';
 	import Modal from '../../components/UI/Modal.svelte';
 	import IconBtn from '../../components/IconBtn.svelte';
+	import { lg } from '../../../stores/i18n.store';
+
+	$: l = $lg.instantQuote.shipping;
 
 	let modalId = 'shippingMethodModal';
 
@@ -49,15 +52,15 @@
 				await fetchShippingMethods(selectedCountry);
 			}}
 		/>
-		<div class="text-xl font-bold">Select Shipping Method</div>
+		<div class="text-xl font-bold">{l.selectShipping}</div>
 	</div>
 	{#if !shippingCountries}
 		<Loader fixed={false} overlay={false} size={80} classes="pt-10" />
 	{:else}
 		<div class="flex items-center gap-4">
-			<div class="font-semibold">Shipping To:</div>
+			<div class="font-semibold">{l.shippingTo}:</div>
 			<select class="select select-bordered select-sm" bind:value={selectedCountry}>
-				<option value={undefined} disabled>Select a country</option>
+				<option value={undefined} disabled>{l.selectCountry}</option>
 				{#each shippingCountries as { id, name }}
 					<option value={id}>{name}</option>
 				{/each}
@@ -73,10 +76,10 @@
 						<thead>
 							<tr>
 								<th></th>
-								<th>Shipping Method</th>
-								<th>Price</th>
-								<th>Delivery time</th>
-								<th>Restriction</th>
+								<th>{l.shippingMethod}</th>
+								<th>{l.price}</th>
+								<th>{l.deliveryTime}</th>
+								<th>{l.restriction}</th>
 							</tr>
 						</thead>
 						<tbody>

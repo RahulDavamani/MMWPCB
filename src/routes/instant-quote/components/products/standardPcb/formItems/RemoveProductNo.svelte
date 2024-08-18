@@ -4,17 +4,17 @@
 	import type { StandardPcb } from '../../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.removeProductNo;
+	$: ({ title, description, options } = $lg.instantQuote.standardPcb.removeProductNo);
 	$: ({ removeProductNo } = $quote.standardPcb);
 
 	$: values = [
-		{ name: l.options.no, value: 'NO' },
-		{ name: l.options.yes, value: 'YES' },
-		{ name: l.options.specifyLocation, value: 'SPECIFY_LOCATION' }
+		{ name: options.no, value: 'NO' },
+		{ name: options.yes, value: 'YES' },
+		{ name: options.specifyLocation, value: 'SPECIFY_LOCATION' }
 	] as { name: string; value: StandardPcb['removeProductNo'] }[];
 </script>
 
-<FormItem title={l.title} moreInfo={{ description: l.description }}>
+<FormItem {title} moreInfo={{ description }}>
 	<div class="flex flex-wrap gap-4">
 		{#each values as { name, value }}
 			<button

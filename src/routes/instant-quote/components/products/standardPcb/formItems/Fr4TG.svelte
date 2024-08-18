@@ -4,7 +4,7 @@
 	import type { StandardPcb } from '../../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.fr4TG;
+	$: ({ title, description, disclaimer } = $lg.instantQuote.standardPcb.fr4TG);
 	$: ({ layers, fr4TG } = $quote.standardPcb);
 
 	$: values = [
@@ -17,7 +17,7 @@
 </script>
 
 {#if fr4TG}
-	<FormItem title={l.title} moreInfo={{ description: l.description, url: '' }}>
+	<FormItem {title} moreInfo={{ description, url: '' }} {disclaimer}>
 		<div class="flex flex-wrap gap-4">
 			{#each values as { name, value }}
 				{@const disabled = layers > 2 && (value === 'TG130_140' || value === 'TG150_160' || value === 'TG170_180')}
@@ -28,6 +28,4 @@
 			{/each}
 		</div>
 	</FormItem>
-
-	<div class="ml-44 mb-6 text-secondary text-sm">{l.disclaimer}</div>
 {/if}

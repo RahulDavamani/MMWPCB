@@ -52,9 +52,12 @@ export const ui = (() => {
 		<T>(loader: Loader, fn: () => Promise<T>, start = true, end = true) =>
 		async () => {
 			if (start) ui.setLoader(loader);
-			const result = await fn();
-			if (end) ui.setLoader();
-			return result;
+			try {
+				const result = await fn();
+				return result;
+			} finally {
+				if (end) ui.setLoader();
+			}
 		};
 
 	return {

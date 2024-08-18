@@ -5,7 +5,7 @@
 	import FormControl from '../../../../../components/FormControl.svelte';
 	import { afterUpdate } from 'svelte';
 
-	$: l = $lg.instantQuote.standardPcb.quantity;
+	$: ({ title, description, placeholder, ...l } = $lg.instantQuote.standardPcb.quantity);
 
 	$: ({ length, width, quantity } = $quote.standardPcb);
 	$: size = (length * width) / 1000000;
@@ -18,7 +18,7 @@
 	];
 </script>
 
-<FormItem title={l.title} moreInfo={{ description: l.description, url: '' }}>
+<FormItem {title} moreInfo={{ description, url: '' }}>
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<div class="dropdown">
 		<div tabindex={0} class="my-1">
@@ -50,7 +50,7 @@
 			<FormControl bottomLabel="(Size ≥5m² to manually enter number)" bottomLabelClasses="text-secondary opacity-75">
 				<input
 					type="number"
-					placeholder={l.quantity}
+					{placeholder}
 					class="input input-bordered input-sm w-full"
 					value={values.includes(quantity) ? '' : quantity}
 					on:change={(e) => ($quote.standardPcb.quantity = Number(e.currentTarget.value))}

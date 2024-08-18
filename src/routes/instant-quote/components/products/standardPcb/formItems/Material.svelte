@@ -4,30 +4,30 @@
 	import type { StandardPcb } from '../../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.material;
+	$: ({ title, description, disclaimer, options } = $lg.instantQuote.standardPcb.material);
 	$: ({ layers, material, surfaceFinish } = $quote.standardPcb);
 
 	$: values = [
 		{
-			name: l.options.fr4,
+			name: options.fr4,
 			value: 'FR_4'
 		},
 		{
-			name: l.options.aluminum,
+			name: options.aluminum,
 			description: `≤4 ${$lg.instantQuote.standardPcb.layers.layers}`,
 			value: 'ALUMINUM'
 		},
 		{
-			name: l.options.rogers,
+			name: options.rogers,
 			value: 'ROGERS'
 		},
 		{
-			name: l.options.hdi,
+			name: options.hdi,
 			description: `≥4 ${$lg.instantQuote.standardPcb.layers.layers}`,
 			value: 'HDI'
 		},
 		{
-			name: l.options.copperBase,
+			name: options.copperBase,
 			description: `≤4 ${$lg.instantQuote.standardPcb.layers.layers}`,
 			value: 'COPPER_BASE'
 		}
@@ -98,7 +98,7 @@
 	};
 </script>
 
-<FormItem title={l.title} moreInfo={{ description: l.description }}>
+<FormItem {title} moreInfo={{ description }} {disclaimer}>
 	<div class="flex flex-wrap gap-4">
 		{#each values as { name, description, value }}
 			{@const disabled =
@@ -117,5 +117,3 @@
 		{/each}
 	</div>
 </FormItem>
-
-<div class="ml-44 mb-6 text-secondary text-sm">{l.disclaimer}</div>

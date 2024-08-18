@@ -4,7 +4,7 @@
 	import type { StandardPcb } from '../../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.thermalConductivity;
+	$: ({ title, description } = $lg.instantQuote.standardPcb.thermalConductivity);
 	$: ({ material, thermalConductivity } = $quote.standardPcb);
 
 	$: values = [
@@ -16,7 +16,7 @@
 </script>
 
 {#if thermalConductivity}
-	<FormItem title={l.title} moreInfo={{ description: l.description }}>
+	<FormItem {title} moreInfo={{ description }}>
 		<div class="flex flex-wrap gap-4">
 			{#each values as { name, value }}
 				{@const disabled = material === 'COPPER_BASE' && value < 2}

@@ -4,7 +4,7 @@
 	import type { StandardPcb } from '../../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.edgeConnector;
+	$: ({ title, description } = $lg.instantQuote.standardPcb.edgeConnector);
 	$: ({ edgeConnector } = $quote.standardPcb);
 
 	$: values = [
@@ -13,7 +13,7 @@
 	] as { name: string; value: StandardPcb['edgeConnector'] }[];
 </script>
 
-<FormItem title={l.title} moreInfo={{}}>
+<FormItem {title} moreInfo={{ description }}>
 	<div class="flex flex-wrap gap-4">
 		{#each values as { name, value }}
 			<button

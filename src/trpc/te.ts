@@ -26,20 +26,18 @@ export interface TRPCHandlerError<T> {
 
 export interface TRPCClientErrorHandlerOptions {
 	throwError?: boolean;
-	stopLoading?: boolean;
 	showToast?: boolean;
 }
 
 export const tce = <T>(
 	e: unknown,
 	callback?: (e: TRPCHandlerError<T>) => void,
-	{ stopLoading = true, showToast = true }: TRPCClientErrorHandlerOptions = {}
+	{ showToast = true }: TRPCClientErrorHandlerOptions = {}
 ) => {
 	const { code, message, zodErrors } = te<T>(e);
 
 	if (callback) callback({ code, message, zodErrors });
 
-	if (stopLoading) ui.update((state) => ({ ...state, loader: undefined }));
 	if (showToast) ui.setToast({ alertClasses: 'alert-error', title: `${code ?? 'Error'}: ${message}` });
 
 	throw `${code}: ${message}`;

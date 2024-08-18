@@ -4,7 +4,7 @@
 	import type { StandardPcb } from '../../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.rogers;
+	$: ({ title, description } = $lg.instantQuote.standardPcb.rogers);
 	$: ({ rogers } = $quote.standardPcb);
 
 	$: values = [
@@ -14,7 +14,7 @@
 </script>
 
 {#if rogers}
-	<FormItem title={l.title} moreInfo={{ description: l.description }}>
+	<FormItem {title} moreInfo={{ description }}>
 		<div class="flex flex-wrap gap-4">
 			{#each values as { name, value }}
 				<button

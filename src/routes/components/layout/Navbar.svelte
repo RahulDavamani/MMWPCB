@@ -7,7 +7,14 @@
 	import type { PageData } from '../../$types';
 
 	$: l = $lg.navbar;
-	$: ({ session } = $page.data as PageData);
+	$: ({ cart } = $page.data as PageData);
+	$: cartCount = cart
+		? cart.standardPcbs.length +
+			cart.advancedPcbs.length +
+			cart.flexiblePcbs.length +
+			cart.assemblies.length +
+			cart.stencils.length
+		: 0;
 
 	$: route = $page.url.pathname;
 	$: navItems = [
@@ -42,7 +49,7 @@
 			<div class="indicator">
 				<Icon icon="mdi:cart-outline" width={28} class="text-white" />
 				<span class="indicator-item badge badge-sm badge-secondary font-bold text-white">
-					{session?.cartCount ?? 0}
+					{cartCount}
 				</span>
 			</div>
 
