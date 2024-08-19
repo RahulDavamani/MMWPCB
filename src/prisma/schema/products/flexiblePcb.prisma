@@ -4,7 +4,7 @@ model FlexiblePcb {
    updatedAt DateTime @updatedAt
 
    name     String
-   filesUrl String?
+   fileName String?
 
    buildTime    String
    initialPrice Float

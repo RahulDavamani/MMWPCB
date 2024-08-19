@@ -15,6 +15,4 @@
 	<Toast {...toast} />
 {/if}
 
-{#if alertModal}
-	<AlertModal {...alertModal} />
-{/if}
+<AlertModal {...alertModal} />

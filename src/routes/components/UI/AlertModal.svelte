@@ -1,61 +1,87 @@
 <script lang="ts">
-	import { ui, type AlertModalAction } from '../../../stores/ui.store';
+	import { lg } from '../../../stores/i18n.store';
+	import type { AlertModalAction } from '../../../stores/ui.store';
 	import IconBtn from '../IconBtn.svelte';
 
-	export let title: string;
-	export let body = '';
-	export let details: string | undefined = undefined;
-	export let actions: AlertModalAction[] | undefined = undefined;
-	export let closeBtn = true;
+	export let modalBackdrop = true;
 
-	const closeModal = () => ($ui.alertModal = undefined);
+	export let boxClasses: string | undefined = undefined;
+
+	export let title: string | undefined = undefined;
+	export let titleClasses: string | undefined = undefined;
+
+	export let showCloseBtn = true;
+	export let iconClasses: string | undefined = undefined;
+
+	export let showDivider = true;
+	export let dividerClasses: string | undefined = undefined;
+
+	export let body: string | undefined = undefined;
+	export let bodyClasses: string | undefined = undefined;
+
+	export let details: string | undefined = undefined;
+	export let detailsClasses: string | undefined = undefined;
+
+	export let actions: AlertModalAction[] | undefined = undefined;
 </script>
 
-<div class="modal modal-open z-40">
-	<div class="modal-box">
-		<div class="flex items-center justify-between">
-			<!-- Title -->
+<dialog id="alertModal" class="modal">
+	{#if modalBackdrop}
+		<form method="dialog" class="modal-backdrop">
+			<button />
+		</form>
+	{/if}
+	<div class="modal-box {boxClasses}">
+		<div class="flex justify-between items-center">
 			<slot name="title">
-				<div class="font-bold text-lg">{title}</div>
+				{#if title}
+					<div class="text-xl font-bold {titleClasses}">{title}</div>
+				{/if}
 			</slot>
 
-			<!-- Close Button -->
-			{#if closeBtn}
-				<IconBtn icon="mdi:close" iconClasses="text-error" on:click={closeModal} />
-			{/if}
+			<slot name="closeBtn">
+				{#if showCloseBtn}
+					<form method="dialog">
+						<IconBtn icon="mdi:close" iconClasses="text-error {iconClasses}" />
+					</form>
+				{/if}
+			</slot>
 		</div>
-		<div class="divider mt-0 mb-2" />
 
-		<!-- Body -->
-		{#if body}
-			<slot name="body">
-				<p class="break-words max-h-96 overflow-auto">{body}</p>
-			</slot>
-		{/if}
+		<slot name="divider">
+			{#if showDivider}
+				<div class="divider mt-0 {dividerClasses}" />
+			{/if}
+		</slot>
 
-		{#if details}
-			<div class="collapse">
-				<input type="checkbox" class="peer" />
-				<div class="collapse-title px-0 text-warning underline">More Details:</div>
-				<div
-					class="collapse-content peer-checked:pt-3 max-h-40 overflow-auto text-sm break-all bg-warning bg-opacity-30 rounded"
-				>
-					{details}
+		<slot name="body">
+			{#if body}
+				<p class="break-words max-h-96 overflow-auto {bodyClasses}">{body}</p>
+			{/if}
+		</slot>
+
+		<slot name="details">
+			{#if details}
+				<div class="collapse collapse-arrow">
+					<input type="checkbox" class="peer" />
+					<div class="collapse-title px-0 text-info underline">{$lg.common.moreDetails}:</div>
+					<div class="collapse-content max-h-40 overflow-auto text-sm break-all bg-opacity-30 {detailsClasses}">
+						{details}
+					</div>
 				</div>
-			</div>
-		{/if}
+			{/if}
+		</slot>
 
-		<!-- Actions -->
-		{#if actions}
-			<slot name="actions">
+		<slot name="actions">
+			{#if actions}
 				<div class="modal-action">
 					{#each actions as { name, classes, onClick }}
-						<button class="btn btn-sm w-24 {classes}" on:click={onClick ?? closeModal}>
+						<button class="btn btn-sm w-24 {classes}" on:click={onClick}>
 							{name}
 						</button>
 					{/each}
 				</div>
-			</slot>
-		{/if}
+			{/if}
+		</slot>
 	</div>
-</div>
+</dialog>

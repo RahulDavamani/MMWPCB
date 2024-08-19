@@ -3,7 +3,7 @@
 	import { ui } from '../../../stores/ui.store';
 	import IconBtn from '../IconBtn.svelte';
 
-	export let title: string;
+	export let title: string | undefined = undefined;
 	export let toastDuration = 5000;
 
 	export let toastClasses = '';

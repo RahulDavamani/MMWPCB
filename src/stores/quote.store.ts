@@ -12,9 +12,12 @@ import { tce } from '../trpc/te';
 import { page } from '$app/stores';
 import { lg } from './i18n.store';
 import { goto } from '$app/navigation';
+import { supabase } from '$lib/client/supabase';
+import { nanoid } from 'nanoid';
 
 export interface Quote {
 	product: 'standardPcb' | 'advancedPcb' | 'flexiblePcb' | 'assembly' | 'stencil';
+	file?: File;
 	standardPcb: StandardPcb;
 	advancedPcb: AdvancedPcb;
 	flexiblePcb: FlexiblePcb;
@@ -34,19 +37,42 @@ export const quote = (() => {
 			...cloneDeep(defaultProducts)
 		}));
 
-	const upsertProduct = (orderId?: string) => {
-		ui.loaderWrapper({ title: orderId ? 'Adding to Order' : 'Saving to Cart' }, async () => {
+	const upsertProduct = (orderId?: string) =>
+		ui.loaderWrapper({}, async () => {
+			const l = get(lg).instantQuote.upsertProduct;
 			const $page = get(page);
-			const { standardPcb } = get(quote);
-			await trpc()
-				.order.upsertProduct.query({ orderId: orderId ?? $page.data.cart.id, standardPcb })
-				.catch(tce);
+			const { product, file, ...products } = get(quote);
+			const selectedProduct = products[product];
 
-			ui.setToast({ title: 'Product added to cart', alertClasses: 'alert-success' });
+			selectedProduct.id = nanoid();
+			console.log(file?.name);
+			if (file) {
+				ui.setLoader({ title: l.uploadingFiles });
+				selectedProduct.fileName = `${selectedProduct.id}-${file.name}`;
+				const { error } = await supabase.storage.from('Gerber Files').upload(selectedProduct.fileName, file);
+				if (error) return ui.setAlertModal({ title: l.uploadFileError, body: error.message });
+			}
+
+			ui.setLoader({ title: orderId ? l.addingOrder : l.savingCart });
+			await trpc()
+				.order.upsertProduct.query({
+					orderId: orderId ?? $page.data.cart.id,
+					[product]: selectedProduct
+				})
+				.catch((e) =>
+					tce(e, {
+						callback: async () => {
+							if (selectedProduct.fileName)
+								await supabase.storage.from('Gerber Files').remove([selectedProduct.fileName]);
+						},
+						showModal: { title: orderId ? l.addOrderError : l.saveCartError, retryFn: () => upsertProduct(orderId) }
+					})
+				);
+
+			ui.setToast({ title: orderId ? l.addOrderSuccess : l.saveCartSuccess, alertClasses: 'alert-success' });
 			reset();
-			goto('/submit-order');
+			await goto('/submit-order');
 		})();
-	};
 
 	return { subscribe, set, update, reset, upsertProduct };
 })();
@@ -62,11 +88,12 @@ export const quoteError = derived(quote, ($quote) => {
 	switch ($quote.product) {
 		case 'standardPcb': {
 			const l = get(lg).instantQuote.standardPcb;
-			const { name, differentDesign, length, width } = $quote.standardPcb;
+			const { name, fileName, differentDesign, length, width } = $quote.standardPcb;
 			errors = {
 				...errors,
 				standardPcb: {
 					name: name.length < 1 ? l.name.error : undefined,
+					fileName: fileName === 'error' ? l.file.error : undefined,
 					differentDesign: differentDesign < 1 ? l.differentDesign.error : undefined,
 					length: length < 1 ? l.size.error : undefined,
 					width: width < 1 ? l.size.error : undefined

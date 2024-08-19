@@ -1,4 +1,5 @@
 export const showModal = (id: string) => (document.getElementById(id) as HTMLDialogElement).showModal();
+export const closeModal = (id: string) => (document.getElementById(id) as HTMLDialogElement).close();
 
 export const onShowModal = (id: string, callback: () => void) => {
 	const modal = document.getElementById(id) as HTMLDialogElement;

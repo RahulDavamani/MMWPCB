@@ -1,3 +1,4 @@
+import { closeModal, showModal } from '$lib/client/modal';
 import { writable } from 'svelte/store';
 
 export interface UI {
@@ -19,7 +20,7 @@ export interface Loader {
 }
 
 export interface Toast {
-	title: string;
+	title?: string;
 	toastDuration?: number;
 
 	toastClasses?: string;
@@ -28,9 +29,24 @@ export interface Toast {
 }
 
 export interface AlertModal {
-	title: string;
+	modalBackdrop?: boolean;
+	boxClasses?: string;
+
+	title?: string;
+	titleClasses?: string;
+
+	showCloseButton?: boolean;
+	iconClasses?: string;
+
+	showDivider?: boolean;
+	dividerClasses?: string;
+
 	body?: string;
+	bodyClasses?: string;
+
 	details?: string;
+	detailsClasses?: string;
+
 	actions?: AlertModalAction[];
 }
 
@@ -46,7 +62,14 @@ export const ui = (() => {
 	// Methods
 	const setLoader = (loader?: Loader) => update((state) => ({ ...state, loader }));
 	const setToast = (toast?: Toast) => update((state) => ({ ...state, toast }));
-	const setAlertModal = (alertModal?: AlertModal) => update((state) => ({ ...state, alertModal }));
+	const setAlertModal = (alertModal?: AlertModal) => {
+		update((state) => ({ ...state, alertModal }));
+		showModal('alertModal');
+	};
+	const closeAlertModal = () => {
+		update((state) => ({ ...state, alertModal: undefined }));
+		closeModal('alertModal');
+	};
 
 	const loaderWrapper =
 		<T>(loader: Loader, fn: () => Promise<T>, start = true, end = true) =>
@@ -67,6 +90,7 @@ export const ui = (() => {
 		setLoader,
 		setToast,
 		setAlertModal,
+		closeAlertModal,
 		loaderWrapper
 	};
 })();

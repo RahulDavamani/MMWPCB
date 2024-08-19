@@ -15,10 +15,8 @@ const schema = z.object({
 	stencil: stencilSchema.optional()
 });
 
-export const upsertProduct = userProcedure
-	.input(schema)
-	.query(async ({ input: { orderId, standardPcb, advancedPcb, flexiblePcb, assembly, stencil }, ctx: { user } }) => {
-		console.log({ id: orderId, userId: user?.id });
+export const upsertProduct = userProcedure.input(schema).query(
+	async ({ input: { orderId, standardPcb, advancedPcb, flexiblePcb, assembly, stencil }, ctx: { user } }) =>
 		await prisma.order.update({
 			where: { id: orderId, userId: user?.id },
 			data: {
@@ -67,6 +65,7 @@ export const upsertProduct = userProcedure
 							}
 						}
 					: undefined
-			}
-		});
-	});
+			},
+			select: { id: true }
+		})
+);

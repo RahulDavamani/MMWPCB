@@ -3,6 +3,9 @@ import { TRPCError } from '@trpc/server';
 import { getErrorCode } from '../lib/data/errorCode';
 import { error, type NumericRange } from '@sveltejs/kit';
 import { ui } from '../stores/ui.store';
+import { closeModal } from '$lib/client/modal';
+import { get } from 'svelte/store';
+import { lg } from '../stores/i18n.store';
 
 export interface TRPCZodError {
 	code: string;
@@ -24,23 +27,42 @@ export interface TRPCHandlerError<T> {
 	zodErrors?: TRPCZodErrors<T>;
 }
 
-export interface TRPCClientErrorHandlerOptions {
-	throwError?: boolean;
+export interface TRPCClientErrorHandlerOptions<T> {
+	callback?: (e: TRPCHandlerError<T>) => void;
 	showToast?: boolean;
+	showModal?: {
+		title?: string;
+		retryFn?: () => void;
+	};
 }
 
-export const tce = <T>(
-	e: unknown,
-	callback?: (e: TRPCHandlerError<T>) => void,
-	{ showToast = true }: TRPCClientErrorHandlerOptions = {}
-) => {
+export const tce = <T>(e: unknown, options: TRPCClientErrorHandlerOptions<T> = {}) => {
+	const l = get(lg).common;
 	const { code, message, zodErrors } = te<T>(e);
+	const { callback, showToast, showModal } = options;
+	const codeMessage = `${code ?? l.error}: ${message}`;
 
 	if (callback) callback({ code, message, zodErrors });
+	if (showToast) ui.setToast({ alertClasses: 'alert-error', title: codeMessage });
+	if (showModal)
+		ui.setAlertModal({
+			title: showModal.title ?? l.error,
+			body: codeMessage,
+			actions: showModal.retryFn
+				? [
+						{
+							name: l.retry,
+							classes: 'btn-warning',
+							onClick: () => {
+								closeModal('alertModal');
+								showModal.retryFn?.();
+							}
+						}
+					]
+				: undefined
+		});
 
-	if (showToast) ui.setToast({ alertClasses: 'alert-error', title: `${code ?? 'Error'}: ${message}` });
-
-	throw `${code}: ${message}`;
+	throw codeMessage;
 };
 
 export const tse = (e: unknown) => {

@@ -16,7 +16,10 @@ export const en = {
 			matteBlack: 'Matte Black',
 			matteGreen: 'Matte Green'
 		},
-		typeHere: 'Type here...'
+		typeHere: 'Type here...',
+		error: 'Error',
+		retry: 'Retry',
+		moreDetails: 'More Details'
 	},
 
 	navbar: {
@@ -77,6 +80,17 @@ export const en = {
 	},
 
 	instantQuote: {
+		upsertProduct: {
+			uploadingFiles: 'Uploading Files',
+			savingCart: 'Saving to Cart',
+			addingOrder: 'Adding to Order',
+			uploadFileError: 'Failed to upload file',
+			saveCartError: 'Failed to save to cart',
+			addOrderError: 'Failed to add to order',
+			saveCartSuccess: 'Product saved to cart',
+			addOrderSuccess: 'Product added to order'
+		},
+
 		pricing: {
 			title: 'Pricing and Build Time',
 			buildTime: 'Build Time',
@@ -106,6 +120,11 @@ export const en = {
 				title: 'Product Name',
 				description: 'Please enter a name for your product',
 				error: 'Product name is required'
+			},
+			file: {
+				title: 'Gerber File',
+				description: 'Please upload the Gerber file for your PCB (only accepts .zip, .rar)',
+				error: 'Invalid file type/size'
 			},
 			boardType: {
 				title: 'Board Types',

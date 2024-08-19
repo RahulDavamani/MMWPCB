@@ -39,9 +39,11 @@
 			</slot>
 		</div>
 
-		{#if showDivider}
-			<div class="divider mt-0 {dividerClasses}" />
-		{/if}
+		<slot name="divider">
+			{#if showDivider}
+				<div class="divider mt-0 {dividerClasses}" />
+			{/if}
+		</slot>
 
 		<slot />
 	</div>
