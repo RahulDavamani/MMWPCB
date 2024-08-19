@@ -11,5 +11,4 @@
 </script>
 
 <Ui />
-
 <slot />

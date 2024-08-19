@@ -59,6 +59,7 @@ export const googleCallback = async ({ url, cookies }: RequestEvent) => {
 					firstName: user.given_name,
 					lastName: user.family_name,
 					phone: '',
+					profilePic: '',
 					accounts: { create: { provider: 'google', providerId: user.sub } },
 					orders: { create: { status: 'CART' } }
 				},
@@ -78,7 +79,7 @@ export const googleCallback = async ({ url, cookies }: RequestEvent) => {
 				}
 			});
 
-		const profilePic = existingUser.profilePic ?? user.picture ?? null;
+		const profilePic = existingUser.profilePic === '' ? user.picture : existingUser.profilePic;
 
 		// Create Session
 		const session = await lucia.createSession(existingUser.id, { profilePic });

@@ -9,11 +9,12 @@
 	import AssemblyForm from './components/products/AssemblyForm.svelte';
 	import FlexiblePcbForm from './components/products/FlexiblePcbForm.svelte';
 	import ShippingCard from './components/ShippingCard.svelte';
+	import { lg } from '../../stores/i18n.store';
 
 	$: ({ product } = $quote);
 </script>
 
-<Layout pageTitle="Home">
+<Layout pageTitle={$lg.instantQuote.pageTitle}>
 	<ProductsList />
 	<div class="flex gap-10 mt-6">
 		{#if product === 'standardPcb'}

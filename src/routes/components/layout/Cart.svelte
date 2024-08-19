@@ -39,11 +39,13 @@
 		</div>
 
 		{#if !cartItems}
-			<div></div>
+			<a href="/login" class="btn btn-link w-full text-base">Login to view your cart</a>
+		{:else if cartCount === 0}
+			<div class="text-center text-base mt-2">Your cart is empty</div>
+			<a href="/instant-quote" class="btn btn-link btn-sm text-base w-full">Order Now</a>
 		{:else}
 			<div class="overflow-x-auto">
 				<table class="table">
-					<!-- head -->
 					<thead>
 						<tr>
 							<th></th>

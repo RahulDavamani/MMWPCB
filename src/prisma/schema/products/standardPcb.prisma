@@ -62,7 +62,7 @@ model StandardPcb {
    specialRequests    String
 
    orderId String
-   order   Order  @relation(fields: [orderId], references: [id])
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }
 
 enum SPBoardType {

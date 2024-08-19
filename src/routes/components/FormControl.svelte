@@ -17,7 +17,7 @@
 	export let bottomLabel: string | undefined = undefined;
 	export let bottomLabelClasses: string = '';
 
-	export let error: { message: string } | undefined = undefined;
+	export let error: string | undefined = undefined;
 	export let errorClasses: string = '';
 </script>
 
@@ -73,6 +73,6 @@
 		{/if}
 	{/if}
 	{#if error}
-		<div class="label text-xs text-error {errorClasses}">{error.message}</div>
+		<div class="label text-xs text-error {errorClasses}">{error}</div>
 	{/if}
 </div>

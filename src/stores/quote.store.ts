@@ -45,7 +45,6 @@ export const quote = (() => {
 			const selectedProduct = products[product];
 
 			selectedProduct.id = nanoid();
-			console.log(file?.name);
 			if (file) {
 				ui.setLoader({ title: l.uploadingFiles });
 				selectedProduct.fileName = `${selectedProduct.id}-${file.name}`;
@@ -55,7 +54,7 @@ export const quote = (() => {
 
 			ui.setLoader({ title: orderId ? l.addingOrder : l.savingCart });
 			await trpc()
-				.order.upsertProduct.query({
+				.order.upsertProduct.mutate({
 					orderId: orderId ?? $page.data.cart.id,
 					[product]: selectedProduct
 				})

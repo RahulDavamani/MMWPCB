@@ -5,13 +5,13 @@ import type { StandardPcb } from '../../../zod/products/standardPcb.schema';
 import type { Stencil } from '../../../zod/products/stencil.schema';
 
 const standardPcb: StandardPcb = {
-	name: 'Test Product',
+	name: '',
 	buildTime: '24 Hours',
 	initialPrice: 5,
 	boardType: 'SINGLE_PIECES',
 	differentDesign: 1,
-	length: 10,
-	width: 10,
+	length: 0,
+	width: 0,
 	quantity: 5,
 	layers: 2,
 	layerOrder: [],

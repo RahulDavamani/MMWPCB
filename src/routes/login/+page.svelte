@@ -7,7 +7,7 @@
 	$: l = $lg.login;
 </script>
 
-<Layout pageTitle="Login" footer={false}>
+<Layout pageTitle={l.pageTitle} footer={false}>
 	<div class="card max-w-lg w-full shadow-xl mx-auto my-10">
 		<div class="card-body">
 			<h2 class="font-bold text-2xl mb-6">{l.signIn}</h2>
@@ -15,11 +15,11 @@
 			<div class="space-y-4">
 				<label class="input input-bordered flex items-center gap-2">
 					<Icon icon="mdi:email" />
-					<input type="text" class="grow" placeholder={l.email} />
+					<input type="text" class="grow" placeholder={$lg.user.email} />
 				</label>
 				<label class="input input-bordered flex items-center gap-2">
 					<Icon icon="mdi:password" />
-					<input type="password" class="grow" placeholder={l.password} />
+					<input type="password" class="grow" placeholder={$lg.user.password} />
 				</label>
 			</div>
 

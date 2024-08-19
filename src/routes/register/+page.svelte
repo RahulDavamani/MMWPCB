@@ -7,7 +7,7 @@
 	$: l = $lg.register;
 </script>
 
-<Layout pageTitle="Register" footer={false}>
+<Layout pageTitle={l.pageTitle} footer={false}>
 	<div class="card max-w-lg w-full shadow-xl mx-auto my-10">
 		<div class="card-body">
 			<h2 class="font-bold text-2xl mb-6">{l.signUp}</h2>
@@ -15,19 +15,19 @@
 			<div class="space-y-4">
 				<label class="input input-bordered flex items-center gap-2">
 					<Icon icon="mdi:person" />
-					<input type="text" class="grow" placeholder={l.firstName} />
+					<input type="text" class="grow" placeholder={$lg.user.firstName} />
 				</label>
 				<label class="input input-bordered flex items-center gap-2">
 					<Icon icon="mdi:person" />
-					<input type="text" class="grow" placeholder={l.lastName} />
+					<input type="text" class="grow" placeholder={$lg.user.lastName} />
 				</label>
 				<label class="input input-bordered flex items-center gap-2">
 					<Icon icon="mdi:email" />
-					<input type="text" class="grow" placeholder={l.email} />
+					<input type="text" class="grow" placeholder={$lg.user.email} />
 				</label>
 				<label class="input input-bordered flex items-center gap-2">
 					<Icon icon="mdi:password" />
-					<input type="password" class="grow" placeholder={l.password} />
+					<input type="password" class="grow" placeholder={$lg.user.password} />
 				</label>
 				<label class="input input-bordered flex items-center gap-2">
 					<Icon icon="mdi:password" />

@@ -5,3 +5,7 @@
 #nprogress .bar {
 	height: 4px;
 }
+
+.btn-link {
+	text-decoration: none;
+}

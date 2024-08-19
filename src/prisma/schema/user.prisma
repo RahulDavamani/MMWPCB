@@ -10,9 +10,10 @@ model User {
    profilePic String?
    role       UserRole
 
-   accounts Account[]
-   sessions Session[]
-   orders   Order[]
+   accounts  Account[]
+   sessions  Session[]
+   orders    Order[]
+   addresses Address[]
 }
 
 enum UserRole {
@@ -41,6 +42,24 @@ model Session {
 
    expiresAt  DateTime
    profilePic String?
+
+   userId String
+   user   User   @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
+model Address {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   name         String
+   phone        String
+   addressLine1 String
+   addressLine2 String
+   city         String
+   state        String
+   country      String
+   postalCode   String
 
    userId String
    user   User   @relation(references: [id], fields: [userId], onDelete: Cascade)

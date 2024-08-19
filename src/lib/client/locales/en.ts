@@ -19,7 +19,24 @@ export const en = {
 		typeHere: 'Type here...',
 		error: 'Error',
 		retry: 'Retry',
-		moreDetails: 'More Details'
+		moreDetails: 'More Details',
+		home: 'Home',
+		add: 'Add',
+		edit: 'Edit',
+		save: 'Save',
+		cancel: 'Cancel',
+		remove: 'Remove',
+		upload: 'Upload'
+	},
+
+	user: {
+		name: 'Name',
+		firstName: 'First Name',
+		lastName: 'Last Name',
+		email: 'Email',
+		phone: 'Phone Number',
+		password: 'Password',
+		profilePicture: 'Profile Picture'
 	},
 
 	navbar: {
@@ -50,9 +67,8 @@ export const en = {
 	},
 
 	login: {
+		pageTitle: 'Login',
 		signIn: 'Sign In',
-		email: 'Email',
-		password: 'Password',
 		rememberMe: 'Remember Me',
 		forgotPassword: 'Forgot Password?',
 		dontHaveAccount: "Don't have an account?",
@@ -60,15 +76,59 @@ export const en = {
 	},
 
 	register: {
+		pageTitle: 'Register',
 		signUp: 'Sign Up',
-		firstName: 'First Name',
-		lastName: 'Last Name',
-		email: 'Email',
-		password: 'Password',
 		confirmPassword: 'Confirm Password',
 		iAgree: 'I agree to sign up',
 		alreadyHaveAccount: 'Already have an account?',
 		signInGoogle: 'Sign In with Google'
+	},
+
+	profile: {
+		pageTitle: 'Profile',
+		myProfile: 'My Profile',
+		personalInformation: {
+			title: 'Personal Information',
+			editProfile: 'Edit Profile',
+			savingProfile: 'Saving Profile',
+			saveProfileSuccess: 'Profile saved successfully',
+			saveProfileError: 'Failed to save profile'
+		},
+		addresses: {
+			title: 'Delivery Addresses',
+			newAddress: 'New Address',
+			noAddressFound: 'No address found',
+			removingAddress: 'Removing Address',
+			removeAddressSuccess: 'Address removed successfully',
+			removeAddressError: 'Failed to remove address'
+		},
+		upsertAddress: {
+			addAddress: 'Add Delivery Address',
+			updateAddress: 'Update Delivery Address',
+			nameError: 'Please enter your name',
+			phoneError: 'Please enter your phone number',
+			addressLine1: 'Address Line 1',
+			addressLine1Error: 'Please enter your address',
+			addressLine2: 'Address Line 2',
+			city: 'City',
+			cityError: 'Please enter your city',
+			state: 'State',
+			stateError: 'Please enter your state',
+			country: 'Country',
+			countryError: 'Please enter your country',
+			postalCode: 'Postal Code',
+			postalCodeError: 'Please enter your postal code',
+			savingAddress: 'Saving Address',
+			saveAddressSuccess: 'Address saved successfully',
+			saveAddressError: 'Failed to save address',
+			addingAddress: 'Adding Address',
+			addAddressSuccess: 'Address added successfully',
+			addAddressError: 'Failed to add address'
+		}
+	},
+
+	home: {
+		pageTitle: 'Home'
 	},
 
 	products: {
@@ -80,6 +140,8 @@ export const en = {
 	},
 
 	instantQuote: {
+		pageTitle: 'Instant Quote',
+
 		upsertProduct: {
 			uploadingFiles: 'Uploading Files',
 			savingCart: 'Saving to Cart',

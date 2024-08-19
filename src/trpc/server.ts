@@ -1,5 +1,6 @@
 import type { RequestEvent } from '@sveltejs/kit';
 import { initTRPC, TRPCError } from '@trpc/server';
+import type { Session, User } from 'lucia';
 import superjson from 'superjson';
 
 // Context
@@ -16,12 +17,12 @@ const isNoAuth = middleware(({ ctx, next }) => {
 });
 const isUser = middleware(({ ctx, next }) => {
 	if (!ctx.user) throw new TRPCError({ code: 'UNAUTHORIZED' });
-	return next({ ctx });
+	return next({ ctx } as { ctx: { user: User; session: Session } });
 });
 const isAdmin = middleware(({ ctx, next }) => {
 	if (!ctx.user) throw new TRPCError({ code: 'UNAUTHORIZED' });
 	if (ctx.user.role !== 'admin') throw new TRPCError({ code: 'FORBIDDEN' });
-	return next({ ctx });
+	return next({ ctx } as { ctx: { user: User; session: Session } });
 });
 
 // Procedures
