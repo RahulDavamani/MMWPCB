@@ -23,14 +23,7 @@ model Assembly {
    bgaParts         Int
    throughHoleParts Int
 
-   depanelBoards       Boolean
-   functionTest        Boolean
-   conformalCoating    Boolean
-   firmwareLoading     Boolean
-   pressFit            Boolean
-   boxBuild            Boolean
-   cableWireHarness    Boolean
-   packageBox          Boolean
+   customizedServices  ASCustomizedServices[]
    xrayTest            Int
    detailedInformation String
 
@@ -53,4 +46,15 @@ enum ASSide {
    TOP_SIDE
    BOTTOM_SIDE
    BOTH_SIDES
+}
+
+enum ASCustomizedServices {
+   DEPANEL_BOARDS
+   FUNCTION_TEST
+   CONFORMAL_COATING
+   FIRMWARE_LOADING
+   PRESS_FIT
+   BOX_BUILD
+   CABLE_WIRE_HARNESS
+   PACKAGE_BOX
 }

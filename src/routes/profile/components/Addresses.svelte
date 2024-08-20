@@ -72,7 +72,7 @@
 				<div class="divider m-0 mt-2" />
 				<div class="flex">
 					<button
-						class="btn btn-xs btn-link text-secondary text-base grow"
+						class="btn btn-xs btn-link text-warning text-base grow"
 						on:click={() => {
 							id = aid;
 							showModal('upsertAddressModal');

@@ -59,6 +59,7 @@
 		"nanoid": "^5.0.7",
 		"nprogress": "^0.2.0",
 		"superjson": "^2.2.1",
+		"svelte-file-dropzone": "^2.0.7",
 		"svelte-flatpickr": "^3.3.4",
 		"svelte-i18n": "^4.0.0",
 		"trpc-sveltekit": "^3.6.2"

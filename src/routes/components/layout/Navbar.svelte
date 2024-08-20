@@ -4,6 +4,7 @@
 	import { lg } from '../../../stores/i18n.store';
 	import I18N from './I18N.svelte';
 	import Cart from './Cart.svelte';
+	import VelenovaLogo from '$lib/assets/velenovaLogo.png';
 
 	$: l = $lg.navbar;
 
@@ -16,18 +17,20 @@
 	];
 </script>
 
-<div id="navbar" class="navbar bg-primary shadow-xl">
+<div id="navbar" class="navbar shadow-lg">
 	<div class="container mx-auto flex justify-between items-center">
-		<div class="flex items-baseline">
+		<div class="flex items-end">
 			<div>
-				<a href="/" class="btn btn-link text-white text-2xl no-underline hover:no-underline">Velenova</a>
+				<a href="/" class="btn btn-link">
+					<img src={VelenovaLogo} alt="Velenova" width="140" />
+				</a>
 			</div>
 			{#each navItems as { name, href }}
 				<div>
 					<a
 						{href}
-						class="btn btn-link text-white text-base underline-offset-8 decoration-secondary decoration-2
-                   {route !== href ? 'no-underline hover:no-underline' : ''}"
+						class="btn btn-link text-black text-base underline-offset-8 decoration-secondary decoration-2
+                  {route === href && '!underline'}"
 					>
 						{name}
 					</a>

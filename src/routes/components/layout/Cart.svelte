@@ -27,8 +27,8 @@
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div class="dropdown dropdown-end">
 	<div tabindex={0} class="btn btn-sm btn-ghost px-1 indicator mt-2">
-		<Icon icon="mdi:cart-outline" width={28} class="text-white" />
-		<span class="indicator-item badge badge-sm badge-secondary font-bold text-white">
+		<Icon icon="mdi:cart-outline" width={28} class="text-black" />
+		<span class="indicator-item badge badge-sm badge-secondary font-bold text-black">
 			{cartCount}
 		</span>
 	</div>

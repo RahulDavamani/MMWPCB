@@ -76,33 +76,25 @@ export const quote = (() => {
 	return { subscribe, set, update, reset, upsertProduct };
 })();
 
-export const quoteError = derived(quote, ($quote) => {
-	let errors = {} as {
-		standardPcb: { [k in keyof StandardPcb]?: string };
-		advancedPcb: { [k in keyof AdvancedPcb]?: string };
-		flexiblePcb: { [k in keyof FlexiblePcb]?: string };
-		assembly: { [k in keyof Assembly]?: string };
-		stencil: { [k in keyof Stencil]?: string };
-	};
-	switch ($quote.product) {
-		case 'standardPcb': {
-			const l = get(lg).instantQuote.standardPcb;
-			const { name, fileName, differentDesign, length, width } = $quote.standardPcb;
-			errors = {
-				...errors,
-				standardPcb: {
-					name: name.length < 1 ? l.name.error : undefined,
-					fileName: fileName === 'error' ? l.file.error : undefined,
-					differentDesign: differentDesign < 1 ? l.differentDesign.error : undefined,
-					length: length < 1 ? l.size.error : undefined,
-					width: width < 1 ? l.size.error : undefined
-				}
-			};
-			break;
-		}
-
-		default:
-			break;
+export const quoteError = derived(quote, ({ standardPcb, assembly, stencil }) => ({
+	standardPcb: {
+		name: standardPcb.name.length < 1,
+		differentDesign: standardPcb.differentDesign < 1,
+		length: standardPcb.length < 1,
+		width: standardPcb.width < 1,
+		quantity: standardPcb.quantity < 1
+	},
+	advancedPcb: {},
+	flexiblePcb: {},
+	assembly: {
+		quantity: assembly.quantity < 1,
+		uniqueParts: assembly.uniqueParts < 0,
+		smdParts: assembly.smdParts < 0,
+		bgaParts: assembly.bgaParts < 0,
+		throughHoleParts: assembly.throughHoleParts < 0,
+		xrayTest: assembly.xrayTest < 0
+	},
+	stencil: {
+		quantity: stencil.quantity < 1
 	}
-	return errors;
-});
+}));

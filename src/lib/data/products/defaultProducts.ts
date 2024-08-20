@@ -115,14 +115,7 @@ const assembly: Assembly = {
 	smdParts: 0,
 	bgaParts: 0,
 	throughHoleParts: 0,
-	depanelBoards: false,
-	functionTest: false,
-	conformalCoating: false,
-	firmwareLoading: false,
-	pressFit: false,
-	boxBuild: false,
-	cableWireHarness: false,
-	packageBox: false,
+	customizedServices: [],
 	xrayTest: 0,
 	detailedInformation: ''
 };

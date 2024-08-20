@@ -51,7 +51,7 @@
 				</button>
 			</div>
 		{:else}
-			<button class="btn btn-sm btn-secondary" on:click={() => (isEdit = true)}>
+			<button class="btn btn-sm btn-warning" on:click={() => (isEdit = true)}>
 				<Icon icon="mdi:edit" />
 				{l.editProfile}
 			</button>

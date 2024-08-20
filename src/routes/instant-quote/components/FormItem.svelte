@@ -1,17 +1,22 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 
+	export let l: {
+		title?: string;
+		description?: string;
+		disclaimer?: string;
+		error?: string;
+		url?: string;
+		imgSrc?: string;
+	};
+	$: ({ title, description, disclaimer, error, url, imgSrc } = l);
+	export let isError: boolean = false;
 	export let classes = 'items-start mt-6 mb-2';
-	export let title: string | undefined = undefined;
-	export let moreInfo: { description?: string; url?: string; imgSrc?: string } | undefined = undefined;
-	export let error: string | undefined = undefined;
-	export let disclaimer: string | undefined = undefined;
 </script>
 
 <div class="flex gap-4 {classes}">
 	<div class="flex items-center gap-2 w-40 min-w-40">
-		{#if moreInfo}
-			{@const { description, url, imgSrc } = moreInfo}
+		{#if description || url || imgSrc}
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<div class="dropdown dropdown-hover">
 				<div tabindex={0} class="my-1">
@@ -38,6 +43,8 @@
 					</slot>
 				</div>
 			</div>
+		{:else}
+			<div class="w-4" />
 		{/if}
 
 		<slot name="title">
@@ -51,7 +58,7 @@
 		<slot />
 
 		<slot name="error">
-			{#if error}
+			{#if isError && error}
 				<div class="text-xs mt-1 text-error">{error}</div>
 			{/if}
 		</slot>
