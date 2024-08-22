@@ -9,6 +9,7 @@
 	import { ui } from '../../../stores/ui.store';
 	import { invalidateAll } from '$app/navigation';
 	import { lg } from '../../../stores/i18n.store';
+	import Address from '../../components/Address.svelte';
 
 	$: l = $lg.profile.addresses;
 
@@ -21,7 +22,7 @@
 	const removeAddress = async (id: string) =>
 		ui.loaderWrapper({ title: l.removingAddress }, async () => {
 			await trpc()
-				.profile.removeAddress.mutate({ id })
+				.address.remove.mutate({ id })
 				.catch((e) =>
 					tce(e, {
 						showModal: {
@@ -59,22 +60,16 @@
 	<div class="divider mt-1" />
 
 	<div class="flex flex-wrap gap-x-8 gap-y-4 mb-2">
-		{#each addresses as { id: aid, name, phone, addressLine1, addressLine2, city, state, country, postalCode }}
+		{#each addresses as address}
 			<div class="border rounded-box shadow p-4 w-80">
-				<div class="font-semibold">{name}</div>
-				<div>{$lg.user.phone}: {phone}</div>
-
-				<div class="mt-1">{addressLine1},</div>
-				<div>{addressLine2},</div>
-				<div>{city}, {state},</div>
-				<div>{country} - {postalCode}</div>
+				<Address {address} />
 
 				<div class="divider m-0 mt-2" />
 				<div class="flex">
 					<button
 						class="btn btn-xs btn-link text-warning text-base grow"
 						on:click={() => {
-							id = aid;
+							id = address.id;
 							showModal('upsertAddressModal');
 						}}
 					>
@@ -82,7 +77,7 @@
 						{$lg.common.edit}
 					</button>
 					<div class="divider divider-horizontal" />
-					<button class="btn btn-xs btn-link text-error text-base grow" on:click={() => removeAddress(aid)}>
+					<button class="btn btn-xs btn-link text-error text-base grow" on:click={() => removeAddress(address.id)}>
 						<Icon icon="mdi:delete-forever-outline" width={18} />
 						{$lg.common.remove}
 					</button>

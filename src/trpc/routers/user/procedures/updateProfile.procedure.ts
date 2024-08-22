@@ -9,7 +9,7 @@ const schema = z.object({
 	profilePic: z.string().nullish()
 });
 
-export const update = userProcedure.input(schema).mutation(
+export const updateProfile = userProcedure.input(schema).mutation(
 	async ({ input, ctx: { user } }) =>
 		await prisma.user
 			.update({

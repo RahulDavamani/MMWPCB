@@ -3,8 +3,8 @@
 	import NavUser from './NavUser.svelte';
 	import { lg } from '../../../stores/i18n.store';
 	import I18N from './I18N.svelte';
-	import Cart from './Cart.svelte';
-	import VelenovaLogo from '$lib/assets/velenovaLogo.png';
+	import SmallCart from './SmallCart.svelte';
+	import VelenovaLogo from '$lib/assets/velenova-logo.png';
 
 	$: l = $lg.navbar;
 
@@ -40,7 +40,7 @@
 		<div class="flex items-center gap-6">
 			<I18N />
 
-			<Cart />
+			<SmallCart />
 
 			<NavUser />
 		</div>

@@ -11,7 +11,7 @@
 	<ProductsList />
 	<div class="flex gap-10 mt-6">
 		<ProductForm />
-		<div class="space-y-6 sticky top-4 h-screen">
+		<div class="space-y-6 sticky top-4 max-h-screen">
 			<PricingCard />
 			<ShippingCard />
 		</div>

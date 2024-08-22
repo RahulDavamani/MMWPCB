@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { lg } from '../../../../../stores/i18n.store';
-	import type { Assembly } from '../../../../../zod/products/assembly.schema';
 	import BgaParts from './BgaParts.svelte';
 	import SmdParts from './SmdParts.svelte';
 	import ThroughHoleParts from './ThroughHoleParts.svelte';

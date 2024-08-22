@@ -6,7 +6,8 @@ model FlexiblePcb {
    name     String
    fileName String?
 
-   buildTime    String
+   buildTime    Int
+   weight       Float
    initialPrice Float
    finalPrice   Float?
 

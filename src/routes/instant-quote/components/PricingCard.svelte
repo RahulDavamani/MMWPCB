@@ -19,10 +19,10 @@
 		{ name: 'Material', price: 0 }
 	];
 
-	$: disabled = Object.values($quoteError[$quote.product]).filter(Boolean).length > 0;
+	$: disabled = Object.values($quoteError[$quote.productType]).filter(Boolean).length > 0;
 </script>
 
-<div class="min-w-96 h-fit rounded shadow border p-4">
+<div class="min-w-96 h-fit border rounded-lg shadow p-4">
 	<div class=" flex gap-2 items-center">
 		<Icon icon="mdi:tag-multiple-outline" width={20} />
 		<div class="font-bold">{l.title}</div>

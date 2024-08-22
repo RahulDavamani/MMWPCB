@@ -10,10 +10,11 @@ model User {
    profilePic String?
    role       UserRole
 
-   accounts  Account[]
-   sessions  Session[]
-   orders    Order[]
-   addresses Address[]
+   accounts            Account[]
+   sessions            Session[]
+   orders              Order[]
+   addresses           Address[]
+   orderReviewMessages OrderReviewMessage[]
 }
 
 enum UserRole {
@@ -61,6 +62,7 @@ model Address {
    country      String
    postalCode   String
 
-   userId String
-   user   User   @relation(references: [id], fields: [userId], onDelete: Cascade)
+   userId                 String
+   user                   User                   @relation(references: [id], fields: [userId], onDelete: Cascade)
+   orderDeliveryAddresses OrderDeliveryAddress[]
 }

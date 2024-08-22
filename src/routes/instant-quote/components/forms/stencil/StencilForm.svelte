@@ -8,8 +8,12 @@
 	import Size from './Size.svelte';
 	import Thickness from './Thickness.svelte';
 	import Type from './Type.svelte';
+	import GerberFile from '../standardPcb/GerberFile.svelte';
+	import Name from './Name.svelte';
 </script>
 
+<GerberFile />
+<Name />
 <Type />
 <MultiLevel />
 <Size />

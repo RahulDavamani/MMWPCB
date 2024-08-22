@@ -1,6 +1,8 @@
 import pe from '../../../../prisma/pe';
 import { userProcedure } from '../../../server';
 
+const productSelect = { select: { id: true, name: true, quantity: true, initialPrice: true } };
+
 export const getCart = userProcedure.query(
 	async ({ ctx: { user } }) =>
 		await prisma.order
@@ -8,11 +10,11 @@ export const getCart = userProcedure.query(
 				where: { userId: user.id, status: 'CART' },
 				select: {
 					id: true,
-					standardPcbs: { select: { id: true, name: true, quantity: true, buildTime: true, initialPrice: true } },
-					advancedPcbs: { select: { id: true, name: true, quantity: true, buildTime: true, initialPrice: true } },
-					flexiblePcbs: { select: { id: true, name: true, quantity: true, buildTime: true, initialPrice: true } },
-					assemblies: { select: { id: true, name: true, quantity: true, buildTime: true, initialPrice: true } },
-					stencils: { select: { id: true, name: true, quantity: true, buildTime: true, initialPrice: true } }
+					standardPcbs: productSelect,
+					advancedPcbs: productSelect,
+					flexiblePcbs: productSelect,
+					assemblies: productSelect,
+					stencils: productSelect
 				}
 			})
 			.catch(pe)

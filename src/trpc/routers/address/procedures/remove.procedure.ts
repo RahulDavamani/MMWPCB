@@ -4,7 +4,7 @@ import pe from '../../../../prisma/pe';
 
 const schema = z.object({ id: z.string().min(1) });
 
-export const removeAddress = userProcedure
+export const remove = userProcedure
 	.input(schema)
 	.mutation(
 		async ({ input: { id }, ctx: { user } }) =>

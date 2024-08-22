@@ -1,27 +1,20 @@
 <script lang="ts">
-	import { lg } from '../../../stores/i18n.store';
+	import { productTypes } from '../../../stores/productTypes.store';
 	import { quote, type Quote } from '../../../stores/quote.store';
 
-	$: l = $lg.products;
-	$: ({ product } = $quote);
+	$: ({ productType } = $quote);
 
-	$: products = [
-		{ name: l.standardPcb, value: 'standardPcb' },
-		{ name: l.advancedPcb, value: 'advancedPcb' },
-		{ name: l.flexiblePcb, value: 'flexiblePcb' },
-		{ name: l.assembly, value: 'assembly' },
-		{ name: l.stencil, value: 'stencil' }
-	] as { name: string; value: Quote['product'] }[];
+	const selectProduct = (key: string) => ($quote.productType = key as Quote['productType']);
 </script>
 
 <div class="flex flex-wrap justify-around gap-8">
-	{#each products as { name, value }}
+	{#each $productTypes as { key, name, img }}
 		<button
 			class="btn btn-primary flex-grow h-14 gap-4 text-base font-semibold shadow
-         {product !== value && 'btn-outline'}"
-			on:click={() => ($quote.product = value)}
+         {productType !== key && 'btn-outline'}"
+			on:click={() => selectProduct(key)}
 		>
-			{#await import(`$lib/assets/products/${value}Icon.png`) then { default: src }}
+			{#await import(`$lib/assets/products/${img}.png`) then { default: src }}
 				<img {src} alt="icon" width={50} />
 			{/await}
 			{name}

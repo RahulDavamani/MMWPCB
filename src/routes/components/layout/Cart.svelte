@@ -3,6 +3,7 @@
 	import Icon from '@iconify/svelte';
 	import { lg } from '../../../stores/i18n.store';
 	import type { PageData } from '../../$types';
+	import { productTypes } from '../../../stores/productTypes.store';
 
 	$: l = $lg.navbar.cart;
 	$: ({ cart } = $page.data as PageData);
@@ -15,13 +16,6 @@
 	$: cartTotal = cartItems
 		? Object.values(cartItems).reduce((acc, cur) => acc + cur.reduce((acc, cur) => acc + cur.initialPrice, 0), 0)
 		: 0;
-	$: products = [
-		{ name: $lg.products.standardPcb, value: 'standardPcbs', img: 'standardPcb' },
-		{ name: $lg.products.advancedPcb, value: 'advancedPcbs', img: 'advancedPcb' },
-		{ name: $lg.products.flexiblePcb, value: 'flexiblePcbs', img: 'flexiblePcb' },
-		{ name: $lg.products.assembly, value: 'assemblies', img: 'assembly' },
-		{ name: $lg.products.stencil, value: 'stencils', img: 'stencil' }
-	];
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
@@ -35,7 +29,7 @@
 	<div tabindex={0} class="dropdown-content mt-4 z-[50] bg-base-100 border shadow rounded-box w-[40rem] p-4 text-sm">
 		<div class="flex justify-between px-2 mb-4">
 			<div class="text-lg font-bold">{l.myCart} ({cartCount})</div>
-			<div class="btn btn-primary btn-outline btn-sm">{l.viewCart}</div>
+			<a href="/order" class="btn btn-primary btn-outline btn-sm">{l.proceedToCheckout}</a>
 		</div>
 
 		{#if !cartItems}
@@ -58,10 +52,10 @@
 					<tbody>
 						{#each Object.entries(cartItems) as [key, items]}
 							{#each items as { name, quantity, buildTime, initialPrice }}
-								{@const product = products.find((p) => p.value === key)}
+								{@const product = $productTypes.find((p) => p.keys === key)}
 								<tr>
 									<td class="w-20">
-										{#await import(`$lib/assets/products/${product?.img}Icon.png`) then { default: src }}
+										{#await import(`$lib/assets/products/${product?.img}.png`) then { default: src }}
 											<img {src} alt="icon" width={50} />
 										{/await}
 									</td>
@@ -78,7 +72,13 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="divider mt-0 mb-2" />
+
+			{#if cartCount > 1}
+				<div class="divider mt-0 mb-2" />
+			{:else}
+				<div class="mt-4" />
+			{/if}
+
 			<div class="flex justify-end items-baseline mr-7 gap-8 font-bold">
 				<div class="text-sm">{l.subTotal}</div>
 				<div class="text-xl font-mono">${cartTotal.toFixed(2)}</div>

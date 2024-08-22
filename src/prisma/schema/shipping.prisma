@@ -8,10 +8,9 @@ model ShippingMethod {
    deliveryTime String
    restriction  String
 
-   countryId String
-   country   ShippingCountry @relation(fields: [countryId], references: [id])
-
-   orders Order[]
+   countryId          String
+   country            ShippingCountry     @relation(fields: [countryId], references: [id])
+   orderShippingInfos OrderShippingInfo[]
 }
 
 model ShippingCountry {
@@ -19,6 +18,7 @@ model ShippingCountry {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   name    String
-   methods ShippingMethod[]
+   name               String
+   methods            ShippingMethod[]
+   orderShippingInfos OrderShippingInfo[]
 }

@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import Modal from '../../components/UI/Modal.svelte';
 	import { closeModal, onShowModal, showModal } from '$lib/client/modal';
-	import type { Schema as UpsertAddress } from '../../../trpc/routers/profile/procedures/upsertAddress.procedure';
+	import type { Schema as UpsertAddress } from '../../../trpc/routers/address/procedures/upsert.procedure';
 	import { page } from '$app/stores';
 	import type { PageData } from '../$types';
 	import FormControl from '../../components/FormControl.svelte';
@@ -57,7 +57,7 @@
 			if (!address) return;
 			closeModal(modalId);
 			await trpc()
-				.profile.upsertAddress.mutate(address)
+				.address.upsert.mutate(address)
 				.catch((e) =>
 					tce(e, {
 						callback: () => showModal(modalId),

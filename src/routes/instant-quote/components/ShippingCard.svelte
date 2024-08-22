@@ -1,49 +1,52 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import type { RouterOutput } from '../../../trpc/routers/app.router';
-	import ShippingMethodModal from './ShippingMethodModal.svelte';
-	import { showModal } from '$lib/client/modal';
+	import { closeModal, showModal } from '$lib/client/modal';
 	import { lg } from '../../../stores/i18n.store';
+	import SelectShippingModal from '../../order/components/SelectShippingModal.svelte';
+	import IconBtn from '../../components/IconBtn.svelte';
 
 	$: l = $lg.instantQuote.shipping;
 
+	let modalId = 'selectShippingModal';
 	let shippingMethod: RouterOutput['shipping']['getMethods'][number] | undefined;
 </script>
 
-<div class="min-w-96 h-fit rounded shadow border p-4">
-	<div class="flex w-full gap-2 items-center">
-		<Icon icon="mdi:truck-fast-outline" width={20} />
-		<div class="font-bold">{l.title}</div>
+<div class="min-w-96 h-fit border rounded-lg shadow p-4">
+	<div class="flex justify-between items-center mb-2">
+		<div class="text-lg font-bold flex items-center gap-2">
+			<Icon icon="mdi:truck-fast-outline" width={20} />
+			{l.title}
+		</div>
+		{#if shippingMethod}
+			<IconBtn icon="mdi:exchange" iconClasses="text-secondary" on:click={() => showModal(modalId)} />
+		{/if}
 	</div>
 	<div class="divider mt-0 mb-1" />
 
 	{#if !shippingMethod}
-		<button class="btn btn-sm btn-link w-full" on:click={() => showModal('shippingMethodModal')}>
+		<button class="btn btn-primary btn-outline border-dashed my-3 w-full" on:click={() => showModal(modalId)}>
 			{l.selectShipping}
 		</button>
 	{:else}
-		{@const { country, name, deliveryTime, price } = shippingMethod}
+		{@const { country, name, deliveryTime, restriction, price } = shippingMethod}
 
 		<div class="text-sm space-y-3 mt-4 px-2">
 			<div class="flex justify-between">
 				<div>{l.country}</div>
-				<button class="btn btn-link p-0 min-h-5 h-5" on:click={() => showModal('shippingMethodModal')}>
-					{country.name}
-				</button>
+				<div>{country.name}</div>
 			</div>
 			<div class="flex justify-between">
 				<div>{l.method}</div>
-				<button class="btn btn-link p-0 min-h-5 h-5" on:click={() => showModal('shippingMethodModal')}>
-					{name}
-				</button>
+				<div>{name}</div>
 			</div>
 			<div class="flex justify-between">
 				<div>{l.deliveryTime}</div>
 				<div>{deliveryTime}</div>
 			</div>
 			<div class="flex justify-between">
-				<div>{l.weight}</div>
-				<div>0.01 kg</div>
+				<div>{l.restriction}</div>
+				<div>{restriction}</div>
 			</div>
 		</div>
 
@@ -55,4 +58,10 @@
 	{/if}
 </div>
 
-<ShippingMethodModal bind:shippingMethod />
+<SelectShippingModal
+	selectedShipping={shippingMethod ? { countryId: shippingMethod.countryId, methodId: shippingMethod.id } : null}
+	selectShipping={(method) => {
+		closeModal(modalId);
+		shippingMethod = method;
+	}}
+/>

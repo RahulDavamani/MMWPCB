@@ -8,27 +8,74 @@ model Order {
    userId String
    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-   shippingMethodId String?
-   shippingMethod   ShippingMethod? @relation(fields: [shippingMethodId], references: [id])
+   deliveryAddress OrderDeliveryAddress?
+   shippingInfo    OrderShippingInfo?
 
-   timeline     OrderTimeline[]
    standardPcbs StandardPcb[]
    advancedPcbs AdvancedPcb[]
    flexiblePcbs FlexiblePcb[]
    stencils     Stencil[]
    assemblies   Assembly[]
+
+   timeline         OrderTimeline[]
+   reviewMessages   OrderReviewMessage[]
+   deliveryStatuses OrderDeliveryStatus[]
 }
 
 enum OrderStatus {
    CART
    SAVED
-   REVIEW
+   IN_REVIEW
+   REJECTED
    AWAITING_PAYMENT
-   PRODUCTION
+   CONFIRMED
+   FABRICATION
    DELIVERY
-   CANCELLED
    COMPLETED
+   CANCELLED
    REFUNDED
+}
+
+model OrderDeliveryAddress {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   name         String
+   phone        String
+   addressLine1 String
+   addressLine2 String
+   city         String
+   state        String
+   country      String
+   postalCode   String
+
+   addressId String?
+   address   Address? @relation(fields: [addressId], references: [id])
+
+   orderId String @unique
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model OrderShippingInfo {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   countryName  String
+   methodName   String
+   price        Float
+   deliveryTime String
+   restriction  String
+
+   countryId String?
+   country   ShippingCountry? @relation(fields: [countryId], references: [id])
+
+   methodId String?
+   method   ShippingMethod? @relation(fields: [methodId], references: [id])
+
+   orderId String @unique
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }
 
 model OrderTimeline {
@@ -40,9 +87,44 @@ model OrderTimeline {
    message String?
 
    orderId String
-   order   Order  @relation(fields: [orderId], references: [id])
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }
 
 enum OrderAction {
-   ORDER_CREATED
+   SAVE
+   SUMBIT_FOR_REVIEW
+   REJECT
+   ACCEPT
+   PAYMENT_MADE
+   START_PRODUCTION
+   OUT_FOR_DELIVERY
+   CANCEL
+   COMPLETE
+   REFUND
+}
+
+model OrderReviewMessage {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   message String
+
+   userId String
+   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model OrderDeliveryStatus {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   status    String
+   completed Boolean
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }

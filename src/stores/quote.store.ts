@@ -11,12 +11,12 @@ import { trpc } from '../trpc/client';
 import { tce } from '../trpc/te';
 import { page } from '$app/stores';
 import { lg } from './i18n.store';
-import { goto } from '$app/navigation';
+import { goto, invalidateAll } from '$app/navigation';
 import { supabase } from '$lib/client/supabase';
 import { nanoid } from 'nanoid';
 
 export interface Quote {
-	product: 'standardPcb' | 'advancedPcb' | 'flexiblePcb' | 'assembly' | 'stencil';
+	productType: 'standardPcb' | 'advancedPcb' | 'flexiblePcb' | 'assembly' | 'stencil';
 	file?: File;
 	standardPcb: StandardPcb;
 	advancedPcb: AdvancedPcb;
@@ -27,7 +27,7 @@ export interface Quote {
 
 export const quote = (() => {
 	const { subscribe, set, update } = writable<Quote>({
-		product: 'standardPcb',
+		productType: 'standardPcb',
 		...cloneDeep(defaultProducts)
 	});
 
@@ -41,13 +41,13 @@ export const quote = (() => {
 		ui.loaderWrapper({}, async () => {
 			const l = get(lg).instantQuote.upsertProduct;
 			const $page = get(page);
-			const { product, file, ...products } = get(quote);
-			const selectedProduct = products[product];
+			const { productType, file, ...products } = get(quote);
+			const selectedProduct = products[productType];
 
 			selectedProduct.id = nanoid();
 			if (file) {
 				ui.setLoader({ title: l.uploadingFiles });
-				selectedProduct.fileName = `${selectedProduct.id}-${file.name}`;
+				selectedProduct.fileName = `${selectedProduct.id}__${file.name}`;
 				const { error } = await supabase.storage.from('Gerber Files').upload(selectedProduct.fileName, file);
 				if (error) return ui.setAlertModal({ title: l.uploadFileError, body: error.message });
 			}
@@ -56,7 +56,7 @@ export const quote = (() => {
 			await trpc()
 				.order.upsertProduct.mutate({
 					orderId: orderId ?? $page.data.cart.id,
-					[product]: selectedProduct
+					[productType]: selectedProduct
 				})
 				.catch((e) =>
 					tce(e, {
@@ -70,7 +70,8 @@ export const quote = (() => {
 
 			ui.setToast({ title: orderId ? l.addOrderSuccess : l.saveCartSuccess, alertClasses: 'alert-success' });
 			reset();
-			await goto('/submit-order');
+			await invalidateAll();
+			await goto('/order');
 		})();
 
 	return { subscribe, set, update, reset, upsertProduct };
@@ -87,6 +88,7 @@ export const quoteError = derived(quote, ({ standardPcb, assembly, stencil }) =>
 	advancedPcb: {},
 	flexiblePcb: {},
 	assembly: {
+		name: assembly.name.length < 1,
 		quantity: assembly.quantity < 1,
 		uniqueParts: assembly.uniqueParts < 0,
 		smdParts: assembly.smdParts < 0,
@@ -95,6 +97,7 @@ export const quoteError = derived(quote, ({ standardPcb, assembly, stencil }) =>
 		xrayTest: assembly.xrayTest < 0
 	},
 	stencil: {
+		name: stencil.name.length < 1,
 		quantity: stencil.quantity < 1
 	}
 }));

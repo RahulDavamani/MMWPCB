@@ -11,14 +11,14 @@
 
 	$: l = $lg.profile.personalInformation;
 
-	let profile: RouterOutput['profile']['get'] = cloneDeep($page.data.profile);
+	let profile: RouterOutput['user']['getProfile'] = cloneDeep($page.data.profile);
 	let isEdit = false;
 
 	const saveProfile = async () =>
 		ui.loaderWrapper({ title: l.savingProfile }, async () => {
 			const { firstName, lastName, phone } = profile;
 			await trpc()
-				.profile.update.mutate({ firstName, lastName, phone })
+				.user.updateProfile.mutate({ firstName, lastName, phone })
 				.catch((e) => tce(e, { showModal: { title: l.saveProfileError, retryFn: saveProfile } }));
 
 			await invalidateAll();

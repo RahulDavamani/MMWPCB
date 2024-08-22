@@ -53,6 +53,7 @@ export const en = {
 		cart: {
 			myCart: 'My Cart',
 			viewCart: 'View Cart',
+			proceedToCheckout: 'Proceed to Checkout',
 			name: 'Name',
 			buildTime: 'Build Time',
 			quantity: 'Quantity',
@@ -128,6 +129,10 @@ export const en = {
 		}
 	},
 
+	order: {
+		pageTitle: 'Order'
+	},
+
 	home: {
 		pageTitle: 'Home'
 	},
@@ -184,10 +189,6 @@ export const en = {
 				title: 'Product Name',
 				description: 'Please enter a name for your product',
 				error: 'Product name is required'
-			},
-			fileName: {
-				title: 'Gerber File',
-				description: 'Please upload the Gerber file for your PCB (only accepts .zip, .rar)'
 			},
 			boardType: {
 				title: 'Board Types',
@@ -605,6 +606,11 @@ export const en = {
 		},
 
 		assembly: {
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
 			flexibleOptions: {
 				title: 'Flexible Options',
 				options: {
@@ -737,6 +743,11 @@ export const en = {
 		},
 
 		stencil: {
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
 			type: {
 				title: 'Stencil type',
 				disclaimer: 'Allow combining several PCBs on a single SMD stencil.',
@@ -791,6 +802,11 @@ export const en = {
 				placeholder:
 					'Fill in any Stencil details to make it as clear as possible for us to understand your requirements. e.g.Multi-level /Step stencil, please specify the region and thickness for step-up/step-down in the gerber.'
 			}
+		},
+
+		gerberFile: {
+			title: 'Gerber File',
+			description: 'Please upload the Gerber file for your PCB (only accepts .zip, .rar)'
 		}
 	}
 };

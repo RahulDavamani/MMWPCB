@@ -67,7 +67,7 @@
 		</div>
 	</div>
 {:else}
-	<a href="/login" class="btn btn-primary">
+	<a href="/login" class="btn btn-primary btn-link">
 		<Icon icon="mdi:login" width={20} />
 		{$lg.navbar.login}
 	</a>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { lg } from '../../../../../stores/i18n.store';
-	import { quote, quoteError } from '../../../../../stores/quote.store';
+	import { quote } from '../../../../../stores/quote.store';
 	import type { Assembly } from '../../../../../zod/products/assembly.schema';
 	import FormItem from '../../FormItem.svelte';
 	import XrayTest from './XrayTest.svelte';

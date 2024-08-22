@@ -7,8 +7,12 @@
 	import OtherParameters from './OtherParameters.svelte';
 	import PayAttention from './PayAttention.svelte';
 	import Quantity from './Quantity.svelte';
+	import GerberFile from '../standardPcb/GerberFile.svelte';
+	import Name from './Name.svelte';
 </script>
 
+<GerberFile />
+<Name />
 <FlexibleOptions />
 <BoardType />
 <AssemblySide />

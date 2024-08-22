@@ -5,7 +5,7 @@
 	import FormItem from '../../FormItem.svelte';
 	import Dropzone from 'svelte-file-dropzone';
 
-	$: l = $lg.instantQuote.standardPcb.fileName;
+	$: l = $lg.instantQuote.gerberFile;
 </script>
 
 <FormItem {l}>

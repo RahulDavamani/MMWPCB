@@ -16,7 +16,7 @@ export const schema = z.object({
 
 export type Schema = z.infer<typeof schema>;
 
-export const upsertAddress = userProcedure.input(schema).mutation(
+export const upsert = userProcedure.input(schema).mutation(
 	async ({ input: { id, ...address }, ctx: { user } }) =>
 		await prisma.address
 			.upsert({
