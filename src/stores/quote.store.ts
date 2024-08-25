@@ -15,8 +15,10 @@ import { goto, invalidateAll } from '$app/navigation';
 import { supabase } from '$lib/client/supabase';
 import { nanoid } from 'nanoid';
 
+export type ProductType = 'standardPcb' | 'advancedPcb' | 'flexiblePcb' | 'assembly' | 'stencil';
+
 export interface Quote {
-	productType: 'standardPcb' | 'advancedPcb' | 'flexiblePcb' | 'assembly' | 'stencil';
+	productType: ProductType;
 	file?: File;
 	standardPcb: StandardPcb;
 	advancedPcb: AdvancedPcb;
@@ -34,6 +36,8 @@ export const quote = (() => {
 	const reset = () =>
 		update((state) => ({
 			...state,
+			productType: 'standardPcb',
+			file: undefined,
 			...cloneDeep(defaultProducts)
 		}));
 
@@ -41,10 +45,15 @@ export const quote = (() => {
 		ui.loaderWrapper({}, async () => {
 			const l = get(lg).instantQuote.upsertProduct;
 			const $page = get(page);
+			const isEdit = $page.url.searchParams.get('id') !== null;
+			const id = $page.url.searchParams.get('id');
 			const { productType, file, ...products } = get(quote);
 			const selectedProduct = products[productType];
 
-			selectedProduct.id = nanoid();
+			selectedProduct.id = id ?? nanoid();
+			if (isEdit && selectedProduct.fileName) {
+				await supabase.storage.from('Gerber Files').remove([selectedProduct.fileName]);
+			}
 			if (file) {
 				ui.setLoader({ title: l.uploadingFiles });
 				selectedProduct.fileName = `${selectedProduct.id}__${file.name}`;
@@ -52,7 +61,11 @@ export const quote = (() => {
 				if (error) return ui.setAlertModal({ title: l.uploadFileError, body: error.message });
 			}
 
-			ui.setLoader({ title: orderId ? l.addingOrder : l.savingCart });
+			ui.setLoader({ title: isEdit ? 'Updating Product Specifications' : orderId ? l.addingOrder : l.savingCart });
+			console.log({
+				orderId: orderId ?? $page.data.cart.id,
+				[productType]: selectedProduct
+			});
 			await trpc()
 				.order.upsertProduct.mutate({
 					orderId: orderId ?? $page.data.cart.id,
@@ -64,14 +77,20 @@ export const quote = (() => {
 							if (selectedProduct.fileName)
 								await supabase.storage.from('Gerber Files').remove([selectedProduct.fileName]);
 						},
-						showModal: { title: orderId ? l.addOrderError : l.saveCartError, retryFn: () => upsertProduct(orderId) }
+						showModal: {
+							title: isEdit ? 'Failed to update product' : orderId ? l.addOrderError : l.saveCartError,
+							retryFn: () => upsertProduct(orderId)
+						}
 					})
 				);
 
-			ui.setToast({ title: orderId ? l.addOrderSuccess : l.saveCartSuccess, alertClasses: 'alert-success' });
+			ui.setToast({
+				title: isEdit ? 'Product updated successfully' : orderId ? l.addOrderSuccess : l.saveCartSuccess,
+				alertClasses: 'alert-success'
+			});
 			reset();
 			await invalidateAll();
-			await goto('/order');
+			await goto(`/order?id=${orderId ?? $page.data.cart.id}`);
 		})();
 
 	return { subscribe, set, update, reset, upsertProduct };

@@ -3,7 +3,7 @@ import { userProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
 
 const productSelect = {
-	select: { id: true, name: true, fileName: true, quantity: true, buildTime: true, initialPrice: true }
+	select: { id: true, name: true, fileName: true, quantity: true, weight: true, buildTime: true, initialPrice: true }
 };
 
 export const get = userProcedure.input(z.object({ id: z.string().min(1).nullable() })).query(

@@ -40,4 +40,3 @@ export const fr = {
 		signInGoogle: 'Se Connecter avec Google'
 	}
 };
-export type Lang = typeof fr;

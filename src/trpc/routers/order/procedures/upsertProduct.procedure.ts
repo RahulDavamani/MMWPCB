@@ -22,51 +22,31 @@ export const upsertProduct = userProcedure.input(schema).mutation(
 			.update({
 				where: { id: orderId, userId: user.id },
 				data: {
-					standardPcbs: standardPcb
-						? {
-								upsert: {
-									where: { id: standardPcb?.id ?? '' },
-									create: standardPcb,
-									update: standardPcb
-								}
-							}
-						: undefined,
-					advancedPcbs: advancedPcb
-						? {
-								upsert: {
-									where: { id: advancedPcb?.id ?? '' },
-									create: advancedPcb,
-									update: advancedPcb
-								}
-							}
-						: undefined,
-					flexiblePcbs: flexiblePcb
-						? {
-								upsert: {
-									where: { id: flexiblePcb?.id ?? '' },
-									create: flexiblePcb,
-									update: flexiblePcb
-								}
-							}
-						: undefined,
-					assemblies: assembly
-						? {
-								upsert: {
-									where: { id: assembly?.id ?? '' },
-									create: assembly,
-									update: assembly
-								}
-							}
-						: undefined,
-					stencils: stencil
-						? {
-								upsert: {
-									where: { id: stencil?.id ?? '' },
-									create: stencil,
-									update: stencil
-								}
-							}
-						: undefined
+					standardPcbs: (() => {
+						if (!standardPcb) return undefined;
+						const { id, ...values } = standardPcb;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})(),
+					advancedPcbs: (() => {
+						if (!advancedPcb) return undefined;
+						const { id, ...values } = advancedPcb;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})(),
+					flexiblePcbs: (() => {
+						if (!flexiblePcb) return undefined;
+						const { id, ...values } = flexiblePcb;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})(),
+					assemblies: (() => {
+						if (!assembly) return undefined;
+						const { id, ...values } = assembly;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})(),
+					stencils: (() => {
+						if (!stencil) return undefined;
+						const { id, ...values } = stencil;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})()
 				},
 				select: { id: true }
 			})

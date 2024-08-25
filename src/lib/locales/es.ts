@@ -1,4 +1,4 @@
-export const en = {
+export const es = {
 	common: {
 		login: 'Login',
 		or: 'Or',
@@ -810,4 +810,3 @@ export const en = {
 		}
 	}
 };
-export type Lang = typeof en;

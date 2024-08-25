@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { productTypes } from '../../../stores/productTypes.store';
+	import { productTypes } from '../../../stores/product.store';
 	import { quote, type Quote } from '../../../stores/quote.store';
 
 	$: ({ productType } = $quote);
@@ -8,7 +8,7 @@
 </script>
 
 <div class="flex flex-wrap justify-around gap-8">
-	{#each $productTypes as { key, name, img }}
+	{#each Object.values($productTypes) as { key, name, img }}
 		<button
 			class="btn btn-primary flex-grow h-14 gap-4 text-base font-semibold shadow
          {productType !== key && 'btn-outline'}"

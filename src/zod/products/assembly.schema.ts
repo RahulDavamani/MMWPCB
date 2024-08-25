@@ -15,13 +15,13 @@ export const asCustomizedServices = z.enum([
 ]);
 
 export const assemblySchema = z.object({
-	id: z.string().optional(),
+	id: z.string().nullish(),
 	name: z.string().min(1),
-	fileName: z.string().min(1).optional(),
+	fileName: z.string().min(1).nullish(),
 	buildTime: z.number().gt(0),
 	weight: z.number(),
 	initialPrice: z.number(),
-	finalPrice: z.number().optional(),
+	finalPrice: z.number().nullish(),
 	flexibleOption: asFlexibleOption,
 	boardType: asBoardType,
 	side: asSide,

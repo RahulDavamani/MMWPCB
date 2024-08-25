@@ -59,6 +59,8 @@ model AdvancedPcb {
 
    orderId String
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+   productionStatuses ProductProductionStatus[]
 }
 
 enum APType {

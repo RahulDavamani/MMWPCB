@@ -29,7 +29,7 @@ enum OrderStatus {
    REJECTED
    AWAITING_PAYMENT
    CONFIRMED
-   FABRICATION
+   IN_PRODUCTION
    DELIVERY
    COMPLETED
    CANCELLED
@@ -92,7 +92,7 @@ model OrderTimeline {
 
 enum OrderAction {
    SAVE
-   SUMBIT_FOR_REVIEW
+   SUBMIT_FOR_REVIEW
    REJECT
    ACCEPT
    PAYMENT_MADE

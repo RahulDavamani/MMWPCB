@@ -40,4 +40,3 @@ export const zh = {
 		signInGoogle: '通过Google登录'
 	}
 };
-export type Lang = typeof zh;

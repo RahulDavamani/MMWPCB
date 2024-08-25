@@ -4,7 +4,7 @@ import pe from '../../../prisma/pe';
 
 export const shipping = router({
 	getCountries: procedure.query(
-		async () => await prisma.shippingCountry.findMany({ select: { id: true, name: true, _count: true } }).catch(pe)
+		async () => await prisma.shippingCountry.findMany({ include: { _count: true } }).catch(pe)
 	),
 
 	getMethods: procedure.input(z.object({ countryId: z.string().min(1) })).query(

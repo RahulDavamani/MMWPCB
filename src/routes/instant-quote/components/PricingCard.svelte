@@ -8,6 +8,7 @@
 
 	$: ({ user } = $page.data as PageData);
 	$: l = $lg.instantQuote.pricing;
+	$: isEdit = $page.url.searchParams.get('id') !== null;
 
 	$: buildTimes = [
 		{ name: '24 Hours', value: '24 Hours', price: 5 },
@@ -29,7 +30,12 @@
 	</div>
 	<div class="divider mt-0" />
 
-	<div class="font-semibold">{l.buildTime}:</div>
+	<div class="flex justify-between mr-2">
+		<div class="font-semibold">Weight</div>
+		<div class="font-mono">0.5 Kg</div>
+	</div>
+
+	<div class="font-semibold mt-4">{l.buildTime}:</div>
 	<div class="text-sm mt-2 px-2">
 		{#each buildTimes as { name, value, price }}
 			<div class="flex justify-between">
@@ -64,19 +70,33 @@
 	</div>
 
 	{#if user}
-		<div class="flex justify-between mt-6">
-			<button class="btn btn-secondary btn-outline text-base gap-4 {disabled && 'btn-disabled'}">
-				<Icon icon="mdi:bookmark-add-outline" width={22} />
-				{l.addToOrder}
-			</button>
+		{#if isEdit}
 			<button
-				class="btn btn-primary text-base gap-4 {disabled && 'btn-disabled'}"
-				on:click={() => quote.upsertProduct()}
+				class="btn btn-primary text-base gap-4 mt-6 w-full {disabled && 'btn-disabled'}"
+				on:click={() => {
+					const orderId = $page.url.searchParams.get('orderId');
+					if (!orderId) return;
+					quote.upsertProduct(orderId);
+				}}
 			>
-				<Icon icon="mdi:cart" width={22} />
-				{l.saveToCart}
+				<Icon icon="mdi:content-save" width={22} />
+				Save Product
 			</button>
-		</div>
+		{:else}
+			<div class="flex justify-between mt-6">
+				<button class="btn btn-secondary btn-outline text-base gap-4 {disabled && 'btn-disabled'}">
+					<Icon icon="mdi:bookmark-add-outline" width={22} />
+					{l.addToOrder}
+				</button>
+				<button
+					class="btn btn-primary text-base gap-4 {disabled && 'btn-disabled'}"
+					on:click={() => quote.upsertProduct()}
+				>
+					<Icon icon="mdi:cart" width={22} />
+					{l.saveToCart}
+				</button>
+			</div>
+		{/if}
 	{:else}
 		<a href="/login" class="btn btn-accent btn-outline text-base gap-4 w-full mt-6">
 			<Icon icon="mdi:login" width={22} />

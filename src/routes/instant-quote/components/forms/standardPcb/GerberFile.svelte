@@ -15,11 +15,17 @@
 		maxSize={1024 * 1024 * 20}
 		on:drop={(e) => ($quote.file = e.detail.acceptedFiles[0])}
 	>
-		{#if $quote.file}
-			{@const { name, size } = $quote.file}
+		{#if $quote.file || $quote[$quote.productType].fileName}
+			{@const name = $quote.file?.name ?? $quote[$quote.productType].fileName?.split('__')[1]}
+			{@const size = $quote.file?.size}
 			<Icon icon="mdi:file-check" width={36} class="text-success" />
 			<div>File Uploaded Successfully</div>
-			<div class="font-semibold">{name} - {(size / 1024 / 1024).toFixed(2)} MB</div>
+			<div class="font-semibold">
+				{name}
+				{#if size}
+					<span>- {(size / 1024 / 1024).toFixed(2)} MB</span>
+				{/if}
+			</div>
 		{:else}
 			<Icon icon="mdi:file-upload" width={36} />
 			<div>Drag & Drop your files here or click to upload</div>

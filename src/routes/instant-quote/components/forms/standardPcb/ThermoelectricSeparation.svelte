@@ -7,7 +7,7 @@
 	$: ({ thermoElectricSeparation } = $quote.standardPcb);
 </script>
 
-{#if thermoElectricSeparation !== undefined}
+{#if thermoElectricSeparation !== undefined && thermoElectricSeparation !== null}
 	<FormItem {l}>
 		<input
 			type="checkbox"

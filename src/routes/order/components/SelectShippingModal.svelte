@@ -3,7 +3,7 @@
 	import type { RouterOutput } from '../../../trpc/routers/app.router';
 	import { trpc } from '../../../trpc/client';
 	import { tce } from '../../../trpc/te';
-	import { onShowModal } from '$lib/client/modal';
+	import { closeModal, onShowModal } from '$lib/client/modal';
 	import Modal from '../../components/UI/Modal.svelte';
 	import IconBtn from '../../components/IconBtn.svelte';
 	import Loader from '../../components/UI/Loader.svelte';
@@ -20,13 +20,21 @@
 
 	const fetchCountries = async () => {
 		countries = undefined;
-		countries = await trpc().shipping.getCountries.query().catch(tce);
+		countries = await trpc()
+			.shipping.getCountries.query()
+			.catch((e) =>
+				tce(e, { callback: () => closeModal(modalId), showModal: { title: 'Failed to fetch shipping countries' } })
+			);
 	};
 
 	const fetchMethods = async () => {
 		if (!selectedCountryId) return;
 		methods = undefined;
-		methods = await trpc().shipping.getMethods.query({ countryId: selectedCountryId }).catch(tce);
+		methods = await trpc()
+			.shipping.getMethods.query({ countryId: selectedCountryId })
+			.catch((e) =>
+				tce(e, { callback: () => closeModal(modalId), showModal: { title: 'Failed to fetch shipping methods' } })
+			);
 	};
 	$: if (selectedCountryId) fetchMethods();
 
@@ -60,8 +68,8 @@
 			<div class="font-semibold">Select Shipping:</div>
 			<select class="select select-bordered select-sm" bind:value={selectedCountryId}>
 				<option value={undefined} disabled>Select Country</option>
-				{#each countries as { id, name }}
-					<option value={id}>{name}</option>
+				{#each countries as { id, name, _count }}
+					<option value={id}>{name} ({_count.methods})</option>
 				{/each}
 			</select>
 		</div>

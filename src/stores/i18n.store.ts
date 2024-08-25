@@ -1,72 +1,75 @@
 import { browser } from '$app/environment';
-import { en, type Lang } from '$lib/client/locales/en';
-import { es } from '$lib/client/locales/es';
-import { fr } from '$lib/client/locales/fr';
-import { zh } from '$lib/client/locales/zh';
-import { derived, writable } from 'svelte/store';
+import type { Lang } from '$lib/locales/en';
+import { writable } from 'svelte/store';
+import { trpc } from '../trpc/client';
+import { tce } from '../trpc/te';
 
-export const languages: { [k in I18N['lang']]: { id: I18N['lang']; name: string; icon: string; locale: Lang } } = {
+export interface I18N {
+	language: 'en' | 'zh' | 'fr' | 'es';
+	currency: 'usd' | 'eur';
+}
+
+export const languages: { [k in I18N['language']]: { key: I18N['language']; name: string; icon: string } } = {
 	en: {
-		id: 'en',
+		key: 'en',
 		name: 'English',
-		icon: 'openmoji:flag-united-states',
-		locale: en
+		icon: 'openmoji:flag-united-states'
 	},
 	zh: {
-		id: 'zh',
+		key: 'zh',
 		name: '中文',
-		icon: 'openmoji:flag-china',
-		locale: zh
+		icon: 'openmoji:flag-china'
 	},
 	fr: {
-		id: 'fr',
+		key: 'fr',
 		name: 'Français',
-		icon: 'openmoji:flag-france',
-		locale: fr
+		icon: 'openmoji:flag-france'
 	},
 	es: {
-		id: 'es',
+		key: 'es',
 		name: 'Español',
-		icon: 'openmoji:flag-spain',
-		locale: es
+		icon: 'openmoji:flag-spain'
 	}
 };
 
-export const currencies: { [k in I18N['currency']]: { id: I18N['currency']; name: string; icon: string } } = {
+export const currencies: { [k in I18N['currency']]: { key: I18N['currency']; name: string; icon: string } } = {
 	usd: {
-		id: 'usd',
+		key: 'usd',
 		name: 'US Dollars',
 		icon: 'mdi:dollar'
 	},
 	eur: {
-		id: 'eur',
+		key: 'eur',
 		name: 'Euros',
 		icon: 'mdi:euro'
 	}
 };
 
-export interface I18N {
-	lang: 'en' | 'zh' | 'fr' | 'es';
-	currency: 'usd' | 'eur';
-}
-
 export const i18n = (() => {
 	const { subscribe, set, update } = writable<I18N>({
-		lang: 'en',
+		language: 'en',
 		currency: 'usd'
 	});
+
+	const fetchLanguage = async (language: I18N['language']) => {
+		const l = await trpc().lang.get.query({ language }).catch(tce);
+		lg.set(l);
+	};
+
 	if (browser) {
-		const lang = (localStorage.getItem('lang') as I18N['lang']) || 'en';
+		const language = (localStorage.getItem('language') as I18N['language']) || 'en';
 		const currency = (localStorage.getItem('currency') as I18N['currency']) || 'usd';
-		localStorage.setItem('lang', lang);
+		localStorage.setItem('language', language);
 		localStorage.setItem('currency', currency);
-		set({ lang, currency });
+		set({ language, currency });
+		fetchLanguage(language);
 	}
 
 	// Methods
-	const setLang = (lang: 'en' | 'zh' | 'fr' | 'es') => {
-		update((state) => ({ ...state, lang }));
-		localStorage.setItem('lang', lang);
+	const setLanguage = async (language: 'en' | 'zh' | 'fr' | 'es') => {
+		update((state) => ({ ...state, language }));
+		localStorage.setItem('language', language);
+		await fetchLanguage(language);
 	};
 	const setCurrency = (currency: 'usd' | 'eur') => {
 		update((state) => ({ ...state, currency }));
@@ -77,9 +80,9 @@ export const i18n = (() => {
 		subscribe,
 		set,
 		update,
-		setLang,
+		setLanguage,
 		setCurrency
 	};
 })();
 
-export const lg = derived(i18n, ($i18n) => languages[$i18n.lang].locale);
+export const lg = writable<Lang>();

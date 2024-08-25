@@ -3,7 +3,7 @@
 	import Icon from '@iconify/svelte';
 	import { lg } from '../../../stores/i18n.store';
 	import type { PageData } from '../../$types';
-	import { productTypes } from '../../../stores/productTypes.store';
+	import { productTypes } from '../../../stores/product.store';
 
 	$: l = $lg.navbar.cart;
 	$: ({ cart } = $page.data as PageData);

@@ -5,13 +5,13 @@ export const stSide = z.enum(['TOP_SIDE', 'BOTTOM_SIDE', 'TOP_BOTTOM_SINGLE', 'T
 export const stExistingFiducials = z.enum(['HALF_LASERED', 'LASERED_THROUGH', 'NONE']);
 
 export const stencilSchema = z.object({
-	id: z.string().optional(),
+	id: z.string().nullish(),
 	name: z.string().min(1),
-	fileName: z.string().min(1).optional(),
+	fileName: z.string().min(1).nullish(),
 	buildTime: z.number().gt(0),
 	weight: z.number(),
 	initialPrice: z.number(),
-	finalPrice: z.number().optional(),
+	finalPrice: z.number().nullish(),
 	type: stType,
 	multiLevel: z.boolean(),
 	side: stSide,

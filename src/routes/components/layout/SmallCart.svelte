@@ -3,7 +3,7 @@
 	import Icon from '@iconify/svelte';
 	import { lg } from '../../../stores/i18n.store';
 	import type { PageData } from '../../$types';
-	import { productTypes } from '../../../stores/productTypes.store';
+	import { productTypes } from '../../../stores/product.store';
 
 	$: l = $lg.navbar.cart;
 	$: ({ cart } = $page.data as PageData);
@@ -40,7 +40,7 @@
 		{:else}
 			<div class="px-3">
 				{#each Object.entries(cartItems) as [key, items]}
-					{@const product = $productTypes.find((p) => p.keys === key)}
+					{@const product = Object.values($productTypes).find((p) => p.keys === key)}
 					{#if items.length > 0}
 						<div class="text-sm font-semibold text-secondary mb-2">{product?.name}</div>
 					{/if}

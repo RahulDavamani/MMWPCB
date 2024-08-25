@@ -26,7 +26,7 @@
 	] as { name: string; value: StandardPcb['breakAwayRail'] }[];
 </script>
 
-{#if xoutAllowance !== undefined}
+{#if xoutAllowance !== undefined && xoutAllowance !== null}
 	<FormItem l={l.xoutAllowance}>
 		<div class="flex text-sm">
 			{#each xoutAllowanceValues as { name, value }}
@@ -76,7 +76,7 @@
 	</div>
 {/if}
 
-{#if panelRequirements !== undefined}
+{#if panelRequirements !== undefined && panelRequirements !== null}
 	<FormItem l={l.panelRequirements}>
 		<textarea class="textarea textarea-bordered textarea-sm w-full" bind:value={$quote.standardPcb.panelRequirements} />
 	</FormItem>

@@ -7,10 +7,10 @@
 	import FlexiblePcbForm from './forms/flexiblePcb/FlexiblePcbForm.svelte';
 	import AssemblyForm from './forms/assembly/AssemblyForm.svelte';
 	import StencilForm from './forms/stencil/StencilForm.svelte';
-	import { productTypes } from '../../../stores/productTypes.store';
+	import { productTypes } from '../../../stores/product.store';
 
 	$: ({ productType } = $quote);
-	$: productName = $productTypes.find((p) => p.key === productType)?.name;
+	$: productName = $productTypes[productType].name;
 </script>
 
 <div class="grow border rounded-lg shadow p-4 h-fit">
