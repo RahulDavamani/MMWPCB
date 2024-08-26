@@ -2,6 +2,7 @@ import { Lucia } from 'lucia';
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
 import { ENV } from '$env/static/private';
 import { prisma } from '../../../prisma/prisma';
+import type { UserRole } from '@prisma/client';
 
 const adapter = new PrismaAdapter(prisma.session, prisma.user);
 
@@ -23,7 +24,7 @@ declare module 'lucia' {
 			email: string;
 			firstName: string;
 			lastName: string;
-			role: string;
+			role: UserRole;
 		};
 		DatabaseSessionAttributes: {
 			profilePic?: string;

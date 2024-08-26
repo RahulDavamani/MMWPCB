@@ -12,7 +12,7 @@
 	import SelectShippingModal from './SelectShippingModal.svelte';
 
 	$: ({
-		order: { id, shippingInfo }
+		order: { id, status, shippingInfo }
 	} = $page.data as PageData);
 
 	let modalId = 'selectShippingModal';
@@ -49,7 +49,7 @@
 			<Icon icon="mdi:truck-fast-outline" width={20} />
 			Shipping Info
 		</div>
-		{#if shippingInfo}
+		{#if shippingInfo && (status === 'CART' || status === 'SAVED' || status === 'REJECTED')}
 			<IconBtn icon="mdi:exchange" iconClasses="text-secondary" on:click={() => showModal(modalId)} />
 		{/if}
 	</div>

@@ -8,19 +8,32 @@
 	import { goto, invalidateAll } from '$app/navigation';
 
 	$: ({
-		order: { id: orderId, status, standardPcbs, advancedPcbs, flexiblePcbs, assemblies, stencils, shippingInfo }
+		order: {
+			id: orderId,
+			status,
+			standardPcbs,
+			advancedPcbs,
+			flexiblePcbs,
+			assemblies,
+			stencils,
+			shippingInfo,
+			deliveryAddress
+		}
 	} = $page.data as PageData);
 	$: products = { standardPcbs, advancedPcbs, flexiblePcbs, assemblies, stencils };
-
 	$: productCount = Object.values(products).reduce((acc, cur) => acc + cur.length, 0);
 
+	$: showFinalPrice = status !== 'CART' && status !== 'SAVED' && status !== 'IN_REVIEW' && status !== 'REJECTED';
+
 	$: itemsCost = Object.values(products).reduce(
-		(acc, cur) => acc + cur.reduce((acc, cur) => acc + cur.initialPrice, 0),
+		(acc, cur) =>
+			acc +
+			cur.reduce((acc, cur) => acc + (showFinalPrice ? (cur.finalPrice ?? cur.initialPrice) : cur.initialPrice), 0),
 		0
 	);
 	$: shippingCost = shippingInfo?.price ?? 0;
-	$: discount = 10;
-	$: taxes = 8.5;
+	$: discount = itemsCost * 0.1;
+	$: taxes = (itemsCost + shippingCost - discount) * 0.25;
 	$: orderTotal = itemsCost + shippingCost - discount + taxes;
 	$: estDeliveryDate = new Date().toDateString();
 	$: weight = Object.values(products).reduce((acc, cur) => acc + cur.reduce((acc, cur) => acc + cur.weight, 0), 0);
@@ -29,7 +42,22 @@
 		productCount === 0 ||
 		Object.values(products)
 			.flatMap((p) => p.flatMap((p) => p.fileName))
-			.filter(Boolean).length !== productCount;
+			.filter(Boolean).length !== productCount ||
+		!shippingInfo ||
+		!deliveryAddress;
+
+	$: submitReviewError =
+		productCount === 0
+			? 'No Products Found'
+			: !shippingInfo
+				? 'Shipping info is not provided'
+				: !deliveryAddress
+					? 'Delivery address is not provided'
+					: Object.values(products)
+								.flatMap((p) => p.flatMap((p) => p.fileName))
+								.filter(Boolean).length !== productCount
+						? 'Product files are not uploaded'
+						: undefined;
 
 	const submitReview = ui.loaderWrapper({ title: 'Submitting Order' }, async () => {
 		await trpc()
@@ -52,7 +80,7 @@
 	});
 </script>
 
-<div class="min-w-96 h-fit border rounded-lg shadow p-4">
+<div class="min-w-96 w-96 h-fit border rounded-lg shadow p-4">
 	<div class="text-lg font-bold flex items-center gap-2">
 		<Icon icon="mdi:receipt-text-outline" width={20} />
 		Order Summary
@@ -110,22 +138,23 @@
 		<div class="font-mono">{weight.toFixed(2)} kg</div>
 	</div>
 
-	<div
-		class="tooltip tooltip-error mt-8 w-full"
-		data-tip={disabled ? (productCount === 0 ? 'No Products Found' : 'Product files are not uploaded') : undefined}
-	>
-		<button class="btn btn-primary rounded-box w-full {disabled && 'btn-disabled'}" on:click={submitReview}>
-			Submit Order For Review
-		</button>
-	</div>
-	<div class="divider">OR</div>
-	<div class="tooltip tooltip-error w-full" data-tip={productCount === 0 ? 'No Products Found' : undefined}>
-		<button
-			class="btn btn-secondary btn-outline rounded-box w-full {productCount === 0 && 'btn-disabled'}"
-			on:click={saveOrder}
-		>
-			<Icon icon="mdi:content-save-outline" width={22} />
-			Save Order
-		</button>
-	</div>
+	{#if status === 'CART' || status === 'SAVED'}
+		<div class="tooltip tooltip-error mt-8 w-full" data-tip={submitReviewError}>
+			<button class="btn btn-primary rounded-box w-full {submitReviewError && 'btn-disabled'}" on:click={submitReview}>
+				Submit Order For Review
+			</button>
+		</div>
+	{/if}
+	{#if status === 'CART'}
+		<div class="divider">OR</div>
+		<div class="tooltip tooltip-error w-full" data-tip={productCount === 0 ? 'No Products Found' : undefined}>
+			<button
+				class="btn btn-secondary btn-outline rounded-box w-full {productCount === 0 && 'btn-disabled'}"
+				on:click={saveOrder}
+			>
+				<Icon icon="mdi:content-save-outline" width={22} />
+				Save Order
+			</button>
+		</div>
+	{/if}
 </div>

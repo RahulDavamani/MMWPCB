@@ -10,7 +10,7 @@
 	let modalId = 'selectAddressModal';
 
 	$: ({
-		order: { deliveryAddress }
+		order: { status, deliveryAddress }
 	} = $page.data as PageData);
 </script>
 
@@ -20,7 +20,7 @@
 			<Icon icon="mdi:address-marker-outline" width={20} />
 			Delivery Address
 		</div>
-		{#if deliveryAddress}
+		{#if deliveryAddress && (status === 'CART' || status === 'SAVED' || status === 'REJECTED')}
 			<IconBtn icon="mdi:exchange" iconClasses="text-secondary" on:click={() => showModal(modalId)} />
 		{/if}
 	</div>

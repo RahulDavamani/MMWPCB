@@ -21,7 +21,7 @@ const isUser = middleware(({ ctx, next }) => {
 });
 const isAdmin = middleware(({ ctx, next }) => {
 	if (!ctx.user) throw new TRPCError({ code: 'UNAUTHORIZED' });
-	if (ctx.user.role !== 'admin') throw new TRPCError({ code: 'FORBIDDEN' });
+	if (ctx.user.role !== 'ADMIN') throw new TRPCError({ code: 'FORBIDDEN' });
 	return next({ ctx } as { ctx: { user: User; session: Session } });
 });
 

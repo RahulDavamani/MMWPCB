@@ -62,10 +62,6 @@ export const quote = (() => {
 			}
 
 			ui.setLoader({ title: isEdit ? 'Updating Product Specifications' : orderId ? l.addingOrder : l.savingCart });
-			console.log({
-				orderId: orderId ?? $page.data.cart.id,
-				[productType]: selectedProduct
-			});
 			await trpc()
 				.order.upsertProduct.mutate({
 					orderId: orderId ?? $page.data.cart.id,

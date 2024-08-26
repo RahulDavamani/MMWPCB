@@ -6,9 +6,7 @@ export const load = async (event) => {
 	const { user } = event.locals;
 	await validateAuth('user', user);
 
-	const id = event.url.searchParams.get('id');
-
 	const trpc = await createCaller(event);
-	const order = await trpc.order.get({ id }).catch(tse);
-	return { order: { ...order, status: 'APPROVED' } };
+	const orders = await trpc.order.getAll().catch(tse);
+	return { orders };
 };
