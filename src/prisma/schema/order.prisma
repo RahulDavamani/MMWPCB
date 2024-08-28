@@ -8,14 +8,15 @@ model Order {
    userId String
    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-   deliveryAddress OrderDeliveryAddress?
-   shippingInfo    OrderShippingInfo?
-
    standardPcbs StandardPcb[]
    advancedPcbs AdvancedPcb[]
    flexiblePcbs FlexiblePcb[]
    stencils     Stencil[]
    assemblies   Assembly[]
+
+   deliveryAddress OrderDeliveryAddress?
+   shippingInfo    OrderShippingInfo?
+   paymentInfo     OrderPaymentInfo?
 
    timeline         OrderTimeline[]
    reviewMessages   OrderReviewMessage[]
@@ -34,6 +35,32 @@ enum OrderStatus {
    COMPLETED
    CANCELLED
    REFUNDED
+}
+
+model OrderTimeline {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   action  OrderAction
+   message String?
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+enum OrderAction {
+   SAVE
+   SUBMIT_REVIEW
+   CANCEL_REVIEW
+   REJECT
+   APPROVE
+   CONFIRM
+   START_PRODUCTION
+   OUT_FOR_DELIVERY
+   COMPLETE
+   CANCEL
+   REFUND
 }
 
 model OrderDeliveryAddress {
@@ -78,32 +105,6 @@ model OrderShippingInfo {
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }
 
-model OrderTimeline {
-   id        String   @id @default(nanoid())
-   createdAt DateTime @default(now())
-   updatedAt DateTime @updatedAt
-
-   action  OrderAction
-   message String?
-
-   orderId String
-   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
-}
-
-enum OrderAction {
-   SAVE
-   SUBMIT_REVIEW
-   CANCEL_REVIEW
-   REJECT
-   APPROVE
-   CONFIRM
-   START_PRODUCTION
-   OUT_FOR_DELIVERY
-   COMPLETE
-   CANCEL
-   REFUND
-}
-
 model OrderReviewMessage {
    id        String   @id @default(nanoid())
    createdAt DateTime @default(now())
@@ -115,6 +116,30 @@ model OrderReviewMessage {
    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
    orderId String
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model OrderPaymentInfo {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   transactionId        String
+   transactionCreatedAt DateTime
+   networkTransactionId String?
+   customerId           String?
+
+   type            String
+   status          String
+   amount          String
+   currencyIsoCode String
+
+   paymentInstrumentType String
+   ccType                String?
+   ppPaymentId           String?
+   ppPayerId             String?
+
+   orderId String @unique
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }
 

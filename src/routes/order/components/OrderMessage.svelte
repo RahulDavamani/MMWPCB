@@ -6,6 +6,7 @@
 	import { trpc } from '../../../trpc/client';
 	import { tce } from '../../../trpc/te';
 	import { goto, invalidateAll } from '$app/navigation';
+	import { showModal } from '$lib/client/modal';
 
 	$: ({
 		order: { id, status }
@@ -50,7 +51,17 @@
 				</div>
 			</div>
 
-			<button class="btn btn-primary rounded-box w-full mt-6">Proceed to Payment</button>
+			<button class="btn btn-primary rounded-box w-full mt-6" on:click={() => showModal('paymentModal')}>
+				Proceed to Payment
+			</button>
+		{:else if status === 'CONFIRMED'}
+			<div class="flex items-center gap-4">
+				<Icon icon="mdi:check-circle-outline" class="text-success" width={40} />
+				<div>
+					<div class="font-semibold">Payment Success!</div>
+					<div class="text-sm">Your order is confirmed and is now being processed</div>
+				</div>
+			</div>
 		{/if}
 	</div>
 {/if}

@@ -10,6 +10,7 @@
 	import Icon from '@iconify/svelte';
 	import OrderMessage from './components/OrderMessage.svelte';
 	import RemoveOrder from './components/RemoveOrder.svelte';
+	import PaymentModal from './components/PaymentModal.svelte';
 
 	$: l = $lg.order;
 	$: ({
@@ -50,3 +51,7 @@
 
 	<RemoveOrder />
 </Layout>
+
+{#if status === 'APPROVED'}
+	<PaymentModal />
+{/if}

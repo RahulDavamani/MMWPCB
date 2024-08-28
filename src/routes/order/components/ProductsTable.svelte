@@ -166,11 +166,14 @@
 									{/if}
 								</td>
 								<td class="text-center font-mono !{showFinalPrice && 'font-semibold'}">${initialPrice.toFixed(2)}</td>
-								{#if showFinalPrice}
-									{@const fp = finalPrice ?? initialPrice}
+								{#if showFinalPrice && finalPrice}
 									{@const textColor =
-										fp > initialPrice ? 'text-error' : fp < initialPrice ? 'text-success' : 'text-primary'}
-									<td class="text-center font-mono font-semibold {textColor}">${fp.toFixed(2)}</td>
+										finalPrice > initialPrice
+											? 'text-error'
+											: finalPrice < initialPrice
+												? 'text-success'
+												: 'text-primary'}
+									<td class="text-center font-mono font-semibold {textColor}">${finalPrice.toFixed(2)}</td>
 								{/if}
 								{#if editable}
 									<td>

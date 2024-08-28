@@ -10,5 +10,5 @@ export const load = async (event) => {
 
 	const trpc = await createCaller(event);
 	const order = await trpc.order.get({ id }).catch(tse);
-	return { order: { ...order, status: 'APPROVED' } };
+	return { order };
 };
