@@ -65,7 +65,7 @@ model StandardPcb {
    orderId String
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 
-   productionStatuses ProductProductionStatus[]
+   fabricationStatuses ProductFabricationStatus[]
 }
 
 enum SPBoardType {

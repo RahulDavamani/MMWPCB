@@ -1,49 +1,8 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import type { PageData } from '../$types';
 	import Icon from '@iconify/svelte';
-	import { ui } from '../../../stores/ui.store';
-	import { supabase } from '$lib/client/supabase';
-	import { trpc } from '../../../trpc/client';
-	import { tce } from '../../../trpc/te';
-	import { goto, invalidateAll } from '$app/navigation';
+	import { order } from '../../../stores/order.store';
 
-	$: ({
-		order: { id, status, standardPcbs, advancedPcbs, flexiblePcbs, assemblies, stencils }
-	} = $page.data as PageData);
-	$: products = { standardPcbs, advancedPcbs, flexiblePcbs, assemblies, stencils };
-
-	const removeOrder = ui.loaderWrapper({ title: 'Removing Order' }, async () => {
-		ui.closeAlertModal();
-		const fileNames = Object.values(products)
-			.flatMap((products) => products.map((product) => product.fileName))
-			.filter(Boolean) as string[];
-		await supabase.storage.from('Gerber Files').remove(fileNames);
-		await trpc()
-			.order.remove.mutate({ id })
-			.catch((e) => tce(e, { showModal: { title: 'Failed to remove order', retryFn: removeOrder } }));
-
-		ui.setToast({ title: 'Order removed successfully' });
-		goto('/orders');
-	});
-
-	const showRemoveOrderModal = () =>
-		ui.setAlertModal({
-			title: 'Are you sure to remove this order?',
-			body: 'This action cannot be undone.',
-			actions: [
-				{
-					name: 'Cancel',
-					classes: 'btn-warning',
-					onClick: ui.closeAlertModal
-				},
-				{
-					name: 'Remove',
-					classes: 'btn-error',
-					onClick: removeOrder
-				}
-			]
-		});
+	$: ({ status, showRemoveOrderModal } = $order);
 </script>
 
 {#if status === 'SAVED' || status === 'REJECTED'}

@@ -12,12 +12,11 @@
 	import { page } from '$app/stores';
 	import type { PageData } from '../$types';
 	import { productTypes } from '../../../stores/product.store';
+	import { order } from '../../../stores/order.store';
 
 	let modalId = 'productDetailsModal';
 
-	$: ({
-		order: { id: orderId }
-	} = $page.data as PageData);
+	$: ({ id } = $order);
 
 	export let productDetailsId: string | undefined = undefined;
 	let productDetails: RouterOutput['order']['getProduct'] | undefined;
@@ -26,7 +25,7 @@
 		if (!productDetailsId) return;
 		productDetails = undefined;
 		productDetails = await trpc()
-			.order.getProduct.query({ orderId, id: productDetailsId })
+			.order.getProduct.query({ orderId: id, id: productDetailsId })
 			.catch((e) =>
 				tce(e, { callback: () => closeModal(modalId), showModal: { title: 'Failed to fetch product details' } })
 			);
@@ -34,9 +33,9 @@
 
 	onMount(async () => onShowModal(modalId, fetchProductDetails));
 
-	const formatEntries = (productType: string, entries: [string, unknown]) => {
-		const l = $lg.instantQuote[productType as keyof Lang['instantQuote']];
-		console.log(l);
+	const formatEntries = (entries: [string, unknown]): { key?: string; value?: any } => {
+		if (!productDetails) return {};
+		const l = $lg.instantQuote[productDetails.productType as keyof Lang['instantQuote']];
 		const key = l[entries[0]]?.title;
 		const value = entries[1] ?? '-';
 
@@ -49,18 +48,13 @@
 		<Loader fixed={false} overlay={false} size={80} classes="pt-10" />
 	{:else}
 		<div class="border shadow rounded-lg grid grid-cols-4">
-			{#each Object.entries(productDetails) as [productType, products]}
-				{@const pType = Object.values($productTypes).find((p) => p.keys === productType)}
-				{#if products.length > 0}
-					{#each Object.entries(products[0]) as entries}
-						{@const { key, value } = formatEntries(pType?.key ?? '', entries)}
-						{#if key && value}
-							<div class="p-2 border font-semibold bg-primary bg-opacity-5">
-								{key}
-							</div>
-							<div class="p-2 border">{value}</div>
-						{/if}
-					{/each}
+			{#each Object.entries(productDetails.product) as entries}
+				{@const { key, value } = formatEntries(entries)}
+				{#if key && value}
+					<div class="p-2 border font-semibold bg-primary bg-opacity-5">
+						{key}
+					</div>
+					<div class="p-2 border">{value}</div>
 				{/if}
 			{/each}
 		</div>

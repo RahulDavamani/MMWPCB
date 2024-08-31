@@ -8,7 +8,6 @@
 
 	$: ({ user } = $page.data as PageData);
 	$: l = $lg.instantQuote.pricing;
-	$: isEdit = $page.url.searchParams.get('id') !== null;
 
 	$: buildTimes = [
 		{ name: '24 Hours', value: '24 Hours', price: 5 },
@@ -70,7 +69,7 @@
 	</div>
 
 	{#if user}
-		{#if isEdit}
+		{#if $quote.isEdit}
 			<button
 				class="btn btn-primary text-base gap-4 mt-6 w-full {disabled && 'btn-disabled'}"
 				on:click={() => {

@@ -1,24 +1,25 @@
-model ProductProductionStatus {
+model ProductFabricationStatus {
    id        String   @id @default(nanoid())
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   num       Int
-   status    String
-   completed Boolean
+   num         Int
+   status      String
+   completed   Boolean
+   completedAt DateTime?
 
-   standardPcbId String?      @unique
-   StandardPcb   StandardPcb? @relation(fields: [standardPcbId], references: [id])
+   standardPcbId String?
+   standardPcb   StandardPcb? @relation(fields: [standardPcbId], references: [id])
 
-   advancedPcbId String?      @unique
-   AdvancedPcb   AdvancedPcb? @relation(fields: [advancedPcbId], references: [id])
+   advancedPcbId String?
+   advancedPcb   AdvancedPcb? @relation(fields: [advancedPcbId], references: [id])
 
-   flexiblePcbId String?      @unique
-   FlexiblePcb   FlexiblePcb? @relation(fields: [flexiblePcbId], references: [id])
+   flexiblePcbId String?
+   flexiblePcb   FlexiblePcb? @relation(fields: [flexiblePcbId], references: [id])
 
-   assemblyId String?   @unique
-   Assembly   Assembly? @relation(fields: [assemblyId], references: [id])
+   assemblyId String?
+   assembly   Assembly? @relation(fields: [assemblyId], references: [id])
 
-   stencilId String?  @unique
-   Stencil   Stencil? @relation(fields: [stencilId], references: [id])
+   stencilId String?
+   stencil   Stencil? @relation(fields: [stencilId], references: [id])
 }

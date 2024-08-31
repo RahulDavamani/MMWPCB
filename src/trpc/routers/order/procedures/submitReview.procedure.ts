@@ -17,7 +17,7 @@ export const submitReview = userProcedure
 				where: { id, userId: user.id },
 				data: {
 					createdAt: status === 'CART' ? new Date() : undefined,
-					status: 'IN_REVIEW',
+					status: 'REVIEW',
 					timeline: { create: { action: 'SUBMIT_REVIEW' } }
 				}
 			})

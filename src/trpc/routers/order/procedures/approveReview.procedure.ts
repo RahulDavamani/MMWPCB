@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { adminProcedure } from '../../../server';
+import { userProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
 
 const schema = z.object({
@@ -7,7 +7,7 @@ const schema = z.object({
 	products: z.array(z.object({ id: z.string().min(1), finalPrice: z.number() }))
 });
 
-export const approveReview = adminProcedure.input(schema).mutation(async ({ input: { id, products } }) => {
+export const approveReview = userProcedure.input(schema).mutation(async ({ input: { id, products } }) => {
 	const { standardPcbs, advancedPcbs, flexiblePcbs, assemblies, stencils } = await prisma.order
 		.update({
 			where: { id },

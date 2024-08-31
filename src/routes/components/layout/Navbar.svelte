@@ -25,6 +25,9 @@
 					<img src={VelenovaLogo} alt="Velenova" width="140" />
 				</a>
 			</div>
+			<!-- <div class="text-xl font-bold font-serif text-primary">
+				MMWPCB
+			</div> -->
 			{#each navItems as { name, href }}
 				<div>
 					<a

@@ -1,17 +1,13 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import IconBtn from '../../components/IconBtn.svelte';
-	import type { PageData } from '../$types';
-	import { page } from '$app/stores';
 	import { showModal } from '$lib/client/modal';
 	import SelectAddressModal from './SelectAddressModal.svelte';
 	import Address from '../../components/Address.svelte';
+	import { order } from '../../../stores/order.store';
 
 	let modalId = 'selectAddressModal';
-
-	$: ({
-		order: { status, deliveryAddress }
-	} = $page.data as PageData);
+	$: ({ deliveryAddress, editable } = $order);
 </script>
 
 <div class="grow border rounded-lg shadow p-4 flex flex-col">
@@ -20,7 +16,7 @@
 			<Icon icon="mdi:address-marker-outline" width={20} />
 			Delivery Address
 		</div>
-		{#if deliveryAddress && (status === 'CART' || status === 'SAVED' || status === 'REJECTED')}
+		{#if deliveryAddress && editable}
 			<IconBtn icon="mdi:exchange" iconClasses="text-secondary" on:click={() => showModal(modalId)} />
 		{/if}
 	</div>

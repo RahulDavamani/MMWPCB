@@ -27,7 +27,7 @@
 	import CustomizedServices from './CustomizedServices.svelte';
 	import SpecialRequests from './SpecialRequests.svelte';
 	import Name from './Name.svelte';
-	import GerberFile from './GerberFile.svelte';
+	import GerberFile from '../../GerberFile.svelte';
 </script>
 
 <GerberFile />

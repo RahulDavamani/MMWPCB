@@ -5,21 +5,16 @@
 	import type { RouterOutput } from '../../../trpc/routers/app.router';
 	import { trpc } from '../../../trpc/client';
 	import { tce } from '../../../trpc/te';
-	import { page } from '$app/stores';
-	import type { PageData } from '../$types';
-	import { ui } from '../../../stores/ui.store';
 	import IconBtn from '../../components/IconBtn.svelte';
 	import Loader from '../../components/UI/Loader.svelte';
-	import { invalidateAll } from '$app/navigation';
 	import Address from '../../components/Address.svelte';
+	import { order } from '../../../stores/order.store';
 
 	let modalId = 'selectAddressModal';
 	let addresses: RouterOutput['address']['get'] | undefined;
 	let selectedAddressId: string | undefined;
 
-	$: ({
-		order: { id: orderId, deliveryAddress }
-	} = $page.data as PageData);
+	$: ({ deliveryAddress, selectAddress } = $order);
 
 	const fetchAddresses = async () => {
 		addresses = undefined;
@@ -34,24 +29,6 @@
 			selectedAddressId = deliveryAddress?.addressId ?? undefined;
 		})
 	);
-
-	const selectAddress = async () =>
-		ui.loaderWrapper({ title: 'Updating address' }, async () => {
-			closeModal(modalId);
-			const address = addresses?.find((a) => a.id === selectedAddressId);
-			if (!address) return;
-			const { id, ...deliveryAddress } = address;
-			await trpc()
-				.order.selectDeliveryAddress.mutate({
-					id: orderId,
-					addressId: id,
-					...deliveryAddress
-				})
-				.catch((e) => tce(e, { showModal: { title: 'Failed to select address', retryFn: selectAddress } }));
-
-			await invalidateAll();
-			ui.setToast({ title: 'Delivery address updated successfully', alertClasses: 'alert-success' });
-		})();
 </script>
 
 <Modal {modalId} boxClasses="max-w-3xl w-full">
@@ -66,7 +43,7 @@
 		<div class="flex flex-wrap gap-4 mb-2">
 			{#each addresses as address}
 				<button
-					class="btn btn-ghost border border-black border-opacity-10 shadow flex flex-col flex-nowrap items-start h-fit py-2 font-normal
+					class="btn btn-ghost border border-black border-opacity-10 shadow flex flex-col flex-nowrap items-start h-fit py-3 font-normal
                {selectedAddressId === address.id ? 'outline outline-success' : ''}"
 					on:click={() => (selectedAddressId = address.id)}
 				>
@@ -78,7 +55,13 @@
 		</div>
 
 		<div class="flex justify-end mt-4">
-			<button class="btn btn-success {!selectedAddressId && 'btn-disabled'}" on:click={selectAddress}>
+			<button
+				class="btn btn-success {!selectedAddressId && 'btn-disabled'}"
+				on:click={() => {
+					const address = addresses?.find((a) => a.id === selectedAddressId);
+					if (address) selectAddress(address);
+				}}
+			>
 				Select Address
 			</button>
 		</div>

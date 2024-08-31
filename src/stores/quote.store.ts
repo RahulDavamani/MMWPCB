@@ -14,12 +14,15 @@ import { lg } from './i18n.store';
 import { goto, invalidateAll } from '$app/navigation';
 import { supabase } from '$lib/client/supabase';
 import { nanoid } from 'nanoid';
+import type { PageData } from '../routes/instant-quote/edit/$types';
 
 export type ProductType = 'standardPcb' | 'advancedPcb' | 'flexiblePcb' | 'assembly' | 'stencil';
 
 export interface Quote {
+	init: boolean;
+	isEdit: boolean;
 	productType: ProductType;
-	file?: File;
+	files: { [k in ProductType]?: File };
 	standardPcb: StandardPcb;
 	advancedPcb: AdvancedPcb;
 	flexiblePcb: FlexiblePcb;
@@ -29,17 +32,41 @@ export interface Quote {
 
 export const quote = (() => {
 	const { subscribe, set, update } = writable<Quote>({
+		init: false,
+		isEdit: false,
 		productType: 'standardPcb',
+		files: {},
 		...cloneDeep(defaultProducts)
 	});
 
 	const reset = () =>
 		update((state) => ({
 			...state,
-			productType: 'standardPcb',
-			file: undefined,
+			files: {},
 			...cloneDeep(defaultProducts)
 		}));
+
+	const init = async () => {
+		const { product, productType } = get(page).data as PageData;
+		if (!product) {
+			set({
+				init: true,
+				isEdit: false,
+				productType: 'standardPcb',
+				files: {},
+				...cloneDeep(defaultProducts)
+			});
+		} else {
+			set({
+				init: true,
+				isEdit: true,
+				productType: productType as ProductType,
+				files: {},
+				...cloneDeep(defaultProducts),
+				[productType as ProductType]: product
+			});
+		}
+	};
 
 	const upsertProduct = (orderId?: string) =>
 		ui.loaderWrapper({}, async () => {
@@ -47,8 +74,9 @@ export const quote = (() => {
 			const $page = get(page);
 			const isEdit = $page.url.searchParams.get('id') !== null;
 			const id = $page.url.searchParams.get('id');
-			const { productType, file, ...products } = get(quote);
+			const { productType, files, ...products } = get(quote);
 			const selectedProduct = products[productType];
+			const file = files[productType];
 
 			selectedProduct.id = id ?? nanoid();
 			if (isEdit && selectedProduct.fileName) {
@@ -89,7 +117,7 @@ export const quote = (() => {
 			await goto(`/order?id=${orderId ?? $page.data.cart.id}`);
 		})();
 
-	return { subscribe, set, update, reset, upsertProduct };
+	return { subscribe, set, update, reset, init, upsertProduct };
 })();
 
 export const quoteError = derived(quote, ({ standardPcb, assembly, stencil }) => ({

@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 	import Icon from '@iconify/svelte';
+	import { lg } from '../../stores/i18n.store';
 
 	$: ({ orders } = $page.data as PageData);
 </script>
@@ -31,7 +32,7 @@
 						<tr>
 							<td>{id.toUpperCase()}</td>
 							<td>{createdAt.toLocaleString()}</td>
-							<td>{status}</td>
+							<td>{$lg.orderStatus[status]}</td>
 							<td class="text-center">{productCount}</td>
 							<td class="text-right">
 								<a href="/order?id={id}" class="btn btn-primary btn-sm btn-link">

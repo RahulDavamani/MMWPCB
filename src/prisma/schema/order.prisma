@@ -3,6 +3,8 @@ model Order {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
+   completedAt DateTime?
+
    status OrderStatus
 
    userId String
@@ -26,11 +28,11 @@ model Order {
 enum OrderStatus {
    CART
    SAVED
-   IN_REVIEW
+   REVIEW
    REJECTED
    APPROVED
    CONFIRMED
-   IN_PRODUCTION
+   FABRICATION
    DELIVERY
    COMPLETED
    CANCELLED
@@ -148,8 +150,10 @@ model OrderDeliveryStatus {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   status    String
-   completed Boolean
+   num         Int
+   status      String
+   completed   Boolean
+   completedAt DateTime?
 
    orderId String
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)

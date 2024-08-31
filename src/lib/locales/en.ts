@@ -145,6 +145,22 @@ export const en = {
 		stencil: 'SMD-Stencil'
 	},
 
+	orderStatus: {
+		CREATED: 'Order Created',
+		CART: 'Cart',
+		SAVED: 'Saved as Draft',
+		REVIEW: 'In Review',
+		REJECTED: 'Review Rejected',
+		APPROVED: 'Review Approved',
+		PAYMENT: 'Payment',
+		CONFIRMED: 'Order Confirmed',
+		FABRICATION: 'In Fabrication',
+		DELIVERY: 'Shipping & Delivery',
+		COMPLETED: 'Order Completed',
+		CANCELLED: 'Order Cancelled',
+		REFUNDED: 'Refunded'
+	},
+
 	instantQuote: {
 		pageTitle: 'Instant Quote',
 		specification: 'Specifications',

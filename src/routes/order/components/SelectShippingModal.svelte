@@ -11,7 +11,7 @@
 	let modalId = 'selectShippingModal';
 
 	export let selectedShipping: { countryId: string | null; methodId: string | null } | null;
-	export let selectShipping: (shippingMethod: RouterOutput['shipping']['getMethods'][number] | undefined) => void;
+	export let selectShipping: (shippingMethod: RouterOutput['shipping']['getMethods'][number]) => void;
 
 	let countries: RouterOutput['shipping']['getCountries'] | undefined;
 	let selectedCountryId: string | undefined;
@@ -110,7 +110,10 @@
 				<div class="flex justify-end mt-6">
 					<button
 						class="btn btn-success {!selectedMethodId && 'btn-disabled'}"
-						on:click={() => selectShipping(methods?.find((m) => m.id === selectedMethodId))}
+						on:click={() => {
+							const method = methods?.find((m) => m.id === selectedMethodId);
+							if (method) selectShipping(method);
+						}}
 					>
 						Select Method
 					</button>

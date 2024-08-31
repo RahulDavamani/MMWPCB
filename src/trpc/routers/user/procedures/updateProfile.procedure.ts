@@ -3,9 +3,9 @@ import { userProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
 
 const schema = z.object({
-	firstName: z.string().min(1).optional(),
-	lastName: z.string().min(1).optional(),
-	phone: z.string().optional(),
+	firstName: z.string().min(1),
+	lastName: z.string().min(1),
+	phone: z.string(),
 	profilePic: z.string().nullish()
 });
 

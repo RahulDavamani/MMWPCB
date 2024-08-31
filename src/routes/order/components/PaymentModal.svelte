@@ -7,11 +7,10 @@
 	import { tce } from '../../../trpc/te';
 	import { showModal, closeModal } from '$lib/client/modal';
 	import Loader from '../../components/UI/Loader.svelte';
-	import { page } from '$app/stores';
 	import type { RouterOutput } from '../../../trpc/routers/app.router';
 	import Icon from '@iconify/svelte';
 	import { invalidateAll } from '$app/navigation';
-	import type { PageData } from '../$types';
+	import { order } from '../../../stores/order.store';
 
 	let modalId = 'paymentModal';
 
@@ -19,19 +18,7 @@
 	let instance: Dropin | undefined;
 	let paymentDetails: RouterOutput['payment']['createTransaction'] | undefined;
 
-	$: ({
-		order: { standardPcbs, advancedPcbs, flexiblePcbs, assemblies, stencils, shippingInfo }
-	} = $page.data as PageData);
-	$: products = { standardPcbs, advancedPcbs, flexiblePcbs, assemblies, stencils };
-
-	$: itemsCost = Object.values(products).reduce(
-		(acc, cur) => acc + cur.reduce((acc, cur) => acc + (cur.finalPrice ?? 0), 0),
-		0
-	);
-	$: shippingCost = shippingInfo?.price ?? 0;
-	$: discount = itemsCost * 0.1;
-	$: taxes = (itemsCost + shippingCost - discount) * 0.25;
-	$: orderTotal = itemsCost + shippingCost - discount + taxes;
+	$: ({ id, orderTotal } = $order);
 
 	const close = async () => {
 		isLoading = true;
@@ -67,7 +54,7 @@
 		try {
 			const { nonce } = await instance.requestPaymentMethod();
 			paymentDetails = await trpc()
-				.payment.createTransaction.mutate({ orderId: $page.data.order.id, nonce })
+				.payment.createTransaction.mutate({ orderId: id, nonce })
 				.catch((e) =>
 					tce(e, {
 						callback: close,
@@ -106,15 +93,15 @@
 			<div class="space-y-2 px-2">
 				<div class="flex justify-between">
 					<div>Transaction ID</div>
-					<div class="font-semibold font-mono">{paymentDetails.transactionId.toUpperCase()}</div>
+					<div class="font-semibold">{paymentDetails.transactionId.toUpperCase()}</div>
 				</div>
 				<div class="flex justify-between">
 					<div>Payment Time</div>
-					<div class="font-semibold font-mono">{new Date(paymentDetails.createdAt).toLocaleString()}</div>
+					<div class="font-semibold">{new Date(paymentDetails.createdAt).toLocaleString()}</div>
 				</div>
 				<div class="flex justify-between">
 					<div>Payment Method</div>
-					<div class="font-semibold font-mono">
+					<div class="font-semibold">
 						{paymentDetails.paymentInstrumentType.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
 					</div>
 				</div>

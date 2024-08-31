@@ -5,17 +5,19 @@
 	import OrderSummary from './components/OrderSummary.svelte';
 	import DeliveryAddress from './components/DeliveryAddress.svelte';
 	import ShippingInfo from './components/ShippingInfo.svelte';
-	import { page } from '$app/stores';
-	import type { PageData } from './$types';
 	import Icon from '@iconify/svelte';
 	import OrderMessage from './components/OrderMessage.svelte';
 	import RemoveOrder from './components/RemoveOrder.svelte';
 	import PaymentModal from './components/PaymentModal.svelte';
+	import { order } from '../../stores/order.store';
+	import ReviewMessages from './components/ReviewMessages.svelte';
+	import PaymentDetails from './components/PaymentDetails.svelte';
+	import FabricationProgressModal from './components/FabricationProgressModal.svelte';
+	import OrderStatus from './components/OrderStatus.svelte';
+	import DeliveryProgressModal from './components/DeliveryProgressModal.svelte';
 
 	$: l = $lg.order;
-	$: ({
-		order: { id, createdAt, status }
-	} = $page.data as PageData);
+	$: ({ id, createdAt, status, showFabrication } = $order);
 </script>
 
 <Layout pageTitle={l.pageTitle}>
@@ -23,15 +25,19 @@
 		<Icon icon="mdi:arrow-left" />
 		All Orders
 	</a>
+
 	{#if status === 'CART'}
 		<div class="text-xl font-bold">My Cart</div>
 	{:else}
-		<div>
-			<div class="font-bold">
-				<span class="text-xl">Order ID:</span>
-				<span class="text-lg font-mono">{id.toUpperCase()}</span>
+		<div class="flex justify-between items-center">
+			<div>
+				<div class="font-bold">
+					<span class="text-xl">Order ID:</span>
+					<span class="text-lg font-mono">{id.toUpperCase()}</span>
+				</div>
+				<div class="text-sm">{createdAt.toLocaleString()}</div>
 			</div>
-			<div class="text-sm">{createdAt.toLocaleString()}</div>
+			<OrderStatus />
 		</div>
 	{/if}
 
@@ -42,10 +48,13 @@
 				<DeliveryAddress />
 			</div>
 			<ProductsTable />
+			<ReviewMessages />
 		</div>
+
 		<div class="space-y-8">
-			<OrderSummary />
 			<OrderMessage />
+			<OrderSummary />
+			<PaymentDetails />
 		</div>
 	</div>
 
@@ -55,3 +64,9 @@
 {#if status === 'APPROVED'}
 	<PaymentModal />
 {/if}
+
+{#if showFabrication}
+	<FabricationProgressModal />
+{/if}
+
+<DeliveryProgressModal />

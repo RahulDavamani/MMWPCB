@@ -1,31 +1,14 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import Icon from '@iconify/svelte';
-	import type { PageData } from '../$types';
-	import { ui } from '../../../stores/ui.store';
-	import { trpc } from '../../../trpc/client';
-	import { tce } from '../../../trpc/te';
-	import { goto, invalidateAll } from '$app/navigation';
 	import { showModal } from '$lib/client/modal';
+	import { order } from '../../../stores/order.store';
 
-	$: ({
-		order: { id, status }
-	} = $page.data as PageData);
-
-	const cancelReview = ui.loaderWrapper({ title: 'Cancelling Review' }, async () => {
-		await trpc()
-			.order.cancelReview.mutate({ id })
-			.catch((e) => tce(e, { showModal: { title: 'Failed to cancel review', retryFn: cancelReview } }));
-
-		ui.setToast({ title: 'Order review cancelled', alertClasses: 'alert-success' });
-		await invalidateAll();
-		goto(`/order?id=${id}`);
-	});
+	$: ({ status, cancelReview } = $order);
 </script>
 
 {#if status !== 'CART' && status !== 'SAVED'}
 	<div class="min-w-96 w-96 h-fit border rounded-lg shadow p-4">
-		{#if status === 'IN_REVIEW'}
+		{#if status === 'REVIEW'}
 			<div class="flex items-center gap-4">
 				<Icon icon="mdi:access-time" class="text-warning" width={40} />
 				<div class="font-semibold">Your order has been submitted for review</div>
@@ -60,6 +43,34 @@
 				<div>
 					<div class="font-semibold">Payment Success!</div>
 					<div class="text-sm">Your order is confirmed and is now being processed</div>
+				</div>
+			</div>
+		{:else if status === 'FABRICATION'}
+			<div class="flex items-center gap-4">
+				<Icon icon="mdi:manufacturing" class="text-warning" width={40} />
+				<div>
+					<div class="font-semibold">Fabrication in progress</div>
+					<div class="text-sm">Check the progress status of each product</div>
+				</div>
+			</div>
+		{:else if status === 'DELIVERY'}
+			<div class="flex items-center gap-4">
+				<Icon icon="mdi:truck-delivery" class="text-accent w-fit" width={40} />
+				<div>
+					<div class="font-semibold">Delivery in progress</div>
+					<div class="text-sm">Your order is on the way</div>
+					<button
+						class="btn btn-xs btn-link text-sm px-0 !underline"
+						on:click={() => showModal('deliveryProgressModal')}>Track Delivery</button
+					>
+				</div>
+			</div>
+		{:else if status === 'COMPLETED'}
+			<div class="flex items-center gap-4">
+				<Icon icon="mdi:shopping" class="text-success" width={40} />
+				<div>
+					<div class="font-semibold">Order Completed</div>
+					<div class="text-sm">Thank you for shopping with us</div>
 				</div>
 			</div>
 		{/if}

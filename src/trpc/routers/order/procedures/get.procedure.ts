@@ -11,7 +11,11 @@ const productSelect = {
 		weight: true,
 		buildTime: true,
 		initialPrice: true,
-		finalPrice: true
+		finalPrice: true,
+		fabricationStatuses: {
+			select: { status: true, completed: true, completedAt: true },
+			orderBy: { num: 'asc' as 'asc' | 'desc' }
+		}
 	}
 };
 
@@ -21,15 +25,19 @@ export const get = userProcedure.input(z.object({ id: z.string().min(1).nullable
 			.findFirstOrThrow({
 				where: id ? { id, userId: user.id } : { status: 'CART', userId: user.id },
 				include: {
-					deliveryAddress: true,
-					shippingInfo: true,
 					standardPcbs: productSelect,
 					advancedPcbs: productSelect,
 					flexiblePcbs: productSelect,
 					assemblies: productSelect,
 					stencils: productSelect,
 					timeline: true,
-					reviewMessages: { include: { user: { select: { role: true } } } },
+					deliveryAddress: true,
+					shippingInfo: true,
+					reviewMessages: {
+						include: { user: { select: { role: true } } },
+						orderBy: { createdAt: 'asc' }
+					},
+					paymentInfo: true,
 					deliveryStatuses: true
 				}
 			})
