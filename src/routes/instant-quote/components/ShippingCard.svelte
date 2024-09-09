@@ -6,7 +6,7 @@
 	import SelectShippingModal from '../../order/components/SelectShippingModal.svelte';
 	import IconBtn from '../../components/IconBtn.svelte';
 
-	$: l = $lg.instantQuote.shipping;
+	$: l = $lg.shipping;
 
 	let modalId = 'selectShippingModal';
 	let shippingMethod: RouterOutput['shipping']['getMethods'][number] | undefined;
@@ -16,7 +16,7 @@
 	<div class="flex justify-between items-center mb-2">
 		<div class="text-lg font-bold flex items-center gap-2">
 			<Icon icon="mdi:truck-fast-outline" width={20} />
-			{l.title}
+			{l.shippingEstimate}
 		</div>
 		{#if shippingMethod}
 			<IconBtn icon="mdi:exchange" iconClasses="text-secondary" on:click={() => showModal(modalId)} />
@@ -26,7 +26,7 @@
 
 	{#if !shippingMethod}
 		<button class="btn btn-primary btn-outline border-dashed my-3 w-full" on:click={() => showModal(modalId)}>
-			{l.selectShipping}
+			{l.selectShippingMethod}
 		</button>
 	{:else}
 		{@const { country, name, deliveryTime, restriction, price } = shippingMethod}

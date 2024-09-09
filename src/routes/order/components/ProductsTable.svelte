@@ -7,6 +7,9 @@
 	import { order } from '../../../stores/order.store';
 	import { timeToText } from '$lib/DateTime';
 	import FabricationProgressModal from './FabricationProgressModal.svelte';
+	import { lg } from '../../../stores/i18n.store';
+
+	$: l = $lg.order.productsTable;
 
 	$: ({ id: orderId, status, editable, showFinalPrice, showFabrication, products, showRemoveProductModal } = $order);
 
@@ -18,19 +21,19 @@
 	<div class="flex justify-between items-center mb-2">
 		<div class="text-lg font-bold flex items-center gap-2">
 			<Icon icon="ph:circuitry" width={20} />
-			Products ({products.length})
+			{l.products} ({products.length})
 		</div>
 		{#if editable}
 			<a href="/instant-quote" class="btn btn-success btn-outline btn-sm">
 				<Icon icon="mdi:add" />
-				Add Product
+				{l.addProduct}
 			</a>
 		{/if}
 	</div>
 
 	{#if products.length === 0}
 		<div>
-			<div class="text-center font-semibold my-10">No Product Found</div>
+			<div class="text-center font-semibold my-10">{l.noProductFound}</div>
 		</div>
 	{:else}
 		<div class="overflow-x-auto max-h-[30rem]">
@@ -38,13 +41,13 @@
 				<thead>
 					<tr>
 						<!-- <th></th> -->
-						<th class="min-w-48">Product</th>
-						<th class="text-center">Build Time</th>
-						<th class="text-center">Quantity</th>
-						<th class="text-center">Gerber File</th>
-						<th class="text-center">Quote Price</th>
+						<th class="min-w-48">{l.product}</th>
+						<th class="text-center">{l.buildTime}</th>
+						<th class="text-center">{l.quantity}</th>
+						<th class="text-center">{l.gerberFile}</th>
+						<th class="text-center">{l.quotePrice}</th>
 						{#if showFinalPrice}
-							<th class="text-center">Final Price</th>
+							<th class="text-center">{l.finalPrice}</th>
 						{/if}
 						{#if editable}
 							<th>
@@ -52,7 +55,7 @@
 							</th>
 						{/if}
 						{#if showFabrication}
-							<th class="text-center min-w-32">Fabrication</th>
+							<th class="text-center min-w-32">{l.fabrication.title}</th>
 						{/if}
 					</tr>
 				</thead>
@@ -84,14 +87,16 @@
 											showModal('productDetailsModal');
 										}}
 									>
-										Details
+										{l.details}
 									</button>
 									{#if editable}
 										<div class="divider divider-horizontal" />
 										<a
 											href="/instant-quote/edit?orderId={orderId}&id={id}"
-											class="btn btn-xs btn-link text-sm px-0 text-warning">Edit</a
+											class="btn btn-xs btn-link text-sm px-0 text-warning"
 										>
+											{l.edit}
+										</a>
 									{/if}
 								</div>
 							</td>
@@ -111,7 +116,7 @@
 										</a>
 									{/await}
 								{:else}
-									<div class="text-error">Not Uploaded</div>
+									<div class="text-error">{l.notUploaded}</div>
 								{/if}
 							</td>
 							<td class="text-center font-mono !{showFinalPrice && 'font-semibold'}">${initialPrice.toFixed(2)}</td>
@@ -147,7 +152,7 @@
 												showModal('fabricationProgressModal');
 											}}
 										>
-											View Progress
+											{l.viewProgress}
 										</button>
 									</div>
 								</td>

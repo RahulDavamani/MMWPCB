@@ -5,6 +5,9 @@
 	import SelectAddressModal from './SelectAddressModal.svelte';
 	import Address from '../../components/Address.svelte';
 	import { order } from '../../../stores/order.store';
+	import { lg } from '../../../stores/i18n.store';
+
+	$: l = $lg.order.deliveryAddress;
 
 	let modalId = 'selectAddressModal';
 	$: ({ deliveryAddress, editable } = $order);
@@ -14,7 +17,7 @@
 	<div class="flex justify-between items-center mb-2">
 		<div class="text-lg font-bold flex items-center gap-2">
 			<Icon icon="mdi:address-marker-outline" width={20} />
-			Delivery Address
+			{l.title}
 		</div>
 		{#if deliveryAddress && editable}
 			<IconBtn icon="mdi:exchange" iconClasses="text-secondary" on:click={() => showModal(modalId)} />
@@ -28,7 +31,7 @@
 				class="btn btn-link border-primary border-dashed hover:border-primary hover:border-dashed hover:no-underline h-32"
 				on:click={() => showModal(modalId)}
 			>
-				Select Delivery Address
+				{l.selectAddress}
 			</button>
 		{:else}
 			<div class="px-2">

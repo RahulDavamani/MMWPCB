@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { lg } from '../../../stores/i18n.store';
 	import { order } from '../../../stores/order.store';
 	import Modal from '../../components/UI/Modal.svelte';
+
+	$: l = $lg.order.productsTable.fabrication;
 
 	let modalId = 'fabricationProgressModal';
 	export let fabricationProgressId: string | undefined = undefined;
@@ -8,13 +11,13 @@
 	$: product = products.find((p) => p.id === fabricationProgressId);
 </script>
 
-<Modal {modalId} title="Fabrication Progress" boxClasses="max-w-sm w-full" dividerClasses="mb-2">
+<Modal {modalId} title={l.fabricationProgress} boxClasses="max-w-sm w-full" dividerClasses="mb-2">
 	{#if product}
 		{#if product.fabricationStatuses.length === 0}
 			{#if status === 'FABRICATION'}
-				<div class="text-center">Fabrication not yet started</div>
+				<div class="text-center">{l.notStarted}</div>
 			{:else}
-				<div class="text-center">Fabrication Completed</div>
+				<div class="text-center">{l.completed}</div>
 			{/if}
 		{:else}
 			<ul class="steps steps-vertical">

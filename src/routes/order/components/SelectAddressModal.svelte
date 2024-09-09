@@ -9,6 +9,9 @@
 	import Loader from '../../components/UI/Loader.svelte';
 	import Address from '../../components/Address.svelte';
 	import { order } from '../../../stores/order.store';
+	import { lg } from '../../../stores/i18n.store';
+
+	$: l = $lg.order.deliveryAddress;
 
 	let modalId = 'selectAddressModal';
 	let addresses: RouterOutput['address']['get'] | undefined;
@@ -20,7 +23,7 @@
 		addresses = undefined;
 		addresses = await trpc()
 			.address.get.query()
-			.catch((e) => tce(e, { callback: () => closeModal(modalId), showModal: { title: 'Failed to get addresses' } }));
+			.catch((e) => tce(e, { callback: () => closeModal(modalId), showModal: { title: l.failedToGetAddress } }));
 	};
 
 	onMount(() =>
@@ -34,7 +37,7 @@
 <Modal {modalId} boxClasses="max-w-3xl w-full">
 	<div slot="title" class="flex items-center gap-2">
 		<IconBtn icon="mdi:refresh" iconClasses="text-accent" width={18} on:click={fetchAddresses} />
-		<div class="text-xl font-bold">Select Delivery Address</div>
+		<div class="text-xl font-bold">{l.selectAddress}</div>
 	</div>
 
 	{#if !addresses}
@@ -50,7 +53,7 @@
 					<Address {address} />
 				</button>
 			{:else}
-				<div class="text-center w-full my-4">No Address Found</div>
+				<div class="text-center w-full my-4">{l.noAddressFound}</div>
 			{/each}
 		</div>
 
@@ -62,7 +65,7 @@
 					if (address) selectAddress(address);
 				}}
 			>
-				Select Address
+				{$lg.common.select}
 			</button>
 		</div>
 	{/if}

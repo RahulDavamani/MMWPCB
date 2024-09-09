@@ -29,14 +29,14 @@
 	<div tabindex={0} class="dropdown-content mt-4 z-[50] bg-base-100 border shadow rounded-box w-96 p-4">
 		<div class="flex justify-between px-2 mb-4">
 			<div class="text-lg font-bold">{l.myCart} ({cartCount})</div>
-			<a href="/order" class="btn btn-primary btn-outline btn-sm">{l.viewCart}</a>
+			<a href="/order" class="btn btn-primary btn-outline btn-sm">{l.proceedToCheckout}</a>
 		</div>
 
 		{#if !cartItems}
-			<a href="/login" class="btn btn-link w-full text-base">Login to view your cart</a>
+			<a href="/login" class="btn btn-link w-full text-base">{l.loginViewCart}</a>
 		{:else if cartCount === 0}
-			<div class="text-center text-base mt-6">Your cart is empty</div>
-			<a href="/instant-quote" class="btn btn-link btn-sm text-base w-full">Order Now</a>
+			<div class="text-center text-base mt-6">{l.cartEmpty}</div>
+			<a href="/instant-quote" class="btn btn-link btn-sm text-base w-full">{l.orderNow}</a>
 		{:else}
 			<div class="px-3">
 				{#each Object.entries(cartItems) as [key, items]}

@@ -17,6 +17,8 @@ export const en = {
 			matteGreen: 'Matte Green'
 		},
 		typeHere: 'Type here...',
+		select: 'Select',
+		warning: 'Warning',
 		error: 'Error',
 		retry: 'Retry',
 		moreDetails: 'More Details',
@@ -25,6 +27,7 @@ export const en = {
 		edit: 'Edit',
 		save: 'Save',
 		cancel: 'Cancel',
+		close: 'Close',
 		remove: 'Remove',
 		reset: 'Reset',
 		upload: 'Upload'
@@ -54,10 +57,9 @@ export const en = {
 			myCart: 'My Cart',
 			viewCart: 'View Cart',
 			proceedToCheckout: 'Proceed to Checkout',
-			name: 'Name',
-			buildTime: 'Build Time',
-			quantity: 'Quantity',
-			price: 'Price',
+			loginViewCart: 'Login to view your cart',
+			cartEmpty: 'Your cart is empty',
+			orderNow: 'Order Now',
 			subTotal: 'Sub-Total'
 		},
 		user: {
@@ -129,10 +131,6 @@ export const en = {
 		}
 	},
 
-	order: {
-		pageTitle: 'Order'
-	},
-
 	home: {
 		pageTitle: 'Home'
 	},
@@ -145,22 +143,6 @@ export const en = {
 		stencil: 'SMD-Stencil'
 	},
 
-	orderStatus: {
-		CREATED: 'Order Created',
-		CART: 'Cart',
-		SAVED: 'Saved as Draft',
-		REVIEW: 'In Review',
-		REJECTED: 'Review Rejected',
-		APPROVED: 'Review Approved',
-		PAYMENT: 'Payment',
-		CONFIRMED: 'Order Confirmed',
-		FABRICATION: 'In Fabrication',
-		DELIVERY: 'Shipping & Delivery',
-		COMPLETED: 'Order Completed',
-		CANCELLED: 'Order Cancelled',
-		REFUNDED: 'Refunded'
-	},
-
 	instantQuote: {
 		pageTitle: 'Instant Quote',
 		specification: 'Specifications',
@@ -169,35 +151,25 @@ export const en = {
 			uploadingFiles: 'Uploading Files',
 			savingCart: 'Saving to Cart',
 			addingOrder: 'Adding to Order',
+			updatingProduct: 'Updating Product Specifications',
 			uploadFileError: 'Failed to upload file',
 			saveCartError: 'Failed to save to cart',
 			addOrderError: 'Failed to add to order',
+			updateProductError: 'Failed to update product',
 			saveCartSuccess: 'Product saved to cart',
-			addOrderSuccess: 'Product added to order'
+			addOrderSuccess: 'Product added to order',
+			updateProductSuccess: 'Product updated successfully'
 		},
 
 		pricing: {
 			title: 'Pricing and Build Time',
+			weight: 'Weight',
 			buildTime: 'Build Time',
 			chargeDetails: 'Charge Details',
 			total: 'Total',
+			saveProduct: 'Save Product',
 			saveToCart: 'Save to Cart',
 			addToOrder: 'Add to Order'
-		},
-
-		shipping: {
-			title: 'Shipping Estimate',
-			selectShipping: 'Select Shipping Method',
-			shippingTo: 'Shipping to',
-			selectCountry: 'Select Country',
-			shippingMethod: 'Shipping Method',
-			price: 'Price',
-			deliveryTime: 'Delivery Time',
-			restriction: 'Restriction',
-			country: 'Country',
-			method: 'Method',
-			weight: 'Weight',
-			shippingCost: 'Shipping Cost'
 		},
 
 		standardPcb: {
@@ -848,6 +820,216 @@ export const en = {
 			title: 'Gerber File',
 			description: 'Please upload the Gerber file for your PCB (only accepts .zip, .rar)'
 		}
+	},
+
+	shipping: {
+		shippingEstimate: 'Shipping Estimate',
+		shippingInfo: 'Shipping Info',
+		selectShippingMethod: 'Select Shipping Method',
+		shippingTo: 'Shipping to',
+		selectCountry: 'Select Country',
+		shippingMethod: 'Shipping Method',
+		price: 'Price',
+		deliveryTime: 'Delivery Time',
+		restriction: 'Restriction',
+		country: 'Country',
+		method: 'Method',
+		weight: 'Weight',
+		shippingCost: 'Shipping Cost',
+		updatingShipping: 'Updating Shipping Method',
+		updateShippingError: 'Failed to update shipping info',
+		updateShippingSuccess: 'Shipping info updated successfully'
+	},
+
+	orders: {
+		pageTitle: 'My Orders',
+		viewCart: 'View Cart',
+		orderId: 'Order ID',
+		createdDate: 'Created Date',
+		status: 'Status',
+		itemsCount: 'Items Count',
+		viewDetails: 'View Details'
+	},
+
+	order: {
+		pageTitle: 'Order',
+		allOrders: 'All Orders',
+		myCart: 'My Cart',
+		orderId: 'Order ID',
+
+		submitReview: {
+			noProducts: 'No products in the cart',
+			shippingError: 'Shipping info is not provided',
+			deliveryError: 'Delivery address is not provided',
+			filesNotUploaded: 'Product files are not uploaded',
+			submittingOrder: 'Submitting Order',
+			submitOrderError: 'Failed to submit order',
+			submitOrderSuccess: 'Order submitted successfully'
+		},
+
+		saveOrder: {
+			savingOrder: 'Saving Order',
+			saveOrderError: 'Failed to save order',
+			saveOrderSuccess: 'Order saved successfully'
+		},
+
+		cancelReview: {
+			cancellingReview: 'Cancelling Review',
+			cancelReviewError: 'Failed to cancel review',
+			cancelReviewSuccess: 'Review cancelled successfully'
+		},
+
+		orderMessage: {
+			review: {
+				title: 'Your order has been submitted for review',
+				button: 'Cancel Review'
+			},
+			rejected: {
+				title: 'Your order review has been rejected',
+				description: 'Check the review messages for more detail',
+				button: 'Submit Again For Review'
+			},
+			approved: {
+				title: 'Your order review has been approved',
+				description: 'Check the updated prices and proceed with payment',
+				button: 'Proceed to Payment'
+			},
+			confirmed: {
+				title: 'Payment Success!',
+				description: 'Your order is confirmed and is now being processed'
+			},
+			fabrication: {
+				title: 'Fabrication in progress',
+				description: 'Check the progress status of each product'
+			},
+			delivery: {
+				title: 'Delivery in progress',
+				description: 'Your order is on the way',
+				button: 'Track Delivery'
+			},
+			completed: {
+				title: 'Order Completed!',
+				description: 'Thank you for shopping with us'
+			}
+		},
+
+		deliveryAddress: {
+			title: 'Delivery Address',
+			selectAddress: 'Select Delivery Address',
+			noAddressFound: 'No Address Found',
+			failedToGetAddress: 'Failed to get address',
+			updatingAddress: 'Updating Address',
+			selectAddressError: 'Failed to select delivery address',
+			selectAddressSuccess: 'Delivery address selected successfully'
+		},
+
+		productsTable: {
+			products: 'Products',
+			addProduct: 'Add Product',
+			noProductFound: 'No Product Found',
+			product: 'Product',
+			buildTime: 'Build Time',
+			quantity: 'Quantity',
+			gerberFile: 'Gerber File',
+			quotePrice: 'Quote Price',
+			finalPrice: 'Final Price',
+			details: 'Details',
+			edit: 'Edit',
+			notUploaded: 'Not Uploaded',
+			viewProgress: 'View Progress',
+			productDetails: {
+				title: 'Product Details',
+				failedToFetch: 'Failed to fetch product details'
+			},
+			fabrication: {
+				title: 'Fabrication ',
+				fabricationProgress: 'Fabrication Progress',
+				notStarted: 'Fabrication Not Started',
+				completed: 'Fabrication Completed'
+			}
+		},
+
+		reviewMessages: {
+			title: 'Review Messages',
+			failedToSend: 'Failed to send message',
+			noMessages: 'No Messages, yet',
+			conversationClosed: 'This conversation is closed'
+		},
+
+		orderSummary: {
+			title: 'Order Summary',
+			itemsCost: 'Items Cost',
+			shippingCost: 'Shipping Cost',
+			discount: 'Discount',
+			taxes: 'Taxes',
+			orderTotal: 'Order Total',
+			estDeliveryDate: 'Est Delivery Date',
+			estDeliveryDateDesc:
+				'The estimated shipping date is calculated based on the item with the longest build time in your order. Please note that this date is for reference only. If your order requires confirmation, the shipping date may be subject to extension.',
+			weight: 'Weight',
+			weightDesc:
+				'The weight here is calculated based on the larger value of gross weight and volume weight, which is estimated for reference. If the actual weight differs from the estimate, shipping cost may be adjusted accordingly.',
+			submitOrderForReview: 'Submit Order for Review',
+			saveOrder: 'Save Order'
+		},
+
+		payment: {
+			title: 'Payment Details',
+			transactionId: 'Transaction ID',
+			paymentTime: 'Payment Time',
+			paymentMethod: 'Payment Method',
+			totalAmount: 'Total Amount',
+			failedToGenerateToken: 'Failed to generate payment token',
+			failedToSubmit: 'Failed to submit payment',
+			checkout: 'Checkout',
+			amountToBePaid: 'Amount to be paid',
+			paymentSuccess: 'Payment Success',
+			paymentTotal: 'Payment Total',
+			print: 'Print',
+			payNow: 'Pay Now',
+			cancelPayment: 'Cancel Payment'
+		},
+
+		removeProduct: {
+			modalTitle: 'Are you sure to remove this product?',
+			modalTitleAll: 'Are you sure to remove all products?',
+			modalBody: 'This action cannot be undone',
+			removingProduct: 'Removing Product',
+			removingProductAll: 'Removing All Products',
+			removeProductError: 'Failed to remove product',
+			removeProductAllError: 'Failed to remove all products',
+			removeProductSuccess: 'Product removed successfully',
+			removeProductAllSuccess: 'All products removed successfully'
+		},
+
+		removeOrder: {
+			title: 'Remove Order',
+			description:
+				'This action will permanently delete the order and all its related information. This cannot be undone, so please proceed with caution.',
+			modalTitle: 'Are you sure to remove this order?',
+			modalBody: 'This action cannot be undone',
+			removingOrder: 'Removing Order',
+			removeOrderError: 'Failed to remove order',
+			removeOrderSuccess: 'Order removed successfully'
+		},
+
+		trackDelivery: 'Track Delivery'
+	},
+
+	orderStatus: {
+		CREATED: 'Order Created',
+		CART: 'Cart',
+		SAVED: 'Saved as Draft',
+		REVIEW: 'In Review',
+		REJECTED: 'Review Rejected',
+		APPROVED: 'Review Approved',
+		PAYMENT: 'Payment',
+		CONFIRMED: 'Order Confirmed',
+		FABRICATION: 'In Fabrication',
+		DELIVERY: 'Shipping & Delivery',
+		COMPLETED: 'Order Completed',
+		CANCELLED: 'Order Cancelled',
+		REFUNDED: 'Refunded'
 	}
 };
 export type Lang = typeof en;

@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>Velenova {pageTitle ? `- ${pageTitle}` : ''}</title>
+	<title>MMWPCB {pageTitle ? `- ${pageTitle}` : ''}</title>
 </svelte:head>
 
 <div class="min-h-screen flex flex-col">

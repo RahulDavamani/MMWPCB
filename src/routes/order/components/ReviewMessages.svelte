@@ -4,6 +4,9 @@
 	import { trpc } from '../../../trpc/client';
 	import { tce } from '../../../trpc/te';
 	import { invalidateAll } from '$app/navigation';
+	import { lg } from '../../../stores/i18n.store';
+
+	$: l = $lg.order.reviewMessages;
 
 	$: ({ id, status, reviewMessages, paymentInfo } = $order);
 	let message = '';
@@ -13,7 +16,7 @@
 		isLoading = true;
 		await trpc()
 			.order.insertReviewMessage.mutate({ id, message })
-			.catch((e) => tce(e, { showModal: { title: 'Failed to send message', retryFn: sendReviewMessage } }));
+			.catch((e) => tce(e, { showModal: { title: l.failedToSend, retryFn: sendReviewMessage } }));
 		message = '';
 		await invalidateAll();
 		isLoading = false;
@@ -25,7 +28,7 @@
 		<div class="p-4">
 			<div class="text-lg font-bold flex items-center gap-2">
 				<Icon icon="mdi:chat-outline" width={20} />
-				Review Messages
+				{l.title}
 			</div>
 			<div class="divider mt-0 mb-1" />
 
@@ -39,14 +42,14 @@
 				{:else}
 					<div class="flex flex-col justify-center items-center">
 						<Icon icon="mdi:conversation-outline" width={50} />
-						<div class="">No Messages, yet</div>
+						<div>{l.noMessages}</div>
 					</div>
 				{/each}
 			</div>
 		</div>
 
 		{#if paymentInfo}
-			<div class="text-center font-semibold bg-base-200 py-2">This conversation is closed</div>
+			<div class="text-center font-semibold bg-base-200 py-2">{l.conversationClosed}</div>
 		{:else}
 			<div class="flex gap-6 p-4">
 				<input class="input input-bordered w-full rounded-box" placeholder="Message..." bind:value={message} />

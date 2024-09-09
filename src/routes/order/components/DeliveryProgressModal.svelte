@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { lg } from '../../../stores/i18n.store';
 	import { order } from '../../../stores/order.store';
 	import Modal from '../../components/UI/Modal.svelte';
 
@@ -6,7 +7,7 @@
 	$: ({ deliveryStatuses } = $order);
 </script>
 
-<Modal {modalId} title="Track Delivery" boxClasses="max-w-sm w-full" dividerClasses="mb-2">
+<Modal {modalId} title={$lg.order.trackDelivery} boxClasses="max-w-sm w-full" dividerClasses="mb-2">
 	<ul class="steps steps-vertical">
 		{#each deliveryStatuses as { status, completed, completedAt }}
 			<li class="step {completed && 'step-primary'}">

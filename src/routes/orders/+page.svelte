@@ -5,13 +5,15 @@
 	import Icon from '@iconify/svelte';
 	import { lg } from '../../stores/i18n.store';
 
+	$: l = $lg.orders;
+
 	$: ({ orders } = $page.data as PageData);
 </script>
 
-<Layout pageTitle="Orders">
+<Layout pageTitle={l.pageTitle}>
 	<div class="flex justify-between items-center">
-		<div class="text-xl font-bold">My Orders</div>
-		<a href="/order" class="btn btn-primary btn-outline btn-sm">View Cart</a>
+		<div class="text-xl font-bold">{l.pageTitle}</div>
+		<a href="/order" class="btn btn-primary btn-outline btn-sm">{l.viewCart}</a>
 	</div>
 
 	<div class="border rounded-lg shadow mt-6">
@@ -19,11 +21,11 @@
 			<table class="table table-pin-rows">
 				<thead>
 					<tr>
-						<th>Order ID</th>
-						<th>Created Date</th>
-						<th>Status</th>
-						<th class="text-center">Items Count</th>
-						<th class="w-40"></th>
+						<th>{l.orderId}</th>
+						<th>{l.createdDate}</th>
+						<th>{l.status}</th>
+						<th class="text-center">{l.itemsCount}</th>
+						<th class="w-40" />
 					</tr>
 				</thead>
 				<tbody>
@@ -36,7 +38,7 @@
 							<td class="text-center">{productCount}</td>
 							<td class="text-right">
 								<a href="/order?id={id}" class="btn btn-primary btn-sm btn-link">
-									View Details
+									{l.viewDetails}
 									<Icon icon="mdi:arrow-right" width={16} />
 								</a>
 							</td>

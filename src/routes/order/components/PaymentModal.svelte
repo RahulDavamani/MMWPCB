@@ -11,6 +11,9 @@
 	import Icon from '@iconify/svelte';
 	import { invalidateAll } from '$app/navigation';
 	import { order } from '../../../stores/order.store';
+	import { lg } from '../../../stores/i18n.store';
+
+	$: l = $lg.order.payment;
 
 	let modalId = 'paymentModal';
 
@@ -35,7 +38,7 @@
 				tce(e, {
 					callback: close,
 					showModal: {
-						title: 'Failed to generate payment token',
+						title: l.failedToGenerateToken,
 						retryFn: () => showModal(modalId)
 					}
 				})
@@ -58,7 +61,7 @@
 				.catch((e) =>
 					tce(e, {
 						callback: close,
-						showModal: { title: 'Failed to submit payment' }
+						showModal: { title: l.failedToSubmit }
 					})
 				);
 		} catch (error) {}
@@ -71,10 +74,10 @@
 		<div class="flex flex-col justify-center items-center py-4 {!paymentDetails && 'bg-primary text-primary-content '}">
 			{#if paymentDetails}
 				<Icon icon="mdi:check-decagram" class="text-success text-6xl mt-2" />
-				<div class="text-lg font-semibold">Payment Success!</div>
+				<div class="text-lg font-semibold">{l.paymentSuccess}!</div>
 			{:else}
-				<div class="text-lg font-semibold mb-4">CHECKOUT</div>
-				<div>Amount to be Paid</div>
+				<div class="text-lg font-semibold mb-4">{l.checkout.toUpperCase()}</div>
+				<div>{l.amountToBePaid}</div>
 				<div class="text-xl font-mono font-bold">${orderTotal.toFixed(2)}</div>
 			{/if}
 		</div>
@@ -87,20 +90,20 @@
 			<Loader fixed={false} overlay={false} size={80} classes="pt-10 pb-4" />
 		{:else if paymentDetails}
 			<div class="divider mt-0" />
-			<div class="text-center">Payment Total</div>
+			<div class="text-center">{l.paymentTotal}</div>
 			<div class="text-xl text-center font-semibold font-mono mb-3">${orderTotal.toFixed(2)}</div>
 
 			<div class="space-y-2 px-2">
 				<div class="flex justify-between">
-					<div>Transaction ID</div>
+					<div>{l.transactionId}</div>
 					<div class="font-semibold">{paymentDetails.transactionId.toUpperCase()}</div>
 				</div>
 				<div class="flex justify-between">
-					<div>Payment Time</div>
+					<div>{l.paymentTime}</div>
 					<div class="font-semibold">{new Date(paymentDetails.createdAt).toLocaleString()}</div>
 				</div>
 				<div class="flex justify-between">
-					<div>Payment Method</div>
+					<div>{l.paymentMethod}</div>
 					<div class="font-semibold">
 						{paymentDetails.paymentInstrumentType.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
 					</div>
@@ -111,16 +114,16 @@
 			<div class="flex justify-center gap-10 mt-6 mb-4">
 				<button class="btn btn-primary w-32">
 					<Icon icon="mdi:printer" width={20} />
-					Print
+					{l.print}
 				</button>
 				<button class="btn btn-error w-32" on:click={close}>
 					<Icon icon="mdi:close" width={20} />
-					Close
+					{$lg.common.close}
 				</button>
 			</div>
 		{:else}
-			<button class="btn btn-primary w-full mt-8" on:click={submitPayment}>Pay Now</button>
-			<button class="btn btn-link text-sm text-error w-full mb-2" on:click={close}> Cancel Payment </button>
+			<button class="btn btn-primary w-full mt-8" on:click={submitPayment}>{l.payNow}</button>
+			<button class="btn btn-link text-sm text-error w-full mb-2" on:click={close}>{l.cancelPayment}</button>
 		{/if}
 	</div>
 </Modal>

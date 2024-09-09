@@ -9,8 +9,10 @@ import { closeModal } from '$lib/client/modal';
 import type { RouterOutput } from '../trpc/routers/app.router';
 import { supabase } from '$lib/client/supabase';
 import { productTypes } from './product.store';
+import { lg } from './i18n.store';
 
-export const order = derived([page, productTypes], ([$page, $productTypes]) => {
+export const order = derived([lg, page, productTypes], ([$lg, $page, $productTypes]) => {
+	const l = $lg.order;
 	// Data
 	const {
 		id,
@@ -59,33 +61,33 @@ export const order = derived([page, productTypes], ([$page, $productTypes]) => {
 
 	const submitReviewError =
 		products.length === 0
-			? 'No Products Found'
+			? l.submitReview.noProducts
 			: !shippingInfo
-				? 'Shipping info is not provided'
+				? l.submitReview.shippingError
 				: !deliveryAddress
-					? 'Delivery address is not provided'
+					? l.submitReview.deliveryError
 					: fileNames.length !== products.length
-						? 'Product files are not uploaded'
+						? l.submitReview.filesNotUploaded
 						: undefined;
 
-	const saveOrderError = products.length === 0 ? 'No Products Found' : undefined;
+	const saveOrderError = products.length === 0 ? l.submitReview.noProducts : undefined;
 
 	// Methods
 	const selectAddress = async (address: RouterOutput['address']['get'][number]) =>
-		ui.loaderWrapper({ title: 'Updating address' }, async () => {
+		ui.loaderWrapper({ title: l.deliveryAddress.updatingAddress }, async () => {
 			closeModal('selectAddressModal');
 			await trpc()
 				.order.selectDeliveryAddress.mutate({ ...address, addressId: address.id, id })
 				.catch((e) =>
-					tce(e, { showModal: { title: 'Failed to select address', retryFn: () => selectAddress(address) } })
+					tce(e, { showModal: { title: l.deliveryAddress.selectAddressError, retryFn: () => selectAddress(address) } })
 				);
 
 			await invalidateAll();
-			ui.setToast({ title: 'Delivery address updated successfully', alertClasses: 'alert-success' });
+			ui.setToast({ title: l.deliveryAddress.selectAddressSuccess, alertClasses: 'alert-success' });
 		})();
 
 	const selectShipping = (shippingMethod: RouterOutput['shipping']['getMethods'][number]) =>
-		ui.loaderWrapper({ title: 'Updating shipping method' }, async () => {
+		ui.loaderWrapper({ title: $lg.shipping.updatingShipping }, async () => {
 			closeModal('selectShippingModal');
 			await trpc()
 				.order.selectShipping.mutate({
@@ -100,103 +102,115 @@ export const order = derived([page, productTypes], ([$page, $productTypes]) => {
 				})
 				.catch((e) =>
 					tce(e, {
-						showModal: { title: 'Failed to update shipping info', retryFn: () => selectShipping(shippingMethod) }
+						showModal: { title: $lg.shipping.updateShippingError, retryFn: () => selectShipping(shippingMethod) }
 					})
 				);
 
 			await invalidateAll();
-			ui.setToast({ title: 'Shipping info updated successfully', alertClasses: 'alert-success' });
+			ui.setToast({ title: $lg.shipping.updateShippingSuccess, alertClasses: 'alert-success' });
 		})();
 
-	const submitReview = ui.loaderWrapper({ title: 'Submitting Order' }, async () => {
+	const submitReview = ui.loaderWrapper({ title: l.submitReview.submittingOrder }, async () => {
 		await trpc()
 			.order.submitReview.mutate({ id })
-			.catch((e) => tce(e, { showModal: { title: 'Failed to submit order', retryFn: submitReview } }));
+			.catch((e) => tce(e, { showModal: { title: l.submitReview.submitOrderSuccess, retryFn: submitReview } }));
 
 		await invalidateAll();
 		await goto(`/order?id=${id}`);
-		ui.setToast({ title: 'Order submitted for review', alertClasses: 'alert-success' });
+		ui.setToast({ title: l.submitReview.submitOrderSuccess, alertClasses: 'alert-success' });
 	});
 
-	const saveOrder = ui.loaderWrapper({ title: 'Saving Order' }, async () => {
+	const saveOrder = ui.loaderWrapper({ title: l.saveOrder.savingOrder }, async () => {
 		await trpc()
 			.order.save.mutate({ id })
-			.catch((e) => tce(e, { showModal: { title: 'Failed to save order', retryFn: saveOrder } }));
+			.catch((e) => tce(e, { showModal: { title: l.saveOrder.saveOrderError, retryFn: saveOrder } }));
 
 		await invalidateAll();
 		await goto(`/order?id=${id}`);
-		ui.setToast({ title: 'Order saved', alertClasses: 'alert-success' });
+		ui.setToast({ title: l.saveOrder.saveOrderSuccess, alertClasses: 'alert-success' });
 	});
 
-	const cancelReview = ui.loaderWrapper({ title: 'Cancelling Review' }, async () => {
+	const cancelReview = ui.loaderWrapper({ title: l.cancelReview.cancellingReview }, async () => {
 		await trpc()
 			.order.cancelReview.mutate({ id })
-			.catch((e) => tce(e, { showModal: { title: 'Failed to cancel review', retryFn: cancelReview } }));
+			.catch((e) => tce(e, { showModal: { title: l.cancelReview.cancelReviewError, retryFn: cancelReview } }));
 
 		await invalidateAll();
-		ui.setToast({ title: 'Order review cancelled', alertClasses: 'alert-success' });
+		ui.setToast({ title: l.cancelReview.cancelReviewSuccess, alertClasses: 'alert-success' });
 	});
 
 	const showRemoveProductModal = (id?: string) =>
 		ui.setAlertModal({
-			title: id ? 'Are you sure to remove this product?' : 'Are you sure to remove all products?',
-			body: 'This action cannot be undone.',
+			title: id ? l.removeProduct.modalTitle : l.removeProduct.modalTitleAll,
+			body: l.removeProduct.modalBody,
 			actions: [
 				{
-					name: 'Cancel',
+					name: $lg.common.cancel,
 					classes: 'btn-warning',
 					onClick: ui.closeAlertModal
 				},
 				{
-					name: 'Remove',
+					name: $lg.common.remove,
 					classes: 'btn-error',
 					onClick: () => removeProduct(id)
 				}
 			]
 		});
 
-	const removeProduct = (id?: string) =>
-		ui.loaderWrapper({ title: id ? 'Removing Product' : 'Removing all products' }, async () => {
-			ui.closeAlertModal();
-			if (id) {
-				const fileName = products.find((p) => p.id == id)?.fileName;
-				if (fileName) await supabase.storage.from('Gerber Files').remove([fileName]);
-			} else await supabase.storage.from('Gerber Files').remove(fileNames);
+	const removeProduct = (productId?: string) =>
+		ui.loaderWrapper(
+			{ title: productId ? l.removeProduct.removingProduct : l.removeProduct.removingProductAll },
+			async () => {
+				ui.closeAlertModal();
+				if (productId) {
+					const fileName = products.find((p) => p.id == productId)?.fileName;
+					if (fileName) await supabase.storage.from('Gerber Files').remove([fileName]);
+				} else await supabase.storage.from('Gerber Files').remove(fileNames);
 
-			await trpc()
-				.order.removeProduct.mutate({ orderId, ids: id ? [id] : products.map((p) => p.id) })
-				.catch((e) => tce(e, { showModal: { title: 'Failed to remove product', retryFn: () => removeProduct(id) } }));
+				await trpc()
+					.order.removeProduct.mutate({ orderId: id, ids: productId ? [productId] : products.map((p) => p.id) })
+					.catch((e) =>
+						tce(e, {
+							showModal: {
+								title: productId ? l.removeProduct.removeProductError : l.removeProduct.removeProductAllError,
+								retryFn: () => removeProduct(productId)
+							}
+						})
+					);
 
-			await invalidateAll();
-			ui.setToast({ title: id ? 'Product removed successfully' : 'All products removed successfully' });
-		})();
+				await invalidateAll();
+				ui.setToast({
+					title: productId ? l.removeProduct.removeProductSuccess : l.removeProduct.removeProductAllSuccess
+				});
+			}
+		)();
 
 	const showRemoveOrderModal = () =>
 		ui.setAlertModal({
-			title: 'Are you sure to remove this order?',
-			body: 'This action cannot be undone.',
+			title: l.removeOrder.modalTitle,
+			body: l.removeOrder.modalBody,
 			actions: [
 				{
-					name: 'Cancel',
+					name: $lg.common.cancel,
 					classes: 'btn-warning',
 					onClick: ui.closeAlertModal
 				},
 				{
-					name: 'Remove',
+					name: $lg.common.remove,
 					classes: 'btn-error',
 					onClick: removeOrder
 				}
 			]
 		});
 
-	const removeOrder = ui.loaderWrapper({ title: 'Removing Order' }, async () => {
+	const removeOrder = ui.loaderWrapper({ title: l.removeOrder.removingOrder }, async () => {
 		ui.closeAlertModal();
 		await supabase.storage.from('Gerber Files').remove(fileNames);
 		await trpc()
 			.order.remove.mutate({ id })
-			.catch((e) => tce(e, { showModal: { title: 'Failed to remove order', retryFn: removeOrder } }));
+			.catch((e) => tce(e, { showModal: { title: l.removeOrder.removeOrderError, retryFn: removeOrder } }));
 
-		ui.setToast({ title: 'Order removed successfully' });
+		ui.setToast({ title: l.removeOrder.removeOrderSuccess });
 		goto('/orders');
 	});
 

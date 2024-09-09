@@ -30,7 +30,7 @@
 	<div class="divider mt-0" />
 
 	<div class="flex justify-between mr-2">
-		<div class="font-semibold">Weight</div>
+		<div class="font-semibold">{l.weight}</div>
 		<div class="font-mono">0.5 Kg</div>
 	</div>
 
@@ -79,7 +79,7 @@
 				}}
 			>
 				<Icon icon="mdi:content-save" width={22} />
-				Save Product
+				{l.saveProduct}
 			</button>
 		{:else}
 			<div class="flex justify-between mt-6">

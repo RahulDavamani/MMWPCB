@@ -89,7 +89,7 @@ export const quote = (() => {
 				if (error) return ui.setAlertModal({ title: l.uploadFileError, body: error.message });
 			}
 
-			ui.setLoader({ title: isEdit ? 'Updating Product Specifications' : orderId ? l.addingOrder : l.savingCart });
+			ui.setLoader({ title: isEdit ? l.updatingProduct : orderId ? l.addingOrder : l.savingCart });
 			await trpc()
 				.order.upsertProduct.mutate({
 					orderId: orderId ?? $page.data.cart.id,
@@ -102,14 +102,14 @@ export const quote = (() => {
 								await supabase.storage.from('Gerber Files').remove([selectedProduct.fileName]);
 						},
 						showModal: {
-							title: isEdit ? 'Failed to update product' : orderId ? l.addOrderError : l.saveCartError,
+							title: isEdit ? l.updateProductError : orderId ? l.addOrderError : l.saveCartError,
 							retryFn: () => upsertProduct(orderId)
 						}
 					})
 				);
 
 			ui.setToast({
-				title: isEdit ? 'Product updated successfully' : orderId ? l.addOrderSuccess : l.saveCartSuccess,
+				title: isEdit ? l.updateProductSuccess : orderId ? l.addOrderSuccess : l.saveCartSuccess,
 				alertClasses: 'alert-success'
 			});
 			reset();

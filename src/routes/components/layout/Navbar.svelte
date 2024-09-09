@@ -19,15 +19,13 @@
 
 <div id="navbar" class="navbar shadow-lg">
 	<div class="container mx-auto flex justify-between items-center">
-		<div class="flex items-end">
-			<div>
+		<div class="flex items-center">
+			<!-- <div>
 				<a href="/" class="btn btn-link">
 					<img src={VelenovaLogo} alt="Velenova" width="140" />
 				</a>
-			</div>
-			<!-- <div class="text-xl font-bold font-serif text-primary">
-				MMWPCB
 			</div> -->
+			<div class="text-xl font-bold font-serif text-primary">MMWPCB</div>
 			{#each navItems as { name, href }}
 				<div>
 					<a

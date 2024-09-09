@@ -7,6 +7,9 @@
 	import Modal from '../../components/UI/Modal.svelte';
 	import IconBtn from '../../components/IconBtn.svelte';
 	import Loader from '../../components/UI/Loader.svelte';
+	import { lg } from '../../../stores/i18n.store';
+
+	$: l = $lg.shipping;
 
 	let modalId = 'selectShippingModal';
 
@@ -59,15 +62,15 @@
 				await fetchMethods();
 			}}
 		/>
-		<div class="text-xl font-bold">Select Shipping Method</div>
+		<div class="text-xl font-bold">{l.selectShippingMethod}</div>
 	</div>
 	{#if !countries}
 		<Loader fixed={false} overlay={false} size={80} classes="pt-10" />
 	{:else}
 		<div class="flex items-center gap-4">
-			<div class="font-semibold">Select Shipping:</div>
+			<div class="font-semibold">{l.shippingTo}:</div>
 			<select class="select select-bordered select-sm" bind:value={selectedCountryId}>
-				<option value={undefined} disabled>Select Country</option>
+				<option value={undefined} disabled>{l.selectCountry}</option>
 				{#each countries as { id, name, _count }}
 					<option value={id}>{name} ({_count.methods})</option>
 				{/each}
@@ -83,10 +86,10 @@
 						<thead>
 							<tr>
 								<th></th>
-								<th>Shipping Method</th>
-								<th>Price</th>
-								<th>Delivery Time</th>
-								<th>Restriction</th>
+								<th>{l.shippingMethod}</th>
+								<th>{l.price}</th>
+								<th>{l.deliveryTime}</th>
+								<th>{l.restriction}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -115,7 +118,7 @@
 							if (method) selectShipping(method);
 						}}
 					>
-						Select Method
+						{$lg.common.select}
 					</button>
 				</div>
 			{/if}

@@ -9,10 +9,9 @@
 	import { lg } from '../../../stores/i18n.store';
 	import type { Lang } from '$lib/locales/en';
 	import Loader from '../../components/UI/Loader.svelte';
-	import { page } from '$app/stores';
-	import type { PageData } from '../$types';
-	import { productTypes } from '../../../stores/product.store';
 	import { order } from '../../../stores/order.store';
+
+	$: l = $lg.order.productsTable.productDetails;
 
 	let modalId = 'productDetailsModal';
 
@@ -26,9 +25,7 @@
 		productDetails = undefined;
 		productDetails = await trpc()
 			.order.getProduct.query({ orderId: id, id: productDetailsId })
-			.catch((e) =>
-				tce(e, { callback: () => closeModal(modalId), showModal: { title: 'Failed to fetch product details' } })
-			);
+			.catch((e) => tce(e, { callback: () => closeModal(modalId), showModal: { title: l.failedToFetch } }));
 	};
 
 	onMount(async () => onShowModal(modalId, fetchProductDetails));
@@ -43,7 +40,7 @@
 	};
 </script>
 
-<Modal {modalId} title="Product Details" boxClasses="max-w-5xl w-full">
+<Modal {modalId} title={l.title} boxClasses="max-w-5xl w-full">
 	{#if !productDetails}
 		<Loader fixed={false} overlay={false} size={80} classes="pt-10" />
 	{:else}

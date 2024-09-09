@@ -23,16 +23,16 @@
 <Layout pageTitle={l.pageTitle}>
 	<a href="/orders" class="btn btn-link px-0">
 		<Icon icon="mdi:arrow-left" />
-		All Orders
+		{l.allOrders}
 	</a>
 
 	{#if status === 'CART'}
-		<div class="text-xl font-bold">My Cart</div>
+		<div class="text-xl font-bold">{l.myCart}</div>
 	{:else}
 		<div class="flex justify-between items-center">
 			<div>
 				<div class="font-bold">
-					<span class="text-xl">Order ID:</span>
+					<span class="text-xl">{l.orderId}:</span>
 					<span class="text-lg font-mono">{id.toUpperCase()}</span>
 				</div>
 				<div class="text-sm">{createdAt.toLocaleString()}</div>
