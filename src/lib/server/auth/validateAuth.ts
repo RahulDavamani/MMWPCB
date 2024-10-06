@@ -14,7 +14,7 @@ export const validateAuth = async (auth: 'noAuth' | 'user' | 'admin', user?: Use
 
 		case 'admin':
 			if (!user) throw redirect(302, redirectUrl ?? '/login');
-			if (user?.role !== 'admin') throw error(403);
+			if (user?.role !== 'ADMIN') throw error(403);
 			break;
 
 		default:

@@ -1,23 +1,15 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import type { StandardPcb } from '../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../FormItem.svelte';
 
-	$: ({ description, ...l } = $lg.instantQuote.standardPcb.uvPrinting);
-	$: ({ uvPrinting } = $quote.standardPcb);
-
-	$: values = [
-		{ name: l.options.singleSidedTop, value: 'SINGLE_SIDED_TOP' },
-		{ name: l.options.singleSidedBottom, value: 'SINGLE_SIDED_BOTTOM' },
-		{ name: l.options.doubleSided, value: 'DOUBLE_SIDED' },
-		{ name: $lg.common.none, value: 'NONE' }
-	] as { name: string; value: StandardPcb['uvPrinting'] }[];
+	$: pd = $productDetails.standardPcb.uvPrinting;
+	$: ({ uvPrinting } = $quote.products.standardPcb);
 </script>
 
-<FormItem {l}>
+<FormItem {pd}>
 	<div slot="description">
-		{@const { title1, body1, body2, title2, body3, body4, disclaimer } = description}
+		{@const { title1, body1, body2, title2, body3, body4, disclaimer } = pd.l.descriptionDetail}
 		<div class="font-semibold">{title1}:</div>
 		<div>1. {body1}</div>
 		<div>2. {body2}</div>
@@ -30,10 +22,10 @@
 	</div>
 
 	<div class="flex flex-wrap gap-4">
-		{#each values as { name, value }}
+		{#each pd.values as { title, value }}
 			<button
 				class="btn btn-sm btn-primary {uvPrinting !== value && 'btn-outline'}"
-				on:click={() => ($quote.standardPcb.uvPrinting = value)}>{name}</button
+				on:click={() => ($quote.products.standardPcb.uvPrinting = value)}>{title}</button
 			>
 		{/each}
 	</div>

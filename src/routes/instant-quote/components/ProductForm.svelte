@@ -10,7 +10,7 @@
 	import { productTypes } from '../../../stores/product.store';
 
 	$: ({ productType } = $quote);
-	$: productName = $productTypes[productType].name;
+	$: productName = $productTypes[productType].title;
 </script>
 
 <div class="grow border rounded-lg shadow p-4 h-fit">

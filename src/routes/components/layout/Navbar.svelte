@@ -4,7 +4,6 @@
 	import { lg } from '../../../stores/i18n.store';
 	import I18N from './I18N.svelte';
 	import SmallCart from './SmallCart.svelte';
-	import VelenovaLogo from '$lib/assets/velenova-logo.png';
 
 	$: l = $lg.navbar;
 

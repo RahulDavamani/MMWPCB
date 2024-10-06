@@ -1,24 +1,18 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import type { StandardPcb } from '../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.edgeConnector;
-	$: ({ edgeConnector } = $quote.standardPcb);
-
-	$: values = [
-		{ name: $lg.common.yes, value: true },
-		{ name: $lg.common.no, value: false }
-	] as { name: string; value: StandardPcb['edgeConnector'] }[];
+	$: pd = $productDetails.standardPcb.edgeConnector;
+	$: ({ edgeConnector } = $quote.products.standardPcb);
 </script>
 
-<FormItem {l}>
+<FormItem {pd}>
 	<div class="flex flex-wrap gap-4">
-		{#each values as { name, value }}
+		{#each pd.values as { title, value }}
 			<button
 				class="btn btn-sm btn-primary {edgeConnector !== value && 'btn-outline'}"
-				on:click={() => ($quote.standardPcb.edgeConnector = value)}>{name}</button
+				on:click={() => ($quote.products.standardPcb.edgeConnector = value)}>{title}</button
 			>
 		{/each}
 	</div>

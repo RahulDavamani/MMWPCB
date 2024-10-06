@@ -78,7 +78,7 @@
 							</td> -->
 							<td class="max-w-xs">
 								<div class="text-base font-semibold text-primary">{name}</div>
-								<div class="italic opacity-75">{type.name}</div>
+								<div class="italic opacity-75">{type.title}</div>
 								<div class="flex mt-2">
 									<button
 										class="btn btn-xs btn-link text-sm px-0 text-accent"

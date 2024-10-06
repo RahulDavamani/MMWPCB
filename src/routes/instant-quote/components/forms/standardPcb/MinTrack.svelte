@@ -1,20 +1,20 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.minTrack;
-	$: ({ minTrack } = $quote.standardPcb);
+	$: pd = $productDetails.standardPcb.minTrack;
+	$: ({ minTrack } = $quote.products.standardPcb);
 
 	$: values = [3, 4, 5, 6, 8];
 </script>
 
-<FormItem {l}>
+<FormItem {pd}>
 	<div class="flex flex-wrap gap-4">
 		{#each values as value}
 			<button
 				class="btn btn-sm btn-primary {minTrack !== value && 'btn-outline'}"
-				on:click={() => ($quote.standardPcb.minTrack = value)}>{value}/{value}mil</button
+				on:click={() => ($quote.products.standardPcb.minTrack = value)}>{pd.parseValue(value)}</button
 			>
 		{/each}
 	</div>

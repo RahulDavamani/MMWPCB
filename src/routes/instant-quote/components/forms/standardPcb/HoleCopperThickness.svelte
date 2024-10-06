@@ -1,18 +1,22 @@
 <script lang="ts">
 	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.holeCopperThickness;
+	$: pd = $productDetails.standardPcb.holeCopperThickness;
 
 	$: values = [20, 25, 30, 35, 50, 55, 70];
 </script>
 
-<FormItem {l}>
-	<select class="select select-bordered select-sm min-w-64" bind:value={$quote.standardPcb.holeCopperThickness}>
+<FormItem {pd}>
+	<select
+		class="select select-bordered select-sm min-w-64"
+		bind:value={$quote.products.standardPcb.holeCopperThickness}
+	>
 		<option value={0}>{$lg.common.none}</option>
 		{#each values as value}
-			<option {value}>{value}um</option>
+			<option {value}>{pd.parseValue(value)}</option>
 		{/each}
 	</select>
 </FormItem>

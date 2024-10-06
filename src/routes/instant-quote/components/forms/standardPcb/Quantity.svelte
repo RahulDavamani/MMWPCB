@@ -4,15 +4,15 @@
 	import { quote, quoteError } from '../../../../../stores/quote.store';
 	import FormControl from '../../../../components/FormControl.svelte';
 	import { afterUpdate } from 'svelte';
+	import { productDetails } from '../../../../../stores/product.store';
 
-	$: l = $lg.instantQuote.standardPcb.quantity;
-
+	$: pd = $productDetails.standardPcb.quantity;
 	$: isError = $quoteError.standardPcb.quantity;
 
-	$: ({ length, width, quantity } = $quote.standardPcb);
+	$: ({ length, width, quantity } = $quote.products.standardPcb);
 	$: size = (length * width) / 1000000;
 
-	afterUpdate(() => ($quote.standardPcb.quantity = size < 5 && !values.includes(quantity) ? 5 : quantity));
+	afterUpdate(() => ($quote.products.standardPcb.quantity = size < 5 && !values.includes(quantity) ? 5 : quantity));
 
 	let values = [
 		5, 10, 15, 20, 25, 30, 40, 50, 75, 100, 125, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1500,
@@ -20,7 +20,7 @@
 	];
 </script>
 
-<FormItem {l} {isError}>
+<FormItem {pd} {isError}>
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<div class="dropdown">
 		<div tabindex={0} class="my-1">
@@ -29,9 +29,9 @@
 					type="number"
 					class="input input-bordered input-sm w-24 join-item {isError && 'input-error'}"
 					readonly
-					value={$quote.standardPcb.quantity}
+					value={$quote.products.standardPcb.quantity}
 				/>
-				<div class="btn btn-sm join-item pointer-events-none font-normal">{l.pieces}</div>
+				<div class="btn btn-sm join-item pointer-events-none font-normal">{pd.l.pieces}</div>
 			</div>
 		</div>
 		<div tabindex={0} class="dropdown-content bg-base-100 w-96 p-3 z-[1] rounded-box shadow border text-sm">
@@ -43,7 +43,7 @@
 							class="radio radio-xs radio-primary"
 							name="quantity"
 							{value}
-							bind:group={$quote.standardPcb.quantity}
+							bind:group={$quote.products.standardPcb.quantity}
 						/>
 					</FormControl>
 				{/each}
@@ -52,10 +52,10 @@
 			<FormControl bottomLabel="(Size ≥5m² to manually enter number)" bottomLabelClasses="text-secondary opacity-75">
 				<input
 					type="number"
-					placeholder={l.placeholder}
+					placeholder={pd.l.placeholder}
 					class="input input-bordered input-sm w-full {isError && 'input-error'}"
 					value={values.includes(quantity) ? '' : quantity}
-					on:change={(e) => ($quote.standardPcb.quantity = Number(e.currentTarget.value))}
+					on:change={(e) => ($quote.products.standardPcb.quantity = Number(e.currentTarget.value))}
 					disabled={size < 5}
 				/>
 			</FormControl>

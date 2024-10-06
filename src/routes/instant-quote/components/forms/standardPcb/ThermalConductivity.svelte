@@ -1,28 +1,22 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import type { StandardPcb } from '../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.thermalConductivity;
-	$: ({ material, thermalConductivity } = $quote.standardPcb);
+	$: pd = $productDetails.standardPcb.thermalConductivity;
+	$: ({ material, thermalConductivity } = $quote.products.standardPcb);
 
-	$: values = [
-		{ name: '1.0 W/(m-K)', value: 1.0 },
-		{ name: '1.5 W/(m-K)', value: 1.5 },
-		{ name: '2.0 W/(m-K)', value: 2.0 },
-		{ name: '3.0 W/(m-K)', value: 3.0 }
-	] as { name: string; value: NonNullable<StandardPcb['thermalConductivity']> }[];
+	$: values = [1, 1.5, 2, 3];
 </script>
 
 {#if thermalConductivity}
-	<FormItem {l}>
+	<FormItem {pd}>
 		<div class="flex flex-wrap gap-4">
-			{#each values as { name, value }}
+			{#each values as value}
 				{@const disabled = material === 'COPPER_BASE' && value < 2}
 				<button
 					class="btn btn-sm btn-primary {thermalConductivity !== value && 'btn-outline'} {disabled && 'btn-disabled'}"
-					on:click={() => ($quote.standardPcb.thermalConductivity = value)}>{name}</button
+					on:click={() => ($quote.products.standardPcb.thermalConductivity = value)}>{pd.parseValue(value)}</button
 				>
 			{/each}
 		</div>

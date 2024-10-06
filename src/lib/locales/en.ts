@@ -45,7 +45,7 @@ export const en = {
 
 	navbar: {
 		instantQuote: 'Instant Quote',
-		products: 'Products',
+		products: 'Products & Capabilities',
 		whyUs: 'Why Us?',
 		support: 'Support',
 		login: 'Login',
@@ -182,6 +182,11 @@ export const en = {
 			updatedAt: {
 				title: 'Updated At'
 			},
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
 			fileName: {
 				title: 'File Name'
 			},
@@ -197,18 +202,13 @@ export const en = {
 			finalPrice: {
 				title: 'Final Price'
 			},
-			name: {
-				title: 'Product Name',
-				description: 'Please enter a name for your product',
-				error: 'Product name is required'
-			},
 			boardType: {
 				title: 'Board Types',
 				description:
 					'PCBs will be shipped in single pieces or in panel. For bulk assembly orders (quantity greater than 30), we recommend shipping in panel, which will improve the assembly efficiency and reduce the cost.',
 				url: '',
 				imgSrc: '',
-				options: {
+				values: {
 					singlePieces: 'Single Pieces',
 					panelByCustomer: 'Panel by Customer',
 					panelByVelenova: 'Panel by Velenova'
@@ -220,7 +220,7 @@ export const en = {
 					'Bad PCBs may exist in the panel, the quotation will increase by about 30% if X-out Allowance is not accepted.',
 				url: '',
 				imgSrc: '',
-				options: {
+				values: {
 					accept: 'Accept',
 					decline: 'Decline'
 				}
@@ -229,7 +229,7 @@ export const en = {
 				title: 'Route Process',
 				description: 'In the panel, the PCBs are connected as shown in the following diagram:',
 				imgSrc: '',
-				options: {
+				values: {
 					velenovaPrefer: 'Panel as Velenova prefer',
 					vScoring: 'Panel as V-Scoring',
 					tabRoute: 'Panel as Tab Route',
@@ -258,11 +258,13 @@ export const en = {
 				description:
 					'The board size refers to the length and width of the board ordered by the customer. If it is a circular board, the length and width are the diameter of the circle; If it is a board with irregular shape, the length and width are measured according to the largest shape range.',
 				error: 'Length and width should be greater than 0',
-				url: '',
-				placeholder: {
-					length: 'Length',
-					width: 'Width'
-				}
+				url: ''
+			},
+			length: {
+				title: 'Length'
+			},
+			width: {
+				title: 'Width'
 			},
 			quantity: {
 				title: 'Quantity (single)',
@@ -286,7 +288,7 @@ export const en = {
 				title: 'Copper Layer',
 				description:
 					'When ordering 1-layer PCB, please specify whether the circuit layer is on top, bottom, or none. Please be sure to select the correct parameters, otherwise, we need to contact you for reconfirmation.',
-				options: {
+				values: {
 					topLayer: 'Top Layer',
 					bottomLayer: 'Bottom Layer'
 				}
@@ -295,7 +297,7 @@ export const en = {
 				title: 'Solder Mask',
 				description:
 					'It is coating material used to mask or to protect selected area. When ordering 1-layer PCB, please specify whether the solder mask is on top, bottom, or both sides. When only one side is chosen for the solder mask, the other side will be exposed with the solder mask opening completely. Please be sure to select the correct parameters, otherwise, we need to contact you for reconfirmation.',
-				options: {
+				values: {
 					topSide: 'Top Side',
 					bottomSide: 'Bottom Side',
 					bothSides: 'Both Sides'
@@ -305,7 +307,7 @@ export const en = {
 				title: 'Silkscreen',
 				description:
 					'The silkscreen is a layer of ink trace used to identify the PCB components, marks, logos, symbols, and so on.When ordering 1-layer PCB, please specify which layer the silkscreen is on.',
-				options: {
+				values: {
 					topSide: 'Top Side',
 					bottomSide: 'Bottom Side',
 					bothSides: 'Both Sides'
@@ -316,7 +318,7 @@ export const en = {
 				description:
 					'FR4 is the most common arade dielectric material that is used in the fabrication of circu boards. Aluminum boards have better heat dissipation and thermal transfer than standard FR-4 constructions. The copper base boards have a great thermal conductivity better than aluminum PCB. Due to its characteristics of low dielectric loss, Rogers is often used in high-frequency PCB. If you need other materials, please contact your sales representative.',
 				disclaimer: '*Material model can be remarked below. HDI is available for 4-layer or more.',
-				options: {
+				values: {
 					fr4: 'FR-4',
 					aluminum: 'Aluminum',
 					rogers: 'Rogers',
@@ -351,7 +353,7 @@ export const en = {
 				title: 'Structure of MCPCB',
 				description:
 					'This is for Double-sided / Multilayer metal substrate boards (Aluminum or Copper Base). There are two structures to choose from according to whether the metal base is in the middle or the bottom.',
-				options: {
+				values: {
 					metalCoreMiddle: 'Metal Core in the middle',
 					metalBaseBottom: 'Metal Base on the bottom side'
 				}
@@ -386,7 +388,8 @@ export const en = {
 			},
 			uvPrinting: {
 				title: 'UV Printing Multi-color',
-				description: {
+				description: '',
+				descriptionDetail: {
 					title1: 'Prerequisites for Ordering',
 					body1: 'Maximum size for a single piece: 270*470MM',
 					body2: 'Selection of soldermask color.',
@@ -400,7 +403,7 @@ export const en = {
 				},
 				disclaimer: '*The uploaded PCB file should contain color renderings',
 				url: '',
-				options: {
+				values: {
 					singleSidedTop: 'Single Sided: Top',
 					singleSidedBottom: 'Single Sided: Bottom',
 					doubleSided: 'Double Sided'
@@ -415,7 +418,7 @@ export const en = {
 				title: 'Surface Finish',
 				description:
 					'Surface finish is an important part of PCB production. It can protect the copper from oxidation, which would render the PCB unusable. In addition, it provides a smooth surface for the components to be soldered.',
-				options: {
+				values: {
 					haslWithLead: 'HASL with lead',
 					haslLeadFree: 'HASL lead free',
 					immersionGold: 'Immersion Gold (ENIG)',
@@ -436,13 +439,13 @@ export const en = {
 				title: 'Via Process',
 				description:
 					'For gerber files, we will process according to the files, and this option is invalid. For .PCB or .PCBDOC files, we will process with the parameters you select.',
-				options: {
+				disclaimer:
+					'*For Gerber files this choice will not affect anything, PCB will be made using the parameters of the files.',
+				values: {
 					tentingVias: 'Tenting vias',
 					pluggedVias: 'Plugged vias with solder mask',
 					viasNotCovered: 'Vias not covered'
-				},
-				disclaimer:
-					'*For Gerber files this choice will not affect anything, PCB will be made using the parameters of the files.'
+				}
 			},
 			finishedCopper: {
 				title: 'Finished Copper',
@@ -461,16 +464,54 @@ export const en = {
 				title: 'Remove Product No',
 				description:
 					'Velenova will add our product number on PCB to distinguish your PCBs from others. If you want to remove it, there will be an extra $1.5 charge. If you want to put it in a specific location, please indicate the location by adding the text "Velenova" in silkscreen layer and there is no extra charge for this option.',
-				options: {
+				values: {
 					no: 'No',
 					yes: 'Yes (extra + $1.5)',
 					specifyLocation: 'Specify a Location'
 				}
 			},
+			peelableSolderMask: {
+				title: 'Peelable Solder Mask',
+				description:
+					'Also known as a blue peelable mask, it is used to protect the required solder pads during assembly and is typically referred to as GTPM and GBPM in design. Unlike green soldermask, which is a negative image and is permanently present on the PCB in PCB design, Peelable Soldermask is a positive image (what you see is what you get in your design) and is temporarily used for PCB manufacturing and assembly. Coating material could be removed after board through wave soldering.',
+				values: {
+					topSide: 'Top Side',
+					bottomSide: 'Bottom Side',
+					bothSides: 'Both Sides'
+				}
+			},
+			holeCopperThickness: {
+				title: 'Hole Copper Thickness',
+				description: 'Please select the hole copper thickness you need'
+			},
+			ulMarking: {
+				title: 'UL Marking',
+				description:
+					'Velenova has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
+				values: {
+					topSilkscreen: 'Yes - add to top silkscreen',
+					bottomSilkscreen: 'Yes - add to bottom silkscreen',
+					topSolderMask: 'Yes - add to top solder mask',
+					bottomSolderMask: 'Yes - add to bottom solder mask',
+					topCopper: 'Yes - add to top copper',
+					bottomCopper: 'Yes - add to bottom copper',
+					default: 'Yes - as Velenova default'
+				}
+			},
+			dateCode: {
+				title: 'Date Code',
+				description: 'Add the production time on the PCB',
+				placeholder: 'For example: date code in the format of WWYY in top silkscreen layer',
+				values: {
+					velenovaPrefer: 'Add as Velenova prefer',
+					customerRequired: "Add as customer's required",
+					updateDesignedDateCode: 'Update the designed date code'
+				}
+			},
 			customizedServices: {
 				title: 'Customized Services and Advanced Options',
 				description: 'We may add extra cost for these special options which will be confirmed after review.',
-				options: {
+				values: {
 					halfCut: {
 						title: 'Half-Cut / Castellated Holes',
 						description:
@@ -573,44 +614,6 @@ export const en = {
 					}
 				}
 			},
-			peelableSolderMask: {
-				title: 'Peelable Solder Mask',
-				description:
-					'Also known as a blue peelable mask, it is used to protect the required solder pads during assembly and is typically referred to as GTPM and GBPM in design. Unlike green soldermask, which is a negative image and is permanently present on the PCB in PCB design, Peelable Soldermask is a positive image (what you see is what you get in your design) and is temporarily used for PCB manufacturing and assembly. Coating material could be removed after board through wave soldering.',
-				options: {
-					topSide: 'Top Side',
-					bottomSide: 'Bottom Side',
-					bothSides: 'Both Sides'
-				}
-			},
-			holeCopperThickness: {
-				title: 'Hole Copper Thickness',
-				description: 'Please select the hole copper thickness you need'
-			},
-			ulMarking: {
-				title: 'UL Marking',
-				description:
-					'Velenova has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
-				options: {
-					topSilkscreen: 'Yes - add to top silkscreen',
-					bottomSilkscreen: 'Yes - add to bottom silkscreen',
-					topSolderMask: 'Yes - add to top solder mask',
-					bottomSolderMask: 'Yes - add to bottom solder mask',
-					topCopper: 'Yes - add to top copper',
-					bottomCopper: 'Yes - add to bottom copper',
-					default: 'Yes - as Velenova default'
-				}
-			},
-			dateCode: {
-				title: 'Date Code',
-				description: 'Add the production time on the PCB',
-				placeholder: 'For example: date code in the format of WWYY in top silkscreen layer',
-				options: {
-					velenovaPrefer: 'Add as Velenova prefer',
-					customerRequired: "Add as customer's required",
-					updateDesignedDateCode: 'Update the designed date code'
-				}
-			},
 			specialRequests: {
 				title: 'Other Special Requests',
 				placeholder: 'Fill in any PCB details to make it as clear as possible for us to understand your requirements.'
@@ -618,14 +621,38 @@ export const en = {
 		},
 
 		assembly: {
+			id: {
+				title: 'Product ID'
+			},
+			createdAt: {
+				title: 'Created At'
+			},
+			updatedAt: {
+				title: 'Updated At'
+			},
 			name: {
 				title: 'Product Name',
 				description: 'Please enter a name for your product',
 				error: 'Product name is required'
 			},
+			fileName: {
+				title: 'File Name'
+			},
+			buildTime: {
+				title: 'Build Time'
+			},
+			weight: {
+				title: 'Weight'
+			},
+			initialPrice: {
+				title: 'Initial Price'
+			},
+			finalPrice: {
+				title: 'Final Price'
+			},
 			flexibleOptions: {
 				title: 'Flexible Options',
-				options: {
+				values: {
 					turnkey: {
 						title: 'Turnkey',
 						description: 'Velenova supply parts'
@@ -646,7 +673,7 @@ export const en = {
 					'We suggest choose to do panel if single PCB qty is more than 20pcs or any side of single board is smaller than 50mm.',
 				disclaimer:
 					'We suggest choose to do panel if single PCB qty is more than 20pcs or any side of single board is smaller than 50mm.',
-				options: {
+				values: {
 					singlePieces: 'Single Pieces',
 					panelizedPcbs: 'Panelized PCBs'
 				}
@@ -654,7 +681,7 @@ export const en = {
 			side: {
 				title: 'Assembly side',
 				description: 'Are the parts mounted on one side only or both sides?',
-				options: {
+				values: {
 					topSide: 'Top Side',
 					bottomSide: 'Bottom Side',
 					bothSides: 'Both Sides'
@@ -663,15 +690,22 @@ export const en = {
 			quantity: {
 				title: 'Quantity',
 				description: 'Please fill in total quantity of single PCBs.',
+				error: 'Quantity should be greater than 0',
 				placeholder: 'Quantity',
 				pieces: 'Pieces'
 			},
 			payAttention: {
 				title: 'Pay Attention',
 				description:
-					"Due to the diversity of components, there are usually many things need to be paid attention to while doing assembly, such as whether it needs to be baked before mounting, whether there are special requirements about welding temperature, corrosion resistance, humidity, etc. Our engineers will check all the information, but it is still inevitable that there will be omissions. So it'll be much better that you can hightlight the special requirements in advance.",
-				sensitiveParts: 'Contains sensitive components/parts',
-				alternatesChina: 'Do you accept alternatives/substitutes made in China?'
+					"Due to the diversity of components, there are usually many things need to be paid attention to while doing assembly, such as whether it needs to be baked before mounting, whether there are special requirements about welding temperature, corrosion resistance, humidity, etc. Our engineers will check all the information, but it is still inevitable that there will be omissions. So it'll be much better that you can hightlight the special requirements in advance."
+			},
+			sensitiveParts: {
+				title: 'Sensitive Parts',
+				description: 'Contains sensitive components/parts'
+			},
+			alternatesChina: {
+				title: 'Alternates Made in China',
+				description: 'Do you accept alternatives/substitutes made in China?'
 			},
 			otherParameters: {
 				title: 'Other Parameters',
@@ -679,25 +713,29 @@ export const en = {
 			},
 			uniqueParts: {
 				title: 'Number of Unique Parts',
-				description: 'The variety of components in the BOM.'
+				description: 'The variety of components in the BOM.',
+				error: 'Unique parts cannot be less than 0'
 			},
 			smdParts: {
 				title: 'Number of SMD Parts',
-				description: 'The total number of SMDs on each board (including fine pitch and leadless)'
+				description: 'The total number of SMDs on each board (including fine pitch and leadless)',
+				error: 'SMD parts cannot be less than 0'
 			},
 			bgaParts: {
 				title: 'Number of BGA/QFP Parts',
 				description:
-					'Number of ICs with more than 16pins and SMD irregular parts with more than 10pins on each board. (SOP,QFP,QFN,BGA)'
+					'Number of ICs with more than 16pins and SMD irregular parts with more than 10pins on each board. (SOP,QFP,QFN,BGA)',
+				error: 'BGA parts cannot be less than 0'
 			},
 			throughHoleParts: {
 				title: 'Number of Through-Hole Parts',
-				description: 'The total number of THT parts on each board (DIP NO.)'
+				description: 'The total number of THT parts on each board (DIP NO.)',
+				error: 'Through-hole parts cannot be less than 0'
 			},
 			customizedServices: {
 				title: 'Customized Services and Advanced Options',
 				description: 'Below options, their cost is not included in the online quotation',
-				options: {
+				values: {
 					depanelBoards: {
 						title: 'Depanel the boards to delivery',
 						description:
@@ -745,7 +783,8 @@ export const en = {
 			xrayTest: {
 				title: 'Number of X-ray test',
 				description:
-					'In PCB manufacturing, X-ray test typically refers to X-ray inspection or X-ray detection. It is a non-destructive testing technique used to inspect the quality of solder joint connections and component placement in electronic products.'
+					'In PCB manufacturing, X-ray test typically refers to X-ray inspection or X-ray detection. It is a non-destructive testing technique used to inspect the quality of solder joint connections and component placement in electronic products.',
+				error: 'Number of X-ray test should be greater than 0'
 			},
 			detailedInformation: {
 				title: 'Detailed information of assembly',
@@ -755,15 +794,39 @@ export const en = {
 		},
 
 		stencil: {
+			id: {
+				title: 'Product ID'
+			},
+			createdAt: {
+				title: 'Created At'
+			},
+			updatedAt: {
+				title: 'Updated At'
+			},
 			name: {
 				title: 'Product Name',
 				description: 'Please enter a name for your product',
 				error: 'Product name is required'
 			},
+			fileName: {
+				title: 'File Name'
+			},
+			buildTime: {
+				title: 'Build Time'
+			},
+			weight: {
+				title: 'Weight'
+			},
+			initialPrice: {
+				title: 'Initial Price'
+			},
+			finalPrice: {
+				title: 'Final Price'
+			},
 			type: {
 				title: 'Stencil type',
 				disclaimer: 'Allow combining several PCBs on a single SMD stencil.',
-				options: {
+				values: {
 					framework: 'Framework',
 					nonFramework: 'Non-framework'
 				}
@@ -775,7 +838,7 @@ export const en = {
 			side: {
 				title: 'Stencil side',
 				description: 'For Top+Bottom(On Single Stencil) the stencil size should be at least twice the PCB size.',
-				options: {
+				values: {
 					top: 'Top',
 					bottom: 'Bottom',
 					topBottomSingle: 'Top+Bottom (On Single Stencil)',
@@ -786,9 +849,16 @@ export const en = {
 				title: 'Size (mm)',
 				validArea: 'Valid Area'
 			},
+			length: {
+				title: 'Length'
+			},
+			width: {
+				title: 'Width'
+			},
 			quantity: {
 				title: 'Quantity',
-				pieces: 'Pieces'
+				pieces: 'Pieces',
+				error: 'Quantity should be greater than 0'
 			},
 			thickness: {
 				title: 'Thickness',
@@ -797,7 +867,7 @@ export const en = {
 			existingFiducials: {
 				title: 'Existing fiducials',
 				description: 'Fiducials "half lasered“, always on the PCB side (bottom).',
-				options: {
+				values: {
 					halfLasered: 'Half lasered',
 					laseredThrough: 'Lasered through'
 				}

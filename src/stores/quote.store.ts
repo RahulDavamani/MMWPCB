@@ -15,19 +15,20 @@ import { goto, invalidateAll } from '$app/navigation';
 import { supabase } from '$lib/client/supabase';
 import { nanoid } from 'nanoid';
 import type { PageData } from '../routes/instant-quote/edit/$types';
-
-export type ProductType = 'standardPcb' | 'advancedPcb' | 'flexiblePcb' | 'assembly' | 'stencil';
+import { productDetails, type ProductType } from './product.store';
 
 export interface Quote {
 	init: boolean;
 	isEdit: boolean;
 	productType: ProductType;
+	products: {
+		standardPcb: StandardPcb;
+		advancedPcb: AdvancedPcb;
+		flexiblePcb: FlexiblePcb;
+		assembly: Assembly;
+		stencil: Stencil;
+	};
 	files: { [k in ProductType]?: File };
-	standardPcb: StandardPcb;
-	advancedPcb: AdvancedPcb;
-	flexiblePcb: FlexiblePcb;
-	assembly: Assembly;
-	stencil: Stencil;
 }
 
 export const quote = (() => {
@@ -35,15 +36,15 @@ export const quote = (() => {
 		init: false,
 		isEdit: false,
 		productType: 'standardPcb',
-		files: {},
-		...cloneDeep(defaultProducts)
+		products: cloneDeep(defaultProducts),
+		files: {}
 	});
 
 	const reset = () =>
 		update((state) => ({
 			...state,
-			files: {},
-			...cloneDeep(defaultProducts)
+			products: cloneDeep(defaultProducts),
+			files: {}
 		}));
 
 	const init = async () => {
@@ -53,17 +54,19 @@ export const quote = (() => {
 				init: true,
 				isEdit: false,
 				productType: 'standardPcb',
-				files: {},
-				...cloneDeep(defaultProducts)
+				products: cloneDeep(defaultProducts),
+				files: {}
 			});
 		} else {
 			set({
 				init: true,
 				isEdit: true,
 				productType: productType as ProductType,
-				files: {},
-				...cloneDeep(defaultProducts),
-				[productType as ProductType]: product
+				products: {
+					...cloneDeep(defaultProducts),
+					[productType as ProductType]: product
+				},
+				files: {}
 			});
 		}
 	};
@@ -74,7 +77,7 @@ export const quote = (() => {
 			const $page = get(page);
 			const isEdit = $page.url.searchParams.get('id') !== null;
 			const id = $page.url.searchParams.get('id');
-			const { productType, files, ...products } = get(quote);
+			const { productType, files, products } = get(quote);
 			const selectedProduct = products[productType];
 			const file = files[productType];
 
@@ -120,27 +123,66 @@ export const quote = (() => {
 	return { subscribe, set, update, reset, init, upsertProduct };
 })();
 
-export const quoteError = derived(quote, ({ standardPcb, assembly, stencil }) => ({
-	standardPcb: {
-		name: standardPcb.name.length < 1,
-		differentDesign: standardPcb.differentDesign < 1,
-		length: standardPcb.length < 1,
-		width: standardPcb.width < 1,
-		quantity: standardPcb.quantity < 1
-	},
-	advancedPcb: {},
-	flexiblePcb: {},
-	assembly: {
-		name: assembly.name.length < 1,
-		quantity: assembly.quantity < 1,
-		uniqueParts: assembly.uniqueParts < 0,
-		smdParts: assembly.smdParts < 0,
-		bgaParts: assembly.bgaParts < 0,
-		throughHoleParts: assembly.throughHoleParts < 0,
-		xrayTest: assembly.xrayTest < 0
-	},
-	stencil: {
-		name: stencil.name.length < 1,
-		quantity: stencil.quantity < 1
-	}
-}));
+export const quoteError = derived([quote, productDetails], ([$quote, $productDetails]) => {
+	const standardPcb = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.standardPcb).map(([key, value]) => {
+				const validate = (
+					$productDetails.standardPcb[key as keyof typeof $productDetails.standardPcb] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof StandardPcb]: boolean })();
+
+	const advancedPcb = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.advancedPcb).map(([key, value]) => {
+				const validate = (
+					$productDetails.advancedPcb[key as keyof typeof $productDetails.advancedPcb] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof AdvancedPcb]: boolean })();
+
+	const flexiblePcb = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.flexiblePcb).map(([key, value]) => {
+				const validate = (
+					$productDetails.flexiblePcb[key as keyof typeof $productDetails.flexiblePcb] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof FlexiblePcb]: boolean })();
+
+	const assembly = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.assembly).map(([key, value]) => {
+				const validate = (
+					$productDetails.assembly[key as keyof typeof $productDetails.assembly] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof Assembly]: boolean })();
+
+	const stencil = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.stencil).map(([key, value]) => {
+				const validate = (
+					$productDetails.stencil[key as keyof typeof $productDetails.stencil] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof Stencil]: boolean })();
+
+	return { standardPcb, advancedPcb, flexiblePcb, assembly, stencil };
+});

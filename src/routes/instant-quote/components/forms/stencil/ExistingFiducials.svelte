@@ -1,26 +1,20 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import type { Stencil } from '../../../../../zod/products/stencil.schema';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.stencil.existingFiducials;
-	$: ({ existingFiducials } = $quote.stencil);
-	$: values = [
-		{ name: l.options.halfLasered, value: 'HALF_LASERED' },
-		{ name: l.options.laseredThrough, value: 'LASERED_THROUGH' },
-		{ name: $lg.common.none, value: 'NONE' }
-	] as { name: string; value: Stencil['existingFiducials'] }[];
+	$: pd = $productDetails.stencil.existingFiducials;
+	$: ({ existingFiducials } = $quote.products.stencil);
 </script>
 
-<FormItem {l}>
+<FormItem {pd}>
 	<div class="flex flex-wrap gap-4">
-		{#each values as { name, value }}
+		{#each pd.values as { title, value }}
 			<button
 				class="btn btn-sm btn-primary {existingFiducials !== value && 'btn-outline'}"
-				on:click={() => ($quote.stencil.existingFiducials = value)}
+				on:click={() => ($quote.products.stencil.existingFiducials = value)}
 			>
-				{name}
+				{title}
 			</button>
 		{/each}
 	</div>

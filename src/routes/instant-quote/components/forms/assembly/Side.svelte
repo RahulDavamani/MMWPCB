@@ -3,16 +3,16 @@
 	import { quote } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';
 
-	$: pd = $productDetails.standardPcb.viaProcess;
-	$: ({ viaProcess } = $quote.products.standardPcb);
+	$: pd = $productDetails.assembly.side;
+	$: ({ side } = $quote.products.assembly);
 </script>
 
 <FormItem {pd}>
 	<div class="flex flex-wrap gap-4">
 		{#each pd.values as { title, value }}
 			<button
-				class="btn btn-sm btn-primary {viaProcess !== value && 'btn-outline'}"
-				on:click={() => ($quote.products.standardPcb.viaProcess = value)}>{title}</button
+				class="btn btn-sm btn-primary {side !== value && 'btn-outline'}"
+				on:click={() => ($quote.products.assembly.side = value)}>{title}</button
 			>
 		{/each}
 	</div>

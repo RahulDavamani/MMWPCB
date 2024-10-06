@@ -1,29 +1,20 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import type { StandardPcb } from '../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.fr4TG;
-	$: ({ layers, fr4TG } = $quote.standardPcb);
-
-	$: values = [
-		{ name: 'TG 130-140', value: 'TG130_140' },
-		{ name: 'TG 150-160', value: 'TG150_160' },
-		{ name: 'TG 170-180', value: 'TG170_180' },
-		{ name: 'S1000H TG150', value: 'S1000H_TG150' },
-		{ name: 'S1000-2M TG170', value: 'S1000_2M_TG170' }
-	] as { name: string; value: StandardPcb['fr4TG'] }[];
+	$: pd = $productDetails.standardPcb.fr4TG;
+	$: ({ layers, fr4TG } = $quote.products.standardPcb);
 </script>
 
 {#if fr4TG}
-	<FormItem {l}>
+	<FormItem {pd}>
 		<div class="flex flex-wrap gap-4">
-			{#each values as { name, value }}
+			{#each pd.values as { title, value }}
 				{@const disabled = layers > 2 && (value === 'TG130_140' || value === 'TG150_160' || value === 'TG170_180')}
 				<button
 					class="btn btn-sm btn-primary {fr4TG !== value && 'btn-outline'} {disabled && 'btn-disabled'}"
-					on:click={() => ($quote.standardPcb.fr4TG = value)}>{name}</button
+					on:click={() => ($quote.products.standardPcb.fr4TG = value)}>{title}</button
 				>
 			{/each}
 		</div>

@@ -8,7 +8,7 @@
 </script>
 
 <div class="flex flex-wrap justify-around gap-8">
-	{#each Object.values($productTypes) as { key, name, img }}
+	{#each Object.values($productTypes) as { key, title, img }}
 		<button
 			class="btn btn-primary flex-grow h-14 gap-4 text-base font-semibold shadow
          {productType !== key && 'btn-outline'}"
@@ -17,7 +17,7 @@
 			{#await import(`$lib/assets/products/${img}.png`) then { default: src }}
 				<img {src} alt="icon" width={50} />
 			{/await}
-			{name}
+			{title}
 		</button>
 	{/each}
 </div>

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { ProductType } from '../../../stores/quote.store';
 	import type { RouterOutput } from '../../../trpc/routers/app.router';
 	import { closeModal, onShowModal } from '$lib/client/modal';
 	import { trpc } from '../../../trpc/client';
@@ -10,6 +9,7 @@
 	import type { Lang } from '$lib/locales/en';
 	import Loader from '../../components/UI/Loader.svelte';
 	import { order } from '../../../stores/order.store';
+	import { productDetails as pd, type ProductType } from '../../../stores/product.store';
 
 	$: l = $lg.order.productsTable.productDetails;
 
@@ -29,12 +29,13 @@
 	};
 
 	onMount(async () => onShowModal(modalId, fetchProductDetails));
+	$: console.log(productDetails);
 
 	const formatEntries = (entries: [string, unknown]): { key?: string; value?: any } => {
 		if (!productDetails) return {};
-		const l = $lg.instantQuote[productDetails.productType as keyof Lang['instantQuote']];
-		const key = l[entries[0]]?.title;
-		const value = entries[1] ?? '-';
+		const pd = $pd[productDetails.productType as ProductType][entries[0]];
+		const key = pd?.l?.title ?? entries[0];
+		const value = (pd?.parseValue ? pd.parseValue(entries[1]) : entries[1]) ?? '-';
 
 		return { key, value };
 	};
@@ -47,12 +48,10 @@
 		<div class="border shadow rounded-lg grid grid-cols-4">
 			{#each Object.entries(productDetails.product) as entries}
 				{@const { key, value } = formatEntries(entries)}
-				{#if key && value}
-					<div class="p-2 border font-semibold bg-primary bg-opacity-5">
-						{key}
-					</div>
-					<div class="p-2 border">{value}</div>
-				{/if}
+				<div class="p-2 border font-semibold bg-primary bg-opacity-5">
+					{key}
+				</div>
+				<div class="p-2 border">{value}</div>
 			{/each}
 		</div>
 	{/if}

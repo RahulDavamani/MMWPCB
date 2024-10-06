@@ -9,15 +9,16 @@
 	$: l = $lg.instantQuote.gerberFile;
 </script>
 
-<FormItem {l}>
+<FormItem pd={{ l }}>
 	<Dropzone
 		multiple={false}
 		accept="application/x-zip-compressed,application/x-rar-compressed"
 		maxSize={1024 * 1024 * 20}
 		on:drop={(e) => ($quote.files[$quote.productType] = e.detail.acceptedFiles[0])}
 	>
-		{#if $quote.files[$quote.productType] || $quote[$quote.productType].fileName}
-			{@const name = $quote.files[$quote.productType]?.name ?? $quote[$quote.productType].fileName?.split('__')[1]}
+		{#if $quote.files[$quote.productType] || $quote.products[$quote.productType].fileName}
+			{@const name =
+				$quote.files[$quote.productType]?.name ?? $quote.products[$quote.productType].fileName?.split('__')[1]}
 			<Icon icon="mdi:file-check" width={36} class="text-success" />
 			<div>File Uploaded Successfully</div>
 			<div class="font-semibold">{name}</div>
@@ -29,10 +30,10 @@
 	</Dropzone>
 
 	<div slot="disclaimer" class="mt-1 flex justify-center">
-		{#if $quote[$quote.productType].fileName}
+		{#if $quote.products[$quote.productType].fileName}
 			{@const fileUrl = supabase.storage
 				.from('Gerber Files')
-				.createSignedUrl($quote[$quote.productType].fileName ?? '', 300)}
+				.createSignedUrl($quote.products[$quote.productType].fileName ?? '', 300)}
 			{#await fileUrl}
 				<button class="btn btn-sm btn-link pointer-events-none text-info">
 					<Icon icon="mdi:download" />

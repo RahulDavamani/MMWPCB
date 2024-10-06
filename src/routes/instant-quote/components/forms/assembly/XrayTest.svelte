@@ -1,17 +1,18 @@
 <script lang="ts">
 	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote, quoteError } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.assembly.xrayTest;
+	$: pd = $productDetails.assembly.xrayTest;
 	$: isError = $quoteError.assembly.xrayTest;
 </script>
 
-<FormItem {l} {isError}>
+<FormItem {pd} {isError}>
 	<input
 		type="number"
 		class="input input-bordered input-sm {isError && 'input-error'}"
 		placeholder={$lg.common.typeHere}
-		bind:value={$quote.assembly.xrayTest}
+		bind:value={$quote.products.assembly.xrayTest}
 	/>
 </FormItem>

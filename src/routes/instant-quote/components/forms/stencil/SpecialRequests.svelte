@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.stencil.specialRequests;
+	$: pd = $productDetails.stencil.specialRequests;
 </script>
 
-<FormItem {l}>
+<FormItem {pd}>
 	<textarea
 		class="textarea textarea-bordered w-full"
 		rows="2"
-		placeholder={l.placeholder}
-		bind:value={$quote.stencil.specialRequests}
+		placeholder={pd.l.placeholder}
+		bind:value={$quote.products.stencil.specialRequests}
 	/>
 </FormItem>

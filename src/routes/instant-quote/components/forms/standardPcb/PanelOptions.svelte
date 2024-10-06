@@ -1,42 +1,24 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import type { StandardPcb } from '../../../../../zod/products/standardPcb.schema';
 	import FormControl from '../../../../components/FormControl.svelte';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb;
-	$: ({ xoutAllowance, breakAwayRail, routeProcess, panelRequirements } = $quote.standardPcb);
-
-	$: xoutAllowanceValues = [
-		{ name: l.xoutAllowance.options.accept, value: true },
-		{ name: l.xoutAllowance.options.decline, value: false }
-	] as { name: string; value: StandardPcb['xoutAllowance'] }[];
-
-	$: routeProcessValues = [
-		{ name: l.routeProcess.options.velenovaPrefer, value: 'VELENOVA_PREFER' },
-		{ name: l.routeProcess.options.vScoring, value: 'V_SCORING' },
-		{ name: l.routeProcess.options.tabRoute, value: 'TAB_ROUTE' },
-		{ name: l.routeProcess.options.vScoringTabRoute, value: 'V_SCORING_AND_TAB_ROUTE' }
-	] as { name: string; value: StandardPcb['routeProcess'] }[];
-
-	$: breakAwayRailValues = [
-		{ name: $lg.common.yes, value: true },
-		{ name: $lg.common.no, value: false }
-	] as { name: string; value: StandardPcb['breakAwayRail'] }[];
+	$: pd = $productDetails.standardPcb;
+	$: ({ xoutAllowance, breakAwayRail, routeProcess, panelRequirements } = $quote.products.standardPcb);
 </script>
 
 {#if xoutAllowance !== undefined && xoutAllowance !== null}
-	<FormItem l={l.xoutAllowance}>
+	<FormItem pd={pd.xoutAllowance}>
 		<div class="flex text-sm">
-			{#each xoutAllowanceValues as { name, value }}
-				<FormControl inputType="In" label={name}>
+			{#each pd.xoutAllowance.values as { title, value }}
+				<FormControl inputType="In" label={title}>
 					<input
 						type="radio"
 						name="xoutAllowance"
 						class="radio radio-primary radio-xs"
 						{value}
-						bind:group={$quote.standardPcb.xoutAllowance}
+						bind:group={$quote.products.standardPcb.xoutAllowance}
 					/>
 				</FormControl>
 			{/each}
@@ -47,26 +29,26 @@
 {#if routeProcess && breakAwayRail !== undefined}
 	<div class="grid grid-cols-2">
 		{#if routeProcess}
-			<FormItem l={l.routeProcess}>
-				<select class="select select-bordered select-sm" bind:value={$quote.standardPcb.routeProcess}>
-					{#each routeProcessValues as { name, value }}
-						<option {value}>{name}</option>
+			<FormItem pd={pd.routeProcess}>
+				<select class="select select-bordered select-sm" bind:value={$quote.products.standardPcb.routeProcess}>
+					{#each pd.routeProcess.values as { title, value }}
+						<option {value}>{title}</option>
 					{/each}
 				</select>
 			</FormItem>
 		{/if}
 
 		{#if breakAwayRail !== undefined}
-			<FormItem l={l.breakAwayRail}>
+			<FormItem pd={pd.breakAwayRail}>
 				<div class="flex text-sm">
-					{#each breakAwayRailValues as { name, value }}
-						<FormControl inputType="In" label={name}>
+					{#each pd.breakAwayRail.values as { title, value }}
+						<FormControl inputType="In" label={title}>
 							<input
 								type="radio"
 								name="breakAwayRail"
 								class="radio radio-primary radio-xs"
 								{value}
-								bind:group={$quote.standardPcb.breakAwayRail}
+								bind:group={$quote.products.standardPcb.breakAwayRail}
 							/>
 						</FormControl>
 					{/each}
@@ -77,7 +59,10 @@
 {/if}
 
 {#if panelRequirements !== undefined && panelRequirements !== null}
-	<FormItem l={l.panelRequirements}>
-		<textarea class="textarea textarea-bordered textarea-sm w-full" bind:value={$quote.standardPcb.panelRequirements} />
+	<FormItem pd={pd.panelRequirements}>
+		<textarea
+			class="textarea textarea-bordered textarea-sm w-full"
+			bind:value={$quote.products.standardPcb.panelRequirements}
+		/>
 	</FormItem>
 {/if}

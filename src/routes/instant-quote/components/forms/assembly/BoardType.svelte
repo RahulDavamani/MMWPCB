@@ -1,24 +1,18 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import type { Assembly } from '../../../../../zod/products/assembly.schema';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.assembly.boardType;
-	$: ({ boardType } = $quote.assembly);
-
-	$: values = [
-		{ name: l.options.singlePieces, value: 'SINGLE_PIECES' },
-		{ name: l.options.panelizedPcbs, value: 'PANELIZED_PCBS' }
-	] as { name: string; value: Assembly['boardType'] }[];
+	$: pd = $productDetails.assembly.boardType;
+	$: ({ boardType } = $quote.products.assembly);
 </script>
 
-<FormItem {l}>
+<FormItem {pd}>
 	<div class="flex flex-wrap gap-4">
-		{#each values as { name, value }}
+		{#each pd.values as { title, value }}
 			<button
 				class="btn btn-sm btn-primary {boardType !== value && 'btn-outline'}"
-				on:click={() => ($quote.assembly.boardType = value)}>{name}</button
+				on:click={() => ($quote.products.assembly.boardType = value)}>{title}</button
 			>
 		{/each}
 	</div>

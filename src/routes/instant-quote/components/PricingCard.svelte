@@ -10,8 +10,8 @@
 	$: l = $lg.instantQuote.pricing;
 
 	$: buildTimes = [
-		{ name: '24 Hours', value: '24 Hours', price: 5 },
-		{ name: 'Extra Urgent!', value: 'Extra Urgent!', price: 99 }
+		{ name: '24 Hours', value: 86400, price: 5 },
+		{ name: '12 Hours', value: 43200, price: 99 }
 	];
 
 	$: chargeDetails = [
@@ -44,7 +44,7 @@
 						name="buildTime"
 						class="radio radio-primary radio-xs"
 						{value}
-						bind:group={$quote.standardPcb.buildTime}
+						bind:group={$quote.products.standardPcb.buildTime}
 					/>
 				</FormControl>
 				<div class="font-mono">${price.toFixed(2)}</div>

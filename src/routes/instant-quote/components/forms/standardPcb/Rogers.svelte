@@ -1,25 +1,19 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import type { StandardPcb } from '../../../../../zod/products/standardPcb.schema';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.rogers;
-	$: ({ rogers } = $quote.standardPcb);
-
-	$: values = [
-		{ name: 'Rogers 4003C', value: 'ROGERS_4003C' },
-		{ name: 'Rogers 4350B', value: 'ROGERS_4350B' }
-	] as { name: string; value: StandardPcb['rogers'] }[];
+	$: pd = $productDetails.standardPcb.rogers;
+	$: ({ rogers } = $quote.products.standardPcb);
 </script>
 
 {#if rogers}
-	<FormItem {l}>
+	<FormItem {pd}>
 		<div class="flex flex-wrap gap-4">
-			{#each values as { name, value }}
+			{#each pd.values as { title, value }}
 				<button
 					class="btn btn-sm btn-primary {rogers !== value && 'btn-outline'}"
-					on:click={() => ($quote.standardPcb.rogers = value)}>{name}</button
+					on:click={() => ($quote.products.standardPcb.rogers = value)}>{title}</button
 				>
 			{/each}
 		</div>

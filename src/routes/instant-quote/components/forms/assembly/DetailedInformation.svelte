@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.assembly.detailedInformation;
+	$: pd = $productDetails.assembly.detailedInformation;
 </script>
 
-<FormItem {l}>
+<FormItem {pd}>
 	<textarea
 		class="textarea textarea-bordered w-full"
 		rows="2"
-		placeholder={l.placeholder}
-		bind:value={$quote.assembly.detailedInformation}
+		placeholder={pd.l.placeholder}
+		bind:value={$quote.products.assembly.detailedInformation}
 	/>
 </FormItem>

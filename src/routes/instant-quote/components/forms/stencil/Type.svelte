@@ -1,25 +1,20 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import type { Stencil } from '../../../../../zod/products/stencil.schema';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.stencil.type;
-	$: ({ type } = $quote.stencil);
-	$: values = [
-		{ name: l.options.framework, value: 'FRAMEWORK' },
-		{ name: l.options.nonFramework, value: 'NON_FRAMEWORK' }
-	] as { name: string; value: Stencil['type'] }[];
+	$: pd = $productDetails.stencil.type;
+	$: ({ type } = $quote.products.stencil);
 </script>
 
-<FormItem {l}>
+<FormItem {pd}>
 	<div class="flex flex-wrap gap-4">
-		{#each values as { name, value }}
+		{#each pd.values as { title, value }}
 			<button
 				class="btn btn-sm btn-primary {type !== value && 'btn-outline'}"
-				on:click={() => ($quote.stencil.type = value)}
+				on:click={() => ($quote.products.stencil.type = value)}
 			>
-				{name}
+				{title}
 			</button>
 		{/each}
 	</div>

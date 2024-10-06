@@ -9,7 +9,7 @@
 </script>
 
 {#if paymentInfo}
-	{@const { transactionId, createdAt, paymentInstrumentType, amount, currencyIsoCode } = paymentInfo}
+	{@const { transactionId, createdAt, paymentInstrumentType } = paymentInfo}
 	<div class="grow border rounded-lg shadow p-4">
 		<div class="text-lg font-bold flex items-center gap-2">
 			<Icon icon="mdi:money" width={20} />

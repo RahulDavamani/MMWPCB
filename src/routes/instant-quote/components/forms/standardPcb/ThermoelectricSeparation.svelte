@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.standardPcb.thermoElectricSeparation;
-	$: ({ thermoElectricSeparation } = $quote.standardPcb);
+	$: pd = $productDetails.standardPcb.thermoElectricSeparation;
+	$: ({ thermoElectricSeparation } = $quote.products.standardPcb);
 </script>
 
 {#if thermoElectricSeparation !== undefined && thermoElectricSeparation !== null}
-	<FormItem {l}>
+	<FormItem {pd}>
 		<input
 			type="checkbox"
 			class="checkbox checkbox-sm checkbox-primary"
-			bind:checked={$quote.standardPcb.thermoElectricSeparation}
+			bind:checked={$quote.products.standardPcb.thermoElectricSeparation}
 		/>
 	</FormItem>
 {/if}

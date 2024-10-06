@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AssemblySide from './AssemblySide.svelte';
+	import Side from './Side.svelte';
 	import BoardType from './BoardType.svelte';
 	import CustomizedServices from './CustomizedServices.svelte';
 	import DetailedInformation from './DetailedInformation.svelte';
@@ -15,7 +15,7 @@
 <Name />
 <FlexibleOptions />
 <BoardType />
-<AssemblySide />
+<Side />
 <Quantity />
 <PayAttention />
 <OtherParameters />

@@ -1,25 +1,20 @@
 <script lang="ts">
-	import { lg } from '../../../../../stores/i18n.store';
+	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import type { Stencil } from '../../../../../zod/products/stencil.schema';
 	import FormItem from '../../FormItem.svelte';
 
-	$: l = $lg.instantQuote.stencil.multiLevel;
-	$: ({ multiLevel } = $quote.stencil);
-	$: values = [
-		{ name: $lg.common.no, value: false },
-		{ name: $lg.common.yes, value: true }
-	] as { name: string; value: Stencil['multiLevel'] }[];
+	$: pd = $productDetails.stencil.multiLevel;
+	$: ({ multiLevel } = $quote.products.stencil);
 </script>
 
-<FormItem {l}>
+<FormItem {pd}>
 	<div class="flex flex-wrap gap-4">
-		{#each values as { name, value }}
+		{#each pd.values as { title, value }}
 			<button
 				class="btn btn-sm btn-primary {multiLevel !== value && 'btn-outline'}"
-				on:click={() => ($quote.stencil.multiLevel = value)}
+				on:click={() => ($quote.products.stencil.multiLevel = value)}
 			>
-				{name}
+				{title}
 			</button>
 		{/each}
 	</div>

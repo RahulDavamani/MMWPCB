@@ -1,37 +1,41 @@
 <script lang="ts">
 	import FormItem from '../../FormItem.svelte';
-	import { lg } from '../../../../../stores/i18n.store';
 	import Icon from '@iconify/svelte';
 	import { quote, quoteError } from '../../../../../stores/quote.store';
+	import { lg } from '../../../../../stores/i18n.store';
 
-	$: l = $lg.instantQuote.standardPcb.size;
+	$: l = $lg.instantQuote.standardPcb;
 
-	$: ({ length, width } = $quote.standardPcb);
+	$: ({ length, width } = $quote.products.standardPcb);
 	$: size = (length * width) / 1000000;
 
-	$: isError = $quoteError.standardPcb.length ?? $quoteError.standardPcb.width;
+	$: lengthError = $quoteError.standardPcb.length;
+	$: widthError = $quoteError.standardPcb.width;
+	$: isError = lengthError || widthError;
+
+	$: pd = { l: l.size, url: '' };
 </script>
 
-<FormItem {l} {isError}>
+<FormItem {pd} {isError}>
 	<div class="flex justify-between">
 		<div class="flex flex-wrap items-center gap-2">
-			<label class="input input-bordered input-sm {length < 1 && 'input-error'} flex items-center gap-2">
+			<label class="input input-bordered input-sm {lengthError && 'input-error'} flex items-center gap-2">
 				<input
 					type="number"
 					class="grow w-20"
-					placeholder={l.placeholder.length}
-					bind:value={$quote.standardPcb.length}
+					placeholder={l.length.title}
+					bind:value={$quote.products.standardPcb.length}
 				/>
 				<span class="opacity-75">mm</span>
 			</label>
 			<div class="flex items-center gap-2">
 				<Icon icon="mdi:multiply" />
-				<label class="input input-bordered input-sm {width < 1 && 'input-error'} flex items-center gap-2">
+				<label class="input input-bordered input-sm {widthError && 'input-error'} flex items-center gap-2">
 					<input
 						type="number"
 						class="grow w-20"
-						placeholder={l.placeholder.width}
-						bind:value={$quote.standardPcb.width}
+						placeholder={l.width.title}
+						bind:value={$quote.products.standardPcb.width}
 					/>
 					<span class="opacity-75">mm</span>
 				</label>
@@ -56,9 +60,9 @@
 						<input
 							type="number"
 							class="grow w-24"
-							placeholder={l.placeholder.length}
+							placeholder={l.length.title}
 							value={parseFloat((length * 0.03937).toFixed(4))}
-							on:change={(e) => ($quote.standardPcb.length = Number(e.currentTarget.value) / 0.03937)}
+							on:change={(e) => ($quote.products.standardPcb.length = Number(e.currentTarget.value) / 0.03937)}
 						/>
 						<span class="opacity-75">inch</span>
 					</label>
@@ -67,9 +71,9 @@
 						<input
 							type="number"
 							class="grow w-24"
-							placeholder={l.placeholder.width}
+							placeholder={l.width.title}
 							value={parseFloat((width * 0.03937).toFixed(4))}
-							on:change={(e) => ($quote.standardPcb.width = Number(e.currentTarget.value) / 0.03937)}
+							on:change={(e) => ($quote.products.standardPcb.width = Number(e.currentTarget.value) / 0.03937)}
 						/>
 						<span class="opacity-75">inch</span>
 					</label>
