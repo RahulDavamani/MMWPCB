@@ -5,8 +5,6 @@
 	import FormItem from '../../FormItem.svelte';
 
 	$: pd = $productDetails.standardPcb.holeCopperThickness;
-
-	$: values = [20, 25, 30, 35, 50, 55, 70];
 </script>
 
 <FormItem {pd}>
@@ -15,7 +13,7 @@
 		bind:value={$quote.products.standardPcb.holeCopperThickness}
 	>
 		<option value={0}>{$lg.common.none}</option>
-		{#each values as value}
+		{#each pd.values as value}
 			<option {value}>{pd.parseValue(value)}</option>
 		{/each}
 	</select>

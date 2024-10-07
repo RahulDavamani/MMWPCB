@@ -104,12 +104,24 @@ export const stencilDetails = ($lg: Lang) => {
 	const length = {
 		key: 'length',
 		l: l.length,
+		values: [
+			{ length: 370, width: 470, vaLength: 190, vaWidth: 290 },
+			{ length: 420, width: 520, vaLength: 240, vaWidth: 340 },
+			{ length: 450, width: 550, vaLength: 270, vaWidth: 370 },
+			{ length: 584, width: 584, vaLength: 380, vaWidth: 380 }
+		],
 		parseValue: (val: Stencil['length']) => `${val.toFixed(2)} mm`
 	};
 
 	const width = {
 		key: 'width',
 		l: l.width,
+		values: [
+			{ length: 370, width: 470, vaLength: 190, vaWidth: 290 },
+			{ length: 420, width: 520, vaLength: 240, vaWidth: 340 },
+			{ length: 450, width: 550, vaLength: 270, vaWidth: 370 },
+			{ length: 584, width: 584, vaLength: 380, vaWidth: 380 }
+		],
 		parseValue: (val: Stencil['width']) => `${val.toFixed(2)} mm`
 	};
 
@@ -122,6 +134,7 @@ export const stencilDetails = ($lg: Lang) => {
 	const thickness = {
 		key: 'thickness',
 		l: l.thickness,
+		values: [0.08, 0.1, 0.12, 0.15, 0.2, 0.25, 0.3],
 		parseValue: (val: Stencil['thickness']) => `${val.toFixed(2)} mm`
 	};
 

@@ -12,12 +12,7 @@
 	$: ({ length, width, quantity } = $quote.products.standardPcb);
 	$: size = (length * width) / 1000000;
 
-	afterUpdate(() => ($quote.products.standardPcb.quantity = size < 5 && !values.includes(quantity) ? 5 : quantity));
-
-	let values = [
-		5, 10, 15, 20, 25, 30, 40, 50, 75, 100, 125, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1500,
-		2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 9000, 10000
-	];
+	afterUpdate(() => ($quote.products.standardPcb.quantity = size < 5 && !pd.values.includes(quantity) ? 5 : quantity));
 </script>
 
 <FormItem {pd} {isError}>
@@ -36,7 +31,7 @@
 		</div>
 		<div tabindex={0} class="dropdown-content bg-base-100 w-96 p-3 z-[1] rounded-box shadow border text-sm">
 			<div class="grid grid-cols-5">
-				{#each values as value}
+				{#each pd.values as value}
 					<FormControl inputType="In" label={value.toString()}>
 						<input
 							type="radio"
@@ -54,7 +49,7 @@
 					type="number"
 					placeholder={pd.l.placeholder}
 					class="input input-bordered input-sm w-full {isError && 'input-error'}"
-					value={values.includes(quantity) ? '' : quantity}
+					value={pd.values.includes(quantity) ? '' : quantity}
 					on:change={(e) => ($quote.products.standardPcb.quantity = Number(e.currentTarget.value))}
 					disabled={size < 5}
 				/>

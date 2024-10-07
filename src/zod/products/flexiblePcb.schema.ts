@@ -101,3 +101,6 @@ export const flexiblePcbSchema = z.object({
 });
 
 export type FlexiblePcb = z.infer<typeof flexiblePcbSchema>;
+
+export const flexiblePcbPartialSchema = flexiblePcbSchema.partial();
+export type FlexiblePcbPartial = z.infer<typeof flexiblePcbPartialSchema>;

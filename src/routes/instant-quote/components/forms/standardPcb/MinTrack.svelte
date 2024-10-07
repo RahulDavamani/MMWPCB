@@ -5,13 +5,11 @@
 
 	$: pd = $productDetails.standardPcb.minTrack;
 	$: ({ minTrack } = $quote.products.standardPcb);
-
-	$: values = [3, 4, 5, 6, 8];
 </script>
 
 <FormItem {pd}>
 	<div class="flex flex-wrap gap-4">
-		{#each values as value}
+		{#each pd.values as value}
 			<button
 				class="btn btn-sm btn-primary {minTrack !== value && 'btn-outline'}"
 				on:click={() => ($quote.products.standardPcb.minTrack = value)}>{pd.parseValue(value)}</button

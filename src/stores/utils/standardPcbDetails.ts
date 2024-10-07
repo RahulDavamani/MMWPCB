@@ -130,6 +130,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 		key: 'differentDesign',
 		l: l.differentDesign,
 		imgSrc: '',
+		values: [1, 2, 3, 4, 5, 6],
 		validate: (val: StandardPcb['differentDesign']) => val < 1
 	};
 
@@ -150,7 +151,11 @@ export const standardPcbDetails = ($lg: Lang) => {
 	const quantity = {
 		key: 'quantity',
 		l: l.quantity,
-		url: ''
+		url: '',
+		values: [
+			5, 10, 15, 20, 25, 30, 40, 50, 75, 100, 125, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000,
+			1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 9000, 10000
+		]
 	};
 
 	const layers = {
@@ -158,6 +163,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 		l: l.layers,
 		url: '',
 		imgSrc: '',
+		values: [1, 2, 4, 6, 8, 10, 12, 14],
 		parseValue: (val: number) => val + ' ' + (val > 1 ? l.layers.layers : l.layers.layer)
 	};
 
@@ -274,6 +280,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 	const thermalConductivity = {
 		key: 'thermalConductivity',
 		l: l.thermalConductivity,
+		values: [1, 1.5, 2, 3],
 		parseValue: (val: StandardPcb['thermalConductivity']) => (typeof val === 'number' ? `${val} W/(m-K)` : val)
 	};
 
@@ -299,13 +306,16 @@ export const standardPcbDetails = ($lg: Lang) => {
 	const thickness = {
 		key: 'thickness',
 		l: l.thickness,
-		imgSrc: ''
+		imgSrc: '',
+		values: [0.2, 0.3, 0.4, 0.6, 0.8, 1.0, 1.2, 1.6, 2.0, 2.4, 2.6, 2.8, 3.0, 3.2],
+		parseValue: (val: StandardPcb['thickness']) => `${val}mm`
 	};
 
 	const minTrack = {
 		key: 'minTrack',
 		l: l.minTrack,
 		imgSrc: '',
+		values: [3, 4, 5, 6, 8],
 		parseValue: (val: StandardPcb['minTrack']) => `${val}/${val}mil`
 	};
 
@@ -313,6 +323,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 		key: 'minHoleSize',
 		l: l.minHoleSize,
 		imgSrc: '',
+		values: [0.15, 0.2, 0.25, 0.3, 0.8, 1.0],
 		parseValue: (val: StandardPcb['minHoleSize']) => `${val}mm`
 	};
 
@@ -426,6 +437,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 	const finishedCopper = {
 		key: 'finishedCopper',
 		l: l.finishedCopper,
+		values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
 		parseValue: (val: StandardPcb['finishedCopper']) =>
 			`${val === 0 ? `${l.finishedCopper.bareBoard} / ` : ''} ${val} oz Cu`
 	};
@@ -433,6 +445,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 	const innerCopper = {
 		key: 'innerCopper',
 		l: l.innerCopper,
+		values: [1, 1.5, 2, 3, 4, 5, 6],
 		parseValue: (val: StandardPcb['innerCopper']) => (typeof val === 'number' ? `${val} oz Cu` : val)
 	};
 
@@ -470,6 +483,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 	const holeCopperThickness = {
 		key: 'holeCopperThickness',
 		l: l.holeCopperThickness,
+		values: [20, 25, 30, 35, 50, 55, 70],
 		parseValue: (val: number) => val !== undefined && val + 'mm'
 	};
 

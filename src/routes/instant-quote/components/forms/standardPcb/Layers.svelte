@@ -6,8 +6,6 @@
 	$: pd = $productDetails.standardPcb.layers;
 	$: ({ layers, material, fr4TG, structureOfMCPCB, innerCopper } = $quote.products.standardPcb);
 
-	$: values = [1, 2, 4, 6, 8, 10, 12, 14];
-
 	const selectLayer = (value: number) => {
 		if (layers !== value)
 			$quote.products.standardPcb =
@@ -42,7 +40,7 @@
 
 <FormItem {pd}>
 	<div class="flex flex-wrap gap-4">
-		{#each values as value}
+		{#each pd.values as value}
 			{@const disabled =
 				material === 'ALUMINUM' || material === 'COPPER_BASE' ? value > 4 : material === 'HDI' ? value < 4 : false}
 			<button

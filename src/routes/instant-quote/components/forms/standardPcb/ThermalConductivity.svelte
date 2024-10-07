@@ -5,14 +5,12 @@
 
 	$: pd = $productDetails.standardPcb.thermalConductivity;
 	$: ({ material, thermalConductivity } = $quote.products.standardPcb);
-
-	$: values = [1, 1.5, 2, 3];
 </script>
 
 {#if thermalConductivity}
 	<FormItem {pd}>
 		<div class="flex flex-wrap gap-4">
-			{#each values as value}
+			{#each pd.values as value}
 				{@const disabled = material === 'COPPER_BASE' && value < 2}
 				<button
 					class="btn btn-sm btn-primary {thermalConductivity !== value && 'btn-outline'} {disabled && 'btn-disabled'}"

@@ -154,3 +154,6 @@ export const advancedPcbSchema = z.object({
 });
 
 export type AdvancedPcb = z.infer<typeof advancedPcbSchema>;
+
+export const advancedPcbPartialSchema = advancedPcbSchema.partial();
+export type AdvancedPcbPartial = z.infer<typeof advancedPcbPartialSchema>;

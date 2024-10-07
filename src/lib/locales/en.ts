@@ -132,7 +132,9 @@ export const en = {
 	},
 
 	home: {
-		pageTitle: 'Home'
+		pageTitle: 'Home',
+		instantQuote: 'Instant Quote',
+		quoteNow: 'Quote Now'
 	},
 
 	products: {

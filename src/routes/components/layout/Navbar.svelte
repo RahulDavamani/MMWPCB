@@ -4,6 +4,7 @@
 	import { lg } from '../../../stores/i18n.store';
 	import I18N from './I18N.svelte';
 	import SmallCart from './SmallCart.svelte';
+	import ProductsMenu from './ProductsMenu.svelte';
 
 	$: l = $lg.navbar;
 
@@ -24,18 +25,59 @@
 					<img src={VelenovaLogo} alt="Velenova" width="140" />
 				</a>
 			</div> -->
-			<div class="text-xl font-bold font-serif text-primary">MMWPCB</div>
-			{#each navItems as { name, href }}
+			<a href="/" class="text-xl font-bold font-serif text-primary">MMWPCB</a>
+			<!-- {#each navItems as { name, href }}
 				<div>
 					<a
 						{href}
 						class="btn btn-link text-black text-base underline-offset-8 decoration-secondary decoration-2
-                  {route === href && '!underline'}"
+                  {route.startsWith(href) && '!underline'}"
 					>
 						{name}
 					</a>
 				</div>
-			{/each}
+			{/each} -->
+			<div>
+				<a
+					href="/instant-quote"
+					class="btn btn-link text-black text-base underline-offset-8 decoration-secondary decoration-2
+                  {route.startsWith('/instant-quote') && '!underline'}"
+				>
+					{l.instantQuote}
+				</a>
+			</div>
+
+			<div class="dropdown dropdown-hover">
+				<a
+					tabindex="0"
+					href="/products/pcb-capabilities"
+					class="btn btn-link text-black text-base underline-offset-8 decoration-secondary decoration-2
+            {route.startsWith('/products') && '!underline'}"
+				>
+					{l.products}
+				</a>
+				<ul tabindex="0" class="dropdown-content z-[1]">
+					<ProductsMenu />
+				</ul>
+			</div>
+			<div>
+				<a
+					href="/why-us"
+					class="btn btn-link text-black text-base underline-offset-8 decoration-secondary decoration-2
+                  {route.startsWith('/why-us') && '!underline'}"
+				>
+					{l.whyUs}
+				</a>
+			</div>
+			<div>
+				<a
+					href="/support"
+					class="btn btn-link text-black text-base underline-offset-8 decoration-secondary decoration-2
+                  {route.startsWith('/support') && '!underline'}"
+				>
+					{l.support}
+				</a>
+			</div>
 		</div>
 		<div class="flex items-center gap-6">
 			<I18N />

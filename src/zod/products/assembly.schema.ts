@@ -38,3 +38,6 @@ export const assemblySchema = z.object({
 });
 
 export type Assembly = z.infer<typeof assemblySchema>;
+
+export const assemblyPartialSchema = assemblySchema.partial();
+export type AssemblyPartial = z.infer<typeof assemblyPartialSchema>;

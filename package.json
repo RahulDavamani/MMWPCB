@@ -50,6 +50,7 @@
 	"dependencies": {
 		"@lucia-auth/adapter-prisma": "^4.0.1",
 		"@prisma/client": "^5.19.1",
+		"@splidejs/svelte-splide": "^0.2.9",
 		"@supabase/supabase-js": "^2.45.4",
 		"@trpc/client": "^10.45.2",
 		"@trpc/server": "^10.45.2",

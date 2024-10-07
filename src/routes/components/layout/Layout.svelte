@@ -16,9 +16,13 @@
 		<Navbar />
 	{/if}
 
+	<slot name="top-main" />
+
 	<main class="flex-grow container mx-auto p-5 pt-7 pb-10">
 		<slot />
 	</main>
+
+	<slot name="bottom-main" />
 
 	{#if footer}
 		<Footer />

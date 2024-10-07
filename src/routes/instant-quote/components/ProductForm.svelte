@@ -29,7 +29,8 @@
 	{#if productType === 'standardPcb'}
 		<StandardPcbForm />
 	{:else if productType === 'advancedPcb'}
-		<AdvancedPcbForm />
+		<StandardPcbForm />
+		<!-- <AdvancedPcbForm /> -->
 	{:else if productType === 'flexiblePcb'}
 		<FlexiblePcbForm />
 	{:else if productType === 'assembly'}

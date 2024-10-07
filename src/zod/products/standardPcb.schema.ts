@@ -142,3 +142,6 @@ export const standardPcbSchema = z.object({
 });
 
 export type StandardPcb = z.infer<typeof standardPcbSchema>;
+
+export const standardPcbPartialSchema = standardPcbSchema.partial();
+export type StandardPcbPartial = z.infer<typeof standardPcbPartialSchema>;

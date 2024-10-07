@@ -25,3 +25,6 @@ export const stencilSchema = z.object({
 });
 
 export type Stencil = z.infer<typeof stencilSchema>;
+
+export const stencilPartialSchema = stencilSchema.partial();
+export type StencilPartial = z.infer<typeof stencilPartialSchema>;
