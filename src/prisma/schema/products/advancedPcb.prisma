@@ -43,7 +43,7 @@ model AdvancedPcb {
    edgeConnector   Boolean
 
    surfaceFinish    APSurfaceFinish
-   surfaceThickness Float?
+   surfaceThickness Float[]
    finishedCopper   Float
    innerCopper      Float?
 
@@ -119,6 +119,7 @@ enum APMaterial {
    HIGH_CTI_HALOGEN_FREE
    HIGH_SPEED
    HIGH_FREQUENCY
+   SPECIAL_MATERIAL
 }
 
 enum APSolderMaskColor {

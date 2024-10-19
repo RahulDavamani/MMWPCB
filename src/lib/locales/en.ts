@@ -13,8 +13,14 @@ export const en = {
 			blue: 'Blue',
 			yellow: 'Yellow',
 			purple: 'Purple',
+			pink: 'Pink',
+			orange: 'Orange',
+			grey: 'Grey',
 			matteBlack: 'Matte Black',
-			matteGreen: 'Matte Green'
+			matteGreen: 'Matte Green',
+			matteBlue: 'Matte Blue',
+			matteRed: 'Matte Red',
+			transparent: 'Transparent'
 		},
 		typeHere: 'Type here...',
 		select: 'Select',
@@ -140,7 +146,8 @@ export const en = {
 	products: {
 		standardPcb: 'Standard PCB',
 		advancedPcb: 'Advanced PCB',
-		flexiblePcb: 'FPC/Rigid-Flex',
+		flexiblePcb: 'Flexible PCB',
+		rigidFlex: 'Rigid-Flex',
 		assembly: 'Assembly',
 		stencil: 'SMD-Stencil'
 	},
@@ -208,8 +215,6 @@ export const en = {
 				title: 'Board Types',
 				description:
 					'PCBs will be shipped in single pieces or in panel. For bulk assembly orders (quantity greater than 30), we recommend shipping in panel, which will improve the assembly efficiency and reduce the cost.',
-				url: '',
-				imgSrc: '',
 				values: {
 					singlePieces: 'Single Pieces',
 					panelByCustomer: 'Panel by Customer',
@@ -220,8 +225,6 @@ export const en = {
 				title: 'X-out Allowance in Panel',
 				description:
 					'Bad PCBs may exist in the panel, the quotation will increase by about 30% if X-out Allowance is not accepted.',
-				url: '',
-				imgSrc: '',
 				values: {
 					accept: 'Accept',
 					decline: 'Decline'
@@ -230,7 +233,6 @@ export const en = {
 			routeProcess: {
 				title: 'Route Process',
 				description: 'In the panel, the PCBs are connected as shown in the following diagram:',
-				imgSrc: '',
 				values: {
 					velenovaPrefer: 'Panel as Velenova prefer',
 					vScoring: 'Panel as V-Scoring',
@@ -241,8 +243,7 @@ export const en = {
 			breakAwayRail: {
 				title: 'Break-away rail',
 				description:
-					'Break-away rails are long strip blank plate edges set up to leave out the track transmission space during assembly and place the mark point in the panel. PCBs are transmitted through the guide rail on the assembly production line, therefore, a pair of edges that forbid placing components must be left as the transmission edge. The width of the breakaway rail is generally about 5-8mm.',
-				imgSrc: ''
+					'Break-away rails are long strip blank plate edges set up to leave out the track transmission space during assembly and place the mark point in the panel. PCBs are transmitted through the guide rail on the assembly production line, therefore, a pair of edges that forbid placing components must be left as the transmission edge. The width of the breakaway rail is generally about 5-8mm.'
 			},
 			panelRequirements: {
 				title: 'Panel Requirements',
@@ -252,15 +253,13 @@ export const en = {
 				title: 'Different Design in Panel',
 				description:
 					'It means there are different designs in your files separated by v-cuts, stamp holes, milling slots or others. We will charge additional panel cost if there are different kinds of PCB designs in one Gerber file.',
-				error: 'Different design should be greater than 0',
-				imgSrc: ''
+				error: 'Different design should be greater than 0'
 			},
 			size: {
 				title: 'Size (single)',
 				description:
 					'The board size refers to the length and width of the board ordered by the customer. If it is a circular board, the length and width are the diameter of the circle; If it is a board with irregular shape, the length and width are measured according to the largest shape range.',
-				error: 'Length and width should be greater than 0',
-				url: ''
+				error: 'Length and width should be greater than 0'
 			},
 			length: {
 				title: 'Length'
@@ -273,7 +272,6 @@ export const en = {
 				description:
 					'Please choose the number of single pieces you need. For standard PCB, the starting quantity is 5 pieces.',
 				error: 'Quantity should be greater than 0',
-				url: '',
 				placeholder: 'Quantity',
 				pieces: 'Pieces'
 			},
@@ -281,8 +279,6 @@ export const en = {
 				title: 'Layers',
 				description:
 					'The number of copper layers in the board. Velenova can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
-				url: '',
-				imgSrc: '',
 				layer: 'Layer',
 				layers: 'Layers'
 			},
@@ -333,8 +329,7 @@ export const en = {
 				description:
 					'TG means Glass Transition Temperature. Ordinary TG is 130 ℃ or more, medium TG is about greater than 150 ℃, and advanced TG is generally greater than 170 ℃. The higher the TG, the better the temperature resistance of the material. The default material of Velenova has a TG of 150-160℃, which is higher that most companies.',
 				disclaimer:
-					'*Base material with high TG has good CAF resistance, high heat resistance, dimensional stability and is suitable forlead-free soldering process',
-				url: ''
+					'*Base material with high TG has good CAF resistance, high heat resistance, dimensional stability and is suitable forlead-free soldering process'
 			},
 			rogers: {
 				title: 'Rogers',
@@ -363,20 +358,17 @@ export const en = {
 			thickness: {
 				title: 'Thickness',
 				description:
-					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking.If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.',
-				imgSrc: ''
+					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking.If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.'
 			},
 			minTrack: {
 				title: 'Min Track/Spacing',
 				description:
-					'Minimum width of the copper trace and minimum distance between two traces. Velenova engineers will double-check the Min Track/Spacing.',
-				imgSrc: ''
+					'Minimum width of the copper trace and minimum distance between two traces. Velenova engineers will double-check the Min Track/Spacing.'
 			},
 			minHoleSize: {
 				title: 'Min Hole Size',
 				description: 'Minimum diameter of holes. Velenova engineers will double-check the min hole size.',
-				noDrill: 'No Drill',
-				imgSrc: ''
+				noDrill: 'No Drill'
 			},
 			solderMaskColor: {
 				title: 'Solder Mask',
@@ -404,7 +396,6 @@ export const en = {
 						'* Please send the images you want to print on the PCB in the following formats: AI, PDF, JPEG, PNG, TIFF, etc., and indicate your desired printing location on the board.'
 				},
 				disclaimer: '*The uploaded PCB file should contain color renderings',
-				url: '',
 				values: {
 					singleSidedTop: 'Single Sided: Top',
 					singleSidedBottom: 'Single Sided: Bottom',
@@ -510,6 +501,9 @@ export const en = {
 					updateDesignedDateCode: 'Update the designed date code'
 				}
 			},
+			dateCodeDescription: {
+				title: 'Date Code Description'
+			},
 			customizedServices: {
 				title: 'Customized Services and Advanced Options',
 				description: 'We may add extra cost for these special options which will be confirmed after review.',
@@ -517,9 +511,7 @@ export const en = {
 					halfCut: {
 						title: 'Half-Cut / Castellated Holes',
 						description:
-							'PTH holes or vias that are cutted through to create a partial or half hole to form an opening into the side of the hole barrel. Generally they are used for mounting a PCB to another one.',
-						url: '',
-						imgSrc: ''
+							'PTH holes or vias that are cutted through to create a partial or half hole to form an opening into the side of the hole barrel. Generally they are used for mounting a PCB to another one.'
 					},
 					edgePlating: {
 						title: 'Edge Plating',
@@ -539,8 +531,7 @@ export const en = {
 					customStackup: {
 						title: 'Custom Stackup',
 						description:
-							'Apply to multilayer PCBs only. If you need to customize a specific stack-up, please upload the stack-up file together or contact your sales representative.',
-						url: ''
+							'Apply to multilayer PCBs only. If you need to customize a specific stack-up, please upload the stack-up file together or contact your sales representative.'
 					},
 					carbonInk: {
 						title: 'Carbon Ink',
@@ -559,44 +550,37 @@ export const en = {
 					pressFitHoles: {
 						title: 'Press-fit Holes',
 						description:
-							'Press-fit holes are holes are designed to accept components with press-fit pins. The pins are inserted into the holes and then pressed into place to create a secure connection. Tolerance：+/-0.05mm.',
-						imgSrc: ''
+							'Press-fit holes are holes are designed to accept components with press-fit pins. The pins are inserted into the holes and then pressed into place to create a secure connection. Tolerance：+/-0.05mm.'
 					},
 					countersink: {
 						title: 'Countersink / Counterbore',
 						description:
-							'The most noted difference between a countersink and counterbore is the size and shape of the screw or the tool which creates the holes in the material. A counterbore hole is deeper and has a square-like shape where the shoulder of the screw head can seat. It also allows for the addition of washers to be used.',
-						imgSrc: ''
+							'The most noted difference between a countersink and counterbore is the size and shape of the screw or the tool which creates the holes in the material. A counterbore hole is deeper and has a square-like shape where the shoulder of the screw head can seat. It also allows for the addition of washers to be used.'
 					},
 					zAxisMilling: {
 						title: 'Z-axis Milling',
 						description:
-							'It is also known as depth control routing(milling) or level milling, it refers to partial routing in PCB with a variable level elevation at the PCB edge or within PCB.',
-						imgSrc: ''
+							'It is also known as depth control routing(milling) or level milling, it refers to partial routing in PCB with a variable level elevation at the PCB edge or within PCB.'
 					},
 					blackFr4: {
 						title: 'Black FR4 (Black Core)',
 						description:
-							'It belongs to ordinary FR-4 base material and its processing technology is same as FR-4 too. It is black, opaque, shading, and suitable for making LED display PCB and insulation structural parts in instrumentation and optical instruments..',
-						url: ''
+							'It belongs to ordinary FR-4 base material and its processing technology is same as FR-4 too. It is black, opaque, shading, and suitable for making LED display PCB and insulation structural parts in instrumentation and optical instruments..'
 					},
 					embeddedCopperPcb: {
 						title: 'Embedded Copper PCB',
 						description:
-							'Embedded copper PCBs are printed circuit boards that have copper traces embedded within the substrate material. The design of buried copper blocks can be mainly divided into two categories: buried copper blocks and embedded copper blocks. Buried copper blocks refer to copper blocks that are buried with a thickness less than the total thickness of the board, with one side of the copper block flush with the bottom layer and the other side flush with a certain inner layer, as shown in Figure 1 (semi-buried copper block). Embedded copper blocks refer to copper blocks that are embedded with a thickness close to or equal to the total thickness of the board, with the copper block passing through the top layer, as shown in Figure 2 (through-hole copper block). Printed circuit boards with buried or embedded copper blocks have the characteristics of high thermal conductivity, high heat dissipation, and saving board space, which can effectively solve the heat dissipation problem of high-power electronic components.',
-						imgSrc: ''
+							'Embedded copper PCBs are printed circuit boards that have copper traces embedded within the substrate material. The design of buried copper blocks can be mainly divided into two categories: buried copper blocks and embedded copper blocks. Buried copper blocks refer to copper blocks that are buried with a thickness less than the total thickness of the board, with one side of the copper block flush with the bottom layer and the other side flush with a certain inner layer, as shown in Figure 1 (semi-buried copper block). Embedded copper blocks refer to copper blocks that are embedded with a thickness close to or equal to the total thickness of the board, with the copper block passing through the top layer, as shown in Figure 2 (through-hole copper block). Printed circuit boards with buried or embedded copper blocks have the characteristics of high thermal conductivity, high heat dissipation, and saving board space, which can effectively solve the heat dissipation problem of high-power electronic components.'
 					},
 					cavityPcb: {
 						title: 'Cavity PCB',
 						description:
-							'Cavity PCB is a type of PCB that features one or multiple recessed grooves or cavities on its surface. These grooves are created by removing a portion of the board material, leaving behind a depressed area where components can be placed deeper, and finally reducing the overall height of the device. Cavity PCB and back drilling PCB are two different technologies, back drilling refers to drilling holes for vias, which stops at a certain depth and does not penetrate through the board, while cavity PCB refers to a specific area on the PCB.',
-						imgSrc: ''
+							'Cavity PCB is a type of PCB that features one or multiple recessed grooves or cavities on its surface. These grooves are created by removing a portion of the board material, leaving behind a depressed area where components can be placed deeper, and finally reducing the overall height of the device. Cavity PCB and back drilling PCB are two different technologies, back drilling refers to drilling holes for vias, which stops at a certain depth and does not penetrate through the board, while cavity PCB refers to a specific area on the PCB.'
 					},
 					semiFlexPcb: {
 						title: 'Semi-Flex PCB',
 						description:
-							'Semi-flex PCB is a kind of PCB that can be locally bent on the basis of rigid PCB, which can not only provide the support of rigid PCB, but also achieve local bending according to product requirements, including the bending in 45°, 90°, 180°, meeting the installation performance requirements of various types of 3D assembly.',
-						imgSrc: ''
+							'Semi-flex PCB is a kind of PCB that can be locally bent on the basis of rigid PCB, which can not only provide the support of rigid PCB, but also achieve local bending according to product requirements, including the bending in 45°, 90°, 180°, meeting the installation performance requirements of various types of 3D assembly.'
 					},
 					hybridPcb: {
 						title: 'Whole/Partially Hybrid PCB',
@@ -606,14 +590,1027 @@ export const en = {
 					backDrillPcb: {
 						title: 'Back Drill PCB',
 						description:
-							'Back drilling (sometimes called controlled depth drilling or CDD) involves using a drill bit slightly larger in diameter than the PTH to remove the conductive plating or stub from the hole.The back drilled hole should bring down the stub length to 10 mils.If the stubs are greater than 10 mils，then signal reflections will be produced.',
-						imgSrc: ''
+							'Back drilling (sometimes called controlled depth drilling or CDD) involves using a drill bit slightly larger in diameter than the PTH to remove the conductive plating or stub from the hole.The back drilled hole should bring down the stub length to 10 mils.If the stubs are greater than 10 mils，then signal reflections will be produced.'
 					},
 					leadlessPartialHardGold: {
 						title: 'Leadless Partially Plated Hard Gold',
 						description:
 							'This is an electronic component surface treatment technology that is lead-free and selectively electroplated in certain areas to provide high levels of conductivity and durability.'
 					}
+				}
+			},
+			specialRequests: {
+				title: 'Other Special Requests',
+				placeholder: 'Fill in any PCB details to make it as clear as possible for us to understand your requirements.'
+			}
+		},
+
+		advancedPcb: {
+			id: {
+				title: 'Product ID'
+			},
+			createdAt: {
+				title: 'Created At'
+			},
+			updatedAt: {
+				title: 'Updated At'
+			},
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
+			fileName: {
+				title: 'File Name'
+			},
+			buildTime: {
+				title: 'Build Time'
+			},
+			weight: {
+				title: 'Weight'
+			},
+			initialPrice: {
+				title: 'Initial Price'
+			},
+			finalPrice: {
+				title: 'Final Price'
+			},
+			pcbType: {
+				title: 'PCB Type',
+				description:
+					'High density interconnects (HDI) Boards contain blind and/or buried vias and often contain micro vias of .006 or less in diameter. They have a higher circuitry density than traditional circuit boards.',
+				values: {
+					throughHoleBoard: 'Through hole board',
+					hdi: 'HDI(Buried/Blind vias)'
+				}
+			},
+			boardSpec: {
+				title: 'Board Specification',
+				description: 'Standards are required to produce PCBs',
+				values: {
+					ipc6012Class2: 'IPC 6012 Class 2',
+					ipc6012Class3: 'IPC 6012 Class 3',
+					iatf16949: 'IATF 16949',
+					iso13485: 'ISO 13485',
+					customerStandard: 'Customer Standard'
+				}
+			},
+			boardType: {
+				title: 'Board Type',
+				description:
+					'PCBs will be shipped in single pieces or in panel. For bulk assembly orders (quantity greater than 30), we recommend shipping in panel, which will improve the assembly efficiency.',
+				values: {
+					singlePieces: 'Single Pieces',
+					panelByCustomer: 'Panel by Customer',
+					panelByVelenova: 'Panel by Velenova'
+				}
+			},
+			xoutAllowance: {
+				title: 'X-out Allowance in Panel',
+				description:
+					'Bad PCBs may exist in the panel, the quotation will increase by about 30% if X-out Allowance is not accepted.',
+				values: {
+					accept: 'Accept',
+					decline: 'Decline'
+				}
+			},
+			routeProcess: {
+				title: 'Route Process',
+				description: 'In the panel, the PCBs are connected as shown in the following diagram:',
+				values: {
+					velenovaPrefer: 'Panel as Velenova prefer',
+					vScoring: 'Panel as V-Scoring',
+					tabRoute: 'Panel as Tab Route',
+					vScoringTabRoute: 'Both V-Scoring and Tab Route'
+				}
+			},
+			breakAwayRail: {
+				title: 'Break-away rail',
+				description:
+					'Break-away rails are long strip blank plate edges set up to leave out the track transmission space during assembly and place the mark point in the panel. PCBs are transmitted through the guide rail on the assembly production line, therefore, a pair of edges that forbid placing components must be left as the transmission edge. The width of the breakaway rail is generally about 5-8mm.'
+			},
+			panelRequirements: {
+				title: 'Panel Requirements',
+				disclaimer: '(e.g. Panel in 2*3, size of the break-away rail, total 5 panels=total 30 individual boards)'
+			},
+			differentDesign: {
+				title: 'Different Design in Panel',
+				description:
+					'It means there are different designs in your files separated by v-cuts, stamp holes, milling slots or others. We will charge additional panel cost if there are different kinds of PCB designs in one Gerber file.',
+				error: 'Different design should be greater than 0'
+			},
+			size: {
+				title: 'Size (single)',
+				description:
+					'The board size refers to the length and width of the board ordered by the customer. If it is a circular board, the length and width are the diameter of the circle; If it is a board with irregular shape, the length and width are measured according to the largest shape range.',
+				error: 'Length and width should be greater than 0'
+			},
+			length: {
+				title: 'Length'
+			},
+			width: {
+				title: 'Width'
+			},
+			quantity: {
+				title: 'Quantity (single)',
+				description:
+					'Please choose the number of single pieces you need. For standard PCB, the starting quantity is 5 pieces.',
+				error: 'Quantity should be greater than 0',
+				placeholder: 'Quantity',
+				pieces: 'Pieces'
+			},
+			layers: {
+				title: 'Layers',
+				description:
+					'The number of copper layers in the board. Velenova can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
+				layer: 'Layer',
+				layers: 'Layers'
+			},
+			copperLayer: {
+				title: 'Copper Layer',
+				description:
+					'When ordering 1-layer PCB, please specify whether the circuit layer is on top, bottom, or none. Please be sure to select the correct parameters, otherwise, we need to contact you for reconfirmation.',
+				values: {
+					topLayer: 'Top Layer',
+					bottomLayer: 'Bottom Layer'
+				}
+			},
+			solderMask: {
+				title: 'Solder Mask',
+				description:
+					'It is coating material used to mask or to protect selected area. When ordering 1-layer PCB, please specify whether the solder mask is on top, bottom, or both sides. When only one side is chosen for the solder mask, the other side will be exposed with the solder mask opening completely. Please be sure to select the correct parameters, otherwise, we need to contact you for reconfirmation.',
+				values: {
+					topSide: 'Top Side',
+					bottomSide: 'Bottom Side',
+					bothSides: 'Both Sides'
+				}
+			},
+			silkscreen: {
+				title: 'Silkscreen',
+				description:
+					'The silkscreen is a layer of ink trace used to identify the PCB components, marks, logos, symbols, and so on.When ordering 1-layer PCB, please specify which layer the silkscreen is on.',
+				values: {
+					topSide: 'Top Side',
+					bottomSide: 'Bottom Side',
+					bothSides: 'Both Sides'
+				}
+			},
+			material: {
+				title: 'Material',
+				description:
+					'FR4 is the most common arade dielectric material that is used in the fabrication of circut boards. Aluminum boards have better heat dissipation and thermal transfer than standard FR-4 constructions. The copper base boards have a great thermal conductivity better than aluminum PCB. Due to its characteristics of low dielectric loss, Rogers is often used in high-frequency PCB. If you need other materials, please contact your sales representative.',
+				values: {
+					tg140Fr4: {
+						title: 'TG140 FR-4',
+						disclaimer: '*Tg140 FR-4 Material: Shengyi S1141'
+					},
+					tg150Fr4: {
+						title: 'TG150 FR-4',
+						disclaimer: '*Tg150 FR-4 Material: Shengyi S1000-H'
+					},
+					tg170Fr4: {
+						title: 'TG170 FR-4',
+						disclaimer: '*Tg170 FR-4 Material: S1000-2, S1000-2M'
+					},
+					tg150Fr4HalogenFree: {
+						title: 'TG150 FR-4 (Halogen-Free)',
+						disclaimer:
+							'*Tg150 FR-4(Halogen-free) Material: Shengyi S1150G To ensure quality, we will not stock these materials generally. 7-20 days purchase period'
+					},
+					tg170Fr4HalogenFree: {
+						title: 'TG170 FR-4 (Halogen-Free)',
+						disclaimer:
+							'*Tg170 FR-4(Halogen-free) Material: Shengyi S1170G To ensure quality, we will not stock these materials generally. 7-20 days purchase period'
+					},
+					highCTI: {
+						title: 'High-CTI (>=600V)',
+						disclaimer: '*High-CTI(≥600V) Material: Shengyi S1600 (CTI≥600V)'
+					},
+					highCTIHalogenFree: {
+						title: 'High-CTI (>=600V, Halogen-Free)',
+						disclaimer: 'High-CTI(Halogen-free,≥600V) Material: Shengyi S1151G (CTI≥600V)'
+					},
+					highSpeed: {
+						title: 'High-Speed (GHz)',
+						disclaimer:
+							'High Speed(GHz) & High Frequency PCBs(DK)：These materials supply chains or sourcing options are limited. To ensure quality, we will not stock these materials generally. We will reply you after you placing an order.'
+					},
+					highFrequency: {
+						title: 'High-Frequency PCBs(DK)',
+						disclaimer:
+							'High Speed(GHz) & High Frequency PCBs(DK)：These materials supply chains or sourcing options are limited. To ensure quality, we will not stock these materials generally. We will reply you after you placing an order.'
+					},
+					specialMaterial: {
+						title: 'Special Material (High low temperature)',
+						disclaimer: 'Special Material(High low temperature): Shengyi SH260'
+					}
+				}
+			},
+			highSpeed: {
+				title: 'High Speed(GHz)',
+				description: 'High Speed(GHz)'
+			},
+			highFrequency: {
+				title: 'High Frequency PCBs(DK)',
+				description: 'High Frequency PCBs(DK)'
+			},
+			thickness: {
+				title: 'Thickness',
+				description:
+					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking. If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.'
+			},
+			minTrack: {
+				title: 'Min Track/Spacing',
+				description:
+					'Minimum width of the copper trace and minimum distance between two traces. PCBWay engineers will double-check the Min Track/Spacing.'
+			},
+			minHoleSize: {
+				title: 'Min Hole Size',
+				description: 'Minimum diameter of holes. PCBWay engineers will double-check the min hole size.',
+				noDrill: 'No Drill'
+			},
+			solderMaskColor: {
+				title: 'Solder Mask',
+				description:
+					'Solder mask color refers to the color of the PCB surface. Currently, PCBWay provides 9 conventional solder mask colors. If you need pink, gray, orange, or transparent, please go to the Advanced PCB page to choose.'
+			},
+			silkscreenColor: {
+				title: 'Silkscreen',
+				description:
+					'The silkscreen is a layer of ink trace used to identify the PCB components, marks, logos, symbols, and so on. The color is usually white. But when the solder mask ink is white, the silkscreen will be black.'
+			},
+			edgeConnector: {
+				title: 'Edge Connector',
+				description:
+					"Edge connectors achieve electrical connection by contacting the golden fingers on the PCB. If your design includes golden finger, please check 'Yes' for this item and select the surface finish method and bevelling angle for it. Otherwise, please check 'No'."
+			},
+			surfaceFinish: {
+				title: 'Surface Finish',
+				description:
+					'Surface finish is an important part of PCB production. It can protect the copper from oxidation, which would render the PCB unusable. In addition, it provides a smooth surface for the components to be soldered.',
+				values: {
+					haslLeadFree: 'HASL lead free',
+					immersionGold: 'Immersion Gold (ENIG)',
+					osp: 'OSP',
+					hardGold: 'Hard Gold',
+					immersionSilver: 'Immersion Silver (Ag)',
+					immersionTin: 'Immersion Tin',
+					haslLeadFreeImmersionGold: 'HASL lead free + Selective immersion gold',
+					haslLeadFreeHardGold: 'HASL lead free + Selective hard gold',
+					immersionGoldHardGold: 'Immersion gold + Selective hard gold',
+					enepig: 'ENEPIG',
+					plainCopper: 'Plain Copper / None'
+				}
+			},
+			surfaceThickness: {
+				title: 'Surface Thickness',
+				immersionGold: {
+					title: 'Thickness of Immersion Gold'
+				},
+				hardGold: {
+					title: 'Au/Ni thickness'
+				},
+				haslLeadFreeImmersionGold: {
+					title: 'Thickness of Immersion Gold'
+				},
+				haslLeadFreeHardGold: {
+					title: 'Thickness of Hard gold'
+				},
+				immersionGoldHardGold: {
+					title: 'Immersion gold / Hard gold thickness'
+				},
+				enepig: {
+					title: 'Thickness of ENEPIG'
+				}
+			},
+			finishedCopper: {
+				title: 'Finished Copper',
+				description:
+					'The weight in ounces of copper in one square foot of PCB, this option will determine the thickness of copper on the outer layers. Velenova provides the thickness of copper on outer layers of 1-13oz.PTH holes or vias that are cutted through to create a partial or half hole to form an opening into the side of the hole barrel. Generally they are used for mounting a PCB to another one.',
+				bareBoard: 'Bare Board'
+			},
+			innerCopper: {
+				title: 'Inner Copper',
+				description:
+					'The copper weight on the inner layers for multilayer PCBs. The default inner copper weight is 1 oz.'
+			},
+			peelableSolderMask: {
+				title: 'Peelable Solder Mask',
+				description:
+					'Also known as a blue peelable mask, it is used to protect the required solder pads during assembly and is typically referred to as GTPM and GBPM in design. Unlike green soldermask, which is a negative image and is permanently present on the PCB in PCB design, Peelable Soldermask is a positive image (what you see is what you get in your design) and is temporarily used for PCB manufacturing and assembly. Coating material could be removed after board through wave soldering.',
+				values: {
+					topSide: 'Top Side',
+					bottomSide: 'Bottom Side',
+					bothSides: 'Both Sides'
+				}
+			},
+			holeCopperThickness: {
+				title: 'Hole Copper Thickness',
+				description: 'Please select the hole copper thickness you need'
+			},
+			ulMarking: {
+				title: 'UL Marking',
+				description:
+					'Velenova has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
+				values: {
+					topSilkscreen: 'Yes - add to top silkscreen',
+					bottomSilkscreen: 'Yes - add to bottom silkscreen',
+					topSolderMask: 'Yes - add to top solder mask',
+					bottomSolderMask: 'Yes - add to bottom solder mask',
+					topCopper: 'Yes - add to top copper',
+					bottomCopper: 'Yes - add to bottom copper',
+					default: 'Yes - as Velenova default'
+				}
+			},
+			dateCode: {
+				title: 'Date Code',
+				description: 'Add the production time on the PCB',
+				placeholder: 'For example: date code in the format of WWYY in top silkscreen layer',
+				values: {
+					velenovaPrefer: 'Add as Velenova prefer',
+					customerRequired: "Add as customer's required",
+					updateDesignedDateCode: 'Update the designed date code'
+				}
+			},
+			dateCodeDescription: {
+				title: 'Date Code Description'
+			},
+			customizedServices: {
+				title: 'Customized Services and Advanced Options',
+				description: 'We may add extra cost for these special options which will be confirmed after review.',
+				values: {
+					halfCut: {
+						title: 'Half-Cut / Castellated Holes',
+						description:
+							'PTH holes or vias that are cutted through to create a partial or half hole to form an opening into the side of the hole barrel. Generally they are used for mounting a PCB to another one.'
+					},
+					edgePlating: {
+						title: 'Edge Plating',
+						description:
+							'PCB edge plating refers to the metallization of the sides of a printed circuit board across its height.You can carry out edge plating on just one of the board edges or all round. Through edge plating，your equip the board with a reliable connection and rigidity.'
+					},
+					impedanceControl: {
+						title: 'Impedance Control',
+						description:
+							'Conductors in a PCB carry various signals, and to increase their transmission speed, their frequency must be raised. However, factors such as etching, layer thickness, and line width can cause impedance variations in the PCB, leading to signal distortion. Therefore, for high-speed PCB conductors, their impedance values should be controlled within a certain range, known as "impedance control". The impedance tolerance is generally ±10%. If impedance requirements are specified in the documentation but not selected in the order, it will be regarded as ignoring the impedance requirement.'
+					},
+					halogenFree: {
+						title: 'Halogen-Free',
+						description:
+							'According to the JPCA-ES-01-2003 standard, a copper-clad laminate with a chlorine (Cl) content and bromine (Br) content of less than 0.09% Wt (by weight) each and the total amount of CI+Br is ≤ 0.15% [1500PPM] is defined as a halogen-free copper-clad laminate.'
+					},
+					customStackup: {
+						title: 'Custom Stackup',
+						description:
+							'Apply to multilayer PCBs only. If you need to customize a specific stack-up, please upload the stack-up file together or contact your sales representative.'
+					},
+					carbonInk: {
+						title: 'Carbon Ink',
+						description:
+							'Also called carbon oil PCB. Carbon ink PCB is coated on the PCB substrate with carbon-based conductive ink (referred to as carbon ink), cured to form a PCB with a carbon film conductive pattern. Carbon ink PCB has the advantages of low cost, strong impedance control ability, high reliability, and good corrosion resistance.'
+					},
+					allViasFilled: {
+						title: 'All vias filled with resin and capped',
+						description: 'If you check this option, all vias will be filled with resin,then capped and plated cover.'
+					},
+					viaInPad: {
+						title: 'Via in Pad',
+						description:
+							'If there are via in pad in your design, that is, vias in the SMD pad, check this option and we will perform resin plug,then capped and plated cover.'
+					},
+					pressFitHoles: {
+						title: 'Press-fit Holes',
+						description:
+							'Press-fit holes are holes are designed to accept components with press-fit pins. The pins are inserted into the holes and then pressed into place to create a secure connection. Tolerance：+/-0.05mm.'
+					},
+					countersink: {
+						title: 'Countersink / Counterbore',
+						description:
+							'The most noted difference between a countersink and counterbore is the size and shape of the screw or the tool which creates the holes in the material. A counterbore hole is deeper and has a square-like shape where the shoulder of the screw head can seat. It also allows for the addition of washers to be used.'
+					},
+					zAxisMilling: {
+						title: 'Z-axis Milling',
+						description:
+							'It is also known as depth control routing(milling) or level milling, it refers to partial routing in PCB with a variable level elevation at the PCB edge or within PCB.'
+					},
+					blackFr4: {
+						title: 'Black FR4 (Black Core)',
+						description:
+							'It belongs to ordinary FR-4 base material and its processing technology is same as FR-4 too. It is black, opaque, shading, and suitable for making LED display PCB and insulation structural parts in instrumentation and optical instruments..'
+					},
+					embeddedCopperPcb: {
+						title: 'Embedded Copper PCB',
+						description:
+							'Embedded copper PCBs are printed circuit boards that have copper traces embedded within the substrate material. The design of buried copper blocks can be mainly divided into two categories: buried copper blocks and embedded copper blocks. Buried copper blocks refer to copper blocks that are buried with a thickness less than the total thickness of the board, with one side of the copper block flush with the bottom layer and the other side flush with a certain inner layer, as shown in Figure 1 (semi-buried copper block). Embedded copper blocks refer to copper blocks that are embedded with a thickness close to or equal to the total thickness of the board, with the copper block passing through the top layer, as shown in Figure 2 (through-hole copper block). Printed circuit boards with buried or embedded copper blocks have the characteristics of high thermal conductivity, high heat dissipation, and saving board space, which can effectively solve the heat dissipation problem of high-power electronic components.'
+					},
+					cavityPcb: {
+						title: 'Cavity PCB',
+						description:
+							'Cavity PCB is a type of PCB that features one or multiple recessed grooves or cavities on its surface. These grooves are created by removing a portion of the board material, leaving behind a depressed area where components can be placed deeper, and finally reducing the overall height of the device. Cavity PCB and back drilling PCB are two different technologies, back drilling refers to drilling holes for vias, which stops at a certain depth and does not penetrate through the board, while cavity PCB refers to a specific area on the PCB.'
+					},
+					semiFlexPcb: {
+						title: 'Semi-Flex PCB',
+						description:
+							'Semi-flex PCB is a kind of PCB that can be locally bent on the basis of rigid PCB, which can not only provide the support of rigid PCB, but also achieve local bending according to product requirements, including the bending in 45°, 90°, 180°, meeting the installation performance requirements of various types of 3D assembly.'
+					},
+					hybridPcb: {
+						title: 'Whole/Partially Hybrid PCB',
+						description:
+							'Hybrid PCB utilizes different materials to build the substrate core layers and also the dielectric layers. Rather than using one material, the fabrication of hybrid PCB involves the use of different materials. Different materials are used to combine all positives into the manufacturing process of the PCB and reduce the negatives that a particular material may feature.'
+					},
+					backDrillPcb: {
+						title: 'Back Drill PCB',
+						description:
+							'Back drilling (sometimes called controlled depth drilling or CDD) involves using a drill bit slightly larger in diameter than the PTH to remove the conductive plating or stub from the hole.The back drilled hole should bring down the stub length to 10 mils.If the stubs are greater than 10 mils，then signal reflections will be produced.'
+					},
+					leadlessPartialHardGold: {
+						title: 'Leadless Partially Plated Hard Gold',
+						description:
+							'This is an electronic component surface treatment technology that is lead-free and selectively electroplated in certain areas to provide high levels of conductivity and durability.'
+					}
+				}
+			},
+			finalInspectionReport: {
+				title: 'Final Inspection Report (Free)',
+				description: 'Regular shipment report additionally includes test report, dimensional inspection report',
+				values: {
+					defaultInspectionReport: 'Default Inspection Report',
+					microsectionInspectionReport: 'Microsection Inspection Report',
+					solderabilityInspectionReport: 'Solderability Inspection Report',
+					thermalStressInspectionReport: 'Thermal Stress Inspection Report',
+					impedanceTestReport: 'Impedance Test Report',
+					humidityIndicatorCards: 'Humidity Indicator Cards'
+				}
+			},
+			specialRequests: {
+				title: 'Other Special Requests',
+				placeholder: 'Fill in any PCB details to make it as clear as possible for us to understand your requirements.'
+			}
+		},
+
+		flexiblePcb: {
+			id: {
+				title: 'Product ID'
+			},
+			createdAt: {
+				title: 'Created At'
+			},
+			updatedAt: {
+				title: 'Updated At'
+			},
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
+			fileName: {
+				title: 'File Name'
+			},
+			buildTime: {
+				title: 'Build Time'
+			},
+			weight: {
+				title: 'Weight'
+			},
+			initialPrice: {
+				title: 'Initial Price'
+			},
+			finalPrice: {
+				title: 'Final Price'
+			},
+			boardType: {
+				title: 'Board Types',
+				description:
+					'PCBs will be shipped in single pieces or in panel. For bulk assembly orders (quantity greater than 30), we recommend shipping in panel, which will improve the assembly efficiency and reduce the cost.',
+				values: {
+					singlePieces: 'Single Pieces',
+					panelByCustomer: 'Panel by Customer',
+					panelByVelenova: 'Panel by Velenova'
+				}
+			},
+			xoutAllowance: {
+				title: 'X-out Allowance in Panel',
+				description:
+					'Bad PCBs may exist in the panel, the quotation will increase by about 30% if X-out Allowance is not accepted.',
+				values: {
+					accept: 'Accept',
+					decline: 'Decline'
+				}
+			},
+			routeProcess: {
+				title: 'Route Process',
+				description: 'In the panel, the PCBs are connected as shown in the following diagram:',
+				values: {
+					velenovaPrefer: 'Panel as Velenova prefer',
+					vScoring: 'Panel as V-Scoring',
+					tabRoute: 'Panel as Tab Route',
+					vScoringTabRoute: 'Both V-Scoring and Tab Route'
+				}
+			},
+			breakAwayRail: {
+				title: 'Break-away rail',
+				description:
+					'Break-away rails are long strip blank plate edges set up to leave out the track transmission space during assembly and place the mark point in the panel. PCBs are transmitted through the guide rail on the assembly production line, therefore, a pair of edges that forbid placing components must be left as the transmission edge. The width of the breakaway rail is generally about 5-8mm.'
+			},
+			panelRequirements: {
+				title: 'Panel Requirements',
+				disclaimer: '(e.g. Panel in 2*3, size of the break-away rail, total 5 panels=total 30 individual boards)'
+			},
+			differentDesign: {
+				title: 'Different Design in Panel',
+				description:
+					'It means there are different designs in your files separated by v-cuts, stamp holes, milling slots or others. We will charge additional panel cost if there are different kinds of PCB designs in one Gerber file.',
+				error: 'Different design should be greater than 0'
+			},
+			size: {
+				title: 'Size (single)',
+				description:
+					'The board size refers to the length and width of the board ordered by the customer. If it is a circular board, the length and width are the diameter of the circle; If it is a board with irregular shape, the length and width are measured according to the largest shape range.',
+				error: 'Length and width should be greater than 0'
+			},
+			length: {
+				title: 'Length'
+			},
+			width: {
+				title: 'Width'
+			},
+			quantity: {
+				title: 'Quantity (single)',
+				description:
+					'Please choose the number of single pieces you need. For standard PCB, the starting quantity is 5 pieces.',
+				error: 'Quantity should be greater than 0',
+				placeholder: 'Quantity',
+				pieces: 'Pieces'
+			},
+			layers: {
+				title: 'Layers',
+				description:
+					'The number of copper layers in the board. Velenova can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
+				layer: 'Layer',
+				layers: 'Layers'
+			},
+			material: {
+				title: 'Polyimide Base Material',
+				description: 'One of commonly used dielectric base materials',
+				values: {
+					polyimideFlex: 'Polyimide Flex',
+					pet: 'PET',
+					highFrequency: 'High Frequency (DK<=3.6)'
+				}
+			},
+			petType: {
+				title: 'Material (PET)',
+				disclaimer: '*Undertake temperature within 110°',
+				values: {
+					transparent: 'Transparent',
+					translucent: 'Translucent'
+				}
+			},
+			thickness: {
+				title: 'FPC Thickness',
+				description: 'The FPC thickness does not include the thickness of stiffener and 3M tape.',
+				disclaimer: '*The FPC thickness does not include the thickness of stiffener and 3M tape.'
+			},
+			minTrack: {
+				title: 'Min Track/Spacing',
+				description:
+					'Minimum width of the copper trace and minimum distance between two traces. Velenova engineers will double-check the Min Track/Spacing.'
+			},
+			minHoleSize: {
+				title: 'Min hole size/Pad size(diameter)',
+				description: 'Minimum diameter of the holes and pads',
+				noDrill: 'No Drill'
+			},
+			solderMaskColor: {
+				title: 'Solder mask (Coverlay)',
+				description: 'Color of mask used to cover the PCB',
+				coverlay: 'Coverlay'
+			},
+			silkscreenColor: {
+				title: 'Silkscreen',
+				description:
+					'The silkscreen is a layer of ink trace used to identify the PCB components, marks, logos, symbols, and so on. The color is usually white. But when the solder mask ink is white, the silkscreen will be black.'
+			},
+			edgeConnector: {
+				title: 'Edge Connector',
+				description:
+					'Also called gold-finger. It is a type of edge connector used on PCBs. It is a metal-plated edge that is designed to make electrical contact with a mating connector.'
+			},
+			stiffener: {
+				title: 'Stiffener',
+				description:
+					'Material added to a flex circuit board to rigidize particular areas or perform other special functions, such as increase overall thickness; protect solder joints; heat dissipation and so on.',
+				values: {
+					topSide: 'Top Side',
+					bottomSide: 'Bottom Side',
+					bothSides: 'Both Sides'
+				}
+			},
+			surfaceFinish: {
+				title: 'Surface Finish',
+				description: 'Process to help with solderability',
+				values: {
+					immersionGold: 'Immersion Gold (ENIG)',
+					osp: 'OSP',
+					hardGold: 'Hard Gold',
+					immersionSilver: 'Immersion Silver (Ag)',
+					immersionTin: 'Immersion Tin',
+					immersionGoldHardGold: 'Immersion gold + Selective hard gold',
+					enepig: 'ENEPIG'
+				}
+			},
+			surfaceThickness: {
+				title: 'Surface Thickness',
+				immersionGold: {
+					title: 'Thickness of Immersion Gold'
+				},
+				hardGold: {
+					title: 'Au/Ni thickness'
+				},
+				immersionGoldHardGold: {
+					title: 'Immersion gold / Hard gold thickness'
+				},
+				enepig: {
+					title: 'Thickness of ENEPIG'
+				}
+			},
+			finishedCopper: {
+				title: 'Finished Copper',
+				description:
+					'The weight in ounces of copper in one square foot of PCB, this option will determine the thickness of copper on the outer layers. PCBWay provides the thickness of copper on outer layers of 1-13oz.',
+				bareBoard: 'Bare Board'
+			},
+			etest: {
+				title: 'E-Test',
+				description:
+					'Electrical test, performed with flying probes for smaller quantities or a electrical test fixure for the larger ones.'
+			},
+			tape: {
+				title: '3M/Tesa Tape',
+				description: 'Attach the whole or part of the FPC board on the other object',
+				values: {
+					threeM467: '3M467',
+					tesa8853: 'Tesa8853',
+					tesa8854: 'Tesa8854',
+					threeM9495LE: '3M9495LE'
+				}
+			},
+			doubleSidedTape: {
+				title: 'Conductive double-sided tape',
+				description:
+					'Conductive double sided tape: A kind of tape added on the whole or part of the FPC board that can attach it on the other object and the tape is conductive.',
+				values: {
+					htA1134: 'HT-A1134'
+				}
+			},
+			emiShieldingFilm: {
+				title: 'EMI Shielding Film',
+				description: 'It is a kind of electrical functional film with high-performance shielding effectiveness.',
+				values: {
+					hcf6000g: 'HCF-6000G',
+					pc800: 'PC800'
+				}
+			},
+			peelableSolderMask: {
+				title: 'Peelable Solder Mask',
+				description:
+					'Also known as a blue peelable mask, it is used to protect the required solder pads during assembly and is typically referred to as GTPM and GBPM in design. Unlike green soldermask, which is a negative image and is permanently present on the PCB in PCB design, Peelable Soldermask is a positive image (what you see is what you get in your design) and is temporarily used for PCB manufacturing and assembly. Coating material could be removed after board through wave soldering.',
+				values: {
+					topSide: 'Top Side',
+					bottomSide: 'Bottom Side',
+					bothSides: 'Both Sides'
+				}
+			},
+			ulMarking: {
+				title: 'UL Marking',
+				description:
+					'Velenova has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
+				values: {
+					topSilkscreen: 'Yes - add to top silkscreen',
+					bottomSilkscreen: 'Yes - add to bottom silkscreen',
+					topSolderMask: 'Yes - add to top solder mask',
+					bottomSolderMask: 'Yes - add to bottom solder mask',
+					topCopper: 'Yes - add to top copper',
+					bottomCopper: 'Yes - add to bottom copper',
+					default: 'Yes - as Velenova default'
+				}
+			},
+			dateCode: {
+				title: 'Date Code',
+				description: 'Add the production time on the PCB',
+				placeholder: 'For example: date code in the format of WWYY in top silkscreen layer',
+				values: {
+					velenovaPrefer: 'Add as Velenova prefer',
+					customerRequired: "Add as customer's required",
+					updateDesignedDateCode: 'Update the designed date code'
+				}
+			},
+			dateCodeDescription: {
+				title: 'Date Code Description'
+			},
+			customizedServices: {
+				title: 'Customized Services and Advanced Options',
+				description: 'We may add extra cost for these special options which will be confirmed after review.',
+				values: {
+					halfCut: {
+						title: 'Half-Cut / Castellated Holes',
+						description:
+							'PTH holes or vias that are cutted through to create a partial or half hole to form an opening into the side of the hole barrel. Generally they are used for mounting a PCB to another one.'
+					},
+					edgePlating: {
+						title: 'Edge Plating',
+						description:
+							'PCB edge plating refers to the metallization of the sides of a printed circuit board across its height.You can carry out edge plating on just one of the board edges or all round. Through edge plating，your equip the board with a reliable connection and rigidity.'
+					},
+					impedanceControl: {
+						title: 'Impedance Control',
+						description: ''
+					},
+					viasFilledWithCopper: {
+						title: 'Vias filled with copper',
+						description: ''
+					},
+					fpcWithAirgap: {
+						title: 'FPC with Airgap',
+						description: ''
+					},
+					singleSideDoubleAccess: {
+						title: 'Single-side Double Access',
+						description: ''
+					},
+					stiffenerTopBottom: {
+						title: 'Stiffener on Top and Bottom'
+					}
+				}
+			},
+			specialRequests: {
+				title: 'Other Special Requests',
+				placeholder: 'Fill in any PCB details to make it as clear as possible for us to understand your requirements.'
+			}
+		},
+
+		rigidFlex: {
+			id: {
+				title: 'Product ID'
+			},
+			createdAt: {
+				title: 'Created At'
+			},
+			updatedAt: {
+				title: 'Updated At'
+			},
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
+			fileName: {
+				title: 'File Name'
+			},
+			buildTime: {
+				title: 'Build Time'
+			},
+			weight: {
+				title: 'Weight'
+			},
+			initialPrice: {
+				title: 'Initial Price'
+			},
+			finalPrice: {
+				title: 'Final Price'
+			},
+			boardType: {
+				title: 'Board Types',
+				description:
+					'PCBs will be shipped in single pieces or in panel. For bulk assembly orders (quantity greater than 30), we recommend shipping in panel, which will improve the assembly efficiency and reduce the cost.',
+				values: {
+					singlePieces: 'Single Pieces',
+					panelByCustomer: 'Panel by Customer',
+					panelByVelenova: 'Panel by Velenova'
+				}
+			},
+			xoutAllowance: {
+				title: 'X-out Allowance in Panel',
+				description:
+					'Bad PCBs may exist in the panel, the quotation will increase by about 30% if X-out Allowance is not accepted.',
+				values: {
+					accept: 'Accept',
+					decline: 'Decline'
+				}
+			},
+			routeProcess: {
+				title: 'Route Process',
+				description: 'In the panel, the PCBs are connected as shown in the following diagram:',
+				values: {
+					velenovaPrefer: 'Panel as Velenova prefer',
+					vScoring: 'Panel as V-Scoring',
+					tabRoute: 'Panel as Tab Route',
+					vScoringTabRoute: 'Both V-Scoring and Tab Route'
+				}
+			},
+			breakAwayRail: {
+				title: 'Break-away rail',
+				description:
+					'Break-away rails are long strip blank plate edges set up to leave out the track transmission space during assembly and place the mark point in the panel. PCBs are transmitted through the guide rail on the assembly production line, therefore, a pair of edges that forbid placing components must be left as the transmission edge. The width of the breakaway rail is generally about 5-8mm.'
+			},
+			panelRequirements: {
+				title: 'Panel Requirements',
+				disclaimer: '(e.g. Panel in 2*3, size of the break-away rail, total 5 panels=total 30 individual boards)'
+			},
+			differentDesign: {
+				title: 'Different Design in Panel',
+				description:
+					'It means there are different designs in your files separated by v-cuts, stamp holes, milling slots or others. We will charge additional panel cost if there are different kinds of PCB designs in one Gerber file.',
+				error: 'Different design should be greater than 0'
+			},
+			size: {
+				title: 'Size (single)',
+				description:
+					'The board size refers to the length and width of the board ordered by the customer. If it is a circular board, the length and width are the diameter of the circle; If it is a board with irregular shape, the length and width are measured according to the largest shape range.',
+				error: 'Length and width should be greater than 0'
+			},
+			length: {
+				title: 'Length'
+			},
+			width: {
+				title: 'Width'
+			},
+			quantity: {
+				title: 'Quantity (single)',
+				description:
+					'Please choose the number of single pieces you need. For standard PCB, the starting quantity is 5 pieces.',
+				error: 'Quantity should be greater than 0',
+				placeholder: 'Quantity',
+				pieces: 'Pieces'
+			},
+			layers: {
+				title: 'Layers',
+				description:
+					'The number of copper layers in the board. Velenova can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
+				layer: 'Layer',
+				layers: 'Layers'
+			},
+			material: {
+				title: 'Material',
+				description:
+					'FR4 is the most common arade dielectric material that is used in the fabrication of circu boards. Aluminum boards have better heat dissipation and thermal transfer than standard FR-4 constructions. The copper base boards have a great thermal conductivity better than aluminum PCB. Due to its characteristics of low dielectric loss, Rogers is often used in high-frequency PCB. If you need other materials, please contact your sales representative.',
+				values: {
+					polyimideFlex: 'Polyimide Flex + FR4'
+				}
+			},
+			thickness: {
+				title: 'Rigid-Flex Thickness',
+				description: 'Total thickness of rigid and flex layers'
+			},
+			minTrack: {
+				title: 'Min track/spacing',
+				description:
+					'Minimum width of the copper trace and minimum distance between two traces. PCBWay engineers will double-check the Min Track/Spacing.'
+			},
+			minHoleSize: {
+				title: 'Min Hole Size',
+				description: 'Minimum diameter of holes. PCBWay engineers will double-check the min hole size.',
+				noDrill: 'No Drill'
+			},
+			surfaceFinish: {
+				title: 'Surface Finish',
+				description: 'Extra process to exposed copper to help solderability',
+				values: {
+					immersionGold: 'Immersion Gold (ENIG)',
+					osp: 'OSP',
+					immersionSilver: 'Immersion Silver (Ag)'
+				}
+			},
+			surfaceThickness: {
+				title: 'Surface Thickness',
+				immersionGold: {
+					title: 'Thickness of Immersion Gold'
+				}
+			},
+			edgeConnector: {
+				title: 'Edge Connector',
+				description:
+					'Edge connectors achieve electrical connection by contacting the golden fingers on the PCB. If your design includes golden finger, please check "Yes" for this item and select the surface finish method and bevelling angle for it. Otherwise, please check "No".'
+			},
+			viaProcess: {
+				title: 'Via Process',
+				description:
+					'Edge connectors achieve electrical connection by contacting the golden fingers on the PCB. If your design includes golden finger, please check "Yes" for this item and select the surface finish method and bevelling angle for it. Otherwise, please check "No".',
+				disclaimer:
+					'*For Gerber files this choice will not affect anything, PCB will be made using the parameters of the files.',
+				values: {
+					tentingVias: 'Tenting Vias',
+					pluggedViasSolderMask: 'Plugged Vias with Solder Mask',
+					viasNotCovered: 'Vias Not Covered'
+				}
+			},
+			flexPart: 'Flex Part',
+			fpcLayers: {
+				title: 'FPC Layers',
+				description: 'The number of conductive layers for Flex part.'
+			},
+			fpcThickness: {
+				title: 'FPC Thickness',
+				description: 'The board thickness for Flex part'
+			},
+			fpcCoverlay: {
+				title: 'FPC Coverlay',
+				description: 'Color of mask used to cover the PCB',
+				coverlay: 'Coverlay'
+			},
+			fpcSilkscreenColor: {
+				title: 'Silkscreen',
+				description:
+					'The silkscreen is a layer of ink trace used to identify the PCB components, marks, logos, symbols, and so on. The color is usually white. But when the solder mask ink is white, the silkscreen will be black.'
+			},
+			fpcFinishedCopper: {
+				title: 'Finished Copper',
+				description:
+					'The weight in ounces of copper in one square foot of PCB, this option will determine the thickness of copper on the outer layers. PCBWay provides the thickness of copper on outer layers of 1-13oz.'
+			},
+			rigidPart: 'Rigid Part',
+			rpcSolderMaskColor: {
+				title: 'Solder mask',
+				description:
+					'Solder mask color refers to the color of the PCB surface. Currently, PCBWay provides 9 conventional solder mask colors. If you need pink, gray, orange, or transparent, please go to the Advanced PCB page to choose.'
+			},
+			rpcSilkscreenColor: {
+				title: 'Silkscreen',
+				description:
+					'The silkscreen is a layer of ink trace used to identify the PCB components, marks, logos, symbols, and so on. The color is usually white. But when the solder mask ink is white, the silkscreen will be black.'
+			},
+			rpcFinishedCopper: {
+				title: 'Finished Copper',
+				description:
+					'The weight in ounces of copper in one square foot of PCB, this option will determine the thickness of copper on the outer layers. PCBWay provides the thickness of copper on outer layers of 1-13oz.'
+			},
+			ulMarking: {
+				title: 'UL Marking',
+				description:
+					'Velenova has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
+				values: {
+					topSilkscreen: 'Yes - add to top silkscreen',
+					bottomSilkscreen: 'Yes - add to bottom silkscreen',
+					topSolderMask: 'Yes - add to top solder mask',
+					bottomSolderMask: 'Yes - add to bottom solder mask',
+					topCopper: 'Yes - add to top copper',
+					bottomCopper: 'Yes - add to bottom copper',
+					default: 'Yes - as Velenova default'
+				}
+			},
+			dateCode: {
+				title: 'Date Code',
+				description: 'Add the production time on the PCB',
+				placeholder: 'For example: date code in the format of WWYY in top silkscreen layer',
+				values: {
+					velenovaPrefer: 'Add as Velenova prefer',
+					customerRequired: "Add as customer's required",
+					updateDesignedDateCode: 'Update the designed date code'
+				}
+			},
+			dateCodeDescription: {
+				title: 'Date Code Description'
+			},
+			customizedServices: {
+				title: 'Customized Services and Advanced Options',
+				description: 'We may add extra cost for these special options which will be confirmed after review.',
+				values: {
+					halfCut: {
+						title: 'Half-Cut / Castellated Holes',
+						description:
+							'PTH holes or vias that are cutted through to create a partial or half hole to form an opening into the side of the hole barrel. Generally they are used for mounting a PCB to another one.'
+					},
+					impedanceControl: {
+						title: 'Impedance Control',
+						description:
+							'Conductors in a PCB carry various signals, and to increase their transmission speed, their frequency must be raised. However, factors such as etching, layer thickness, and line width can cause impedance variations in the PCB, leading to signal distortion. Therefore, for high-speed PCB conductors, their impedance values should be controlled within a certain range, known as "impedance control". The impedance tolerance is generally ±10%. If impedance requirements are specified in the documentation but not selected in the order, it will be regarded as ignoring the impedance requirement.'
+					},
+					allViasFilled: {
+						title: 'All vias filled with resin and capped',
+						description: 'If you check this option, all vias will be filled with resin,then capped and plated cover.'
+					},
+					viaInPad: {
+						title: 'Via in Pad',
+						description:
+							'If there are via in pad in your design, that is, vias in the SMD pad, check this option and we will perform resin plug,then capped and plated cover.'
+					},
+					hdi: {
+						title: 'HDI (Buried/Blind Vias)',
+						description:
+							'A Blind Via connects an outer layer to one or more inner layers but does not go through the entire board. A Buried Via connects two or more inner layers but does not go through to an outer layer.'
+					}
+				}
+			},
+			finalInspectionReport: {
+				title: 'Final Inspection Report (Free)',
+				description: 'Regular shipment report additionally includes test report, dimensional inspection report',
+				values: {
+					defaultInspectionReport: 'Default Inspection Report',
+					microsectionInspectionReport: 'Microsection Inspection Report',
+					solderabilityInspectionReport: 'Solderability Inspection Report',
+					thermalStressInspectionReport: 'Thermal Stress Inspection Report',
+					impedanceTestReport: 'Impedance Test Report',
+					humidityIndicatorCards: 'Humidity Indicator Cards'
 				}
 			},
 			specialRequests: {
@@ -761,20 +1758,17 @@ export const en = {
 					pressFit: {
 						title: 'Press-fit assembly',
 						description:
-							'Press-fit assembly is an electronic manufacturing technology used to establish mechanical and electrical connections between circuit boards and components without the need for soldering. It involves inserting connector pins into the gold-plated through-holes on the circuit board and applying a certain amount of force to establish the connection. This technology eliminates some of the issues that arise in traditional soldering processes, such as broken or cold soldered pins, resulting in improved reliability and durability of the connector components.',
-						imgSrc: ''
+							'Press-fit assembly is an electronic manufacturing technology used to establish mechanical and electrical connections between circuit boards and components without the need for soldering. It involves inserting connector pins into the gold-plated through-holes on the circuit board and applying a certain amount of force to establish the connection. This technology eliminates some of the issues that arise in traditional soldering processes, such as broken or cold soldered pins, resulting in improved reliability and durability of the connector components.'
 					},
 					boxBuild: {
 						title: 'Box build assembly',
 						description:
-							'It is also known as systems integration, it is a full process service from designing and manufacturing the enclosure, installing a PCBA, installing cables and the cable harness assembly, and even installing electrical and/or pneumatic systems.',
-						imgSrc: ''
+							'It is also known as systems integration, it is a full process service from designing and manufacturing the enclosure, installing a PCBA, installing cables and the cable harness assembly, and even installing electrical and/or pneumatic systems.'
 					},
 					cableWireHarness: {
 						title: 'Cable wire harness assembly',
 						description:
-							'A cable assembly is a group of wires or cables covered by an exterior sleeve made from a variety of material. A wire harness is a single cable covered by an exterior sleeve.We can provide standard and simple wiring harness assembly, or custom wire harnesses assembly and cable assembly at shortest turnaround times.',
-						imgSrc: ''
+							'A cable assembly is a group of wires or cables covered by an exterior sleeve made from a variety of material. A wire harness is a single cable covered by an exterior sleeve.We can provide standard and simple wiring harness assembly, or custom wire harnesses assembly and cable assembly at shortest turnaround times.'
 					},
 					packageBox: {
 						title: 'Package box',

@@ -324,7 +324,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 		l: l.minHoleSize,
 		imgSrc: '',
 		values: [0.15, 0.2, 0.25, 0.3, 0.8, 1.0],
-		parseValue: (val: StandardPcb['minHoleSize']) => `${val}mm`
+		parseValue: (val: StandardPcb['minHoleSize']) => (val == 0 ? l.minHoleSize.noDrill : `${val}mm`)
 	};
 
 	const solderMaskColor = (() => {
@@ -335,7 +335,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 			{ title: $lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
 			{ title: $lg.common.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
 			{ title: $lg.common.color.matteBlack, color: 'bg-black', value: 'MATTE_BLACK' },
-			{ title: $lg.common.color.matteGreen, color: 'bg-green-400', value: 'MATTE_GREEN' },
+			{ title: $lg.common.color.matteGreen, color: 'bg-green-300', value: 'MATTE_GREEN' },
 			{ title: $lg.common.color.white, color: 'bg-white', value: 'WHITE' },
 			{ title: $lg.common.color.black, color: 'bg-black', value: 'BLACK' },
 			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' }
@@ -391,10 +391,13 @@ export const standardPcbDetails = ($lg: Lang) => {
 		return {
 			key: 'edgeConnector',
 			l: l.edgeConnector,
+			url: '',
+			imgSrc: '',
 			values,
 			parseValue: (val: StandardPcb['edgeConnector']) => values.find((v) => v.value === val)?.title
 		};
 	})();
+
 	const surfaceFinish = (() => {
 		const values = [
 			{ title: l.surfaceFinish.values.haslWithLead, value: 'HASL_WITH_LEAD' },
@@ -437,6 +440,8 @@ export const standardPcbDetails = ($lg: Lang) => {
 	const finishedCopper = {
 		key: 'finishedCopper',
 		l: l.finishedCopper,
+		url: '',
+		imgSrc: '',
 		values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
 		parseValue: (val: StandardPcb['finishedCopper']) =>
 			`${val === 0 ? `${l.finishedCopper.bareBoard} / ` : ''} ${val} oz Cu`
@@ -445,6 +450,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 	const innerCopper = {
 		key: 'innerCopper',
 		l: l.innerCopper,
+		imgSrc: '',
 		values: [1, 1.5, 2, 3, 4, 5, 6],
 		parseValue: (val: StandardPcb['innerCopper']) => (typeof val === 'number' ? `${val} oz Cu` : val)
 	};
@@ -522,6 +528,11 @@ export const standardPcbDetails = ($lg: Lang) => {
 			parseValue: (val: StandardPcb['dateCode']) => values.find((v) => v.value === val)?.title
 		};
 	})();
+
+	const dateCodeDescription = {
+		key: 'dateCodeDescription',
+		l: l.dateCodeDescription
+	};
 
 	const customizedServices = (() => {
 		const values = [
@@ -674,6 +685,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 		holeCopperThickness,
 		ulMarking,
 		dateCode,
+		dateCodeDescription,
 		customizedServices,
 		specialRequests
 	};

@@ -1,7 +1,5 @@
 import { z } from 'zod';
 
-export const fpType = z.enum(['FLEXIBLE_PCB', 'RIGID_FLEX_BOARD']);
-
 export const fpBoardType = z.enum(['SINGLE_PIECES', 'PANEL_BY_CUSTOMER', 'PANEL_BY_VELENOVA']);
 
 export const fpRouteProcess = z.enum(['VELENOVA_PREFER', 'V_SCORING', 'TAB_ROUTE', 'V_SCORING_AND_TAB_ROUTE']);
@@ -30,7 +28,7 @@ export const fpTape = z.enum(['THREEM_467', 'TESA_8853', 'TESA_8854', 'THREEM_94
 
 export const fpDoubleSidedTape = z.enum(['HT_A1134', 'NONE']);
 
-export const fpEmiShieldingFilm = z.enum(['NONE']);
+export const fpEmiShieldingFilm = z.enum(['HCF_6000G', 'PC800', 'NONE']);
 
 export const fpPeelableSolderMask = z.enum(['TOP_SIDE', 'BOTTOM_SIDE', 'BOTH_SIDES', 'NONE']);
 
@@ -65,7 +63,6 @@ export const flexiblePcbSchema = z.object({
 	weight: z.number(),
 	initialPrice: z.number(),
 	finalPrice: z.number().nullish(),
-	pcbType: fpType,
 	boardType: fpBoardType,
 	xoutAllowance: z.boolean().nullish(),
 	routeProcess: fpRouteProcess.nullish(),
@@ -86,7 +83,7 @@ export const flexiblePcbSchema = z.object({
 	edgeConnector: z.boolean(),
 	stiffener: fpStiffener,
 	surfaceFinish: fpSurfaceFinish,
-	surfaceThickness: z.number().nullish(),
+	surfaceThickness: z.array(z.number()),
 	finishedCopper: z.number(),
 	etest: z.boolean(),
 	tape: fpTape,

@@ -16,6 +16,7 @@ import { supabase } from '$lib/client/supabase';
 import { nanoid } from 'nanoid';
 import type { PageData } from '../routes/instant-quote/edit/$types';
 import { productDetails, type ProductType } from './product.store';
+import type { RigidFlex } from '../zod/products/rigidFlex.schema';
 
 export interface Quote {
 	init: boolean;
@@ -25,6 +26,7 @@ export interface Quote {
 		standardPcb: StandardPcb;
 		advancedPcb: AdvancedPcb;
 		flexiblePcb: FlexiblePcb;
+		rigidFlex: RigidFlex;
 		assembly: Assembly;
 		stencil: Stencil;
 	};
@@ -160,6 +162,18 @@ export const quoteError = derived([quote, productDetails], ([$quote, $productDet
 			})
 		) as { [k in keyof FlexiblePcb]: boolean })();
 
+	const rigidFlex = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.rigidFlex).map(([key, value]) => {
+				const validate = (
+					$productDetails.rigidFlex[key as keyof typeof $productDetails.rigidFlex] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof RigidFlex]: boolean })();
+
 	const assembly = (() =>
 		Object.fromEntries(
 			Object.entries($quote.products.assembly).map(([key, value]) => {
@@ -184,5 +198,5 @@ export const quoteError = derived([quote, productDetails], ([$quote, $productDet
 			})
 		) as { [k in keyof Stencil]: boolean })();
 
-	return { standardPcb, advancedPcb, flexiblePcb, assembly, stencil };
+	return { standardPcb, advancedPcb, flexiblePcb, rigidFlex, assembly, stencil };
 });

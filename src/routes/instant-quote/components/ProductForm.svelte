@@ -8,6 +8,7 @@
 	import AssemblyForm from './forms/assembly/AssemblyForm.svelte';
 	import StencilForm from './forms/stencil/StencilForm.svelte';
 	import { productTypes } from '../../../stores/product.store';
+	import RigidFlexForm from './forms/rigidFlex/RigidFlexForm.svelte';
 
 	$: ({ productType } = $quote);
 	$: productName = $productTypes[productType].title;
@@ -29,10 +30,11 @@
 	{#if productType === 'standardPcb'}
 		<StandardPcbForm />
 	{:else if productType === 'advancedPcb'}
-		<StandardPcbForm />
-		<!-- <AdvancedPcbForm /> -->
+		<AdvancedPcbForm />
 	{:else if productType === 'flexiblePcb'}
 		<FlexiblePcbForm />
+	{:else if productType === 'rigidFlex'}
+		<RigidFlexForm />
 	{:else if productType === 'assembly'}
 		<AssemblyForm />
 	{:else}

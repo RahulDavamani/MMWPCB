@@ -17,6 +17,9 @@ model ProductFabricationStatus {
    flexiblePcbId String?
    flexiblePcb   FlexiblePcb? @relation(fields: [flexiblePcbId], references: [id])
 
+   rigidFlexId String?
+   rigidFlex   RigidFlex? @relation(fields: [rigidFlexId], references: [id])
+
    assemblyId String?
    assembly   Assembly? @relation(fields: [assemblyId], references: [id])
 

@@ -26,7 +26,8 @@ export const apMaterial = z.enum([
 	'HIGH_CTI',
 	'HIGH_CTI_HALOGEN_FREE',
 	'HIGH_SPEED',
-	'HIGH_FREQUENCY'
+	'HIGH_FREQUENCY',
+	'SPECIAL_MATERIAL'
 ]);
 
 export const apSolderMaskColor = z.enum([
@@ -140,9 +141,9 @@ export const advancedPcbSchema = z.object({
 	silkscreenColor: apSilkscreenColor,
 	edgeConnector: z.boolean(),
 	surfaceFinish: apSurfaceFinish,
-	surfaceThickness: z.number().nullish(),
+	surfaceThickness: z.array(z.number()),
 	finishedCopper: z.number(),
-	initialCopper: z.number().nullish(),
+	innerCopper: z.number().nullish(),
 	peelableSolderMask: apPeelableSolderMask,
 	holeCopperThickness: z.number(),
 	ulMarking: apUlMarking.nullish(),

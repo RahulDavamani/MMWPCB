@@ -1,0 +1,150 @@
+model RigidFlex {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   name     String
+   fileName String?
+
+   buildTime    Int
+   weight       Float
+   initialPrice Float
+   finalPrice   Float?
+
+   boardType         RFBoardType
+   xoutAllowance     Boolean?
+   routeProcess      RFRouteProcess?
+   breakAwayRail     Boolean?
+   panelRequirements String?
+
+   differentDesign Int
+   length          Float
+   width           Float
+   quantity        Int
+   layers          Int
+
+   material RFMaterial
+
+   thickness   Float
+   minTrack    Float
+   minHoleSize Float
+
+   surfaceFinish    RFSurfaceFinish
+   surfaceThickness Float[]
+
+   edgeConnector Boolean
+   viaProcess    RFViaProcess
+
+   fpcLayers          Int
+   fpcThickness       Float
+   fpcCoverlay        RFCoverlay
+   fpcSilkscreenColor RFSilkscreenColor
+   fpcFinishedCopper  Float
+
+   rpcSolderMaskColor RFSolderMaskColor
+   rpcSilkscreenColor RFSilkscreenColor
+   rpcFinishedCopper  Float
+
+   ulMarking           FPUlMarking
+   dateCode            FPDateCode
+   dateCodeDescription String?
+
+   customizedServices    RFCustomizedServices[]
+   finalInspectionReport RFFinalInspectionReport[]
+   specialRequests       String
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+   fabricationStatuses ProductFabricationStatus[]
+}
+
+enum RFBoardType {
+   SINGLE_PIECES
+   PANEL_BY_CUSTOMER
+   PANEL_BY_VELENOVA
+}
+
+enum RFRouteProcess {
+   VELENOVA_PREFER
+   V_SCORING
+   TAB_ROUTE
+   V_SCORING_AND_TAB_ROUTE
+}
+
+enum RFMaterial {
+   POLYIMIDE_FLEX_FR4
+}
+
+enum RFSurfaceFinish {
+   IMMERSION_GOLD
+   OSP
+   IMMERSION_SILVER
+}
+
+enum RFViaProcess {
+   TENTING_VIAS
+   PLUGGED_VIAS_WITH_SOLDER_MASK
+   VIAS_NOT_COVERED
+}
+
+enum RFCoverlay {
+   YELLOW_COVERLAY
+   WHITE_COVERLAY
+   BLACK_COVERLAY
+   NONE
+}
+
+enum RFSolderMaskColor {
+   GREEN
+   RED
+   YELLOW
+   BLUE
+   WHITE
+   BLACK
+   PURPLE
+   MATTE_BLACK
+   MATTE_GREEN
+   NONE
+}
+
+enum RFSilkscreenColor {
+   WHITE
+   BLACK
+   NONE
+}
+
+enum RFUlMarking {
+   TOP_SILK_SCREEN
+   BOTTOM_SILK_SCREEN
+   TOP_SOLDER_MASK
+   BOTTOM_SOLDER_MASK
+   TOP_COPPER
+   BOTTOM_COPPER
+   DEFAULT
+   NONE
+}
+
+enum RFDateCode {
+   VELENOVA_PREFER
+   CUSTOMER_REQUIRED
+   UPDATE_DESIGNED_DATE_CODE
+   NONE
+}
+
+enum RFCustomizedServices {
+   HALF_CUT
+   IMPEDANCE_CONTROL
+   ALL_VIAS_FILLED_WITH_RESIN_AND_CAPPED
+   VIA_IN_PAD
+   HDI
+}
+
+enum RFFinalInspectionReport {
+   DEFAULT_INSPECTION_REPORT
+   MICROSECTION_INSPECTION_REPORT
+   SOLDERABILITY_INSPECTION_REPORT
+   THERMAL_STRESS_INSPECTION_REPORT
+   IMPEDANCE_INSPECTION_REPORT
+   HUMIDITY_INDICATOR_CARD
+}

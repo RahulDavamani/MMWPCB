@@ -1,6 +1,7 @@
 import type { AdvancedPcb } from '../../../zod/products/advancedPcb.schema';
 import type { Assembly } from '../../../zod/products/assembly.schema';
 import type { FlexiblePcb } from '../../../zod/products/flexiblePcb.schema';
+import type { RigidFlex } from '../../../zod/products/rigidFlex.schema';
 import type { StandardPcb } from '../../../zod/products/standardPcb.schema';
 import type { Stencil } from '../../../zod/products/stencil.schema';
 
@@ -59,7 +60,7 @@ const advancedPcb: AdvancedPcb = {
 	silkscreenColor: 'WHITE',
 	edgeConnector: false,
 	surfaceFinish: 'IMMERSION_GOLD',
-	surfaceThickness: 2,
+	surfaceThickness: [2],
 	finishedCopper: 1,
 	peelableSolderMask: 'NONE',
 	holeCopperThickness: 0,
@@ -75,7 +76,6 @@ const flexiblePcb: FlexiblePcb = {
 	buildTime: 86400,
 	weight: 0.5,
 	initialPrice: 5,
-	pcbType: 'FLEXIBLE_PCB',
 	boardType: 'SINGLE_PIECES',
 	differentDesign: 1,
 	length: 0,
@@ -91,7 +91,7 @@ const flexiblePcb: FlexiblePcb = {
 	edgeConnector: false,
 	stiffener: 'NONE',
 	surfaceFinish: 'IMMERSION_GOLD',
-	surfaceThickness: 1,
+	surfaceThickness: [1],
 	finishedCopper: 0.5,
 	etest: true,
 	tape: 'NONE',
@@ -101,6 +101,41 @@ const flexiblePcb: FlexiblePcb = {
 	ulMarking: 'NONE',
 	dateCode: 'NONE',
 	customizedServices: [],
+	specialRequests: ''
+};
+
+const rigidFlex: RigidFlex = {
+	name: '',
+	buildTime: 86400,
+	weight: 0.5,
+	initialPrice: 5,
+	boardType: 'SINGLE_PIECES',
+	differentDesign: 1,
+	length: 0,
+	width: 0,
+	quantity: 0,
+	layers: 1,
+	material: 'POLYIMIDE_FLEX_FR4',
+	thickness: 2.0,
+	minTrack: 6,
+	minHoleSize: 0.3,
+	surfaceFinish: 'IMMERSION_GOLD',
+	surfaceThickness: [1],
+	edgeConnector: false,
+	viaProcess: 'TENTING_VIAS',
+	fpcLayers: 1,
+	fpcThickness: 0.1,
+	fpcCoverlay: 'YELLOW_COVERLAY',
+	fpcSilkscreenColor: 'WHITE',
+	fpcFinishedCopper: 0.5,
+	rpcSolderMaskColor: 'GREEN',
+	rpcSilkscreenColor: 'WHITE',
+	rpcFinishedCopper: 1,
+	ulMarking: 'NONE',
+	dateCode: 'NONE',
+	dateCodeDescription: '',
+	customizedServices: [],
+	finalInspectionReport: ['DEFAULT_INSPECTION_REPORT'],
 	specialRequests: ''
 };
 
@@ -141,4 +176,4 @@ const stencil: Stencil = {
 	specialRequests: ''
 };
 
-export const defaultProducts = { standardPcb, advancedPcb, flexiblePcb, assembly, stencil };
+export const defaultProducts = { standardPcb, advancedPcb, flexiblePcb, rigidFlex, assembly, stencil };
