@@ -13,6 +13,7 @@ export const getCart = userProcedure.query(
 					standardPcbs: productSelect,
 					advancedPcbs: productSelect,
 					flexiblePcbs: productSelect,
+					rigidFlexes: productSelect,
 					assemblies: productSelect,
 					stencils: productSelect
 				}

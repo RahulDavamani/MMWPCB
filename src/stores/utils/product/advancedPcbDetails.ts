@@ -1,8 +1,8 @@
 import type { Lang } from '$lib/locales/en';
-import type { AdvancedPcb } from '../../zod/products/advancedPcb.schema';
+import type { AdvancedPcb } from '../../../zod/products/advancedPcb.schema';
 
-export const advancedPcbDetails = ($lg: Lang) => {
-	const l = $lg.instantQuote.advancedPcb;
+export const advancedPcbDetails = (lg: Lang) => {
+	const l = lg.instantQuote.advancedPcb;
 
 	const id = {
 		key: 'id',
@@ -139,8 +139,8 @@ export const advancedPcbDetails = ($lg: Lang) => {
 
 	const breakAwayRail = (() => {
 		const values = [
-			{ title: $lg.common.yes, value: true },
-			{ title: $lg.common.no, value: false }
+			{ title: lg.common.yes, value: true },
+			{ title: lg.common.no, value: false }
 		] as { title: string; value: AdvancedPcb['breakAwayRail'] }[];
 
 		return {
@@ -321,23 +321,23 @@ export const advancedPcbDetails = ($lg: Lang) => {
 
 	const solderMaskColor = (() => {
 		const values = [
-			{ title: $lg.common.color.green, color: 'bg-green-400', value: 'GREEN' },
-			{ title: $lg.common.color.red, color: 'bg-red-400', value: 'RED' },
-			{ title: $lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
-			{ title: $lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
-			{ title: $lg.common.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
-			{ title: $lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: $lg.common.color.black, color: 'bg-black', value: 'BLACK' },
-			{ title: $lg.common.color.pink, color: 'bg-pink-400', value: 'PINK' },
-			{ title: $lg.common.color.grey, color: 'bg-gray-400', value: 'GREY' },
-			{ title: $lg.common.color.orange, color: 'bg-orange-400', value: 'ORANGE' },
-			{ title: $lg.common.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
-			{ title: $lg.common.color.transparent, color: 'bg-white', value: 'TRANSPARENT' },
-			{ title: $lg.common.color.matteBlack, color: 'bg-black', value: 'MATTE_BLACK' },
-			{ title: $lg.common.color.matteGreen, color: 'bg-green-300', value: 'MATTE_GREEN' },
-			{ title: $lg.common.color.matteBlue, color: 'bg-blue-300', value: 'MATTE_BLUE' },
-			{ title: $lg.common.color.matteRed, color: 'bg-red-300', value: 'MATTE_RED' },
-			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' }
+			{ title: lg.common.color.green, color: 'bg-green-400', value: 'GREEN' },
+			{ title: lg.common.color.red, color: 'bg-red-400', value: 'RED' },
+			{ title: lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
+			{ title: lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
+			{ title: lg.common.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
+			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.common.color.pink, color: 'bg-pink-400', value: 'PINK' },
+			{ title: lg.common.color.grey, color: 'bg-gray-400', value: 'GREY' },
+			{ title: lg.common.color.orange, color: 'bg-orange-400', value: 'ORANGE' },
+			{ title: lg.common.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
+			{ title: lg.common.color.transparent, color: 'bg-white', value: 'TRANSPARENT' },
+			{ title: lg.common.color.matteBlack, color: 'bg-black', value: 'MATTE_BLACK' },
+			{ title: lg.common.color.matteGreen, color: 'bg-green-300', value: 'MATTE_GREEN' },
+			{ title: lg.common.color.matteBlue, color: 'bg-blue-300', value: 'MATTE_BLUE' },
+			{ title: lg.common.color.matteRed, color: 'bg-red-300', value: 'MATTE_RED' },
+			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: AdvancedPcb['solderMaskColor'] }[];
 
 		return {
@@ -350,12 +350,12 @@ export const advancedPcbDetails = ($lg: Lang) => {
 
 	const silkscreenColor = (() => {
 		const values = [
-			{ title: $lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: $lg.common.color.black, color: 'bg-black', value: 'BLACK' },
-			{ title: $lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
-			{ title: $lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
-			{ title: $lg.common.color.grey, color: 'bg-grey-400', value: 'GREY' },
-			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' }
+			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
+			{ title: lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
+			{ title: lg.common.color.grey, color: 'bg-grey-400', value: 'GREY' },
+			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: AdvancedPcb['silkscreenColor'] }[];
 
 		return {
@@ -368,8 +368,8 @@ export const advancedPcbDetails = ($lg: Lang) => {
 
 	const edgeConnector = (() => {
 		const values = [
-			{ title: $lg.common.yes, value: true },
-			{ title: $lg.common.no, value: false }
+			{ title: lg.common.yes, value: true },
+			{ title: lg.common.no, value: false }
 		] as { title: string; value: AdvancedPcb['edgeConnector'] }[];
 
 		return {
@@ -495,7 +495,7 @@ export const advancedPcbDetails = ($lg: Lang) => {
 			{ title: l.peelableSolderMask.values.topSide, value: 'TOP_SIDE' },
 			{ title: l.peelableSolderMask.values.bottomSide, value: 'BOTTOM_SIDE' },
 			{ title: l.peelableSolderMask.values.bothSides, value: 'BOTH_SIDES' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: AdvancedPcb['peelableSolderMask'] }[];
 
 		return {
@@ -522,7 +522,7 @@ export const advancedPcbDetails = ($lg: Lang) => {
 			{ title: l.ulMarking.values.topCopper, value: 'TOP_COPPER' },
 			{ title: l.ulMarking.values.bottomCopper, value: 'BOTTOM_COPPER' },
 			{ title: l.ulMarking.values.default, value: 'DEFAULT' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: AdvancedPcb['ulMarking'] }[];
 
 		return {
@@ -538,7 +538,7 @@ export const advancedPcbDetails = ($lg: Lang) => {
 			{ title: l.dateCode.values.velenovaPrefer, value: 'VELENOVA_PREFER' },
 			{ title: l.dateCode.values.customerRequired, value: 'CUSTOMER_REQUIRED' },
 			{ title: l.dateCode.values.updateDesignedDateCode, value: 'UPDATE_DESIGNED_DATE_CODE' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: AdvancedPcb['dateCode'] }[];
 
 		return {

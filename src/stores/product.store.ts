@@ -1,11 +1,11 @@
 import { derived } from 'svelte/store';
 import { lg } from './i18n.store';
-import { standardPcbDetails } from './utils/standardPcbDetails';
-import { advancedPcbDetails } from './utils/advancedPcbDetails';
-import { flexiblePcbDetails } from './utils/flexiblePcbDetails';
-import { assemblyDetails } from './utils/assemblyDetails';
-import { stencilDetails } from './utils/stencilDetails';
-import { rigidFlexDetails } from './utils/rigidFlexDetails';
+import { standardPcbDetails } from './utils/product/standardPcbDetails';
+import { advancedPcbDetails } from './utils/product/advancedPcbDetails';
+import { flexiblePcbDetails } from './utils/product/flexiblePcbDetails';
+import { assemblyDetails } from './utils/product/assemblyDetails';
+import { stencilDetails } from './utils/product/stencilDetails';
+import { rigidFlexDetails } from './utils/product/rigidFlexDetails';
 
 export type ProductType = 'standardPcb' | 'advancedPcb' | 'flexiblePcb' | 'rigidFlex' | 'assembly' | 'stencil';
 

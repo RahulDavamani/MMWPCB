@@ -1,8 +1,8 @@
 import type { Lang } from '$lib/locales/en';
-import type { Stencil } from '../../zod/products/stencil.schema';
+import type { Stencil } from '../../../zod/products/stencil.schema';
 
-export const stencilDetails = ($lg: Lang) => {
-	const l = $lg.instantQuote.stencil;
+export const stencilDetails = (lg: Lang) => {
+	const l = lg.instantQuote.stencil;
 
 	const id = {
 		key: 'id',
@@ -73,8 +73,8 @@ export const stencilDetails = ($lg: Lang) => {
 
 	const multiLevel = (() => {
 		const values = [
-			{ title: $lg.common.no, value: false },
-			{ title: $lg.common.yes, value: true }
+			{ title: lg.common.no, value: false },
+			{ title: lg.common.yes, value: true }
 		] as { title: string; value: Stencil['multiLevel'] }[];
 
 		return {
@@ -142,7 +142,7 @@ export const stencilDetails = ($lg: Lang) => {
 		const values = [
 			{ title: l.existingFiducials.values.halfLasered, value: 'HALF_LASERED' },
 			{ title: l.existingFiducials.values.laseredThrough, value: 'LASERED_THROUGH' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: Stencil['existingFiducials'] }[];
 
 		return {
@@ -155,8 +155,8 @@ export const stencilDetails = ($lg: Lang) => {
 
 	const electroPolishing = (() => {
 		const values = [
-			{ title: $lg.common.no, value: false },
-			{ title: $lg.common.yes, value: true }
+			{ title: lg.common.no, value: false },
+			{ title: lg.common.yes, value: true }
 		] as { title: string; value: Stencil['electroPolishing'] }[];
 
 		return {

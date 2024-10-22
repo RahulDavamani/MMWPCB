@@ -28,6 +28,7 @@ export const get = userProcedure.input(z.object({ id: z.string().min(1).nullable
 					standardPcbs: productSelect,
 					advancedPcbs: productSelect,
 					flexiblePcbs: productSelect,
+					rigidFlexes: productSelect,
 					assemblies: productSelect,
 					stencils: productSelect,
 					timeline: true,

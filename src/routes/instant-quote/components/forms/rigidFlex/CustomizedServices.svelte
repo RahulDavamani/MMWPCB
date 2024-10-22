@@ -3,7 +3,7 @@
 	import { quote } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';
 	import DateCode from './DateCode.svelte';
-	import UlMarking from './ulMarking.svelte';
+	import UlMarking from './UlMarking.svelte';
 
 	$: pd = $productDetails.rigidFlex.customizedServices;
 	$: ({ customizedServices } = $quote.products.rigidFlex);

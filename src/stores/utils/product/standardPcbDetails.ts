@@ -1,8 +1,8 @@
 import type { Lang } from '$lib/locales/en';
-import type { StandardPcb } from '../../zod/products/standardPcb.schema';
+import type { StandardPcb } from '../../../zod/products/standardPcb.schema';
 
-export const standardPcbDetails = ($lg: Lang) => {
-	const l = $lg.instantQuote.standardPcb;
+export const standardPcbDetails = (lg: Lang) => {
+	const l = lg.instantQuote.standardPcb;
 
 	const id = {
 		key: 'id',
@@ -108,8 +108,8 @@ export const standardPcbDetails = ($lg: Lang) => {
 
 	const breakAwayRail = (() => {
 		const values = [
-			{ title: $lg.common.yes, value: true },
-			{ title: $lg.common.no, value: false }
+			{ title: lg.common.yes, value: true },
+			{ title: lg.common.no, value: false }
 		] as { title: string; value: StandardPcb['breakAwayRail'] }[];
 
 		return {
@@ -329,16 +329,16 @@ export const standardPcbDetails = ($lg: Lang) => {
 
 	const solderMaskColor = (() => {
 		const values = [
-			{ title: $lg.common.color.green, color: 'bg-green-400', value: 'GREEN' },
-			{ title: $lg.common.color.red, color: 'bg-red-400', value: 'RED' },
-			{ title: $lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
-			{ title: $lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
-			{ title: $lg.common.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
-			{ title: $lg.common.color.matteBlack, color: 'bg-black', value: 'MATTE_BLACK' },
-			{ title: $lg.common.color.matteGreen, color: 'bg-green-300', value: 'MATTE_GREEN' },
-			{ title: $lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: $lg.common.color.black, color: 'bg-black', value: 'BLACK' },
-			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' }
+			{ title: lg.common.color.green, color: 'bg-green-400', value: 'GREEN' },
+			{ title: lg.common.color.red, color: 'bg-red-400', value: 'RED' },
+			{ title: lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
+			{ title: lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
+			{ title: lg.common.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
+			{ title: lg.common.color.matteBlack, color: 'bg-black', value: 'MATTE_BLACK' },
+			{ title: lg.common.color.matteGreen, color: 'bg-green-300', value: 'MATTE_GREEN' },
+			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: StandardPcb['solderMaskColor'] }[];
 
 		return {
@@ -351,10 +351,10 @@ export const standardPcbDetails = ($lg: Lang) => {
 
 	const silkscreenColor = (() => {
 		const values = [
-			{ title: $lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
-			{ title: $lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: $lg.common.color.black, color: 'bg-black', value: 'BLACK' },
-			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' }
+			{ title: lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
+			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: StandardPcb['silkscreenColor'] }[];
 
 		return {
@@ -370,7 +370,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 			{ title: l.uvPrinting.values.singleSidedTop, value: 'SINGLE_SIDED_TOP' },
 			{ title: l.uvPrinting.values.singleSidedBottom, value: 'SINGLE_SIDED_BOTTOM' },
 			{ title: l.uvPrinting.values.doubleSided, value: 'DOUBLE_SIDED' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: StandardPcb['uvPrinting'] }[];
 
 		return {
@@ -384,8 +384,8 @@ export const standardPcbDetails = ($lg: Lang) => {
 
 	const edgeConnector = (() => {
 		const values = [
-			{ title: $lg.common.yes, value: true },
-			{ title: $lg.common.no, value: false }
+			{ title: lg.common.yes, value: true },
+			{ title: lg.common.no, value: false }
 		] as { title: string; value: StandardPcb['edgeConnector'] }[];
 
 		return {
@@ -475,7 +475,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 			{ title: l.peelableSolderMask.values.topSide, value: 'TOP_SIDE' },
 			{ title: l.peelableSolderMask.values.bottomSide, value: 'BOTTOM_SIDE' },
 			{ title: l.peelableSolderMask.values.bothSides, value: 'BOTH_SIDES' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: StandardPcb['peelableSolderMask'] }[];
 
 		return {
@@ -502,7 +502,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 			{ title: l.ulMarking.values.topCopper, value: 'TOP_COPPER' },
 			{ title: l.ulMarking.values.bottomCopper, value: 'BOTTOM_COPPER' },
 			{ title: l.ulMarking.values.default, value: 'DEFAULT' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: StandardPcb['ulMarking'] }[];
 
 		return {
@@ -518,7 +518,7 @@ export const standardPcbDetails = ($lg: Lang) => {
 			{ title: l.dateCode.values.velenovaPrefer, value: 'VELENOVA_PREFER' },
 			{ title: l.dateCode.values.customerRequired, value: 'CUSTOMER_REQUIRED' },
 			{ title: l.dateCode.values.updateDesignedDateCode, value: 'UPDATE_DESIGNED_DATE_CODE' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: StandardPcb['dateCode'] }[];
 
 		return {

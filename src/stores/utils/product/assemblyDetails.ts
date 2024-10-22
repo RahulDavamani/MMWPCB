@@ -1,8 +1,8 @@
 import type { Lang } from '$lib/locales/en';
-import type { Assembly } from '../../zod/products/assembly.schema';
+import type { Assembly } from '../../../zod/products/assembly.schema';
 
-export const assemblyDetails = ($lg: Lang) => {
-	const l = $lg.instantQuote.assembly;
+export const assemblyDetails = (lg: Lang) => {
+	const l = lg.instantQuote.assembly;
 
 	const id = {
 		key: 'id',
@@ -109,8 +109,8 @@ export const assemblyDetails = ($lg: Lang) => {
 
 	const sensitiveParts = (() => {
 		const values = [
-			{ title: $lg.common.no, value: false },
-			{ title: $lg.common.yes, value: true }
+			{ title: lg.common.no, value: false },
+			{ title: lg.common.yes, value: true }
 		] as { title: string; value: Assembly['sensitiveParts'] }[];
 
 		return {
@@ -123,8 +123,8 @@ export const assemblyDetails = ($lg: Lang) => {
 
 	const alternatesChina = (() => {
 		const values = [
-			{ title: $lg.common.no, value: false },
-			{ title: $lg.common.yes, value: true }
+			{ title: lg.common.no, value: false },
+			{ title: lg.common.yes, value: true }
 		] as { title: string; value: Assembly['alternatesChina'] }[];
 
 		return {

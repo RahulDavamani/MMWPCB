@@ -5,7 +5,7 @@ export const getAll = userProcedure.query(
 	async ({ ctx: { user } }) =>
 		await prisma.order
 			.findMany({
-				where: { status: { not: 'CART' } },
+				where: { status: { not: 'CART' }, userId: user.id },
 				select: {
 					id: true,
 					createdAt: true,
@@ -15,6 +15,7 @@ export const getAll = userProcedure.query(
 							standardPcbs: true,
 							advancedPcbs: true,
 							flexiblePcbs: true,
+							rigidFlexes: true,
 							assemblies: true,
 							stencils: true
 						}

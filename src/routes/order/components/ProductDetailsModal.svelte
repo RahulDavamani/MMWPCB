@@ -6,7 +6,6 @@
 	import { tce } from '../../../trpc/te';
 	import Modal from '../../components/UI/Modal.svelte';
 	import { lg } from '../../../stores/i18n.store';
-	import type { Lang } from '$lib/locales/en';
 	import Loader from '../../components/UI/Loader.svelte';
 	import { order } from '../../../stores/order.store';
 	import { productDetails as pd, type ProductType } from '../../../stores/product.store';

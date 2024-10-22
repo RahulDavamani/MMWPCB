@@ -16,6 +16,7 @@ export const approveReview = userProcedure.input(schema).mutation(async ({ input
 				standardPcbs: { select: { id: true, initialPrice: true } },
 				advancedPcbs: { select: { id: true, initialPrice: true } },
 				flexiblePcbs: { select: { id: true, initialPrice: true } },
+				rigidFlexes: { select: { id: true, initialPrice: true } },
 				assemblies: { select: { id: true, initialPrice: true } },
 				stencils: { select: { id: true, initialPrice: true } }
 			}

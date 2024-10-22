@@ -1,8 +1,8 @@
 import type { Lang } from '$lib/locales/en';
-import type { RigidFlex } from '../../zod/products/rigidFlex.schema';
+import type { RigidFlex } from '../../../zod/products/rigidFlex.schema';
 
-export const rigidFlexDetails = ($lg: Lang) => {
-	const l = $lg.instantQuote.rigidFlex;
+export const rigidFlexDetails = (lg: Lang) => {
+	const l = lg.instantQuote.rigidFlex;
 
 	const id = {
 		key: 'id',
@@ -108,8 +108,8 @@ export const rigidFlexDetails = ($lg: Lang) => {
 
 	const breakAwayRail = (() => {
 		const values = [
-			{ title: $lg.common.yes, value: true },
-			{ title: $lg.common.no, value: false }
+			{ title: lg.common.yes, value: true },
+			{ title: lg.common.no, value: false }
 		] as { title: string; value: RigidFlex['breakAwayRail'] }[];
 
 		return {
@@ -225,8 +225,8 @@ export const rigidFlexDetails = ($lg: Lang) => {
 
 	const edgeConnector = (() => {
 		const values = [
-			{ title: $lg.common.yes, value: true },
-			{ title: $lg.common.no, value: false }
+			{ title: lg.common.yes, value: true },
+			{ title: lg.common.no, value: false }
 		] as { title: string; value: RigidFlex['edgeConnector'] }[];
 
 		return {
@@ -269,21 +269,21 @@ export const rigidFlexDetails = ($lg: Lang) => {
 	const fpcCoverlay = (() => {
 		const values = [
 			{
-				title: `${$lg.common.color.yellow} ${l.fpcCoverlay.coverlay}`,
+				title: `${lg.common.color.yellow} ${l.fpcCoverlay.coverlay}`,
 				color: 'bg-yellow-400',
 				value: 'YELLOW_COVERLAY'
 			},
 			{
-				title: `${$lg.common.color.white} ${l.fpcCoverlay.coverlay}`,
+				title: `${lg.common.color.white} ${l.fpcCoverlay.coverlay}`,
 				color: 'bg-white',
 				value: 'WHITE_COVERLAY'
 			},
 			{
-				title: `${$lg.common.color.black} ${l.fpcCoverlay.coverlay}`,
+				title: `${lg.common.color.black} ${l.fpcCoverlay.coverlay}`,
 				color: 'bg-black',
 				value: 'BLACK_COVERLAY'
 			},
-			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' }
+			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: RigidFlex['fpcCoverlay'] }[];
 
 		return {
@@ -296,9 +296,9 @@ export const rigidFlexDetails = ($lg: Lang) => {
 
 	const fpcSilkscreenColor = (() => {
 		const values = [
-			{ title: $lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: $lg.common.color.black, color: 'bg-black', value: 'BLACK' },
-			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' }
+			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: RigidFlex['fpcSilkscreenColor'] }[];
 
 		return {
@@ -318,16 +318,16 @@ export const rigidFlexDetails = ($lg: Lang) => {
 
 	const rpcSolderMaskColor = (() => {
 		const values = [
-			{ title: $lg.common.color.green, color: 'bg-green-400', value: 'GREEN' },
-			{ title: $lg.common.color.red, color: 'bg-red-400', value: 'RED' },
-			{ title: $lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
-			{ title: $lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
-			{ title: $lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: $lg.common.color.black, color: 'bg-black', value: 'BLACK' },
-			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' },
-			{ title: $lg.common.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
-			{ title: $lg.common.color.matteBlack, color: 'bg-black', value: 'MATTE_BLACK' },
-			{ title: $lg.common.color.matteGreen, color: 'bg-green-300', value: 'MATTE_GREEN' }
+			{ title: lg.common.color.green, color: 'bg-green-400', value: 'GREEN' },
+			{ title: lg.common.color.red, color: 'bg-red-400', value: 'RED' },
+			{ title: lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
+			{ title: lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
+			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' },
+			{ title: lg.common.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
+			{ title: lg.common.color.matteBlack, color: 'bg-black', value: 'MATTE_BLACK' },
+			{ title: lg.common.color.matteGreen, color: 'bg-green-300', value: 'MATTE_GREEN' }
 		] as { title: string; color: string; value: RigidFlex['rpcSolderMaskColor'] }[];
 
 		return {
@@ -340,9 +340,9 @@ export const rigidFlexDetails = ($lg: Lang) => {
 
 	const rpcSilkscreenColor = (() => {
 		const values = [
-			{ title: $lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: $lg.common.color.black, color: 'bg-black', value: 'BLACK' },
-			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' }
+			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: RigidFlex['rpcSilkscreenColor'] }[];
 
 		return {
@@ -369,7 +369,7 @@ export const rigidFlexDetails = ($lg: Lang) => {
 			{ title: l.ulMarking.values.topCopper, value: 'TOP_COPPER' },
 			{ title: l.ulMarking.values.bottomCopper, value: 'BOTTOM_COPPER' },
 			{ title: l.ulMarking.values.default, value: 'DEFAULT' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: RigidFlex['ulMarking'] }[];
 
 		return {
@@ -385,7 +385,7 @@ export const rigidFlexDetails = ($lg: Lang) => {
 			{ title: l.dateCode.values.velenovaPrefer, value: 'VELENOVA_PREFER' },
 			{ title: l.dateCode.values.customerRequired, value: 'CUSTOMER_REQUIRED' },
 			{ title: l.dateCode.values.updateDesignedDateCode, value: 'UPDATE_DESIGNED_DATE_CODE' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: RigidFlex['dateCode'] }[];
 
 		return {

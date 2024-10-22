@@ -1,8 +1,8 @@
 import type { Lang } from '$lib/locales/en';
-import type { FlexiblePcb } from '../../zod/products/flexiblePcb.schema';
+import type { FlexiblePcb } from '../../../zod/products/flexiblePcb.schema';
 
-export const flexiblePcbDetails = ($lg: Lang) => {
-	const l = $lg.instantQuote.flexiblePcb;
+export const flexiblePcbDetails = (lg: Lang) => {
+	const l = lg.instantQuote.flexiblePcb;
 
 	const id = {
 		key: 'id',
@@ -108,8 +108,8 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 
 	const breakAwayRail = (() => {
 		const values = [
-			{ title: $lg.common.yes, value: true },
-			{ title: $lg.common.no, value: false }
+			{ title: lg.common.yes, value: true },
+			{ title: lg.common.no, value: false }
 		] as { title: string; value: FlexiblePcb['breakAwayRail'] }[];
 
 		return {
@@ -219,22 +219,22 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 	const solderMaskColor = (() => {
 		const values = [
 			{
-				title: `${$lg.common.color.yellow} ${l.solderMaskColor.coverlay}`,
+				title: `${lg.common.color.yellow} ${l.solderMaskColor.coverlay}`,
 				color: 'bg-yellow-400',
 				value: 'YELLOW_COVERLAY'
 			},
 			{
-				title: `${$lg.common.color.white} ${l.solderMaskColor.coverlay}`,
+				title: `${lg.common.color.white} ${l.solderMaskColor.coverlay}`,
 				color: 'bg-white',
 				value: 'WHITE_COVERLAY'
 			},
 			{
-				title: `${$lg.common.color.black} ${l.solderMaskColor.coverlay}`,
+				title: `${lg.common.color.black} ${l.solderMaskColor.coverlay}`,
 				color: 'bg-black',
 				value: 'BLACK_COVERLAY'
 			},
-			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' },
-			{ title: $lg.common.color.transparent, color: 'bg-white', value: 'TRANSPARENT' }
+			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' },
+			{ title: lg.common.color.transparent, color: 'bg-white', value: 'TRANSPARENT' }
 		] as { title: string; color: string; value: FlexiblePcb['solderMaskColor'] }[];
 
 		return {
@@ -247,12 +247,12 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 
 	const silkscreenColor = (() => {
 		const values = [
-			{ title: $lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: $lg.common.color.black, color: 'bg-black', value: 'BLACK' },
-			{ title: $lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
-			{ title: $lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
-			{ title: $lg.common.color.grey, color: 'bg-grey-400', value: 'GREY' },
-			{ title: $lg.common.none, color: 'bg-gray-400', value: 'NONE' }
+			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
+			{ title: lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
+			{ title: lg.common.color.grey, color: 'bg-grey-400', value: 'GREY' },
+			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: FlexiblePcb['silkscreenColor'] }[];
 
 		return {
@@ -265,8 +265,8 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 
 	const edgeConnector = (() => {
 		const values = [
-			{ title: $lg.common.yes, value: true },
-			{ title: $lg.common.no, value: false }
+			{ title: lg.common.yes, value: true },
+			{ title: lg.common.no, value: false }
 		] as { title: string; value: FlexiblePcb['edgeConnector'] }[];
 
 		return {
@@ -284,7 +284,7 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 			{ title: l.stiffener.values.topSide, value: 'TOP_SIDE' },
 			{ title: l.stiffener.values.bottomSide, value: 'BOTTOM_SIDE' },
 			{ title: l.stiffener.values.bothSides, value: 'BOTH_SIDES' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: FlexiblePcb['stiffener'] }[];
 
 		return {
@@ -383,8 +383,8 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 
 	const etest = (() => {
 		const values = [
-			{ title: $lg.common.yes, value: true },
-			{ title: $lg.common.no, value: false }
+			{ title: lg.common.yes, value: true },
+			{ title: lg.common.no, value: false }
 		] as { title: string; value: FlexiblePcb['etest'] }[];
 
 		return {
@@ -401,7 +401,7 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 			{ title: l.tape.values.tesa8853, value: 'TESA_8853' },
 			{ title: l.tape.values.tesa8854, value: 'TESA_8854' },
 			{ title: l.tape.values.threeM9495LE, value: 'THREEM_9495LE' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: FlexiblePcb['tape'] }[];
 
 		return {
@@ -415,7 +415,7 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 	const doubleSidedTape = (() => {
 		const values = [
 			{ title: l.doubleSidedTape.values.htA1134, value: 'HT_A1134' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: FlexiblePcb['doubleSidedTape'] }[];
 
 		return {
@@ -430,7 +430,7 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 		const values = [
 			{ title: l.emiShieldingFilm.values.hcf6000g, value: 'HCF_6000G' },
 			{ title: l.emiShieldingFilm.values.pc800, value: 'PC800' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: FlexiblePcb['emiShieldingFilm'] }[];
 
 		return {
@@ -446,7 +446,7 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 			{ title: l.peelableSolderMask.values.topSide, value: 'TOP_SIDE' },
 			{ title: l.peelableSolderMask.values.bottomSide, value: 'BOTTOM_SIDE' },
 			{ title: l.peelableSolderMask.values.bothSides, value: 'BOTH_SIDES' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: FlexiblePcb['peelableSolderMask'] }[];
 
 		return {
@@ -466,7 +466,7 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 			{ title: l.ulMarking.values.topCopper, value: 'TOP_COPPER' },
 			{ title: l.ulMarking.values.bottomCopper, value: 'BOTTOM_COPPER' },
 			{ title: l.ulMarking.values.default, value: 'DEFAULT' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: FlexiblePcb['ulMarking'] }[];
 
 		return {
@@ -482,7 +482,7 @@ export const flexiblePcbDetails = ($lg: Lang) => {
 			{ title: l.dateCode.values.velenovaPrefer, value: 'VELENOVA_PREFER' },
 			{ title: l.dateCode.values.customerRequired, value: 'CUSTOMER_REQUIRED' },
 			{ title: l.dateCode.values.updateDesignedDateCode, value: 'UPDATE_DESIGNED_DATE_CODE' },
-			{ title: $lg.common.none, value: 'NONE' }
+			{ title: lg.common.none, value: 'NONE' }
 		] as { title: string; value: FlexiblePcb['dateCode'] }[];
 
 		return {

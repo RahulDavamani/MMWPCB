@@ -12,6 +12,7 @@ export const removeProduct = userProcedure
 					standardPcbs: { deleteMany: ids ? { id: { in: ids } } : {} },
 					advancedPcbs: { deleteMany: ids ? { id: { in: ids } } : {} },
 					flexiblePcbs: { deleteMany: ids ? { id: { in: ids } } : {} },
+					rigidFlexes: { deleteMany: ids ? { id: { in: ids } } : {} },
 					assemblies: { deleteMany: ids ? { id: { in: ids } } : {} },
 					stencils: { deleteMany: ids ? { id: { in: ids } } : {} }
 				},

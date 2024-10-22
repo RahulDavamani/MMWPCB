@@ -5,6 +5,7 @@
 	import I18N from './I18N.svelte';
 	import SmallCart from './SmallCart.svelte';
 	import ProductsMenu from './ProductsMenu.svelte';
+	import SupportMenu from './navbar/SupportMenu.svelte';
 
 	$: l = $lg.navbar;
 
@@ -17,6 +18,7 @@
 	];
 </script>
 
+<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div id="navbar" class="navbar shadow-lg">
 	<div class="container mx-auto flex justify-between items-center">
 		<div class="flex items-center">
@@ -69,7 +71,7 @@
 					{l.whyUs}
 				</a>
 			</div>
-			<div>
+			<div class="dropdown dropdown-hover">
 				<a
 					href="/support"
 					class="btn btn-link text-black text-base underline-offset-8 decoration-secondary decoration-2
@@ -77,6 +79,9 @@
 				>
 					{l.support}
 				</a>
+				<ul tabindex="0" class="dropdown-content z-[1]">
+					<SupportMenu />
+				</ul>
 			</div>
 		</div>
 		<div class="flex items-center gap-6">

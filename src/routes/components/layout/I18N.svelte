@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { currencies, i18n, lg, languages } from '../../../stores/i18n.store';
-	import { ui } from '../../../stores/ui.store';
 
 	$: l = $lg.navbar.i18n;
 	$: ({ language, currency } = $i18n);

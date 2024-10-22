@@ -16,6 +16,7 @@ export const getProduct = userProcedure.input(schema).query(async ({ ctx: { user
 				standardPcbs: { where: { id } },
 				advancedPcbs: { where: { id } },
 				flexiblePcbs: { where: { id } },
+				rigidFlexes: { where: { id } },
 				assemblies: { where: { id } },
 				stencils: { where: { id } }
 			}
@@ -32,6 +33,9 @@ export const getProduct = userProcedure.input(schema).query(async ({ ctx: { user
 	} else if (products.flexiblePcbs.length) {
 		product = products.flexiblePcbs[0];
 		productType = 'flexiblePcb';
+	} else if (products.rigidFlexes.length) {
+		product = products.rigidFlexes[0];
+		productType = 'rigidFlex';
 	} else if (products.assemblies.length) {
 		product = products.assemblies[0];
 		productType = 'assembly';

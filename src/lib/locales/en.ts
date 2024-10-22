@@ -278,7 +278,7 @@ export const en = {
 			layers: {
 				title: 'Layers',
 				description:
-					'The number of copper layers in the board. Velenova can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
+					'The number of copper layers in the board. MMWPCB can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
 				layer: 'Layer',
 				layers: 'Layers'
 			},
@@ -327,14 +327,14 @@ export const en = {
 			fr4TG: {
 				title: 'FR4-TG',
 				description:
-					'TG means Glass Transition Temperature. Ordinary TG is 130 ℃ or more, medium TG is about greater than 150 ℃, and advanced TG is generally greater than 170 ℃. The higher the TG, the better the temperature resistance of the material. The default material of Velenova has a TG of 150-160℃, which is higher that most companies.',
+					'TG means Glass Transition Temperature. Ordinary TG is 130 ℃ or more, medium TG is about greater than 150 ℃, and advanced TG is generally greater than 170 ℃. The higher the TG, the better the temperature resistance of the material. The default material of MMWPCB has a TG of 150-160℃, which is higher that most companies.',
 				disclaimer:
 					'*Base material with high TG has good CAF resistance, high heat resistance, dimensional stability and is suitable forlead-free soldering process'
 			},
 			rogers: {
 				title: 'Rogers',
 				description:
-					'Rogers RO4000 series has been in a leading position in the industry. This low-loss material is widely used in microwave and millimeter-wave frequency designs. Compared with traditional PTFE material, it is easier to be used in circuit manufacturing and has stable and consistent performance. At present, 4003C and 4350B are available for Velenova. If you need other models, please contact your sales representative.'
+					'Rogers RO4000 series has been in a leading position in the industry. This low-loss material is widely used in microwave and millimeter-wave frequency designs. Compared with traditional PTFE material, it is easier to be used in circuit manufacturing and has stable and consistent performance. At present, 4003C and 4350B are available for MMWPCB. If you need other models, please contact your sales representative.'
 			},
 			thermalConductivity: {
 				title: 'Thermal Conductivity',
@@ -363,17 +363,17 @@ export const en = {
 			minTrack: {
 				title: 'Min Track/Spacing',
 				description:
-					'Minimum width of the copper trace and minimum distance between two traces. Velenova engineers will double-check the Min Track/Spacing.'
+					'Minimum width of the copper trace and minimum distance between two traces. MMWPCB engineers will double-check the Min Track/Spacing.'
 			},
 			minHoleSize: {
 				title: 'Min Hole Size',
-				description: 'Minimum diameter of holes. Velenova engineers will double-check the min hole size.',
+				description: 'Minimum diameter of holes. MMWPCB engineers will double-check the min hole size.',
 				noDrill: 'No Drill'
 			},
 			solderMaskColor: {
 				title: 'Solder Mask',
 				description:
-					'Solder mask color refers to the color of the PCB surface. Currently, Velenova provides 9 conventional solder mask colors. If you need pink, gray, orange, or transparent, please go to the Advanced PCB page to choose.'
+					'Solder mask color refers to the color of the PCB surface. Currently, MMWPCB provides 9 conventional solder mask colors. If you need pink, gray, orange, or transparent, please go to the Advanced PCB page to choose.'
 			},
 			silkscreenColor: {
 				title: 'Silkscreen',
@@ -443,7 +443,7 @@ export const en = {
 			finishedCopper: {
 				title: 'Finished Copper',
 				description:
-					'The weight in ounces of copper in one square foot of PCB, this option will determine the thickness of copper on the outer layers. Velenova provides the thickness of copper on outer layers of 1-13oz.PTH holes or vias that are cutted through to create a partial or half hole to form an opening into the side of the hole barrel. Generally they are used for mounting a PCB to another one.',
+					'The weight in ounces of copper in one square foot of PCB, this option will determine the thickness of copper on the outer layers. MMWPCB provides the thickness of copper on outer layers of 1-13oz.PTH holes or vias that are cutted through to create a partial or half hole to form an opening into the side of the hole barrel. Generally they are used for mounting a PCB to another one.',
 				disclaimer: '*Requirement of Min Track/Spacing: ≥ 3/3mil for sample orders, or ≥ 3.5/3.5mil for bulk orders.',
 				bareBoard: 'Bare Board'
 			},
@@ -456,7 +456,7 @@ export const en = {
 			removeProductNo: {
 				title: 'Remove Product No',
 				description:
-					'Velenova will add our product number on PCB to distinguish your PCBs from others. If you want to remove it, there will be an extra $1.5 charge. If you want to put it in a specific location, please indicate the location by adding the text "Velenova" in silkscreen layer and there is no extra charge for this option.',
+					'MMWPCB will add our product number on PCB to distinguish your PCBs from others. If you want to remove it, there will be an extra $1.5 charge. If you want to put it in a specific location, please indicate the location by adding the text "MMWPCB" in silkscreen layer and there is no extra charge for this option.',
 				values: {
 					no: 'No',
 					yes: 'Yes (extra + $1.5)',
@@ -480,7 +480,7 @@ export const en = {
 			ulMarking: {
 				title: 'UL Marking',
 				description:
-					'Velenova has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
+					'MMWPCB has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
 				values: {
 					topSilkscreen: 'Yes - add to top silkscreen',
 					bottomSilkscreen: 'Yes - add to bottom silkscreen',
@@ -488,7 +488,7 @@ export const en = {
 					bottomSolderMask: 'Yes - add to bottom solder mask',
 					topCopper: 'Yes - add to top copper',
 					bottomCopper: 'Yes - add to bottom copper',
-					default: 'Yes - as Velenova default'
+					default: 'Yes - as MMWPCB default'
 				}
 			},
 			dateCode: {
@@ -722,7 +722,7 @@ export const en = {
 			layers: {
 				title: 'Layers',
 				description:
-					'The number of copper layers in the board. Velenova can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
+					'The number of copper layers in the board. MMWPCB can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
 				layer: 'Layer',
 				layers: 'Layers'
 			},
@@ -886,7 +886,7 @@ export const en = {
 			finishedCopper: {
 				title: 'Finished Copper',
 				description:
-					'The weight in ounces of copper in one square foot of PCB, this option will determine the thickness of copper on the outer layers. Velenova provides the thickness of copper on outer layers of 1-13oz.PTH holes or vias that are cutted through to create a partial or half hole to form an opening into the side of the hole barrel. Generally they are used for mounting a PCB to another one.',
+					'The weight in ounces of copper in one square foot of PCB, this option will determine the thickness of copper on the outer layers. MMWPCB provides the thickness of copper on outer layers of 1-13oz.PTH holes or vias that are cutted through to create a partial or half hole to form an opening into the side of the hole barrel. Generally they are used for mounting a PCB to another one.',
 				bareBoard: 'Bare Board'
 			},
 			innerCopper: {
@@ -911,7 +911,7 @@ export const en = {
 			ulMarking: {
 				title: 'UL Marking',
 				description:
-					'Velenova has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
+					'MMWPCB has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
 				values: {
 					topSilkscreen: 'Yes - add to top silkscreen',
 					bottomSilkscreen: 'Yes - add to bottom silkscreen',
@@ -919,7 +919,7 @@ export const en = {
 					bottomSolderMask: 'Yes - add to bottom solder mask',
 					topCopper: 'Yes - add to top copper',
 					bottomCopper: 'Yes - add to bottom copper',
-					default: 'Yes - as Velenova default'
+					default: 'Yes - as MMWPCB default'
 				}
 			},
 			dateCode: {
@@ -1145,7 +1145,7 @@ export const en = {
 			layers: {
 				title: 'Layers',
 				description:
-					'The number of copper layers in the board. Velenova can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
+					'The number of copper layers in the board. MMWPCB can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
 				layer: 'Layer',
 				layers: 'Layers'
 			},
@@ -1174,7 +1174,7 @@ export const en = {
 			minTrack: {
 				title: 'Min Track/Spacing',
 				description:
-					'Minimum width of the copper trace and minimum distance between two traces. Velenova engineers will double-check the Min Track/Spacing.'
+					'Minimum width of the copper trace and minimum distance between two traces. MMWPCB engineers will double-check the Min Track/Spacing.'
 			},
 			minHoleSize: {
 				title: 'Min hole size/Pad size(diameter)',
@@ -1284,7 +1284,7 @@ export const en = {
 			ulMarking: {
 				title: 'UL Marking',
 				description:
-					'Velenova has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
+					'MMWPCB has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
 				values: {
 					topSilkscreen: 'Yes - add to top silkscreen',
 					bottomSilkscreen: 'Yes - add to bottom silkscreen',
@@ -1292,7 +1292,7 @@ export const en = {
 					bottomSolderMask: 'Yes - add to bottom solder mask',
 					topCopper: 'Yes - add to top copper',
 					bottomCopper: 'Yes - add to bottom copper',
-					default: 'Yes - as Velenova default'
+					default: 'Yes - as MMWPCB default'
 				}
 			},
 			dateCode: {
@@ -1446,7 +1446,7 @@ export const en = {
 			layers: {
 				title: 'Layers',
 				description:
-					'The number of copper layers in the board. Velenova can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
+					'The number of copper layers in the board. MMWPCB can currently produce up to 60 layers, if you need more than 14 layers, please select the advanced PCB page for valuation.',
 				layer: 'Layer',
 				layers: 'Layers'
 			},
@@ -1547,7 +1547,7 @@ export const en = {
 			ulMarking: {
 				title: 'UL Marking',
 				description:
-					'Velenova has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
+					'MMWPCB has obtained UL certification, please choose to add the corresponding logo on the layer you need. We will add the logo JDB-D if it is a two-layer board, and add JDB-M if it is a multilayer board.For single layer metal base PCB,we will add corresponding UL（JDB-A1,JDB-A2,JDB-A3)as required.',
 				values: {
 					topSilkscreen: 'Yes - add to top silkscreen',
 					bottomSilkscreen: 'Yes - add to bottom silkscreen',
@@ -1555,7 +1555,7 @@ export const en = {
 					bottomSolderMask: 'Yes - add to bottom solder mask',
 					topCopper: 'Yes - add to top copper',
 					bottomCopper: 'Yes - add to bottom copper',
-					default: 'Yes - as Velenova default'
+					default: 'Yes - as MMWPCB default'
 				}
 			},
 			dateCode: {
@@ -1654,7 +1654,7 @@ export const en = {
 				values: {
 					turnkey: {
 						title: 'Turnkey',
-						description: 'Velenova supply parts'
+						description: 'MMWPCB supply parts'
 					},
 					kitted: {
 						title: 'Kitted or Consigned',
@@ -2096,6 +2096,255 @@ export const en = {
 		COMPLETED: 'Order Completed',
 		CANCELLED: 'Order Cancelled',
 		REFUNDED: 'Refunded'
+	},
+
+	support: {
+		title: 'Support',
+		sections: {
+			myOrders: {
+				title: 'My Orders',
+				subsections: {
+					ordering: {
+						title: 'Ordering',
+						questions: [
+							{
+								title: 'How to Place Orders for PCB and PCB Assembly?',
+								contents: [
+									[
+										'Purchasing PCBs from',
+										'MMWPCB.com',
+										'is easy and convenient. With just a few steps, you can enjoy affordable yet high-quality PCB prototyping services.'
+									],
+									['Video:', 'How to place an online order in PCBWay? One-minute video guide.'],
+									['Step 1: Click the service type you want. For example: PCB.'],
+									["Select and fill in the specifications, then click the 'Calculate' button to continue."]
+								]
+							},
+							{
+								title: 'How to Place a PCB Assembly Order (Inquiry)?',
+								contents: [
+									['Another update article(2022-02-25):', 'How to Upload PCB Assembly(PCBA) Inquiry'],
+									['There are 3 ways to place PCB Assembly order.'],
+									['1. Place PCB Assembly orders together with PCB order.'],
+									[
+										'You can click on the ',
+										'PCB Instant Quote',
+										'navigation bar to enter, after placing the PCB orders,select the assembly to fill in your assembly service parameters. Click Calculate to select the price, Add to Cart and upload files.'
+									]
+								]
+							},
+							{
+								title: 'How to Place a CNC Order?',
+								contents: [
+									[
+										`In addition to PCB manufacturing services, PCBWay also offers CNC Machining, 3D Printing, Sheet Metal Fabrication, Injection Molding, and Vacuum Casting services. When you go to the PCBWay website and then click on the “CNC/3D printing” section, you can see the five quote pages available here. The ordering processes of the five services are basically the same except for some selected parameters. Let's  introduce the ordering process of CNC Machining. Now let's get started!`
+									]
+								]
+							}
+						]
+					},
+					leadTime: {
+						title: 'Lead Time',
+						questions: [
+							{
+								title: 'How to Check the Estimated Finish Time?',
+								contents: [
+									['Before Payment'],
+									[
+										'Under the "Awaiting Payment" list, click on the product title or "View Detail" to bring up the product detail information box.'
+									],
+									['In this box, you will find the estimated finish time, as shown in the image below.']
+								]
+							},
+							{
+								title: 'Orders Combination, Shipping and Payment Policy',
+								contents: [
+									['One Payment, One Shipment!'],
+									[
+										'1. The purpose of order combination is to save on shipping costs. If your schedule for your PCBs is not tight, combine your orders and ship them together.'
+									],
+									[
+										'2. By combining all these orders into one group and paying now, you confirm that all these orders will be shipped together around [xx-xx-xx]. This is the date when we can complete your last PCB order in this order group, and we may need some extra time for the express company (no service on Sundays) to pick up your package.'
+									]
+								]
+							},
+							{
+								title: 'When will express order be produced?',
+								contents: [
+									[
+										`Since PCBWay launched the 24-Hour Express Service, it has brought many benefits to customers who often have urgent PCB projects on their agenda. However, it has also brought some complaints from customers whose orders are delayed. Due to the special nature of urgent orders, these customers' complaints are particularly critical. Data shows that most “delays” were caused by misunderstandings of the 24-Hour Express.`
+									],
+									[
+										`1. First of all, define PCBWay's 24-Hour Express Service. The time span is from the start of production to the completion of production. It is worth noting that this time is not counted from the time of your payment.`
+									],
+									[
+										'2. Payment should be made before 18:00 (GMT+8), or production arrangements will be postponed by one day.'
+									]
+								]
+							}
+						]
+					},
+					salesService: {
+						title: 'Sales Service',
+						questions: [
+							{
+								title: 'Can I change my sales representative?',
+								contents: [
+									[
+										'Each of our sales representatives has been professionally trained. If there are any shortcomings, we hope you can provide suggestions and corrections.'
+									],
+									[
+										'If you are not satisfied with your sales representative, please send your questions to service@mmwpcb.com to request a replacement.'
+									]
+								]
+							},
+							{
+								title: 'How to find my sales for help about the PCB or PCBA problem?',
+								contents: [
+									[
+										'If you have any questions, please contact your sales representative or use Online Chat. You can find their contact information in the following ways:'
+									],
+									[
+										'1. In the top right corner of your homepage or behind the order number, as indicated by the red boxes in the image below;'
+									],
+									['2. In your shopping cart or orders list;']
+								]
+							},
+							{
+								title: 'What to Do if the Sales Representative or After Sales Is Not Responding?',
+								contents: [
+									[
+										'1. It may be because the anti-spam mail system is playing a role, causing the email to be blocked or sent to spam. Please take the initiative to send a follow-up.'
+									],
+									[
+										'2. If they have not responded within a reasonable time frame and if you have questions about an order, you can:'
+									],
+									['a. Contact service@mmwpcb.com or feedback@mmwpcb.com for assistance.'],
+									['b. Open a dispute']
+								]
+							}
+						]
+					}
+				}
+			},
+			myAccount: {
+				title: 'My Account',
+				subsections: {
+					registeringSigningIn: {
+						title: 'Registering & Signing In',
+						questions: [
+							{
+								title: 'How do I register on PCBWay?',
+								contents: [
+									['1. Click Join on the homepage or at the top right corner of any PCBWay page'],
+									['2. Enter your email address and set and confirm your login password,then start shopping!'],
+									[
+										'Note: Make sure you enter the correct email address, Our system currently only recognizes characters from the English alphabet.'
+									]
+								]
+							},
+							{
+								title: 'My account is unavailable. What can I do?',
+								contents: [
+									['There are many reasons for your account to be unavailable, such as:'],
+									[
+										'1. Self-deactivation. In this case, we suggest you register a new account or contact service/sales representative.'
+									],
+									['2. Deactivated due to trading rules violation']
+								]
+							},
+							{
+								title: 'Can I become a mmwpcb distributor?',
+								contents: [
+									[
+										'You may visit your contact information submitted by',
+										'Become our Distributor',
+										'and we will contact you for cooperation.'
+									]
+								]
+							}
+						]
+					},
+					accountSettings: {
+						title: 'Account Settings',
+						questions: [
+							{
+								title: 'Account Settings',
+								contents: [
+									['How do I change my email address?'],
+									["Note: We don't recommend that you change your email address too frequently."]
+								]
+							},
+							{
+								title: 'How do I change my email address',
+								contents: [
+									[
+										'Customers old email is incorrect, or they have not received the verification email. They can submit a request for email change through "Apply for Email change" form. The customer needs to fill in the new email address and provide the reason for the change.'
+									],
+									['Here are the specific steps:'],
+									['Step 1: Account Settings->Change Email']
+								]
+							},
+							{
+								title: 'How can I use my email address for a new PCBWay account?',
+								contents: [
+									[
+										'If you have several PCBWay accounts and would like to link an existing email address to your new account, you need to:'
+									],
+									[
+										'1. Change the email address of your existing/old account first. At the moment, each PCBWay account can only be linked to one unique email address.'
+									],
+									[
+										'2. After you’ve successfully updated the address of your existing account, you can link your new account to the other email address.'
+									]
+								]
+							}
+						]
+					},
+					mmwpcbRewards: {
+						title: 'MMWPCB Rewards',
+						questions: [
+							{
+								title: 'How do I use my reward points?',
+								contents: [
+									[
+										'The MMWPCB Member Club has 6 levels—V0, V1, V2, V3, V4,V5. The level you are in determines the benefits & privileges you’re entitle_d to. All buyers are automatically assigned a membership level once they meet the minimum requirements (see the table below).'
+									],
+									['Benefit details:'],
+									['V0 Member 0% off', 'V1 Member 1% off', 'V2 Member 2% off', 'V3 Member 3% off']
+								]
+							},
+							{
+								title: 'What are the privileges of the MMWPCB Member Club?',
+								contents: [
+									[
+										'The MMWPCB Member Club has 6 levels—V0, V1, V2, V3, V4,V5. The level you are in determines the benefits & privileges you’re entitle__d to. All buyers are automatically assigned a membership level once they meet the minimum requirements (see the table below).'
+									],
+									['Benefit details:'],
+									['V0 Member 0% off', 'V1 Member 1% off', 'V2 Member 2% off', 'V3 Member 3% off']
+								]
+							},
+							{
+								title: 'My reward points have not been added to my account. What can I do?',
+								contents: [
+									[
+										'For a detailed introduction about PCBWay Points and Beans and how to earn them, please click',
+										'Detailed Introduction about PCBWay Points and Beans',
+										'to learn more.'
+									],
+									[
+										'If points have not yet been awarded to your account, it may be due to one of the following reasons:'
+									],
+									[
+										'1. The order is not in a completed status. Please check your order status, as points for placing orders are only awarded once the order is completed'
+									]
+								]
+							}
+						]
+					}
+				}
+			}
+		}
 	}
 };
 export type Lang = typeof en;

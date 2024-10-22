@@ -3,6 +3,7 @@ import { userProcedure } from '../../../server';
 import { standardPcbSchema } from '../../../../zod/products/standardPcb.schema';
 import { advancedPcbSchema } from '../../../../zod/products/advancedPcb.schema';
 import { flexiblePcbSchema } from '../../../../zod/products/flexiblePcb.schema';
+import { rigidFlexSchema } from '../../../../zod/products/rigidFlex.schema';
 import { assemblySchema } from '../../../../zod/products/assembly.schema';
 import { stencilSchema } from '../../../../zod/products/stencil.schema';
 import pe from '../../../../prisma/pe';
@@ -12,12 +13,13 @@ const schema = z.object({
 	standardPcb: standardPcbSchema.optional(),
 	advancedPcb: advancedPcbSchema.optional(),
 	flexiblePcb: flexiblePcbSchema.optional(),
+	rigidFlex: rigidFlexSchema.optional(),
 	assembly: assemblySchema.optional(),
 	stencil: stencilSchema.optional()
 });
 
 export const upsertProduct = userProcedure.input(schema).mutation(
-	async ({ input: { orderId, standardPcb, advancedPcb, flexiblePcb, assembly, stencil }, ctx: { user } }) =>
+	async ({ input: { orderId, standardPcb, advancedPcb, flexiblePcb, rigidFlex, assembly, stencil }, ctx: { user } }) =>
 		await prisma.order
 			.update({
 				where: { id: orderId, userId: user.id },
@@ -35,6 +37,11 @@ export const upsertProduct = userProcedure.input(schema).mutation(
 					flexiblePcbs: (() => {
 						if (!flexiblePcb) return undefined;
 						const { id, ...values } = flexiblePcb;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})(),
+					rigidFlexes: (() => {
+						if (!rigidFlex) return undefined;
+						const { id, ...values } = rigidFlex;
 						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
 					})(),
 					assemblies: (() => {
