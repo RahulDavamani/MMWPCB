@@ -4,7 +4,7 @@
 	import FormItem from '../../FormItem.svelte';
 	import DateCode from './DateCode.svelte';
 	import PeelableSolderMask from './PeelableSolderMask.svelte';
-	import UlMarking from './ulMarking.svelte';
+	import UlMarking from './UlMarking.svelte';
 
 	$: pd = $productDetails.flexiblePcb.customizedServices;
 	$: ({ customizedServices } = $quote.products.flexiblePcb);

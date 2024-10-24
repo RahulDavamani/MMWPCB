@@ -4,9 +4,11 @@
 	import { support, type Section } from '../../../stores/support.store';
 	import Layout from '../../components/layout/Layout.svelte';
 	import SupportSections from '../components/SupportSections.svelte';
+	import { generateSpData } from '../utils/generateSpData';
 
 	$: section = $page.params.section.replace(/-([a-z])/g, (_, l) => l.toUpperCase());
-	$: ({ title, subsections } = $support.sections[section] as Section);
+	$: ({ subsections } = $support.sections[section] as Section);
+	$: ({ title, href } = generateSpData(section));
 </script>
 
 <Layout pageTitle={title}>
@@ -17,7 +19,7 @@
 			<div class="breadcrumbs text-sm mb-2">
 				<ul>
 					<li><a href="/support">Support</a></li>
-					<li><a href="/support/{section}">{title}</a></li>
+					<li><a {href}>{title}</a></li>
 				</ul>
 			</div>
 
@@ -26,19 +28,19 @@
 			</div>
 
 			<div class="grid grid-cols-3 gap-4">
-				{#each Object.entries(subsections) as [subsection, { title, questions }]}
+				{#each Object.entries(subsections) as [subsection, { questions }]}
+					{@const { title, href } = generateSpData(section, subsection)}
 					<div class="max-w-96 px-3 py-2 border shadow rounded-box">
 						<div class="divider">
-							<a href="/support/{section}/{subsection}" class="btn btn-link text-base p-0">{title}</a>
+							<a {href} class="btn btn-link text-base p-0">{title}</a>
 						</div>
-						<ul class="list-disc pl-6 text-sm">
-							{#each questions.slice(0, 3) as { title }, i}
-								<li>
-									<a href="/support/{section}/{subsection}/{i}" class="hover:underline">{title}</a>
-								</li>
+						<ul class="list-disc pl-6 text-sm space-y-1">
+							{#each questions.slice(0, 3) as { }, i}
+								{@const { title, href } = generateSpData(section, subsection, i)}
+								<li><a {href} class="hover:underline">{title}</a></li>
 							{/each}
 							<li>
-								<a href="/support/{section}/{subsection}" class="btn btn-link btn-sm p-0">
+								<a {href} class="btn btn-link btn-sm p-0">
 									View More
 									<Icon icon="mdi:chevron-right" width={20} />
 								</a>

@@ -10,11 +10,14 @@ model User {
    profilePic String?
    role       UserRole
 
-   accounts            Account[]
-   sessions            Session[]
-   orders              Order[]
-   addresses           Address[]
-   orderReviewMessages OrderReviewMessage[]
+   accounts               Account[]
+   sessions               Session[]
+   orders                 Order[]
+   addresses              Address[]
+   orderReviewMessages    OrderReviewMessage[]
+   questionLikes          QuestionLike[]
+   questionComments       QuestionComment[]
+   questionCommentReplies QuestionCommentReply[]
 }
 
 enum UserRole {

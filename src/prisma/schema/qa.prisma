@@ -1,0 +1,52 @@
+model Question {
+   id        String   @id @default(cuid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   title            String
+   description      String
+   questionLikes    QuestionLike[]
+   questionComments QuestionComment[]
+}
+
+model QuestionLike {
+   id        String   @id @default(cuid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   questionId String
+   question   Question @relation(fields: [questionId], references: [id])
+
+   userId String
+   user   User   @relation(fields: [userId], references: [id])
+}
+
+model QuestionComment {
+   id        String   @id @default(cuid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   title String
+
+   questionId String
+   question   Question @relation(fields: [questionId], references: [id])
+
+   userId String
+   user   User   @relation(fields: [userId], references: [id])
+
+   questionCommentReplies QuestionCommentReply[]
+}
+
+model QuestionCommentReply {
+   id        String   @id @default(cuid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   title String
+
+   questionCommentId String
+   questionComment   QuestionComment @relation(fields: [questionCommentId], references: [id])
+
+   userId String
+   user   User   @relation(fields: [userId], references: [id])
+}
