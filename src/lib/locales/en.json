@@ -192,6 +192,24 @@
 			"addToOrder": "Add to Order"
 		},
 
+		"fileDrop": {
+			"dragDrop": "Drag & Drop your files here or click to upload",
+			"onlyAccepts20": "Only accepts zip or rar | Max file \"size\": 20 MB",
+			"onlyAccepts200": "Only accepts zip or rar | Max file \"size\": 200 MB",
+			"fileUploaded": "File uploaded successfully",
+			"downloadFile": "Download File"
+		},
+
+		"gerberFile": {
+			"title": "Gerber File",
+			"description": "Please upload the Gerber file for your Product (only accepts .zip, .rar)"
+		},
+
+		"designFile": {
+			"title": "Design File",
+			"description": "Please upload the design file for your Product (only accepts .zip, .rar)"
+		},
+
 		"standardPcb": {
 			"id": {
 				"title": "Product ID"
@@ -2658,24 +2676,6 @@
 				"title": "Other Special Requests",
 				"placeholder": "Fill in any requirements about production, package, or shipment here."
 			}
-		},
-
-		"fileDrop": {
-			"dragDrop": "Drag & Drop your files here or click to upload",
-			"onlyAccepts20": "Only accepts zip or rar | Max file \"size\": 20 MB",
-			"onlyAccepts200": "Only accepts zip or rar | Max file \"size\": 200 MB",
-			"fileUploaded": "File uploaded successfully",
-			"downloadFile": "Download File"
-		},
-
-		"gerberFile": {
-			"title": "Gerber File",
-			"description": "Please upload the Gerber file for your Product (only accepts .zip, .rar)"
-		},
-
-		"designFile": {
-			"title": "Design File",
-			"description": "Please upload the design file for your Product (only accepts .zip, .rar)"
 		}
 	},
 

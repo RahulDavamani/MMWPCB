@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { currencies, i18n, lg, languages } from '../../../stores/i18n.store';
+	import { ui } from '../../../stores/ui.store';
 
 	$: l = $lg.navbar.i18n;
 	$: ({ language, currency } = $i18n);
@@ -17,11 +18,15 @@
 		<div class="font-bold mb-3">{l.language}:</div>
 		<div class="flex justify-around flex-wrap gap-4">
 			{#each Object.values(languages) as { key, name, icon }}
-				<button class="btn btn-sm w-32 {key === language && 'btn-secondary text-black'}">
+				<button
+					class="btn btn-sm w-32 {key === language && 'btn-secondary text-black'}"
+					on:click={ui.loaderWrapper({ title: 'Setting Language' }, async () => {
+						if (key === 'en' || key === 'zh') i18n.setLanguage(key);
+					})}
+				>
 					<Icon {icon} width={22} />
 					{name}
 				</button>
-				<!-- on:click={ui.loaderWrapper({ title: 'Setting Language' }, () => i18n.setLanguage(key))} -->
 			{/each}
 		</div>
 

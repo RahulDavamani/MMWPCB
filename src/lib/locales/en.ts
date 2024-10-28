@@ -192,6 +192,24 @@ export const en = {
 			addToOrder: 'Add to Order'
 		},
 
+		gerberFile: {
+			title: 'Gerber File',
+			description: 'Please upload the Gerber file for your Product (only accepts .zip, .rar)'
+		},
+
+		designFile: {
+			title: 'Design File',
+			description: 'Please upload the design file for your Product (only accepts .zip, .rar)'
+		},
+
+		fileDrop: {
+			dragDrop: 'Drag & Drop your files here or click to upload',
+			onlyAccepts20: 'Only accepts zip or rar | Max file size: 20 MB',
+			onlyAccepts200: 'Only accepts zip or rar | Max file size: 200 MB',
+			fileUploaded: 'File uploaded successfully',
+			downloadFile: 'Download File'
+		},
+
 		standardPcb: {
 			id: {
 				title: 'Product ID'
@@ -2871,24 +2889,6 @@ export const en = {
 				title: 'Other Special Requests',
 				placeholder: 'Fill in any requirements about production, package, or shipment here.'
 			}
-		},
-
-		fileDrop: {
-			dragDrop: 'Drag & Drop your files here or click to upload',
-			onlyAccepts20: 'Only accepts zip or rar | Max file size: 20 MB',
-			onlyAccepts200: 'Only accepts zip or rar | Max file size: 200 MB',
-			fileUploaded: 'File uploaded successfully',
-			downloadFile: 'Download File'
-		},
-
-		gerberFile: {
-			title: 'Gerber File',
-			description: 'Please upload the Gerber file for your Product (only accepts .zip, .rar)'
-		},
-
-		designFile: {
-			title: 'Design File',
-			description: 'Please upload the design file for your Product (only accepts .zip, .rar)'
 		}
 	},
 
@@ -3141,7 +3141,7 @@ export const en = {
 								title: 'How to Place a CNC Order?',
 								contents: [
 									[
-										`In addition to PCB manufacturing services, PCBWay also offers CNC Machining, 3D Printing, Sheet Metal Fabrication, Injection Molding, and Vacuum Casting services. When you go to the PCBWay website and then click on the “CNC/3D printing” section, you can see the five quote pages available here. The ordering processes of the five services are basically the same except for some selected parameters. Let's  introduce the ordering process of CNC Machining. Now let's get started!`
+										"In addition to PCB manufacturing services, PCBWay also offers CNC Machining, 3D Printing, Sheet Metal Fabrication, Injection Molding, and Vacuum Casting services. When you go to the PCBWay website and then click on the “CNC/3D printing” section, you can see the five quote pages available here. The ordering processes of the five services are basically the same except for some selected parameters. Let's  introduce the ordering process of CNC Machining. Now let's get started!"
 									]
 								]
 							}
@@ -3176,10 +3176,10 @@ export const en = {
 								title: 'When will express order be produced?',
 								contents: [
 									[
-										`Since PCBWay launched the 24-Hour Express Service, it has brought many benefits to customers who often have urgent PCB projects on their agenda. However, it has also brought some complaints from customers whose orders are delayed. Due to the special nature of urgent orders, these customers' complaints are particularly critical. Data shows that most “delays” were caused by misunderstandings of the 24-Hour Express.`
+										"Since PCBWay launched the 24-Hour Express Service, it has brought many benefits to customers who often have urgent PCB projects on their agenda. However, it has also brought some complaints from customers whose orders are delayed. Due to the special nature of urgent orders, these customers' complaints are particularly critical. Data shows that most “delays” were caused by misunderstandings of the 24-Hour Express."
 									],
 									[
-										`1. First of all, define PCBWay's 24-Hour Express Service. The time span is from the start of production to the completion of production. It is worth noting that this time is not counted from the time of your payment.`
+										"1. First of all, define PCBWay's 24-Hour Express Service. The time span is from the start of production to the completion of production. It is worth noting that this time is not counted from the time of your payment."
 									],
 									[
 										'2. Payment should be made before 18:00 (GMT+8), or production arrangements will be postponed by one day.'
