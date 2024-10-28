@@ -48,7 +48,7 @@ export const rigidFlexDetails = (lg: Lang) => {
 	const initialPrice = {
 		key: 'initialPrice',
 		l: l.initialPrice,
-		parseValue: (val: RigidFlex['initialPrice']) => `$${val.toFixed(2)}`
+		parseValue: (val: RigidFlex['initialPrice']) => (typeof val == 'number' ? `$${val.toFixed(2)}` : 'RFQ')
 	};
 
 	const finalPrice = {

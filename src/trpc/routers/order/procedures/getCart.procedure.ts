@@ -15,7 +15,12 @@ export const getCart = userProcedure.query(
 					flexiblePcbs: productSelect,
 					rigidFlexes: productSelect,
 					assemblies: productSelect,
-					stencils: productSelect
+					stencils: productSelect,
+					cncs: productSelect,
+					sheetMetals: productSelect,
+					threePrintings: productSelect,
+					injectionMoldings: productSelect,
+					vacuumCastings: productSelect
 				}
 			})
 			.catch(pe)

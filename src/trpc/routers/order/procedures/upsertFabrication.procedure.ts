@@ -5,7 +5,19 @@ import pe from '../../../../prisma/pe';
 const schema = z.object({
 	orderId: z.string().min(1),
 	productId: z.string().min(1),
-	productType: z.enum(['standardPcbs', 'advancedPcbs', 'flexiblePcbs', 'rigidFlexes', 'assemblies', 'stencils']),
+	productType: z.enum([
+		'standardPcbs',
+		'advancedPcbs',
+		'flexiblePcbs',
+		'rigidFlexes',
+		'assemblies',
+		'stencils',
+		'cncs',
+		'sheetMetals',
+		'threePrintings',
+		'injectionMoldings',
+		'vacuumCastings'
+	]),
 	statuses: z.array(
 		z.object({
 			num: z.number().gt(0),

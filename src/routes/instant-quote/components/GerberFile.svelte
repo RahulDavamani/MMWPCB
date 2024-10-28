@@ -6,10 +6,10 @@
 	import Dropzone from 'svelte-file-dropzone';
 	import { supabase } from '$lib/client/supabase';
 
-	$: l = $lg.instantQuote.gerberFile;
+	$: l = $lg.instantQuote.fileDrop;
 </script>
 
-<FormItem pd={{ l }}>
+<FormItem pd={{ l: $lg.instantQuote.gerberFile }}>
 	<Dropzone
 		multiple={false}
 		accept="application/x-zip-compressed,application/x-rar-compressed"
@@ -20,29 +20,29 @@
 			{@const name =
 				$quote.files[$quote.productType]?.name ?? $quote.products[$quote.productType].fileName?.split('__')[1]}
 			<Icon icon="mdi:file-check" width={36} class="text-success" />
-			<div>File Uploaded Successfully</div>
+			<div>{l.fileUploaded}</div>
 			<div class="font-semibold">{name}</div>
 		{:else}
 			<Icon icon="mdi:file-upload" width={36} />
-			<div>Drag & Drop your files here or click to upload</div>
-			<div class="text-sm">Only accepts zip or rar | Max file size: 20 MB</div>
+			<div>{l.dragDrop}</div>
+			<div class="text-sm">{l.onlyAccepts20}</div>
 		{/if}
 	</Dropzone>
 
 	<div slot="disclaimer" class="mt-1 flex justify-center">
 		{#if $quote.products[$quote.productType].fileName}
 			{@const fileUrl = supabase.storage
-				.from('Gerber Files')
+				.from('Product Files')
 				.createSignedUrl($quote.products[$quote.productType].fileName ?? '', 300)}
 			{#await fileUrl}
 				<button class="btn btn-sm btn-link pointer-events-none text-info">
 					<Icon icon="mdi:download" />
-					Download File
+					{l.downloadFile}
 				</button>
 			{:then { data }}
 				<a href={data?.signedUrl} target="_blank" class="btn btn-sm btn-link text-info">
 					<Icon icon="mdi:download" />
-					Download File
+					{l.downloadFile}
 				</a>
 			{/await}
 		{/if}

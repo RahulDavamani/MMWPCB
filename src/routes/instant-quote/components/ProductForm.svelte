@@ -9,6 +9,11 @@
 	import StencilForm from './forms/stencil/StencilForm.svelte';
 	import { productTypes } from '../../../stores/product.store';
 	import RigidFlexForm from './forms/rigidFlex/RigidFlexForm.svelte';
+	import CNCForm from './forms/cnc/CNCForm.svelte';
+	import SheetMetalForm from './forms/sheetMetal/SheetMetalForm.svelte';
+	import ThreePrintingForm from './forms/threePrinting/ThreePrintingForm.svelte';
+	import InjectionMoldingForm from './forms/injectionMolding/InjectionMoldingForm.svelte';
+	import VacuumCastingForm from './forms/vacuumCasting/VacuumCastingForm.svelte';
 
 	$: ({ productType } = $quote);
 	$: productName = $productTypes[productType].title;
@@ -37,7 +42,17 @@
 		<RigidFlexForm />
 	{:else if productType === 'assembly'}
 		<AssemblyForm />
-	{:else}
+	{:else if productType === 'stencil'}
 		<StencilForm />
+	{:else if productType === 'cnc'}
+		<CNCForm />
+	{:else if productType === 'sheetMetal'}
+		<SheetMetalForm />
+	{:else if productType === 'threePrinting'}
+		<ThreePrintingForm />
+	{:else if productType === 'injectionMolding'}
+		<InjectionMoldingForm />
+	{:else if productType === 'vacuumCasting'}
+		<VacuumCastingForm />
 	{/if}
 </div>

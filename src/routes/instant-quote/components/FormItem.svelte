@@ -22,7 +22,7 @@
 </script>
 
 <div class="flex gap-4 {classes}">
-	<div class="flex items-center gap-2 w-40 min-w-40">
+	<div class="flex items-center gap-2 w-44 min-w-44">
 		{#if description !== undefined || url !== undefined || imgSrc !== undefined}
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<div class="dropdown dropdown-hover">
@@ -56,7 +56,7 @@
 
 		<slot name="title">
 			{#if title}
-				<div class="break-words">{title}:</div>
+				<div>{title}:</div>
 			{/if}
 		</slot>
 	</div>

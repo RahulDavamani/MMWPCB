@@ -17,7 +17,12 @@ export const getAll = userProcedure.query(
 							flexiblePcbs: true,
 							rigidFlexes: true,
 							assemblies: true,
-							stencils: true
+							stencils: true,
+							cncs: true,
+							sheetMetals: true,
+							threePrintings: true,
+							injectionMoldings: true,
+							vacuumCastings: true
 						}
 					}
 				},

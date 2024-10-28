@@ -10,12 +10,17 @@ model Order {
    userId String
    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-   standardPcbs StandardPcb[]
-   advancedPcbs AdvancedPcb[]
-   flexiblePcbs FlexiblePcb[]
-   rigidFlexes  RigidFlex[]
-   stencils     Stencil[]
-   assemblies   Assembly[]
+   standardPcbs      StandardPcb[]
+   advancedPcbs      AdvancedPcb[]
+   flexiblePcbs      FlexiblePcb[]
+   rigidFlexes       RigidFlex[]
+   stencils          Stencil[]
+   assemblies        Assembly[]
+   cncs              CNC[]
+   sheetMetals       SheetMetal[]
+   threePrintings    ThreePrinting[]
+   injectionMoldings InjectionMolding[]
+   vacuumCastings    VacuumCasting[]
 
    deliveryAddress OrderDeliveryAddress?
    shippingInfo    OrderShippingInfo?

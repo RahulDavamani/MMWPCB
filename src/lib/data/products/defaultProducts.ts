@@ -1,9 +1,14 @@
 import type { AdvancedPcb } from '../../../zod/products/advancedPcb.schema';
 import type { Assembly } from '../../../zod/products/assembly.schema';
+import type { CNC } from '../../../zod/products/cnc.schema';
 import type { FlexiblePcb } from '../../../zod/products/flexiblePcb.schema';
+import type { InjectionMolding } from '../../../zod/products/injectionMolding.schema';
 import type { RigidFlex } from '../../../zod/products/rigidFlex.schema';
+import type { SheetMetal } from '../../../zod/products/sheetMetal.schema';
 import type { StandardPcb } from '../../../zod/products/standardPcb.schema';
 import type { Stencil } from '../../../zod/products/stencil.schema';
+import type { ThreePrinting } from '../../../zod/products/threePrinting.schema';
+import type { VacuumCasting } from '../../../zod/products/vacuumCasting.schema';
 
 const standardPcb: StandardPcb = {
 	name: '',
@@ -176,4 +181,128 @@ const stencil: Stencil = {
 	specialRequests: ''
 };
 
-export const defaultProducts = { standardPcb, advancedPcb, flexiblePcb, rigidFlex, assembly, stencil };
+const cnc: CNC = {
+	name: '',
+	weight: 0.5,
+	quantity: [1],
+	designUnits: 'MM',
+	material: 'ALUMINUM',
+	materialType: 'ALUMINUM_6061',
+	color: 'SILVER_WHITE',
+	surfaceFinish: 'NONE',
+	threadsTappedHoles: false,
+	inserts: false,
+	tolerance: 0,
+	surfaceRoughness: 6.3,
+	silkScreen: 'NONE',
+	laserEngraving: false,
+	partsAssembly: 'NO',
+	finishedAppearance: 'STANDARD',
+	inspection: 'STANDARD_INSPECTION',
+	productDescription: 'PRINTER_ENCLOSURE',
+	specialRequests: ''
+};
+
+const sheetMetal: SheetMetal = {
+	name: '',
+	weight: 0.5,
+	quantity: [1],
+	designUnits: 'MM',
+	material: 'ALUMINUM',
+	materialType: 'ALUMINUM_5052',
+	color: 'SILVER_WHITE',
+	surfaceFinish: 'NONE',
+	threadsTappedHoles: false,
+	inserts: false,
+	tolerance: 0,
+	wielding: false,
+	silkScreen: 'NONE',
+	laserEngraving: false,
+	partsAssembly: 'NO',
+	finishedAppearance: 'STANDARD',
+	inspection: 'STANDARD_INSPECTION',
+	productDescription: 'PRINTER_ENCLOSURE',
+	specialRequests: ''
+};
+
+const threePrinting: ThreePrinting = {
+	name: '',
+	weight: 0.5,
+	quantity: [1],
+	designUnits: 'MM',
+	material: 'ALUMINUM',
+	materialType: 'ALUMINUM',
+	color: 'METALLIC',
+	process: 'SLM',
+	surfaceFinish: 'NONE',
+	threadsTappedHoles: false,
+	inserts: false,
+	silkScreen: 'NONE',
+	laserEngraving: false,
+	partsAssembly: 'NO',
+	wallThicknessRisk: false,
+	printedThreadsRisk: false,
+	productDescription: 'PRINTER_ENCLOSURE',
+	specialRequests: ''
+};
+
+const injectionMolding: InjectionMolding = {
+	name: '',
+	weight: 0.5,
+	quantity: 1000,
+	minExpectedVolume: 0,
+	maxExpectedVolume: 10000,
+	designUnits: 'MM',
+	material: 'ABS',
+	materialType: 'ABS',
+	color: 'BLACK',
+	spiFinish: 'SPI_B3',
+	toolRequirements: '',
+	molds: 'KEEP_MOLDS_FACTORY',
+	surfaceFinish: 'NONE',
+	threadsTappedHoles: false,
+	inserts: false,
+	tolerance: 0,
+	silkScreen: 'NONE',
+	laserEngraving: false,
+	partsAssembly: 'NO',
+	finishedAppearance: 'STANDARD',
+	inspection: 'STANDARD_INSPECTION',
+	productDescription: 'PRINTER_ENCLOSURE',
+	specialRequests: ''
+};
+
+const vacuumCasting: VacuumCasting = {
+	name: '',
+	weight: 0.5,
+	quantity: [1000],
+	designUnits: 'MM',
+	material: 'ABS',
+	materialType: 'ABS',
+	color: 'BLACK',
+	surfaceFinish: 'NONE',
+	threadsTappedHoles: false,
+	inserts: false,
+	tolerance: 0,
+	silkScreen: 'NONE',
+	laserEngraving: false,
+	partsAssembly: 'NO',
+	finishedAppearance: 'STANDARD',
+	inspection: 'STANDARD_INSPECTION',
+	productDescription: 'PRINTER_ENCLOSURE',
+	specialRequests: ''
+};
+
+export const defaultProducts = {
+	standardPcb,
+	advancedPcb,
+	flexiblePcb,
+	rigidFlex,
+	assembly,
+	stencil,
+	cnc,
+	sheetMetal,
+	threePrinting,
+	injectionMolding,
+	vacuumCasting
+};

@@ -48,7 +48,7 @@ export const advancedPcbDetails = (lg: Lang) => {
 	const initialPrice = {
 		key: 'initialPrice',
 		l: l.initialPrice,
-		parseValue: (val: AdvancedPcb['initialPrice']) => `$${val.toFixed(2)}`
+		parseValue: (val: AdvancedPcb['initialPrice']) => (typeof val == 'number' ? `$${val.toFixed(2)}` : 'RFQ')
 	};
 
 	const finalPrice = {

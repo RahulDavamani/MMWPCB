@@ -5,8 +5,14 @@
 	import type { StandardPcbPartial } from '../../../zod/products/standardPcb.schema';
 	import type { AdvancedPcbPartial } from '../../../zod/products/advancedPcb.schema';
 	import type { FlexiblePcbPartial } from '../../../zod/products/flexiblePcb.schema';
+	import type { RigidFlexPartial } from '../../../zod/products/rigidFlex.schema';
 	import type { AssemblyPartial } from '../../../zod/products/assembly.schema';
 	import type { StencilPartial } from '../../../zod/products/stencil.schema';
+	import type { CNCPartial } from '../../../zod/products/cnc.schema';
+	import type { SheetMetalPartial } from '../../../zod/products/sheetMetal.schema';
+	import type { ThreePrintingPartial } from '../../../zod/products/threePrinting.schema';
+	import type { InjectionMoldingPartial } from '../../../zod/products/injectionMolding.schema';
+	import type { VacuumCastingPartial } from '../../../zod/products/vacuumCasting.schema';
 	import { lg } from '../../../stores/i18n.store';
 	import FormControl from '../FormControl.svelte';
 	import { quote as quoteStore } from '../../../stores/quote.store';
@@ -19,8 +25,14 @@
 		standardPcb: StandardPcbPartial;
 		advancedPcb: AdvancedPcbPartial;
 		flexiblePcb: FlexiblePcbPartial;
+		rigidFlex: RigidFlexPartial;
 		assembly: AssemblyPartial;
 		stencil: StencilPartial;
+		cnc: CNCPartial;
+		sheetMetal: SheetMetalPartial;
+		threePrinting: ThreePrintingPartial;
+		injectionMolding: InjectionMoldingPartial;
+		vacuumCasting: VacuumCastingPartial;
 	} = {
 		standardPcb: {
 			length: 0,
@@ -42,6 +54,12 @@
 			quantity: 5,
 			layers: 2
 		},
+		rigidFlex: {
+			length: 0,
+			width: 0,
+			quantity: 5,
+			layers: 2
+		},
 		assembly: {
 			quantity: 5,
 			uniqueParts: 0,
@@ -54,6 +72,26 @@
 			width: 470,
 			side: 'TOP_SIDE',
 			quantity: 5
+		},
+		cnc: {
+			quantity: [1],
+			material: 'ALUMINUM'
+		},
+		sheetMetal: {
+			quantity: [1],
+			material: 'ALUMINUM'
+		},
+		threePrinting: {
+			quantity: [1],
+			material: 'ALUMINUM'
+		},
+		injectionMolding: {
+			quantity: 1000,
+			material: 'ABS'
+		},
+		vacuumCasting: {
+			quantity: [1000],
+			material: 'ABS'
 		}
 	};
 
@@ -70,7 +108,19 @@
 
 <div class="border rounded-box shadow">
 	<div class="join flex rounded-b-none">
-		{#each Object.values($productTypes) as { key, title }, i}
+		{#each Object.values($productTypes).slice(0, 6) as { key, title }, i}
+			<input
+				type="radio"
+				name="productType"
+				aria-label={title}
+				value={key}
+				class="btn join-item grow border-primary border-t-0 border-r-0 text-base {i === 0 && 'border-l-0'}"
+				bind:group={productType}
+			/>
+		{/each}
+	</div>
+	<div class="join flex rounded-none">
+		{#each Object.values($productTypes).slice(6, 11) as { key, title }, i}
 			<input
 				type="radio"
 				name="productType"
@@ -135,9 +185,9 @@
 				</FormControl>
 			</div>
 		{:else if productType === 'advancedPcb'}
-			{@const pd = $productDetails.standardPcb}
+			{@const pd = $productDetails.advancedPcb}
 			<div class="flex gap-12">
-				<FormControl classes="w-1/2" label={$lg.instantQuote.standardPcb.size.title}>
+				<FormControl classes="w-1/2" label={$lg.instantQuote.advancedPcb.size.title}>
 					<div class="join">
 						<input
 							type="text"
@@ -157,11 +207,12 @@
 				</FormControl>
 
 				<FormControl classes="w-1/2" label={pd.quantity.l.title}>
-					<select class="select select-bordered" bind:value={quote.advancedPcb.quantity}>
-						{#each pd.quantity.values.slice(0, 10) as value}
-							<option {value}>{value}</option>
-						{/each}
-					</select>
+					<input
+						type="number"
+						class="input input-bordered join-item grow"
+						placeholder={pd.quantity.l.title}
+						bind:value={quote.advancedPcb.quantity}
+					/>
 				</FormControl>
 			</div>
 
@@ -183,9 +234,9 @@
 				</FormControl>
 			</div>
 		{:else if productType === 'flexiblePcb'}
-			{@const pd = $productDetails.standardPcb}
+			{@const pd = $productDetails.flexiblePcb}
 			<div class="flex gap-12">
-				<FormControl classes="w-1/2" label={$lg.instantQuote.standardPcb.size.title}>
+				<FormControl classes="w-1/2" label={$lg.instantQuote.flexiblePcb.size.title}>
 					<div class="join">
 						<input
 							type="text"
@@ -205,11 +256,12 @@
 				</FormControl>
 
 				<FormControl classes="w-1/2" label={pd.quantity.l.title}>
-					<select class="select select-bordered" bind:value={quote.flexiblePcb.quantity}>
-						{#each pd.quantity.values.slice(0, 10) as value}
-							<option {value}>{value}</option>
-						{/each}
-					</select>
+					<input
+						type="number"
+						class="input input-bordered join-item grow"
+						placeholder={pd.quantity.l.title}
+						bind:value={quote.flexiblePcb.quantity}
+					/>
 				</FormControl>
 			</div>
 
@@ -221,11 +273,44 @@
 						{/each}
 					</select>
 				</FormControl>
+			</div>
+		{:else if productType === 'rigidFlex'}
+			{@const pd = $productDetails.rigidFlex}
+			<div class="flex gap-12">
+				<FormControl classes="w-1/2" label={$lg.instantQuote.rigidFlex.size.title}>
+					<div class="join">
+						<input
+							type="text"
+							class="input input-bordered join-item grow"
+							placeholder={pd.length.l.title}
+							bind:value={quote.rigidFlex.length}
+						/>
+						<div class="btn join-item">X</div>
+						<input
+							type="text"
+							class="input input-bordered join-item grow"
+							placeholder={pd.width.l.title}
+							bind:value={quote.rigidFlex.width}
+						/>
+						<div class="btn join-item">mm</div>
+					</div>
+				</FormControl>
 
-				<FormControl classes="w-1/2" label={pd.thickness.l.title}>
-					<select class="select select-bordered" bind:value={quote.flexiblePcb.thickness}>
-						{#each pd.thickness.values as value}
-							<option {value}>{pd.thickness.parseValue(value)}</option>
+				<FormControl classes="w-1/2" label={pd.quantity.l.title}>
+					<input
+						type="number"
+						class="input input-bordered join-item grow"
+						placeholder={pd.quantity.l.title}
+						bind:value={quote.rigidFlex.quantity}
+					/>
+				</FormControl>
+			</div>
+
+			<div class="flex gap-12 mt-6">
+				<FormControl classes="w-1/2" label={pd.layers.l.title}>
+					<select class="select select-bordered" bind:value={quote.flexiblePcb.layers}>
+						{#each pd.layers.values as value}
+							<option {value}>{pd.layers.parseValue(value)}</option>
 						{/each}
 					</select>
 				</FormControl>
@@ -291,6 +376,101 @@
 
 				<FormControl classes="w-1/2" label={pd.quantity.l.title}>
 					<input type="number" class="input input-bordered" bind:value={quote.stencil.quantity} />
+				</FormControl>
+			</div>
+		{:else if productType === 'cnc'}
+			{@const pd = $productDetails.cnc}
+			<div class="flex gap-12">
+				<FormControl classes="w-1/2" label={pd.quantity.l.title}>
+					<input
+						type="number"
+						class="input input-bordered join-item grow"
+						placeholder={pd.quantity.l.title}
+						bind:value={quote.cnc.quantity}
+					/>
+				</FormControl>
+				<FormControl classes="w-1/2" label={pd.material.l.title}>
+					<select class="select select-bordered" bind:value={quote.cnc.material}>
+						{#each pd.material.values as { title, value }}
+							<option {value}>{title}</option>
+						{/each}
+					</select>
+				</FormControl>
+			</div>
+		{:else if productType === 'sheetMetal'}
+			{@const pd = $productDetails.sheetMetal}
+			<div class="flex gap-12">
+				<FormControl classes="w-1/2" label={pd.quantity.l.title}>
+					<input
+						type="number"
+						class="input input-bordered join-item grow"
+						placeholder={pd.quantity.l.title}
+						bind:value={quote.sheetMetal.quantity}
+					/>
+				</FormControl>
+				<FormControl classes="w-1/2" label={pd.material.l.title}>
+					<select class="select select-bordered" bind:value={quote.sheetMetal.material}>
+						{#each pd.material.values as { title, value }}
+							<option {value}>{title}</option>
+						{/each}
+					</select>
+				</FormControl>
+			</div>
+		{:else if productType === 'threePrinting'}
+			{@const pd = $productDetails.threePrinting}
+			<div class="flex gap-12">
+				<FormControl classes="w-1/2" label={pd.quantity.l.title}>
+					<input
+						type="number"
+						class="input input-bordered join-item grow"
+						placeholder={pd.quantity.l.title}
+						bind:value={quote.threePrinting.quantity}
+					/>
+				</FormControl>
+				<FormControl classes="w-1/2" label={pd.material.l.title}>
+					<select class="select select-bordered" bind:value={quote.threePrinting.material}>
+						{#each pd.material.values as { title, value }}
+							<option {value}>{title}</option>
+						{/each}
+					</select>
+				</FormControl>
+			</div>
+		{:else if productType === 'injectionMolding'}
+			{@const pd = $productDetails.injectionMolding}
+			<div class="flex gap-12">
+				<FormControl classes="w-1/2" label={pd.quantity.l.title}>
+					<input
+						type="number"
+						class="input input-bordered join-item grow"
+						placeholder={pd.quantity.l.title}
+						bind:value={quote.injectionMolding.quantity}
+					/>
+				</FormControl>
+				<FormControl classes="w-1/2" label={pd.material.l.title}>
+					<select class="select select-bordered" bind:value={quote.injectionMolding.material}>
+						{#each pd.material.values as { title, value }}
+							<option {value}>{title}</option>
+						{/each}
+					</select>
+				</FormControl>
+			</div>
+		{:else if productType === 'vacuumCasting'}
+			{@const pd = $productDetails.vacuumCasting}
+			<div class="flex gap-12">
+				<FormControl classes="w-1/2" label={pd.quantity.l.title}>
+					<input
+						type="number"
+						class="input input-bordered join-item grow"
+						placeholder={pd.quantity.l.title}
+						bind:value={quote.vacuumCasting.quantity}
+					/>
+				</FormControl>
+				<FormControl classes="w-1/2" label={pd.material.l.title}>
+					<select class="select select-bordered" bind:value={quote.vacuumCasting.material}>
+						{#each pd.material.values as { title, value }}
+							<option {value}>{title}</option>
+						{/each}
+					</select>
 				</FormControl>
 			</div>
 		{/if}

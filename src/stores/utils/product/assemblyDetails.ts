@@ -48,7 +48,7 @@ export const assemblyDetails = (lg: Lang) => {
 	const initialPrice = {
 		key: 'initialPrice',
 		l: l.initialPrice,
-		parseValue: (val: Assembly['initialPrice']) => `$${val.toFixed(2)}`
+		parseValue: (val: Assembly['initialPrice']) => (typeof val == 'number' ? `$${val.toFixed(2)}` : 'RFQ')
 	};
 
 	const finalPrice = {

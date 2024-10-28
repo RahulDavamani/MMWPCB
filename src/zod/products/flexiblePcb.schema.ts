@@ -61,7 +61,7 @@ export const flexiblePcbSchema = z.object({
 	fileName: z.string().min(1).nullish(),
 	buildTime: z.number().gt(0),
 	weight: z.number(),
-	initialPrice: z.number(),
+	initialPrice: z.number().nullish(),
 	finalPrice: z.number().nullish(),
 	boardType: fpBoardType,
 	xoutAllowance: z.boolean().nullish(),

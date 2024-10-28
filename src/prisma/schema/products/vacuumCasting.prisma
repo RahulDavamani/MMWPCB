@@ -1,0 +1,107 @@
+model VacuumCasting {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   name     String
+   fileName String?
+
+   weight       Float
+   initialPrice Float?
+   finalPrice   Float?
+
+   quantity           Int[]
+   designUnits        VCDesignUnit
+   material           VCMaterial
+   materialType       VCMaterialType
+   color              VCColor
+   surfaceFinish      VCSurfaceFinish
+   surfaceFinishColor String?
+
+   technicalDrawing   String?
+   threadsTappedHoles Boolean
+   inserts            Boolean
+   tolerance          Int
+
+   silkScreen         String
+   laserEngraving     Boolean
+   partsAssembly      VCPartsAssembly
+   finishedAppearance VCFinishedAppearance
+   inspection         VCInspection
+
+   productDescription VCProductDescription
+   specialRequests    String
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+   fabricationStatuses ProductFabricationStatus[]
+}
+
+enum VCDesignUnit {
+   MM
+   CM
+   INCH
+}
+
+enum VCMaterial {
+   ABS
+   POM
+   NYLON
+   PVC
+   TPU
+}
+
+enum VCMaterialType {
+   ABS
+   POM
+   NYLON
+   PVC
+   TPU
+}
+
+enum VCColor {
+   BLACK
+   WHITE
+   TRANSPARENT
+   GRAY
+   RED
+   BLUE
+   GREEN
+   YELLOW
+}
+
+enum VCSurfaceFinish {
+   NONE
+   BEAD_BLAST
+   SPRAY_PAINTING_MATT
+   SPRAY_PAINTING_HIGH_GLOSS
+   SANDING_1000
+}
+
+enum VCPartsAssembly {
+   NO
+   ASSEMBLY_TEST
+   SHIP_ASSEMBLY
+}
+
+enum VCFinishedAppearance {
+   STANDARD
+   PREMIUM
+}
+
+enum VCInspection {
+   STANDARD_INSPECTION
+   SOURCE_MATERIAL_CERTIFICATION
+}
+
+enum VCProductDescription {
+   PRINTER_ENCLOSURE
+   INK_CARTRIDGE
+   MOTORCYCLE_CONNECTOR_ENCLOSURE
+   CNC_LATHE_REPLACEMENT_ARM
+   HEADBAND
+   WHEEL_PLATE
+   RECORDER_ENCLOSURE
+   COMPOUND_OPTICAL_MICROSCOPE
+}

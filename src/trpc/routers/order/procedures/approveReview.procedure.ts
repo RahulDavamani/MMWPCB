@@ -18,7 +18,12 @@ export const approveReview = userProcedure.input(schema).mutation(async ({ input
 				flexiblePcbs: { select: { id: true, initialPrice: true } },
 				rigidFlexes: { select: { id: true, initialPrice: true } },
 				assemblies: { select: { id: true, initialPrice: true } },
-				stencils: { select: { id: true, initialPrice: true } }
+				stencils: { select: { id: true, initialPrice: true } },
+				cncs: { select: { id: true, initialPrice: true } },
+				sheetMetals: { select: { id: true, initialPrice: true } },
+				threePrintings: { select: { id: true, initialPrice: true } },
+				injectionMoldings: { select: { id: true, initialPrice: true } },
+				vacuumCastings: { select: { id: true, initialPrice: true } }
 			}
 		})
 		.catch(pe);

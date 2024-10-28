@@ -14,7 +14,12 @@ export const removeProduct = userProcedure
 					flexiblePcbs: { deleteMany: ids ? { id: { in: ids } } : {} },
 					rigidFlexes: { deleteMany: ids ? { id: { in: ids } } : {} },
 					assemblies: { deleteMany: ids ? { id: { in: ids } } : {} },
-					stencils: { deleteMany: ids ? { id: { in: ids } } : {} }
+					stencils: { deleteMany: ids ? { id: { in: ids } } : {} },
+					cncs: { deleteMany: ids ? { id: { in: ids } } : {} },
+					sheetMetals: { deleteMany: ids ? { id: { in: ids } } : {} },
+					threePrintings: { deleteMany: ids ? { id: { in: ids } } : {} },
+					injectionMoldings: { deleteMany: ids ? { id: { in: ids } } : {} },
+					vacuumCastings: { deleteMany: ids ? { id: { in: ids } } : {} }
 				},
 				select: { id: true }
 			})

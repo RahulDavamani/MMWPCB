@@ -17,6 +17,11 @@ import { nanoid } from 'nanoid';
 import type { PageData } from '../routes/instant-quote/edit/$types';
 import { productDetails, type ProductType } from './product.store';
 import type { RigidFlex } from '../zod/products/rigidFlex.schema';
+import type { CNC } from '../zod/products/cnc.schema';
+import type { VacuumCasting } from '../zod/products/vacuumCasting.schema';
+import type { InjectionMolding } from '../zod/products/injectionMolding.schema';
+import type { ThreePrinting } from '../zod/products/threePrinting.schema';
+import type { SheetMetal } from '../zod/products/sheetMetal.schema';
 
 export interface Quote {
 	init: boolean;
@@ -29,6 +34,11 @@ export interface Quote {
 		rigidFlex: RigidFlex;
 		assembly: Assembly;
 		stencil: Stencil;
+		cnc: CNC;
+		sheetMetal: SheetMetal;
+		threePrinting: ThreePrinting;
+		injectionMolding: InjectionMolding;
+		vacuumCasting: VacuumCasting;
 	};
 	files: { [k in ProductType]?: File };
 }
@@ -55,7 +65,7 @@ export const quote = (() => {
 			set({
 				init: true,
 				isEdit: false,
-				productType: 'standardPcb',
+				productType: 'cnc',
 				products: cloneDeep(defaultProducts),
 				files: {}
 			});
@@ -85,12 +95,12 @@ export const quote = (() => {
 
 			selectedProduct.id = id ?? nanoid();
 			if (isEdit && selectedProduct.fileName) {
-				await supabase.storage.from('Gerber Files').remove([selectedProduct.fileName]);
+				await supabase.storage.from('Product Files').remove([selectedProduct.fileName]);
 			}
 			if (file) {
 				ui.setLoader({ title: l.uploadingFiles });
 				selectedProduct.fileName = `${selectedProduct.id}__${file.name}`;
-				const { error } = await supabase.storage.from('Gerber Files').upload(selectedProduct.fileName, file);
+				const { error } = await supabase.storage.from('Product Files').upload(selectedProduct.fileName, file);
 				if (error) return ui.setAlertModal({ title: l.uploadFileError, body: error.message });
 			}
 
@@ -198,5 +208,77 @@ export const quoteError = derived([quote, productDetails], ([$quote, $productDet
 			})
 		) as { [k in keyof Stencil]: boolean })();
 
-	return { standardPcb, advancedPcb, flexiblePcb, rigidFlex, assembly, stencil };
+	const cnc = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.cnc).map(([key, value]) => {
+				const validate = (
+					$productDetails.cnc[key as keyof typeof $productDetails.cnc] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof CNC]: boolean })();
+
+	const sheetMetal = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.sheetMetal).map(([key, value]) => {
+				const validate = (
+					$productDetails.sheetMetal[key as keyof typeof $productDetails.sheetMetal] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof SheetMetal]: boolean })();
+
+	const threePrinting = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.threePrinting).map(([key, value]) => {
+				const validate = (
+					$productDetails.threePrinting[key as keyof typeof $productDetails.threePrinting] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof ThreePrinting]: boolean })();
+
+	const injectionMolding = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.injectionMolding).map(([key, value]) => {
+				const validate = (
+					$productDetails.injectionMolding[key as keyof typeof $productDetails.injectionMolding] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof InjectionMolding]: boolean })();
+
+	const vacuumCasting = (() =>
+		Object.fromEntries(
+			Object.entries($quote.products.vacuumCasting).map(([key, value]) => {
+				const validate = (
+					$productDetails.vacuumCasting[key as keyof typeof $productDetails.vacuumCasting] as {
+						validate?: (val: unknown) => boolean;
+					}
+				)?.validate;
+				return validate ? [key, validate(value)] : [key, false];
+			})
+		) as { [k in keyof VacuumCasting]: boolean })();
+
+	return {
+		standardPcb,
+		advancedPcb,
+		flexiblePcb,
+		rigidFlex,
+		assembly,
+		stencil,
+		cnc,
+		sheetMetal,
+		threePrinting,
+		injectionMolding,
+		vacuumCasting
+	};
 });

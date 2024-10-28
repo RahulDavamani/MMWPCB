@@ -10,7 +10,7 @@ export const stencilSchema = z.object({
 	fileName: z.string().min(1).nullish(),
 	buildTime: z.number().gt(0),
 	weight: z.number(),
-	initialPrice: z.number(),
+	initialPrice: z.number().nullish(),
 	finalPrice: z.number().nullish(),
 	type: stType,
 	multiLevel: z.boolean(),

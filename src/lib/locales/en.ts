@@ -20,6 +20,12 @@ export const en = {
 			matteGreen: 'Matte Green',
 			matteBlue: 'Matte Blue',
 			matteRed: 'Matte Red',
+			silver: 'Silver',
+			silverWhite: 'Silver White',
+			silverGray: 'Silver Gray',
+			metallic: 'Metallic',
+			copper: 'Copper',
+			darkBlack: 'Dark Black',
 			transparent: 'Transparent'
 		},
 		typeHere: 'Type here...',
@@ -149,7 +155,12 @@ export const en = {
 		flexiblePcb: 'Flexible PCB',
 		rigidFlex: 'Rigid-Flex',
 		assembly: 'Assembly',
-		stencil: 'SMD-Stencil'
+		stencil: 'SMD-Stencil',
+		cnc: 'CNC Machining',
+		sheetMetal: 'Sheet Metal',
+		threePrinting: '3D Printing',
+		injectionMolding: 'Injection Molding',
+		vacuumCasting: 'Vacuum Casting'
 	},
 
 	instantQuote: {
@@ -1882,9 +1893,1002 @@ export const en = {
 			}
 		},
 
+		cnc: {
+			id: {
+				title: 'Product ID'
+			},
+			createdAt: {
+				title: 'Created At'
+			},
+			updatedAt: {
+				title: 'Updated At'
+			},
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
+			fileName: {
+				title: 'File Name'
+			},
+			weight: {
+				title: 'Weight'
+			},
+			initialPrice: {
+				title: 'Initial Price'
+			},
+			finalPrice: {
+				title: 'Final Price'
+			},
+			quantity: {
+				title: 'Quantity',
+				error: 'Quantity should be greater than 0'
+			},
+			designUnits: {
+				title: 'Design Units'
+			},
+			material: {
+				title: 'Material',
+				values: {
+					aluminum: 'Aluminum',
+					stainlessSteel: 'Stainless Steel',
+					mildSteel: 'Mild Steel',
+					copper: 'Copper',
+					carbonFiber: 'Carbon Fiber'
+				}
+			},
+			materialType: {
+				title: 'Material Type',
+				values: {
+					aluminum5052: 'Aluminum 5052',
+					aluminum6061: 'Aluminum 6061',
+					aluminum7075: 'Aluminum 7075',
+					aluminum2a12: 'Aluminum 2A12',
+					stainlessSteel201: 'Stainless Steel 201',
+					stainlessSteel303: 'Stainless Steel 303',
+					stainlessSteel304: 'Stainless Steel 304',
+					stainlessSteel316: 'Stainless Steel 316',
+					stainlessSteel430: 'Stainless Steel 430',
+					mildSteel1018: 'Mild Steel 1018',
+					mildSteel1045: 'Mild Steel 1045',
+					mildSteelA36: 'Mild Steel A36',
+					copper: 'Copper',
+					carbonFiberPlate: 'Carbon Fiber Plate'
+				}
+			},
+			color: {
+				title: 'Color'
+			},
+			surfaceFinish: {
+				title: 'Surface Finish',
+				sections: {
+					standard: 'Standard (As-Milled)',
+					brushed: 'Brushed',
+					beadBlast: 'Bead Blast',
+					sprayPainting: 'Spray Painting',
+					powderCoat: 'Powder Coat',
+					detailSanding: 'Detail Sanding',
+					others: 'Others'
+				},
+				values: {
+					standard: 'Standard (As-Milled)',
+					brushed: 'Brushed',
+					beadBlast: 'Bead Blast',
+					sprayPaintingMatt: 'Spray Painting Matt',
+					sprayPaintingHighGloss: 'Spray Painting High Gloss',
+					powderCoatMatt: 'Powder Coat Matt',
+					powderCoatHighGloss: 'Powder Coat High Gloss',
+					sanding1000: 'Sanding 1000',
+					others: 'Others'
+				},
+				surfaceTreatment: {
+					title: 'Introduction to Surface Treatment',
+					description:
+						'Sanding is the use of fine abrasive sand particles to rub the surface of the product to produce a diffuse, non-linear texture effect. Adhere different abrasive grit to the backing paper or the back of the board, and the abrasive grit can be distinguished by different granularities according to the size: the higher the particle size, the finer the abrasive grit, so the surface effect is better.'
+				}
+			},
+			surfaceFinishColor: {
+				title: 'Surface Finish Color'
+			},
+			technicalDrawing: {
+				title: 'Technical Drawing',
+				description:
+					'Please note that your 3D file and part specifications selected on this screen (eg. surface finish) will take priority over your technical drawing. Please ensure your technical drawing is up-to-date.',
+				uploadTechnicalDrawing: 'Upload Technical Drawing'
+			},
+			threadsTappedHoles: {
+				title: 'Threads & Tapped Holes',
+				description:
+					'Please specify if your part has any internal or external threads. PCBWay will not bear any assembly risk if it is a non-standard thread, unless all assembly parts are produced and assembled here',
+				question: 'Do your parts need to tap threads?'
+			},
+			inserts: {
+				title: 'Inserts',
+				description: 'Please specify the standard inserts in your part'
+			},
+			tolerance: {
+				title: 'Tolerance',
+				description:
+					'Tolerances will be controlled with ISO 2768-1. For other tighter tolerances, technical drawing will be required to indicate critical dimensions.',
+				noTolerance: 'No Tighter Tolerance Required'
+			},
+			surfaceRoughness: {
+				title: 'Surface Roughness',
+				description:
+					'Surface roughness will be controlled into 250uin/6.3um Ra unless you have other surface roughness required'
+			},
+			partMarking: {
+				title: 'Part Marking',
+				description:
+					'Please mark clearly the content of silkscreen or laser engraving in the CAD file (DWG or DXF), and graphics file (Ai or SVG) is required as well.'
+			},
+			silkScreen: {
+				title: 'Silkscreen'
+			},
+			laserEngraving: {
+				title: 'Laser Engraving'
+			},
+			partsAssembly: {
+				title: 'Parts Assembly',
+				description:
+					'Please specify the assembly requirements. PCBWay does not bear any assembly risk if you choose No assembly requirement.',
+				values: {
+					assemblyTest: 'Assembly Test',
+					shipAssembly: 'Ship Assembly'
+				}
+			},
+			finishedAppearance: {
+				title: 'Finished Appearance',
+				values: {
+					standard: {
+						title: 'Standard',
+						description:
+							'Normal processing traces or scratches caused during production, or subtle traces left after surface finish'
+					},
+					premium: {
+						title: 'Premium',
+						description:
+							'Higher appearance requirements, the surface is clean and smooth without obvious flaws. (Except for the inherent anodizing rack marks). Photos will be sent to confirm before shipment.'
+					}
+				}
+			},
+			inspection: {
+				title: 'Inspection',
+				description: 'The inspection report will not be sent out with your parts unless you need it.',
+				values: {
+					standardInspection: {
+						title: 'Standard Inspection (No Report)',
+						description: [
+							'No extra fee',
+							'PCBWay will do the dimension and surface feature inspections based on the drawings provided by the customer.'
+						]
+					},
+					standardInspectionFormalReport: {
+						title: 'Standard Inspection with Formal Report',
+						description: ['Pay extra', '2D technical drawings are required.']
+					},
+					cmmInspectionFormalReport: {
+						title: 'CMM Inspection with Formal Report',
+						description: ['Pay extra', '2D technical drawings are required.']
+					},
+					sourceMaterialCertification: {
+						title: 'Source Material Certification',
+						description: ['Pay extra', '2D technical drawings are required.']
+					}
+				}
+			},
+			productDescription: {
+				title: 'Product Description',
+				description: '',
+				descriptionDetail: {
+					title1: 'Product description required for customs clearance:',
+					body1:
+						'1. Comply with international trade principles and provide product descriptions for customs clearance.',
+					body2:
+						'2. Please select the correct product description according to the actual use of the product. If there is no item matched, please select Other.',
+					title2: 'Please be kindly noted:',
+					body3:
+						'1. There may be import duties and taxes, and the applicable duty and tax rates vary based on the description of the goods and the import regulations of different countries.',
+					body4:
+						'2. Goods with incorrect or unclear product descriptions may be detained by customs. The customer will be responsible for customs penalties resulting from incorrect information provided.',
+					body5: '3. PCBWay wont change the product descriptions provided by the customer, please select carefully.'
+				},
+				values: {
+					printerEnclosure: 'Printer Enclosure',
+					inkCartridge: 'Ink Cartridge',
+					motorcycleConnectorEnclosure: 'Motorcycle Connector Enclosure',
+					cncLatheReplacementArm: 'CNC Lathe Replacement Arm',
+					headband: 'Headband',
+					wheelPlate: 'Wheel Plate',
+					recorderEnclosure: 'Recorder Enclosure',
+					compoundOpticalMicroscope: 'Compound Optical Microscope'
+				}
+			},
+			specialRequests: {
+				title: 'Other Special Requests',
+				placeholder: 'Fill in any requirements about production, package, or shipment here.'
+			}
+		},
+
+		sheetMetal: {
+			id: {
+				title: 'Product ID'
+			},
+			createdAt: {
+				title: 'Created At'
+			},
+			updatedAt: {
+				title: 'Updated At'
+			},
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
+			fileName: {
+				title: 'File Name'
+			},
+			weight: {
+				title: 'Weight'
+			},
+			initialPrice: {
+				title: 'Initial Price'
+			},
+			finalPrice: {
+				title: 'Final Price'
+			},
+			quantity: {
+				title: 'Quantity'
+			},
+			designUnits: {
+				title: 'Design Units'
+			},
+			material: {
+				title: 'Material',
+				values: {
+					aluminum: 'Aluminum',
+					stainlessSteel: 'Stainless Steel',
+					mildSteel: 'Mild Steel',
+					copper: 'Copper',
+					carbonFiber: 'Carbon Fiber'
+				}
+			},
+			materialType: {
+				title: 'Material Type',
+				values: {
+					aluminum5052: 'Aluminum 5052',
+					aluminum6061: 'Aluminum 6061',
+					stainlessSteel201: 'Stainless Steel 201',
+					stainlessSteel303: 'Stainless Steel 303',
+					stainlessSteel304: 'Stainless Steel 304',
+					stainlessSteel316: 'Stainless Steel 316',
+					mildSteel1018: 'Mild Steel 1018',
+					copper101: 'Copper 101',
+					copperC110: 'Copper C110',
+					copper260: 'Copper 260',
+					carbonFiberPlate: 'Carbon Fiber Plate'
+				}
+			},
+			color: {
+				title: 'Color'
+			},
+			surfaceFinish: {
+				title: 'Surface Finish',
+				sections: {
+					standard: 'Standard (As-Milled)',
+					brushed: 'Brushed',
+					beadBlast: 'Bead Blast',
+					sprayPainting: 'Spray Painting',
+					powderCoat: 'Powder Coat',
+					detailSanding: 'Detail Sanding',
+					others: 'Others'
+				},
+				values: {
+					standard: 'Standard (As-Milled)',
+					brushed: 'Brushed',
+					beadBlast: 'Bead Blast',
+					sprayPaintingMatt: 'Spray Painting Matt',
+					sprayPaintingHighGloss: 'Spray Painting High Gloss',
+					powderCoatMatt: 'Powder Coat Matt',
+					powderCoatHighGloss: 'Powder Coat High Gloss',
+					sanding1000: 'Sanding 1000',
+					others: 'Others'
+				},
+				surfaceTreatment: {
+					title: 'Introduction to Surface Treatment',
+					description:
+						'Sanding is the use of fine abrasive sand particles to rub the surface of the product to produce a diffuse, non-linear texture effect. Adhere different abrasive grit to the backing paper or the back of the board, and the abrasive grit can be distinguished by different granularities according to the size: the higher the particle size, the finer the abrasive grit, so the surface effect is better.'
+				}
+			},
+			surfaceFinishColor: {
+				title: 'Surface Finish Color'
+			},
+			technicalDrawing: {
+				title: 'Technical Drawing',
+				description:
+					'Please note that your 3D file and part specifications selected on this screen (eg. surface finish) will take priority over your technical drawing. Please ensure your technical drawing is up-to-date.',
+				uploadTechnicalDrawing: 'Upload Technical Drawing'
+			},
+			threadsTappedHoles: {
+				title: 'Threads & Tapped Holes',
+				description:
+					'Please specify if your part has any internal or external threads. PCBWay will not bear any assembly risk if it is a non-standard thread, unless all assembly parts are produced and assembled here',
+				question: 'Do your parts need to tap threads?'
+			},
+			inserts: {
+				title: 'Inserts',
+				description: 'Please specify the standard inserts in your part'
+			},
+			tolerance: {
+				title: 'Tolerance',
+				description:
+					'Tolerances will be controlled with ISO 2768-1. For other tighter tolerances, technical drawing will be required to indicate critical dimensions.',
+				noTolerance: 'No Tighter Tolerance Required'
+			},
+			wielding: {
+				title: 'Wielding'
+			},
+			partMarking: {
+				title: 'Part Marking',
+				description:
+					'Please mark clearly the content of silkscreen or laser engraving in the CAD file (DWG or DXF), and graphics file (Ai or SVG) is required as well.'
+			},
+			silkScreen: {
+				title: 'Silkscreen'
+			},
+			laserEngraving: {
+				title: 'Laser Engraving'
+			},
+			partsAssembly: {
+				title: 'Parts Assembly',
+				description:
+					'Please specify the assembly requirements. PCBWay does not bear any assembly risk if you choose No assembly requirement.',
+				values: {
+					assemblyTest: 'Assembly Test',
+					shipAssembly: 'Ship Assembly'
+				}
+			},
+			finishedAppearance: {
+				title: 'Finished Appearance',
+				values: {
+					standard: {
+						title: 'Standard',
+						description:
+							'Normal processing traces or scratches caused during production, or subtle traces left after surface finish'
+					},
+					premium: {
+						title: 'Premium',
+						description:
+							'Higher appearance requirements, the surface is clean and smooth without obvious flaws. (Except for the inherent anodizing rack marks). Photos will be sent to confirm before shipment.'
+					}
+				}
+			},
+			inspection: {
+				title: 'Inspection',
+				description: 'The inspection report will not be sent out with your parts unless you need it.',
+				values: {
+					standardInspection: {
+						title: 'Standard Inspection (No Report)',
+						description: [
+							'No extra fee',
+							'PCBWay will do the dimension and surface feature inspections based on the drawings provided by the customer.'
+						]
+					},
+					standardInspectionFormalReport: {
+						title: 'Standard Inspection with Formal Report',
+						description: ['Pay extra', '2D technical drawings are required.']
+					},
+					cmmInspectionFormalReport: {
+						title: 'CMM Inspection with Formal Report',
+						description: ['Pay extra', '2D technical drawings are required.']
+					},
+					sourceMaterialCertification: {
+						title: 'Source Material Certification',
+						description: ['Pay extra', '2D technical drawings are required.']
+					}
+				}
+			},
+			productDescription: {
+				title: 'Product Description',
+				description: '',
+				descriptionDetail: {
+					title1: 'Product description required for customs clearance:',
+					body1:
+						'1. Comply with international trade principles and provide product descriptions for customs clearance.',
+					body2:
+						'2. Please select the correct product description according to the actual use of the product. If there is no item matched, please select Other.',
+					title2: 'Please be kindly noted:',
+					body3:
+						'1. There may be import duties and taxes, and the applicable duty and tax rates vary based on the description of the goods and the import regulations of different countries.',
+					body4:
+						'2. Goods with incorrect or unclear product descriptions may be detained by customs. The customer will be responsible for customs penalties resulting from incorrect information provided.',
+					body5: '3. PCBWay wont change the product descriptions provided by the customer, please select carefully.'
+				},
+				values: {
+					printerEnclosure: 'Printer Enclosure',
+					inkCartridge: 'Ink Cartridge',
+					motorcycleConnectorEnclosure: 'Motorcycle Connector Enclosure',
+					cncLatheReplacementArm: 'CNC Lathe Replacement Arm',
+					headband: 'Headband',
+					wheelPlate: 'Wheel Plate',
+					recorderEnclosure: 'Recorder Enclosure',
+					compoundOpticalMicroscope: 'Compound Optical Microscope'
+				}
+			},
+			specialRequests: {
+				title: 'Other Special Requests',
+				placeholder: 'Fill in any requirements about production, package, or shipment here.'
+			}
+		},
+
+		threePrinting: {
+			id: {
+				title: 'Product ID'
+			},
+			createdAt: {
+				title: 'Created At'
+			},
+			updatedAt: {
+				title: 'Updated At'
+			},
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
+			fileName: {
+				title: 'File Name'
+			},
+			weight: {
+				title: 'Weight'
+			},
+			initialPrice: {
+				title: 'Initial Price'
+			},
+			finalPrice: {
+				title: 'Final Price'
+			},
+			quantity: {
+				title: 'Quantity'
+			},
+			designUnits: {
+				title: 'Design Units'
+			},
+			material: {
+				title: 'Material',
+				values: {
+					aluminum: 'Aluminum',
+					stainlessSteel: 'Stainless Steel',
+					nylon: 'Nylon',
+					abs: 'ABS',
+					petg: 'PETG'
+				}
+			},
+			materialType: {
+				title: 'Material Type',
+				values: {
+					aluminum: 'Aluminum',
+					stainlessSteel: 'Stainless Steel',
+					pa12: 'PA 12',
+					hppa12: 'HP PA 12',
+					glassFiberNylon: 'Glass Fiber Nylon',
+					petg: 'PETG'
+				}
+			},
+			color: {
+				title: 'Color'
+			},
+			process: {
+				title: 'Process'
+			},
+			surfaceFinish: {
+				title: 'Surface Finish',
+				sections: {
+					sprayPainting: 'Spray Painting',
+					powderCoat: 'Powder Coat',
+					detailSanding: 'Detail Sanding',
+					dying: 'Dying'
+				},
+				values: {
+					sprayPaintingMatt: 'Spray Painting Matt',
+					sprayPaintingHighGloss: 'Spray Painting High Gloss',
+					sanding1000: 'Sanding 1000',
+					dying: 'Dying'
+				},
+				surfaceTreatment: {
+					title: 'Introduction to Surface Treatment',
+					description:
+						'Sanding is the use of fine abrasive sand particles to rub the surface of the product to produce a diffuse, non-linear texture effect. Adhere different abrasive grit to the backing paper or the back of the board, and the abrasive grit can be distinguished by different granularities according to the size: the higher the particle size, the finer the abrasive grit, so the surface effect is better.'
+				}
+			},
+			surfaceFinishColor: {
+				title: 'Surface Finish Color'
+			},
+			technicalDrawing: {
+				title: 'Technical Drawing',
+				description:
+					'Please note that your 3D file and part specifications selected on this screen (eg. surface finish) will take priority over your technical drawing. Please ensure your technical drawing is up-to-date.',
+				uploadTechnicalDrawing: 'Upload Technical Drawing'
+			},
+			threadsTappedHoles: {
+				title: 'Threads & Tapped Holes',
+				description:
+					'Please specify if your part has any internal or external threads. PCBWay will not bear any assembly risk if it is a non-standard thread, unless all assembly parts are produced and assembled here',
+				question: 'Do your parts need to tap threads?'
+			},
+			inserts: {
+				title: 'Inserts',
+				description: 'Please specify the standard inserts in your part'
+			},
+			partMarking: {
+				title: 'Part Marking',
+				description:
+					'Please mark clearly the content of silkscreen or laser engraving in the CAD file (DWG or DXF), and graphics file (Ai or SVG) is required as well.'
+			},
+			silkScreen: {
+				title: 'Silkscreen'
+			},
+			laserEngraving: {
+				title: 'Laser Engraving'
+			},
+			partsAssembly: {
+				title: 'Parts Assembly',
+				description:
+					'Please specify the assembly requirements. PCBWay does not bear any assembly risk if you choose No assembly requirement.',
+				values: {
+					assemblyTest: 'Assembly Test',
+					shipAssembly: 'Ship Assembly'
+				}
+			},
+			printingRisk: {
+				title: 'Printing Risk',
+				description:
+					'The parameter is checked by default. You can uncheck it and we will email you with issues when the part has a specific printing risk.'
+			},
+			wallThicknessRisk: {
+				title: 'Wall thickness risk taken',
+				description:
+					'Customer knows about the thin walls designed do not meet the wall thickness standard, but needs to print as-is and take all risks.'
+			},
+			printedThreadsRisk: {
+				title: 'Non-standard printed threads risk taken',
+				description:
+					'Customer knows about the threads designed do not meet the thread printing standard, but needs to print as-is and take all risks.'
+			},
+			productDescription: {
+				title: 'Product Description',
+				description: '',
+				descriptionDetail: {
+					title1: 'Product description required for customs clearance:',
+					body1:
+						'1. Comply with international trade principles and provide product descriptions for customs clearance.',
+					body2:
+						'2. Please select the correct product description according to the actual use of the product. If there is no item matched, please select Other.',
+					title2: 'Please be kindly noted:',
+					body3:
+						'1. There may be import duties and taxes, and the applicable duty and tax rates vary based on the description of the goods and the import regulations of different countries.',
+					body4:
+						'2. Goods with incorrect or unclear product descriptions may be detained by customs. The customer will be responsible for customs penalties resulting from incorrect information provided.',
+					body5: '3. PCBWay wont change the product descriptions provided by the customer, please select carefully.'
+				},
+				values: {
+					printerEnclosure: 'Printer Enclosure',
+					inkCartridge: 'Ink Cartridge',
+					motorcycleConnectorEnclosure: 'Motorcycle Connector Enclosure',
+					cncLatheReplacementArm: 'CNC Lathe Replacement Arm',
+					headband: 'Headband',
+					wheelPlate: 'Wheel Plate',
+					recorderEnclosure: 'Recorder Enclosure',
+					compoundOpticalMicroscope: 'Compound Optical Microscope'
+				}
+			},
+			specialRequests: {
+				title: 'Other Special Requests',
+				placeholder: 'Fill in any requirements about production, package, or shipment here.'
+			}
+		},
+
+		injectionMolding: {
+			id: {
+				title: 'Product ID'
+			},
+			createdAt: {
+				title: 'Created At'
+			},
+			updatedAt: {
+				title: 'Updated At'
+			},
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
+			fileName: {
+				title: 'File Name'
+			},
+			weight: {
+				title: 'Weight'
+			},
+			initialPrice: {
+				title: 'Initial Price'
+			},
+			finalPrice: {
+				title: 'Final Price'
+			},
+			quantity: {
+				title: 'First Batch Quantity',
+				error: 'Quantity should be greater than 0'
+			},
+			minExpectedVolume: {
+				title: 'Minimum Expected Annual Volume'
+			},
+			maxExpectedVolume: {
+				title: 'Maximum Expected Annual Volume'
+			},
+			designUnits: {
+				title: 'Design Units'
+			},
+			material: {
+				title: 'Material',
+				values: {
+					abs: 'ABS',
+					pom: 'POM',
+					nylon: 'Nylon',
+					pvc: 'PVC',
+					tpu: 'TPU'
+				}
+			},
+			materialType: {
+				title: 'Material Type',
+				values: {
+					abs: 'ABS',
+					pom: 'POM',
+					nylon: 'Nylon',
+					pvc: 'PVC',
+					tpu: 'TPU'
+				}
+			},
+			color: {
+				title: 'Color'
+			},
+			spiFinish: {
+				title: 'SPI Finish'
+			},
+			toolRequirements: {
+				title: 'Tool Requirements',
+				description:
+					'Please provide the mold requirements, such as surface requirements, mold strength, machine size, cavity number and mold design requirements, etc.'
+			},
+			molds: {
+				title: 'Molds',
+				description:
+					'We will keep the mold for 2 years. You can continue to order parts until the end of the life of the mold. After the mold expires, it will be recycled by default. If you need to send the mold to you, please contact the sales rep about shipment.',
+				values: {
+					keepMoldsFactory: 'Keep the molds in the factory',
+					moldsShipped: 'I need the molds to be shipped'
+				}
+			},
+			surfaceFinish: {
+				title: 'Surface Finish',
+				sections: {},
+				values: {},
+				surfaceTreatment: {
+					title: 'Introduction to Surface Treatment',
+					description:
+						'Sanding is the use of fine abrasive sand particles to rub the surface of the product to produce a diffuse, non-linear texture effect. Adhere different abrasive grit to the backing paper or the back of the board, and the abrasive grit can be distinguished by different granularities according to the size: the higher the particle size, the finer the abrasive grit, so the surface effect is better.'
+				}
+			},
+			surfaceFinishColor: {
+				title: 'Surface Finish Color'
+			},
+			technicalDrawing: {
+				title: 'Technical Drawing',
+				description:
+					'Please note that your 3D file and part specifications selected on this screen (eg. surface finish) will take priority over your technical drawing. Please ensure your technical drawing is up-to-date.',
+				uploadTechnicalDrawing: 'Upload Technical Drawing'
+			},
+			threadsTappedHoles: {
+				title: 'Threads & Tapped Holes',
+				description:
+					'Please specify if your part has any internal or external threads. PCBWay will not bear any assembly risk if it is a non-standard thread, unless all assembly parts are produced and assembled here',
+				question: 'Do your parts need to tap threads?'
+			},
+			inserts: {
+				title: 'Inserts',
+				description: 'Please specify the standard inserts in your part'
+			},
+			tolerance: {
+				title: 'Tolerance',
+				description:
+					'Tolerances will be controlled with ISO 2768-1. For other tighter tolerances, technical drawing will be required to indicate critical dimensions.',
+				noTolerance: 'No Tighter Tolerance Required'
+			},
+			partMarking: {
+				title: 'Part Marking',
+				description:
+					'Please mark clearly the content of silkscreen or laser engraving in the CAD file (DWG or DXF), and graphics file (Ai or SVG) is required as well.'
+			},
+			silkScreen: {
+				title: 'Silkscreen'
+			},
+			laserEngraving: {
+				title: 'Laser Engraving'
+			},
+			partsAssembly: {
+				title: 'Parts Assembly',
+				description:
+					'Please specify the assembly requirements. PCBWay does not bear any assembly risk if you choose No assembly requirement.',
+				values: {
+					assemblyTest: 'Assembly Test',
+					shipAssembly: 'Ship Assembly'
+				}
+			},
+			finishedAppearance: {
+				title: 'Finished Appearance',
+				values: {
+					standard: {
+						title: 'Standard',
+						description:
+							'Normal processing traces or scratches caused during production, or subtle traces left after surface finish'
+					},
+					premium: {
+						title: 'Premium',
+						description:
+							'Higher appearance requirements, the surface is clean and smooth without obvious flaws. (Except for the inherent anodizing rack marks). Photos will be sent to confirm before shipment.'
+					}
+				}
+			},
+			inspection: {
+				title: 'Inspection',
+				description: 'The inspection report will not be sent out with your parts unless you need it.',
+				values: {
+					standardInspection: {
+						title: 'Standard Inspection (No Report)',
+						description: [
+							'No extra fee',
+							'PCBWay will do the dimension and surface feature inspections based on the drawings provided by the customer.'
+						]
+					},
+					sourceMaterialCertification: {
+						title: 'Source Material Certification',
+						description: ['Pay extra', '2D technical drawings are required.']
+					}
+				}
+			},
+			productDescription: {
+				title: 'Product Description',
+				description: '',
+				descriptionDetail: {
+					title1: 'Product description required for customs clearance:',
+					body1:
+						'1. Comply with international trade principles and provide product descriptions for customs clearance.',
+					body2:
+						'2. Please select the correct product description according to the actual use of the product. If there is no item matched, please select Other.',
+					title2: 'Please be kindly noted:',
+					body3:
+						'1. There may be import duties and taxes, and the applicable duty and tax rates vary based on the description of the goods and the import regulations of different countries.',
+					body4:
+						'2. Goods with incorrect or unclear product descriptions may be detained by customs. The customer will be responsible for customs penalties resulting from incorrect information provided.',
+					body5: '3. PCBWay wont change the product descriptions provided by the customer, please select carefully.'
+				},
+				values: {
+					printerEnclosure: 'Printer Enclosure',
+					inkCartridge: 'Ink Cartridge',
+					motorcycleConnectorEnclosure: 'Motorcycle Connector Enclosure',
+					cncLatheReplacementArm: 'CNC Lathe Replacement Arm',
+					headband: 'Headband',
+					wheelPlate: 'Wheel Plate',
+					recorderEnclosure: 'Recorder Enclosure',
+					compoundOpticalMicroscope: 'Compound Optical Microscope'
+				}
+			},
+			specialRequests: {
+				title: 'Other Special Requests',
+				placeholder: 'Fill in any requirements about production, package, or shipment here.'
+			}
+		},
+
+		vacuumCasting: {
+			id: {
+				title: 'Product ID'
+			},
+			createdAt: {
+				title: 'Created At'
+			},
+			updatedAt: {
+				title: 'Updated At'
+			},
+			name: {
+				title: 'Product Name',
+				description: 'Please enter a name for your product',
+				error: 'Product name is required'
+			},
+			fileName: {
+				title: 'File Name'
+			},
+			weight: {
+				title: 'Weight'
+			},
+			initialPrice: {
+				title: 'Initial Price'
+			},
+			finalPrice: {
+				title: 'Final Price'
+			},
+			quantity: {
+				title: 'Quantity'
+			},
+			designUnits: {
+				title: 'Design Units'
+			},
+			material: {
+				title: 'Material',
+				values: {
+					abs: 'ABS',
+					pom: 'POM',
+					nylon: 'Nylon',
+					pvc: 'PVC',
+					tpu: 'TPU'
+				}
+			},
+			materialType: {
+				title: 'Material Type',
+				values: {
+					abs: 'ABS',
+					pom: 'POM',
+					nylon: 'Nylon',
+					pvc: 'PVC',
+					tpu: 'TPU'
+				}
+			},
+			color: {
+				title: 'Color'
+			},
+			surfaceFinish: {
+				title: 'Surface Finish',
+				sections: {
+					beadBlast: 'Bead Blast',
+					sprayPainting: 'Spray Painting',
+					detailSanding: 'Detail Sanding'
+				},
+				values: {
+					beadBlast: 'Bead Blast',
+					sprayPaintingMatt: 'Spray Painting Matt',
+					sprayPaintingHighGloss: 'Spray Painting High Gloss',
+					sanding1000: 'Sanding 1000'
+				},
+				surfaceTreatment: {
+					title: 'Introduction to Surface Treatment',
+					description:
+						'Sanding is the use of fine abrasive sand particles to rub the surface of the product to produce a diffuse, non-linear texture effect. Adhere different abrasive grit to the backing paper or the back of the board, and the abrasive grit can be distinguished by different granularities according to the size: the higher the particle size, the finer the abrasive grit, so the surface effect is better.'
+				}
+			},
+			surfaceFinishColor: {
+				title: 'Surface Finish Color'
+			},
+			technicalDrawing: {
+				title: 'Technical Drawing',
+				description:
+					'Please note that your 3D file and part specifications selected on this screen (eg. surface finish) will take priority over your technical drawing. Please ensure your technical drawing is up-to-date.',
+				uploadTechnicalDrawing: 'Upload Technical Drawing'
+			},
+			threadsTappedHoles: {
+				title: 'Threads & Tapped Holes',
+				description:
+					'Please specify if your part has any internal or external threads. PCBWay will not bear any assembly risk if it is a non-standard thread, unless all assembly parts are produced and assembled here',
+				question: 'Do your parts need to tap threads?'
+			},
+			inserts: {
+				title: 'Inserts',
+				description: 'Please specify the standard inserts in your part'
+			},
+			tolerance: {
+				title: 'Tolerance',
+				description:
+					'Tolerances will be controlled with ISO 2768-1. For other tighter tolerances, technical drawing will be required to indicate critical dimensions.',
+				noTolerance: 'No Tighter Tolerance Required'
+			},
+			partMarking: {
+				title: 'Part Marking',
+				description:
+					'Please mark clearly the content of silkscreen or laser engraving in the CAD file (DWG or DXF), and graphics file (Ai or SVG) is required as well.'
+			},
+			silkScreen: {
+				title: 'Silkscreen'
+			},
+			laserEngraving: {
+				title: 'Laser Engraving'
+			},
+			partsAssembly: {
+				title: 'Parts Assembly',
+				description:
+					'Please specify the assembly requirements. PCBWay does not bear any assembly risk if you choose No assembly requirement.',
+				values: {
+					assemblyTest: 'Assembly Test',
+					shipAssembly: 'Ship Assembly'
+				}
+			},
+			finishedAppearance: {
+				title: 'Finished Appearance',
+				values: {
+					standard: {
+						title: 'Standard',
+						description:
+							'Normal processing traces or scratches caused during production, or subtle traces left after surface finish'
+					},
+					premium: {
+						title: 'Premium',
+						description:
+							'Higher appearance requirements, the surface is clean and smooth without obvious flaws. (Except for the inherent anodizing rack marks). Photos will be sent to confirm before shipment.'
+					}
+				}
+			},
+			inspection: {
+				title: 'Inspection',
+				description: 'The inspection report will not be sent out with your parts unless you need it.',
+				values: {
+					standardInspection: {
+						title: 'Standard Inspection (No Report)',
+						description: [
+							'No extra fee',
+							'PCBWay will do the dimension and surface feature inspections based on the drawings provided by the customer.'
+						]
+					},
+					sourceMaterialCertification: {
+						title: 'Source Material Certification',
+						description: ['Pay extra', '2D technical drawings are required.']
+					}
+				}
+			},
+			productDescription: {
+				title: 'Product Description',
+				description: '',
+				descriptionDetail: {
+					title1: 'Product description required for customs clearance:',
+					body1:
+						'1. Comply with international trade principles and provide product descriptions for customs clearance.',
+					body2:
+						'2. Please select the correct product description according to the actual use of the product. If there is no item matched, please select Other.',
+					title2: 'Please be kindly noted:',
+					body3:
+						'1. There may be import duties and taxes, and the applicable duty and tax rates vary based on the description of the goods and the import regulations of different countries.',
+					body4:
+						'2. Goods with incorrect or unclear product descriptions may be detained by customs. The customer will be responsible for customs penalties resulting from incorrect information provided.',
+					body5: '3. PCBWay wont change the product descriptions provided by the customer, please select carefully.'
+				},
+				values: {
+					printerEnclosure: 'Printer Enclosure',
+					inkCartridge: 'Ink Cartridge',
+					motorcycleConnectorEnclosure: 'Motorcycle Connector Enclosure',
+					cncLatheReplacementArm: 'CNC Lathe Replacement Arm',
+					headband: 'Headband',
+					wheelPlate: 'Wheel Plate',
+					recorderEnclosure: 'Recorder Enclosure',
+					compoundOpticalMicroscope: 'Compound Optical Microscope'
+				}
+			},
+			specialRequests: {
+				title: 'Other Special Requests',
+				placeholder: 'Fill in any requirements about production, package, or shipment here.'
+			}
+		},
+
+		fileDrop: {
+			dragDrop: 'Drag & Drop your files here or click to upload',
+			onlyAccepts20: 'Only accepts zip or rar | Max file size: 20 MB',
+			onlyAccepts200: 'Only accepts zip or rar | Max file size: 200 MB',
+			fileUploaded: 'File uploaded successfully',
+			downloadFile: 'Download File'
+		},
+
 		gerberFile: {
 			title: 'Gerber File',
-			description: 'Please upload the Gerber file for your PCB (only accepts .zip, .rar)'
+			description: 'Please upload the Gerber file for your Product (only accepts .zip, .rar)'
+		},
+
+		designFile: {
+			title: 'Design File',
+			description: 'Please upload the design file for your Product (only accepts .zip, .rar)'
 		}
 	},
 

@@ -8,7 +8,7 @@ model Stencil {
 
    buildTime    Int
    weight       Float
-   initialPrice Float
+   initialPrice Float?
    finalPrice   Float?
 
    type       STType

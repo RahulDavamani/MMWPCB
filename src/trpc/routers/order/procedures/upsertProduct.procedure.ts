@@ -6,6 +6,11 @@ import { flexiblePcbSchema } from '../../../../zod/products/flexiblePcb.schema';
 import { rigidFlexSchema } from '../../../../zod/products/rigidFlex.schema';
 import { assemblySchema } from '../../../../zod/products/assembly.schema';
 import { stencilSchema } from '../../../../zod/products/stencil.schema';
+import { cncSchema } from '../../../../zod/products/cnc.schema';
+import { sheetMetalSchema } from '../../../../zod/products/sheetMetal.schema';
+import { threePrintingSchema } from '../../../../zod/products/threePrinting.schema';
+import { injectionMoldingSchema } from '../../../../zod/products/injectionMolding.schema';
+import { vacuumCastingSchema } from '../../../../zod/products/vacuumCasting.schema';
 import pe from '../../../../prisma/pe';
 
 const schema = z.object({
@@ -15,11 +20,32 @@ const schema = z.object({
 	flexiblePcb: flexiblePcbSchema.optional(),
 	rigidFlex: rigidFlexSchema.optional(),
 	assembly: assemblySchema.optional(),
-	stencil: stencilSchema.optional()
+	stencil: stencilSchema.optional(),
+	cnc: cncSchema.optional(),
+	sheetMetal: sheetMetalSchema.optional(),
+	threePrinting: threePrintingSchema.optional(),
+	injectionMolding: injectionMoldingSchema.optional(),
+	vacuumCasting: vacuumCastingSchema.optional()
 });
 
 export const upsertProduct = userProcedure.input(schema).mutation(
-	async ({ input: { orderId, standardPcb, advancedPcb, flexiblePcb, rigidFlex, assembly, stencil }, ctx: { user } }) =>
+	async ({
+		input: {
+			orderId,
+			standardPcb,
+			advancedPcb,
+			flexiblePcb,
+			rigidFlex,
+			assembly,
+			stencil,
+			cnc,
+			sheetMetal,
+			threePrinting,
+			injectionMolding,
+			vacuumCasting
+		},
+		ctx: { user }
+	}) =>
 		await prisma.order
 			.update({
 				where: { id: orderId, userId: user.id },
@@ -52,6 +78,31 @@ export const upsertProduct = userProcedure.input(schema).mutation(
 					stencils: (() => {
 						if (!stencil) return undefined;
 						const { id, ...values } = stencil;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})(),
+					cncs: (() => {
+						if (!cnc) return undefined;
+						const { id, ...values } = cnc;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})(),
+					sheetMetals: (() => {
+						if (!sheetMetal) return undefined;
+						const { id, ...values } = sheetMetal;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})(),
+					threePrintings: (() => {
+						if (!threePrinting) return undefined;
+						const { id, ...values } = threePrinting;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})(),
+					injectionMoldings: (() => {
+						if (!injectionMolding) return undefined;
+						const { id, ...values } = injectionMolding;
+						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
+					})(),
+					vacuumCastings: (() => {
+						if (!vacuumCasting) return undefined;
+						const { id, ...values } = vacuumCasting;
 						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
 					})()
 				},

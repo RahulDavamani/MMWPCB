@@ -63,7 +63,7 @@ export const rigidFlexSchema = z.object({
 	fileName: z.string().min(1).nullish(),
 	buildTime: z.number().gt(0),
 	weight: z.number(),
-	initialPrice: z.number(),
+	initialPrice: z.number().nullish(),
 	finalPrice: z.number().nullish(),
 	boardType: RFBoardType,
 	xoutAllowance: z.boolean().nullish(),

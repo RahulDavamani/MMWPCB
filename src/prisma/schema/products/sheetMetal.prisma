@@ -1,0 +1,118 @@
+model SheetMetal {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   name     String
+   fileName String?
+
+   weight       Float
+   initialPrice Float?
+   finalPrice   Float?
+
+   quantity           Int[]
+   designUnits        SMDesignUnit
+   material           SMMaterial
+   materialType       SMMaterialType
+   color              SMColor
+   surfaceFinish      SMSurfaceFinish
+   surfaceFinishColor String?
+
+   technicalDrawing   String?
+   threadsTappedHoles Boolean
+   inserts            Boolean
+   tolerance          Int
+   wielding           Boolean
+
+   silkScreen         String
+   laserEngraving     Boolean
+   partsAssembly      SMPartsAssembly
+   finishedAppearance SMFinishedAppearance
+   inspection         SMInspection
+
+   productDescription SMProductDescription
+   specialRequests    String
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+   fabricationStatuses ProductFabricationStatus[]
+}
+
+enum SMDesignUnit {
+   MM
+   CM
+   INCH
+}
+
+enum SMMaterial {
+   ALUMINUM
+   STAINLESS_STEEL
+   MILD_STEEL
+   COPPER
+   CARBON_FIBER
+}
+
+enum SMMaterialType {
+   ALUMINUM_5052
+   ALUMINUM_6061
+   STAINLESS_STEEL_201
+   STAINLESS_STEEL_301
+   STAINLESS_STEEL_304
+   STAINLESS_STEEL_316
+   MILD_STEEL_1018
+   COPPER_101
+   COPPER_C110
+   COPPER_260
+   CARBON_FIBER_PLATE
+}
+
+enum SMColor {
+   SILVER_WHITE
+   SILVER
+   SILVER_GRAY
+   COPPER
+   BLACK
+}
+
+enum SMSurfaceFinish {
+   NONE
+   STANDARD
+   BRUSHED
+   BEAD_BLAST
+   SPRAY_PAINTING_MATT
+   SPRAY_PAINTING_HIGH_GLOSS
+   POWDER_COAT_MATT
+   POWDER_COAT_HIGH_GLOSS
+   SANDING_1000
+   OTHERS
+}
+
+enum SMPartsAssembly {
+   NO
+   ASSEMBLY_TEST
+   SHIP_ASSEMBLY
+}
+
+enum SMFinishedAppearance {
+   STANDARD
+   PREMIUM
+}
+
+enum SMInspection {
+   STANDARD_INSPECTION
+   STANDARD_INSPECTION_FORMAL_REPORT
+   CMM_INSPECTION_FORMAL_REPORT
+   SOURCE_MATERIAL_CERTIFICATION
+}
+
+enum SMProductDescription {
+   PRINTER_ENCLOSURE
+   INK_CARTRIDGE
+   MOTORCYCLE_CONNECTOR_ENCLOSURE
+   CNC_LATHE_REPLACEMENT_ARM
+   HEADBAND
+   WHEEL_PLATE
+   RECORDER_ENCLOSURE
+   COMPOUND_OPTICAL_MICROSCOPE
+}

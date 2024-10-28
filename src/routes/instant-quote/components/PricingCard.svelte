@@ -31,26 +31,28 @@
 
 	<div class="flex justify-between mr-2">
 		<div class="font-semibold">{l.weight}</div>
-		<div class="font-mono">0.5 Kg</div>
+		<div class="font-mono">{$quote.products[$quote.productType].weight.toFixed(2)} Kg</div>
 	</div>
 
-	<div class="font-semibold mt-4">{l.buildTime}:</div>
-	<div class="text-sm mt-2 px-2">
-		{#each buildTimes as { name, value, price }}
-			<div class="flex justify-between">
-				<FormControl inputType="In" label={name}>
-					<input
-						type="radio"
-						name="buildTime"
-						class="radio radio-primary radio-xs"
-						{value}
-						bind:group={$quote.products.standardPcb.buildTime}
-					/>
-				</FormControl>
-				<div class="font-mono">${price.toFixed(2)}</div>
-			</div>
-		{/each}
-	</div>
+	{#if ['standardPcb', 'advancedPcb', 'flexiblePcb', 'rigidFlex', 'assembly', 'stencil'].includes($quote.productType)}
+		<div class="font-semibold mt-4">{l.buildTime}:</div>
+		<div class="text-sm mt-2 px-2">
+			{#each buildTimes as { name, value, price }}
+				<div class="flex justify-between">
+					<FormControl inputType="In" label={name}>
+						<input
+							type="radio"
+							name="buildTime"
+							class="radio radio-primary radio-xs"
+							{value}
+							bind:group={$quote.products[$quote.productType].buildTime}
+						/>
+					</FormControl>
+					<div class="font-mono">${price.toFixed(2)}</div>
+				</div>
+			{/each}
+		</div>
+	{/if}
 
 	<div class="font-semibold mt-4">{l.chargeDetails}:</div>
 	<div class="text-sm space-y-2 mt-4 px-2">

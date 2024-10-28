@@ -1,0 +1,128 @@
+model InjectionMolding {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   name     String
+   fileName String?
+
+   weight       Float
+   initialPrice Float?
+   finalPrice   Float?
+
+   quantity           Int
+   minExpectedVolume  Int
+   maxExpectedVolume  Int?
+   designUnits        IMDesignUnit
+   material           IMMaterial
+   materialType       IMMaterialType
+   color              IMColor
+   spiFinish          IMSPIFinish
+   toolRequirements   String
+   molds              IMMolds
+   surfaceFinish      IMSurfaceFinish
+   surfaceFinishColor String?
+
+   technicalDrawing   String?
+   threadsTappedHoles Boolean
+   inserts            Boolean
+   tolerance          Int
+
+   silkScreen         String
+   laserEngraving     Boolean
+   partsAssembly      IMPartsAssembly
+   finishedAppearance IMFinishedAppearance
+   inspection         IMInspection
+
+   productDescription IMProductDescription
+   specialRequests    String
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+   fabricationStatuses ProductFabricationStatus[]
+}
+
+enum IMDesignUnit {
+   MM
+   CM
+   INCH
+}
+
+enum IMMaterial {
+   ABS
+   POM
+   NYLON
+   PVC
+   TPU
+}
+
+enum IMMaterialType {
+   ABS
+   POM
+   NYLON
+   PVC
+   TPU
+}
+
+enum IMColor {
+   BLACK
+   WHITE
+   TRANSPARENT
+   GRAY
+   RED
+   BLUE
+   GREEN
+   YELLOW
+}
+
+enum IMSPIFinish {
+   SPI_A1
+   SPI_A2
+   SPI_A3
+   SPI_B1
+   SPI_B2
+   SPI_B3
+   SPI_C1
+   SPI_C2
+   SPI_C3
+   SPI_D1
+   SPI_D2
+   SPI_D3
+}
+
+enum IMMolds {
+   KEEP_MOLDS_FACTORY
+   MOLDS_SHIPPED
+}
+
+enum IMSurfaceFinish {
+   NONE
+}
+
+enum IMPartsAssembly {
+   NO
+   ASSEMBLY_TEST
+   SHIP_ASSEMBLY
+}
+
+enum IMFinishedAppearance {
+   STANDARD
+   PREMIUM
+}
+
+enum IMInspection {
+   STANDARD_INSPECTION
+   SOURCE_MATERIAL_CERTIFICATION
+}
+
+enum IMProductDescription {
+   PRINTER_ENCLOSURE
+   INK_CARTRIDGE
+   MOTORCYCLE_CONNECTOR_ENCLOSURE
+   CNC_LATHE_REPLACEMENT_ARM
+   HEADBAND
+   WHEEL_PLATE
+   RECORDER_ENCLOSURE
+   COMPOUND_OPTICAL_MICROSCOPE
+}

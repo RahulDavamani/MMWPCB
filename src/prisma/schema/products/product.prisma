@@ -25,4 +25,19 @@ model ProductFabricationStatus {
 
    stencilId String?
    stencil   Stencil? @relation(fields: [stencilId], references: [id])
+
+   cncId String?
+   cnc   CNC?    @relation(fields: [cncId], references: [id])
+
+   sheetMetalId String?
+   sheetMetal   SheetMetal? @relation(fields: [sheetMetalId], references: [id])
+
+   threePrintingId String?
+   threePrinting   ThreePrinting? @relation(fields: [threePrintingId], references: [id])
+
+   injectionMoldingId String?
+   injectionMolding   InjectionMolding? @relation(fields: [injectionMoldingId], references: [id])
+
+   vacuumCastingId String?
+   vacuumCasting   VacuumCasting? @relation(fields: [vacuumCastingId], references: [id])
 }

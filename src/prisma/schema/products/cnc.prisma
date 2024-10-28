@@ -1,0 +1,121 @@
+model CNC {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   name     String
+   fileName String?
+
+   weight       Float
+   initialPrice Float?
+   finalPrice   Float?
+
+   quantity           Int[]
+   designUnits        CNCDesignUnit
+   material           CNCMaterial
+   materialType       CNCMaterialType
+   color              CNCColor
+   surfaceFinish      CNCSurfaceFinish
+   surfaceFinishColor String?
+
+   technicalDrawing   String?
+   threadsTappedHoles Boolean
+   inserts            Boolean
+   tolerance          Float
+   surfaceRoughness   Float
+
+   silkScreen         String
+   laserEngraving     Boolean
+   partsAssembly      CNCPartsAssembly
+   finishedAppearance CNCFinishedAppearance
+   inspection         CNCInspection
+
+   productDescription CNCProductDescription
+   specialRequests    String
+
+   orderId String
+   order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+   fabricationStatuses ProductFabricationStatus[]
+}
+
+enum CNCDesignUnit {
+   MM
+   CM
+   INCH
+}
+
+enum CNCMaterial {
+   ALUMINUM
+   STAINLESS_STEEL
+   MILD_STEEL
+   COPPER
+   CARBON_FIBER
+}
+
+enum CNCMaterialType {
+   ALUMINUM_5052
+   ALUMINUM_6061
+   ALUMINUM_7075
+   ALUMINUM_2A12
+   STAINLESS_STEEL_201
+   STAINLESS_STEEL_303
+   STAINLESS_STEEL_304
+   STAINLESS_STEEL_316
+   STAINLESS_STEEL_430
+   MILD_STEEL_1018
+   MILD_STEEL_1045
+   MILD_STEEL_A36
+   COPPER
+   CARBON_FIBER_PLATE
+}
+
+enum CNCColor {
+   SILVER_WHITE
+   SILVER
+   SILVER_GRAY
+   COPPER
+   BLACK
+}
+
+enum CNCSurfaceFinish {
+   NONE
+   STANDARD
+   BRUSHED
+   BEAD_BLAST
+   SPRAY_PAINTING_MATT
+   SPRAY_PAINTING_HIGH_GLOSS
+   POWDER_COAT_MATT
+   POWDER_COAT_HIGH_GLOSS
+   SANDING_1000
+   OTHERS
+}
+
+enum CNCPartsAssembly {
+   NO
+   ASSEMBLY_TEST
+   SHIP_ASSEMBLY
+}
+
+enum CNCFinishedAppearance {
+   STANDARD
+   PREMIUM
+}
+
+enum CNCInspection {
+   STANDARD_INSPECTION
+   STANDARD_INSPECTION_FORMAL_REPORT
+   CMM_INSPECTION_FORMAL_REPORT
+   SOURCE_MATERIAL_CERTIFICATION
+}
+
+enum CNCProductDescription {
+   PRINTER_ENCLOSURE
+   INK_CARTRIDGE
+   MOTORCYCLE_CONNECTOR_ENCLOSURE
+   CNC_LATHE_REPLACEMENT_ARM
+   HEADBAND
+   WHEEL_PLATE
+   RECORDER_ENCLOSURE
+   COMPOUND_OPTICAL_MICROSCOPE
+}
