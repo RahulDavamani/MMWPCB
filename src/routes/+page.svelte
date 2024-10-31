@@ -3,6 +3,7 @@
 	import Carousel from './components/home/Carousel.svelte';
 	import InstantQuote from './components/home/InstantQuote.svelte';
 	import PlaceOrder from './components/home/PlaceOrder.svelte';
+	import ProductCards from './components/home/ProductCards.svelte';
 	import Layout from './components/layout/Layout.svelte';
 </script>
 
@@ -14,5 +15,6 @@
 	<div class="space-y-12">
 		<InstantQuote />
 		<PlaceOrder />
+		<ProductCards />
 	</div>
 </Layout>

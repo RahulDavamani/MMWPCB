@@ -1,3 +1,9 @@
+<script>
+	import { goto } from '$app/navigation';
+	import { productTypes } from '../../../stores/product.store';
+	import { quote } from '../../../stores/quote.store';
+</script>
+
 <footer class="footer bg-base-200 text-base-content p-10">
 	<aside>
 		<svg
@@ -42,24 +48,45 @@
 			</a>
 		</div>
 	</aside>
-	<nav>
+
+	<nav class="leading-4">
+		<h6 class="footer-title">Instant Quote</h6>
+		{#each Object.values($productTypes).slice(0, 6) as { title, key }}
+			<button
+				on:click={async () => {
+					await goto('/instant-quote');
+					$quote.productType = key;
+				}}
+				class="link link-hover">{title}</button
+			>
+		{/each}
+	</nav>
+	<nav class="leading-4">
+		<h6 class="footer-title opacity-0">Instant Quote</h6>
+		{#each Object.values($productTypes).slice(6, 11) as { title, key }}
+			<button
+				on:click={async () => {
+					await goto('/instant-quote');
+					$quote.productType = key;
+				}}
+				class="link link-hover">{title}</button
+			>
+		{/each}
+	</nav>
+	<nav class="leading-4">
 		<h6 class="footer-title">Services</h6>
-		<a class="link link-hover">Branding</a>
-		<a class="link link-hover">Design</a>
-		<a class="link link-hover">Marketing</a>
-		<a class="link link-hover">Advertisement</a>
+		<a href="/products/pcb-capabilities" class="link link-hover">PCB Capabilities</a>
+		<a href="/products/pcb-capabilities" class="link link-hover">Prototype PCBs</a>
+		<a href="/products/pcb-capabilities" class="link link-hover">Our Equipment</a>
+		<a href="/products/pcb-capabilities" class="link link-hover">Quick Turn PCB Fabrication</a>
+		<a href="/products/pcb-capabilities" class="link link-hover">Quality Control</a>
 	</nav>
-	<nav>
+	<nav class="leading-4">
 		<h6 class="footer-title">Company</h6>
-		<a class="link link-hover">About us</a>
-		<a class="link link-hover">Contact</a>
-		<a class="link link-hover">Jobs</a>
-		<a class="link link-hover">Press kit</a>
-	</nav>
-	<nav>
-		<h6 class="footer-title">Legal</h6>
-		<a class="link link-hover">Terms of use</a>
-		<a class="link link-hover">Privacy policy</a>
-		<a class="link link-hover">Cookie policy</a>
+		<a href="/why-us" class="link link-hover">About us</a>
+		<a href="/support" class="link link-hover">Support</a>
+		<a href="/terms-conditions" class="link link-hover">Terms & Conditions</a>
+		<a href="/privacy-policy" class="link link-hover">Privacy policy</a>
+		<a href="/refund-policy" class="link link-hover">Refund policy</a>
 	</nav>
 </footer>

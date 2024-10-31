@@ -12,6 +12,8 @@
 	};
 </script>
 
+<div class="text-xl font-bold mb-2">Products</div>
+
 <div class="grid grid-cols-4 gap-8 mt-8">
 	{#each Object.values($productTypes) as { key, title, img }}
 		<button class="rounded-box shadow-lg grow p-4">

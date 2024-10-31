@@ -65,7 +65,7 @@ export const quote = (() => {
 			set({
 				init: true,
 				isEdit: false,
-				productType: 'cnc',
+				productType: 'standardPcb',
 				products: cloneDeep(defaultProducts),
 				files: {}
 			});
