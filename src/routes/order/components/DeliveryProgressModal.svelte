@@ -9,8 +9,8 @@
 
 <Modal {modalId} title={$lg.order.trackDelivery} boxClasses="max-w-sm w-full" dividerClasses="mb-2">
 	<ul class="steps steps-vertical">
-		{#each deliveryStatuses as { status, completed, completedAt }}
-			<li class="step {completed && 'step-primary'}">
+		{#each deliveryStatuses as { status, completedAt }}
+			<li class="step {completedAt && 'step-primary'}">
 				<div class="text-left">
 					<div>{status}</div>
 					{#if completedAt}

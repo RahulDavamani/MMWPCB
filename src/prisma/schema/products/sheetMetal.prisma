@@ -1,5 +1,5 @@
 model SheetMetal {
-   id        String   @id @default(nanoid())
+   id        String   @id
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 

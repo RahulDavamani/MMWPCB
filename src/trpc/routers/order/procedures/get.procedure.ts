@@ -9,11 +9,10 @@ const productSelect = {
 		fileName: true,
 		quantity: true,
 		weight: true,
-		buildTime: true,
 		initialPrice: true,
 		finalPrice: true,
 		fabricationStatuses: {
-			select: { status: true, completed: true, completedAt: true },
+			select: { id: true, status: true, completedAt: true },
 			orderBy: { num: 'asc' as 'asc' | 'desc' }
 		}
 	}
@@ -24,7 +23,11 @@ export const get = userProcedure.input(z.object({ id: z.string().min(1).nullable
 		await prisma.order
 			.findFirstOrThrow({
 				where: id ? { id, userId: user.id } : { status: 'CART', userId: user.id },
-				include: {
+				select: {
+					id: true,
+					createdAt: true,
+					completedAt: true,
+					status: true,
 					standardPcbs: productSelect,
 					advancedPcbs: productSelect,
 					flexiblePcbs: productSelect,
@@ -36,15 +39,64 @@ export const get = userProcedure.input(z.object({ id: z.string().min(1).nullable
 					threePrintings: productSelect,
 					injectionMoldings: productSelect,
 					vacuumCastings: productSelect,
-					timeline: true,
-					deliveryAddress: true,
-					shippingInfo: true,
+					deliveryAddress: {
+						select: {
+							id: true,
+							addressId: true,
+							name: true,
+							phone: true,
+							addressLine1: true,
+							addressLine2: true,
+							city: true,
+							state: true,
+							country: true,
+							postalCode: true
+						}
+					},
+					shippingInfo: {
+						select: {
+							id: true,
+							countryId: true,
+							methodId: true,
+							countryName: true,
+							methodName: true,
+							price: true,
+							deliveryTime: true,
+							restriction: true
+						}
+					},
+					paymentInfo: {
+						select: {
+							id: true,
+							transactionId: true,
+							transactionCreatedAt: true,
+							paymentInstrumentType: true
+						}
+					},
 					reviewMessages: {
-						include: { user: { select: { role: true } } },
+						select: {
+							id: true,
+							createdAt: true,
+							message: true,
+							user: { select: { id: true, role: true } }
+						},
 						orderBy: { createdAt: 'asc' }
 					},
-					paymentInfo: true,
-					deliveryStatuses: true
+					deliveryStatuses: {
+						select: {
+							id: true,
+							status: true,
+							completedAt: true
+						},
+						orderBy: { num: 'asc' }
+					},
+					timeline: {
+						select: {
+							id: true,
+							action: true,
+							message: true
+						}
+					}
 				}
 			})
 			.catch(pe)

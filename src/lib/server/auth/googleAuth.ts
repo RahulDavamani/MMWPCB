@@ -2,6 +2,7 @@ import { generateCodeVerifier, generateState, Google, OAuth2RequestError } from 
 import { BASE_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '$env/static/private';
 import { redirect, type RequestEvent } from '@sveltejs/kit';
 import { lucia } from './lucia';
+import { customAlphabet } from 'nanoid';
 
 export const google = new Google(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, `${BASE_URL}/login/google/callback`);
 export const codeVerifier = generateCodeVerifier();
@@ -61,7 +62,7 @@ export const googleCallback = async ({ url, cookies }: RequestEvent) => {
 					phone: '',
 					profilePic: '',
 					accounts: { create: { provider: 'google', providerId: user.sub } },
-					orders: { create: { status: 'CART' } }
+					orders: { create: { id: customAlphabet('1234567890', 10)(), status: 'CART' } }
 				},
 				select: {
 					id: true,

@@ -5,7 +5,6 @@
 	import { showModal } from '$lib/client/modal';
 	import { supabase } from '$lib/client/supabase';
 	import { order } from '../../../stores/order.store';
-	import { timeToText } from '$lib/DateTime';
 	import FabricationProgressModal from './FabricationProgressModal.svelte';
 	import { lg } from '../../../stores/i18n.store';
 
@@ -42,9 +41,9 @@
 					<tr>
 						<!-- <th></th> -->
 						<th class="min-w-48">{l.product}</th>
-						<th class="text-center">{l.buildTime}</th>
+						<!-- <th class="text-center">{l.buildTime}</th> -->
 						<th class="text-center">{l.quantity}</th>
-						<th class="text-center">{l.gerberFile}</th>
+						<th class="text-center">{l.file}</th>
 						<th class="text-center">{l.quotePrice}</th>
 						{#if showFinalPrice}
 							<th class="text-center">{l.finalPrice}</th>
@@ -60,9 +59,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each products as { id, type, name, quantity, buildTime, fileName, initialPrice, finalPrice, fabricationStatuses }}
+					{#each products as { id, type, name, quantity, fileName, initialPrice, finalPrice, fabricationStatuses }}
 						{@const fileUrl = fileName
-							? supabase.storage.from('Gerber Files').createSignedUrl(fileName, 300)
+							? supabase.storage.from('Product Files').createSignedUrl(fileName, 300)
 							: undefined}
 
 						{@const fabricationProgress = fabricationStatuses.length
@@ -100,7 +99,7 @@
 									{/if}
 								</div>
 							</td>
-							<td class="text-center">{timeToText(buildTime)}</td>
+							<!-- <td class="text-center">{timeToText(buildTime)}</td> -->
 							<td class="text-center">{quantity}</td>
 							<td class="text-center">
 								{#if fileName && fileUrl}
@@ -119,12 +118,14 @@
 									<div class="text-error">{l.notUploaded}</div>
 								{/if}
 							</td>
-							<td class="text-center font-mono !{showFinalPrice && 'font-semibold'}">${initialPrice.toFixed(2)}</td>
+							<td class="text-center font-mono !{showFinalPrice && 'font-semibold'}">
+								{initialPrice ? `$${initialPrice.toFixed(2)}` : 'RFQ'}
+							</td>
 							{#if showFinalPrice && finalPrice}
 								{@const textColor =
-									finalPrice > initialPrice
+									finalPrice > (initialPrice ?? 0)
 										? 'text-error'
-										: finalPrice < initialPrice
+										: finalPrice < (initialPrice ?? 0)
 											? 'text-success'
 											: 'text-primary'}
 								<td class="text-center font-mono font-semibold {textColor}">${finalPrice.toFixed(2)}</td>

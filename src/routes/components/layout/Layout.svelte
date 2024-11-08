@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Footer from './Footer.svelte';
 	import Navbar from './Navbar.svelte';
+	import Footer from './Footer.svelte';
 
 	export let pageTitle: string | undefined = undefined;
 	export let navbar = true;

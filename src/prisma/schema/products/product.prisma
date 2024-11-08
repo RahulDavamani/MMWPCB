@@ -5,7 +5,6 @@ model ProductFabricationStatus {
 
    num         Int
    status      String
-   completed   Boolean
    completedAt DateTime?
 
    standardPcbId String?

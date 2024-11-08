@@ -14,7 +14,7 @@
 	})();
 	$: cartCount = cartItems ? Object.values(cartItems).reduce((acc, cur) => acc + cur.length, 0) : 0;
 	$: cartTotal = cartItems
-		? Object.values(cartItems).reduce((acc, cur) => acc + cur.reduce((acc, cur) => acc + cur.initialPrice, 0), 0)
+		? Object.values(cartItems).reduce((acc, cur) => acc + cur.reduce((acc, cur) => acc + (cur.initialPrice ?? 0), 0), 0)
 		: 0;
 </script>
 
@@ -50,7 +50,7 @@
 								<span class="font-mono font-semibold min-w-8">{quantity}0</span>
 								x <span class="ml-2">{name}</span>
 							</div>
-							<div class="font-mono">${initialPrice.toFixed(2)}</div>
+							<div class="font-mono">{initialPrice ? `$${initialPrice.toFixed(2)}` : 'RFQ'}</div>
 						</div>
 					{/each}
 				{/each}

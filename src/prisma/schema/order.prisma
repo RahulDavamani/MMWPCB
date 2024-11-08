@@ -1,5 +1,5 @@
 model Order {
-   id        String   @id @default(nanoid())
+   id        String   @id
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
@@ -26,9 +26,9 @@ model Order {
    shippingInfo    OrderShippingInfo?
    paymentInfo     OrderPaymentInfo?
 
-   timeline         OrderTimeline[]
    reviewMessages   OrderReviewMessage[]
    deliveryStatuses OrderDeliveryStatus[]
+   timeline         OrderTimeline[]
 }
 
 enum OrderStatus {
@@ -158,7 +158,6 @@ model OrderDeliveryStatus {
 
    num         Int
    status      String
-   completed   Boolean
    completedAt DateTime?
 
    orderId String

@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { lg } from '../../../stores/i18n.store';
 	import { order } from '../../../stores/order.store';
 	import Modal from '../../components/UI/Modal.svelte';
@@ -34,4 +34,4 @@
 			</ul>
 		{/if}
 	{/if}
-</Modal>
+</Modal> -->

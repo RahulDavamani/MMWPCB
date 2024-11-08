@@ -1,13 +1,21 @@
 import { z } from 'zod';
-import { userProcedure } from '../../../server';
+import { adminProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
 
-export const complete = userProcedure.input(z.object({ id: z.string().min(1) })).mutation(
-	async ({ ctx: { user }, input: { id } }) =>
+export const complete = adminProcedure.input(z.object({ id: z.string().min(1) })).mutation(
+	async ({ input: { id } }) =>
 		await prisma.order
 			.update({
-				where: { id, userId: user.id },
-				data: { status: 'COMPLETED' }
+				where: { id },
+				data: {
+					status: 'COMPLETED',
+					deliveryStatuses: {
+						updateMany: {
+							where: { completedAt: null },
+							data: { completedAt: new Date() }
+						}
+					}
+				}
 			})
 			.catch(pe)
 );

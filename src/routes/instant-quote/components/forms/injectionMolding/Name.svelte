@@ -4,8 +4,8 @@
 	import { quote, quoteError } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';
 
-	$: pd = $productDetails.cnc.name;
-	$: isError = $quoteError.cnc.name;
+	$: pd = $productDetails.injectionMolding.name;
+	$: isError = $quoteError.injectionMolding.name;
 </script>
 
 <FormItem {pd} {isError}>
@@ -13,6 +13,6 @@
 		type="text"
 		class="input input-bordered input-sm {isError && 'input-error'}"
 		placeholder={$lg.common.typeHere}
-		bind:value={$quote.products.cnc.name}
+		bind:value={$quote.products.injectionMolding.name}
 	/>
 </FormItem>

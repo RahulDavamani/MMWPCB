@@ -4,15 +4,23 @@
 	import type { PageData } from '../../$types';
 	import { lg } from '../../../stores/i18n.store';
 
+	export let isPortal = false;
+
 	$: l = $lg.navbar.user;
 	$: ({ user, session } = $page.data as PageData);
 
 	$: menuItems = [
-		{
-			name: l.orders,
-			icon: 'mdi:clipboard-text-outline',
-			href: '/orders'
-		},
+		isPortal
+			? {
+					name: 'Go to Web App',
+					icon: 'mdi:application-outline',
+					href: '/'
+				}
+			: {
+					name: l.orders,
+					icon: 'mdi:clipboard-text-outline',
+					href: '/orders'
+				},
 		{
 			name: l.profile,
 			icon: 'mdi:account-outline',

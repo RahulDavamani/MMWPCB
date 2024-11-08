@@ -6,6 +6,8 @@
 	import SmallCart from './SmallCart.svelte';
 	import ProductsMenu from './ProductsMenu.svelte';
 	import SupportMenu from './navbar/SupportMenu.svelte';
+	import Icon from '@iconify/svelte';
+	import type { PageData } from '../../$types';
 
 	$: l = $lg.navbar;
 
@@ -16,6 +18,7 @@
 		{ name: l.whyUs, href: '/why-us' },
 		{ name: l.support, href: '/support' }
 	];
+	$: ({ user } = $page.data as PageData);
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
@@ -85,6 +88,13 @@
 			</div>
 		</div>
 		<div class="flex items-center gap-6">
+			{#if user?.role === 'ADMIN'}
+				<a href="/portal/dashboard" class="btn btn-sm btn-outline btn-info">
+					<Icon icon="mdi:person" width="18" />
+					Admin Portal
+				</a>
+			{/if}
+
 			<I18N />
 
 			<SmallCart />

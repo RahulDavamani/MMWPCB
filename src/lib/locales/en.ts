@@ -2949,6 +2949,49 @@ export const en = {
 			cancelReviewSuccess: 'Review cancelled successfully'
 		},
 
+		approveReview: {
+			noPriceError: 'Update the product prices',
+			approvingReview: 'Approving Review',
+			approveReviewError: 'Failed to approve review',
+			approveReviewSuccess: 'Review approved successfully'
+		},
+
+		rejectReview: {
+			rejectingReview: 'Rejecting Review',
+			rejectReviewError: 'Failed to reject review',
+			rejectReviewSuccess: 'Review rejected successfully'
+		},
+
+		startFabrication: {
+			startingFabrication: 'Starting Fabrication',
+			startFabricationError: 'Failed to start fabrication',
+			startFabricationSuccess: 'Fabrication started successfully'
+		},
+
+		updateFabrication: {
+			completingFabrication: 'Updating Fabrication Progress',
+			updateFabricationError: 'Failed to update fabrication progress',
+			updateFabricationSuccess: 'Fabrication progress updated successfully'
+		},
+
+		completeFabrication: {
+			completingFabrication: 'Completing Fabrication',
+			completeFabricationError: 'Failed to complete fabrication',
+			completeFabricationSuccess: 'Fabrication completed successfully'
+		},
+
+		updateDelivery: {
+			updatingDelivery: 'Updating Delivery Progress',
+			updateDeliveryError: 'Failed to update delivery progress',
+			updateDeliverySuccess: 'Delivery progress updated successfully'
+		},
+
+		completeOrder: {
+			completingOrder: 'Completing Order',
+			completeOrderError: 'Failed to complete order',
+			completeOrderSuccess: 'Order completed successfully'
+		},
+
 		orderMessage: {
 			review: {
 				title: 'Your order has been submitted for review',
@@ -3000,7 +3043,7 @@ export const en = {
 			product: 'Product',
 			buildTime: 'Build Time',
 			quantity: 'Quantity',
-			gerberFile: 'Gerber File',
+			file: 'File',
 			quotePrice: 'Quote Price',
 			finalPrice: 'Final Price',
 			details: 'Details',

@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { userProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
+import { customAlphabet } from 'nanoid';
 
 export const submitReview = userProcedure
 	.input(z.object({ id: z.string().min(1) }))
@@ -26,6 +27,7 @@ export const submitReview = userProcedure
 		if (status === 'CART')
 			await prisma.order.create({
 				data: {
+					id: customAlphabet('1234567890', 10)(),
 					status: 'CART',
 					userId: user.id
 				}

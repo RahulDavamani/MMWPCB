@@ -13,7 +13,7 @@ import { page } from '$app/stores';
 import { lg } from './i18n.store';
 import { goto, invalidateAll } from '$app/navigation';
 import { supabase } from '$lib/client/supabase';
-import { nanoid } from 'nanoid';
+import { customAlphabet, nanoid } from 'nanoid';
 import type { PageData } from '../routes/instant-quote/edit/$types';
 import { productDetails, type ProductType } from './product.store';
 import type { RigidFlex } from '../zod/products/rigidFlex.schema';
@@ -93,7 +93,7 @@ export const quote = (() => {
 			const selectedProduct = products[productType];
 			const file = files[productType];
 
-			selectedProduct.id = id ?? nanoid();
+			selectedProduct.id = id ?? customAlphabet('1234567890', 10)();
 			if (isEdit && selectedProduct.fileName) {
 				await supabase.storage.from('Product Files').remove([selectedProduct.fileName]);
 			}
@@ -114,7 +114,7 @@ export const quote = (() => {
 					tce(e, {
 						callback: async () => {
 							if (selectedProduct.fileName)
-								await supabase.storage.from('Gerber Files').remove([selectedProduct.fileName]);
+								await supabase.storage.from('Product Files').remove([selectedProduct.fileName]);
 						},
 						showModal: {
 							title: isEdit ? l.updateProductError : orderId ? l.addOrderError : l.saveCartError,

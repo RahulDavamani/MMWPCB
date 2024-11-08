@@ -11,7 +11,10 @@ import { sheetMetalSchema } from '../../../../zod/products/sheetMetal.schema';
 import { threePrintingSchema } from '../../../../zod/products/threePrinting.schema';
 import { injectionMoldingSchema } from '../../../../zod/products/injectionMolding.schema';
 import { vacuumCastingSchema } from '../../../../zod/products/vacuumCasting.schema';
+import { customAlphabet } from 'nanoid';
+import { TRPCError } from '@trpc/server';
 import pe from '../../../../prisma/pe';
+import type { Prisma } from '@prisma/client';
 
 const schema = z.object({
 	orderId: z.string().min(1),
@@ -28,85 +31,54 @@ const schema = z.object({
 	vacuumCasting: vacuumCastingSchema.optional()
 });
 
-export const upsertProduct = userProcedure.input(schema).mutation(
-	async ({
-		input: {
-			orderId,
-			standardPcb,
-			advancedPcb,
-			flexiblePcb,
-			rigidFlex,
-			assembly,
-			stencil,
-			cnc,
-			sheetMetal,
-			threePrinting,
-			injectionMolding,
-			vacuumCasting
-		},
-		ctx: { user }
-	}) =>
-		await prisma.order
-			.update({
-				where: { id: orderId, userId: user.id },
-				data: {
-					standardPcbs: (() => {
-						if (!standardPcb) return undefined;
-						const { id, ...values } = standardPcb;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})(),
-					advancedPcbs: (() => {
-						if (!advancedPcb) return undefined;
-						const { id, ...values } = advancedPcb;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})(),
-					flexiblePcbs: (() => {
-						if (!flexiblePcb) return undefined;
-						const { id, ...values } = flexiblePcb;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})(),
-					rigidFlexes: (() => {
-						if (!rigidFlex) return undefined;
-						const { id, ...values } = rigidFlex;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})(),
-					assemblies: (() => {
-						if (!assembly) return undefined;
-						const { id, ...values } = assembly;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})(),
-					stencils: (() => {
-						if (!stencil) return undefined;
-						const { id, ...values } = stencil;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})(),
-					cncs: (() => {
-						if (!cnc) return undefined;
-						const { id, ...values } = cnc;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})(),
-					sheetMetals: (() => {
-						if (!sheetMetal) return undefined;
-						const { id, ...values } = sheetMetal;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})(),
-					threePrintings: (() => {
-						if (!threePrinting) return undefined;
-						const { id, ...values } = threePrinting;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})(),
-					injectionMoldings: (() => {
-						if (!injectionMolding) return undefined;
-						const { id, ...values } = injectionMolding;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})(),
-					vacuumCastings: (() => {
-						if (!vacuumCasting) return undefined;
-						const { id, ...values } = vacuumCasting;
-						return { upsert: { where: { id: id ?? '' }, create: values, update: values } };
-					})()
-				},
-				select: { id: true }
-			})
-			.catch(pe)
-);
+export const upsertProduct = userProcedure
+	.input(schema)
+	.mutation(
+		async ({
+			input: {
+				orderId,
+				standardPcb,
+				advancedPcb,
+				flexiblePcb,
+				rigidFlex,
+				assembly,
+				stencil,
+				cnc,
+				sheetMetal,
+				threePrinting,
+				injectionMolding,
+				vacuumCasting
+			},
+			ctx: { user }
+		}) => {
+			let product;
+			if (standardPcb) product = { key: 'standardPcbs', data: standardPcb };
+			else if (advancedPcb) product = { key: 'advancedPcbs', data: advancedPcb };
+			else if (flexiblePcb) product = { key: 'flexiblePcbs', data: flexiblePcb };
+			else if (rigidFlex) product = { key: 'rigidFlexes', data: rigidFlex };
+			else if (assembly) product = { key: 'assemblies', data: assembly };
+			else if (stencil) product = { key: 'stencils', data: stencil };
+			else if (cnc) product = { key: 'cncs', data: cnc };
+			else if (sheetMetal) product = { key: 'sheetMetals', data: sheetMetal };
+			else if (threePrinting) product = { key: 'threePrintings', data: threePrinting };
+			else if (injectionMolding) product = { key: 'injectionMoldings', data: injectionMolding };
+			else if (vacuumCasting) product = { key: 'vacuumCastings', data: vacuumCasting };
+			else throw new TRPCError({ code: 'BAD_REQUEST', message: 'Invalid product' });
+
+			return await prisma.order
+				.update({
+					where: { id: orderId, userId: user.id },
+					data: {
+						[product.key]: {
+							upsert: {
+								where: { id: product.data.id },
+								create: product.data,
+								update: product.data
+							}
+						}
+					},
+					select: { id: true }
+				})
+				.catch(pe);
+		}
+	);

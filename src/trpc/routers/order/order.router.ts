@@ -14,9 +14,11 @@ import { remove } from './procedures/remove.procedure';
 import { approveReview } from './procedures/approveReview.procedure';
 import { rejectReview } from './procedures/rejectReview.procedure';
 import { insertReviewMessage } from './procedures/insertReviewMessage.procedure';
-import { upsertFabrication } from './procedures/upsertFabrication.procedure';
-import { upsertDelivery } from './procedures/upsertDelivery.procedure';
+import { updateDelivery } from './procedures/updateDelivery.procedure';
 import { complete } from './procedures/complete.procedure';
+import { startFabrication } from './procedures/startFabrication.procedure';
+import { updateFabrication } from './procedures/updateFabrication.procedure';
+import { completeFabrication } from './procedures/completeFabrication.procedure';
 
 export const order = router({
 	get,
@@ -33,8 +35,10 @@ export const order = router({
 	approveReview,
 	rejectReview,
 	insertReviewMessage,
-	upsertFabrication,
-	upsertDelivery,
+	startFabrication,
+	updateFabrication,
+	completeFabrication,
+	updateDelivery,
 	complete,
 	remove
 });

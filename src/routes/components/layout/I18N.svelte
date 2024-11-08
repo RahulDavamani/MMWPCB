@@ -14,7 +14,7 @@
 		{language.toUpperCase()}/{currency.toUpperCase()}
 		<Icon icon="mdi:keyboard-arrow-down" />
 	</div>
-	<div tabindex="0" class="dropdown-content bg-base-100 rounded-box z-[1] w-80 p-4 shadow text-sm">
+	<div tabindex="0" class="dropdown-content bg-base-100 rounded-box z-[100] w-80 p-4 shadow text-sm">
 		<div class="font-bold mb-3">{l.language}:</div>
 		<div class="flex justify-around flex-wrap gap-4">
 			{#each Object.values(languages) as { key, name, icon }}

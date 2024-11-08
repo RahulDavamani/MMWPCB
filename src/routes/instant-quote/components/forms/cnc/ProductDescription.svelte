@@ -4,8 +4,6 @@
 	import FormItem from '../../FormItem.svelte';
 
 	$: pd = $productDetails.cnc.productDescription;
-	$: console.log($productDetails.cnc.productDescription);
-	$: console.log($quote.products.cnc.productDescription);
 </script>
 
 <FormItem {pd}>
