@@ -9,6 +9,7 @@ export const complete = adminProcedure.input(z.object({ id: z.string().min(1) })
 				where: { id },
 				data: {
 					status: 'COMPLETED',
+					completedAt: new Date(),
 					deliveryStatuses: {
 						updateMany: {
 							where: { completedAt: null },

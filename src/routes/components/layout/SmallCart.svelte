@@ -29,7 +29,7 @@
 	<div tabindex={0} class="dropdown-content mt-4 z-[50] bg-base-100 border shadow rounded-box w-96 p-4">
 		<div class="flex justify-between px-2 mb-4">
 			<div class="text-lg font-bold">{l.myCart} ({cartCount})</div>
-			<a href="/order" class="btn btn-primary btn-outline btn-sm">{l.proceedToCheckout}</a>
+			<a href="/cart" class="btn btn-primary btn-outline btn-sm">{l.proceedToCheckout}</a>
 		</div>
 
 		{#if !cartItems}

@@ -3,8 +3,8 @@
 	import type { RouterOutput } from '../../../trpc/routers/app.router';
 	import { closeModal, showModal } from '$lib/client/modal';
 	import { lg } from '../../../stores/i18n.store';
-	import SelectShippingModal from '../../order/components/SelectShippingModal.svelte';
 	import IconBtn from '../../components/IconBtn.svelte';
+	import SelectShippingModal from '../../components/order/SelectShippingModal.svelte';
 
 	$: l = $lg.shipping;
 

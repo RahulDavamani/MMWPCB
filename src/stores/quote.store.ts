@@ -13,7 +13,7 @@ import { page } from '$app/stores';
 import { lg } from './i18n.store';
 import { goto, invalidateAll } from '$app/navigation';
 import { supabase } from '$lib/client/supabase';
-import { customAlphabet, nanoid } from 'nanoid';
+import { customAlphabet } from 'nanoid';
 import type { PageData } from '../routes/instant-quote/edit/$types';
 import { productDetails, type ProductType } from './product.store';
 import type { RigidFlex } from '../zod/products/rigidFlex.schema';
@@ -129,7 +129,7 @@ export const quote = (() => {
 			});
 			reset();
 			await invalidateAll();
-			await goto(`/order?id=${orderId ?? $page.data.cart.id}`);
+			await goto(`/orders/${orderId ?? $page.data.cart.id}`);
 		})();
 
 	return { subscribe, set, update, reset, init, upsertProduct };
