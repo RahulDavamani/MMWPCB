@@ -36,7 +36,8 @@ export const standardPcbDetails = (lg: Lang) => {
 
 	const buildTime = {
 		key: 'buildTime',
-		l: l.buildTime
+		l: l.buildTime,
+		parseValue: (val: StandardPcb['buildTime']) => `${val / 3600} Hours`
 	};
 
 	const weight = {
@@ -265,8 +266,9 @@ export const standardPcbDetails = (lg: Lang) => {
 
 	const rogers = (() => {
 		const values = [
-			{ title: 'Rogers 4003C', value: 'ROGERS_4003C' },
-			{ title: 'Rogers 4350B', value: 'ROGERS_4350B' }
+			{ title: 'Rogers 5880', value: 'ROGERS_5880' },
+			{ title: 'Rogers 4350', value: 'ROGERS_4350' },
+			{ title: 'Rogers 4003', value: 'ROGERS_4003' }
 		] as { title: string; value: StandardPcb['rogers'] }[];
 
 		return {

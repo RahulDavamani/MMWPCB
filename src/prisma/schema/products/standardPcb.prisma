@@ -118,8 +118,9 @@ enum SPFr4TG {
 }
 
 enum SPRogers {
-   ROGERS_4003C
-   ROGERS_4350B
+   ROGERS_5880
+   ROGERS_4350
+   ROGERS_4003
 }
 
 enum spStructureMCPCB {

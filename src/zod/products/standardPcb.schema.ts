@@ -14,7 +14,7 @@ export const spMaterial = z.enum(['FR_4', 'ALUMINUM', 'ROGERS', 'HDI', 'COPPER_B
 
 export const spFr4TG = z.enum(['TG130_140', 'TG150_160', 'TG170_180', 'S1000H_TG150', 'S1000_2M_TG170']);
 
-export const spRogers = z.enum(['ROGERS_4003C', 'ROGERS_4350B']);
+export const spRogers = z.enum(['ROGERS_5880', 'ROGERS_4350', 'ROGERS_4003']);
 
 export const spStructureMCPCB = z.enum(['METAL_CORE_MIDDLE', 'METAL_BASE_BOTTOM']);
 

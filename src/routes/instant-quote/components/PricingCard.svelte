@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import FormControl from '../../components/FormControl.svelte';
-	import { quote, quoteError } from '../../../stores/quote.store';
+	import { quote, quoteError, quotePrice } from '../../../stores/quote.store';
 	import { page } from '$app/stores';
 	import type { PageData } from '../$types';
 	import { lg } from '../../../stores/i18n.store';
@@ -14,10 +14,7 @@
 		{ name: '12 Hours', value: 43200, price: 99 }
 	];
 
-	$: chargeDetails = [
-		{ name: 'PCB Cost', price: 5 },
-		{ name: 'Material', price: 0 }
-	];
+	$: ({ chargeDetails, total } = $quotePrice);
 
 	$: disabled = Object.values($quoteError[$quote.productType]).filter(Boolean).length > 0;
 </script>
@@ -37,18 +34,18 @@
 	{#if ['standardPcb', 'advancedPcb', 'flexiblePcb', 'rigidFlex', 'assembly', 'stencil'].includes($quote.productType)}
 		<div class="font-semibold mt-4">{l.buildTime}:</div>
 		<div class="text-sm mt-2 px-2">
-			{#each buildTimes as { name, value, price }}
+			{#each buildTimes as buildTime}
 				<div class="flex justify-between">
-					<FormControl inputType="In" label={name}>
+					<FormControl inputType="In" label={buildTime.name}>
 						<input
 							type="radio"
 							name="buildTime"
 							class="radio radio-primary radio-xs"
-							{value}
-							bind:group={$quote.products[$quote.productType].buildTime}
+							checked={$quote.buildTime.value === buildTime.value}
+							on:change={() => ($quote.buildTime = buildTime)}
 						/>
 					</FormControl>
-					<div class="font-mono">${price.toFixed(2)}</div>
+					<div class="font-mono">${buildTime.price.toFixed(2)}</div>
 				</div>
 			{/each}
 		</div>
@@ -59,7 +56,13 @@
 		{#each chargeDetails as { name, price }}
 			<div class="flex justify-between">
 				<div>{name}</div>
-				<div class="font-mono">${price.toFixed(2)}</div>
+				<div class="font-mono">
+					{#if price !== null}
+						${price.toFixed(2)}
+					{:else}
+						RFQ
+					{/if}
+				</div>
 			</div>
 		{/each}
 	</div>
@@ -67,7 +70,13 @@
 	<div class="divider mb-0" />
 	<div class="flex justify-between font-bold mt-2 pr-2">
 		<div>{l.total}</div>
-		<div class="font-mono">$5.00</div>
+		<div class="font-mono">
+			{#if total !== null}
+				${total.toFixed(2)}
+			{:else}
+				RFQ
+			{/if}
+		</div>
 	</div>
 
 	{#if user}
