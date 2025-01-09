@@ -4,7 +4,11 @@ import type { Session, User } from 'lucia';
 import superjson from 'superjson';
 
 // Context
-export const createContext = async ({ locals: { user, session } }: RequestEvent) => ({ user, session });
+export const createContext = async ({ locals: { user, session }, cookies }: RequestEvent) => ({
+	user,
+	session,
+	cookies
+});
 
 // TRPC
 export const t = initTRPC.context<typeof createContext>().create({ transformer: superjson });
@@ -13,7 +17,7 @@ export const { router, procedure, middleware, createCallerFactory } = t;
 // Middlewares
 const isNoAuth = middleware(({ ctx, next }) => {
 	if (ctx.user) throw new TRPCError({ code: 'FORBIDDEN' });
-	return next({ ctx });
+	return next({ ctx } as { ctx: { user: undefined; session: Session } });
 });
 const isUser = middleware(({ ctx, next }) => {
 	if (!ctx.user) throw new TRPCError({ code: 'UNAUTHORIZED' });

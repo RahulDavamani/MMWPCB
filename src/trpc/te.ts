@@ -84,7 +84,7 @@ export const te = <T>(e: unknown): TRPCHandlerError<T> => {
 		} catch (_) {
 			return {
 				code: e.data?.httpStatus,
-				message: e.stack ?? e.message
+				message: e.message ?? e.stack
 			};
 		}
 	}
@@ -92,7 +92,7 @@ export const te = <T>(e: unknown): TRPCHandlerError<T> => {
 	if (e instanceof TRPCError)
 		return {
 			code: getErrorCode({ trpc: e.code })?.http ?? 500,
-			message: e.stack ?? e.message
+			message: e.message ?? e.stack
 		};
 
 	return {
