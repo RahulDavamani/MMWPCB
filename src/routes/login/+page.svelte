@@ -69,7 +69,7 @@
 				<!-- <FormControl inputType="In" label={l.rememberMe}>
 					<input type="checkbox" class="checkbox checkbox-primary" />
 				</FormControl> -->
-				<div class="btn btn-link">{l.forgotPassword}</div>
+				<a href="/forgot-password" class="btn btn-link">{l.forgotPassword}</a>
 			</div>
 
 			<button class="btn btn-primary w-full mt-4" on:click={signIn}>{l.signIn}</button>

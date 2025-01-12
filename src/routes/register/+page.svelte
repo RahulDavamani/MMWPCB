@@ -46,7 +46,7 @@
 
 		let code = customAlphabet('1234567890', 6)();
 		await trpc()
-			.auth.sendOtp.mutate({ email: user.email, otp: code })
+			.auth.sendOtp.mutate({ email: user.email, otp: code, newUser: true })
 			.catch((e) => tce(e, { showModal: { title: 'Failed to send OTP', retryFn: sendOtp } }));
 
 		otp = code;
@@ -75,6 +75,7 @@
 			otp: ''
 		};
 		otp = null;
+		showError = false;
 	};
 </script>
 
@@ -82,26 +83,26 @@
 	<div class="card max-w-lg w-full shadow-xl mx-auto my-10">
 		<div class="card-body">
 			{#if otp}
-				<h2 class="font-bold text-2xl mb-2">Verify OTP</h2>
+				<h2 class="font-bold text-2xl mb-4">Verify OTP</h2>
 
-				<div class="mb-3">OTP has been sent via Email to <span class="italic font-semibold">{user.email}</span></div>
+				<div class="text-sm mb-2">
+					OTP has been sent via Email to <span class="italic font-semibold">{user.email}</span>
+				</div>
 
 				<FormControl>
-					<input
-						type="number"
-						placeholder="Enter code here"
-						class="input input-bordered w-full"
-						bind:value={user.otp}
-					/>
+					<label class="flex items-center gap-2 input input-bordered">
+						<Icon icon="mdi:password" />
+						<input type="number" class="grow" placeholder="Enter code here" bind:value={user.otp} />
+					</label>
 				</FormControl>
 
-				<div class="flex justify-between items-center">
+				<div class="flex justify-between items-center text-sm">
 					<div>Didn't get the OTP?</div>
 					<button class="btn btn-link" on:click={sendOtp}>Resend OTP</button>
 				</div>
 
-				<button class="btn btn-primary w-full my-2" on:click={verifyOtp}>Verify OTP</button>
-				<div class="flex justify-center items-center">
+				<button class="btn btn-primary w-full mt-4" on:click={verifyOtp}>Verify OTP</button>
+				<div class="flex justify-center items-center mt-2">
 					<div>Not your email?</div>
 					<button class="btn btn-link btn-xs text-sm text-secondary" on:click={reset}>Change Email</button>
 				</div>
@@ -136,18 +137,23 @@
 						</label>
 					</FormControl>
 
-					<FormControl
-						bottomLabel={error.password ? 'Please enter a value' : error.invalidPassword ? 'Invalid Password' : ''}
-						bottomLabelClasses="text-error"
+					<div
+						class="tooltip tooltip-info tooltip-right w-full"
+						data-tip="Password must be 8-15 characters long and contain at least one uppercase letter, one lowercase letter, and one number"
 					>
-						<label
-							class="flex items-center gap-2 input input-bordered {(error.password || error.invalidPassword) &&
-								'input-error'}"
+						<FormControl
+							bottomLabel={error.password ? 'Please enter a value' : error.invalidPassword ? 'Invalid Password' : ''}
+							bottomLabelClasses="text-error"
 						>
-							<Icon icon="mdi:password" />
-							<input type="password" class="grow" placeholder={$lg.user.password} bind:value={user.password} />
-						</label>
-					</FormControl>
+							<label
+								class="flex items-center gap-2 input input-bordered {(error.password || error.invalidPassword) &&
+									'input-error'}"
+							>
+								<Icon icon="mdi:password" />
+								<input type="password" class="grow" placeholder={$lg.user.password} bind:value={user.password} />
+							</label>
+						</FormControl>
+					</div>
 
 					<FormControl
 						bottomLabel={error.confirmPassword
