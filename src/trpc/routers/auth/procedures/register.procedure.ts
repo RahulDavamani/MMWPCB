@@ -3,6 +3,7 @@ import { noAuthProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
 import bcrypt from 'bcrypt';
 import { lucia } from '$lib/server/auth/lucia';
+import { customAlphabet } from 'nanoid';
 
 const schema = z.object({
 	firstName: z.string().min(1),
@@ -21,7 +22,9 @@ export const register = noAuthProcedure
 					...user,
 					role: 'USER',
 					phone: '',
-					accounts: { create: { provider: 'credential', passwordHash } }
+					profilePic: '',
+					accounts: { create: { provider: 'credential', passwordHash } },
+					orders: { create: { id: customAlphabet('1234567890', 10)(), status: 'CART' } }
 				},
 				select: { id: true }
 			})

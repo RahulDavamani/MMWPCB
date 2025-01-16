@@ -15,7 +15,7 @@ import { goto, invalidateAll } from '$app/navigation';
 import { supabase } from '$lib/client/supabase';
 import { customAlphabet } from 'nanoid';
 import type { PageData } from '../routes/instant-quote/edit/$types';
-import { productDetails, productTypes, type ProductType } from './product.store';
+import { productDetails, type ProductType } from './product.store';
 import type { RigidFlex } from '../zod/products/rigidFlex.schema';
 import type { CNC } from '../zod/products/cnc.schema';
 import type { VacuumCasting } from '../zod/products/vacuumCasting.schema';
@@ -148,6 +148,8 @@ export const quotePrice = derived(quote, ($quote) => {
 	let total: number | null = null;
 	if ($quote.productType === 'standardPcb') {
 		const { length, width, quantity, material, layers, rogers, thickness, surfaceFinish } = $quote.products.standardPcb;
+		const area = ((length / 10) * (width / 10) * quantity) / 10000;
+
 		if (material === 'FR_4') {
 			if (layers === 2)
 				chargeDetails = [
@@ -325,26 +327,29 @@ export const quotePrice = derived(quote, ($quote) => {
 			chargeDetails = [{ name: 'PCB Price', price: null }];
 			total = null;
 		} else {
-			const area = ((length / 10) * (width / 10) * quantity) / 10000;
 			chargeDetails = chargeDetails.map((charge) => ({ ...charge, price: (charge.price ?? 0) * area }));
 			total = chargeDetails.reduce((acc, charge) => acc + (charge.price ?? 0), 0);
 		}
 
 		if (surfaceFinish === 'IMMERSION_GOLD') {
-			chargeDetails.push({ name: 'Surface Finish', price: 405 });
-			if (total !== null) total += 405;
+			const price = 405 * area;
+			chargeDetails.push({ name: 'Surface Finish', price });
+			if (total !== null) total += price;
 		}
 		if (surfaceFinish === 'IMMERSION_TIN') {
-			chargeDetails.push({ name: 'Surface Finish', price: 45 });
-			if (total !== null) total += 45;
+			const price = 45 * area;
+			chargeDetails.push({ name: 'Surface Finish', price });
+			if (total !== null) total += price;
 		}
 		if (surfaceFinish === 'OSP') {
-			chargeDetails.push({ name: 'Surface Finish', price: 22.5 });
-			if (total !== null) total += 22.5;
+			const price = 22.5 * area;
+			chargeDetails.push({ name: 'Surface Finish', price });
+			if (total !== null) total += price;
 		}
 		if (surfaceFinish === 'ENEPIG') {
-			chargeDetails.push({ name: 'Surface Finish', price: 585 });
-			if (total !== null) total += 585;
+			const price = 585 * area;
+			chargeDetails.push({ name: 'Surface Finish', price });
+			if (total !== null) total += price;
 		}
 	}
 

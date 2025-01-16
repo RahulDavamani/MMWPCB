@@ -1,6 +1,6 @@
 import { page } from '$app/stores';
 import { derived, get, writable } from 'svelte/store';
-import type { PageData } from '../routes/order/$types';
+import type { PageData } from '../routes/orders/[id]/$types';
 import { ui } from './ui.store';
 import { trpc } from '../trpc/client';
 import { tce } from '../trpc/te';
@@ -80,7 +80,7 @@ export const order = derived(
 		const totalInitialPrice = products.reduce((acc, cur) => acc + (cur.initialPrice ?? 0), 0);
 		const totalFinalPrice = products.reduce((acc, cur) => acc + (cur.finalPrice ?? 0), 0);
 
-		const totalItemsPrice = products[0].finalPrice ? totalFinalPrice : totalInitialPrice;
+		const totalItemsPrice = products[0]?.finalPrice ? totalFinalPrice : totalInitialPrice;
 		const shippingPrice = shippingInfo?.price ?? 0;
 		const discount = totalItemsPrice * 0.1;
 		const taxes = (totalItemsPrice + shippingPrice - discount) * 0.25;

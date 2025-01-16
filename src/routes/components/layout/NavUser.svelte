@@ -26,11 +26,11 @@
 			icon: 'mdi:account-outline',
 			href: '/profile'
 		},
-		{
-			name: l.settings,
-			icon: 'mdi:settings-outline',
-			href: '/settings'
-		},
+		// {
+		// 	name: l.settings,
+		// 	icon: 'mdi:settings-outline',
+		// 	href: '/settings'
+		// },
 		{
 			name: l.logout,
 			icon: 'mdi:logout',
