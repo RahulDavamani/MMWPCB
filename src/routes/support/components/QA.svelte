@@ -12,10 +12,11 @@
 			<li>How do I set my shipping address?</li>
 			<li>How do I manage my shopping cart?</li>
 			<li>I have not received my order. What can I do?</li>
+			<li>How do I delete my account?</li>
 		</ul>
-		<a href="/support" class="btn btn-sm btn-outline btn-accent w-full mt-3">
+		<!-- <a href="/support" class="btn btn-sm btn-outline btn-accent w-full mt-3">
 			Ask a Question
 			<Icon icon="mdi:chat-question" width={18} />
-		</a>
+		</a> -->
 	</div>
 </div>

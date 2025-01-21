@@ -28,6 +28,7 @@
 	import SpecialRequests from './SpecialRequests.svelte';
 	import Name from './Name.svelte';
 	import GerberFile from '../../GerberFile.svelte';
+	import SurfaceFinishLayer from './SurfaceFinishLayer.svelte';
 </script>
 
 <GerberFile />
@@ -56,6 +57,7 @@
 <EdgeConnector />
 <div class="divider" />
 <SurfaceFinish />
+<SurfaceFinishLayer />
 <ViaProcess />
 <FinishedCopper />
 <InnerCopper />

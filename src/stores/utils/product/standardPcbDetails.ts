@@ -424,6 +424,20 @@ export const standardPcbDetails = (lg: Lang) => {
 		};
 	})();
 
+	const surfaceFinishLayer = (() => {
+		const values = [
+			{ title: l.surfaceFinishLayer.values.singleSide, value: 'SINGLE_SIDE' },
+			{ title: l.surfaceFinishLayer.values.doubleSide, value: 'DOUBLE_SIDE' }
+		] as { title: string; value: StandardPcb['surfaceFinishLayer'] }[];
+
+		return {
+			key: 'surfaceFinishLayer',
+			l: l.surfaceFinishLayer,
+			values,
+			parseValue: (val: StandardPcb['surfaceFinishLayer']) => values.find((v) => v.value === val)?.title
+		};
+	})();
+
 	const viaProcess = (() => {
 		const values = [
 			{ title: l.viaProcess.values.tentingVias, value: 'TENTING_VIAS' },
@@ -679,6 +693,7 @@ export const standardPcbDetails = (lg: Lang) => {
 		uvPrinting,
 		edgeConnector,
 		surfaceFinish,
+		surfaceFinishLayer,
 		viaProcess,
 		finishedCopper,
 		innerCopper,

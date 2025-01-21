@@ -19,10 +19,7 @@ model Assembly {
    sensitiveParts  Boolean
    alternatesChina Boolean
 
-   uniqueParts      Int
-   smdParts         Int
-   bgaParts         Int
-   throughHoleParts Int
+   solderPads Int
 
    customizedServices  ASCustomizedServices[]
    xrayTest            Int

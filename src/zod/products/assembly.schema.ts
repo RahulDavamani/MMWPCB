@@ -28,10 +28,7 @@ export const assemblySchema = z.object({
 	quantity: z.number(),
 	sensitiveParts: z.boolean(),
 	alternatesChina: z.boolean(),
-	uniqueParts: z.number(),
-	smdParts: z.number(),
-	bgaParts: z.number(),
-	throughHoleParts: z.number(),
+	solderPads: z.number(),
 	customizedServices: z.array(asCustomizedServices),
 	xrayTest: z.number(),
 	detailedInformation: z.string()

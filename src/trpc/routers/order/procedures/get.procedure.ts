@@ -22,7 +22,7 @@ export const get = userProcedure.input(z.object({ id: z.string().min(1).nullable
 	async ({ ctx: { user }, input: { id } }) =>
 		await prisma.order
 			.findFirstOrThrow({
-				where: id ? { id, userId: user.id } : { status: 'CART', userId: user.id },
+				where: id ? { id, userId: user.role === 'USER' ? user.id : undefined } : { status: 'CART', userId: user.id },
 				select: {
 					id: true,
 					createdAt: true,

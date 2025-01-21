@@ -147,7 +147,8 @@ export const quotePrice = derived(quote, ($quote) => {
 	let chargeDetails: { name: string; price: number | null }[] = [];
 	let total: number | null = null;
 	if ($quote.productType === 'standardPcb') {
-		const { length, width, quantity, material, layers, rogers, thickness, surfaceFinish } = $quote.products.standardPcb;
+		const { length, width, quantity, material, layers, rogers, thickness, surfaceFinish, surfaceFinishLayer } =
+			$quote.products.standardPcb;
 		const area = ((length / 10) * (width / 10) * quantity) / 10000;
 
 		if (material === 'FR_4') {
@@ -331,39 +332,67 @@ export const quotePrice = derived(quote, ($quote) => {
 			total = chargeDetails.reduce((acc, charge) => acc + (charge.price ?? 0), 0);
 		}
 
-		if (surfaceFinish === 'IMMERSION_GOLD') {
-			const price = 405 * area;
+		let surfaceFinishPrice: number | null = null;
+		if (surfaceFinishLayer === 'SINGLE_SIDE') {
+			if (surfaceFinish === 'IMMERSION_GOLD') surfaceFinishPrice = 405;
+			if (surfaceFinish === 'IMMERSION_TIN') surfaceFinishPrice = 45;
+			if (surfaceFinish === 'OSP') surfaceFinishPrice = 22.5;
+			if (surfaceFinish === 'ENEPIG') surfaceFinishPrice = 585;
+		}
+		if (surfaceFinishLayer === 'DOUBLE_SIDE') {
+			if (surfaceFinish === 'IMMERSION_GOLD') surfaceFinishPrice = 787.5;
+			if (surfaceFinish === 'IMMERSION_TIN') surfaceFinishPrice = 67.5;
+			if (surfaceFinish === 'OSP') surfaceFinishPrice = 22.5;
+			if (surfaceFinish === 'ENEPIG') surfaceFinishPrice = 1125;
+		}
+
+		if (surfaceFinishPrice) {
+			const price = surfaceFinishPrice * area;
 			chargeDetails.push({ name: 'Surface Finish', price });
 			if (total !== null) total += price;
 		}
-		if (surfaceFinish === 'IMMERSION_TIN') {
-			const price = 45 * area;
-			chargeDetails.push({ name: 'Surface Finish', price });
-			if (total !== null) total += price;
+	}
+
+	if ($quote.productType === 'flexiblePcb') {
+		const { length, width, quantity, layers, surfaceFinish } = $quote.products.flexiblePcb;
+		const area = ((length / 10) * (width / 10) * quantity) / 10000;
+
+		if (layers === 1) chargeDetails = [{ name: 'FPC Price', price: 90 }];
+		if (layers === 2) chargeDetails = [{ name: 'FPC Price', price: 101.25 }];
+		if (layers === 3) chargeDetails = [{ name: 'FPC Price', price: 247.5 }];
+		if (layers === 4) chargeDetails = [{ name: 'FPC Price', price: 337.5 }];
+		if (layers === 6) chargeDetails = [{ name: 'FPC Price', price: 562.5 }];
+
+		if (chargeDetails.length === 0) {
+			chargeDetails = [{ name: 'FPC Price', price: null }];
+			total = null;
+		} else {
+			chargeDetails = chargeDetails.map((charge) => ({ ...charge, price: charge.price ?? 0 }));
+			total = chargeDetails.reduce((acc, charge) => acc + (charge.price ?? 0), 0);
 		}
-		if (surfaceFinish === 'OSP') {
-			const price = 22.5 * area;
-			chargeDetails.push({ name: 'Surface Finish', price });
-			if (total !== null) total += price;
-		}
-		if (surfaceFinish === 'ENEPIG') {
-			const price = 585 * area;
+
+		let surfaceFinishPrice: number | null = null;
+		if (surfaceFinish === 'IMMERSION_GOLD') surfaceFinishPrice = 18;
+		if (surfaceFinish === 'IMMERSION_TIN') surfaceFinishPrice = 18;
+		if (surfaceFinish === 'OSP') surfaceFinishPrice = 6.75;
+
+		if (surfaceFinishPrice) {
+			const price = surfaceFinishPrice * area;
 			chargeDetails.push({ name: 'Surface Finish', price });
 			if (total !== null) total += price;
 		}
 	}
 
 	if ($quote.productType === 'assembly') {
-		const { quantity, uniqueParts, smdParts, bgaParts, throughHoleParts } = $quote.products.assembly;
-		const totalParts = uniqueParts + smdParts + bgaParts + throughHoleParts;
+		const { quantity, solderPads } = $quote.products.assembly;
 
 		let price: number;
-		if (totalParts < 100) price = 162;
-		else if (totalParts < 499) price = 214;
-		else if (totalParts < 999) price = 337.5;
-		else if (totalParts < 1999) price = 427.5;
-		else if (totalParts < 2999) price = 697.5;
-		else if (totalParts < 3999) price = 967.5;
+		if (solderPads < 100) price = 162;
+		else if (solderPads < 499) price = 214;
+		else if (solderPads < 999) price = 337.5;
+		else if (solderPads < 1999) price = 427.5;
+		else if (solderPads < 2999) price = 697.5;
+		else if (solderPads < 3999) price = 967.5;
 		else price = 1238;
 
 		chargeDetails = [{ name: 'PCBA Price', price: price * quantity }];
@@ -375,11 +404,11 @@ export const quotePrice = derived(quote, ($quote) => {
 		const area = length * width;
 
 		let price: number | null;
-		if (area < 173900) price = 162;
-		else if (area < 218400) price = 214;
-		else if (area < 357500) price = 337.5;
-		else if (area < 341056) price = 427.5;
-		else if (area < 541696) price = 697.5;
+		if (area < 173900) price = 112.5;
+		else if (area < 218400) price = 169;
+		else if (area < 357500) price = 214;
+		else if (area < 341056) price = 337.5;
+		else if (area < 541696) price = 630;
 		else price = null;
 
 		chargeDetails = [{ name: 'Stencil Price', price: price !== null ? price * quantity : null }];

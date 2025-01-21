@@ -50,6 +50,8 @@ export const spSurfaceFinish = z.enum([
 	'PLAIN_COPPER'
 ]);
 
+export const spSurfaceFinishLayer = z.enum(['SINGLE_SIDE', 'DOUBLE_SIDE']);
+
 export const spViaProcess = z.enum(['TENTING_VIAS', 'PLUGGED_VIAS_WITH_SOLDER_MASK', 'VIAS_NOT_COVERED']);
 
 export const spRemoveProductNo = z.enum(['YES', 'NO', 'SPECIFY_LOCATION']);
@@ -126,6 +128,7 @@ export const standardPcbSchema = z.object({
 	uvPrinting: spUVPrinting,
 	edgeConnector: z.boolean(),
 	surfaceFinish: spSurfaceFinish,
+	surfaceFinishLayer: spSurfaceFinishLayer,
 	surfaceThickness: z.number().nullish(),
 	acceptHASLChange: z.boolean().nullish(),
 	viaProcess: spViaProcess,

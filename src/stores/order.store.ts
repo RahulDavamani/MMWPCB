@@ -82,8 +82,8 @@ export const order = derived(
 
 		const totalItemsPrice = products[0]?.finalPrice ? totalFinalPrice : totalInitialPrice;
 		const shippingPrice = shippingInfo?.price ?? 0;
-		const discount = totalItemsPrice * 0.1;
-		const taxes = (totalItemsPrice + shippingPrice - discount) * 0.25;
+		const discount = totalItemsPrice * 0;
+		const taxes = (totalItemsPrice + shippingPrice - discount) * 0;
 		const orderTotal = totalItemsPrice + shippingPrice - discount + taxes;
 
 		const estDeliveryDate = new Date().toDateString();

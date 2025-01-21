@@ -457,6 +457,14 @@ export const en = {
 				acceptHASLChange:
 					'Tick means you accept we might change "HASL" to "ENIG" at our discretion without extra charge.'
 			},
+			surfaceFinishLayer: {
+				title: 'Surface Finish Layer',
+				description: 'Please select the surface finish layer you need',
+				values: {
+					singleSide: 'Single Side',
+					doubleSide: 'Double Side'
+				}
+			},
 			viaProcess: {
 				title: 'Via Process',
 				description:
@@ -1739,26 +1747,31 @@ export const en = {
 				title: 'Other Parameters',
 				description: 'Fill in to get the exact price, or leave it blank to wait for final quote.'
 			},
-			uniqueParts: {
-				title: 'Number of Unique Parts',
-				description: 'The variety of components in the BOM.',
-				error: 'Unique parts cannot be less than 0'
-			},
-			smdParts: {
-				title: 'Number of SMD Parts',
-				description: 'The total number of SMDs on each board (including fine pitch and leadless)',
-				error: 'SMD parts cannot be less than 0'
-			},
-			bgaParts: {
-				title: 'Number of BGA/QFP Parts',
-				description:
-					'Number of ICs with more than 16pins and SMD irregular parts with more than 10pins on each board. (SOP,QFP,QFN,BGA)',
-				error: 'BGA parts cannot be less than 0'
-			},
-			throughHoleParts: {
-				title: 'Number of Through-Hole Parts',
-				description: 'The total number of THT parts on each board (DIP NO.)',
-				error: 'Through-hole parts cannot be less than 0'
+			// uniqueParts: {
+			// 	title: 'Number of Unique Parts',
+			// 	description: 'The variety of components in the BOM.',
+			// 	error: 'Unique parts cannot be less than 0'
+			// },
+			// smdParts: {
+			// 	title: 'Number of SMD Parts',
+			// 	description: 'The total number of SMDs on each board (including fine pitch and leadless)',
+			// 	error: 'SMD parts cannot be less than 0'
+			// },
+			// bgaParts: {
+			// 	title: 'Number of BGA/QFP Parts',
+			// 	description:
+			// 		'Number of ICs with more than 16pins and SMD irregular parts with more than 10pins on each board. (SOP,QFP,QFN,BGA)',
+			// 	error: 'BGA parts cannot be less than 0'
+			// },
+			// throughHoleParts: {
+			// 	title: 'Number of Through-Hole Parts',
+			// 	description: 'The total number of THT parts on each board (DIP NO.)',
+			// 	error: 'Through-hole parts cannot be less than 0'
+			// },
+			solderPads: {
+				title: 'Number of PCBA Solder Pads',
+				description: 'The total number of solder pads on each board',
+				error: 'Solder pads cannot be less than 0'
 			},
 			customizedServices: {
 				title: 'Customized Services and Advanced Options',

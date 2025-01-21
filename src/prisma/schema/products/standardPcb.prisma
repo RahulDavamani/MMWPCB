@@ -44,9 +44,10 @@ model StandardPcb {
    uvPrinting      SPUVPrinting
    edgeConnector   Boolean
 
-   surfaceFinish    SPSurfaceFinish
-   surfaceThickness Float?
-   acceptHASLChange Boolean?
+   surfaceFinish      SPSurfaceFinish
+   surfaceFinishLayer SPSurfaceFinishLayer
+   surfaceThickness   Float?
+   acceptHASLChange   Boolean?
 
    viaProcess      SPViaProcess
    finishedCopper  Float
@@ -168,6 +169,11 @@ enum SPSurfaceFinish {
    IMMERSION_GOLD_SELECTIVE_HARD_GOLD
    ENEPIG
    PLAIN_COPPER
+}
+
+enum SPSurfaceFinishLayer {
+   SINGLE_SIDE
+   DOUBLE_SIDE
 }
 
 enum SPViaProcess {

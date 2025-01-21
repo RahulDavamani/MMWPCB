@@ -135,28 +135,10 @@ export const assemblyDetails = (lg: Lang) => {
 		};
 	})();
 
-	const uniqueParts = {
-		key: 'uniqueParts',
-		l: l.uniqueParts,
-		validate: (val: Assembly['uniqueParts']) => val < 0
-	};
-
-	const smdParts = {
-		key: 'smdParts',
-		l: l.smdParts,
-		validate: (val: Assembly['smdParts']) => val < 0
-	};
-
-	const bgaParts = {
-		key: 'bgaParts',
-		l: l.bgaParts,
-		validate: (val: Assembly['bgaParts']) => val < 0
-	};
-
-	const throughHoleParts = {
-		key: 'throughHoleParts',
-		l: l.throughHoleParts,
-		validate: (val: Assembly['throughHoleParts']) => val < 0
+	const solderPads = {
+		key: 'solderPads',
+		l: l.solderPads,
+		validate: (val: Assembly['solderPads']) => val < 0
 	};
 
 	const customizedServices = (() => {
@@ -239,10 +221,7 @@ export const assemblyDetails = (lg: Lang) => {
 		quantity,
 		sensitiveParts,
 		alternatesChina,
-		uniqueParts,
-		smdParts,
-		bgaParts,
-		throughHoleParts,
+		solderPads,
 		customizedServices,
 		xrayTest,
 		detailedInformation
