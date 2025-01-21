@@ -5,6 +5,8 @@
 	import { page } from '$app/stores';
 	import type { PageData } from '../$types';
 	import { lg } from '../../../stores/i18n.store';
+	import { showModal } from '$lib/client/modal';
+	import AddToOrderModal from './AddToOrderModal.svelte';
 
 	$: ({ user } = $page.data as PageData);
 	$: l = $lg.instantQuote.pricing;
@@ -94,7 +96,10 @@
 			</button>
 		{:else}
 			<div class="flex justify-between mt-6">
-				<button class="btn btn-secondary btn-outline text-base gap-4 {disabled && 'btn-disabled'}">
+				<button
+					class="btn btn-secondary btn-outline text-base gap-4 {disabled && 'btn-disabled'}"
+					on:click={() => showModal('addToOrderModal')}
+				>
 					<Icon icon="mdi:bookmark-add-outline" width={22} />
 					{l.addToOrder}
 				</button>
@@ -114,3 +119,5 @@
 		</a>
 	{/if}
 </div>
+
+<AddToOrderModal />

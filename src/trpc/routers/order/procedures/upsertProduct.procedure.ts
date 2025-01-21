@@ -11,10 +11,8 @@ import { sheetMetalSchema } from '../../../../zod/products/sheetMetal.schema';
 import { threePrintingSchema } from '../../../../zod/products/threePrinting.schema';
 import { injectionMoldingSchema } from '../../../../zod/products/injectionMolding.schema';
 import { vacuumCastingSchema } from '../../../../zod/products/vacuumCasting.schema';
-import { customAlphabet } from 'nanoid';
 import { TRPCError } from '@trpc/server';
 import pe from '../../../../prisma/pe';
-import type { Prisma } from '@prisma/client';
 
 const schema = z.object({
 	orderId: z.string().min(1),

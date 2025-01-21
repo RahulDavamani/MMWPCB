@@ -20,11 +20,13 @@ import { startFabrication } from './procedures/startFabrication.procedure';
 import { updateFabrication } from './procedures/updateFabrication.procedure';
 import { completeFabrication } from './procedures/completeFabrication.procedure';
 import { getDashboard } from './procedures/getDashboard.procedure';
+import { getSaved } from './procedures/getSaved.procedure';
 
 export const order = router({
 	get,
 	getAll,
 	getCart,
+	getSaved,
 	getDashboard,
 	getProduct,
 	upsertProduct,

@@ -2919,6 +2919,7 @@ export const en = {
 		method: 'Method',
 		weight: 'Weight',
 		shippingCost: 'Shipping Cost',
+		noShippingMethods: 'No Shipping Methods Available',
 		updatingShipping: 'Updating Shipping Method',
 		updateShippingError: 'Failed to update shipping info',
 		updateShippingSuccess: 'Shipping info updated successfully'

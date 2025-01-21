@@ -105,6 +105,10 @@
 									<td>{deliveryTime}</td>
 									<td>{restriction}</td>
 								</tr>
+							{:else}
+								<tr>
+									<td colspan="5" class="text-center">{l.noShippingMethods}</td>
+								</tr>
 							{/each}
 						</tbody>
 					</table>
