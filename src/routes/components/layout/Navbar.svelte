@@ -55,9 +55,9 @@
 			<div class="dropdown dropdown-hover">
 				<a
 					tabindex="0"
-					href="/products/pcb-capabilities"
+					href="/pc/printed-circuit-boards/pcb-capabilities"
 					class="btn btn-link text-black text-base underline-offset-8 decoration-secondary decoration-2
-            {route.startsWith('/products') && '!underline'}"
+               {route.startsWith('/pc') && '!underline'}"
 				>
 					{l.products}
 				</a>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Layout from '../components/layout/Layout.svelte';
-	import PCBCapabilitiesBanner from '$lib/assets/pcb-capabilities-banner.png';
+	import PCBanner from '$lib/assets/pc-banner.png';
 	import HigherQuality from '$lib/assets/why-us/higher-quality.jpg';
 	import LowerCost from '$lib/assets/why-us/lower-cost.png';
 	import FasterDelivery from '$lib/assets/why-us/faster-delivery.png';
@@ -18,7 +18,7 @@
 					</div>
 					<div class="btn btn-sm btn-outline btn-accent">Get Instant Quote</div>
 				</div>
-				<img src={PCBCapabilitiesBanner} alt="PCB Capabilities Banner" />
+				<img src={PCBanner} alt="PCB Capabilities Banner" />
 			</div>
 		</div>
 	</div>
