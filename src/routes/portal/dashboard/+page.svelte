@@ -45,7 +45,7 @@
 			value={dates}
 			on:close={(e) => {
 				if (e.detail[0].length === 2) {
-					dates = [new Date(e.detail[0][0].setHours(0, 0, 0, 0)), new Date(e.detail[0][1].setHours(23, 0, 0, 0))];
+					dates = [new Date(e.detail[0][0].setHours(0, 0, 0, 0)), new Date(e.detail[0][1].setHours(23, 59, 59, 999))];
 					fetchOrders();
 				}
 			}}

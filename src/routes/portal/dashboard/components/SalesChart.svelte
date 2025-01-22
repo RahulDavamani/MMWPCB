@@ -29,7 +29,10 @@
 		const labels = [];
 		const sales = [];
 
-		while (startDate.getMonth() <= endDate.getMonth()) {
+		while (
+			startDate.getFullYear() < endDate.getFullYear() ||
+			(startDate.getFullYear() === endDate.getFullYear() && startDate.getMonth() <= endDate.getMonth())
+		) {
 			const month = startDate.getMonth();
 			const year = startDate.getFullYear();
 			labels.push(`${months[month]} ${year}`);
@@ -69,6 +72,7 @@
 			sales.push(sale);
 
 			startDate.setMonth(startDate.getMonth() + 1);
+			startDate.setDate(1);
 		}
 
 		return { labels, sales };
