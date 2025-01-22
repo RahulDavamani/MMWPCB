@@ -75,11 +75,15 @@
 	</nav>
 	<nav class="leading-4">
 		<h6 class="footer-title">Services</h6>
-		<a href="/products/pcb-capabilities" class="link link-hover">PCB Capabilities</a>
-		<a href="/products/pcb-capabilities" class="link link-hover">Prototype PCBs</a>
-		<a href="/products/pcb-capabilities" class="link link-hover">Our Equipment</a>
-		<a href="/products/pcb-capabilities" class="link link-hover">Quick Turn PCB Fabrication</a>
-		<a href="/products/pcb-capabilities" class="link link-hover">Quality Control</a>
+		<a href="/pc/printed-circuit-boards/pcb-capabilities" class="link link-hover">PCB Capabilities</a>
+		<a href="/pc/printed-circuit-boards/multi-layer-laminated-structure" class="link link-hover"
+			>Multi-Layer Laminated Structure</a
+		>
+		<a href="/pc/printed-circuit-boards/quick-turn-pcb-fabrication" class="link link-hover"
+			>Quick Turn PCB Fabrication</a
+		>
+		<a href="/pc/printed-circuit-boards/pcb-prototyping" class="link link-hover">PCB Prototyping</a>
+		<a href="/pc/printed-circuit-boards/production-process" class="link link-hover">Production Process</a>
 	</nav>
 	<nav class="leading-4">
 		<h6 class="footer-title">Company</h6>
