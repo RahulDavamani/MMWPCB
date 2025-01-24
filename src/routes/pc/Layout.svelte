@@ -1,14 +1,16 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { pc } from '../../stores/pc.store';
 	import Layout from '../components/layout/Layout.svelte';
 	import Icon from '@iconify/svelte';
+	import PCBanner from '$lib/assets/pc-banner.png';
 
+	export let section: keyof typeof $pc;
 	export let title: string;
 	export let description: string | null = null;
 	export let button: { title: string; onClick: () => void } | null = null;
-	export let bannerImage: string;
-	export let section: string;
-	export let subsections: { title: string; href: string }[] = [];
+
+	$: ({ title: sectionTitle, subsections } = $pc[section]);
 </script>
 
 <Layout pageTitle={title}>
@@ -25,7 +27,7 @@
 					{/if}
 				</div>
 
-				<img src={bannerImage} alt="{title} Banner" />
+				<img src={PCBanner} alt="{title} Banner" />
 			</div>
 		</div>
 	</div>
@@ -33,10 +35,10 @@
 	<div class="flex gap-10">
 		<div class="join join-vertical rounded-none w-[24rem]">
 			<button class="btn join-item justify-between flex-nowrap text-left">
-				{section}
+				{sectionTitle}
 				<Icon icon="mdi:menu" width={24} />
 			</button>
-			{#each subsections as { title, href }}
+			{#each Object.values(subsections) as { title, href }}
 				<a
 					href="/pc{href}"
 					class="btn join-item justify-between flex-nowrap text-left

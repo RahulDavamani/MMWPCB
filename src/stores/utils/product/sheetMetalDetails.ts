@@ -108,11 +108,11 @@ export const sheetMetalDetails = (lg: Lang) => {
 
 	const color = (() => {
 		const values = [
-			{ title: lg.common.color.silverWhite, color: 'bg-slate-200', value: 'SILVER_WHITE' },
-			{ title: lg.common.color.silver, color: 'bg-slate-400', value: 'SILVER' },
-			{ title: lg.common.color.silverGray, color: 'bg-slate-600', value: 'SILVER_GRAY' },
-			{ title: lg.common.color.copper, color: 'bg-orange-600', value: 'COPPER' },
-			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' }
+			{ title: lg.color.silverWhite, color: 'bg-slate-200', value: 'SILVER_WHITE' },
+			{ title: lg.color.silver, color: 'bg-slate-400', value: 'SILVER' },
+			{ title: lg.color.silverGray, color: 'bg-slate-600', value: 'SILVER_GRAY' },
+			{ title: lg.color.copper, color: 'bg-orange-600', value: 'COPPER' },
+			{ title: lg.color.black, color: 'bg-black', value: 'BLACK' }
 		] as { title: string; color: string; value: SheetMetal['color'] }[];
 
 		return {

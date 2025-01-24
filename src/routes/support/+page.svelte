@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { lg } from '../../stores/i18n.store';
+	import { i18n, lg } from '../../stores/i18n.store';
 	import Layout from '../components/layout/Layout.svelte';
 	import Search from './components/Search.svelte';
 	import MoreTopics from './components/MoreTopics.svelte';

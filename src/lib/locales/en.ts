@@ -1,48 +1,57 @@
 export const en = {
 	common: {
-		login: 'Login',
-		or: 'Or',
 		yes: 'Yes',
 		no: 'No',
+		or: 'Or',
 		none: 'None',
-		color: {
-			white: 'White',
-			black: 'Black',
-			green: 'Green',
-			red: 'Red',
-			blue: 'Blue',
-			yellow: 'Yellow',
-			purple: 'Purple',
-			pink: 'Pink',
-			orange: 'Orange',
-			grey: 'Grey',
-			matteBlack: 'Matte Black',
-			matteGreen: 'Matte Green',
-			matteBlue: 'Matte Blue',
-			matteRed: 'Matte Red',
-			silver: 'Silver',
-			silverWhite: 'Silver White',
-			silverGray: 'Silver Gray',
-			metallic: 'Metallic',
-			copper: 'Copper',
-			darkBlack: 'Dark Black',
-			transparent: 'Transparent'
-		},
+
+		search: 'Search',
 		typeHere: 'Type here...',
-		select: 'Select',
+		pleaseEnterValue: 'Please enter a value',
+
 		warning: 'Warning',
 		error: 'Error',
-		retry: 'Retry',
-		moreDetails: 'More Details',
-		home: 'Home',
+
 		add: 'Add',
 		edit: 'Edit',
 		save: 'Save',
+		continue: 'Continue',
+		retry: 'Retry',
 		cancel: 'Cancel',
 		close: 'Close',
 		remove: 'Remove',
 		reset: 'Reset',
-		upload: 'Upload'
+
+		upload: 'Upload',
+		select: 'Select',
+		home: 'Home',
+		moreDetails: 'More Details',
+
+		noResultsFound: 'No results found'
+	},
+
+	color: {
+		white: 'White',
+		black: 'Black',
+		green: 'Green',
+		red: 'Red',
+		blue: 'Blue',
+		yellow: 'Yellow',
+		purple: 'Purple',
+		pink: 'Pink',
+		orange: 'Orange',
+		grey: 'Grey',
+		matteBlack: 'Matte Black',
+		matteGreen: 'Matte Green',
+		matteBlue: 'Matte Blue',
+		matteRed: 'Matte Red',
+		silver: 'Silver',
+		silverWhite: 'Silver White',
+		silverGray: 'Silver Gray',
+		metallic: 'Metallic',
+		copper: 'Copper',
+		darkBlack: 'Dark Black',
+		transparent: 'Transparent'
 	},
 
 	user: {
@@ -60,6 +69,8 @@ export const en = {
 		products: 'Products & Capabilities',
 		whyUs: 'Why Us?',
 		support: 'Support',
+		adminPortal: 'Admin Portal',
+		backToApp: 'Back to App',
 		login: 'Login',
 		i18n: {
 			language: 'Language',
@@ -83,21 +94,72 @@ export const en = {
 	},
 
 	login: {
-		pageTitle: 'Login',
-		signIn: 'Sign In',
-		rememberMe: 'Remember Me',
+		title: 'Login',
+		loggingIn: 'Logging In',
+		failedToLogin: 'Failed to login',
+		loginSuccess: 'You have logged in successfully',
+		invalidEmail: 'Invalid email',
 		forgotPassword: 'Forgot Password?',
 		dontHaveAccount: "Don't have an account?",
 		signInGoogle: 'Sign In with Google'
 	},
 
-	register: {
-		pageTitle: 'Register',
-		signUp: 'Sign Up',
+	signup: {
+		title: 'Sign up',
+		signingup: 'Signing up',
+		failedToSignup: 'Failed to sign up',
+		signupSuccess: 'You have signed up successfully',
+
+		verifyOtp: 'Verify OTP',
+		otpSent: 'OTP has been sent via Email to',
+		otpFailed: 'Failed to send OTP',
+		incorrectOTP: 'Incorrect OTP',
+		enterOtp: 'Please enter the OTP sent to your email',
+		didNotGetOtp: "Didn't get the OTP?",
+		resendOtp: 'Resend OTP',
+
+		notYourEmail: 'Not your email?',
+		changeEmail: 'Change Email',
+		invalidEmail: 'Invalid email',
+
 		confirmPassword: 'Confirm Password',
+		passwordTooltip: 'Password must contain at least 8 characters, including uppercase, lowercase and number',
+		invalidPassword: 'Invalid password',
+		passwordsDoNotMatch: 'Passwords do not match',
+
 		iAgree: 'I agree to sign up',
 		alreadyHaveAccount: 'Already have an account?',
 		signInGoogle: 'Sign In with Google'
+	},
+
+	forgotPassword: {
+		forgotPassword: 'Forgot Password',
+		enterEmail: 'Please enter your email and we will send a OTP to reset password',
+		backToLogin: 'Back to Login',
+
+		sendingOtp: 'Sending OTP',
+		otpSent: 'OTP has been sent via Email to',
+		otpFailed: 'Failed to send OTP',
+		incorrectOTP: 'Incorrect OTP',
+		enterOtp: 'Please enter the OTP sent to your email',
+		didNotGetOtp: "Didn't get the OTP?",
+		resendOtp: 'Resend OTP',
+
+		notYourEmail: 'Not your email?',
+		changeEmail: 'Change Email',
+		invalidEmail: 'Invalid email',
+		enterValidEmail: 'Please enter a valid email',
+
+		enterPassword: 'Please enter your new password',
+		confirmPassword: 'Confirm Password',
+		passwordTooltip: 'Password must contain at least 8 characters, including uppercase, lowercase and number',
+		invalidPassword: 'Invalid password',
+		passwordsDoNotMatch: 'Passwords do not match',
+		enterSamePassword: 'Please enter the same password',
+		resetPassword: 'Reset Password',
+		resettingPassword: 'Resetting Password',
+		resetPasswordFailed: 'Failed to reset password',
+		resetPasswordSuccess: 'Your password has been reset successfully'
 	},
 
 	profile: {
@@ -149,6 +211,264 @@ export const en = {
 		quoteNow: 'Quote Now'
 	},
 
+	support: {
+		title: 'Support',
+		subtitle: 'Hi, How can we help?',
+		quickLinks: {
+			howToOrder: 'How to Order',
+			generateGerberFile: 'Generate Gerber File',
+			accountSettings: 'Account Settings'
+		},
+		faqs: 'Frequently Asked Questions',
+		qa: 'Q&A',
+		moreTopics: 'More Topics',
+		sections: {
+			myOrders: {
+				title: 'My Orders',
+				subsections: {
+					ordering: {
+						title: 'Ordering',
+						questions: [
+							{
+								title: 'How to Place Orders for PCB and PCB Assembly?',
+								contents: [
+									[
+										'Purchasing PCBs from',
+										'MMWPCB.com',
+										'is easy and convenient. With just a few steps, you can enjoy affordable yet high-quality PCB prototyping services.'
+									],
+									['Video:', 'How to place an online order in PCBWay? One-minute video guide.'],
+									['Step 1: Click the service type you want. For example: PCB.'],
+									["Select and fill in the specifications, then click the 'Calculate' button to continue."]
+								]
+							},
+							{
+								title: 'How to Place a PCB Assembly Order (Inquiry)?',
+								contents: [
+									['Another update article(2022-02-25):', 'How to Upload PCB Assembly(PCBA) Inquiry'],
+									['There are 3 ways to place PCB Assembly order.'],
+									['1. Place PCB Assembly orders together with PCB order.'],
+									[
+										'You can click on the ',
+										'PCB Instant Quote',
+										'navigation bar to enter, after placing the PCB orders,select the assembly to fill in your assembly service parameters. Click Calculate to select the price, Add to Cart and upload files.'
+									]
+								]
+							},
+							{
+								title: 'How to Place a CNC Order?',
+								contents: [
+									[
+										"In addition to PCB manufacturing services, PCBWay also offers CNC Machining, 3D Printing, Sheet Metal Fabrication, Injection Molding, and Vacuum Casting services. When you go to the PCBWay website and then click on the “CNC/3D printing” section, you can see the five quote pages available here. The ordering processes of the five services are basically the same except for some selected parameters. Let's  introduce the ordering process of CNC Machining. Now let's get started!"
+									]
+								]
+							}
+						]
+					},
+					leadTime: {
+						title: 'Lead Time',
+						questions: [
+							{
+								title: 'How to Check the Estimated Finish Time?',
+								contents: [
+									['Before Payment'],
+									[
+										'Under the "Awaiting Payment" list, click on the product title or "View Detail" to bring up the product detail information box.'
+									],
+									['In this box, you will find the estimated finish time, as shown in the image below.']
+								]
+							},
+							{
+								title: 'Orders Combination, Shipping and Payment Policy',
+								contents: [
+									['One Payment, One Shipment!'],
+									[
+										'1. The purpose of order combination is to save on shipping costs. If your schedule for your PCBs is not tight, combine your orders and ship them together.'
+									],
+									[
+										'2. By combining all these orders into one group and paying now, you confirm that all these orders will be shipped together around [xx-xx-xx]. This is the date when we can complete your last PCB order in this order group, and we may need some extra time for the express company (no service on Sundays) to pick up your package.'
+									]
+								]
+							},
+							{
+								title: 'When will express order be produced?',
+								contents: [
+									[
+										"Since PCBWay launched the 24-Hour Express Service, it has brought many benefits to customers who often have urgent PCB projects on their agenda. However, it has also brought some complaints from customers whose orders are delayed. Due to the special nature of urgent orders, these customers' complaints are particularly critical. Data shows that most “delays” were caused by misunderstandings of the 24-Hour Express."
+									],
+									[
+										"1. First of all, define PCBWay's 24-Hour Express Service. The time span is from the start of production to the completion of production. It is worth noting that this time is not counted from the time of your payment."
+									],
+									[
+										'2. Payment should be made before 18:00 (GMT+8), or production arrangements will be postponed by one day.'
+									]
+								]
+							}
+						]
+					},
+					salesService: {
+						title: 'Sales Service',
+						questions: [
+							{
+								title: 'Can I change my sales representative?',
+								contents: [
+									[
+										'Each of our sales representatives has been professionally trained. If there are any shortcomings, we hope you can provide suggestions and corrections.'
+									],
+									[
+										'If you are not satisfied with your sales representative, please send your questions to service@mmwpcb.com to request a replacement.'
+									]
+								]
+							},
+							{
+								title: 'How to find my sales for help about the PCB or PCBA problem?',
+								contents: [
+									[
+										'If you have any questions, please contact your sales representative or use Online Chat. You can find their contact information in the following ways:'
+									],
+									[
+										'1. In the top right corner of your homepage or behind the order number, as indicated by the red boxes in the image below;'
+									],
+									['2. In your shopping cart or orders list;']
+								]
+							},
+							{
+								title: 'What to Do if the Sales Representative or After Sales Is Not Responding?',
+								contents: [
+									[
+										'1. It may be because the anti-spam mail system is playing a role, causing the email to be blocked or sent to spam. Please take the initiative to send a follow-up.'
+									],
+									[
+										'2. If they have not responded within a reasonable time frame and if you have questions about an order, you can:'
+									],
+									['a. Contact service@mmwpcb.com or feedback@mmwpcb.com for assistance.'],
+									['b. Open a dispute']
+								]
+							}
+						]
+					}
+				}
+			},
+			myAccount: {
+				title: 'My Account',
+				subsections: {
+					registeringSigningIn: {
+						title: 'Registering & Signing In',
+						questions: [
+							{
+								title: 'How do I register on PCBWay?',
+								contents: [
+									['1. Click Join on the homepage or at the top right corner of any PCBWay page'],
+									['2. Enter your email address and set and confirm your login password,then start shopping!'],
+									[
+										'Note: Make sure you enter the correct email address, Our system currently only recognizes characters from the English alphabet.'
+									]
+								]
+							},
+							{
+								title: 'My account is unavailable. What can I do?',
+								contents: [
+									['There are many reasons for your account to be unavailable, such as:'],
+									[
+										'1. Self-deactivation. In this case, we suggest you register a new account or contact service/sales representative.'
+									],
+									['2. Deactivated due to trading rules violation']
+								]
+							},
+							{
+								title: 'Can I become a mmwpcb distributor?',
+								contents: [
+									[
+										'You may visit your contact information submitted by',
+										'Become our Distributor',
+										'and we will contact you for cooperation.'
+									]
+								]
+							}
+						]
+					},
+					accountSettings: {
+						title: 'Account Settings',
+						questions: [
+							{
+								title: 'Account Settings',
+								contents: [
+									['How do I change my email address?'],
+									["Note: We don't recommend that you change your email address too frequently."]
+								]
+							},
+							{
+								title: 'How do I change my email address',
+								contents: [
+									[
+										'Customers old email is incorrect, or they have not received the verification email. They can submit a request for email change through "Apply for Email change" form. The customer needs to fill in the new email address and provide the reason for the change.'
+									],
+									['Here are the specific steps:'],
+									['Step 1: Account Settings->Change Email']
+								]
+							},
+							{
+								title: 'How can I use my email address for a new PCBWay account?',
+								contents: [
+									[
+										'If you have several PCBWay accounts and would like to link an existing email address to your new account, you need to:'
+									],
+									[
+										'1. Change the email address of your existing/old account first. At the moment, each PCBWay account can only be linked to one unique email address.'
+									],
+									[
+										'2. After you’ve successfully updated the address of your existing account, you can link your new account to the other email address.'
+									]
+								]
+							}
+						]
+					},
+					mmwpcbRewards: {
+						title: 'MMWPCB Rewards',
+						questions: [
+							{
+								title: 'How do I use my reward points?',
+								contents: [
+									[
+										'The MMWPCB Member Club has 6 levels—V0, V1, V2, V3, V4,V5. The level you are in determines the benefits & privileges you’re entitle_d to. All buyers are automatically assigned a membership level once they meet the minimum requirements (see the table below).'
+									],
+									['Benefit details:'],
+									['V0 Member 0% off', 'V1 Member 1% off', 'V2 Member 2% off', 'V3 Member 3% off']
+								]
+							},
+							{
+								title: 'What are the privileges of the MMWPCB Member Club?',
+								contents: [
+									[
+										'The MMWPCB Member Club has 6 levels—V0, V1, V2, V3, V4,V5. The level you are in determines the benefits & privileges you’re entitle__d to. All buyers are automatically assigned a membership level once they meet the minimum requirements (see the table below).'
+									],
+									['Benefit details:'],
+									['V0 Member 0% off', 'V1 Member 1% off', 'V2 Member 2% off', 'V3 Member 3% off']
+								]
+							},
+							{
+								title: 'My reward points have not been added to my account. What can I do?',
+								contents: [
+									[
+										'For a detailed introduction about PCBWay Points and Beans and how to earn them, please click',
+										'Detailed Introduction about PCBWay Points and Beans',
+										'to learn more.'
+									],
+									[
+										'If points have not yet been awarded to your account, it may be due to one of the following reasons:'
+									],
+									[
+										'1. The order is not in a completed status. Please check your order status, as points for placing orders are only awarded once the order is completed'
+									]
+								]
+							}
+						]
+					}
+				}
+			}
+		}
+	},
+
 	products: {
 		standardPcb: 'Standard PCB',
 		advancedPcb: 'Advanced PCB',
@@ -161,6 +481,260 @@ export const en = {
 		threePrinting: '3D Printing',
 		injectionMolding: 'Injection Molding',
 		vacuumCasting: 'Vacuum Casting'
+	},
+
+	shipping: {
+		shippingEstimate: 'Shipping Estimate',
+		shippingInfo: 'Shipping Info',
+		selectShippingMethod: 'Select Shipping Method',
+		shippingTo: 'Shipping to',
+		selectCountry: 'Select Country',
+		shippingMethod: 'Shipping Method',
+		price: 'Price',
+		deliveryTime: 'Delivery Time',
+		restriction: 'Restriction',
+		country: 'Country',
+		method: 'Method',
+		weight: 'Weight',
+		shippingCost: 'Shipping Cost',
+		noShippingMethods: 'No Shipping Methods Available',
+		updatingShipping: 'Updating Shipping Method',
+		updateShippingError: 'Failed to update shipping info',
+		updateShippingSuccess: 'Shipping info updated successfully'
+	},
+
+	orders: {
+		pageTitle: 'My Orders',
+		viewCart: 'View Cart',
+		orderId: 'Order ID',
+		createdDate: 'Created Date',
+		status: 'Status',
+		itemsCount: 'Items Count',
+		viewDetails: 'View Details'
+	},
+
+	order: {
+		pageTitle: 'Order',
+		allOrders: 'All Orders',
+		myCart: 'My Cart',
+		orderId: 'Order ID',
+
+		submitReview: {
+			noProducts: 'No products in the cart',
+			shippingError: 'Shipping info is not provided',
+			deliveryError: 'Delivery address is not provided',
+			filesNotUploaded: 'Product files are not uploaded',
+			submittingOrder: 'Submitting Order',
+			submitOrderError: 'Failed to submit order',
+			submitOrderSuccess: 'Order submitted successfully'
+		},
+
+		saveOrder: {
+			savingOrder: 'Saving Order',
+			saveOrderError: 'Failed to save order',
+			saveOrderSuccess: 'Order saved successfully'
+		},
+
+		cancelReview: {
+			cancellingReview: 'Cancelling Review',
+			cancelReviewError: 'Failed to cancel review',
+			cancelReviewSuccess: 'Review cancelled successfully'
+		},
+
+		approveReview: {
+			noPriceError: 'Update the product prices',
+			approvingReview: 'Approving Review',
+			approveReviewError: 'Failed to approve review',
+			approveReviewSuccess: 'Review approved successfully'
+		},
+
+		rejectReview: {
+			rejectingReview: 'Rejecting Review',
+			rejectReviewError: 'Failed to reject review',
+			rejectReviewSuccess: 'Review rejected successfully'
+		},
+
+		startFabrication: {
+			startingFabrication: 'Starting Fabrication',
+			startFabricationError: 'Failed to start fabrication',
+			startFabricationSuccess: 'Fabrication started successfully'
+		},
+
+		updateFabrication: {
+			completingFabrication: 'Updating Fabrication Progress',
+			updateFabricationError: 'Failed to update fabrication progress',
+			updateFabricationSuccess: 'Fabrication progress updated successfully'
+		},
+
+		completeFabrication: {
+			completingFabrication: 'Completing Fabrication',
+			completeFabricationError: 'Failed to complete fabrication',
+			completeFabricationSuccess: 'Fabrication completed successfully'
+		},
+
+		updateDelivery: {
+			updatingDelivery: 'Updating Delivery Progress',
+			updateDeliveryError: 'Failed to update delivery progress',
+			updateDeliverySuccess: 'Delivery progress updated successfully'
+		},
+
+		completeOrder: {
+			completingOrder: 'Completing Order',
+			completeOrderError: 'Failed to complete order',
+			completeOrderSuccess: 'Order completed successfully'
+		},
+
+		orderMessage: {
+			review: {
+				title: 'Your order has been submitted for review',
+				button: 'Cancel Review'
+			},
+			rejected: {
+				title: 'Your order review has been rejected',
+				description: 'Check the review messages for more detail',
+				button: 'Submit Again For Review'
+			},
+			approved: {
+				title: 'Your order review has been approved',
+				description: 'Check the updated prices and proceed with payment',
+				button: 'Proceed to Payment'
+			},
+			confirmed: {
+				title: 'Payment Success!',
+				description: 'Your order is confirmed and is now being processed'
+			},
+			fabrication: {
+				title: 'Fabrication in progress',
+				description: 'Check the progress status of each product'
+			},
+			delivery: {
+				title: 'Delivery in progress',
+				description: 'Your order is on the way',
+				button: 'Track Delivery'
+			},
+			completed: {
+				title: 'Order Completed!',
+				description: 'Thank you for shopping with us'
+			}
+		},
+
+		deliveryAddress: {
+			title: 'Delivery Address',
+			selectAddress: 'Select Delivery Address',
+			noAddressFound: 'No Address Found',
+			failedToGetAddress: 'Failed to get address',
+			updatingAddress: 'Updating Address',
+			selectAddressError: 'Failed to select delivery address',
+			selectAddressSuccess: 'Delivery address selected successfully'
+		},
+
+		productsTable: {
+			products: 'Products',
+			addProduct: 'Add Product',
+			noProductFound: 'No Product Found',
+			product: 'Product',
+			buildTime: 'Build Time',
+			quantity: 'Quantity',
+			file: 'File',
+			quotePrice: 'Quote Price',
+			finalPrice: 'Final Price',
+			details: 'Details',
+			edit: 'Edit',
+			notUploaded: 'Not Uploaded',
+			viewProgress: 'View Progress',
+			productDetails: {
+				title: 'Product Details',
+				failedToFetch: 'Failed to fetch product details'
+			},
+			fabrication: {
+				title: 'Fabrication ',
+				fabricationProgress: 'Fabrication Progress',
+				notStarted: 'Fabrication Not Started',
+				completed: 'Fabrication Completed'
+			}
+		},
+
+		reviewMessages: {
+			title: 'Review Messages',
+			failedToSend: 'Failed to send message',
+			noMessages: 'No Messages, yet',
+			conversationClosed: 'This conversation is closed'
+		},
+
+		orderSummary: {
+			title: 'Order Summary',
+			itemsCost: 'Items Cost',
+			shippingCost: 'Shipping Cost',
+			discount: 'Discount',
+			taxes: 'Taxes',
+			orderTotal: 'Order Total',
+			estDeliveryDate: 'Est Delivery Date',
+			estDeliveryDateDesc:
+				'The estimated shipping date is calculated based on the item with the longest build time in your order. Please note that this date is for reference only. If your order requires confirmation, the shipping date may be subject to extension.',
+			weight: 'Weight',
+			weightDesc:
+				'The weight here is calculated based on the larger value of gross weight and volume weight, which is estimated for reference. If the actual weight differs from the estimate, shipping cost may be adjusted accordingly.',
+			submitOrderForReview: 'Submit Order for Review',
+			saveOrder: 'Save Order'
+		},
+
+		payment: {
+			title: 'Payment Details',
+			transactionId: 'Transaction ID',
+			paymentTime: 'Payment Time',
+			paymentMethod: 'Payment Method',
+			totalAmount: 'Total Amount',
+			failedToGenerateToken: 'Failed to generate payment token',
+			failedToSubmit: 'Failed to submit payment',
+			checkout: 'Checkout',
+			amountToBePaid: 'Amount to be paid',
+			paymentSuccess: 'Payment Success',
+			paymentTotal: 'Payment Total',
+			print: 'Print',
+			payNow: 'Pay Now',
+			cancelPayment: 'Cancel Payment'
+		},
+
+		removeProduct: {
+			modalTitle: 'Are you sure to remove this product?',
+			modalTitleAll: 'Are you sure to remove all products?',
+			modalBody: 'This action cannot be undone',
+			removingProduct: 'Removing Product',
+			removingProductAll: 'Removing All Products',
+			removeProductError: 'Failed to remove product',
+			removeProductAllError: 'Failed to remove all products',
+			removeProductSuccess: 'Product removed successfully',
+			removeProductAllSuccess: 'All products removed successfully'
+		},
+
+		removeOrder: {
+			title: 'Remove Order',
+			description:
+				'This action will permanently delete the order and all its related information. This cannot be undone, so please proceed with caution.',
+			modalTitle: 'Are you sure to remove this order?',
+			modalBody: 'This action cannot be undone',
+			removingOrder: 'Removing Order',
+			removeOrderError: 'Failed to remove order',
+			removeOrderSuccess: 'Order removed successfully'
+		},
+
+		trackDelivery: 'Track Delivery'
+	},
+
+	orderStatus: {
+		CREATED: 'Order Created',
+		CART: 'Cart',
+		SAVED: 'Saved as Draft',
+		REVIEW: 'In Review',
+		REJECTED: 'Review Rejected',
+		APPROVED: 'Review Approved',
+		PAYMENT: 'Payment',
+		CONFIRMED: 'Order Confirmed',
+		FABRICATION: 'In Fabrication',
+		DELIVERY: 'Shipping & Delivery',
+		COMPLETED: 'Order Completed',
+		CANCELLED: 'Order Cancelled',
+		REFUNDED: 'Refunded'
 	},
 
 	instantQuote: {
@@ -2901,509 +3475,6 @@ export const en = {
 			specialRequests: {
 				title: 'Other Special Requests',
 				placeholder: 'Fill in any requirements about production, package, or shipment here.'
-			}
-		}
-	},
-
-	shipping: {
-		shippingEstimate: 'Shipping Estimate',
-		shippingInfo: 'Shipping Info',
-		selectShippingMethod: 'Select Shipping Method',
-		shippingTo: 'Shipping to',
-		selectCountry: 'Select Country',
-		shippingMethod: 'Shipping Method',
-		price: 'Price',
-		deliveryTime: 'Delivery Time',
-		restriction: 'Restriction',
-		country: 'Country',
-		method: 'Method',
-		weight: 'Weight',
-		shippingCost: 'Shipping Cost',
-		noShippingMethods: 'No Shipping Methods Available',
-		updatingShipping: 'Updating Shipping Method',
-		updateShippingError: 'Failed to update shipping info',
-		updateShippingSuccess: 'Shipping info updated successfully'
-	},
-
-	orders: {
-		pageTitle: 'My Orders',
-		viewCart: 'View Cart',
-		orderId: 'Order ID',
-		createdDate: 'Created Date',
-		status: 'Status',
-		itemsCount: 'Items Count',
-		viewDetails: 'View Details'
-	},
-
-	order: {
-		pageTitle: 'Order',
-		allOrders: 'All Orders',
-		myCart: 'My Cart',
-		orderId: 'Order ID',
-
-		submitReview: {
-			noProducts: 'No products in the cart',
-			shippingError: 'Shipping info is not provided',
-			deliveryError: 'Delivery address is not provided',
-			filesNotUploaded: 'Product files are not uploaded',
-			submittingOrder: 'Submitting Order',
-			submitOrderError: 'Failed to submit order',
-			submitOrderSuccess: 'Order submitted successfully'
-		},
-
-		saveOrder: {
-			savingOrder: 'Saving Order',
-			saveOrderError: 'Failed to save order',
-			saveOrderSuccess: 'Order saved successfully'
-		},
-
-		cancelReview: {
-			cancellingReview: 'Cancelling Review',
-			cancelReviewError: 'Failed to cancel review',
-			cancelReviewSuccess: 'Review cancelled successfully'
-		},
-
-		approveReview: {
-			noPriceError: 'Update the product prices',
-			approvingReview: 'Approving Review',
-			approveReviewError: 'Failed to approve review',
-			approveReviewSuccess: 'Review approved successfully'
-		},
-
-		rejectReview: {
-			rejectingReview: 'Rejecting Review',
-			rejectReviewError: 'Failed to reject review',
-			rejectReviewSuccess: 'Review rejected successfully'
-		},
-
-		startFabrication: {
-			startingFabrication: 'Starting Fabrication',
-			startFabricationError: 'Failed to start fabrication',
-			startFabricationSuccess: 'Fabrication started successfully'
-		},
-
-		updateFabrication: {
-			completingFabrication: 'Updating Fabrication Progress',
-			updateFabricationError: 'Failed to update fabrication progress',
-			updateFabricationSuccess: 'Fabrication progress updated successfully'
-		},
-
-		completeFabrication: {
-			completingFabrication: 'Completing Fabrication',
-			completeFabricationError: 'Failed to complete fabrication',
-			completeFabricationSuccess: 'Fabrication completed successfully'
-		},
-
-		updateDelivery: {
-			updatingDelivery: 'Updating Delivery Progress',
-			updateDeliveryError: 'Failed to update delivery progress',
-			updateDeliverySuccess: 'Delivery progress updated successfully'
-		},
-
-		completeOrder: {
-			completingOrder: 'Completing Order',
-			completeOrderError: 'Failed to complete order',
-			completeOrderSuccess: 'Order completed successfully'
-		},
-
-		orderMessage: {
-			review: {
-				title: 'Your order has been submitted for review',
-				button: 'Cancel Review'
-			},
-			rejected: {
-				title: 'Your order review has been rejected',
-				description: 'Check the review messages for more detail',
-				button: 'Submit Again For Review'
-			},
-			approved: {
-				title: 'Your order review has been approved',
-				description: 'Check the updated prices and proceed with payment',
-				button: 'Proceed to Payment'
-			},
-			confirmed: {
-				title: 'Payment Success!',
-				description: 'Your order is confirmed and is now being processed'
-			},
-			fabrication: {
-				title: 'Fabrication in progress',
-				description: 'Check the progress status of each product'
-			},
-			delivery: {
-				title: 'Delivery in progress',
-				description: 'Your order is on the way',
-				button: 'Track Delivery'
-			},
-			completed: {
-				title: 'Order Completed!',
-				description: 'Thank you for shopping with us'
-			}
-		},
-
-		deliveryAddress: {
-			title: 'Delivery Address',
-			selectAddress: 'Select Delivery Address',
-			noAddressFound: 'No Address Found',
-			failedToGetAddress: 'Failed to get address',
-			updatingAddress: 'Updating Address',
-			selectAddressError: 'Failed to select delivery address',
-			selectAddressSuccess: 'Delivery address selected successfully'
-		},
-
-		productsTable: {
-			products: 'Products',
-			addProduct: 'Add Product',
-			noProductFound: 'No Product Found',
-			product: 'Product',
-			buildTime: 'Build Time',
-			quantity: 'Quantity',
-			file: 'File',
-			quotePrice: 'Quote Price',
-			finalPrice: 'Final Price',
-			details: 'Details',
-			edit: 'Edit',
-			notUploaded: 'Not Uploaded',
-			viewProgress: 'View Progress',
-			productDetails: {
-				title: 'Product Details',
-				failedToFetch: 'Failed to fetch product details'
-			},
-			fabrication: {
-				title: 'Fabrication ',
-				fabricationProgress: 'Fabrication Progress',
-				notStarted: 'Fabrication Not Started',
-				completed: 'Fabrication Completed'
-			}
-		},
-
-		reviewMessages: {
-			title: 'Review Messages',
-			failedToSend: 'Failed to send message',
-			noMessages: 'No Messages, yet',
-			conversationClosed: 'This conversation is closed'
-		},
-
-		orderSummary: {
-			title: 'Order Summary',
-			itemsCost: 'Items Cost',
-			shippingCost: 'Shipping Cost',
-			discount: 'Discount',
-			taxes: 'Taxes',
-			orderTotal: 'Order Total',
-			estDeliveryDate: 'Est Delivery Date',
-			estDeliveryDateDesc:
-				'The estimated shipping date is calculated based on the item with the longest build time in your order. Please note that this date is for reference only. If your order requires confirmation, the shipping date may be subject to extension.',
-			weight: 'Weight',
-			weightDesc:
-				'The weight here is calculated based on the larger value of gross weight and volume weight, which is estimated for reference. If the actual weight differs from the estimate, shipping cost may be adjusted accordingly.',
-			submitOrderForReview: 'Submit Order for Review',
-			saveOrder: 'Save Order'
-		},
-
-		payment: {
-			title: 'Payment Details',
-			transactionId: 'Transaction ID',
-			paymentTime: 'Payment Time',
-			paymentMethod: 'Payment Method',
-			totalAmount: 'Total Amount',
-			failedToGenerateToken: 'Failed to generate payment token',
-			failedToSubmit: 'Failed to submit payment',
-			checkout: 'Checkout',
-			amountToBePaid: 'Amount to be paid',
-			paymentSuccess: 'Payment Success',
-			paymentTotal: 'Payment Total',
-			print: 'Print',
-			payNow: 'Pay Now',
-			cancelPayment: 'Cancel Payment'
-		},
-
-		removeProduct: {
-			modalTitle: 'Are you sure to remove this product?',
-			modalTitleAll: 'Are you sure to remove all products?',
-			modalBody: 'This action cannot be undone',
-			removingProduct: 'Removing Product',
-			removingProductAll: 'Removing All Products',
-			removeProductError: 'Failed to remove product',
-			removeProductAllError: 'Failed to remove all products',
-			removeProductSuccess: 'Product removed successfully',
-			removeProductAllSuccess: 'All products removed successfully'
-		},
-
-		removeOrder: {
-			title: 'Remove Order',
-			description:
-				'This action will permanently delete the order and all its related information. This cannot be undone, so please proceed with caution.',
-			modalTitle: 'Are you sure to remove this order?',
-			modalBody: 'This action cannot be undone',
-			removingOrder: 'Removing Order',
-			removeOrderError: 'Failed to remove order',
-			removeOrderSuccess: 'Order removed successfully'
-		},
-
-		trackDelivery: 'Track Delivery'
-	},
-
-	orderStatus: {
-		CREATED: 'Order Created',
-		CART: 'Cart',
-		SAVED: 'Saved as Draft',
-		REVIEW: 'In Review',
-		REJECTED: 'Review Rejected',
-		APPROVED: 'Review Approved',
-		PAYMENT: 'Payment',
-		CONFIRMED: 'Order Confirmed',
-		FABRICATION: 'In Fabrication',
-		DELIVERY: 'Shipping & Delivery',
-		COMPLETED: 'Order Completed',
-		CANCELLED: 'Order Cancelled',
-		REFUNDED: 'Refunded'
-	},
-
-	support: {
-		title: 'Support',
-		sections: {
-			myOrders: {
-				title: 'My Orders',
-				subsections: {
-					ordering: {
-						title: 'Ordering',
-						questions: [
-							{
-								title: 'How to Place Orders for PCB and PCB Assembly?',
-								contents: [
-									[
-										'Purchasing PCBs from',
-										'MMWPCB.com',
-										'is easy and convenient. With just a few steps, you can enjoy affordable yet high-quality PCB prototyping services.'
-									],
-									['Video:', 'How to place an online order in PCBWay? One-minute video guide.'],
-									['Step 1: Click the service type you want. For example: PCB.'],
-									["Select and fill in the specifications, then click the 'Calculate' button to continue."]
-								]
-							},
-							{
-								title: 'How to Place a PCB Assembly Order (Inquiry)?',
-								contents: [
-									['Another update article(2022-02-25):', 'How to Upload PCB Assembly(PCBA) Inquiry'],
-									['There are 3 ways to place PCB Assembly order.'],
-									['1. Place PCB Assembly orders together with PCB order.'],
-									[
-										'You can click on the ',
-										'PCB Instant Quote',
-										'navigation bar to enter, after placing the PCB orders,select the assembly to fill in your assembly service parameters. Click Calculate to select the price, Add to Cart and upload files.'
-									]
-								]
-							},
-							{
-								title: 'How to Place a CNC Order?',
-								contents: [
-									[
-										"In addition to PCB manufacturing services, PCBWay also offers CNC Machining, 3D Printing, Sheet Metal Fabrication, Injection Molding, and Vacuum Casting services. When you go to the PCBWay website and then click on the “CNC/3D printing” section, you can see the five quote pages available here. The ordering processes of the five services are basically the same except for some selected parameters. Let's  introduce the ordering process of CNC Machining. Now let's get started!"
-									]
-								]
-							}
-						]
-					},
-					leadTime: {
-						title: 'Lead Time',
-						questions: [
-							{
-								title: 'How to Check the Estimated Finish Time?',
-								contents: [
-									['Before Payment'],
-									[
-										'Under the "Awaiting Payment" list, click on the product title or "View Detail" to bring up the product detail information box.'
-									],
-									['In this box, you will find the estimated finish time, as shown in the image below.']
-								]
-							},
-							{
-								title: 'Orders Combination, Shipping and Payment Policy',
-								contents: [
-									['One Payment, One Shipment!'],
-									[
-										'1. The purpose of order combination is to save on shipping costs. If your schedule for your PCBs is not tight, combine your orders and ship them together.'
-									],
-									[
-										'2. By combining all these orders into one group and paying now, you confirm that all these orders will be shipped together around [xx-xx-xx]. This is the date when we can complete your last PCB order in this order group, and we may need some extra time for the express company (no service on Sundays) to pick up your package.'
-									]
-								]
-							},
-							{
-								title: 'When will express order be produced?',
-								contents: [
-									[
-										"Since PCBWay launched the 24-Hour Express Service, it has brought many benefits to customers who often have urgent PCB projects on their agenda. However, it has also brought some complaints from customers whose orders are delayed. Due to the special nature of urgent orders, these customers' complaints are particularly critical. Data shows that most “delays” were caused by misunderstandings of the 24-Hour Express."
-									],
-									[
-										"1. First of all, define PCBWay's 24-Hour Express Service. The time span is from the start of production to the completion of production. It is worth noting that this time is not counted from the time of your payment."
-									],
-									[
-										'2. Payment should be made before 18:00 (GMT+8), or production arrangements will be postponed by one day.'
-									]
-								]
-							}
-						]
-					},
-					salesService: {
-						title: 'Sales Service',
-						questions: [
-							{
-								title: 'Can I change my sales representative?',
-								contents: [
-									[
-										'Each of our sales representatives has been professionally trained. If there are any shortcomings, we hope you can provide suggestions and corrections.'
-									],
-									[
-										'If you are not satisfied with your sales representative, please send your questions to service@mmwpcb.com to request a replacement.'
-									]
-								]
-							},
-							{
-								title: 'How to find my sales for help about the PCB or PCBA problem?',
-								contents: [
-									[
-										'If you have any questions, please contact your sales representative or use Online Chat. You can find their contact information in the following ways:'
-									],
-									[
-										'1. In the top right corner of your homepage or behind the order number, as indicated by the red boxes in the image below;'
-									],
-									['2. In your shopping cart or orders list;']
-								]
-							},
-							{
-								title: 'What to Do if the Sales Representative or After Sales Is Not Responding?',
-								contents: [
-									[
-										'1. It may be because the anti-spam mail system is playing a role, causing the email to be blocked or sent to spam. Please take the initiative to send a follow-up.'
-									],
-									[
-										'2. If they have not responded within a reasonable time frame and if you have questions about an order, you can:'
-									],
-									['a. Contact service@mmwpcb.com or feedback@mmwpcb.com for assistance.'],
-									['b. Open a dispute']
-								]
-							}
-						]
-					}
-				}
-			},
-			myAccount: {
-				title: 'My Account',
-				subsections: {
-					registeringSigningIn: {
-						title: 'Registering & Signing In',
-						questions: [
-							{
-								title: 'How do I register on PCBWay?',
-								contents: [
-									['1. Click Join on the homepage or at the top right corner of any PCBWay page'],
-									['2. Enter your email address and set and confirm your login password,then start shopping!'],
-									[
-										'Note: Make sure you enter the correct email address, Our system currently only recognizes characters from the English alphabet.'
-									]
-								]
-							},
-							{
-								title: 'My account is unavailable. What can I do?',
-								contents: [
-									['There are many reasons for your account to be unavailable, such as:'],
-									[
-										'1. Self-deactivation. In this case, we suggest you register a new account or contact service/sales representative.'
-									],
-									['2. Deactivated due to trading rules violation']
-								]
-							},
-							{
-								title: 'Can I become a mmwpcb distributor?',
-								contents: [
-									[
-										'You may visit your contact information submitted by',
-										'Become our Distributor',
-										'and we will contact you for cooperation.'
-									]
-								]
-							}
-						]
-					},
-					accountSettings: {
-						title: 'Account Settings',
-						questions: [
-							{
-								title: 'Account Settings',
-								contents: [
-									['How do I change my email address?'],
-									["Note: We don't recommend that you change your email address too frequently."]
-								]
-							},
-							{
-								title: 'How do I change my email address',
-								contents: [
-									[
-										'Customers old email is incorrect, or they have not received the verification email. They can submit a request for email change through "Apply for Email change" form. The customer needs to fill in the new email address and provide the reason for the change.'
-									],
-									['Here are the specific steps:'],
-									['Step 1: Account Settings->Change Email']
-								]
-							},
-							{
-								title: 'How can I use my email address for a new PCBWay account?',
-								contents: [
-									[
-										'If you have several PCBWay accounts and would like to link an existing email address to your new account, you need to:'
-									],
-									[
-										'1. Change the email address of your existing/old account first. At the moment, each PCBWay account can only be linked to one unique email address.'
-									],
-									[
-										'2. After you’ve successfully updated the address of your existing account, you can link your new account to the other email address.'
-									]
-								]
-							}
-						]
-					},
-					mmwpcbRewards: {
-						title: 'MMWPCB Rewards',
-						questions: [
-							{
-								title: 'How do I use my reward points?',
-								contents: [
-									[
-										'The MMWPCB Member Club has 6 levels—V0, V1, V2, V3, V4,V5. The level you are in determines the benefits & privileges you’re entitle_d to. All buyers are automatically assigned a membership level once they meet the minimum requirements (see the table below).'
-									],
-									['Benefit details:'],
-									['V0 Member 0% off', 'V1 Member 1% off', 'V2 Member 2% off', 'V3 Member 3% off']
-								]
-							},
-							{
-								title: 'What are the privileges of the MMWPCB Member Club?',
-								contents: [
-									[
-										'The MMWPCB Member Club has 6 levels—V0, V1, V2, V3, V4,V5. The level you are in determines the benefits & privileges you’re entitle__d to. All buyers are automatically assigned a membership level once they meet the minimum requirements (see the table below).'
-									],
-									['Benefit details:'],
-									['V0 Member 0% off', 'V1 Member 1% off', 'V2 Member 2% off', 'V3 Member 3% off']
-								]
-							},
-							{
-								title: 'My reward points have not been added to my account. What can I do?',
-								contents: [
-									[
-										'For a detailed introduction about PCBWay Points and Beans and how to earn them, please click',
-										'Detailed Introduction about PCBWay Points and Beans',
-										'to learn more.'
-									],
-									[
-										'If points have not yet been awarded to your account, it may be due to one of the following reasons:'
-									],
-									[
-										'1. The order is not in a completed status. Please check your order status, as points for placing orders are only awarded once the order is completed'
-									]
-								]
-							}
-						]
-					}
-				}
 			}
 		}
 	}

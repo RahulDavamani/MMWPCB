@@ -102,14 +102,14 @@ export const vacuumCastingDetails = (lg: Lang) => {
 
 	const color = (() => {
 		const values = [
-			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
-			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: lg.common.color.white, color: 'bg-none', value: 'TRANSPARENT' },
-			{ title: lg.common.color.silverGray, color: 'bg-gray-400', value: 'GRAY' },
-			{ title: lg.common.color.red, color: 'bg-red-400', value: 'RED' },
-			{ title: lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
-			{ title: lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
-			{ title: lg.common.color.green, color: 'bg-green-400', value: 'GREEN' }
+			{ title: lg.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.color.white, color: 'bg-none', value: 'TRANSPARENT' },
+			{ title: lg.color.silverGray, color: 'bg-gray-400', value: 'GRAY' },
+			{ title: lg.color.red, color: 'bg-red-400', value: 'RED' },
+			{ title: lg.color.blue, color: 'bg-blue-400', value: 'BLUE' },
+			{ title: lg.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
+			{ title: lg.color.green, color: 'bg-green-400', value: 'GREEN' }
 		] as { title: string; color: string; value: VacuumCasting['color'] }[];
 
 		return {

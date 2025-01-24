@@ -10,7 +10,7 @@
 	import { ui } from '../../stores/ui.store';
 	import { goto } from '$app/navigation';
 
-	$: l = $lg.register;
+	$: l = $lg.signup;
 
 	let user = {
 		firstName: '',
@@ -39,7 +39,7 @@
 
 	let otp: string | null = null;
 
-	const sendOtp = ui.loaderWrapper({ title: 'Signing Up' }, async () => {
+	const sendOtp = ui.loaderWrapper({ title: $lg.signup.signingup }, async () => {
 		showError = true;
 		await tick();
 		if (Object.values(error).filter(Boolean).length !== 0) return;
@@ -47,21 +47,20 @@
 		let code = customAlphabet('1234567890', 6)();
 		await trpc()
 			.auth.sendOtp.mutate({ email: user.email, otp: code, newUser: true })
-			.catch((e) => tce(e, { showModal: { title: 'Failed to send OTP', retryFn: sendOtp } }));
+			.catch((e) => tce(e, { showModal: { title: l.otpFailed, retryFn: sendOtp } }));
 
 		otp = code;
 	});
 
-	const verifyOtp = ui.loaderWrapper({ title: 'Signing Up' }, async () => {
-		if (otp !== String(user.otp))
-			return ui.setAlertModal({ title: 'Invalid OTP', body: 'Please enter the correct OTP' });
+	const verifyOtp = ui.loaderWrapper({ title: $lg.signup.signingup }, async () => {
+		if (otp !== String(user.otp)) return ui.setAlertModal({ title: l.incorrectOTP, body: l.enterOtp });
 
 		await trpc()
 			.auth.register.mutate(user)
-			.catch((e) => tce(e, { showModal: { title: 'Failed to register', retryFn: verifyOtp } }));
+			.catch((e) => tce(e, { showModal: { title: l.failedToSignup, retryFn: verifyOtp } }));
 
 		await goto('/', { invalidateAll: true });
-		ui.setToast({ title: 'You have registered successfully', alertClasses: 'alert-success' });
+		ui.setToast({ title: l.signupSuccess, alertClasses: 'alert-success' });
 	});
 
 	const reset = () => {
@@ -79,14 +78,14 @@
 	};
 </script>
 
-<Layout pageTitle={l.pageTitle} footer={false}>
+<Layout pageTitle={l.title} footer={false}>
 	<div class="card max-w-lg w-full shadow-xl mx-auto my-10">
 		<div class="card-body">
 			{#if otp}
-				<h2 class="font-bold text-2xl mb-4">Verify OTP</h2>
+				<h2 class="font-bold text-2xl mb-4">{l.verifyOtp}</h2>
 
 				<div class="text-sm mb-2">
-					OTP has been sent via Email to <span class="italic font-semibold">{user.email}</span>
+					{l.otpSent} <span class="italic font-semibold">{user.email}</span>
 				</div>
 
 				<FormControl>
@@ -97,27 +96,27 @@
 				</FormControl>
 
 				<div class="flex justify-between items-center text-sm">
-					<div>Didn't get the OTP?</div>
-					<button class="btn btn-link" on:click={sendOtp}>Resend OTP</button>
+					<div>{l.didNotGetOtp}</div>
+					<button class="btn btn-link" on:click={sendOtp}>{l.resendOtp}</button>
 				</div>
 
-				<button class="btn btn-primary w-full mt-4" on:click={verifyOtp}>Verify OTP</button>
+				<button class="btn btn-primary w-full mt-4" on:click={verifyOtp}>{l.verifyOtp}</button>
 				<div class="flex justify-center items-center mt-2">
-					<div>Not your email?</div>
-					<button class="btn btn-link btn-xs text-sm text-secondary" on:click={reset}>Change Email</button>
+					<div>{l.notYourEmail}</div>
+					<button class="btn btn-link btn-xs text-sm text-secondary" on:click={reset}>{l.changeEmail}</button>
 				</div>
 			{:else}
-				<h2 class="font-bold text-2xl mb-6">{l.signUp}</h2>
+				<h2 class="font-bold text-2xl mb-6">{l.title}</h2>
 
 				<div class="space-y-4">
-					<FormControl bottomLabel={error.firstName ? 'Please enter a value' : ''} bottomLabelClasses="text-error">
+					<FormControl bottomLabel={error.firstName ? $lg.common.pleaseEnterValue : ''} bottomLabelClasses="text-error">
 						<label class="flex items-center gap-2 input input-bordered {error.firstName && 'input-error'}">
 							<Icon icon="mdi:person" />
 							<input type="text" class="grow" placeholder={$lg.user.firstName} bind:value={user.firstName} />
 						</label>
 					</FormControl>
 
-					<FormControl bottomLabel={error.lastName ? 'Please enter a value' : ''} bottomLabelClasses="text-error">
+					<FormControl bottomLabel={error.lastName ? $lg.common.pleaseEnterValue : ''} bottomLabelClasses="text-error">
 						<label class="flex items-center gap-2 input input-bordered {error.lastName && 'input-error'}">
 							<Icon icon="mdi:person" />
 							<input type="text" class="grow" placeholder={$lg.user.lastName} bind:value={user.lastName} />
@@ -125,7 +124,7 @@
 					</FormControl>
 
 					<FormControl
-						bottomLabel={error.email ? 'Please enter a value' : error.invalidEmail ? 'Invalid Email' : ''}
+						bottomLabel={error.email ? $lg.common.pleaseEnterValue : error.invalidEmail ? l.invalidEmail : ''}
 						bottomLabelClasses="text-error"
 					>
 						<label
@@ -137,12 +136,13 @@
 						</label>
 					</FormControl>
 
-					<div
-						class="tooltip tooltip-info tooltip-right w-full"
-						data-tip="Password must be 8-15 characters long and contain at least one uppercase letter, one lowercase letter, and one number"
-					>
+					<div class="tooltip tooltip-info tooltip-right w-full" data-tip={l.passwordTooltip}>
 						<FormControl
-							bottomLabel={error.password ? 'Please enter a value' : error.invalidPassword ? 'Invalid Password' : ''}
+							bottomLabel={error.password
+								? $lg.common.pleaseEnterValue
+								: error.invalidPassword
+									? l.invalidPassword
+									: ''}
 							bottomLabelClasses="text-error"
 						>
 							<label
@@ -157,9 +157,9 @@
 
 					<FormControl
 						bottomLabel={error.confirmPassword
-							? 'Please enter a value'
+							? $lg.common.pleaseEnterValue
 							: error.passwordMismatch
-								? 'Password do not match'
+								? l.passwordsDoNotMatch
 								: ''}
 						bottomLabelClasses="text-error"
 					>
@@ -181,11 +181,11 @@
 					/>
 				</FormControl>
 
-				<button class="btn btn-primary w-full mt-4" on:click={sendOtp}>{l.signUp}</button>
+				<button class="btn btn-primary w-full mt-4" on:click={sendOtp}>{l.title}</button>
 
 				<div class="flex justify-center items-center">
 					<div>{l.alreadyHaveAccount}</div>
-					<a href="/login" class="btn btn-link text-secondary px-2">{$lg.login.signIn}</a>
+					<a href="/login" class="btn btn-link text-secondary px-2">{$lg.login.title}</a>
 				</div>
 
 				<div class="divider">{$lg.common.or.toUpperCase()}</div>

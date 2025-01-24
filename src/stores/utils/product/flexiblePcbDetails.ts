@@ -219,22 +219,22 @@ export const flexiblePcbDetails = (lg: Lang) => {
 	const solderMaskColor = (() => {
 		const values = [
 			{
-				title: `${lg.common.color.yellow} ${l.solderMaskColor.coverlay}`,
+				title: `${lg.color.yellow} ${l.solderMaskColor.coverlay}`,
 				color: 'bg-yellow-400',
 				value: 'YELLOW_COVERLAY'
 			},
 			{
-				title: `${lg.common.color.white} ${l.solderMaskColor.coverlay}`,
+				title: `${lg.color.white} ${l.solderMaskColor.coverlay}`,
 				color: 'bg-white',
 				value: 'WHITE_COVERLAY'
 			},
 			{
-				title: `${lg.common.color.black} ${l.solderMaskColor.coverlay}`,
+				title: `${lg.color.black} ${l.solderMaskColor.coverlay}`,
 				color: 'bg-black',
 				value: 'BLACK_COVERLAY'
 			},
 			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' },
-			{ title: lg.common.color.transparent, color: 'bg-white', value: 'TRANSPARENT' }
+			{ title: lg.color.transparent, color: 'bg-white', value: 'TRANSPARENT' }
 		] as { title: string; color: string; value: FlexiblePcb['solderMaskColor'] }[];
 
 		return {
@@ -247,11 +247,11 @@ export const flexiblePcbDetails = (lg: Lang) => {
 
 	const silkscreenColor = (() => {
 		const values = [
-			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
-			{ title: lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
-			{ title: lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
-			{ title: lg.common.color.grey, color: 'bg-grey-400', value: 'GREY' },
+			{ title: lg.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
+			{ title: lg.color.blue, color: 'bg-blue-400', value: 'BLUE' },
+			{ title: lg.color.grey, color: 'bg-grey-400', value: 'GREY' },
 			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: FlexiblePcb['silkscreenColor'] }[];
 

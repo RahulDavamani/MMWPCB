@@ -11,7 +11,7 @@ const schema = z.object({
 export const getProduct = userProcedure.input(schema).query(async ({ ctx: { user }, input: { orderId, id } }) => {
 	const products = await prisma.order
 		.findUniqueOrThrow({
-			where: { id: orderId, userId: user.id },
+			where: { id: orderId, userId: user.role === 'USER' ? user.id : undefined },
 			select: {
 				standardPcbs: { where: { id } },
 				advancedPcbs: { where: { id } },

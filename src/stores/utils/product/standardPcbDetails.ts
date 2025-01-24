@@ -331,15 +331,15 @@ export const standardPcbDetails = (lg: Lang) => {
 
 	const solderMaskColor = (() => {
 		const values = [
-			{ title: lg.common.color.green, color: 'bg-green-400', value: 'GREEN' },
-			{ title: lg.common.color.red, color: 'bg-red-400', value: 'RED' },
-			{ title: lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
-			{ title: lg.common.color.blue, color: 'bg-blue-400', value: 'BLUE' },
-			{ title: lg.common.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
-			{ title: lg.common.color.matteBlack, color: 'bg-black', value: 'MATTE_BLACK' },
-			{ title: lg.common.color.matteGreen, color: 'bg-green-300', value: 'MATTE_GREEN' },
-			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.color.green, color: 'bg-green-400', value: 'GREEN' },
+			{ title: lg.color.red, color: 'bg-red-400', value: 'RED' },
+			{ title: lg.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
+			{ title: lg.color.blue, color: 'bg-blue-400', value: 'BLUE' },
+			{ title: lg.color.purple, color: 'bg-purple-400', value: 'PURPLE' },
+			{ title: lg.color.matteBlack, color: 'bg-black', value: 'MATTE_BLACK' },
+			{ title: lg.color.matteGreen, color: 'bg-green-300', value: 'MATTE_GREEN' },
+			{ title: lg.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.color.black, color: 'bg-black', value: 'BLACK' },
 			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: StandardPcb['solderMaskColor'] }[];
 
@@ -353,9 +353,9 @@ export const standardPcbDetails = (lg: Lang) => {
 
 	const silkscreenColor = (() => {
 		const values = [
-			{ title: lg.common.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
-			{ title: lg.common.color.white, color: 'bg-white', value: 'WHITE' },
-			{ title: lg.common.color.black, color: 'bg-black', value: 'BLACK' },
+			{ title: lg.color.yellow, color: 'bg-yellow-400', value: 'YELLOW' },
+			{ title: lg.color.white, color: 'bg-white', value: 'WHITE' },
+			{ title: lg.color.black, color: 'bg-black', value: 'BLACK' },
 			{ title: lg.common.none, color: 'bg-gray-400', value: 'NONE' }
 		] as { title: string; color: string; value: StandardPcb['silkscreenColor'] }[];
 

@@ -2,9 +2,12 @@
 	import Icon from '@iconify/svelte';
 	import { support } from '../../../stores/support.store';
 	import { generateSpData } from '../utils/generateSpData';
+	import { lg } from '../../../stores/i18n.store';
+
+	$: l = $lg.support;
 </script>
 
-<div class="flex justify-center font-bold text-2xl mb-4">More Topics</div>
+<div class="flex justify-center font-bold text-2xl mb-4">{l.moreTopics}</div>
 <div class="grid grid-cols-3 gap-4">
 	{#each Object.entries($support.sections) as [section, { subsections }]}
 		{@const { title, href } = generateSpData(section)}

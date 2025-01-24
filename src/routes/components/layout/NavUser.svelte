@@ -10,27 +10,20 @@
 	$: ({ user, session } = $page.data as PageData);
 
 	$: menuItems = [
-		isPortal
-			? {
-					name: 'Go to Web App',
-					icon: 'mdi:application-outline',
-					href: '/'
-				}
-			: {
-					name: l.orders,
-					icon: 'mdi:clipboard-text-outline',
-					href: '/orders'
-				},
+		...(isPortal
+			? []
+			: [
+					{
+						name: l.orders,
+						icon: 'mdi:clipboard-text-outline',
+						href: '/orders'
+					}
+				]),
 		{
 			name: l.profile,
 			icon: 'mdi:account-outline',
 			href: '/profile'
 		},
-		// {
-		// 	name: l.settings,
-		// 	icon: 'mdi:settings-outline',
-		// 	href: '/settings'
-		// },
 		{
 			name: l.logout,
 			icon: 'mdi:logout',

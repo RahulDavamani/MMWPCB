@@ -17,9 +17,9 @@
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <div class="w-full bg-info py-14 bg-opacity-40">
 	<div class="w-[30rem] mx-auto text-center">
-		<div class="text-2xl font-semibold mb-3">Hi, How can we help?</div>
+		<div class="text-2xl font-semibold mb-3">{$lg.support.subtitle}</div>
 		<label class="input input-bordered flex items-center gap-2 {search && 'rounded-b-none'}">
-			<input type="text" class="grow" placeholder="Search" bind:value={search} />
+			<input type="text" class="grow" placeholder={$lg.common.search} bind:value={search} />
 			{#if search}
 				<button on:click={() => (search = '')}>
 					<Icon icon="mdi:clear" width={20} class="mr-2 text-error" />
@@ -33,7 +33,7 @@
 				{#each questions as { href, title }}
 					<li><a {href}>{title}</a></li>
 				{:else}
-					<div class="py-2">No results found</div>
+					<div class="py-2">{$lg.common.noResultsFound}</div>
 				{/each}
 			</ul>
 		{/if}

@@ -9,6 +9,8 @@
 	import { ui } from '../../stores/ui.store';
 	import { goto } from '$app/navigation';
 
+	$: l = $lg.forgotPassword;
+
 	let step = 1;
 	let user = {
 		email: '',
@@ -26,54 +28,53 @@
 		otp = null;
 	};
 
-	const sendOtp = ui.loaderWrapper({ title: 'Sending OTP' }, async () => {
+	const sendOtp = ui.loaderWrapper({ title: $lg.forgotPassword.sendingOtp }, async () => {
 		if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(user.email))
-			return ui.setAlertModal({ title: 'Invalid Email', body: 'Please enter a valid email' });
+			return ui.setAlertModal({ title: l.invalidEmail, body: l.enterValidEmail });
 
 		let code = customAlphabet('1234567890', 6)();
 		await trpc()
 			.auth.sendOtp.mutate({ email: user.email, otp: code, newUser: false })
-			.catch((e) => tce(e, { showModal: { title: 'Failed to send OTP', retryFn: sendOtp } }));
+			.catch((e) => tce(e, { showModal: { title: l.otpFailed, retryFn: sendOtp } }));
 
 		otp = code;
 		step += 1;
 	});
 
 	const verifyOtp = async () => {
-		if (otp !== String(user.otp))
-			return ui.setAlertModal({ title: 'Invalid OTP', body: 'Please enter the correct OTP' });
+		if (otp !== String(user.otp)) return ui.setAlertModal({ title: l.incorrectOTP, body: l.enterOtp });
 
 		step += 1;
 	};
 
-	const resetPassword = ui.loaderWrapper({ title: 'Resetting Password' }, async () => {
+	const resetPassword = ui.loaderWrapper({ title: $lg.forgotPassword.resettingPassword }, async () => {
 		if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,15}$/.test(user.password))
 			return ui.setAlertModal({
-				title: 'Invalid Password',
-				body: 'Password must be 8-15 characters long and contain at least one uppercase letter, one lowercase letter, and one number'
+				title: l.invalidPassword,
+				body: l.passwordTooltip
 			});
 
 		if (user.password !== user.confirmPassword)
 			return ui.setAlertModal({
-				title: 'Passwords do not match',
-				body: 'Please enter the same password in both fields'
+				title: l.passwordsDoNotMatch,
+				body: l.enterSamePassword
 			});
 
 		await trpc()
 			.auth.resetPassword.mutate({ email: user.email, password: user.password })
-			.catch((e) => tce(e, { showModal: { title: 'Failed to reset password', retryFn: resetPassword } }));
+			.catch((e) => tce(e, { showModal: { title: l.resetPasswordFailed, retryFn: resetPassword } }));
 
 		await goto('/login');
-		ui.setAlertModal({ title: 'Password Reset', body: 'Your password has been reset successfully' });
+		ui.setAlertModal({ title: l.resetPassword, body: l.resetPasswordSuccess });
 	});
 </script>
 
-<Layout pageTitle="Forgot Password" footer={false}>
+<Layout pageTitle={l.forgotPassword} footer={false}>
 	<div class="card max-w-lg w-full shadow-xl mx-auto my-10">
 		<div class="card-body">
-			<h2 class="font-bold text-2xl mb-4">Forgot Password</h2>
+			<h2 class="font-bold text-2xl mb-4">{l.forgotPassword}</h2>
 			{#if step === 1}
-				<div class="text-sm mb-2">Please enter your email and we will send a OTP to reset password</div>
+				<div class="text-sm mb-2">{l.enterEmail}</div>
 				<FormControl bottomLabelClasses="text-error">
 					<label class="flex items-center gap-2 input input-bordered">
 						<Icon icon="mdi:email" />
@@ -81,11 +82,11 @@
 					</label>
 				</FormControl>
 
-				<button class="btn btn-primary mt-4" on:click={sendOtp}> Continue </button>
-				<a href="/login" class="btn btn-link btn-xs text-sm text-secondary mt-2">Back to Login</a>
+				<button class="btn btn-primary mt-4" on:click={sendOtp}>{$lg.common.continue}</button>
+				<a href="/login" class="btn btn-link btn-xs text-sm text-secondary mt-2">{l.backToLogin}</a>
 			{:else if step === 2}
 				<div class="text-sm mb-2">
-					OTP has been sent via Email to <span class="italic font-semibold">{user.email}</span>
+					{l.otpSent} <span class="italic font-semibold">{user.email}</span>
 				</div>
 
 				<FormControl>
@@ -96,27 +97,24 @@
 				</FormControl>
 
 				<div class="flex justify-between items-center text-sm">
-					<div>Didn't get the OTP?</div>
-					<button class="btn btn-link" on:click={sendOtp}>Resend OTP</button>
+					<div>{l.didNotGetOtp}</div>
+					<button class="btn btn-link" on:click={sendOtp}>{l.resendOtp}</button>
 				</div>
 
-				<button class="btn btn-primary mt-4" on:click={verifyOtp}> Continue </button>
+				<button class="btn btn-primary mt-4" on:click={verifyOtp}>{$lg.common.continue}</button>
 				<div class="flex justify-center items-center mt-2">
-					<div>Not your email?</div>
-					<button class="btn btn-link btn-xs text-sm text-secondary" on:click={reset}>Change Email</button>
+					<div>{l.notYourEmail}</div>
+					<button class="btn btn-link btn-xs text-sm text-secondary" on:click={reset}>{l.changeEmail}</button>
 				</div>
 			{:else}
 				{@const passwordError =
 					user.password.length > 0 ? !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,15}$/.test(user.password) : false}
 				{@const confirmPasswordError = user.confirmPassword.length > 0 ? user.password !== user.confirmPassword : false}
 
-				<div class="text-sm mb-2">Please enter your new password</div>
+				<div class="text-sm mb-2">{l.enterPassword}</div>
 
-				<div
-					class="tooltip tooltip-info tooltip-right w-full"
-					data-tip="Password must be 8-15 characters long and contain at least one uppercase letter, one lowercase letter, and one number"
-				>
-					<FormControl error={passwordError ? 'Invalid Password' : ''}>
+				<div class="tooltip tooltip-info tooltip-right w-full" data-tip={l.passwordTooltip}>
+					<FormControl error={passwordError ? l.invalidPassword : ''}>
 						<label class="flex items-center gap-2 input input-bordered {passwordError && 'input-error'}">
 							<Icon icon="mdi:password" />
 							<input type="password" class="grow" placeholder={$lg.user.password} bind:value={user.password} />
@@ -124,20 +122,15 @@
 					</FormControl>
 				</div>
 
-				<FormControl error={confirmPasswordError ? 'Passwords do not match' : ''}>
+				<FormControl error={confirmPasswordError ? l.passwordsDoNotMatch : ''}>
 					<label class="flex items-center gap-2 input input-bordered {confirmPasswordError && 'input-error'}">
 						<Icon icon="mdi:password" />
-						<input
-							type="password"
-							class="grow"
-							placeholder={$lg.register.confirmPassword}
-							bind:value={user.confirmPassword}
-						/>
+						<input type="password" class="grow" placeholder={l.confirmPassword} bind:value={user.confirmPassword} />
 					</label>
 				</FormControl>
 
-				<button class="btn btn-primary mt-4" on:click={resetPassword}> Reset Password </button>
-				<a href="/login" class="btn btn-link btn-xs text-sm text-secondary mt-2">Back to Login</a>
+				<button class="btn btn-primary mt-4" on:click={resetPassword}>{l.resetPassword}</button>
+				<a href="/login" class="btn btn-link btn-xs text-sm text-secondary mt-2">{l.backToLogin}</a>
 			{/if}
 		</div>
 	</div>
