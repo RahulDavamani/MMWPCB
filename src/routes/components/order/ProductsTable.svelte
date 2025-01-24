@@ -6,7 +6,7 @@
 	import { supabase } from '$lib/client/supabase';
 	import { order, orderProductPrices } from '../../../stores/order.store';
 	import FabricationProgressModal from './FabricationProgressModal.svelte';
-	import { lg } from '../../../stores/i18n.store';
+	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 
 	$: l = $lg.order.productsTable;
 
@@ -123,7 +123,7 @@
 								{/if}
 							</td>
 							<td class="text-center font-mono !{finalPrice && 'font-semibold'}">
-								{initialPrice ? `$${initialPrice.toFixed(2)}` : 'RFQ'}
+								{initialPrice ? parsePrice($i18n.currency, initialPrice) : 'RFQ'}
 							</td>
 							{#if isPortal && status === 'REVIEW'}
 								{@const inputError = !finalPrice && !initialPrice && !$orderProductPrices[id]}
@@ -145,7 +145,9 @@
 												? 'text-success'
 												: ''
 										: ''}
-								<td class="text-center font-mono text-base font-semibold {textColor}">${finalPrice.toFixed(2)}</td>
+								<td class="text-center font-mono text-base font-semibold {textColor}">
+									{parsePrice($i18n.currency, finalPrice)}
+								</td>
 							{/if}
 							{#if editable}
 								<td>

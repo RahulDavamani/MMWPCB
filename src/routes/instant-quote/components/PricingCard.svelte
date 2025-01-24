@@ -4,7 +4,7 @@
 	import { quote, quoteError, quotePrice } from '../../../stores/quote.store';
 	import { page } from '$app/stores';
 	import type { PageData } from '../$types';
-	import { lg } from '../../../stores/i18n.store';
+	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 	import { showModal } from '$lib/client/modal';
 	import AddToOrderModal from './AddToOrderModal.svelte';
 
@@ -47,7 +47,7 @@
 							on:change={() => ($quote.buildTime = buildTime)}
 						/>
 					</FormControl>
-					<div class="font-mono">${buildTime.price.toFixed(2)}</div>
+					<div class="font-mono">{parsePrice($i18n.currency, buildTime.price)}</div>
 				</div>
 			{/each}
 		</div>
@@ -60,7 +60,7 @@
 				<div>{name}</div>
 				<div class="font-mono">
 					{#if price !== null}
-						${price.toFixed(2)}
+						{parsePrice($i18n.currency, price)}
 					{:else}
 						RFQ
 					{/if}
@@ -74,7 +74,7 @@
 		<div>{l.total}</div>
 		<div class="font-mono">
 			{#if total !== null}
-				${total.toFixed(2)}
+				{parsePrice($i18n.currency, total)}
 			{:else}
 				RFQ
 			{/if}

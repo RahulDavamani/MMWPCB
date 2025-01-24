@@ -11,7 +11,7 @@
 	import Icon from '@iconify/svelte';
 	import { invalidateAll } from '$app/navigation';
 	import { order } from '../../../stores/order.store';
-	import { lg } from '../../../stores/i18n.store';
+	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 
 	$: l = $lg.order.payment;
 
@@ -78,7 +78,7 @@
 			{:else}
 				<div class="text-lg font-semibold mb-4">{l.checkout.toUpperCase()}</div>
 				<div>{l.amountToBePaid}</div>
-				<div class="text-xl font-mono font-bold">${orderTotal.toFixed(2)}</div>
+				<div class="text-xl font-mono font-bold">{parsePrice($i18n.currency, orderTotal)}</div>
 			{/if}
 		</div>
 	</div>
@@ -91,7 +91,7 @@
 		{:else if paymentDetails}
 			<div class="divider mt-0" />
 			<div class="text-center">{l.paymentTotal}</div>
-			<div class="text-xl text-center font-semibold font-mono mb-3">${orderTotal.toFixed(2)}</div>
+			<div class="text-xl text-center font-semibold font-mono mb-3">{parsePrice($i18n.currency, orderTotal)}</div>
 
 			<div class="space-y-2 px-2">
 				<div class="flex justify-between">

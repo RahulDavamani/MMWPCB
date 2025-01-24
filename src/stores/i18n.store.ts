@@ -1,8 +1,9 @@
 import { browser } from '$app/environment';
 import type { Lang } from '$lib/locales/en';
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 import { trpc } from '../trpc/client';
 import { tce } from '../trpc/te';
+import { page } from '$app/stores';
 
 export interface I18N {
 	language: 'en' | 'zh' | 'fr' | 'es';
@@ -76,13 +77,13 @@ export const i18n = (() => {
 		localStorage.setItem('currency', currency);
 	};
 
-	return {
-		subscribe,
-		set,
-		update,
-		setLanguage,
-		setCurrency
-	};
+	return { subscribe, set, update, setLanguage, setCurrency };
 })();
 
 export const lg = writable<Lang>();
+
+export const parsePrice = (currency: 'usd' | 'eur', price: number, toFixed: number | null = 2) => {
+	const { exchangeRate } = get(page).data;
+	const convertedPrice = currency === 'usd' ? price : price * exchangeRate;
+	return `${currency === 'usd' ? '$' : '€'}${toFixed ? convertedPrice.toFixed(toFixed) : convertedPrice}`;
+};

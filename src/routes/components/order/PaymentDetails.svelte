@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { order } from '../../../stores/order.store';
-	import { lg } from '../../../stores/i18n.store';
+	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 
 	$: l = $lg.order.payment;
 
@@ -35,7 +35,7 @@
 			<div class="flex justify-between">
 				<div>{l.totalAmount}</div>
 				<div class="font-semibold">
-					${orderTotal.toFixed(2)}
+					{parsePrice($i18n.currency, orderTotal)}
 				</div>
 			</div>
 		</div>

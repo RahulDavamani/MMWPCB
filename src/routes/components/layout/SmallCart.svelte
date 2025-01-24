@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Icon from '@iconify/svelte';
-	import { lg } from '../../../stores/i18n.store';
+	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 	import type { PageData } from '../../$types';
 	import { productTypes } from '../../../stores/product.store';
 
@@ -50,7 +50,7 @@
 								<span class="font-mono font-semibold min-w-8">{quantity}0</span>
 								x <span class="ml-2">{name}</span>
 							</div>
-							<div class="font-mono">{initialPrice ? `$${initialPrice.toFixed(2)}` : 'RFQ'}</div>
+							<div class="font-mono">{initialPrice ? parsePrice($i18n.currency, initialPrice) : 'RFQ'}</div>
 						</div>
 					{/each}
 				{/each}
@@ -60,7 +60,7 @@
 
 			<div class="flex justify-end items-baseline mr-3 gap-8 font-bold text-primary">
 				<div class="text-sm">{l.subTotal}</div>
-				<div class="text-xl font-mono">${cartTotal.toFixed(2)}</div>
+				<div class="text-xl font-mono">{parsePrice($i18n.currency, cartTotal)}</div>
 			</div>
 		{/if}
 	</div>

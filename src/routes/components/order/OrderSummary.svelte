@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { order } from '../../../stores/order.store';
-	import { lg } from '../../../stores/i18n.store';
+	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 
 	$: l = $lg.order.orderSummary;
 
@@ -32,24 +32,24 @@
 	<div class="space-y-2 mt-4 px-2">
 		<div class="flex justify-between">
 			<div>{l.itemsCost}</div>
-			<div class="font-mono">${totalItemsPrice.toFixed(2)}</div>
+			<div class="font-mono">{parsePrice($i18n.currency, totalItemsPrice)}</div>
 		</div>
 		<div class="flex justify-between">
 			<div>{l.shippingCost}</div>
-			<div class="font-mono">${shippingPrice.toFixed(2)}</div>
+			<div class="font-mono">{parsePrice($i18n.currency, shippingPrice)}</div>
 		</div>
 		<div class="flex justify-between">
 			<div>{l.discount}</div>
-			<div class="font-mono text-success">-${discount.toFixed(2)}</div>
+			<div class="font-mono text-success">-{parsePrice($i18n.currency, discount)}</div>
 		</div>
 		<div class="flex justify-between">
 			<div>{l.taxes}</div>
-			<div class="font-mono">${taxes.toFixed(2)}</div>
+			<div class="font-mono">{parsePrice($i18n.currency, taxes)}</div>
 		</div>
 		<div class="divider" />
 		<div class="flex justify-between">
 			<div class="text-lg font-bold">{l.orderTotal}</div>
-			<div class="text-lg font-bold font-mono">${orderTotal.toFixed(2)}</div>
+			<div class="text-lg font-bold font-mono">{parsePrice($i18n.currency, orderTotal)}</div>
 		</div>
 		<div class="divider" />
 	</div>
