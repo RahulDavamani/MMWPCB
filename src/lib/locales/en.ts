@@ -66,7 +66,8 @@ export const en = {
 
 	navbar: {
 		instantQuote: 'Instant Quote',
-		products: 'Products & Capabilities',
+		services: 'Products & Services',
+		capabilities: 'Capabilities',
 		whyUs: 'Why Us?',
 		support: 'Support',
 		adminPortal: 'Admin Portal',
@@ -3475,6 +3476,64 @@ export const en = {
 			specialRequests: {
 				title: 'Other Special Requests',
 				placeholder: 'Fill in any requirements about production, package, or shipment here.'
+			}
+		}
+	},
+
+	services: {
+		title: 'Product & Services',
+		subTitle: 'Comprehensive measurement and testing technologies for advanced industrial applications.',
+		description:
+			'We are a leading provider of advanced measurement and testing technologies, specializing in delivering high-precision solutions that address complex technical challenges across diverse industries. Our comprehensive portfolio encompasses cutting-edge spectrum analyzers, network testing equipment, calibration tools, and integrated technical services designed to meet the most demanding performance and innovation requirements. By combining sophisticated hardware, intelligent software, and expert technical support, we enable organizations to push the boundaries of technological research, development, and quality assurance.',
+
+		subHeading1: 'Innovative Measurement Technologies',
+		para1:
+			'We deliver high-performance measurement solutions that drive technological advancement. Our advanced spectrum analyzers, network testing equipment, and calibration tools are engineered to provide unparalleled accuracy and reliability. By combining state-of-the-art hardware with sophisticated software, we empower engineers and researchers to achieve breakthrough insights and performance benchmarks.',
+		subHeading2: 'Integrated Technical Services',
+		para2:
+			'Beyond equipment sales, we offer comprehensive technical services that support the entire product lifecycle. Our expert team provides specialized calibration, precision repair, technical consultation, and custom solution development. We ensure your measurement infrastructure remains at the forefront of technological capability, with global support and NIST-traceable certification guaranteeing the highest standards of technical excellence.',
+
+		explorePS: 'Explore Our Products & Services',
+		browseSolutions: 'Browse Our Solutions',
+		browseCatalog: 'Browse Our Catalog',
+		viewAllPS: 'View All Products & Services',
+
+		catalog: {
+			title: 'Products & Services Catalog',
+			subTitle: 'A comprehensive selection of high-quality products and custom solutions to meet your needs.'
+		},
+
+		sections: {
+			oscilloscopes: {
+				title: 'Oscilloscopes',
+				subTitle: 'Accurately visualize electrical waveforms with precision and ease.',
+				services: {
+					HD304MSO: 'HD304MSO InfiniiVision Oscilloscope: 4 Analog Channels',
+					DSOS804A: 'DSOS804A High-Definition Oscilloscope: 8 GHz, 4 Analog Channels'
+				},
+				categories: {
+					infiniiVision: 'InfiniiVision Oscilloscopes',
+					realTime: 'Real-Time Oscilloscopes'
+				},
+				types: {
+					realTime: 'Real-TIme'
+				}
+			},
+
+			networkAnalyzers: {
+				title: 'Network Analyzers',
+				subTitle: 'Analyze and optimize network performance with reliable data insights.',
+				services: {
+					E5080B: 'E5080B ENA Vector Network Analyzer',
+					N5291A: 'N5291A PNA Millimeter-wave System, 900 Hz to 120 GHz'
+				},
+				categories: {
+					ena: 'ENA Vector Network Analyzers',
+					pna: 'PNA Network Analyzers'
+				},
+				vnaTypes: {
+					benchtop: 'Benchtop'
+				}
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Layout from '../components/layout/Layout.svelte';
-	import PCBanner from '$lib/assets/pc-banner.png';
+	import CapabilitiesBanner from '$lib/assets/capabilities-banner.png';
 	import HigherQuality from '$lib/assets/why-us/higher-quality.jpg';
 	import LowerCost from '$lib/assets/why-us/lower-cost.png';
 	import FasterDelivery from '$lib/assets/why-us/faster-delivery.png';
@@ -20,9 +20,8 @@
 							We produce reliable PCBs for customers with demanding needs. Get your quote in seconds, PCBs shipped in as
 							fast as 1 day!
 						</div>
-						<div class="btn btn-sm btn-outline btn-accent">Get Instant Quote</div>
 					</div>
-					<img src={PCBanner} alt="PCB Capabilities Banner" />
+					<img src={CapabilitiesBanner} alt="Why Us Banner" />
 				</div>
 			</div>
 		</div>
@@ -165,7 +164,7 @@
 						<div class="mb-2 max-w-lg">我们为需求严格的客户提供可靠的PCB产品。秒级获取报价，最快一天发货！</div>
 						<div class="btn btn-sm btn-outline btn-accent">立即获取报价</div>
 					</div>
-					<img src={PCBanner} alt="PCB功能横幅" />
+					<img src={CapabilitiesBanner} alt="PCB功能横幅" />
 				</div>
 			</div>
 		</div>
@@ -283,7 +282,7 @@
 						</div>
 						<div class="btn btn-sm btn-outline btn-accent">Obtenez un devis instantané</div>
 					</div>
-					<img src={PCBanner} alt="Bannière des capacités PCB" />
+					<img src={CapabilitiesBanner} alt="Bannière des capacités PCB" />
 				</div>
 			</div>
 		</div>
@@ -431,7 +430,7 @@
 						</div>
 						<div class="btn btn-sm btn-outline btn-accent">Obtén Cotización Instantánea</div>
 					</div>
-					<img src={PCBanner} alt="Banner de Capacidades de PCB" />
+					<img src={CapabilitiesBanner} alt="Banner de Capacidades de PCB" />
 				</div>
 			</div>
 		</div>

@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import ProductsMenu from '../ProductsMenu.svelte';
+	import CapabilitiesMenu from './CapabilitiesMenu.svelte';
+	import ServicesMenu from './ServicesMenu.svelte';
 	import SupportMenu from './SupportMenu.svelte';
 
 	export let title: string;
 	export let href: string;
-	export let menu: 'products' | 'support' | null = null;
+	export let menu: string | null = null;
 	$: selected = $page.url.pathname.startsWith(href);
 </script>
 
@@ -22,8 +23,10 @@
 
 	{#if menu}
 		<ul tabindex="0" class="dropdown-content z-[1]">
-			{#if menu === 'products'}
-				<ProductsMenu />
+			{#if menu === 'services'}
+				<ServicesMenu />
+			{:else if menu === 'capabilities'}
+				<CapabilitiesMenu />
 			{:else}
 				<SupportMenu />
 			{/if}

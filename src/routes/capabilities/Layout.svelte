@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { pc } from '../../stores/pc.store';
+	import { capabilities } from '../../stores/capabilities.store';
 	import Layout from '../components/layout/Layout.svelte';
 	import Icon from '@iconify/svelte';
-	import PCBanner from '$lib/assets/pc-banner.png';
+	import CapabilitiesBanner from '$lib/assets/capabilities-banner.png';
 
-	export let section: keyof typeof $pc;
+	export let section: keyof typeof $capabilities;
 	export let title: string;
 	export let description: string | null = null;
 	export let button: { title: string; onClick: () => void } | null = null;
 
-	$: ({ title: sectionTitle, subsections } = $pc[section]);
+	$: ({ title: sectionTitle, subsections } = $capabilities[section]);
 </script>
 
 <Layout pageTitle={title}>
@@ -27,7 +27,7 @@
 					{/if}
 				</div>
 
-				<img src={PCBanner} alt="{title} Banner" />
+				<img src={CapabilitiesBanner} alt="{title} Banner" />
 			</div>
 		</div>
 	</div>
@@ -40,7 +40,7 @@
 			</button>
 			{#each Object.values(subsections) as { title, href }}
 				<a
-					href="/pc{href}"
+					href="/capabilities{href}"
 					class="btn join-item justify-between flex-nowrap text-left
                {$page.url.pathname.endsWith(href) && 'btn-primary'}"
 				>

@@ -1,0 +1,66 @@
+model Service {
+   id        String   @id
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   userId String
+   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+   status ServiceStatus
+
+   service             String
+   firstName           String
+   lastName            String
+   email               String
+   phone               String
+   company             String
+   testingRequirements String
+
+   paymentInfo   ServicePaymentInfo?
+   notifications ServiceNotification[]
+}
+
+enum ServiceStatus {
+   APPLICATION_RECEIVED
+   IN_REVIEW
+   WAITING_FOR_PAYMENT
+   WAITING_FOR_SAMPLES
+   TESTING_IN_PROGRESS
+   REPORT_RELEASED
+}
+
+model ServicePaymentInfo {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   transactionId        String
+   transactionCreatedAt DateTime
+   networkTransactionId String?
+   customerId           String?
+
+   type            String
+   status          String
+   amount          String
+   currencyIsoCode String
+
+   paymentInstrumentType String
+   ccType                String?
+   ppPaymentId           String?
+   ppPayerId             String?
+
+   serviceId String  @unique
+   service   Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+}
+
+model ServiceNotification {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   type    String
+   message String
+
+   serviceId String
+   service   Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+}

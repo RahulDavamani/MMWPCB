@@ -1,7 +1,7 @@
 import { derived } from 'svelte/store';
 import { i18n } from './i18n.store';
 
-export const pc = derived(i18n, ({ language: l }) => {
+export const capabilities = derived(i18n, ({ language: l }) => {
 	const printedCircuitBoards = {
 		title:
 			l === 'en'
