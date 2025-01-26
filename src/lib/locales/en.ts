@@ -6,6 +6,7 @@ export const en = {
 		none: 'None',
 
 		search: 'Search',
+		sortBy: 'Sort by',
 		typeHere: 'Type here...',
 		pleaseEnterValue: 'Please enter a value',
 
@@ -3503,36 +3504,76 @@ export const en = {
 			subTitle: 'A comprehensive selection of high-quality products and custom solutions to meet your needs.'
 		},
 
+		startingFrom: 'Starting from',
+		getQuote: 'Get Quote',
+
 		sections: {
 			oscilloscopes: {
 				title: 'Oscilloscopes',
 				subTitle: 'Accurately visualize electrical waveforms with precision and ease.',
-				services: {
-					HD304MSO: 'HD304MSO InfiniiVision Oscilloscope: 4 Analog Channels',
-					DSOS804A: 'DSOS804A High-Definition Oscilloscope: 8 GHz, 4 Analog Channels'
+
+				specs: {
+					title: 'Title',
+					category: 'Category',
+					categories: 'Categories',
+					bandwidth: 'Bandwidth',
+					maxMemoryDepth: 'Max Memory Depth',
+					maxSampleRate: 'Max Sample Rate',
+					type: 'Type',
+					types: 'Types'
 				},
+
 				categories: {
 					infiniiVision: 'InfiniiVision Oscilloscopes',
 					realTime: 'Real-Time Oscilloscopes'
 				},
+
 				types: {
 					realTime: 'Real-TIme'
+				},
+
+				services: {
+					HD304MSO: {
+						title: 'HD304MSO InfiniiVision Oscilloscope: 4 Analog Channels'
+					},
+					DSOS804A: {
+						title: 'DSOS804A High-Definition Oscilloscope: 8 GHz, 4 Analog Channels'
+					}
 				}
 			},
 
 			networkAnalyzers: {
 				title: 'Network Analyzers',
 				subTitle: 'Analyze and optimize network performance with reliable data insights.',
-				services: {
-					E5080B: 'E5080B ENA Vector Network Analyzer',
-					N5291A: 'N5291A PNA Millimeter-wave System, 900 Hz to 120 GHz'
+
+				specs: {
+					title: 'Title',
+					category: 'Category',
+					categories: 'Categories',
+					builtInPorts: 'Built-In Ports',
+					maxFrequency: 'Max Frequency',
+					internalSources: 'Internal Sources',
+					vnaSeries: 'VNA Series',
+					vnaType: 'VNA Type',
+					vnaTypes: 'VNA Types'
 				},
+
 				categories: {
 					ena: 'ENA Vector Network Analyzers',
 					pna: 'PNA Network Analyzers'
 				},
+
 				vnaTypes: {
 					benchtop: 'Benchtop'
+				},
+
+				services: {
+					E5080B: {
+						title: 'E5080B ENA Vector Network Analyzer'
+					},
+					N5291A: {
+						title: 'N5291A PNA Millimeter-wave System, 900 Hz to 120 GHz'
+					}
 				}
 			}
 		}

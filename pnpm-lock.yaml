@@ -71,6 +71,9 @@ importers:
       svelte-i18n:
         specifier: ^4.0.0
         version: 4.0.0(svelte@4.2.19)
+      svelte-range-slider-pips:
+        specifier: ^3.1.4
+        version: 3.1.4(svelte@4.2.19)
       trpc-sveltekit:
         specifier: ^3.6.2
         version: 3.6.2(@sveltejs/adapter-node@5.2.0(@sveltejs/kit@2.5.28(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.6(@types/node@22.5.5)))(svelte@4.2.19)(vite@5.4.6(@types/node@22.5.5))))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(ws@8.18.0)
@@ -2278,6 +2281,11 @@ packages:
 
   svelte-loading-spinners@0.3.6:
     resolution: {integrity: sha512-mthHQ2TwiwzTWzbFry3CBnVEfzqPOD9WkVw84OfSYzHRq6N9wgQ+yv37u81uPeuLU/ZOIPqhujpXquB1aol5ZQ==}
+
+  svelte-range-slider-pips@3.1.4:
+    resolution: {integrity: sha512-/dQjdsm9sAB3HoOHJjRqADpx3y7RVSB+djcZAicoOhZETXhoeqQrf6yoI9UTurj0pObyMQhSU7CbHagi5mrIPg==}
+    peerDependencies:
+      svelte: ^4.2.7 || ^5.0.0
 
   svelte@4.2.19:
     resolution: {integrity: sha512-IY1rnGr6izd10B0A8LqsBfmlT5OILVuZ7XsI0vdGPEvuonFV7NYEUK4dAkm9Zg2q0Um92kYjTpS1CAP3Nh/KWw==}
@@ -4507,6 +4515,10 @@ snapshots:
       tiny-glob: 0.2.9
 
   svelte-loading-spinners@0.3.6: {}
+
+  svelte-range-slider-pips@3.1.4(svelte@4.2.19):
+    dependencies:
+      svelte: 4.2.19
 
   svelte@4.2.19:
     dependencies:

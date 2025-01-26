@@ -71,6 +71,7 @@
 		"svelte-file-dropzone": "^2.0.8",
 		"svelte-flatpickr": "^3.3.4",
 		"svelte-i18n": "^4.0.0",
+		"svelte-range-slider-pips": "^3.1.4",
 		"trpc-sveltekit": "^3.6.2"
 	}
 }

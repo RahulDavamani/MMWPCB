@@ -1,7 +1,7 @@
 <script lang="ts">
 	import CapabilitiesBanner from '$lib/assets/capabilities-banner.png';
 	import { lg } from '../../../stores/i18n.store';
-	import { services } from '../../../stores/services.store';
+	import { services } from '../../../stores/service.store';
 	import Layout from '../../components/layout/Layout.svelte';
 
 	$: l = $lg.services.catalog;

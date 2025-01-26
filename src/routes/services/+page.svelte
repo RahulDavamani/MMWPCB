@@ -2,7 +2,7 @@
 	import { lg } from '../../stores/i18n.store';
 	import Layout from '../components/layout/Layout.svelte';
 	import CapabilitiesBanner from '$lib/assets/capabilities-banner.png';
-	import { services } from '../../stores/services.store';
+	import { services } from '../../stores/service.store';
 	import Probing from '$lib/assets/services/probing.png';
 	import Icon from '@iconify/svelte';
 

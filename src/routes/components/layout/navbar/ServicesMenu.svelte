@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { services } from '../../../../stores/services.store';
+	import { services } from '../../../../stores/service.store';
 
 	$: menu = Array.from({ length: Math.ceil(Object.values($services).length / 5) }, (_, i) =>
 		Object.values($services).slice(i * 5, i * 5 + 5)
