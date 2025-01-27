@@ -13,7 +13,7 @@
 			<div class="container mx-auto flex justify-start items-center">
 				<div class="absolute text-accent">
 					<div class="font-semibold text-2xl mb-1">{l.title}</div>
-					<div class="w-96 mb-4">{l.subTitle}</div>
+					<div class="w-96 mb-4">{l.subtitle}</div>
 				</div>
 
 				<img src={CapabilitiesBanner} alt="Banner" />
@@ -24,9 +24,9 @@
 	<div class="grid grid-cols-4 gap-10">
 		<div>
 			<a href="/services{$services.oscilloscopes.href}" class="btn btn-link btn-lg text-xl p-0">
-				{$services.oscilloscopes.title}
+				{$services.oscilloscopes.l.title}
 			</a>
-			{#each Object.values($services.oscilloscopes.services) as { title, href }}
+			{#each Object.values($services.oscilloscopes.services) as { l: { title }, href }}
 				<a href="/services{$services.oscilloscopes.href}{href}" class="btn btn-link p-0 text-left text-black">
 					{title}
 				</a>
@@ -35,9 +35,9 @@
 
 		<div>
 			<a href="/services{$services.networkAnalyzers.href}" class="btn btn-link btn-lg text-xl p-0">
-				{$services.networkAnalyzers.title}
+				{$services.networkAnalyzers.l.title}
 			</a>
-			{#each Object.values($services.networkAnalyzers.services) as { title, href }}
+			{#each Object.values($services.networkAnalyzers.services) as { l: { title }, href }}
 				<a href="/services{$services.networkAnalyzers.href}{href}" class="btn btn-link p-0 text-left text-black">
 					{title}
 				</a>

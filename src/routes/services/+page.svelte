@@ -15,7 +15,7 @@
 			<div class="container mx-auto flex justify-start items-center">
 				<div class="absolute text-accent">
 					<div class="font-semibold text-2xl mb-1">{l.title}</div>
-					<div class="w-96 mb-4">{l.subTitle}</div>
+					<div class="w-96 mb-4">{l.subtitle}</div>
 					<a href="/services/catalog" class="btn btn-sm btn-outline btn-accent">{l.browseCatalog}</a>
 				</div>
 
@@ -41,7 +41,7 @@
 
 	<div class="font-bold text-3xl text-primary text-center">{l.explorePS}</div>
 	<div class="flex flex-wrap gap-10 my-10">
-		{#each Object.values($services) as { title, subTitle, href, img }}
+		{#each Object.values($services) as { l: { title, subtitle }, href, img }}
 			<div
 				class="card bg-base-100 image-full cursor-default w-96 shadow-xl hover:shadow-2xl hover:outline hover:outline-accent"
 			>
@@ -52,7 +52,7 @@
 				<div class="card-body py-6">
 					<div class="flex flex-col justify-between items-center h-full text-center">
 						<h2 class="text-2xl font-bold">{title}</h2>
-						<div class="text-sm mb-4">{subTitle}</div>
+						<div class="text-sm mb-4">{subtitle}</div>
 						<a href="/services{href}" class="btn btn-accent btn-sm">{l.browseSolutions}</a>
 					</div>
 				</div>

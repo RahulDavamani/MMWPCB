@@ -9,11 +9,11 @@ model Service {
    status ServiceStatus
 
    service             String
+   company             String
    firstName           String
    lastName            String
    email               String
    phone               String
-   company             String
    testingRequirements String
 
    paymentInfo   ServicePaymentInfo?

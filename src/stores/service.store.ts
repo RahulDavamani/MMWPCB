@@ -11,31 +11,28 @@ export const services = derived(lg, ($lg) => {
 	const oscilloscopes = (() => {
 		const l = $lg.services.sections.oscilloscopes;
 		return {
-			title: l.title,
-			subTitle: l.subTitle,
+			l,
 			href: '/oscilloscopes',
 			img: Oscilloscopes,
 			services: {
 				HD304MSO: {
-					title: l.services.HD304MSO.title,
+					l: l.services.HD304MSO,
 					href: '/HD304MSO',
 					img: HD304MSO,
 					category: l.categories.infiniiVision,
 					startingFrom: 9187,
 					bandwidth: 0.2,
-					bandwidthPrefix: null,
 					maxMemoryDepth: 100,
 					maxSampleRate: 3.2,
 					type: null
 				},
 				DSOS804A: {
-					title: l.services.DSOS804A.title,
+					l: l.services.DSOS804A,
 					href: '/DSOS804A',
 					img: DSOS804A,
 					category: l.categories.realTime,
 					startingFrom: 110038,
 					bandwidth: 8,
-					bandwidthPrefix: null,
 					maxMemoryDepth: 800,
 					maxSampleRate: 20,
 					type: l.types.realTime
@@ -46,15 +43,13 @@ export const services = derived(lg, ($lg) => {
 
 	const networkAnalyzers = (() => {
 		const l = $lg.services.sections.networkAnalyzers;
-
 		return {
-			title: l.title,
-			subTitle: l.subTitle,
+			l,
 			href: '/network-analyzers',
 			img: NetworkAnalyzers,
 			services: {
 				E5080B: {
-					title: l.services.E5080B.title,
+					l: l.services.E5080B,
 					href: '/E5080B',
 					img: E5080B,
 					category: l.categories.ena,
@@ -66,7 +61,7 @@ export const services = derived(lg, ($lg) => {
 					vnaType: l.vnaTypes.benchtop
 				},
 				N5291A: {
-					title: l.services.N5291A.title,
+					l: l.services.N5291A,
 					href: '/N5291A',
 					img: N5291A,
 					category: l.categories.pna,

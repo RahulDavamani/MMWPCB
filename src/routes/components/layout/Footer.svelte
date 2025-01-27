@@ -74,7 +74,7 @@
 		{/each}
 	</nav>
 	<nav class="leading-4">
-		<h6 class="footer-title">Services</h6>
+		<h6 class="footer-title">Capabilities</h6>
 		<a href="/capabilities/printed-circuit-boards/pcb-capabilities" class="link link-hover">PCB Capabilities</a>
 		<a href="/capabilities/printed-circuit-boards/multi-layer-laminated-structure" class="link link-hover"
 			>Multi-Layer Laminated Structure</a

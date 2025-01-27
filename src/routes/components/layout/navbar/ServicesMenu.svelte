@@ -9,7 +9,7 @@
 <ul class="menu menu-horizontal bg-base-100 min-w-max shadow mt-2 space-x-8">
 	{#each menu as subMenu}
 		<li>
-			{#each subMenu as { title, href }}
+			{#each subMenu as { l: { title }, href }}
 				<a href="/services{href}" class="font-semibold">{title}</a>
 			{/each}
 		</li>

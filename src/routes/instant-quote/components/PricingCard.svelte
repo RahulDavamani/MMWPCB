@@ -115,7 +115,7 @@
 	{:else}
 		<a href="/login" class="btn btn-accent btn-outline text-base gap-4 w-full mt-6">
 			<Icon icon="mdi:login" width={22} />
-			{$lg.login.title}
+			{l.loginToContinue}
 		</a>
 	{/if}
 </div>

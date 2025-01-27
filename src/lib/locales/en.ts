@@ -765,7 +765,8 @@ export const en = {
 			total: 'Total',
 			saveProduct: 'Save Product',
 			saveToCart: 'Save to Cart',
-			addToOrder: 'Add to Order'
+			addToOrder: 'Add to Order',
+			loginToContinue: 'Login to Continue'
 		},
 
 		gerberFile: {
@@ -3483,7 +3484,7 @@ export const en = {
 
 	services: {
 		title: 'Product & Services',
-		subTitle: 'Comprehensive measurement and testing technologies for advanced industrial applications.',
+		subtitle: 'Comprehensive measurement and testing technologies for advanced industrial applications.',
 		description:
 			'We are a leading provider of advanced measurement and testing technologies, specializing in delivering high-precision solutions that address complex technical challenges across diverse industries. Our comprehensive portfolio encompasses cutting-edge spectrum analyzers, network testing equipment, calibration tools, and integrated technical services designed to meet the most demanding performance and innovation requirements. By combining sophisticated hardware, intelligent software, and expert technical support, we enable organizations to push the boundaries of technological research, development, and quality assurance.',
 
@@ -3501,16 +3502,34 @@ export const en = {
 
 		catalog: {
 			title: 'Products & Services Catalog',
-			subTitle: 'A comprehensive selection of high-quality products and custom solutions to meet your needs.'
+			subtitle: 'A comprehensive selection of high-quality products and custom solutions to meet your needs.'
 		},
 
 		startingFrom: 'Starting from',
 		getQuote: 'Get Quote',
+		features: 'Features',
+		loginToGetQuote: 'Login to get quote',
+
+		requestQuote: {
+			title: 'Request Quote',
+			company: 'Company',
+			testingRequirements: 'Testing Requirements',
+			companyError: 'Please enter your company name',
+			firstNameError: 'Please enter your first name',
+			lastNameError: 'Please enter your last name',
+			emailError: 'Please enter a valid email address',
+			phoneError: 'Please enter a valid phone number',
+			submittingRequest: 'Submitting Request',
+			requestError: 'Failed to submit request',
+			requestSuccess: 'Your Request has been successfully submitted',
+			serviceRequestNo: 'Service Request No',
+			viewServiceRequests: 'View My Service Requests'
+		},
 
 		sections: {
 			oscilloscopes: {
 				title: 'Oscilloscopes',
-				subTitle: 'Accurately visualize electrical waveforms with precision and ease.',
+				subtitle: 'Accurately visualize electrical waveforms with precision and ease.',
 
 				specs: {
 					title: 'Title',
@@ -3534,17 +3553,21 @@ export const en = {
 
 				services: {
 					HD304MSO: {
-						title: 'HD304MSO InfiniiVision Oscilloscope: 4 Analog Channels'
+						title: 'HD304MSO InfiniiVision Oscilloscope: 4 Analog Channels',
+						subtitle:
+							'The HD3 Series boasts impressive resolution with high accuracy, deep memory, four analog channels, and all new custom technology ranging from 200 MHz to 1 GHz.'
 					},
 					DSOS804A: {
-						title: 'DSOS804A High-Definition Oscilloscope: 8 GHz, 4 Analog Channels'
+						title: 'DSOS804A High-Definition Oscilloscope: 8 GHz, 4 Analog Channels',
+						subtitle:
+							'The DSOS804A S-Series oscilloscopes have 8 GHz of bandwidth, a 15” XGA capacitive touch screen, and a 10-bit analog-to-digital converter'
 					}
 				}
 			},
 
 			networkAnalyzers: {
 				title: 'Network Analyzers',
-				subTitle: 'Analyze and optimize network performance with reliable data insights.',
+				subtitle: 'Analyze and optimize network performance with reliable data insights.',
 
 				specs: {
 					title: 'Title',
@@ -3569,10 +3592,12 @@ export const en = {
 
 				services: {
 					E5080B: {
-						title: 'E5080B ENA Vector Network Analyzer'
+						title: 'E5080B ENA Vector Network Analyzer',
+						subtitle: 'The most integrated and flexible ENA network analyzer'
 					},
 					N5291A: {
-						title: 'N5291A PNA Millimeter-wave System, 900 Hz to 120 GHz'
+						title: 'N5291A PNA Millimeter-wave System, 900 Hz to 120 GHz',
+						subtitle: 'Get versatility with a broadband two- or four-port network analyzer'
 					}
 				}
 			}

@@ -10,10 +10,10 @@
 	import { getMax } from '../utils/getMax';
 	import { getValues } from '../utils/getValues';
 	import SectionHeader from '../components/SectionHeader.svelte';
-	import { lg } from '../../../stores/i18n.store';
 
-	$: l = $lg.services.sections.oscilloscopes;
-	$: services = Object.values($servicesStore.oscilloscopes.services);
+	$: section = $servicesStore.oscilloscopes;
+	$: services = Object.values(section.services);
+	$: l = section.l;
 
 	let filters = {
 		search: '',
@@ -40,7 +40,7 @@
 	});
 
 	$: filteredServices = services
-		.filter(({ title, category, bandwidth, maxMemoryDepth, maxSampleRate, type }) => {
+		.filter(({ l: { title }, category, bandwidth, maxMemoryDepth, maxSampleRate, type }) => {
 			if (!title.toLowerCase().includes(filters.search.toLowerCase())) return false;
 			if (filters.categories.length && !filters.categories.includes(category)) return false;
 			if (bandwidth < filters.bandwidth[0] || bandwidth > filters.bandwidth[1]) return false;
@@ -94,7 +94,10 @@
 						{service}
 						href="/services{$servicesStore.oscilloscopes.href}{href}"
 						specs={[
-							{ title: l.specs.bandwidth, value: bandwidth < 1 ? `${bandwidth * 1000} MHz` : `${bandwidth} GHz` },
+							{
+								title: l.specs.bandwidth,
+								value: bandwidth < 1 ? `${bandwidth * 1000} MHz` : `${bandwidth} GHz`
+							},
 							{ title: l.specs.maxMemoryDepth, value: `${maxMemoryDepth} Mpts` },
 							{ title: l.specs.maxSampleRate, value: `${maxSampleRate} GSa/s` },
 							{ title: l.specs.type, value: type ?? 'N/A' }

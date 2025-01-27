@@ -8,8 +8,9 @@ import { address } from './address/address.router';
 import { lang } from './lang/lang.router';
 import { payment } from './payment/payment.router';
 import { auth } from './auth/auth.router';
+import { service } from './service/service.router';
 
-export const appRouter = router({ auth, lang, user, address, shipping, order, payment });
+export const appRouter = router({ auth, lang, user, address, shipping, order, service, payment });
 export type AppRouter = typeof appRouter;
 
 export const createCaller = async (event: RequestEvent) => createCallerFactory(appRouter)(await createContext(event));

@@ -10,10 +10,10 @@
 	import { getMax } from '../utils/getMax';
 	import { getValues } from '../utils/getValues';
 	import SectionHeader from '../components/SectionHeader.svelte';
-	import { lg } from '../../../stores/i18n.store';
 
-	$: l = $lg.services.sections.networkAnalyzers;
-	$: services = Object.values($servicesStore.networkAnalyzers.services);
+	$: section = $servicesStore.networkAnalyzers;
+	$: services = Object.values(section.services);
+	$: l = section.l;
 
 	let filters = {
 		search: '',
@@ -42,7 +42,7 @@
 	});
 
 	$: filteredServices = services
-		.filter(({ title, category, builtInPorts, maxFrequency, internalSources, vnaSeries, vnaType }) => {
+		.filter(({ l: { title }, category, builtInPorts, maxFrequency, internalSources, vnaSeries, vnaType }) => {
 			if (!title.toLowerCase().includes(filters.search.toLowerCase())) return false;
 			if (filters.categories.length && !filters.categories.includes(category)) return false;
 			if (!builtInPorts.some((port) => port >= filters.builtInPorts[0] && port <= filters.builtInPorts[1]))
