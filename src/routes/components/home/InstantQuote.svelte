@@ -62,9 +62,7 @@
 		},
 		assembly: {
 			quantity: 5,
-			uniqueParts: 0,
-			smdParts: 0,
-			throughHoleParts: 0
+			solderPads: 0
 		},
 		stencil: {
 			type: 'FRAMEWORK',
@@ -322,17 +320,8 @@
 				<FormControl classes="w-1/2" label={pd.quantity.l.title}>
 					<input type="number" class="input input-bordered" bind:value={quote.assembly.quantity} />
 				</FormControl>
-				<FormControl classes="w-1/2" label={pd.uniqueParts.l.title}>
-					<input type="number" class="input input-bordered" bind:value={quote.assembly.uniqueParts} />
-				</FormControl>
-			</div>
-
-			<div class="flex gap-12 mt-6">
-				<FormControl classes="w-1/2" label={pd.smdParts.l.title}>
-					<input type="number" class="input input-bordered" bind:value={quote.assembly.smdParts} />
-				</FormControl>
-				<FormControl classes="w-1/2" label={pd.throughHoleParts.l.title}>
-					<input type="number" class="input input-bordered" bind:value={quote.assembly.throughHoleParts} />
+				<FormControl classes="w-1/2" label={pd.solderPads.l.title}>
+					<input type="number" class="input input-bordered" bind:value={quote.assembly.solderPads} />
 				</FormControl>
 			</div>
 		{:else if productType === 'stencil'}

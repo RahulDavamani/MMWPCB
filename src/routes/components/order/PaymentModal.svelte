@@ -46,7 +46,7 @@
 		instance = await dropin.create({
 			authorization: token,
 			container: '#braintree-dropin-container',
-			paypal: { flow: 'vault' }
+			paypal: { flow: 'checkout', amount: orderTotal, currency: 'USD' }
 		});
 		isLoading = false;
 	});
