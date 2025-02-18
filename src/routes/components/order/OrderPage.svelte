@@ -11,7 +11,7 @@
 	import ReviewMessages from './ReviewMessages.svelte';
 	import RemoveOrder from './RemoveOrder.svelte';
 	import { onMount } from 'svelte';
-	import PaymentModal from './PaymentModal.svelte';
+	import OrderPaymentModal from './OrderPaymentModal.svelte';
 	import DeliveryProgressModal from './DeliveryProgressModal.svelte';
 
 	$: ({ isPortal, id, createdAt, status, products } = $order);
@@ -56,5 +56,5 @@
 </div>
 
 <RemoveOrder />
-<PaymentModal />
+<OrderPaymentModal />
 <DeliveryProgressModal />

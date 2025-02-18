@@ -89,6 +89,7 @@ export const en = {
 		},
 		user: {
 			orders: 'Orders',
+			serviceRequests: 'Service Requests',
 			profile: 'Profile',
 			settings: 'Settings',
 			logout: 'Logout'
@@ -3601,6 +3602,33 @@ export const en = {
 					}
 				}
 			}
+		}
+	},
+
+	serviceRequests: {
+		title: 'Service Requests',
+		id: 'ID',
+		createdAt: 'Created At',
+		service: 'Service',
+		status: 'Status',
+		price: 'Price',
+		payNow: 'Pay Now',
+		paymentSuccess: 'Payment Success',
+		payment: {
+			title: 'Payment Details',
+			transactionId: 'Transaction ID',
+			paymentTime: 'Payment Time',
+			paymentMethod: 'Payment Method',
+			totalAmount: 'Total Amount',
+			failedToGenerateToken: 'Failed to generate payment token',
+			failedToSubmit: 'Failed to submit payment',
+			checkout: 'Checkout',
+			amountToBePaid: 'Amount to be paid',
+			paymentSuccess: 'Payment Success',
+			paymentTotal: 'Payment Total',
+			print: 'Print',
+			payNow: 'Pay Now',
+			cancelPayment: 'Cancel Payment'
 		}
 	}
 };

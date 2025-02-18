@@ -113,7 +113,7 @@
 					</div>
 				</div>
 
-				<button class="btn btn-outline btn-success btn-sm w-full" on:click={() => showModal('paymentModal')}>
+				<button class="btn btn-outline btn-success btn-sm w-full" on:click={() => showModal('orderPaymentModal')}>
 					Proceed to Payment
 				</button>
 				<div class="divider m-2">OR</div>

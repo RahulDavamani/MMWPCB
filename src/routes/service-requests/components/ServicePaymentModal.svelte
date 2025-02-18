@@ -1,27 +1,26 @@
 <script lang="ts">
-	import Modal from '../../components/UI/Modal.svelte';
-	import dropin from 'braintree-web-drop-in';
 	import type { Dropin } from 'braintree-web-drop-in';
+	import dropin from 'braintree-web-drop-in';
+	import type { RouterOutput } from '../../../trpc/routers/app.router';
+	import { invalidateAll } from '$app/navigation';
+	import { closeModal, showModal } from '$lib/client/modal';
 	import { onMount } from 'svelte';
 	import { trpc } from '../../../trpc/client';
 	import { tce } from '../../../trpc/te';
-	import { showModal, closeModal } from '$lib/client/modal';
-	import Loader from '../../components/UI/Loader.svelte';
-	import type { RouterOutput } from '../../../trpc/routers/app.router';
-	import Icon from '@iconify/svelte';
-	import { invalidateAll } from '$app/navigation';
-	import { order } from '../../../stores/order.store';
 	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
+	import Modal from '../../components/UI/Modal.svelte';
+	import Icon from '@iconify/svelte';
+	import Loader from '../../components/UI/Loader.svelte';
 
-	$: l = $lg.order.payment;
+	$: l = $lg.serviceRequests.payment;
 
-	let modalId = 'paymentModal';
+	let modalId = 'servicePaymentModal';
+	export let service: RouterOutput['service']['getAll'][number] | null;
+	$: price = service?.price ?? 0;
 
 	let isLoading = false;
 	let instance: Dropin | undefined;
-	let paymentDetails: RouterOutput['payment']['createTransaction'] | undefined;
-
-	$: ({ id, orderTotal } = $order);
+	let paymentDetails: RouterOutput['service']['submitPayment'] | undefined;
 
 	const close = async () => {
 		isLoading = true;
@@ -46,7 +45,7 @@
 		instance = await dropin.create({
 			authorization: token,
 			container: '#braintree-dropin-container',
-			paypal: { flow: 'checkout', amount: orderTotal, currency: 'USD' }
+			paypal: { flow: 'checkout', amount: price, currency: 'USD' }
 		});
 		isLoading = false;
 	});
@@ -57,7 +56,7 @@
 		try {
 			const { nonce } = await instance.requestPaymentMethod();
 			paymentDetails = await trpc()
-				.payment.createTransaction.mutate({ orderId: id, nonce })
+				.service.submitPayment.mutate({ serviceId: service?.id ?? '', nonce })
 				.catch((e) =>
 					tce(e, {
 						callback: close,
@@ -78,7 +77,7 @@
 			{:else}
 				<div class="text-lg font-semibold mb-4">{l.checkout.toUpperCase()}</div>
 				<div>{l.amountToBePaid}</div>
-				<div class="text-xl font-mono font-bold">{parsePrice($i18n.currency, orderTotal)}</div>
+				<div class="text-xl font-mono font-bold">{parsePrice($i18n.currency, price)}</div>
 			{/if}
 		</div>
 	</div>
@@ -91,7 +90,9 @@
 		{:else if paymentDetails}
 			<div class="divider mt-0" />
 			<div class="text-center">{l.paymentTotal}</div>
-			<div class="text-xl text-center font-semibold font-mono mb-3">{parsePrice($i18n.currency, orderTotal)}</div>
+			<div class="text-xl text-center font-semibold font-mono mb-3">
+				{parsePrice($i18n.currency, price)}x
+			</div>
 
 			<div class="space-y-2 px-2">
 				<div class="flex justify-between">
@@ -100,7 +101,7 @@
 				</div>
 				<div class="flex justify-between">
 					<div>{l.paymentTime}</div>
-					<div class="font-semibold">{new Date(paymentDetails.createdAt).toLocaleString()}</div>
+					<div class="font-semibold">{new Date(paymentDetails.transactionCreatedAt).toLocaleString()}</div>
 				</div>
 				<div class="flex justify-between">
 					<div>{l.paymentMethod}</div>

@@ -15,8 +15,13 @@
 			: [
 					{
 						name: l.orders,
-						icon: 'mdi:clipboard-text-outline',
+						icon: 'mdi:package-variant-closed',
 						href: '/orders'
+					},
+					{
+						name: l.serviceRequests,
+						icon: 'mdi:clipboard-text-outline',
+						href: '/service-requests'
 					}
 				]),
 		{

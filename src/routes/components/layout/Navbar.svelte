@@ -13,7 +13,7 @@
 
 	$: navItems = [
 		{ title: l.instantQuote, href: '/instant-quote' },
-		// { title: l.services, href: '/services', menu: 'services' },
+		{ title: l.services, href: '/services', menu: 'services' },
 		{ title: l.capabilities, href: '/capabilities', menu: 'capabilities' },
 		{ title: l.whyUs, href: '/why-us' },
 		{ title: l.support, href: '/support', menu: 'support' }
