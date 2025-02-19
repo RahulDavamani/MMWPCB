@@ -4,15 +4,15 @@ import { adminProcedure } from '../../../server';
 
 const schema = z.object({
 	id: z.string().min(1),
-	price: z.number()
+	report: z.string().min(1)
 });
 
-export const approve = adminProcedure.input(schema).mutation(
-	async ({ input: { id, price } }) =>
+export const uploadReport = adminProcedure.input(schema).mutation(
+	async ({ input: { id, report } }) =>
 		await prisma.service
 			.update({
 				where: { id },
-				data: { status: 'WAITING_FOR_PAYMENT', price }
+				data: { status: 'REPORT_RELEASED', report }
 			})
 			.catch(pe)
 );

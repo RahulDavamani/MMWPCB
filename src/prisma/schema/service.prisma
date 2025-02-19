@@ -15,8 +15,8 @@ model Service {
    email               String
    phone               String
    testingRequirements String
-   price               Int?
-   reportUrl           String?
+   price               Float?
+   report              String?
 
    paymentInfo   ServicePaymentInfo?
    notifications ServiceNotification[]

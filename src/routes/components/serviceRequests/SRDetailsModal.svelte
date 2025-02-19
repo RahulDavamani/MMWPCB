@@ -1,17 +1,17 @@
 <script lang="ts">
-	import Modal from '../../components/UI/Modal.svelte';
+	import Modal from '../UI/Modal.svelte';
 	import type { RouterOutput } from '../../../trpc/routers/app.router';
 	import { lg } from '../../../stores/i18n.store';
 
 	$: l = $lg.services.requestQuote;
 
-	let modalId = 'serviceMoreDetailsModal';
-	export let service: RouterOutput['service']['getAll'][number] | null;
+	let modalId = 'srDetailsModal';
+	export let serviceRequest: RouterOutput['service']['getAll']['serviceRequests'][number] | null;
 </script>
 
-<Modal {modalId} title="More Details" boxClasses="max-w-lg w-full">
-	{#if service}
-		{@const { company, firstName, lastName, email, phone, testingRequirements } = service}
+<Modal {modalId} title={$lg.common.moreDetails} boxClasses="max-w-lg w-full">
+	{#if serviceRequest}
+		{@const { company, firstName, lastName, email, phone, testingRequirements } = serviceRequest}
 		<div class="grid grid-cols-2 gap-x-6 gap-y-4">
 			<div class="col-span-2">
 				<div class="font-bold text-xs text-gray-500">{l.company}</div>

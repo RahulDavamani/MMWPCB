@@ -7,6 +7,15 @@ import NetworkAnalyzers from '$lib/assets/services/network-analyzers/network-ana
 import E5080B from '$lib/assets/services/network-analyzers/E5080B.jpeg';
 import N5291A from '$lib/assets/services/network-analyzers/N5291A.jpeg';
 
+export const serviceStatuses = derived(lg, ($lg) => ({
+	APPLICATION_RECEIVED: $lg.serviceStatus.APPLICATION_RECEIVED,
+	IN_REVIEW: $lg.serviceStatus.IN_REVIEW,
+	WAITING_FOR_PAYMENT: $lg.serviceStatus.WAITING_FOR_PAYMENT,
+	TESTING_IN_PROGRESS: $lg.serviceStatus.TESTING_IN_PROGRESS,
+	REPORT_RELEASED: $lg.serviceStatus.REPORT_RELEASED,
+	REJECTED: $lg.serviceStatus.REJECTED
+}));
+
 export const services = derived(lg, ($lg) => {
 	const oscilloscopes = (() => {
 		const l = $lg.services.sections.oscilloscopes;

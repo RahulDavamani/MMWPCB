@@ -4,6 +4,7 @@
 	export let modalId: string;
 	export let modalBackdrop = true;
 
+	export let modalClasses: string | undefined = undefined;
 	export let boxClasses: string | undefined = undefined;
 
 	export let title: string | undefined = undefined;
@@ -16,7 +17,7 @@
 	export let dividerClasses: string | undefined = undefined;
 </script>
 
-<dialog id={modalId} class="modal">
+<dialog id={modalId} class="modal {modalClasses}">
 	{#if modalBackdrop}
 		<form method="dialog" class="modal-backdrop">
 			<button />

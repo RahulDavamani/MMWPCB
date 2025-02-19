@@ -2,21 +2,21 @@
 	import type { Dropin } from 'braintree-web-drop-in';
 	import dropin from 'braintree-web-drop-in';
 	import type { RouterOutput } from '../../../trpc/routers/app.router';
-	import { invalidateAll } from '$app/navigation';
 	import { closeModal, showModal } from '$lib/client/modal';
 	import { onMount } from 'svelte';
 	import { trpc } from '../../../trpc/client';
 	import { tce } from '../../../trpc/te';
 	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
-	import Modal from '../../components/UI/Modal.svelte';
+	import Modal from '../UI/Modal.svelte';
 	import Icon from '@iconify/svelte';
-	import Loader from '../../components/UI/Loader.svelte';
+	import Loader from '../UI/Loader.svelte';
 
 	$: l = $lg.serviceRequests.payment;
 
-	let modalId = 'servicePaymentModal';
-	export let service: RouterOutput['service']['getAll'][number] | null;
-	$: price = service?.price ?? 0;
+	let modalId = 'srPaymentModal';
+	export let serviceRequest: RouterOutput['service']['getAll']['serviceRequests'][number] | null;
+	export let fetchServiceRequests: () => Promise<void>;
+	$: price = serviceRequest?.price ?? 0;
 
 	let isLoading = false;
 	let instance: Dropin | undefined;
@@ -24,7 +24,7 @@
 
 	const close = async () => {
 		isLoading = true;
-		if (paymentDetails) await invalidateAll();
+		if (paymentDetails) fetchServiceRequests();
 		closeModal(modalId);
 		isLoading = false;
 	};
@@ -56,7 +56,7 @@
 		try {
 			const { nonce } = await instance.requestPaymentMethod();
 			paymentDetails = await trpc()
-				.service.submitPayment.mutate({ serviceId: service?.id ?? '', nonce })
+				.service.submitPayment.mutate({ id: serviceRequest?.id ?? '', nonce })
 				.catch((e) =>
 					tce(e, {
 						callback: close,

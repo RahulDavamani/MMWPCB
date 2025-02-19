@@ -11,14 +11,19 @@
 			href: '/portal/dashboard'
 		},
 		{
-			title: 'Orders',
-			icon: 'mdi:clipboard-text-outline',
-			href: '/portal/orders'
-		},
-		{
 			title: 'Users',
 			icon: 'mdi:person-multiple',
 			href: '/portal/users'
+		},
+		{
+			title: 'Orders',
+			icon: 'mdi:package-variant-closed',
+			href: '/portal/orders'
+		},
+		{
+			title: 'Service Requests',
+			icon: 'mdi:clipboard-text-outline',
+			href: '/portal/service-requests'
 		}
 	];
 	$: ({ pathname } = $page.url);

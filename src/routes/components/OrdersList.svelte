@@ -13,8 +13,8 @@
 
 	$: l = $lg.orders;
 
-	export let userId: string | undefined = undefined;
 	export let isPortal: boolean = false;
+	export let userId: string | undefined = undefined;
 
 	type Data = RouterOutput['order']['getAll'];
 	let data: Data | undefined;
@@ -57,13 +57,13 @@
 	/>
 
 	<select class="select select-sm select-bordered min-w-60" bind:value={filters.status}>
-		<option value={null}>All Orders</option>
+		<option value={null}>{l.allOrders}</option>
 		{#each statuses as status}
 			<option value={status}>{$orderStatuses[status]}</option>
 		{/each}
 	</select>
 
-	<button class="btn btn-sm btn-primary" on:click={() => fetchOrders()}>Search</button>
+	<button class="btn btn-sm btn-primary" on:click={() => fetchOrders()}>{$lg.common.search}</button>
 
 	<a href="/order" class="btn btn-secondary btn-outline btn-sm">
 		<Icon icon="mdi:cart" />
@@ -72,15 +72,15 @@
 </div>
 
 {#if !data}
-	<Loader title="Fetching Offers" overlay={false} fixed={false} classes="mt-40" />
+	<Loader title={l.fetchingOrders} overlay={false} fixed={false} classes="mt-40" />
 {:else}
 	{@const { total, orders } = data}
 	{#if total === 0}
 		<div class="text-center mt-20">
-			<div class="font-semibold text-xl">No Orders Found</div>
-			<div>Check your filters or start exploring to find what you need!</div>
+			<div class="font-semibold text-xl">{l.noOrders}</div>
+			<div>{l.checkFilters}</div>
 			{#if !isPortal}
-				<a href="/instant-quote" class="btn btn-sm btn-primary mt-4">Get Instant Quote Now</a>
+				<a href="/instant-quote" class="btn btn-sm btn-primary mt-4">{l.getInstantQuote}</a>
 			{/if}
 		</div>
 	{:else}
@@ -103,7 +103,7 @@
 					<div class="w-60 flex flex-col justify-between gap-4">
 						<div>
 							<div class="font-semibold">
-								<span>Order No :</span>
+								<span>{l.orderNo} :</span>
 								<span class="text-lg text-primary font-mono ml-1">#{id}</span>
 							</div>
 
@@ -113,7 +113,7 @@
 
 							{#if !userId}
 								<div class="text-sm">
-									<span class="font-semibold">Created By :</span>
+									<span class="font-semibold">{l.createdBy} :</span>
 									<button
 										class="btn btn-xs text-sm btn-link italic p-0 text-accent"
 										on:click={() => {
@@ -128,14 +128,14 @@
 							{/if}
 
 							<div class="text-sm mt-2">
-								<div class="font-semibold">Delivery Address:</div>
+								<div class="font-semibold">{l.deliveryAddress}:</div>
 								<div class="max-h-20 overflow-auto">
 									{#if deliveryAddress}
 										{@const { name, addressLine1, addressLine2, city, state, country, postalCode } = deliveryAddress}
 										<span class="italic">{name}</span>
 										, {addressLine1}, {addressLine2}, {city}, {state}, {country} - {postalCode}
 									{:else}
-										Not Selected
+										{$lg.common.notSelected}
 									{/if}
 								</div>
 							</div>
@@ -150,11 +150,11 @@
 					<div class="grow">
 						<div class="flex justify-between mb-2">
 							<div>
-								<span class="text-lg font-semibold">Products</span>
+								<span class="text-lg font-semibold">{l.products}</span>
 								<span class="font-mono">({products.length})</span>
 							</div>
 							<a href="orders/{id}" class="btn btn-xs btn-ghost gap-1 font-bold text-info">
-								Order Details
+								{l.orderDetails}
 								<Icon icon="mdi:chevron-right" width={16} />
 							</a>
 						</div>
@@ -183,12 +183,12 @@
 											<div class="font-mono text-xl font-semibold leading-5 mt-1">
 												${finalPrice.toFixed(2)}
 											</div>
-											<div class="text-xs opacity-75 italic">Final Price</div>
+											<div class="text-xs opacity-75 italic">{l.finalPrice}</div>
 										{:else}
 											<div class="font-mono text-xl font-semibold leading-5 mt-1">
 												{initialPrice ? `$${initialPrice.toFixed(2)}` : 'RFQ'}
 											</div>
-											<div class="text-xs opacity-75 italic">Quote Price</div>
+											<div class="text-xs opacity-75 italic">{l.quotePrice}</div>
 										{/if}
 									</div>
 								</div>
@@ -198,6 +198,7 @@
 				</div>
 			{/each}
 		</div>
+
 		<div class="flex justify-end gap-2">
 			<button
 				class="btn btn-sm btn-square btn-primary {filters.page === 1 && 'btn-disabled'}"
@@ -206,7 +207,8 @@
 				<Icon icon="mdi:chevron-left" width={20} />
 			</button>
 			<button class="btn btn-sm font-semibold no-animation cursor-default">
-				Page {filters.page}
+				{$lg.common.page}
+				{filters.page}
 			</button>
 			<button
 				class="btn btn-sm btn-square btn-primary {filters.page > total / 10 && 'btn-disabled'}"
@@ -216,7 +218,7 @@
 			</button>
 		</div>
 		<div class="flex justify-end mt-2 font-semibold opacity-60">
-			Results: {(filters.page - 1) * 10 + 1} - {(filters.page - 1) * 10 + orders.length} of {total}
+			{$lg.common.results}: {(filters.page - 1) * 10 + 1} - {(filters.page - 1) * 10 + orders.length} of {total}
 		</div>
 	{/if}
 {/if}

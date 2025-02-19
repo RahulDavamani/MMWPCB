@@ -28,7 +28,11 @@ export const en = {
 		home: 'Home',
 		moreDetails: 'More Details',
 
-		noResultsFound: 'No results found'
+		noResultsFound: 'No results found',
+		notSelected: 'Not Selected',
+
+		page: 'Page',
+		results: 'Results'
 	},
 
 	color: {
@@ -508,12 +512,19 @@ export const en = {
 
 	orders: {
 		pageTitle: 'My Orders',
+		allOrders: 'All Orders',
 		viewCart: 'View Cart',
-		orderId: 'Order ID',
-		createdDate: 'Created Date',
-		status: 'Status',
-		itemsCount: 'Items Count',
-		viewDetails: 'View Details'
+		fetchingOrders: 'Fetching Orders',
+		noOrders: 'No Orders Found',
+		checkFilters: 'Check your filters or start exploring to find what you need!',
+		getInstantQuote: 'Get Instant Quote',
+		orderNo: 'Order No',
+		createdBy: 'Created By',
+		deliveryAddress: 'Delivery Address',
+		products: 'Products',
+		orderDetails: 'Order Details',
+		finalPrice: 'Final Price',
+		quotePrice: 'Quote Price'
 	},
 
 	order: {
@@ -3607,8 +3618,15 @@ export const en = {
 
 	serviceRequests: {
 		title: 'Service Requests',
+		allServiceRequests: 'All Service Requests',
+		fetchingServiceRequests: 'Fetching Service Requests',
+		noServiceRequests: 'No Service Requests Found',
+		checkFilters: 'Check your filters or start exploring to find what you need!',
+		browseSolutions: 'Browse Our Solutions',
 		id: 'ID',
+		createdBy: 'Created By',
 		createdAt: 'Created At',
+		updatedAt: 'Updated At',
 		service: 'Service',
 		status: 'Status',
 		price: 'Price',
@@ -3630,6 +3648,15 @@ export const en = {
 			payNow: 'Pay Now',
 			cancelPayment: 'Cancel Payment'
 		}
+	},
+
+	serviceStatus: {
+		APPLICATION_RECEIVED: 'Application Received',
+		IN_REVIEW: 'In Review',
+		WAITING_FOR_PAYMENT: 'Waiting for Payment',
+		TESTING_IN_PROGRESS: 'Testing in Progress',
+		REPORT_RELEASED: 'Report Released',
+		REJECTED: 'Rejected'
 	}
 };
 export type Lang = typeof en;
