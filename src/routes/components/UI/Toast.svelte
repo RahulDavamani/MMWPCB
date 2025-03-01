@@ -14,7 +14,7 @@
 	onMount(() => setTimeout(closeToast, toastDuration));
 </script>
 
-<div class="toast toast-bottom toast-end z-50 {toastClasses}">
+<div class="toast toast-bottom toast-start z-50 {toastClasses}">
 	<div class="gap-2 alert {alertClasses}">
 		<slot name="icon">
 			<IconBtn icon="mdi:close" on:click={closeToast} />

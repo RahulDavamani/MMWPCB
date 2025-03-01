@@ -132,20 +132,19 @@ model OrderPaymentInfo {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   transactionId        String
-   transactionCreatedAt DateTime
-   networkTransactionId String?
-   customerId           String?
+   paymentId String
+   status    String
 
-   type            String
-   status          String
-   amount          String
-   currencyIsoCode String
+   captureId     String
+   captureStatus String
+   captureTime   DateTime
 
-   paymentInstrumentType String
-   ccType                String?
-   ppPaymentId           String?
-   ppPayerId             String?
+   amount   String
+   currency String
+
+   payerId    String
+   payerName  String
+   payerEmail String
 
    orderId String @unique
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)

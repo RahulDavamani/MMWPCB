@@ -1,11 +1,9 @@
 <script lang="ts">
 	import Modal from '../UI/Modal.svelte';
-	import dropin from 'braintree-web-drop-in';
-	import type { Dropin } from 'braintree-web-drop-in';
 	import { onMount } from 'svelte';
 	import { trpc } from '../../../trpc/client';
 	import { tce } from '../../../trpc/te';
-	import { showModal, closeModal } from '$lib/client/modal';
+	import { closeModal } from '$lib/client/modal';
 	import Loader from '../UI/Loader.svelte';
 	import type { RouterOutput } from '../../../trpc/routers/app.router';
 	import Icon from '@iconify/svelte';
@@ -18,53 +16,56 @@
 	let modalId = 'orderPaymentModal';
 
 	let isLoading = false;
-	let instance: Dropin | undefined;
+	let currency = $i18n.currency;
 	let paymentDetails: RouterOutput['order']['submitPayment'] | undefined;
 
 	$: ({ id, orderTotal } = $order);
+
+	const loadPayPalSDK = () =>
+		new Promise((resolve) => {
+			const existingScript = document.querySelector('script[src*="paypal.com/sdk/js"]');
+			if (existingScript) existingScript.remove();
+			const script = Object.assign(document.createElement('script'), {
+				src: `https://www.paypal.com/sdk/js?client-id=AbjZFBGRMpldJLqSfEQHY4eTInwfYysFo3mauPezn6GvOJ19jHtX8jkzbECWHDjnwMyGuLPhHG8JtBIg&currency=${$i18n.currency.toUpperCase()}`,
+				onload: resolve
+			});
+			document.body.appendChild(script);
+		});
+
+	const renderPayPalButton = () =>
+		// @ts-ignore
+		window.paypal
+			.Buttons({
+				createOrder: async () =>
+					await trpc()
+						.order.createPayment.mutate({ id, currencyCode: $i18n.currency })
+						.catch((e) => tce(e, { showToast: true, callback: close })),
+
+				// @ts-ignore
+				onApprove: async (data) => {
+					paymentDetails = await trpc()
+						.order.submitPayment.mutate({ id, paymentId: data.orderID })
+						.catch((e) => tce(e, { showToast: true, callback: close }));
+				}
+			})
+			.render('#paypal-button-container');
+
+	const init = async () => {
+		isLoading = true;
+		currency = $i18n.currency;
+		await loadPayPalSDK();
+		renderPayPalButton();
+		isLoading = false;
+	};
+
+	onMount(init);
+	$: if (currency !== $i18n.currency) init();
 
 	const close = async () => {
 		isLoading = true;
 		if (paymentDetails) await invalidateAll();
 		closeModal(modalId);
-		isLoading = false;
-	};
-
-	onMount(async () => {
-		isLoading = true;
-		const token = await trpc()
-			.payment.getClientToken.query()
-			.catch((e) =>
-				tce(e, {
-					callback: close,
-					showModal: {
-						title: l.failedToGenerateToken,
-						retryFn: () => showModal(modalId)
-					}
-				})
-			);
-		instance = await dropin.create({
-			authorization: token,
-			container: '#braintree-dropin-container',
-			paypal: { flow: 'checkout', amount: orderTotal, currency: 'USD' }
-		});
-		isLoading = false;
-	});
-
-	const submitPayment = async () => {
-		if (!instance) return;
-		isLoading = true;
-		try {
-			const { nonce } = await instance.requestPaymentMethod();
-			paymentDetails = await trpc()
-				.order.submitPayment.mutate({ orderId: id, nonce })
-				.catch((e) =>
-					tce(e, {
-						callback: close,
-						showModal: { title: l.failedToSubmit }
-					})
-				);
-		} catch (error) {}
+		paymentDetails = undefined;
 		isLoading = false;
 	};
 </script>
@@ -84,29 +85,24 @@
 	</div>
 
 	<div class="px-6">
-		<div id="braintree-dropin-container" class:hidden={isLoading || paymentDetails} class="mt-4" />
+		<div id="paypal-button-container" class:hidden={isLoading || paymentDetails} class="mt-8 mb-2" />
 
 		{#if isLoading}
 			<Loader fixed={false} overlay={false} size={80} classes="pt-10 pb-4" />
 		{:else if paymentDetails}
+			{@const { amount, currency, captureId, captureTime } = paymentDetails}
 			<div class="divider mt-0" />
 			<div class="text-center">{l.paymentTotal}</div>
-			<div class="text-xl text-center font-semibold font-mono mb-3">{parsePrice($i18n.currency, orderTotal)}</div>
+			<div class="text-xl text-center font-semibold font-mono mb-3">{(currency === 'USD' ? '$' : '€') + amount}</div>
 
 			<div class="space-y-2 px-2">
 				<div class="flex justify-between">
 					<div>{l.transactionId}</div>
-					<div class="font-semibold">{paymentDetails.transactionId.toUpperCase()}</div>
+					<div class="font-semibold">{captureId.toUpperCase()}</div>
 				</div>
 				<div class="flex justify-between">
 					<div>{l.paymentTime}</div>
-					<div class="font-semibold">{new Date(paymentDetails.transactionCreatedAt).toLocaleString()}</div>
-				</div>
-				<div class="flex justify-between">
-					<div>{l.paymentMethod}</div>
-					<div class="font-semibold">
-						{paymentDetails.paymentInstrumentType.replace('_', ' ').replace(/\b\w/g, (char) => char.toUpperCase())}
-					</div>
+					<div class="font-semibold">{new Date(captureTime).toLocaleString()}</div>
 				</div>
 			</div>
 
@@ -122,7 +118,6 @@
 				</button>
 			</div>
 		{:else}
-			<button class="btn btn-primary w-full mt-8" on:click={submitPayment}>{l.payNow}</button>
 			<button class="btn btn-link text-sm text-error w-full mb-2" on:click={close}>{l.cancelPayment}</button>
 		{/if}
 	</div>

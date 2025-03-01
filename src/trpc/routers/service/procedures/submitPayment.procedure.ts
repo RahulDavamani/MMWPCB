@@ -1,34 +1,47 @@
 import { z } from 'zod';
 import { userProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
-import { createCallerFactory, TRPCError } from '@trpc/server';
-import { payment } from '../../payment/payment.router';
+import { payment } from '$lib/server/payment';
+import { TRPCError } from '@trpc/server';
 
 export const schema = z.object({
 	id: z.string().min(1),
-	nonce: z.string().min(1)
+	paymentId: z.string().min(1)
 });
 
-export const submitPayment = userProcedure.input(schema).mutation(async ({ ctx, input: { id, nonce } }) => {
-	const { price } = await prisma.service
-		.findUniqueOrThrow({
-			where: { id, userId: ctx.user.id },
-			select: { price: true }
-		})
-		.catch(pe);
+export const submitPayment = userProcedure
+	.input(schema)
+	.mutation(async ({ ctx: { user }, input: { id, paymentId } }) => {
+		try {
+			await prisma.service.findUniqueOrThrow({ where: { id, userId: user.id }, select: { id: true } }).catch(pe);
 
-	if (!price) throw new TRPCError({ code: 'BAD_REQUEST', message: 'Price not found' });
+			const data = await payment.captureOrder(paymentId);
+			if (data.status !== 'COMPLETED' || data.purchase_units[0].payments.captures[0].status !== 'COMPLETED')
+				throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR', message: 'Transaction Failed' });
 
-	const { createTransaction } = createCallerFactory()(payment)(ctx);
-	const { paymentInfo } = await createTransaction({ nonce, total: price.toFixed(2) });
+			const paymentInfo = {
+				paymentId: data.id,
+				status: data.status,
+				captureId: data.purchase_units[0].payments.captures[0].id,
+				captureStatus: data.purchase_units[0].payments.captures[0].status,
+				captureTime: data.purchase_units[0].payments.captures[0].create_time,
+				amount: data.purchase_units[0].payments.captures[0].amount.value,
+				currency: data.purchase_units[0].payments.captures[0].amount.currency_code,
+				payerId: data.payer.payer_id,
+				payerEmail: data.payer.email_address,
+				payerName: data.payer.name.given_name + ' ' + data.payer.name.surname
+			};
 
-	await prisma.service.update({
-		where: { id },
-		data: {
-			status: 'WAITING_FOR_SAMPLES',
-			paymentInfo: { create: paymentInfo }
+			await prisma.service.update({
+				where: { id },
+				data: {
+					status: 'WAITING_FOR_SAMPLES',
+					paymentInfo: { create: paymentInfo }
+				}
+			});
+
+			return paymentInfo;
+		} catch (_) {
+			throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR', message: 'Transaction Failed' });
 		}
 	});
-
-	return paymentInfo;
-});

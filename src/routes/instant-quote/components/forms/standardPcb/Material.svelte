@@ -37,7 +37,7 @@
 					$quote.products.standardPcb = {
 						...$quote.products.standardPcb,
 						fr4TG: undefined,
-						rogers: 'ROGERS_4003C',
+						rogers: 'ROGERS_5880',
 						thermalConductivity: undefined,
 						thermoElectricSeparation: undefined,
 						structureOfMCPCB: undefined

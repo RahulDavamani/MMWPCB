@@ -21,6 +21,7 @@ import { updateFabrication } from './procedures/updateFabrication.procedure';
 import { completeFabrication } from './procedures/completeFabrication.procedure';
 import { getDashboard } from './procedures/getDashboard.procedure';
 import { getSaved } from './procedures/getSaved.procedure';
+import { createPayment } from './procedures/createPayment.procedure';
 import { submitPayment } from './procedures/submitPayment.procedure';
 
 export const order = router({
@@ -40,6 +41,7 @@ export const order = router({
 	approveReview,
 	rejectReview,
 	insertReviewMessage,
+	createPayment,
 	submitPayment,
 	startFabrication,
 	updateFabrication,

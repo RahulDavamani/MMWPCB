@@ -6,12 +6,11 @@ import { order } from './order/order.router';
 import { user } from './user/user.router';
 import { address } from './address/address.router';
 import { lang } from './lang/lang.router';
-import { payment } from './payment/payment.router';
 import { auth } from './auth/auth.router';
 import { service } from './service/service.router';
 import { exchangeRate } from './exchange-rate/exchangeRate.router';
 
-export const appRouter = router({ auth, lang, user, address, shipping, order, service, payment, exchangeRate });
+export const appRouter = router({ auth, lang, user, address, shipping, order, service, exchangeRate });
 export type AppRouter = typeof appRouter;
 
 export const createCaller = async (event: RequestEvent) => createCallerFactory(appRouter)(await createContext(event));

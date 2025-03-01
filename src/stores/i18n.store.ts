@@ -85,5 +85,6 @@ export const lg = writable<Lang>();
 export const parsePrice = (currency: 'usd' | 'eur', price: number, toFixed: number | null = 2) => {
 	const { exchangeRate } = get(page).data;
 	const convertedPrice = currency === 'usd' ? price : price * exchangeRate;
-	return `${currency === 'usd' ? '$' : '€'}${toFixed ? convertedPrice.toFixed(toFixed) : convertedPrice}`;
+	const symbol = currency === 'usd' ? '$' : '€';
+	return `${symbol}${toFixed ? convertedPrice.toFixed(toFixed) : convertedPrice}`;
 };
