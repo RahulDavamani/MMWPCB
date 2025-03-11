@@ -63,14 +63,14 @@ export const i18n = (() => {
 		localStorage.setItem('language', language);
 		localStorage.setItem('currency', currency);
 		set({ language, currency });
-		fetchLanguage(language);
+		fetchLanguage('en');
 	}
 
 	// Methods
 	const setLanguage = async (language: 'en' | 'zh' | 'fr' | 'es') => {
 		update((state) => ({ ...state, language }));
 		localStorage.setItem('language', language);
-		await fetchLanguage(language);
+		await fetchLanguage('en');
 	};
 	const setCurrency = (currency: 'usd' | 'eur') => {
 		update((state) => ({ ...state, currency }));

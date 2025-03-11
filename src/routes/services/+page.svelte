@@ -40,13 +40,13 @@
 	</div>
 
 	<div class="font-bold text-3xl text-primary text-center">{l.explorePS}</div>
-	<div class="flex flex-wrap gap-10 my-10">
+	<div class="grid grid-cols-3 gap-y-10 my-10">
 		{#each Object.values($services) as { l: { title, subtitle }, href, img }}
 			<div
-				class="card bg-base-100 image-full cursor-default w-96 shadow-xl hover:shadow-2xl hover:outline hover:outline-accent"
+				class="card bg-base-100 image-full cursor-default w-96 h-60 shadow-xl hover:shadow-2xl hover:outline hover:outline-accent"
 			>
 				<figure>
-					<img src={img} alt="Shoes" />
+					<img src={img} alt="Category" />
 				</figure>
 
 				<div class="card-body py-6">

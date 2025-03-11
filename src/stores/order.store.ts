@@ -26,10 +26,13 @@ export const orderStatuses = derived(lg, ($lg) => ({
 }));
 
 export const orderProductPrices = writable<{ [k in string]: number }>({});
+export const orderShippingPrice = writable<number | undefined>();
+
+export const orderSelectedProducts = writable<string[] | null>(null);
 
 export const order = derived(
-	[lg, page, productTypes, orderProductPrices],
-	([$lg, $page, $productTypes, $orderProductPrices]) => {
+	[lg, page, productTypes, orderProductPrices, orderShippingPrice, orderSelectedProducts],
+	([$lg, $page, $productTypes, $orderProductPrices, $orderShippingPrice, $orderSelectedProducts]) => {
 		const l = $lg.order;
 
 		const isPortal = $page.url.pathname.includes('portal');
@@ -72,22 +75,27 @@ export const order = derived(
 			...vacuumCastings.map((p) => ({ ...p, type: $productTypes.vacuumCasting }))
 		];
 
+		const selectedProducts = products.filter((p) => {
+			if ($orderSelectedProducts && !$orderSelectedProducts.includes(p.id)) return false;
+			else return true;
+		});
+
 		const editable = !isPortal && ['CART', 'SAVED', 'REJECTED'].includes(status);
 		const showFabrication = ['FABRICATION', 'DELIVERY', 'COMPLETED'].includes(status);
 
-		const fileNames = products.map((p) => p.fileName).filter(Boolean) as string[];
+		const fileNames = selectedProducts.map((p) => p.fileName).filter(Boolean) as string[];
 
-		const totalInitialPrice = products.reduce((acc, cur) => acc + (cur.initialPrice ?? 0), 0);
+		const totalInitialPrice = selectedProducts.reduce((acc, cur) => acc + (cur.initialPrice ?? 0), 0);
 		const totalFinalPrice = products.reduce((acc, cur) => acc + (cur.finalPrice ?? 0), 0);
 
-		const totalItemsPrice = products[0]?.finalPrice ? totalFinalPrice : totalInitialPrice;
-		const shippingPrice = shippingInfo?.price ?? 0;
+		const totalItemsPrice = selectedProducts[0]?.finalPrice ? totalFinalPrice : totalInitialPrice;
+		const shippingPrice = $orderShippingPrice ?? 0;
 		const discount = totalItemsPrice * 0;
 		const taxes = (totalItemsPrice + shippingPrice - discount) * 0;
 		const orderTotal = totalItemsPrice + shippingPrice - discount + taxes;
 
 		const estDeliveryDate = new Date().toDateString();
-		const weight = products.reduce((acc, cur) => acc + cur.weight, 0);
+		const weight = selectedProducts.reduce((acc, cur) => acc + cur.weight, 0);
 
 		// Methods
 		const selectAddress = async (address: RouterOutput['address']['get'][number]) =>
@@ -130,19 +138,19 @@ export const order = derived(
 			})();
 
 		const submitReviewError =
-			products.length === 0
+			selectedProducts.length === 0
 				? l.submitReview.noProducts
 				: !shippingInfo
 					? l.submitReview.shippingError
 					: !deliveryAddress
 						? l.submitReview.deliveryError
-						: fileNames.length !== products.length
+						: fileNames.length !== selectedProducts.length
 							? l.submitReview.filesNotUploaded
 							: undefined;
 
 		const submitReview = ui.loaderWrapper({ title: l.submitReview.submittingOrder }, async () => {
 			await trpc()
-				.order.submitReview.mutate({ id })
+				.order.submitReview.mutate({ id, productIds: $orderSelectedProducts })
 				.catch((e) => tce(e, { showModal: { title: l.submitReview.submitOrderSuccess, retryFn: submitReview } }));
 
 			await invalidateAll();
@@ -154,7 +162,7 @@ export const order = derived(
 
 		const saveOrder = ui.loaderWrapper({ title: l.saveOrder.savingOrder }, async () => {
 			await trpc()
-				.order.save.mutate({ id })
+				.order.save.mutate({ id, productIds: $orderSelectedProducts })
 				.catch((e) => tce(e, { showModal: { title: l.saveOrder.saveOrderError, retryFn: saveOrder } }));
 
 			await invalidateAll();
@@ -181,7 +189,8 @@ export const order = derived(
 			await trpc()
 				.order.approveReview.mutate({
 					id,
-					products: Object.entries(get(orderProductPrices)).map(([id, finalPrice]) => ({ id, finalPrice }))
+					products: Object.entries(get(orderProductPrices)).map(([id, finalPrice]) => ({ id, finalPrice })),
+					shippingPrice: $orderShippingPrice
 				})
 				.catch((e) => tce(e, { showModal: { title: l.approveReview.approveReviewError, retryFn: approveReview } }));
 

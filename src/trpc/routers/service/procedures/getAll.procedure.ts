@@ -36,7 +36,10 @@ export const getAll = userProcedure.input(schema).query(
 		const serviceRequests = await prisma.service
 			.findMany({
 				where: { userId, status: status ?? {} },
-				include: { user: { select: { id: true, firstName: true, lastName: true } } },
+				include: {
+					user: { select: { id: true, firstName: true, lastName: true } },
+					antennaInfo: { select: { connectorType: true, impedance: true, gender: true } }
+				},
 				orderBy: { createdAt: 'desc' },
 				skip: (page - 1) * 10,
 				take: 10

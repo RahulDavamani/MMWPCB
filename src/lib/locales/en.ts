@@ -599,6 +599,10 @@ export const en = {
 		},
 
 		orderMessage: {
+			saved: {
+				title: 'This Order is saved as draft',
+				description: 'It is not yet submitted for review'
+			},
 			review: {
 				title: 'Your order has been submitted for review',
 				button: 'Cancel Review'
@@ -3531,6 +3535,10 @@ export const en = {
 			lastNameError: 'Please enter your last name',
 			emailError: 'Please enter a valid email address',
 			phoneError: 'Please enter a valid phone number',
+			autPort: 'AUT Port',
+			connectorType: 'Connector Type',
+			impedance: 'Impedance',
+			gender: 'Gender',
 			submittingRequest: 'Submitting Request',
 			requestError: 'Failed to submit request',
 			requestSuccess: 'Your Request has been successfully submitted',
@@ -3611,6 +3619,51 @@ export const en = {
 						title: 'N5291A PNA Millimeter-wave System, 900 Hz to 120 GHz',
 						subtitle: 'Get versatility with a broadband two- or four-port network analyzer'
 					}
+				}
+			},
+
+			antennaTestSystems: {
+				title: 'Antenna Test Systems',
+				subtitle: 'Optimize antenna performance with advanced testing and measurement solutions.',
+
+				specs: {
+					title: 'Title',
+					category: 'Category',
+					categories: 'Categories',
+					frequency: 'Frequency'
+				},
+
+				categories: {
+					farField: 'Far Field',
+					nearField: 'Near Field',
+					onChip: 'On-Chip'
+				},
+
+				services: {
+					AP1: { title: 'Product 1' },
+					AP2: { title: 'Product 2' },
+					AP3: { title: 'Product 3' },
+					AP4: { title: 'Product 4' }
+				}
+			},
+
+			circuitTestPlatforms: {
+				title: 'mmWave/THz Circuit Test Platforms',
+				subtitle: 'Accelerate mmWave/THz circuit design and test with advanced measurement solutions.',
+
+				specs: {
+					title: 'Title',
+					category: 'Category',
+					categories: 'Categories',
+					frequency: 'Frequency'
+				},
+
+				categories: {
+					circuitTestPlatform: 'mmWave/THz Circuit Test Platform'
+				},
+
+				services: {
+					CP1: { title: 'Product 1' }
 				}
 			}
 		}

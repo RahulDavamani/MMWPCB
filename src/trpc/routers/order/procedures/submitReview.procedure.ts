@@ -3,19 +3,21 @@ import { userProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
 import { customAlphabet } from 'nanoid';
 
+const schema = z.object({ id: z.string().min(1), productIds: z.array(z.string().min(1)).nullable() });
+
 export const submitReview = userProcedure
-	.input(z.object({ id: z.string().min(1) }))
-	.mutation(async ({ ctx: { user }, input: { id } }) => {
+	.input(schema)
+	.mutation(async ({ ctx: { user }, input: { id, productIds } }) => {
 		const { status } = await prisma.order
 			.findUniqueOrThrow({
-				where: { id },
+				where: { id, userId: user.id },
 				select: { status: true }
 			})
 			.catch(pe);
 
 		await prisma.order
 			.update({
-				where: { id, userId: user.id },
+				where: { id },
 				data: {
 					createdAt: status === 'CART' ? new Date() : undefined,
 					status: 'REVIEW',
@@ -25,11 +27,31 @@ export const submitReview = userProcedure
 			.catch(pe);
 
 		if (status === 'CART')
-			await prisma.order.create({
-				data: {
-					id: customAlphabet('1234567890', 10)(),
-					status: 'CART',
-					userId: user.id
-				}
-			});
+			await prisma.order
+				.create({
+					data: {
+						id: customAlphabet('1234567890', 10)(),
+						status: 'CART',
+						userId: user.id
+					}
+				})
+				.catch(pe);
+
+		if (productIds) {
+			const { id: orderId } = await prisma.order
+				.findFirstOrThrow({ where: { status: 'CART' }, select: { id: true } })
+				.catch(pe);
+
+			await prisma.standardPcb.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+			await prisma.advancedPcb.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+			await prisma.flexiblePcb.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+			await prisma.rigidFlex.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+			await prisma.assembly.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+			await prisma.stencil.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+			await prisma.cNC.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+			await prisma.sheetMetal.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+			await prisma.threePrinting.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+			await prisma.injectionMolding.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+			await prisma.vacuumCasting.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
+		}
 	});

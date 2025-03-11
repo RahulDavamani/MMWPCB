@@ -10,7 +10,7 @@
 	$: ({ user } = $page.data as PageData);
 
 	export let section: { l: { title: string }; href: string };
-	export let service: { l: { title: string; subtitle: string }; img: string; category: string };
+	export let service: { code: string; l: { title: string; subtitle?: string }; img: string; category: string };
 	export let specs: { title: string; value: string }[];
 </script>
 
@@ -28,7 +28,9 @@
 		<div class="w-3/5">
 			<div class="font-semibold text-3xl mb-4">{service.l.title}</div>
 			<div class="text-lg text-primary font-serif mb-4">{service.category}</div>
-			<div class="font-light mb-4">{service.l.subtitle}</div>
+			{#if service.l.subtitle}
+				<div class="font-light mb-4">{service.l.subtitle}</div>
+			{/if}
 
 			<div class="mb-8">
 				<div class="font-semibold text-accent mb-2">Specifications:</div>
@@ -59,4 +61,4 @@
 	</div>
 </Layout>
 
-<RequestQuoteModel service={service.l.title} />
+<RequestQuoteModel serviceCode={service.code} />

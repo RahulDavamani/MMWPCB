@@ -22,26 +22,17 @@
 	</div>
 
 	<div class="grid grid-cols-4 gap-10">
-		<div>
-			<a href="/services{$services.oscilloscopes.href}" class="btn btn-link btn-lg text-xl p-0">
-				{$services.oscilloscopes.l.title}
-			</a>
-			{#each Object.values($services.oscilloscopes.services) as { l: { title }, href }}
-				<a href="/services{$services.oscilloscopes.href}{href}" class="btn btn-link p-0 text-left text-black">
+		{#each Object.values($services) as { l: { title }, href, services }}
+			<div class="flex flex-col items-start">
+				<a href="/services{href}" class="btn btn-link btn-lg text-xl p-0">
 					{title}
 				</a>
-			{/each}
-		</div>
-
-		<div>
-			<a href="/services{$services.networkAnalyzers.href}" class="btn btn-link btn-lg text-xl p-0">
-				{$services.networkAnalyzers.l.title}
-			</a>
-			{#each Object.values($services.networkAnalyzers.services) as { l: { title }, href }}
-				<a href="/services{$services.networkAnalyzers.href}{href}" class="btn btn-link p-0 text-left text-black">
-					{title}
-				</a>
-			{/each}
-		</div>
+				{#each Object.values(services) as { l: { title }, href: h }}
+					<a href="/services{href}{h}" class="btn btn-link p-0 text-left text-black">
+						{title}
+					</a>
+				{/each}
+			</div>
+		{/each}
 	</div>
 </Layout>

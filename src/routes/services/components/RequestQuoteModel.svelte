@@ -11,13 +11,27 @@
 	import Icon from '@iconify/svelte';
 	import { page } from '$app/stores';
 	import type { PageData } from '../$types';
+	import { services } from '../../../stores/service.store';
 
 	$: l = $lg.services.requestQuote;
 
 	let modalId = 'requestQuoteModal';
-	export let service: string;
+	export let serviceCode: string;
+	$: isAntennaTestSystems = Object.keys($services.antennaTestSystems.services).includes(serviceCode);
 
-	let quote = {
+	let quote: {
+		company: string;
+		firstName: string;
+		lastName: string;
+		email: string;
+		phone: string;
+		testingRequirements: string;
+		antennaInfo?: {
+			connectorType: string;
+			impedance: number;
+			gender: string;
+		};
+	} = {
 		company: '',
 		firstName: '',
 		lastName: '',
@@ -35,7 +49,14 @@
 				lastName: user.lastName,
 				email: user.email,
 				phone: user.phone,
-				testingRequirements: ''
+				testingRequirements: '',
+				antennaInfo: isAntennaTestSystems
+					? {
+							connectorType: 'N',
+							impedance: 50,
+							gender: 'Male'
+						}
+					: undefined
 			};
 			serviceId = null;
 			loading = false;
@@ -61,7 +82,7 @@
 		loading = true;
 		const id = customAlphabet('1234567890', 10)();
 		const data = await trpc()
-			.service.create.mutate({ id, service, ...quote })
+			.service.create.mutate({ id, serviceCode, ...quote })
 			.catch((e) =>
 				tce(e, {
 					showModal: { title: l.requestError, retryFn: requestQuote },
@@ -72,6 +93,79 @@
 		serviceId = data.id;
 		loading = false;
 	};
+
+	const autConnectorTypes = {
+		N: {
+			connectorType: 'N',
+			impedances: [50, 75],
+			refDrawing: 'https://www.digikey.hk/zht/models/13535429'
+		},
+		BNC: {
+			connectorType: 'BNC',
+			impedances: [50, 75],
+			refDrawing: 'https://s3-us-west-2.amazonaws.com/catsy.582/112424.pdf'
+		},
+		TNC: {
+			connectorType: 'TNC',
+			impedances: [50],
+			refDrawing: 'https://s3-us-west-2.amazonaws.com/catsy.582/122408.pdf'
+		},
+		SMA: {
+			connectorType: 'SMA',
+			impedances: [50],
+			refDrawing: 'https://app.adam-tech.com/products/download/data_sheet/219105/rf2-04a-t-00-50-g-data-sheet.pdf'
+		},
+		SMB: {
+			connectorType: 'SMB',
+			impedances: [50, 75],
+			refDrawing: 'https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/6535/0731000207.pdf'
+		},
+		SMC: {
+			connectorType: 'SMC',
+			impedances: [50],
+			refDrawing: 'https://s3-us-west-2.amazonaws.com/catsy.582/152119.pdf'
+		},
+		'1mm': {
+			connectorType: '1mm',
+			impedances: [50],
+			refDrawing: 'https://www.digikey.hk/zht/models/13573678'
+		},
+		'1.85mm': {
+			connectorType: '1.85mm',
+			impedances: [50],
+			refDrawing: 'https://www.digikey.hk/zht/models/9094460'
+		},
+		'2.4mm': {
+			connectorType: '2.4mm',
+			impedances: [50],
+			refDrawing: 'https://www.digikey.hk/zht/models/6164043'
+		},
+		'2.92mm': {
+			connectorType: '2.92mm',
+			impedances: [50],
+			refDrawing: 'https://www.digikey.hk/zht/models/17284017'
+		},
+		'3.5mm': {
+			connectorType: '3.5mm',
+			impedances: [50],
+			refDrawing: 'https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/497/TMB-V5F2-3L1.pdf'
+		},
+		SSMA: {
+			connectorType: 'SSMA',
+			impedances: [50],
+			refDrawing: 'https://www.digikey.hk/zht/models/2339087'
+		},
+		SSMB: {
+			connectorType: 'SSMB',
+			impedances: [50],
+			refDrawing: 'https://radiall-files.s3.amazonaws.com/tds/coaxialconnectors/7405-1521-002.PDF'
+		},
+		SSMC: {
+			connectorType: 'SSMC',
+			impedances: [50],
+			refDrawing: 'https://radiall-files.s3.amazonaws.com/tds/coaxialconnectors/7009-1511-050.PDF'
+		}
+	} as { [key: string]: { connectorType: string; impedances: number[]; refDrawing: string } };
 </script>
 
 <Modal {modalId} title={l.title} boxClasses="max-w-3xl w-full" dividerClasses="mb-2" modalBackdrop={false}>
@@ -138,6 +232,48 @@
 				/>
 			</FormControl>
 		</div>
+
+		{#if isAntennaTestSystems && quote.antennaInfo}
+			<div class="mt-4">
+				<div class="font-semibold">{l.autPort}</div>
+				<div class="grid grid-cols-4 mt-4 gap-x-10">
+					<FormControl label={l.connectorType} classes="col-span-3">
+						<select class="select select-bordered" bind:value={quote.antennaInfo.connectorType}>
+							{#each Object.values(autConnectorTypes) as { connectorType: value }}
+								<option {value}>{value}</option>
+							{/each}
+						</select>
+					</FormControl>
+
+					<div class="flex items-end">
+						<a
+							href={autConnectorTypes[quote.antennaInfo.connectorType].refDrawing}
+							target="_blank"
+							class="btn btn-primary"
+						>
+							View Ref Drawing
+						</a>
+					</div>
+
+					<FormControl label={l.impedance} classes="col-span-2">
+						<select class="select select-bordered" bind:value={quote.antennaInfo.impedance}>
+							{#each autConnectorTypes[quote.antennaInfo.connectorType].impedances as value}
+								<option {value}>{value}</option>
+							{/each}
+						</select>
+					</FormControl>
+
+					<FormControl label={l.gender} classes="col-span-2">
+						<select class="select select-bordered" bind:value={quote.antennaInfo.gender}>
+							{#each ['Male', 'Female'] as value}
+								<option {value}>{value}</option>
+							{/each}
+						</select>
+					</FormControl>
+				</div>
+			</div>
+		{/if}
+
 		<button class="btn btn-secondary w-full mt-8 {btnDisabled && 'btn-disabled'}" on:click={requestQuote}>
 			{l.title}
 		</button>

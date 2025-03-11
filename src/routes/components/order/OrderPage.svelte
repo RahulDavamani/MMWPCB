@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import { order, orderProductPrices } from '../../../stores/order.store';
+	import { order, orderProductPrices, orderShippingPrice, orderSelectedProducts } from '../../../stores/order.store';
 	import OrderStatus from './OrderStatus.svelte';
 	import ShippingInfo from './ShippingInfo.svelte';
 	import DeliveryAddress from './DeliveryAddress.svelte';
@@ -15,7 +15,12 @@
 	import DeliveryProgressModal from './DeliveryProgressModal.svelte';
 
 	$: ({ isPortal, id, createdAt, status, products } = $order);
-	onMount(() => products.forEach(({ id, finalPrice }) => finalPrice && ($orderProductPrices[id] = finalPrice)));
+	onMount(() => {
+		products.forEach(({ id, finalPrice }) => finalPrice && ($orderProductPrices[id] = finalPrice));
+		$orderProductPrices = {};
+		$orderShippingPrice = $order.shippingInfo?.price;
+		$orderSelectedProducts = null;
+	});
 </script>
 
 <a href={isPortal ? '/portal/orders' : '/orders'} class="btn btn-link px-0">

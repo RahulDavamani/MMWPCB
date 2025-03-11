@@ -4,7 +4,7 @@
 	import ProductDetailsModal from './ProductDetailsModal.svelte';
 	import { showModal } from '$lib/client/modal';
 	import { supabase } from '$lib/client/supabase';
-	import { order, orderProductPrices } from '../../../stores/order.store';
+	import { order, orderProductPrices, orderSelectedProducts } from '../../../stores/order.store';
 	import FabricationProgressModal from './FabricationProgressModal.svelte';
 	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 
@@ -39,6 +39,18 @@
 			<table class="table table-pin-rows">
 				<thead>
 					<tr>
+						{#if ['SAVED', 'CART'].includes(status) && !isPortal}
+							<th
+								class="w-1 hover:underline cursor-pointer {$orderSelectedProducts ? 'text-error' : 'text-primary'}"
+								on:click={() => ($orderSelectedProducts = $orderSelectedProducts ? null : [])}
+							>
+								{#if $orderSelectedProducts}
+									Cancel
+								{:else}
+									Select
+								{/if}
+							</th>
+						{/if}
 						<th class="w-14" />
 						<th class="min-w-48">{l.product}</th>
 						<th class="text-center">{l.quantity}</th>
@@ -69,6 +81,24 @@
 								? 0
 								: 100}
 						<tr>
+							{#if ['SAVED', 'CART'].includes(status) && !isPortal}
+								<td>
+									{#if $orderSelectedProducts}
+										<input
+											type="checkbox"
+											class="checkbox checkbox-primary checkbox-sm"
+											checked={$orderSelectedProducts.includes(id)}
+											on:change={(e) => {
+												if ($orderSelectedProducts)
+													if (e.currentTarget.checked) $orderSelectedProducts = [...$orderSelectedProducts, id];
+													else $orderSelectedProducts = $orderSelectedProducts.filter((p) => p !== id);
+											}}
+										/>
+									{:else}
+										<input type="checkbox" class="checkbox checkbox-primary checkbox-sm" checked disabled />
+									{/if}
+								</td>
+							{/if}
 							<td class="px-0">
 								<div class="flex justify-center">
 									{#await import(`$lib/assets/products/${type.img}.png`) then { default: src }}
@@ -112,11 +142,20 @@
 											<Icon icon="mdi:download" />
 											{fileName.split('__')[1]}
 										</button>
-									{:then { data }}
-										<a href={data?.signedUrl} target="_blank" class="btn btn-sm btn-link text-info">
-											<Icon icon="mdi:download" />
-											{fileName.split('__')[1]}
-										</a>
+									{:then { data, error }}
+										{#if error}
+											<div class="tooltip" data-tip={error.message}>
+												<button class="btn btn-sm btn-link pointer-events-none text-error">
+													<Icon icon="mdi:download" />
+													{fileName.split('__')[1]}
+												</button>
+											</div>
+										{:else}
+											<a href={data.signedUrl} target="_blank" class="btn btn-sm btn-link text-info">
+												<Icon icon="mdi:download" />
+												{fileName.split('__')[1]}
+											</a>
+										{/if}
 									{/await}
 								{:else}
 									<div class="text-error">{l.notUploaded}</div>

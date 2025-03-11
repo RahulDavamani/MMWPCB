@@ -3,14 +3,15 @@
 	import IconBtn from '../../components/IconBtn.svelte';
 	import { showModal } from '$lib/client/modal';
 	import SelectShippingModal from './SelectShippingModal.svelte';
-	import { order } from '../../../stores/order.store';
+	import { order, orderShippingPrice } from '../../../stores/order.store';
 	import { lg } from '../../../stores/i18n.store';
 
 	$: l = $lg.shipping;
 
-	$: ({ shippingInfo, selectShipping, editable } = $order);
+	$: ({ isPortal, status, shippingInfo, selectShipping, editable } = $order);
 
 	let modalId = 'selectShippingModal';
+	$: console.log($orderShippingPrice);
 </script>
 
 <div class="grow border rounded-lg shadow p-4 flex flex-col">
@@ -55,12 +56,32 @@
 			</div>
 
 			<div class="divider mt-auto m-0" />
-			<div class="flex justify-between font-bold mt-2 pr-2">
-				<div>{l.shippingCost}</div>
-				<div class="font-mono">${price.toFixed(2)}</div>
-			</div>
+			{#if isPortal && status === 'REVIEW'}
+				<div class="flex justify-end mt-2 pr-2">
+					<label class="input input-bordered input-sm flex items-center gap-2 {!$orderShippingPrice && 'input-error'}">
+						<Icon icon="mdi:currency-usd" width={16} />
+						<input type="number" bind:value={$orderShippingPrice} class="w-20" />
+					</label>
+				</div>
+			{:else}
+				<div class="flex justify-between font-bold mt-2 pr-2">
+					<div>{l.shippingCost}</div>
+					<div class="font-mono">${price.toFixed(2)}</div>
+				</div>
+			{/if}
 		{/if}
 	</div>
 </div>
 
 <SelectShippingModal selectedShipping={shippingInfo} {selectShipping} />
+
+<style>
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
+</style>

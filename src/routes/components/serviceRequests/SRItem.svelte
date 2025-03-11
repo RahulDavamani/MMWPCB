@@ -8,6 +8,7 @@
 	import { trpc } from '../../../trpc/client';
 	import { tce } from '../../../trpc/te';
 	import { supabase } from '$lib/client/supabase';
+	import { services } from '../../../stores/service.store';
 
 	$: l = $lg.serviceRequests;
 
@@ -16,7 +17,11 @@
 	export let userDetailsId: string | undefined;
 	export let srModals: { [k: string]: RouterOutput['service']['getAll']['serviceRequests'][number] | null };
 	export let fetchServiceRequests: () => Promise<void>;
-	$: ({ id, user, createdAt, updatedAt, service, status, price, report } = serviceRequest);
+	$: ({ id, user, createdAt, updatedAt, serviceCode, status, price, report } = serviceRequest);
+	$: serviceTitle = Object.values(
+		Object.values($services).find(({ services }) => Object.values(services).find(({ code }) => code === serviceCode))
+			?.services!
+	).find(({ code }) => code === serviceCode)?.l.title;
 
 	const openUserDetailsModal = () => {
 		userDetailsId = user.id;
@@ -135,7 +140,7 @@
 	{/if}
 	<td>{createdAt.toLocaleString()}</td>
 	<td>{updatedAt.toLocaleString()}</td>
-	<td>{service}</td>
+	<td>{serviceTitle}</td>
 	<td class="capitalize">{status.replaceAll('_', ' ').toLowerCase()}</td>
 	<td class="text-center font-mono">
 		{#if price}
