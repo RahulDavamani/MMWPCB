@@ -10,7 +10,7 @@
 	$: ({ user } = $page.data as PageData);
 
 	export let section: { l: { title: string }; href: string };
-	export let service: { code: string; l: { title: string; subtitle?: string }; img: string; category: string };
+	export let service: { code: string; l: { title: string; subtitle?: string }; images: string[]; category: string };
 	export let specs: { title: string; value: string }[];
 </script>
 
@@ -24,7 +24,20 @@
 	</div>
 
 	<div class="flex gap-12">
-		<img src={service.img} alt={service.l.title} class="w-2/5 object-contain" />
+		<div class="w-2/5">
+			<div class="carousel flex">
+				{#each service.images as image, i}
+					<div id="image{i}" class="carousel-item w-full justify-center">
+						<img src={image} alt={service.l.title} class="object-contain h-96" />
+					</div>
+				{/each}
+			</div>
+			<div class="flex justify-center gap-2 py-2">
+				{#each service.images as _, i}
+					<a href="#image{i}" class="btn btn-xs">{i + 1}</a>
+				{/each}
+			</div>
+		</div>
 		<div class="w-3/5">
 			<div class="font-semibold text-3xl mb-4">{service.l.title}</div>
 			<div class="text-lg text-primary font-serif mb-4">{service.category}</div>

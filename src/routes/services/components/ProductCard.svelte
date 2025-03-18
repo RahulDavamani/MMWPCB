@@ -3,13 +3,13 @@
 
 	export let service: {
 		l: { title: string };
-		img: string;
+		images: string[];
 		category: string;
 		startingFrom: number | null;
 	};
 	$: ({
 		l: { title },
-		img,
+		images,
 		category,
 		startingFrom
 	} = service);
@@ -25,7 +25,7 @@
 >
 	<div class="flex flex-col justify-between h-full p-6">
 		<div>
-			<img src={img} alt={title} class="w-full h-40 object-contain" />
+			<img src={images[0]} alt={title} class="w-full h-40 object-contain" />
 
 			<div class="text-primary font-serif mt-4">{category}</div>
 			<div class="font-semibold group-hover:underline">{title}</div>

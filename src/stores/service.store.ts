@@ -7,8 +7,9 @@ import NetworkAnalyzers from '$lib/assets/services/network-analyzers/network-ana
 import E5080B from '$lib/assets/services/network-analyzers/E5080B.jpeg';
 import N5291A from '$lib/assets/services/network-analyzers/N5291A.jpeg';
 import AntennaTestSystems from '$lib/assets/services/antenna-test-systems/antenna-test-systems.png';
-import AP1 from '$lib/assets/services/antenna-test-systems/ap1.png';
-import AP2 from '$lib/assets/services/antenna-test-systems/ap2.png';
+import AP1_1 from '$lib/assets/services/antenna-test-systems/ap1_1.jpg';
+import AP1_2 from '$lib/assets/services/antenna-test-systems/ap1_2.jpg';
+import AP1_3 from '$lib/assets/services/antenna-test-systems/ap1_3.jpg';
 import AP3 from '$lib/assets/services/antenna-test-systems/ap3.png';
 import AP4 from '$lib/assets/services/antenna-test-systems/ap4.png';
 import CircuitTestPlatforms from '$lib/assets/services/circuit-test-platforms/circuit-test-platforms.png';
@@ -34,7 +35,7 @@ export const services = derived(lg, ($lg) => {
 					code: 'HD304MSO',
 					l: l.services.HD304MSO,
 					href: '/HD304MSO',
-					img: HD304MSO,
+					images: [HD304MSO],
 					category: l.categories.infiniiVision,
 					startingFrom: 9187,
 					bandwidth: 0.2,
@@ -46,7 +47,7 @@ export const services = derived(lg, ($lg) => {
 					code: 'DSOS804A',
 					l: l.services.DSOS804A,
 					href: '/DSOS804A',
-					img: DSOS804A,
+					images: [DSOS804A],
 					category: l.categories.realTime,
 					startingFrom: 110038,
 					bandwidth: 8,
@@ -69,7 +70,7 @@ export const services = derived(lg, ($lg) => {
 					code: 'E5080B',
 					l: l.services.E5080B,
 					href: '/E5080B',
-					img: E5080B,
+					images: [E5080B],
 					category: l.categories.ena,
 					startingFrom: null,
 					builtInPorts: [2, 4],
@@ -82,7 +83,7 @@ export const services = derived(lg, ($lg) => {
 					code: 'N5291A',
 					l: l.services.N5291A,
 					href: '/N5291A',
-					img: N5291A,
+					images: [N5291A],
 					category: l.categories.pna,
 					startingFrom: null,
 					builtInPorts: [2, 4],
@@ -106,7 +107,7 @@ export const services = derived(lg, ($lg) => {
 					code: 'AP1',
 					l: l.services.AP1,
 					href: '/AP1',
-					img: AP1,
+					images: [AP1_1, AP1_2, AP1_3],
 					category: l.categories.farField,
 					startingFrom: null,
 					minFrequency: 0.6,
@@ -116,7 +117,7 @@ export const services = derived(lg, ($lg) => {
 					code: 'AP2',
 					l: l.services.AP2,
 					href: '/AP2',
-					img: AP2,
+					images: [AP1_1, AP1_2, AP1_3],
 					category: l.categories.nearField,
 					startingFrom: null,
 					minFrequency: 0.6,
@@ -126,7 +127,7 @@ export const services = derived(lg, ($lg) => {
 					code: 'AP3',
 					l: l.services.AP3,
 					href: '/AP3',
-					img: AP3,
+					images: [AP3],
 					category: l.categories.nearField,
 					startingFrom: null,
 					minFrequency: 75,
@@ -136,7 +137,7 @@ export const services = derived(lg, ($lg) => {
 					code: 'AP4',
 					l: l.services.AP4,
 					href: '/AP4',
-					img: AP4,
+					images: [AP4],
 					category: l.categories.onChip,
 					startingFrom: null,
 					minFrequency: 18,
@@ -158,7 +159,7 @@ export const services = derived(lg, ($lg) => {
 					code: 'CP1',
 					l: l.services.CP1,
 					href: '/CP1',
-					img: CP1,
+					images: [CP1],
 					category: l.categories.circuitTestPlatform,
 					startingFrom: null,
 					minFrequency: 75,
