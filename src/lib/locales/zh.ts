@@ -6,8 +6,10 @@ export const zh: Lang = {
 		no: '否',
 		or: '或',
 		none: '无',
+		other: '其他',
 
 		search: '搜索',
+		sortBy: '排序方式',
 		typeHere: '在这里输入...',
 		pleaseEnterValue: '请输入一个值',
 
@@ -26,10 +28,14 @@ export const zh: Lang = {
 
 		upload: '上传',
 		select: '选择',
-		home: '主页',
+		home: '首页',
 		moreDetails: '更多详情',
 
-		noResultsFound: '未找到结果'
+		noResultsFound: '未找到结果',
+		notSelected: '未选择',
+
+		page: '页面',
+		results: '结果'
 	},
 
 	color: {
@@ -68,7 +74,8 @@ export const zh: Lang = {
 
 	navbar: {
 		instantQuote: '即时报价',
-		products: '产品与能力',
+		services: '产品与服务',
+		capabilities: '能力',
 		whyUs: '为什么选择我们？',
 		support: '支持',
 		adminPortal: '管理员门户',
@@ -89,6 +96,7 @@ export const zh: Lang = {
 		},
 		user: {
 			orders: '订单',
+			serviceRequests: '服务请求',
 			profile: '个人资料',
 			settings: '设置',
 			logout: '登出'
@@ -466,12 +474,19 @@ export const zh: Lang = {
 
 	orders: {
 		pageTitle: '我的订单',
+		allOrders: '所有订单',
 		viewCart: '查看购物车',
-		orderId: '订单号',
-		createdDate: '创建日期',
-		status: '状态',
-		itemsCount: '物品数量',
-		viewDetails: '查看详情'
+		fetchingOrders: '获取订单中',
+		noOrders: '未找到订单',
+		checkFilters: '检查您的筛选条件，或开始探索以找到您需要的内容！',
+		getInstantQuote: '获取即时报价',
+		orderNo: '订单号',
+		createdBy: '创建者',
+		deliveryAddress: '送货地址',
+		products: '产品',
+		orderDetails: '订单详情',
+		finalPrice: '最终价格',
+		quotePrice: '报价'
 	},
 
 	order: {
@@ -503,10 +518,13 @@ export const zh: Lang = {
 		},
 
 		approveReview: {
-			noPriceError: '更新产品价格',
-			approvingReview: '正在审核',
-			approveReviewError: '审核失败',
-			approveReviewSuccess: '审核成功'
+			noWeightError: '未提供产品重量',
+			noEstDeliveryDateError: '未提供预计交货日期',
+			noPriceError: '请更新产品价格',
+			noCountryError: '未提供配送国家',
+			approvingReview: '正在批准评论',
+			approveReviewError: '批准评论失败',
+			approveReviewSuccess: '评论已成功批准'
 		},
 
 		rejectReview: {
@@ -546,6 +564,10 @@ export const zh: Lang = {
 		},
 
 		orderMessage: {
+			saved: {
+				title: '此订单已保存为草稿',
+				description: '尚未提交审核'
+			},
 			review: {
 				title: '您的订单已提交审核',
 				button: '取消审核'
@@ -723,7 +745,8 @@ export const zh: Lang = {
 			total: '总计',
 			saveProduct: '保存产品',
 			saveToCart: '保存到购物车',
-			addToOrder: '添加到订单'
+			addToOrder: '添加到订单',
+			loginToContinue: '登录以继续'
 		},
 
 		gerberFile: {
@@ -3310,5 +3333,217 @@ export const zh: Lang = {
 				placeholder: '在此填写有关生产、包装或运输的任何要求。'
 			}
 		}
+	},
+
+	services: {
+		title: '产品与服务',
+		subtitle: '面向先进工业应用的综合测量与测试技术。',
+		description:
+			'我们是先进测量与测试技术的领先供应商，专注于提供高精度解决方案，以应对各行业复杂的技术挑战。我们的全面产品组合包括尖端频谱分析仪、网络测试设备、校准工具和集成技术服务，旨在满足最严苛的性能和创新要求。通过结合精密硬件、智能软件和专业技术支持，我们帮助企业突破技术研发和质量保证的界限。',
+
+		subHeading1: '创新测量技术',
+		para1:
+			'我们提供高性能测量解决方案，以推动技术进步。我们的先进频谱分析仪、网络测试设备和校准工具专为提供卓越的精度和可靠性而设计。通过结合最先进的硬件和智能软件，我们助力工程师和研究人员实现突破性的洞察和性能基准。',
+		subHeading2: '综合技术服务',
+		para2:
+			'除了设备销售，我们还提供覆盖整个产品生命周期的综合技术服务。我们的专业团队提供专业校准、精密维修、技术咨询和定制解决方案。我们确保您的测量基础设施始终处于技术领先地位，并通过全球支持和NIST可追溯认证，确保最高的技术卓越标准。',
+
+		explorePS: '探索我们的产品与服务',
+		browseSolutions: '浏览我们的解决方案',
+		browseCatalog: '浏览我们的目录',
+		viewAllPS: '查看所有产品与服务',
+
+		catalog: {
+			title: '产品与服务目录',
+			subtitle: '精选高质量产品和定制解决方案，以满足您的需求。'
+		},
+
+		startingFrom: '起价',
+		getQuote: '获取报价',
+		features: '特性',
+		loginToGetQuote: '登录以获取报价',
+
+		requestQuote: {
+			title: '请求报价',
+			company: '公司',
+			testingRequirements: '测试要求',
+			companyError: '请输入您的公司名称',
+			firstNameError: '请输入您的名字',
+			lastNameError: '请输入您的姓氏',
+			emailError: '请输入有效的电子邮件地址',
+			phoneError: '请输入有效的电话号码',
+			autPort: 'AUT端口',
+			connectorType: '连接器类型',
+			impedance: '阻抗',
+			gender: '性别',
+			submittingRequest: '正在提交请求',
+			requestError: '请求提交失败',
+			requestSuccess: '您的请求已成功提交',
+			serviceRequestNo: '服务请求编号',
+			viewServiceRequests: '查看我的服务请求'
+		},
+
+		sections: {
+			oscilloscopes: {
+				title: '示波器',
+				subtitle: '精准、轻松地可视化电信号波形。',
+
+				specs: {
+					title: '标题',
+					category: '类别',
+					categories: '类别',
+					bandwidth: '带宽',
+					maxMemoryDepth: '最大存储深度',
+					maxSampleRate: '最大采样率',
+					type: '类型',
+					types: '类型'
+				},
+
+				categories: {
+					infiniiVision: 'InfiniiVision 示波器',
+					realTime: '实时示波器'
+				},
+
+				types: {
+					realTime: '实时'
+				},
+
+				services: {
+					HD304MSO: {
+						title: 'HD304MSO InfiniiVision 示波器：4 通道模拟输入',
+						subtitle: 'HD3 系列具有高分辨率、高精度、深存储、四个模拟通道，并且采用 200 MHz 至 1 GHz 的全新定制技术。'
+					},
+					DSOS804A: {
+						title: 'DSOS804A 高清示波器：8 GHz，4 通道模拟输入',
+						subtitle: 'DSOS804A S 系列示波器具有 8 GHz 带宽、15 英寸 XGA 电容触摸屏，以及 10 位模数转换器。'
+					}
+				}
+			},
+
+			networkAnalyzers: {
+				title: '网络分析仪',
+				subtitle: '通过可靠的数据分析和优化网络性能。',
+
+				specs: {
+					title: '标题',
+					category: '类别',
+					categories: '类别',
+					builtInPorts: '内置端口',
+					maxFrequency: '最大频率',
+					internalSources: '内部信号源',
+					vnaSeries: 'VNA 系列',
+					vnaType: 'VNA 类型',
+					vnaTypes: 'VNA 类型'
+				},
+
+				categories: {
+					ena: 'ENA 矢量网络分析仪',
+					pna: 'PNA 网络分析仪'
+				},
+
+				vnaTypes: {
+					benchtop: '台式'
+				},
+
+				services: {
+					E5080B: {
+						title: 'E5080B ENA 矢量网络分析仪',
+						subtitle: '最集成、最灵活的 ENA 网络分析仪'
+					},
+					N5291A: {
+						title: 'N5291A PNA 毫米波系统，900 Hz 至 120 GHz',
+						subtitle: '提供多功能性，可用于宽带双端口或四端口网络分析仪'
+					}
+				}
+			},
+
+			antennaTestSystems: {
+				title: '天线测试系统',
+				subtitle: '利用先进的测试和测量解决方案优化天线性能。',
+
+				specs: {
+					title: '标题',
+					category: '类别',
+					categories: '类别',
+					frequency: '频率'
+				},
+
+				categories: {
+					farField: '远场',
+					nearField: '近场',
+					onChip: '芯片级'
+				},
+
+				services: {
+					AP1: { title: '产品 1' },
+					AP2: { title: '产品 2' },
+					AP3: { title: '产品 3' },
+					AP4: { title: '产品 4' }
+				}
+			},
+
+			circuitTestPlatforms: {
+				title: '毫米波/太赫兹电路测试平台',
+				subtitle: '利用先进的测量解决方案加速毫米波/太赫兹电路设计和测试。',
+
+				specs: {
+					title: '标题',
+					category: '类别',
+					categories: '类别',
+					frequency: '频率'
+				},
+
+				categories: {
+					circuitTestPlatform: '毫米波/太赫兹电路测试平台'
+				},
+
+				services: {
+					CP1: { title: '产品 1' }
+				}
+			}
+		}
+	},
+
+	serviceRequests: {
+		title: '服务请求',
+		allServiceRequests: '所有服务请求',
+		fetchingServiceRequests: '正在获取服务请求',
+		noServiceRequests: '未找到服务请求',
+		checkFilters: '检查您的筛选条件或开始探索，找到您需要的内容！',
+		browseSolutions: '浏览我们的解决方案',
+		id: 'ID',
+		createdBy: '创建者',
+		createdAt: '创建时间',
+		updatedAt: '更新时间',
+		service: '服务',
+		status: '状态',
+		price: '价格',
+		payNow: '立即支付',
+		paymentSuccess: '支付成功',
+		payment: {
+			title: '支付详情',
+			transactionId: '交易编号',
+			paymentTime: '支付时间',
+			paymentMethod: '支付方式',
+			totalAmount: '总金额',
+			failedToGenerateToken: '生成支付令牌失败',
+			failedToSubmit: '支付提交失败',
+			checkout: '结账',
+			amountToBePaid: '应支付金额',
+			paymentSuccess: '支付成功',
+			paymentTotal: '支付总额',
+			print: '打印',
+			payNow: '立即支付',
+			cancelPayment: '取消支付'
+		}
+	},
+
+	serviceStatus: {
+		APPLICATION_RECEIVED: '已收到申请',
+		IN_REVIEW: '审核中',
+		WAITING_FOR_PAYMENT: '等待支付',
+		TESTING_IN_PROGRESS: '测试进行中',
+		REPORT_RELEASED: '报告已发布',
+		REJECTED: '已拒绝'
 	}
 };

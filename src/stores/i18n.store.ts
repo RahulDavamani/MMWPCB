@@ -7,7 +7,7 @@ import { page } from '$app/stores';
 
 export interface I18N {
 	language: 'en' | 'zh' | 'fr' | 'es';
-	currency: 'usd' | 'eur';
+	currency: 'usd' | 'eur' | 'gbp';
 }
 
 export const languages: { [k in I18N['language']]: { key: I18N['language']; name: string; icon: string } } = {
@@ -36,13 +36,18 @@ export const languages: { [k in I18N['language']]: { key: I18N['language']; name
 export const currencies: { [k in I18N['currency']]: { key: I18N['currency']; name: string; icon: string } } = {
 	usd: {
 		key: 'usd',
-		name: 'US Dollars',
+		name: 'US Dollar',
 		icon: 'mdi:dollar'
 	},
 	eur: {
 		key: 'eur',
-		name: 'Euros',
+		name: 'Euro',
 		icon: 'mdi:euro'
+	},
+	gbp: {
+		key: 'gbp',
+		name: 'Pound Sterling',
+		icon: 'mdi:sterling'
 	}
 };
 
@@ -67,12 +72,12 @@ export const i18n = (() => {
 	}
 
 	// Methods
-	const setLanguage = async (language: 'en' | 'zh' | 'fr' | 'es') => {
+	const setLanguage = async (language: I18N['language']) => {
 		update((state) => ({ ...state, language }));
 		localStorage.setItem('language', language);
-		await fetchLanguage('en');
+		await fetchLanguage(language);
 	};
-	const setCurrency = (currency: 'usd' | 'eur') => {
+	const setCurrency = (currency: I18N['currency']) => {
 		update((state) => ({ ...state, currency }));
 		localStorage.setItem('currency', currency);
 	};
@@ -82,9 +87,10 @@ export const i18n = (() => {
 
 export const lg = writable<Lang>();
 
-export const parsePrice = (currency: 'usd' | 'eur', price: number, toFixed: number | null = 2) => {
-	const { exchangeRate } = get(page).data;
-	const convertedPrice = currency === 'usd' ? price : price * exchangeRate;
-	const symbol = currency === 'usd' ? '$' : '€';
+export const parsePrice = (currency: I18N['currency'], price: number, toFixed: number | null = 2) => {
+	const { eur, gbp } = get(page).data.exchangeRate as { eur: number; gbp: number };
+
+	const [symbol, convertedPrice] =
+		currency === 'eur' ? ['€', price * eur] : currency === 'gbp' ? ['£', price * gbp] : ['$', price];
 	return `${symbol}${toFixed ? convertedPrice.toFixed(toFixed) : convertedPrice}`;
 };

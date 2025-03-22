@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { lg } from '../../stores/i18n.store';
+	import { i18n, lg, parsePrice } from '../../stores/i18n.store';
 	import type { RouterOutput } from '../../trpc/routers/app.router';
 	import { orderStatuses } from '../../stores/order.store';
 	import { trpc } from '../../trpc/client';
@@ -181,12 +181,12 @@
 									<div class="text-end">
 										{#if finalPrice}
 											<div class="font-mono text-xl font-semibold leading-5 mt-1">
-												${finalPrice.toFixed(2)}
+												{parsePrice($i18n.currency, finalPrice)}
 											</div>
 											<div class="text-xs opacity-75 italic">{l.finalPrice}</div>
 										{:else}
 											<div class="font-mono text-xl font-semibold leading-5 mt-1">
-												{initialPrice ? `$${initialPrice.toFixed(2)}` : 'RFQ'}
+												{initialPrice ? parsePrice($i18n.currency, initialPrice) : 'RFQ'}
 											</div>
 											<div class="text-xs opacity-75 italic">{l.quotePrice}</div>
 										{/if}

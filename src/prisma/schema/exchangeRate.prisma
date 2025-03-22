@@ -3,5 +3,6 @@ model ExchangeRate {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   rate Float
+   eur Float
+   gbp Float
 }

@@ -7,7 +7,7 @@
 	import Modal from '../../components/UI/Modal.svelte';
 	import IconBtn from '../../components/IconBtn.svelte';
 	import Loader from '../../components/UI/Loader.svelte';
-	import { lg } from '../../../stores/i18n.store';
+	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 	import FormControl from '../FormControl.svelte';
 
 	$: l = $lg.shipping;
@@ -132,7 +132,7 @@
 										<input type="radio" class="radio radio-primary radio-sm" {checked} />
 									</td>
 									<td>{name}</td>
-									<td>{price}</td>
+									<td>{parsePrice($i18n.currency, price)}</td>
 									<td>{deliveryTime}</td>
 									<td>{restriction}</td>
 								</tr>

@@ -30,14 +30,14 @@
 
 		<div class="divider" />
 		<div class="font-bold mb-3">{l.currency}:</div>
-		<div class="flex justify-around flex-wrap gap-4">
+		<div class="grid grid-cols-2 gap-4">
 			{#each Object.values(currencies) as { key, name, icon }}
 				<button
-					class="btn btn-sm w-32 {key === currency && 'btn-secondary text-black'}"
+					class="btn btn-sm {key === currency && 'btn-secondary text-black'}"
 					on:click={() => i18n.setCurrency(key)}
 				>
 					<Icon {icon} width={20} />
-					{name}
+					<div class="break-words w-16">{name}</div>
 				</button>
 			{/each}
 		</div>

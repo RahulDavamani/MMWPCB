@@ -2,7 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import type { RouterOutput } from '../../../trpc/routers/app.router';
 	import { closeModal, showModal } from '$lib/client/modal';
-	import { lg } from '../../../stores/i18n.store';
+	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 	import IconBtn from '../../components/IconBtn.svelte';
 	import SelectShippingModal from '../../components/order/SelectShippingModal.svelte';
 
@@ -53,7 +53,7 @@
 		<div class="divider mb-0" />
 		<div class="flex justify-between font-bold mt-2 pr-2">
 			<div>{l.shippingCost}</div>
-			<div class="font-mono">${price.toFixed(2)}</div>
+			<div class="font-mono">{parsePrice($i18n.currency, price)}</div>
 		</div>
 	{/if}
 </div>

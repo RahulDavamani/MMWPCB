@@ -11,7 +11,7 @@ const client = new Client({
 });
 const ordersController = new OrdersController(client);
 
-const createOrder = async (total: string, currencyCode: 'usd' | 'eur') => {
+const createOrder = async (total: string, currencyCode: 'usd' | 'eur' | 'gbp') => {
 	const { body } = await ordersController.ordersCreate({
 		body: {
 			intent: CheckoutPaymentIntent.Capture,

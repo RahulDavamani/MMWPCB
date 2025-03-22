@@ -6,11 +6,16 @@ export const es: Lang = {
 		no: 'No',
 		or: 'O',
 		none: 'Ninguno',
+		other: 'Otro',
+
 		search: 'Buscar',
-		typeHere: 'Escriba aquí...',
+		sortBy: 'Ordenar por',
+		typeHere: 'Escribe aquí...',
 		pleaseEnterValue: 'Por favor ingrese un valor',
+
 		warning: 'Advertencia',
 		error: 'Error',
+
 		add: 'Agregar',
 		edit: 'Editar',
 		save: 'Guardar',
@@ -20,12 +25,19 @@ export const es: Lang = {
 		close: 'Cerrar',
 		remove: 'Eliminar',
 		reset: 'Restablecer',
+
 		upload: 'Subir',
 		select: 'Seleccionar',
 		home: 'Inicio',
-		moreDetails: 'Más Detalles',
-		noResultsFound: 'No se encontraron resultados'
+		moreDetails: 'Más detalles',
+
+		noResultsFound: 'No se encontraron resultados',
+		notSelected: 'No seleccionado',
+
+		page: 'Página',
+		results: 'Resultados'
 	},
+
 	color: {
 		white: 'Blanco',
 		black: 'Negro',
@@ -49,6 +61,7 @@ export const es: Lang = {
 		darkBlack: 'Negro Oscuro',
 		transparent: 'Transparente'
 	},
+
 	user: {
 		name: 'Nombre',
 		firstName: 'Primer Nombre',
@@ -58,9 +71,11 @@ export const es: Lang = {
 		password: 'Contraseña',
 		profilePicture: 'Foto de Perfil'
 	},
+
 	navbar: {
 		instantQuote: 'Cotización Instantánea',
-		products: 'Productos y Capacidades',
+		services: 'Productos y Servicios',
+		capabilities: 'Capacidades',
 		whyUs: '¿Por Qué Nosotros?',
 		support: 'Soporte',
 		adminPortal: 'Portal de Administrador',
@@ -80,12 +95,14 @@ export const es: Lang = {
 			subTotal: 'Subtotal'
 		},
 		user: {
-			orders: 'Órdenes',
+			orders: 'Pedidos',
+			serviceRequests: 'Solicitudes de servicio',
 			profile: 'Perfil',
-			settings: 'Configuraciones',
+			settings: 'Configuración',
 			logout: 'Cerrar sesión'
 		}
 	},
+
 	login: {
 		title: 'Iniciar sesión',
 		loggingIn: 'Iniciando sesión',
@@ -96,6 +113,7 @@ export const es: Lang = {
 		dontHaveAccount: '¿No tienes una cuenta?',
 		signInGoogle: 'Iniciar sesión con Google'
 	},
+
 	signup: {
 		title: 'Registrarse',
 		signingup: 'Registrándose',
@@ -119,6 +137,7 @@ export const es: Lang = {
 		alreadyHaveAccount: '¿Ya tienes una cuenta?',
 		signInGoogle: 'Iniciar sesión con Google'
 	},
+
 	forgotPassword: {
 		forgotPassword: 'Olvidé mi Contraseña',
 		enterEmail: 'Por favor ingresa tu correo electrónico y te enviaremos un OTP para restablecer la contraseña',
@@ -145,6 +164,7 @@ export const es: Lang = {
 		resetPasswordFailed: 'Fallo al restablecer la contraseña',
 		resetPasswordSuccess: 'Tu contraseña ha sido restablecida con éxito'
 	},
+
 	profile: {
 		pageTitle: 'Perfil',
 		myProfile: 'Mi Perfil',
@@ -187,11 +207,13 @@ export const es: Lang = {
 			addAddressError: 'Fallo al agregar dirección'
 		}
 	},
+
 	home: {
 		pageTitle: 'Inicio',
 		instantQuote: 'Cotización Instantánea',
 		quoteNow: 'Cotizar Ahora'
 	},
+
 	support: {
 		title: 'Soporte',
 		subtitle: 'Hola, ¿Cómo podemos ayudar?',
@@ -463,6 +485,7 @@ export const es: Lang = {
 			}
 		}
 	},
+
 	products: {
 		standardPcb: 'PCB Estándar',
 		advancedPcb: 'PCB Avanzado',
@@ -476,6 +499,7 @@ export const es: Lang = {
 		injectionMolding: 'Moldeo por Inyección',
 		vacuumCasting: 'Fundición al Vacío'
 	},
+
 	shipping: {
 		shippingEstimate: 'Estimación de Envío',
 		shippingInfo: 'Información de Envío',
@@ -495,15 +519,24 @@ export const es: Lang = {
 		updateShippingError: 'Fallo al actualizar la información de envío',
 		updateShippingSuccess: 'Información de envío actualizada con éxito'
 	},
+
 	orders: {
-		pageTitle: 'Mis Órdenes',
+		pageTitle: 'Mis Pedidos',
+		allOrders: 'Todos los Pedidos',
 		viewCart: 'Ver Carrito',
-		orderId: 'ID de Orden',
-		createdDate: 'Fecha de Creación',
-		status: 'Estado',
-		itemsCount: 'Cantidad de Artículos',
-		viewDetails: 'Ver Detalles'
+		fetchingOrders: 'Obteniendo pedidos',
+		noOrders: 'No se encontraron pedidos',
+		checkFilters: 'Verifica tus filtros o empieza a explorar para encontrar lo que necesitas!',
+		getInstantQuote: 'Obtener Cotización Instantánea',
+		orderNo: 'Número de Pedido',
+		createdBy: 'Creado por',
+		deliveryAddress: 'Dirección de Entrega',
+		products: 'Productos',
+		orderDetails: 'Detalles del Pedido',
+		finalPrice: 'Precio Final',
+		quotePrice: 'Precio Cotizado'
 	},
+
 	order: {
 		pageTitle: 'Orden',
 		allOrders: 'Todas las Órdenes',
@@ -529,9 +562,12 @@ export const es: Lang = {
 			cancelReviewSuccess: 'Revisión cancelada con éxito'
 		},
 		approveReview: {
-			noPriceError: 'Actualizar los precios de los productos',
-			approvingReview: 'Aprobando Revisión',
-			approveReviewError: 'Fallo al aprobar revisión',
+			noWeightError: 'El peso del producto no está proporcionado',
+			noEstDeliveryDateError: 'La fecha estimada de entrega no está proporcionada',
+			noPriceError: 'Actualiza los precios del producto',
+			noCountryError: 'El país de envío no está proporcionado',
+			approvingReview: 'Aprobando revisión',
+			approveReviewError: 'Error al aprobar la revisión',
 			approveReviewSuccess: 'Revisión aprobada con éxito'
 		},
 		rejectReview: {
@@ -565,6 +601,10 @@ export const es: Lang = {
 			completeOrderSuccess: 'Orden completada con éxito'
 		},
 		orderMessage: {
+			saved: {
+				title: 'Este pedido está guardado como borrador',
+				description: 'Aún no ha sido enviado para revisión'
+			},
 			review: {
 				title: 'Tu orden ha sido enviada para revisión',
 				button: 'Cancelar Revisión'
@@ -692,6 +732,7 @@ export const es: Lang = {
 		},
 		trackDelivery: 'Rastrear Entrega'
 	},
+
 	orderStatus: {
 		CREATED: 'Orden Creada',
 		CART: 'Carrito',
@@ -734,7 +775,8 @@ export const es: Lang = {
 			total: 'Total',
 			saveProduct: 'Guardar Producto',
 			saveToCart: 'Guardar en el Carrito',
-			addToOrder: 'Agregar a la Orden'
+			addToOrder: 'Agregar a la Orden',
+			loginToContinue: 'Inicia sesión para continuar'
 		},
 
 		gerberFile: {
@@ -3452,5 +3494,220 @@ export const es: Lang = {
 				placeholder: 'Complete aquí cualquier requisito acerca de la producción, el empaque o el envío.'
 			}
 		}
+	},
+
+	services: {
+		title: 'Productos y Servicios',
+		subtitle: 'Tecnologías integrales de medición y prueba para aplicaciones industriales avanzadas.',
+		description:
+			'Somos un proveedor líder de tecnologías avanzadas de medición y prueba, especializado en ofrecer soluciones de alta precisión para abordar desafíos técnicos complejos en diversas industrias. Nuestro portafolio incluye analizadores de espectro de última generación, equipos de prueba de redes, herramientas de calibración y servicios técnicos integrados, diseñados para cumplir con los más altos estándares de rendimiento e innovación. Al combinar hardware sofisticado, software inteligente y soporte técnico experto, ayudamos a las empresas a superar los límites de la investigación tecnológica, el desarrollo y el aseguramiento de la calidad.',
+
+		subHeading1: 'Tecnologías Innovadoras de Medición',
+		para1:
+			'Ofrecemos soluciones de medición de alto rendimiento que impulsan el avance tecnológico. Nuestros analizadores de espectro avanzados, equipos de prueba de redes y herramientas de calibración están diseñados para proporcionar una precisión y confiabilidad incomparables. Al combinar hardware de última generación con software sofisticado, ayudamos a ingenieros e investigadores a alcanzar nuevos niveles de rendimiento y descubrimientos revolucionarios.',
+		subHeading2: 'Servicios Técnicos Integrados',
+		para2:
+			'Más allá de la venta de equipos, ofrecemos servicios técnicos completos que cubren todo el ciclo de vida del producto. Nuestro equipo de expertos brinda calibración especializada, reparación de precisión, asesoría técnica y desarrollo de soluciones personalizadas. Garantizamos que su infraestructura de medición se mantenga a la vanguardia de la tecnología, con soporte global y certificación trazable NIST, asegurando los más altos estándares de excelencia técnica.',
+
+		explorePS: 'Explorar Nuestros Productos y Servicios',
+		browseSolutions: 'Explorar Nuestras Soluciones',
+		browseCatalog: 'Explorar Nuestro Catálogo',
+		viewAllPS: 'Ver Todos los Productos y Servicios',
+
+		catalog: {
+			title: 'Catálogo de Productos y Servicios',
+			subtitle:
+				'Una selección completa de productos de alta calidad y soluciones personalizadas para satisfacer sus necesidades.'
+		},
+
+		startingFrom: 'Desde',
+		getQuote: 'Obtener Cotización',
+		features: 'Características',
+		loginToGetQuote: 'Inicie sesión para obtener una cotización',
+
+		requestQuote: {
+			title: 'Solicitar Cotización',
+			company: 'Empresa',
+			testingRequirements: 'Requisitos de Prueba',
+			companyError: 'Por favor, ingrese el nombre de su empresa',
+			firstNameError: 'Por favor, ingrese su nombre',
+			lastNameError: 'Por favor, ingrese su apellido',
+			emailError: 'Por favor, ingrese un correo electrónico válido',
+			phoneError: 'Por favor, ingrese un número de teléfono válido',
+			autPort: 'Puerto AUT',
+			connectorType: 'Tipo de Conector',
+			impedance: 'Impedancia',
+			gender: 'Género',
+			submittingRequest: 'Enviando Solicitud',
+			requestError: 'Error al enviar la solicitud',
+			requestSuccess: 'Su solicitud ha sido enviada con éxito',
+			serviceRequestNo: 'Número de Solicitud de Servicio',
+			viewServiceRequests: 'Ver Mis Solicitudes de Servicio'
+		},
+
+		sections: {
+			oscilloscopes: {
+				title: 'Osciloscopios',
+				subtitle: 'Visualiza con precisión las formas de onda eléctricas con facilidad y precisión.',
+
+				specs: {
+					title: 'Título',
+					category: 'Categoría',
+					categories: 'Categorías',
+					bandwidth: 'Ancho de banda',
+					maxMemoryDepth: 'Profundidad máxima de memoria',
+					maxSampleRate: 'Tasa máxima de muestreo',
+					type: 'Tipo',
+					types: 'Tipos'
+				},
+
+				categories: {
+					infiniiVision: 'Osciloscopios InfiniiVision',
+					realTime: 'Osciloscopios en tiempo real'
+				},
+
+				types: {
+					realTime: 'Tiempo real'
+				},
+
+				services: {
+					HD304MSO: {
+						title: 'Osciloscopio InfiniiVision HD304MSO: 4 Canales Analógicos',
+						subtitle:
+							'La serie HD3 ofrece una impresionante resolución con alta precisión, memoria profunda, cuatro canales analógicos y una nueva tecnología personalizada que abarca desde 200 MHz hasta 1 GHz.'
+					},
+					DSOS804A: {
+						title: 'Osciloscopio de Alta Definición DSOS804A: 8 GHz, 4 Canales Analógicos',
+						subtitle:
+							'Los osciloscopios de la serie DSOS804A tienen un ancho de banda de 8 GHz, una pantalla táctil capacitiva XGA de 15” y un convertidor analógico-digital de 10 bits.'
+					}
+				}
+			},
+
+			networkAnalyzers: {
+				title: 'Analizadores de Redes',
+				subtitle: 'Analiza y optimiza el rendimiento de la red con datos confiables.',
+
+				specs: {
+					title: 'Título',
+					category: 'Categoría',
+					categories: 'Categorías',
+					builtInPorts: 'Puertos Integrados',
+					maxFrequency: 'Frecuencia Máxima',
+					internalSources: 'Fuentes Internas',
+					vnaSeries: 'Serie VNA',
+					vnaType: 'Tipo de VNA',
+					vnaTypes: 'Tipos de VNA'
+				},
+
+				categories: {
+					ena: 'Analizadores de Red Vectorial ENA',
+					pna: 'Analizadores de Red PNA'
+				},
+
+				vnaTypes: {
+					benchtop: 'Banco de Pruebas'
+				},
+
+				services: {
+					E5080B: {
+						title: 'Analizador de Red Vectorial ENA E5080B',
+						subtitle: 'El analizador de red ENA más integrado y flexible'
+					},
+					N5291A: {
+						title: 'Sistema Milimétrico PNA N5291A, 900 Hz a 120 GHz',
+						subtitle: 'Obtén versatilidad con un analizador de red de banda ancha de dos o cuatro puertos'
+					}
+				}
+			},
+
+			antennaTestSystems: {
+				title: 'Sistemas de Pruebas de Antenas',
+				subtitle: 'Optimiza el rendimiento de las antenas con soluciones avanzadas de pruebas y medición.',
+
+				specs: {
+					title: 'Título',
+					category: 'Categoría',
+					categories: 'Categorías',
+					frequency: 'Frecuencia'
+				},
+
+				categories: {
+					farField: 'Campo Lejano',
+					nearField: 'Campo Cercano',
+					onChip: 'En Chip'
+				},
+
+				services: {
+					AP1: { title: 'Producto 1' },
+					AP2: { title: 'Producto 2' },
+					AP3: { title: 'Producto 3' },
+					AP4: { title: 'Producto 4' }
+				}
+			},
+
+			circuitTestPlatforms: {
+				title: 'Plataformas de Pruebas de Circuitos mmWave/THz',
+				subtitle: 'Acelera el diseño y las pruebas de circuitos mmWave/THz con soluciones avanzadas de medición.',
+
+				specs: {
+					title: 'Título',
+					category: 'Categoría',
+					categories: 'Categorías',
+					frequency: 'Frecuencia'
+				},
+
+				categories: {
+					circuitTestPlatform: 'Plataforma de Pruebas de Circuitos mmWave/THz'
+				},
+
+				services: {
+					CP1: { title: 'Producto 1' }
+				}
+			}
+		}
+	},
+
+	serviceRequests: {
+		title: 'Solicitudes de servicio',
+		allServiceRequests: 'Todas las solicitudes de servicio',
+		fetchingServiceRequests: 'Obteniendo solicitudes de servicio',
+		noServiceRequests: 'No se encontraron solicitudes de servicio',
+		checkFilters: 'Verifique sus filtros o comience a explorar para encontrar lo que necesita.',
+		browseSolutions: 'Explorar nuestras soluciones',
+		id: 'ID',
+		createdBy: 'Creado por',
+		createdAt: 'Creado el',
+		updatedAt: 'Actualizado el',
+		service: 'Servicio',
+		status: 'Estado',
+		price: 'Precio',
+		payNow: 'Pagar ahora',
+		paymentSuccess: 'Pago exitoso',
+		payment: {
+			title: 'Detalles del pago',
+			transactionId: 'ID de transacción',
+			paymentTime: 'Hora de pago',
+			paymentMethod: 'Método de pago',
+			totalAmount: 'Monto total',
+			failedToGenerateToken: 'Error al generar el token de pago',
+			failedToSubmit: 'Error al enviar el pago',
+			checkout: 'Pagar',
+			amountToBePaid: 'Monto a pagar',
+			paymentSuccess: 'Pago exitoso',
+			paymentTotal: 'Total del pago',
+			print: 'Imprimir',
+			payNow: 'Pagar ahora',
+			cancelPayment: 'Cancelar pago'
+		}
+	},
+
+	serviceStatus: {
+		APPLICATION_RECEIVED: 'Solicitud recibida',
+		IN_REVIEW: 'En revisión',
+		WAITING_FOR_PAYMENT: 'Esperando pago',
+		TESTING_IN_PROGRESS: 'Pruebas en progreso',
+		REPORT_RELEASED: 'Informe publicado',
+		REJECTED: 'Rechazado'
 	}
 };

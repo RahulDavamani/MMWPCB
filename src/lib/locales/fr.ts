@@ -6,8 +6,10 @@ export const fr: Lang = {
 		no: 'Non',
 		or: 'Ou',
 		none: 'Aucun',
+		other: 'Autre',
 
-		search: 'Recherche',
+		search: 'Rechercher',
+		sortBy: 'Trier par',
 		typeHere: 'Tapez ici...',
 		pleaseEnterValue: 'Veuillez entrer une valeur',
 
@@ -24,12 +26,16 @@ export const fr: Lang = {
 		remove: 'Supprimer',
 		reset: 'Réinitialiser',
 
-		upload: 'Télécharger',
+		upload: 'Téléverser',
 		select: 'Sélectionner',
 		home: 'Accueil',
 		moreDetails: 'Plus de détails',
 
-		noResultsFound: 'Aucun résultat trouvé'
+		noResultsFound: 'Aucun résultat trouvé',
+		notSelected: 'Non sélectionné',
+
+		page: 'Page',
+		results: 'Résultats'
 	},
 
 	color: {
@@ -68,7 +74,8 @@ export const fr: Lang = {
 
 	navbar: {
 		instantQuote: 'Devis instantané',
-		products: 'Produits et capacités',
+		services: 'Produits et Services',
+		capabilities: 'Capacités',
 		whyUs: 'Pourquoi nous choisir ?',
 		support: 'Support',
 		adminPortal: 'Portail administrateur',
@@ -89,6 +96,7 @@ export const fr: Lang = {
 		},
 		user: {
 			orders: 'Commandes',
+			serviceRequests: 'Demandes de service',
 			profile: 'Profil',
 			settings: 'Paramètres',
 			logout: 'Déconnexion'
@@ -530,12 +538,19 @@ export const fr: Lang = {
 
 	orders: {
 		pageTitle: 'Mes Commandes',
-		viewCart: 'Voir le panier',
-		orderId: 'ID de commande',
-		createdDate: 'Date de création',
-		status: 'Statut',
-		itemsCount: "Nombre d'articles",
-		viewDetails: 'Voir les détails'
+		allOrders: 'Toutes les Commandes',
+		viewCart: 'Voir le Panier',
+		fetchingOrders: 'Récupération des commandes',
+		noOrders: 'Aucune commande trouvée',
+		checkFilters: 'Vérifiez vos filtres ou commencez à explorer pour trouver ce dont vous avez besoin !',
+		getInstantQuote: 'Obtenir un devis instantané',
+		orderNo: 'Numéro de commande',
+		createdBy: 'Créé par',
+		deliveryAddress: 'Adresse de livraison',
+		products: 'Produits',
+		orderDetails: 'Détails de la commande',
+		finalPrice: 'Prix final',
+		quotePrice: 'Prix du devis'
 	},
 
 	order: {
@@ -567,10 +582,13 @@ export const fr: Lang = {
 		},
 
 		approveReview: {
-			noPriceError: 'Mettre à jour les prix des produits',
-			approvingReview: "Approbation de l'examen",
-			approveReviewError: "Échec de l'approbation de l'examen",
-			approveReviewSuccess: 'Examen approuvé avec succès'
+			noWeightError: "Le poids du produit n'est pas fourni",
+			noEstDeliveryDateError: "La date de livraison estimée n'est pas fournie",
+			noPriceError: 'Mettez à jour les prix des produits',
+			noCountryError: "Le pays de livraison n'est pas fourni",
+			approvingReview: "Approbation de l'avis en cours",
+			approveReviewError: "Échec de l'approbation de l'avis",
+			approveReviewSuccess: 'Avis approuvé avec succès'
 		},
 
 		rejectReview: {
@@ -610,6 +628,10 @@ export const fr: Lang = {
 		},
 
 		orderMessage: {
+			saved: {
+				title: 'Cette commande est enregistrée en brouillon',
+				description: "Elle n'a pas encore été soumise pour examen"
+			},
 			review: {
 				title: 'Votre commande a été soumise pour révision',
 				button: "Annuler l'examen"
@@ -788,7 +810,8 @@ export const fr: Lang = {
 			total: 'Total',
 			saveProduct: 'Sauvegarder le Produit',
 			saveToCart: 'Sauvegarder dans le Panier',
-			addToOrder: 'Ajouter à la Commande'
+			addToOrder: 'Ajouter à la Commande',
+			loginToContinue: 'Connectez-vous pour continuer'
 		},
 
 		gerberFile: {
@@ -3506,5 +3529,221 @@ export const fr: Lang = {
 				placeholder: 'Remplissez ici toutes les exigences concernant la production, l’emballage ou l’expédition.'
 			}
 		}
+	},
+
+	services: {
+		title: 'Produits et Services',
+		subtitle: 'Technologies complètes de mesure et de test pour des applications industrielles avancées.',
+		description:
+			"Nous sommes un fournisseur leader de technologies avancées de mesure et de test, spécialisé dans la fourniture de solutions de haute précision répondant aux défis techniques complexes de divers secteurs. Notre portefeuille complet comprend des analyseurs de spectre de pointe, des équipements de test réseau, des outils d'étalonnage et des services techniques intégrés conçus pour répondre aux exigences les plus strictes en matière de performance et d'innovation. En combinant matériel sophistiqué, logiciel intelligent et support technique expert, nous permettons aux entreprises de repousser les limites de la recherche technologique, du développement et de l'assurance qualité.",
+
+		subHeading1: 'Technologies de Mesure Innovantes',
+		para1:
+			"Nous fournissons des solutions de mesure haute performance qui stimulent le progrès technologique. Nos analyseurs de spectre avancés, équipements de test réseau et outils d'étalonnage sont conçus pour offrir une précision et une fiabilité inégalées. En combinant du matériel de pointe avec des logiciels sophistiqués, nous permettons aux ingénieurs et chercheurs d'atteindre des niveaux de performance et des analyses révolutionnaires.",
+		subHeading2: 'Services Techniques Intégrés',
+		para2:
+			"Au-delà de la vente d'équipements, nous proposons des services techniques complets couvrant l’ensemble du cycle de vie du produit. Notre équipe d’experts fournit des services spécialisés tels que l’étalonnage, la réparation de précision, la consultation technique et le développement de solutions sur mesure. Nous veillons à ce que votre infrastructure de mesure reste à la pointe de la technologie, avec un support mondial et une certification traçable NIST garantissant les normes techniques les plus élevées.",
+
+		explorePS: 'Découvrez nos Produits et Services',
+		browseSolutions: 'Parcourez nos Solutions',
+		browseCatalog: 'Consultez notre Catalogue',
+		viewAllPS: 'Voir tous les Produits et Services',
+
+		catalog: {
+			title: 'Catalogue des Produits et Services',
+			subtitle:
+				'Une sélection complète de produits de haute qualité et de solutions sur mesure pour répondre à vos besoins.'
+		},
+
+		startingFrom: 'À partir de',
+		getQuote: 'Obtenir un Devis',
+		features: 'Caractéristiques',
+		loginToGetQuote: 'Connectez-vous pour obtenir un devis',
+
+		requestQuote: {
+			title: 'Demander un Devis',
+			company: 'Entreprise',
+			testingRequirements: 'Exigences de Test',
+			companyError: 'Veuillez entrer le nom de votre entreprise',
+			firstNameError: 'Veuillez entrer votre prénom',
+			lastNameError: 'Veuillez entrer votre nom',
+			emailError: 'Veuillez entrer une adresse e-mail valide',
+			phoneError: 'Veuillez entrer un numéro de téléphone valide',
+			autPort: 'Port AUT',
+			connectorType: 'Type de Connecteur',
+			impedance: 'Impédance',
+			gender: 'Genre',
+			submittingRequest: 'Soumission de la Demande en cours',
+			requestError: 'Échec de la soumission de la demande',
+			requestSuccess: 'Votre demande a été soumise avec succès',
+			serviceRequestNo: 'Numéro de Demande de Service',
+			viewServiceRequests: 'Voir mes Demandes de Service'
+		},
+
+		sections: {
+			oscilloscopes: {
+				title: 'Oscilloscopes',
+				subtitle: "Visualisez avec précision les formes d'onde électriques en toute simplicité.",
+
+				specs: {
+					title: 'Titre',
+					category: 'Catégorie',
+					categories: 'Catégories',
+					bandwidth: 'Bande passante',
+					maxMemoryDepth: 'Profondeur de mémoire maximale',
+					maxSampleRate: "Taux d'échantillonnage maximal",
+					type: 'Type',
+					types: 'Types'
+				},
+
+				categories: {
+					infiniiVision: 'Oscilloscopes InfiniiVision',
+					realTime: 'Oscilloscopes en temps réel'
+				},
+
+				types: {
+					realTime: 'Temps réel'
+				},
+
+				services: {
+					HD304MSO: {
+						title: 'Oscilloscope InfiniiVision HD304MSO : 4 canaux analogiques',
+						subtitle:
+							'La série HD3 offre une résolution impressionnante avec une haute précision, une mémoire profonde, quatre canaux analogiques et une toute nouvelle technologie personnalisée allant de 200 MHz à 1 GHz.'
+					},
+					DSOS804A: {
+						title: 'Oscilloscope haute définition DSOS804A : 8 GHz, 4 canaux analogiques',
+						subtitle:
+							"Les oscilloscopes de la série DSOS804A disposent d'une bande passante de 8 GHz, d'un écran tactile capacitif XGA de 15” et d'un convertisseur analogique-numérique 10 bits."
+					}
+				}
+			},
+
+			networkAnalyzers: {
+				title: 'Analyseurs de réseau',
+				subtitle: 'Analysez et optimisez les performances réseau grâce à des données fiables.',
+
+				specs: {
+					title: 'Titre',
+					category: 'Catégorie',
+					categories: 'Catégories',
+					builtInPorts: 'Ports intégrés',
+					maxFrequency: 'Fréquence maximale',
+					internalSources: 'Sources internes',
+					vnaSeries: 'Série VNA',
+					vnaType: 'Type de VNA',
+					vnaTypes: 'Types de VNA'
+				},
+
+				categories: {
+					ena: 'Analyseurs de réseau vectoriel ENA',
+					pna: 'Analyseurs de réseau PNA'
+				},
+
+				vnaTypes: {
+					benchtop: 'Banc de test'
+				},
+
+				services: {
+					E5080B: {
+						title: 'Analyseur de réseau vectoriel ENA E5080B',
+						subtitle: "L'analyseur de réseau ENA le plus intégré et le plus flexible"
+					},
+					N5291A: {
+						title: 'Système millimétrique PNA N5291A, 900 Hz à 120 GHz',
+						subtitle: "Bénéficiez d'une polyvalence avec un analyseur de réseau large bande à deux ou quatre ports"
+					}
+				}
+			},
+
+			antennaTestSystems: {
+				title: "Systèmes de test d'antenne",
+				subtitle: 'Optimisez les performances des antennes grâce à des solutions avancées de test et de mesure.',
+
+				specs: {
+					title: 'Titre',
+					category: 'Catégorie',
+					categories: 'Catégories',
+					frequency: 'Fréquence'
+				},
+
+				categories: {
+					farField: 'Champ lointain',
+					nearField: 'Champ proche',
+					onChip: 'Sur puce'
+				},
+
+				services: {
+					AP1: { title: 'Produit 1' },
+					AP2: { title: 'Produit 2' },
+					AP3: { title: 'Produit 3' },
+					AP4: { title: 'Produit 4' }
+				}
+			},
+
+			circuitTestPlatforms: {
+				title: 'Plateformes de test de circuits mmWave/THz',
+				subtitle:
+					'Accélérez la conception et les tests de circuits mmWave/THz grâce à des solutions de mesure avancées.',
+
+				specs: {
+					title: 'Titre',
+					category: 'Catégorie',
+					categories: 'Catégories',
+					frequency: 'Fréquence'
+				},
+
+				categories: {
+					circuitTestPlatform: 'Plateforme de test de circuits mmWave/THz'
+				},
+
+				services: {
+					CP1: { title: 'Produit 1' }
+				}
+			}
+		}
+	},
+
+	serviceRequests: {
+		title: 'Demandes de service',
+		allServiceRequests: 'Toutes les demandes de service',
+		fetchingServiceRequests: 'Récupération des demandes de service',
+		noServiceRequests: 'Aucune demande de service trouvée',
+		checkFilters: 'Vérifiez vos filtres ou commencez à explorer pour trouver ce dont vous avez besoin !',
+		browseSolutions: 'Parcourir nos solutions',
+		id: 'ID',
+		createdBy: 'Créé par',
+		createdAt: 'Créé le',
+		updatedAt: 'Mis à jour le',
+		service: 'Service',
+		status: 'Statut',
+		price: 'Prix',
+		payNow: 'Payer maintenant',
+		paymentSuccess: 'Paiement réussi',
+		payment: {
+			title: 'Détails du paiement',
+			transactionId: 'ID de transaction',
+			paymentTime: 'Heure de paiement',
+			paymentMethod: 'Méthode de paiement',
+			totalAmount: 'Montant total',
+			failedToGenerateToken: 'Échec de la génération du jeton de paiement',
+			failedToSubmit: 'Échec de la soumission du paiement',
+			checkout: 'Paiement',
+			amountToBePaid: 'Montant à payer',
+			paymentSuccess: 'Paiement réussi',
+			paymentTotal: 'Total du paiement',
+			print: 'Imprimer',
+			payNow: 'Payer maintenant',
+			cancelPayment: 'Annuler le paiement'
+		}
+	},
+
+	serviceStatus: {
+		APPLICATION_RECEIVED: 'Demande reçue',
+		IN_REVIEW: "En cours d'examen",
+		WAITING_FOR_PAYMENT: 'En attente de paiement',
+		TESTING_IN_PROGRESS: 'Test en cours',
+		REPORT_RELEASED: 'Rapport publié',
+		REJECTED: 'Rejeté'
 	}
 };
