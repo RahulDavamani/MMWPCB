@@ -4,6 +4,7 @@ export const en = {
 		no: 'No',
 		or: 'Or',
 		none: 'None',
+		other: 'Other',
 
 		search: 'Search',
 		sortBy: 'Sort by',
@@ -556,7 +557,10 @@ export const en = {
 		},
 
 		approveReview: {
+			noWeightError: 'Product weight is not provided',
+			noEstDeliveryDateError: 'Estimated delivery date is not provided',
 			noPriceError: 'Update the product prices',
+			noCountryError: 'Shipping Country is not provided',
 			approvingReview: 'Approving Review',
 			approveReviewError: 'Failed to approve review',
 			approveReviewSuccess: 'Review approved successfully'

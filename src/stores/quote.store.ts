@@ -98,7 +98,7 @@ export const quote = (() => {
 
 			const { total } = get(quotePrice);
 			selectedProduct.buildTime = buildTime.value;
-			selectedProduct.initialPrice = total;
+			selectedProduct.initialPrice = total ? Math.round(total * 100) / 100 : null;
 
 			const file = files[productType];
 			selectedProduct.id = id ?? customAlphabet('1234567890', 10)();

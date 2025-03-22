@@ -49,6 +49,7 @@
 					fetchOrders();
 				}
 			}}
+			children
 		/>
 	</div>
 

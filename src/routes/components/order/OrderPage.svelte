@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import { order, orderProductPrices, orderShippingPrice, orderSelectedProducts } from '../../../stores/order.store';
+	import { order, orderSelectedProducts, orderApproveData } from '../../../stores/order.store';
 	import OrderStatus from './OrderStatus.svelte';
 	import ShippingInfo from './ShippingInfo.svelte';
 	import DeliveryAddress from './DeliveryAddress.svelte';
@@ -14,11 +14,23 @@
 	import OrderPaymentModal from './OrderPaymentModal.svelte';
 	import DeliveryProgressModal from './DeliveryProgressModal.svelte';
 
-	$: ({ isPortal, id, createdAt, status, products } = $order);
+	$: ({ isPortal, id, createdAt, status, products, weight, estDeliveryDate, shippingInfo } = $order);
 	onMount(() => {
-		products.forEach(({ id, finalPrice }) => finalPrice && ($orderProductPrices[id] = finalPrice));
-		$orderProductPrices = {};
-		$orderShippingPrice = $order.shippingInfo?.price;
+		$orderApproveData = {
+			id,
+			products: Object.fromEntries(
+				products.map(({ id, initialPrice, finalPrice }) => [id, finalPrice ?? initialPrice ?? 0])
+			),
+			weight: weight ?? 0,
+			estDeliveryDate: estDeliveryDate ?? new Date(),
+			shippingInfo: {
+				countryName: shippingInfo?.countryName ?? '',
+				methodName: shippingInfo?.methodName ?? '',
+				price: shippingInfo?.price ?? 0,
+				deliveryTime: shippingInfo?.deliveryTime ?? '',
+				restriction: shippingInfo?.restriction ?? ''
+			}
+		};
 		$orderSelectedProducts = null;
 	});
 </script>

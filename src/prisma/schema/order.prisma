@@ -5,7 +5,9 @@ model Order {
 
    completedAt DateTime?
 
-   status OrderStatus
+   status          OrderStatus
+   weight          Float?
+   estDeliveryDate DateTime?
 
    userId String
    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -98,10 +100,10 @@ model OrderShippingInfo {
    updatedAt DateTime @updatedAt
 
    countryName  String
-   methodName   String
-   price        Float
-   deliveryTime String
-   restriction  String
+   methodName   String?
+   price        Float?
+   deliveryTime String?
+   restriction  String?
 
    countryId String?
    country   ShippingCountry? @relation(fields: [countryId], references: [id])

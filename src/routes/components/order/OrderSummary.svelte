@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import { order } from '../../../stores/order.store';
+	import { order, orderApproveData } from '../../../stores/order.store';
 	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
+	import Flatpickr from 'svelte-flatpickr';
 
 	$: l = $lg.order.orderSummary;
 
@@ -11,7 +12,6 @@
 		totalItemsPrice,
 		shippingPrice,
 		discount,
-		taxes,
 		orderTotal,
 		estDeliveryDate,
 		weight,
@@ -42,10 +42,6 @@
 			<div>{l.discount}</div>
 			<div class="font-mono text-success">-{parsePrice($i18n.currency, discount)}</div>
 		</div>
-		<div class="flex justify-between">
-			<div>{l.taxes}</div>
-			<div class="font-mono">{parsePrice($i18n.currency, taxes)}</div>
-		</div>
 		<div class="divider" />
 		<div class="flex justify-between">
 			<div class="text-lg font-bold">{l.orderTotal}</div>
@@ -61,7 +57,17 @@
 			</div>
 			{l.estDeliveryDate}
 		</div>
-		<div class="font-mono">{estDeliveryDate}</div>
+		{#if isPortal && status === 'REVIEW'}
+			<Flatpickr
+				class="input input-bordered input-xs text-center"
+				options={{ dateFormat: 'j M Y', minDate: 'today' }}
+				value={[$orderApproveData.estDeliveryDate]}
+				on:close={(e) => ($orderApproveData.estDeliveryDate = e.detail[0][0])}
+				children
+			/>
+		{:else}
+			<div class="font-mono">{estDeliveryDate ? estDeliveryDate.toDateString() : 'TBA'}</div>
+		{/if}
 	</div>
 
 	<div class="flex justify-between mt-4 px-2">
@@ -71,7 +77,19 @@
 			</div>
 			{l.weight}
 		</div>
-		<div class="font-mono">{weight.toFixed(2)} kg</div>
+		{#if isPortal && status === 'REVIEW'}
+			<div class="join">
+				<input
+					type="number"
+					class="input input-bordered input-xs w-20 text-center join-item
+               {($orderApproveData.weight === null || $orderApproveData.weight === 0) && 'input-error'}"
+					bind:value={$orderApproveData.weight}
+				/>
+				<div class="btn btn-xs join-item pointer-events-none">Kg</div>
+			</div>
+		{:else}
+			<div class="font-mono">{weight ? `${weight.toFixed(2)} Kg` : 'TBA'}</div>
+		{/if}
 	</div>
 
 	{#if !isPortal}
@@ -100,3 +118,14 @@
 		{/if}
 	{/if}
 </div>
+
+<style>
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
+</style>

@@ -1,12 +1,12 @@
 import { page } from '$app/stores';
-import { derived, get, writable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 import type { PageData } from '../routes/orders/[id]/$types';
 import { ui } from './ui.store';
 import { trpc } from '../trpc/client';
 import { tce } from '../trpc/te';
 import { goto, invalidateAll } from '$app/navigation';
 import { closeModal } from '$lib/client/modal';
-import type { RouterOutput } from '../trpc/routers/app.router';
+import type { RouterInput, RouterOutput } from '../trpc/routers/app.router';
 import { supabase } from '$lib/client/supabase';
 import { productTypes } from './product.store';
 import { lg } from './i18n.store';
@@ -25,14 +25,25 @@ export const orderStatuses = derived(lg, ($lg) => ({
 	REFUNDED: $lg.orderStatus.REFUNDED
 }));
 
-export const orderProductPrices = writable<{ [k in string]: number }>({});
-export const orderShippingPrice = writable<number | undefined>();
+export const orderApproveData = writable<RouterInput['order']['approveReview']>({
+	id: '',
+	weight: 0,
+	estDeliveryDate: new Date(),
+	products: {},
+	shippingInfo: {
+		countryName: '',
+		methodName: '',
+		price: 0,
+		deliveryTime: '',
+		restriction: ''
+	}
+});
 
 export const orderSelectedProducts = writable<string[] | null>(null);
 
 export const order = derived(
-	[lg, page, productTypes, orderProductPrices, orderShippingPrice, orderSelectedProducts],
-	([$lg, $page, $productTypes, $orderProductPrices, $orderShippingPrice, $orderSelectedProducts]) => {
+	[lg, page, productTypes, orderApproveData, orderSelectedProducts],
+	([$lg, $page, $productTypes, $orderApproveData, $orderSelectedProducts]) => {
 		const l = $lg.order;
 
 		const isPortal = $page.url.pathname.includes('portal');
@@ -42,6 +53,8 @@ export const order = derived(
 			createdAt,
 			completedAt,
 			status,
+			weight,
+			estDeliveryDate,
 			standardPcbs,
 			advancedPcbs,
 			flexiblePcbs,
@@ -89,13 +102,9 @@ export const order = derived(
 		const totalFinalPrice = products.reduce((acc, cur) => acc + (cur.finalPrice ?? 0), 0);
 
 		const totalItemsPrice = selectedProducts[0]?.finalPrice ? totalFinalPrice : totalInitialPrice;
-		const shippingPrice = $orderShippingPrice ?? 0;
+		const shippingPrice = $orderApproveData.shippingInfo.price ?? 0;
 		const discount = totalItemsPrice * 0;
-		const taxes = (totalItemsPrice + shippingPrice - discount) * 0;
-		const orderTotal = totalItemsPrice + shippingPrice - discount + taxes;
-
-		const estDeliveryDate = new Date().toDateString();
-		const weight = selectedProducts.reduce((acc, cur) => acc + cur.weight, 0);
+		const orderTotal = totalItemsPrice + shippingPrice - discount;
 
 		// Methods
 		const selectAddress = async (address: RouterOutput['address']['get'][number]) =>
@@ -116,17 +125,31 @@ export const order = derived(
 		const selectShipping = (shippingMethod: RouterOutput['shipping']['getMethods'][number]) =>
 			ui.loaderWrapper({ title: $lg.shipping.updatingShipping }, async () => {
 				closeModal('selectShippingModal');
+
+				const shippingInfo =
+					shippingMethod.id === 'order'
+						? {
+								id,
+								countryId: undefined,
+								countryName: shippingMethod.country.name,
+								methodId: undefined,
+								methodName: undefined,
+								price: undefined,
+								deliveryTime: undefined,
+								restriction: undefined
+							}
+						: {
+								id,
+								countryId: shippingMethod.countryId,
+								countryName: shippingMethod.country.name,
+								methodId: shippingMethod.id,
+								methodName: shippingMethod.name,
+								price: shippingMethod.price,
+								deliveryTime: shippingMethod.deliveryTime,
+								restriction: shippingMethod.restriction
+							};
 				await trpc()
-					.order.selectShipping.mutate({
-						id,
-						countryId: shippingMethod.countryId,
-						countryName: shippingMethod.country.name,
-						methodId: shippingMethod.id,
-						methodName: shippingMethod.name,
-						price: shippingMethod.price,
-						deliveryTime: shippingMethod.deliveryTime,
-						restriction: shippingMethod.restriction
-					})
+					.order.selectShipping.mutate(shippingInfo)
 					.catch((e) =>
 						tce(e, {
 							showModal: { title: $lg.shipping.updateShippingError, retryFn: () => selectShipping(shippingMethod) }
@@ -179,19 +202,20 @@ export const order = derived(
 			ui.setToast({ title: l.cancelReview.cancelReviewSuccess, alertClasses: 'alert-success' });
 		});
 
-		const approveReviewError = (
-			products.map((p) => p.finalPrice ?? p.initialPrice ?? $orderProductPrices[p.id] ?? null) as (number | null)[]
-		).includes(null)
-			? l.approveReview.noPriceError
-			: undefined;
+		const approveReviewError = !$orderApproveData.weight
+			? l.approveReview.noWeightError
+			: !$orderApproveData.estDeliveryDate
+				? l.approveReview.noEstDeliveryDateError
+				: // @ts-ignore
+					Object.values($orderApproveData.products).includes(null)
+					? l.approveReview.noPriceError
+					: $orderApproveData.shippingInfo.countryName === ''
+						? l.approveReview.noCountryError
+						: undefined;
 
 		const approveReview = ui.loaderWrapper({ title: l.approveReview.approvingReview }, async () => {
 			await trpc()
-				.order.approveReview.mutate({
-					id,
-					products: Object.entries(get(orderProductPrices)).map(([id, finalPrice]) => ({ id, finalPrice })),
-					shippingPrice: $orderShippingPrice
-				})
+				.order.approveReview.mutate($orderApproveData)
 				.catch((e) => tce(e, { showModal: { title: l.approveReview.approveReviewError, retryFn: approveReview } }));
 
 			await invalidateAll();
@@ -392,7 +416,6 @@ export const order = derived(
 			totalItemsPrice,
 			shippingPrice,
 			discount,
-			taxes,
 			orderTotal,
 
 			estDeliveryDate,

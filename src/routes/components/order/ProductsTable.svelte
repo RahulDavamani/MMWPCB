@@ -4,7 +4,7 @@
 	import ProductDetailsModal from './ProductDetailsModal.svelte';
 	import { showModal } from '$lib/client/modal';
 	import { supabase } from '$lib/client/supabase';
-	import { order, orderProductPrices, orderSelectedProducts } from '../../../stores/order.store';
+	import { order, orderApproveData, orderSelectedProducts } from '../../../stores/order.store';
 	import FabricationProgressModal from './FabricationProgressModal.svelte';
 	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 
@@ -165,13 +165,13 @@
 								{initialPrice ? parsePrice($i18n.currency, initialPrice) : 'RFQ'}
 							</td>
 							{#if isPortal && status === 'REVIEW'}
-								{@const inputError = !finalPrice && !initialPrice && !$orderProductPrices[id]}
+								{@const inputError = !finalPrice && !initialPrice && !$orderApproveData.products[id]}
 								<td>
 									<div class="flex justify-center">
 										<input
 											type="number"
-											class="input input-bordered input-xs w-20 {inputError && 'input-error'}"
-											bind:value={$orderProductPrices[id]}
+											class="input input-bordered input-xs w-20 {inputError && 'input-error'} text-center"
+											bind:value={$orderApproveData.products[id]}
 										/>
 									</div>
 								</td>
@@ -226,3 +226,14 @@
 
 <ProductDetailsModal {productDetailsId} />
 <FabricationProgressModal {fabricationProgressId} />
+
+<style>
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
+</style>

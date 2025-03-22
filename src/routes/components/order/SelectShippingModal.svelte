@@ -8,6 +8,7 @@
 	import IconBtn from '../../components/IconBtn.svelte';
 	import Loader from '../../components/UI/Loader.svelte';
 	import { lg } from '../../../stores/i18n.store';
+	import FormControl from '../FormControl.svelte';
 
 	$: l = $lg.shipping;
 
@@ -15,11 +16,13 @@
 
 	export let selectedShipping: { countryId: string | null; methodId: string | null } | null;
 	export let selectShipping: (shippingMethod: RouterOutput['shipping']['getMethods'][number]) => void;
+	export let showOther = false;
 
 	let countries: RouterOutput['shipping']['getCountries'] | undefined;
 	let selectedCountryId: string | undefined;
 	let methods: RouterOutput['shipping']['getMethods'] | undefined;
 	let selectedMethodId: string | undefined;
+	let countryName = '';
 
 	const fetchCountries = async () => {
 		countries = undefined;
@@ -74,12 +77,40 @@
 				{#each countries as { id, name, _count }}
 					<option value={id}>{name} ({_count.methods})</option>
 				{/each}
+				{#if showOther}
+					<option value="other">{$lg.common.other}</option>
+				{/if}
 			</select>
+			{#if selectedCountryId === 'other'}
+				<div class="font-semibold">{l.country}:</div>
+				<input type="text" class="input input-bordered input-sm grow" bind:value={countryName} />
+			{/if}
 		</div>
 
 		{#if selectedCountryId}
 			{#if !methods}
 				<Loader fixed={false} overlay={false} size={80} classes="pt-10" />
+			{:else if selectedCountryId === 'other'}
+				<div class="flex justify-end mt-6">
+					<button
+						class="btn btn-success {!countryName && 'btn-disabled'} w-40"
+						on:click={() => {
+							selectShipping({
+								id: 'order',
+								createdAt: new Date(),
+								updatedAt: new Date(),
+								country: { name: countryName },
+								countryId: '',
+								name: '',
+								deliveryTime: '',
+								price: 0,
+								restriction: ''
+							});
+						}}
+					>
+						{$lg.common.select}
+					</button>
+				</div>
 			{:else}
 				<div class="overflow-x-auto mt-6">
 					<table class="table">
@@ -116,7 +147,7 @@
 
 				<div class="flex justify-end mt-6">
 					<button
-						class="btn btn-success {!selectedMethodId && 'btn-disabled'}"
+						class="btn btn-success {!selectedMethodId && 'btn-disabled'} w-40"
 						on:click={() => {
 							const method = methods?.find((m) => m.id === selectedMethodId);
 							if (method) selectShipping(method);

@@ -3,15 +3,14 @@
 	import IconBtn from '../../components/IconBtn.svelte';
 	import { showModal } from '$lib/client/modal';
 	import SelectShippingModal from './SelectShippingModal.svelte';
-	import { order, orderShippingPrice } from '../../../stores/order.store';
-	import { lg } from '../../../stores/i18n.store';
+	import { order, orderApproveData } from '../../../stores/order.store';
+	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 
 	$: l = $lg.shipping;
 
 	$: ({ isPortal, status, shippingInfo, selectShipping, editable } = $order);
 
 	let modalId = 'selectShippingModal';
-	$: console.log($orderShippingPrice);
 </script>
 
 <div class="grow border rounded-lg shadow p-4 flex flex-col">
@@ -39,41 +38,75 @@
 			<div class="space-y-1">
 				<div class="flex justify-between">
 					<div>{l.country}</div>
-					<div class="font-semibold">{countryName}</div>
+					{#if isPortal && status === 'REVIEW'}
+						<input
+							type="text"
+							class="input input-bordered input-xs text-center
+                     {$orderApproveData.shippingInfo.countryName === '' && 'input-error'}"
+							bind:value={$orderApproveData.shippingInfo.countryName}
+						/>
+					{:else}
+						<div class="font-semibold">{countryName}</div>
+					{/if}
 				</div>
 				<div class="flex justify-between">
 					<div>{l.method}</div>
-					<div class="font-semibold">{methodName}</div>
+					{#if isPortal && status === 'REVIEW'}
+						<input
+							type="text"
+							class="input input-bordered input-xs text-center"
+							bind:value={$orderApproveData.shippingInfo.methodName}
+						/>
+					{:else}
+						<div class="font-semibold">{methodName ?? 'TBA'}</div>
+					{/if}
 				</div>
 				<div class="flex justify-between">
 					<div>{l.deliveryTime}</div>
-					<div class="font-semibold">{deliveryTime}</div>
+					{#if isPortal && status === 'REVIEW'}
+						<input
+							type="text"
+							class="input input-bordered input-xs text-center"
+							bind:value={$orderApproveData.shippingInfo.deliveryTime}
+						/>
+					{:else}
+						<div class="font-semibold">{deliveryTime ?? 'TBA'}</div>
+					{/if}
 				</div>
 				<div class="flex justify-between">
 					<div>{l.restriction}</div>
-					<div class="font-semibold">{restriction}</div>
+					{#if isPortal && status === 'REVIEW'}
+						<input
+							type="text"
+							class="input input-bordered input-xs text-center"
+							bind:value={$orderApproveData.shippingInfo.restriction}
+						/>
+					{:else}
+						<div class="font-semibold">{restriction ?? 'TBA'}</div>
+					{/if}
 				</div>
 			</div>
 
 			<div class="divider mt-auto m-0" />
-			{#if isPortal && status === 'REVIEW'}
-				<div class="flex justify-end mt-2 pr-2">
-					<label class="input input-bordered input-sm flex items-center gap-2 {!$orderShippingPrice && 'input-error'}">
-						<Icon icon="mdi:currency-usd" width={16} />
-						<input type="number" bind:value={$orderShippingPrice} class="w-20" />
-					</label>
-				</div>
-			{:else}
-				<div class="flex justify-between font-bold mt-2 pr-2">
-					<div>{l.shippingCost}</div>
-					<div class="font-mono">${price.toFixed(2)}</div>
-				</div>
-			{/if}
+
+			<div class="flex justify-between font-bold mt-2 pr-2">
+				<div>{l.shippingCost}</div>
+				{#if isPortal && status === 'REVIEW'}
+					<input
+						type="number"
+						class="input input-bordered input-xs w-24 text-center
+                  {$orderApproveData.shippingInfo.price === null && 'input-error'}"
+						bind:value={$orderApproveData.shippingInfo.price}
+					/>
+				{:else}
+					<div class="font-mono">{price ? parsePrice($i18n.currency, price) : 'TBA'}</div>
+				{/if}
+			</div>
 		{/if}
 	</div>
 </div>
 
-<SelectShippingModal selectedShipping={shippingInfo} {selectShipping} />
+<SelectShippingModal selectedShipping={shippingInfo} {selectShipping} showOther={true} />
 
 <style>
 	input::-webkit-outer-spin-button,
