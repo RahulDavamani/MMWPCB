@@ -35,24 +35,7 @@ export const spSilkscreenColor = z.enum(['WHITE', 'BLACK', 'YELLOW', 'NONE']);
 
 export const spUVPrinting = z.enum(['SINGLE_SIDED_TOP', 'SINGLE_SIDED_BOTTOM', 'DOUBLE_SIDED', 'NONE']);
 
-export const spSurfaceFinish = z.enum([
-	'HASL_WITH_LEAD',
-	'HASL_LEAD_FREE',
-	'IMMERSION_GOLD',
-	'OSP',
-	'HARD_GOLD',
-	'IMMERSION_SILVER',
-	'IMMERSION_TIN',
-	'HASL_LEAD_FREE_SELECTIVE_IMMERSION_GOLD',
-	'HASL_LEAD_FREE_SELECTIVE_HARD_GOLD',
-	'IMMERSION_GOLD_SELECTIVE_HARD_GOLD',
-	'ENEPIG',
-	'PLAIN_COPPER'
-]);
-
 export const spSurfaceFinishLayer = z.enum(['SINGLE_SIDE', 'DOUBLE_SIDE']);
-
-export const spViaProcess = z.enum(['TENTING_VIAS', 'PLUGGED_VIAS_WITH_SOLDER_MASK', 'VIAS_NOT_COVERED']);
 
 export const spRemoveProductNo = z.enum(['YES', 'NO', 'SPECIFY_LOCATION']);
 
@@ -127,11 +110,10 @@ export const standardPcbSchema = z.object({
 	silkscreenColor: spSilkscreenColor,
 	uvPrinting: spUVPrinting,
 	edgeConnector: z.boolean(),
-	surfaceFinish: spSurfaceFinish,
+	surfaceFinish: z.string(),
 	surfaceFinishLayer: spSurfaceFinishLayer,
 	surfaceThickness: z.number().nullish(),
 	acceptHASLChange: z.boolean().nullish(),
-	viaProcess: spViaProcess,
 	finishedCopper: z.number(),
 	innerCopper: z.number().nullish(),
 	removeProductNo: spRemoveProductNo,

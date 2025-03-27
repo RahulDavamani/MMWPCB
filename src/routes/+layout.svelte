@@ -14,8 +14,11 @@
 </script>
 
 <Ui />
+
 {#if !$lg}
 	<Loader title="Initializing" />
 {:else}
 	<slot />
 {/if}
+
+<div class="fixed bottom-20 right-0 font-bold shadow-2xl">Contact Us</div>

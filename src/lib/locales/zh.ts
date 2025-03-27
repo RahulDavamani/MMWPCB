@@ -734,7 +734,18 @@ export const zh: Lang = {
 			updateProductError: '更新产品失败',
 			saveCartSuccess: '产品已保存到购物车',
 			addOrderSuccess: '产品已添加到订单',
-			updateProductSuccess: '产品更新成功'
+			updateProductSuccess: '产品更新成功',
+			postOrderModal1: {
+				title: '您的 PCB 订单可享受额外服务',
+				body: '您是否需要组装或测试服务？'
+			},
+			postOrderModal2: {
+				title: '完成您的订单并添加测试服务',
+				body: '您是否要添加测试服务？'
+			},
+			goToOrder: '前往订单',
+			addAssembly: '添加组装服务',
+			addTestingServices: '添加测试服务'
 		},
 
 		pricing: {
@@ -937,7 +948,8 @@ export const zh: Lang = {
 			thickness: {
 				title: '厚度',
 				description:
-					'对于普通材料，板的厚度指PCB生产完成后的厚度，误差约为10%（+/-10%（T>=1mm）或+/-0.1mm（T<1mm）。）。误差主要由焊膏和铜沉积造成。如果对厚度误差有其他要求，请在其他特殊要求中备注。注意：对于单面/双面Rogers板，厚度指的是基板的厚度。'
+					'对于普通材料，板的厚度指PCB生产完成后的厚度，误差约为10%（+/-10%（T>=1mm）或+/-0.1mm（T<1mm）。）。误差主要由焊膏和铜沉积造成。如果对厚度误差有其他要求，请在其他特殊要求中备注。注意：对于单面/双面Rogers板，厚度指的是基板的厚度。',
+				error: '厚度应大于 0'
 			},
 			minTrack: {
 				title: '最小轨道/间距',
@@ -989,16 +1001,9 @@ export const zh: Lang = {
 				description:
 					'表面处理是PCB生产的重要部分。它可以保护铜免受氧化，这会导致PCB无法使用。此外，它还为组件焊接提供光滑的表面。',
 				values: {
-					haslWithLead: '含铅HASL',
-					haslLeadFree: '无铅HASL',
 					immersionGold: '沉金（ENIG）',
 					osp: 'OSP',
-					hardGold: '硬金',
-					immersionSilver: '沉银（Ag）',
 					immersionTin: '沉锡',
-					haslLeadFreeImmersionGold: '无铅HASL + 选择性沉金',
-					haslLeadFreeHardGold: '无铅HASL + 选择性硬金',
-					immersionGoldHardGold: '沉金 + 选择性硬金',
 					enepig: 'ENEPIG',
 					plainCopper: '普通铜 / 无'
 				},
@@ -1010,17 +1015,6 @@ export const zh: Lang = {
 				values: {
 					singleSide: '单面',
 					doubleSide: '双面'
-				}
-			},
-			viaProcess: {
-				title: '通孔工艺',
-				description:
-					'对于Gerber文件，我们会根据文件进行处理，此选项无效。对于.PCB或.PCBDOC文件，我们将按照您选择的参数进行处理。',
-				disclaimer: '*对于Gerber文件，此选择不会影响任何内容，PCB将按文件参数制作。',
-				values: {
-					tentingVias: '封闭通孔',
-					pluggedVias: '带焊膏的填充通孔',
-					viasNotCovered: '未覆盖的通孔'
 				}
 			},
 			finishedCopper: {
@@ -1388,7 +1382,8 @@ export const zh: Lang = {
 			thickness: {
 				title: '厚度',
 				description:
-					'对于普通材料，电路板的厚度是指生产完成后的PCB厚度，误差约为10%（+/-10%（T>=1mm）或+/-0.1mm（T<1mm）。误差主要由焊膏和铜下沉造成。如果对厚度误差有其他要求，请在其他特殊要求中注明。注意：对于单面/双面Rogers电路板，厚度指的是基材的厚度。'
+					'对于普通材料，电路板的厚度是指生产完成后的PCB厚度，误差约为10%（+/-10%（T>=1mm）或+/-0.1mm（T<1mm）。误差主要由焊膏和铜下沉造成。如果对厚度误差有其他要求，请在其他特殊要求中注明。注意：对于单面/双面Rogers电路板，厚度指的是基材的厚度。',
+				error: '厚度应大于 0'
 			},
 			minTrack: {
 				title: '最小轨距/间距',
@@ -1419,15 +1414,9 @@ export const zh: Lang = {
 				description:
 					'表面处理是PCB生产的重要部分。它可以保护铜免受氧化，这会使PCB无法使用。此外，它为组件焊接提供光滑表面。',
 				values: {
-					haslLeadFree: 'HASL无铅',
 					immersionGold: '浸金（ENIG）',
 					osp: 'OSP',
-					hardGold: '硬金',
-					immersionSilver: '浸银（Ag）',
 					immersionTin: '浸锡',
-					haslLeadFreeImmersionGold: 'HASL无铅+选择性浸金',
-					haslLeadFreeHardGold: 'HASL无铅+选择性硬金',
-					immersionGoldHardGold: '浸金+选择性硬金',
 					enepig: 'ENEPIG',
 					plainCopper: '裸铜/无'
 				}
@@ -2045,17 +2034,6 @@ export const zh: Lang = {
 				title: '边缘连接器',
 				description:
 					'边缘连接器通过接触PCB上的金手指实现电气连接。如果您的设计包含金手指，请对该项目选择“是”，并选择它的表面处理方法和倒角角度；否则，请选择“否”。'
-			},
-			viaProcess: {
-				title: '通孔处理',
-				description:
-					'边缘连接器通过接触PCB上的金手指实现电气连接。如果您的设计包含金手指，请对该项目选择“是”，并选择它的表面处理方法和倒角角度；否则，请选择“否”。',
-				disclaimer: '*对于Gerber文件，此选择不会影响任何事情，PCB将使用文件的参数制造。',
-				values: {
-					tentingVias: '覆盖通孔',
-					pluggedViasSolderMask: '带焊料掩膜的被堵通孔',
-					viasNotCovered: '未覆盖通孔'
-				}
 			},
 			flexPart: '柔性部分',
 			fpcLayers: {

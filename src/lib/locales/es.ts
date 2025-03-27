@@ -764,7 +764,18 @@ export const es: Lang = {
 			updateProductError: 'Error al actualizar el producto',
 			saveCartSuccess: 'Producto guardado en el carrito',
 			addOrderSuccess: 'Producto agregado a la orden',
-			updateProductSuccess: 'Producto actualizado con éxito'
+			updateProductSuccess: 'Producto actualizado con éxito',
+			postOrderModal1: {
+				title: 'Servicios adicionales para su pedido de PCB',
+				body: '¿Necesita servicios de ensamblaje o prueba para su PCB?'
+			},
+			postOrderModal2: {
+				title: 'Complete su pedido con servicios de prueba',
+				body: '¿Le gustaría agregar servicios de prueba?'
+			},
+			goToOrder: 'Ir al pedido',
+			addAssembly: 'Agregar ensamblaje',
+			addTestingServices: 'Agregar servicios de prueba'
 		},
 
 		pricing: {
@@ -975,7 +986,8 @@ export const es: Lang = {
 			thickness: {
 				title: 'Espesor',
 				description:
-					'Para materiales ordinarios, el grosor de la placa se refiere al grosor del PCB una vez completada la producción, y el error es de aproximadamente un 10% (+/-10% (T>=1mm) o +/- 0.1mm (T<1mm)). El error se debe principalmente al máscara de soldadura y la deposición de cobre. Si hay otros requisitos para el error de espesor, por favor haga una nota en Otros requisitos especiales. Nota: Para la placa Rogers de un solo/doble cara, el grosor se refiere al grosor del sustrato.'
+					'Para materiales ordinarios, el grosor de la placa se refiere al grosor del PCB una vez completada la producción, y el error es de aproximadamente un 10% (+/-10% (T>=1mm) o +/- 0.1mm (T<1mm)). El error se debe principalmente al máscara de soldadura y la deposición de cobre. Si hay otros requisitos para el error de espesor, por favor haga una nota en Otros requisitos especiales. Nota: Para la placa Rogers de un solo/doble cara, el grosor se refiere al grosor del sustrato.',
+				error: 'El grosor debe ser mayor que 0'
 			},
 			minTrack: {
 				title: 'Min Track/Espaciado',
@@ -1030,16 +1042,9 @@ export const es: Lang = {
 				description:
 					'El acabado de superficie es una parte importante de la producción de PCB. Puede proteger el cobre de la oxidación, lo que haría que el PCB no fuera utilizable. Además, proporciona una superficie lisa para soldar los componentes.',
 				values: {
-					haslWithLead: 'HASL con plomo',
-					haslLeadFree: 'HASL sin plomo',
 					immersionGold: 'Inmersión en oro (ENIG)',
 					osp: 'OSP',
-					hardGold: 'Oro duro',
-					immersionSilver: 'Inmersión en plata (Ag)',
 					immersionTin: 'Inmersión en estaño',
-					haslLeadFreeImmersionGold: 'HASL sin plomo + Inmersión selectiva en oro',
-					haslLeadFreeHardGold: 'HASL sin plomo + Oro duro selectivo',
-					immersionGoldHardGold: 'Oro de inmersión + Oro duro selectivo',
 					enepig: 'ENEPIG',
 					plainCopper: 'Cobre desnudo / Ninguno'
 				},
@@ -1052,18 +1057,6 @@ export const es: Lang = {
 				values: {
 					singleSide: 'Una sola cara',
 					doubleSide: 'Doble cara'
-				}
-			},
-			viaProcess: {
-				title: 'Proceso de vía',
-				description:
-					'Para archivos Gerber, procesaremos según los archivos, y esta opción es inválida. Para archivos .PCB o .PCBDOC, procesaremos con los parámetros que seleccione.',
-				disclaimer:
-					'*Para los archivos Gerber, esta opción no afectará nada, la PCB se fabricará utilizando los parámetros de los archivos.',
-				values: {
-					tentingVias: 'Vías cubiertas',
-					pluggedVias: 'Vías tapadas con máscara de soldadura',
-					viasNotCovered: 'Vías no cubiertas'
 				}
 			},
 			finishedCopper: {
@@ -1449,7 +1442,8 @@ export const es: Lang = {
 			thickness: {
 				title: 'Grosor',
 				description:
-					'Para materiales ordinarios, el grosor de la placa se refiere al grosor de la PCB una vez completada la producción, y el error es de aproximadamente 10% (+/-10% (T>=1mm) o +/- 0.1mm (T<1mm)). El error se debe principalmente a la máscara de soldadura y el hundimiento de cobre. Si hay otros requisitos para el error de grosor, por favor haga una nota en Otros Requisitos Especiales. Nota: Para placas de Rogers de un solo lado/dos lados, el grosor se refiere al grosor del sustrato.'
+					'Para materiales ordinarios, el grosor de la placa se refiere al grosor de la PCB una vez completada la producción, y el error es de aproximadamente 10% (+/-10% (T>=1mm) o +/- 0.1mm (T<1mm)). El error se debe principalmente a la máscara de soldadura y el hundimiento de cobre. Si hay otros requisitos para el error de grosor, por favor haga una nota en Otros Requisitos Especiales. Nota: Para placas de Rogers de un solo lado/dos lados, el grosor se refiere al grosor del sustrato.',
+				error: 'El grosor debe ser mayor que 0'
 			},
 			minTrack: {
 				title: 'Min Track/Espaciado',
@@ -1482,15 +1476,9 @@ export const es: Lang = {
 				description:
 					'El acabado de superficie es una parte importante de la producción de PCB. Puede proteger el cobre de la oxidación, lo que haría que la PCB fuera inutilizable. Además, proporciona una superficie suave para que los componentes sean soldados.',
 				values: {
-					haslLeadFree: 'HASL libre de plomo',
 					immersionGold: 'Oro de Inmersión (ENIG)',
 					osp: 'OSP',
-					hardGold: 'Oro Duro',
-					immersionSilver: 'Plata de Inmersión (Ag)',
 					immersionTin: 'Estaño de Inmersión',
-					haslLeadFreeImmersionGold: 'HASL libre de plomo + Oro de inmersión selectivo',
-					haslLeadFreeHardGold: 'HASL libre de plomo + Oro duro selectivo',
-					immersionGoldHardGold: 'Oro de inmersión + Oro duro selectivo',
 					enepig: 'ENEPIG',
 					plainCopper: 'Cobre Simple / Ninguno'
 				}
@@ -2131,18 +2119,6 @@ export const es: Lang = {
 				title: 'Conector de Borde',
 				description:
 					"Los conectores de borde logran la conexión eléctrica mediante el contacto con los dedos dorados en la PCB. Si tu diseño incluye dedo dorado, por favor selecciona 'Sí' para este ítem y elige el método de acabado de superficie y el ángulo de bisel para ello. De lo contrario, selecciona 'No'."
-			},
-			viaProcess: {
-				title: 'Proceso de Via',
-				description:
-					"Los conectores de borde logran la conexión eléctrica mediante el contacto con los dedos dorados en la PCB. Si tu diseño incluye dedo dorado, por favor selecciona 'Sí' para este ítem y elige el método de acabado de superficie y el ángulo de bisel para ello. De lo contrario, selecciona 'No'.",
-				disclaimer:
-					'*Para archivos Gerber, esta elección no afectará nada, la PCB se fabricará utilizando los parámetros de los archivos.',
-				values: {
-					tentingVias: 'Vías Cubiertas',
-					pluggedViasSolderMask: 'Vías Tapadas con Máscara de Soldadura',
-					viasNotCovered: 'Vías No Cubiertas'
-				}
 			},
 			flexPart: 'Parte Flex',
 			fpcLayers: {

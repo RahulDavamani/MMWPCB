@@ -137,7 +137,65 @@ export const quote = (() => {
 			});
 			reset();
 			await invalidateAll();
-			await goto(`/orders/${orderId ?? $page.data.cart.id}`);
+
+			if (['standardPcb', 'advancedPcb', 'flexiblePcb', 'rigidFlex'].includes(productType)) {
+				ui.setAlertModal({
+					title: l.postOrderModal1.title,
+					body: l.postOrderModal1.body,
+					boxClasses: 'max-w-xl w-full',
+					actions: [
+						{
+							name: l.goToOrder,
+							classes: 'btn-secondary w-40 mr-auto',
+							onClick: () => {
+								ui.closeAlertModal();
+								goto(`/orders/${orderId ?? $page.data.cart.id}`);
+							}
+						},
+						{
+							name: l.addAssembly,
+							classes: 'btn-primary w-40',
+							onClick: async () => {
+								ui.closeAlertModal();
+								await goto('/instant-quote');
+								quote.update((state) => ({ ...state, productType: 'assembly' }));
+							}
+						},
+						{
+							name: l.addTestingServices,
+							classes: 'btn-primary w-40',
+							onClick: () => {
+								ui.closeAlertModal();
+								goto('/services');
+							}
+						}
+					]
+				});
+			} else if (productType === 'assembly') {
+				ui.setAlertModal({
+					title: l.postOrderModal2.title,
+					body: l.postOrderModal2.body,
+					boxClasses: 'max-w-xl w-full',
+					actions: [
+						{
+							name: l.goToOrder,
+							classes: 'btn-secondary w-40 mr-auto',
+							onClick: () => {
+								ui.closeAlertModal();
+								goto(`/orders/${orderId ?? $page.data.cart.id}`);
+							}
+						},
+						{
+							name: l.addTestingServices,
+							classes: 'btn-primary w-40',
+							onClick: () => {
+								ui.closeAlertModal();
+								goto('/services');
+							}
+						}
+					]
+				});
+			} else await goto(`/orders/${orderId ?? $page.data.cart.id}`);
 		})();
 
 	return { subscribe, set, update, reset, init, upsertProduct };

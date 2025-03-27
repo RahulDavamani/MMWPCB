@@ -25,7 +25,6 @@
 	import SurfaceFinish from './SurfaceFinish.svelte';
 	import SurfaceThickness from './SurfaceThickness.svelte';
 	import Thickness from './Thickness.svelte';
-	import ViaProcess from './ViaProcess.svelte';
 </script>
 
 <GerberFile />
@@ -45,7 +44,6 @@
 <SurfaceFinish />
 <SurfaceThickness />
 <EdgeConnector />
-<ViaProcess />
 <div class="divider" />
 <div class="text-xl font-semibold">Flex Part</div>
 <FpcLayers />

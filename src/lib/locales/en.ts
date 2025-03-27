@@ -774,7 +774,18 @@ export const en = {
 			updateProductError: 'Failed to update product',
 			saveCartSuccess: 'Product saved to cart',
 			addOrderSuccess: 'Product added to order',
-			updateProductSuccess: 'Product updated successfully'
+			updateProductSuccess: 'Product updated successfully',
+			postOrderModal1: {
+				title: 'Additional Services for Your PCB Order',
+				body: 'Do you need Assembly or Testing Services for your PCB'
+			},
+			postOrderModal2: {
+				title: 'Complete Your Order with Testing Services',
+				body: 'Would you like to add Testing Services?'
+			},
+			goToOrder: 'Go to Order',
+			addAssembly: 'Add Assembly',
+			addTestingServices: 'Add Testing Services'
 		},
 
 		pricing: {
@@ -984,7 +995,8 @@ export const en = {
 			thickness: {
 				title: 'Thickness',
 				description:
-					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking.If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.'
+					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking.If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.',
+				error: 'Thickness should be greater than 0'
 			},
 			minTrack: {
 				title: 'Min Track/Spacing',
@@ -1038,16 +1050,9 @@ export const en = {
 				description:
 					'Surface finish is an important part of PCB production. It can protect the copper from oxidation, which would render the PCB unusable. In addition, it provides a smooth surface for the components to be soldered.',
 				values: {
-					haslWithLead: 'HASL with lead',
-					haslLeadFree: 'HASL lead free',
 					immersionGold: 'Immersion Gold (ENIG)',
 					osp: 'OSP',
-					hardGold: 'Hard Gold',
-					immersionSilver: 'Immersion Silver (Ag)',
 					immersionTin: 'Immersion Tin',
-					haslLeadFreeImmersionGold: 'HASL lead free + Selective immersion gold',
-					haslLeadFreeHardGold: 'HASL lead free + Selective hard gold',
-					immersionGoldHardGold: 'Immersion gold + Selective hard gold',
 					enepig: 'ENEPIG',
 					plainCopper: 'Plain Copper / None'
 				},
@@ -1060,18 +1065,6 @@ export const en = {
 				values: {
 					singleSide: 'Single Side',
 					doubleSide: 'Double Side'
-				}
-			},
-			viaProcess: {
-				title: 'Via Process',
-				description:
-					'For gerber files, we will process according to the files, and this option is invalid. For .PCB or .PCBDOC files, we will process with the parameters you select.',
-				disclaimer:
-					'*For Gerber files this choice will not affect anything, PCB will be made using the parameters of the files.',
-				values: {
-					tentingVias: 'Tenting vias',
-					pluggedVias: 'Plugged vias with solder mask',
-					viasNotCovered: 'Vias not covered'
 				}
 			},
 			finishedCopper: {
@@ -1088,7 +1081,7 @@ export const en = {
 				disclaimer: '*Requirement of Min Track/Spacing: ≥ 3/3mil for sample orders, or ≥ 3.5/3.5mil for bulk orders.'
 			},
 			removeProductNo: {
-				title: 'Remove Product No',
+				title: 'Remove Product No.',
 				description:
 					'MMWPCB will add our product number on PCB to distinguish your PCBs from others. If you want to remove it, there will be an extra $1.5 charge. If you want to put it in a specific location, please indicate the location by adding the text "MMWPCB" in silkscreen layer and there is no extra charge for this option.',
 				values: {
@@ -1451,7 +1444,8 @@ export const en = {
 			thickness: {
 				title: 'Thickness',
 				description:
-					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking. If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.'
+					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking. If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.',
+				error: 'Thickness should be greater than 0'
 			},
 			minTrack: {
 				title: 'Min Track/Spacing',
@@ -1483,15 +1477,9 @@ export const en = {
 				description:
 					'Surface finish is an important part of PCB production. It can protect the copper from oxidation, which would render the PCB unusable. In addition, it provides a smooth surface for the components to be soldered.',
 				values: {
-					haslLeadFree: 'HASL lead free',
 					immersionGold: 'Immersion Gold (ENIG)',
 					osp: 'OSP',
-					hardGold: 'Hard Gold',
-					immersionSilver: 'Immersion Silver (Ag)',
 					immersionTin: 'Immersion Tin',
-					haslLeadFreeImmersionGold: 'HASL lead free + Selective immersion gold',
-					haslLeadFreeHardGold: 'HASL lead free + Selective hard gold',
-					immersionGoldHardGold: 'Immersion gold + Selective hard gold',
 					enepig: 'ENEPIG',
 					plainCopper: 'Plain Copper / None'
 				}
@@ -2125,18 +2113,6 @@ export const en = {
 				title: 'Edge Connector',
 				description:
 					'Edge connectors achieve electrical connection by contacting the golden fingers on the PCB. If your design includes golden finger, please check "Yes" for this item and select the surface finish method and bevelling angle for it. Otherwise, please check "No".'
-			},
-			viaProcess: {
-				title: 'Via Process',
-				description:
-					'Edge connectors achieve electrical connection by contacting the golden fingers on the PCB. If your design includes golden finger, please check "Yes" for this item and select the surface finish method and bevelling angle for it. Otherwise, please check "No".',
-				disclaimer:
-					'*For Gerber files this choice will not affect anything, PCB will be made using the parameters of the files.',
-				values: {
-					tentingVias: 'Tenting Vias',
-					pluggedViasSolderMask: 'Plugged Vias with Solder Mask',
-					viasNotCovered: 'Vias Not Covered'
-				}
 			},
 			flexPart: 'Flex Part',
 			fpcLayers: {

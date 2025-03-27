@@ -384,15 +384,9 @@ export const advancedPcbDetails = (lg: Lang) => {
 
 	const surfaceFinish = (() => {
 		const values = [
-			{ title: l.surfaceFinish.values.haslLeadFree, value: 'HASL_LEAD_FREE' },
 			{ title: l.surfaceFinish.values.immersionGold, value: 'IMMERSION_GOLD' },
 			{ title: l.surfaceFinish.values.osp, value: 'OSP' },
-			{ title: l.surfaceFinish.values.hardGold, value: 'HARD_GOLD' },
-			{ title: l.surfaceFinish.values.immersionSilver, value: 'IMMERSION_SILVER' },
 			{ title: l.surfaceFinish.values.immersionTin, value: 'IMMERSION_TIN' },
-			{ title: l.surfaceFinish.values.haslLeadFreeImmersionGold, value: 'HASL_LEAD_FREE_SELECTIVE_IMMERSION_GOLD' },
-			{ title: l.surfaceFinish.values.haslLeadFreeHardGold, value: 'HASL_LEAD_FREE_SELECTIVE_HARD_GOLD' },
-			{ title: l.surfaceFinish.values.immersionGoldHardGold, value: 'IMMERSION_GOLD_SELECTIVE_HARD_GOLD' },
 			{ title: l.surfaceFinish.values.enepig, value: 'ENEPIG' },
 			{ title: l.surfaceFinish.values.plainCopper, value: 'PLAIN_COPPER' }
 		] as { title: string; value: AdvancedPcb['surfaceFinish'] }[];
@@ -402,7 +396,7 @@ export const advancedPcbDetails = (lg: Lang) => {
 			l: l.surfaceFinish,
 			url: '',
 			values,
-			parseValue: (val: AdvancedPcb['surfaceFinish']) => values.find((v) => v.value === val)?.title
+			parseValue: (val: AdvancedPcb['surfaceFinish']) => values.find((v) => v.value === val)?.title ?? val
 		};
 	})();
 

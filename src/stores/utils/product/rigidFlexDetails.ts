@@ -239,21 +239,6 @@ export const rigidFlexDetails = (lg: Lang) => {
 		};
 	})();
 
-	const viaProcess = (() => {
-		const values = [
-			{ title: l.viaProcess.values.tentingVias, value: 'TENTING_VIAS' },
-			{ title: l.viaProcess.values.pluggedViasSolderMask, value: 'PLUGGED_VIAS_WITH_SOLDER_MASK' },
-			{ title: l.viaProcess.values.viasNotCovered, value: 'VIAS_NOT_COVERED' }
-		] as { title: string; value: RigidFlex['viaProcess'] }[];
-
-		return {
-			key: 'viaProcess',
-			l: l.viaProcess,
-			values,
-			parseValue: (val: RigidFlex['viaProcess']) => values.find((v) => v.value === val)?.title
-		};
-	})();
-
 	const fpcLayers = {
 		key: 'fpcLayers',
 		l: l.fpcLayers,
@@ -496,7 +481,6 @@ export const rigidFlexDetails = (lg: Lang) => {
 		surfaceFinish,
 		surfaceThickness,
 		edgeConnector,
-		viaProcess,
 		fpcLayers,
 		fpcThickness,
 		fpcCoverlay,

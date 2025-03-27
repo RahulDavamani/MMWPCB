@@ -43,7 +43,7 @@
 			<div class="flex items-center gap-2">
 				<Icon icon="mdi:equal" />
 				<label class="input input-bordered input-sm flex items-center gap-2">
-					<input type="number" class="grow w-32" value={parseFloat(size.toFixed(4))} readonly />
+					<input type="number" class="grow w-32" value={size} readonly />
 					<span class="opacity-75">m²</span>
 				</label>
 			</div>

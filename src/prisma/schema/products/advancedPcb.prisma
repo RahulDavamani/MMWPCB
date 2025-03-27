@@ -42,7 +42,7 @@ model AdvancedPcb {
    silkscreenColor APSilkscreenColor
    edgeConnector   Boolean
 
-   surfaceFinish    APSurfaceFinish
+   surfaceFinish    String
    surfaceThickness Float[]
    finishedCopper   Float
    innerCopper      Float?

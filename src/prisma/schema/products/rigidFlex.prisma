@@ -33,7 +33,6 @@ model RigidFlex {
    surfaceThickness Float[]
 
    edgeConnector Boolean
-   viaProcess    RFViaProcess
 
    fpcLayers          Int
    fpcThickness       Float
@@ -80,12 +79,6 @@ enum RFSurfaceFinish {
    IMMERSION_GOLD
    OSP
    IMMERSION_SILVER
-}
-
-enum RFViaProcess {
-   TENTING_VIAS
-   PLUGGED_VIAS_WITH_SOLDER_MASK
-   VIAS_NOT_COVERED
 }
 
 enum RFCoverlay {

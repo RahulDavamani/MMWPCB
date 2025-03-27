@@ -799,7 +799,18 @@ export const fr: Lang = {
 			updateProductError: 'Échec de la mise à jour du produit',
 			saveCartSuccess: 'Produit sauvé dans le panier',
 			addOrderSuccess: 'Produit ajouté à la commande',
-			updateProductSuccess: 'Produit mis à jour avec succès'
+			updateProductSuccess: 'Produit mis à jour avec succès',
+			postOrderModal1: {
+				title: 'Services supplémentaires pour votre commande de PCB',
+				body: 'Avez-vous besoin de services d’assemblage ou de test pour votre PCB ?'
+			},
+			postOrderModal2: {
+				title: 'Finalisez votre commande avec des services de test',
+				body: 'Souhaitez-vous ajouter des services de test ?'
+			},
+			goToOrder: 'Aller à la commande',
+			addAssembly: 'Ajouter l’assemblage',
+			addTestingServices: 'Ajouter les services de test'
 		},
 
 		pricing: {
@@ -1010,7 +1021,8 @@ export const fr: Lang = {
 			thickness: {
 				title: 'Épaisseur',
 				description:
-					"Pour les matériaux ordinaires, l'épaisseur de la carte fait référence à l'épaisseur du PCB une fois la production terminée, et l'erreur est d'environ 10 % (+/-10 % (T>=1mm) ou +/- 0,1mm (T<1mm)). L'erreur est principalement causée par le masque de soudure et la déposition de cuivre. S'il y a d'autres exigences concernant l'erreur d'épaisseur, veuillez le noter dans Autres exigences spéciales. Remarque : Pour une carte Rogers simple/double face, l'épaisseur fait référence à l'épaisseur du substrat."
+					"Pour les matériaux ordinaires, l'épaisseur de la carte fait référence à l'épaisseur du PCB une fois la production terminée, et l'erreur est d'environ 10 % (+/-10 % (T>=1mm) ou +/- 0,1mm (T<1mm)). L'erreur est principalement causée par le masque de soudure et la déposition de cuivre. S'il y a d'autres exigences concernant l'erreur d'épaisseur, veuillez le noter dans Autres exigences spéciales. Remarque : Pour une carte Rogers simple/double face, l'épaisseur fait référence à l'épaisseur du substrat.",
+				error: "L'épaisseur doit être supérieure à 0"
 			},
 			minTrack: {
 				title: 'Min Track/Espacement',
@@ -1065,16 +1077,9 @@ export const fr: Lang = {
 				description:
 					"La finition de surface est une partie importante de la production de PCB. Elle peut protéger le cuivre de l'oxydation, ce qui rendrait le PCB inutilisable. De plus, elle fournit une surface lisse pour que les composants soient soudés.",
 				values: {
-					haslWithLead: 'HASL avec plomb',
-					haslLeadFree: 'HASL sans plomb',
 					immersionGold: 'Or immersion (ENIG)',
 					osp: 'OSP',
-					hardGold: 'Or dur',
-					immersionSilver: 'Argent immersion (Ag)',
 					immersionTin: 'Étain immersion',
-					haslLeadFreeImmersionGold: 'HASL sans plomb + Or immersion sélectif',
-					haslLeadFreeHardGold: 'HASL sans plomb + Or dur sélectif',
-					immersionGoldHardGold: 'Or immersion + Or dur sélectif',
 					enepig: 'ENEPIG',
 					plainCopper: 'Cuivre nu / Aucun'
 				},
@@ -1087,18 +1092,6 @@ export const fr: Lang = {
 				values: {
 					singleSide: 'Simple face',
 					doubleSide: 'Double face'
-				}
-			},
-			viaProcess: {
-				title: 'Processus de via',
-				description:
-					'Pour les fichiers Gerber, nous traiterons selon les fichiers, et cette option est invalide. Pour les fichiers .PCB ou .PCBDOC, nous traiterons avec les paramètres que vous sélectionnez.',
-				disclaimer:
-					"*Pour les fichiers Gerber, ce choix n'affectera rien, le PCB sera fabriqué en utilisant les paramètres des fichiers.",
-				values: {
-					tentingVias: 'Vias recouverts',
-					pluggedVias: 'Vias bouchés avec masque de soudure',
-					viasNotCovered: 'Vias non couvertes'
 				}
 			},
 			finishedCopper: {
@@ -1484,7 +1477,8 @@ export const fr: Lang = {
 			thickness: {
 				title: 'Épaisseur',
 				description:
-					"Pour les matériaux ordinaires, l'épaisseur de la plaque se réfère à l'épaisseur du PCB après la production, et l'erreur est d'environ 10% (+/-10% (T>=1mm) ou +/- 0.1mm (T<1mm)). L'erreur est principalement causée par le masque de soudure et le cuivre qui s'enfonce. Si vous avez d'autres exigences concernant l'erreur d'épaisseur, veuillez le noter dans d'autres exigences spéciales. Remarque : Pour le circuit imprimé Rogers à une ou deux faces, l'épaisseur se réfère à l'épaisseur du substrat."
+					"Pour les matériaux ordinaires, l'épaisseur de la plaque se réfère à l'épaisseur du PCB après la production, et l'erreur est d'environ 10% (+/-10% (T>=1mm) ou +/- 0.1mm (T<1mm)). L'erreur est principalement causée par le masque de soudure et le cuivre qui s'enfonce. Si vous avez d'autres exigences concernant l'erreur d'épaisseur, veuillez le noter dans d'autres exigences spéciales. Remarque : Pour le circuit imprimé Rogers à une ou deux faces, l'épaisseur se réfère à l'épaisseur du substrat.",
+				error: "L'épaisseur doit être supérieure à 0"
 			},
 			minTrack: {
 				title: 'Piste/espacement min',
@@ -1516,15 +1510,9 @@ export const fr: Lang = {
 				description:
 					"La finition de surface est une partie importante de la production de PCB. Elle peut protéger le cuivre de l'oxydation, rendant le PCB inutilisable. De plus, elle fournit une surface lisse pour que les composants soient soudés.",
 				values: {
-					haslLeadFree: 'HASL sans plomb',
 					immersionGold: 'Or immersion (ENIG)',
 					osp: 'OSP',
-					hardGold: 'Or dur',
-					immersionSilver: "Argent d'immersion (Ag)",
 					immersionTin: "Étain d'immersion",
-					haslLeadFreeImmersionGold: 'HASL sans plomb + Or immersion sélective',
-					haslLeadFreeHardGold: 'HASL sans plomb + Or dur sélectif',
-					immersionGoldHardGold: 'Or immersion + Or dur sélectif',
 					enepig: 'ENEPIG',
 					plainCopper: 'Cuivre nu / Aucun'
 				}
@@ -2167,18 +2155,6 @@ export const fr: Lang = {
 				title: "Connecteur d'aplomb",
 				description:
 					'Les connecteurs d\'aplomb assurent la connexion électrique en contactant les doigts dorés sur le PCB. Si votre conception comprend un doigt doré, veuillez cocher "Oui" pour cet élément et sélectionner la méthode de finition de surface et l\'angle de biseautage pour cela. Sinon, veuillez cocher "Non".'
-			},
-			viaProcess: {
-				title: 'Processus via',
-				description:
-					'Les connecteurs d\'aplomb assurent la connexion électrique en contactant les doigts dorés sur le PCB. Si votre conception comprend un doigt doré, veuillez cocher "Oui" pour cet élément et sélectionner la méthode de finition de surface et l\'angle de biseautage pour cela. Sinon, veuillez cocher "Non".',
-				disclaimer:
-					"*Pour les fichiers Gerber, ce choix n'affectera rien, le PCB sera fabriqué en utilisant les paramètres des fichiers.",
-				values: {
-					tentingVias: 'Vias recouverts',
-					pluggedViasSolderMask: 'Vias bouchés avec masque de soudure',
-					viasNotCovered: 'Vias non couvertes'
-				}
 			},
 			flexPart: 'Partie flexible',
 			fpcLayers: {

@@ -70,7 +70,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each products as { id, type, name, quantity, fileName, initialPrice, finalPrice, fabricationStatuses }, i}
+					{#each products as { id, type, name, quantity, fileName, initialPrice, finalPrice, fabricationStatuses }}
 						{@const fileUrl = fileName
 							? supabase.storage.from('Product Files').createSignedUrl(fileName, 300)
 							: undefined}

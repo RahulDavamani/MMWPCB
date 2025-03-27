@@ -6,6 +6,7 @@
 
 	$: pd = $productDetails.advancedPcb.surfaceFinish;
 	$: ({ surfaceFinish } = $quote.products.advancedPcb);
+	$: values = pd.values.map(({ value }) => value);
 
 	const selectSurfaceFinish = (value: AdvancedPcb['surfaceFinish']) => {
 		if (surfaceFinish !== value) {
@@ -16,34 +17,6 @@
 					$quote.products.advancedPcb = {
 						...$quote.products.advancedPcb,
 						surfaceThickness: [2]
-					};
-					break;
-
-				case 'HARD_GOLD':
-					$quote.products.advancedPcb = {
-						...$quote.products.advancedPcb,
-						surfaceThickness: [5, 120]
-					};
-					break;
-
-				case 'HASL_LEAD_FREE_SELECTIVE_IMMERSION_GOLD':
-					$quote.products.advancedPcb = {
-						...$quote.products.advancedPcb,
-						surfaceThickness: [2]
-					};
-					break;
-
-				case 'HASL_LEAD_FREE_SELECTIVE_HARD_GOLD':
-					$quote.products.advancedPcb = {
-						...$quote.products.advancedPcb,
-						surfaceThickness: [10, 120]
-					};
-					break;
-
-				case 'IMMERSION_GOLD_SELECTIVE_HARD_GOLD':
-					$quote.products.advancedPcb = {
-						...$quote.products.advancedPcb,
-						surfaceThickness: [2, 10, 120]
 					};
 					break;
 
@@ -73,5 +46,17 @@
 				on:click={() => selectSurfaceFinish(value)}>{title}</button
 			>
 		{/each}
+
+		<button class="btn btn-sm btn-primary {values.includes(surfaceFinish) && 'btn-outline'}">
+			<input
+				type="text"
+				class="input input-bordered input-xs w-14 text-black text-center"
+				value={values.includes(surfaceFinish) ? '' : surfaceFinish}
+				on:change={(e) => {
+					if (e.currentTarget.value.length === 0) $quote.products.advancedPcb.surfaceFinish = 'IMMERSION_GOLD';
+					else $quote.products.advancedPcb.surfaceFinish = e.currentTarget.value;
+				}}
+			/>
+		</button>
 	</div>
 </FormItem>

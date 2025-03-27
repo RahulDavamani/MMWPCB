@@ -44,12 +44,11 @@ model StandardPcb {
    uvPrinting      SPUVPrinting
    edgeConnector   Boolean
 
-   surfaceFinish      SPSurfaceFinish
+   surfaceFinish      String
    surfaceFinishLayer SPSurfaceFinishLayer
    surfaceThickness   Float?
    acceptHASLChange   Boolean?
 
-   viaProcess      SPViaProcess
    finishedCopper  Float
    innerCopper     Float?
    removeProductNo SPRemoveProductNo
@@ -174,12 +173,6 @@ enum SPSurfaceFinish {
 enum SPSurfaceFinishLayer {
    SINGLE_SIDE
    DOUBLE_SIDE
-}
-
-enum SPViaProcess {
-   TENTING_VIAS
-   PLUGGED_VIAS_WITH_SOLDER_MASK
-   VIAS_NOT_COVERED
 }
 
 enum SPRemoveProductNo {

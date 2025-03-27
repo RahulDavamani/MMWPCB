@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import { productDetails } from '../../../../../stores/product.store';
 	import { quote, quoteError } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';

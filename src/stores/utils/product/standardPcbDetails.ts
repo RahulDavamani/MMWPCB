@@ -310,7 +310,8 @@ export const standardPcbDetails = (lg: Lang) => {
 		l: l.thickness,
 		imgSrc: '',
 		values: [0.2, 0.3, 0.4, 0.6, 0.8, 1.0, 1.2, 1.6, 2.0, 2.4, 2.6, 2.8, 3.0, 3.2],
-		parseValue: (val: StandardPcb['thickness']) => `${val}mm`
+		parseValue: (val: StandardPcb['thickness']) => `${val}mm`,
+		validate: (val: StandardPcb['thickness']) => val <= 0
 	};
 
 	const minTrack = {
@@ -402,16 +403,9 @@ export const standardPcbDetails = (lg: Lang) => {
 
 	const surfaceFinish = (() => {
 		const values = [
-			{ title: l.surfaceFinish.values.haslWithLead, value: 'HASL_WITH_LEAD' },
-			{ title: l.surfaceFinish.values.haslLeadFree, value: 'HASL_LEAD_FREE' },
 			{ title: l.surfaceFinish.values.immersionGold, value: 'IMMERSION_GOLD' },
 			{ title: l.surfaceFinish.values.osp, value: 'OSP' },
-			{ title: l.surfaceFinish.values.hardGold, value: 'HARD_GOLD' },
-			{ title: l.surfaceFinish.values.immersionSilver, value: 'IMMERSION_SILVER' },
 			{ title: l.surfaceFinish.values.immersionTin, value: 'IMMERSION_TIN' },
-			{ title: l.surfaceFinish.values.haslLeadFreeImmersionGold, value: 'HASL_LEAD_FREE_SELECTIVE_IMMERSION_GOLD' },
-			{ title: l.surfaceFinish.values.haslLeadFreeHardGold, value: 'HASL_LEAD_FREE_SELECTIVE_HARD_GOLD' },
-			{ title: l.surfaceFinish.values.immersionGoldHardGold, value: 'IMMERSION_GOLD_SELECTIVE_HARD_GOLD' },
 			{ title: l.surfaceFinish.values.enepig, value: 'ENEPIG' },
 			{ title: l.surfaceFinish.values.plainCopper, value: 'PLAIN_COPPER' }
 		] as { title: string; value: StandardPcb['surfaceFinish'] }[];
@@ -420,7 +414,7 @@ export const standardPcbDetails = (lg: Lang) => {
 			key: 'surfaceFinish',
 			l: l.surfaceFinish,
 			values,
-			parseValue: (val: StandardPcb['surfaceFinish']) => values.find((v) => v.value === val)?.title
+			parseValue: (val: StandardPcb['surfaceFinish']) => values.find((v) => v.value === val)?.title ?? val
 		};
 	})();
 
@@ -435,21 +429,6 @@ export const standardPcbDetails = (lg: Lang) => {
 			l: l.surfaceFinishLayer,
 			values,
 			parseValue: (val: StandardPcb['surfaceFinishLayer']) => values.find((v) => v.value === val)?.title
-		};
-	})();
-
-	const viaProcess = (() => {
-		const values = [
-			{ title: l.viaProcess.values.tentingVias, value: 'TENTING_VIAS' },
-			{ title: l.viaProcess.values.pluggedVias, value: 'PLUGGED_VIAS_WITH_SOLDER_MASK' },
-			{ title: l.viaProcess.values.viasNotCovered, value: 'VIAS_NOT_COVERED' }
-		] as { title: string; value: StandardPcb['viaProcess'] }[];
-
-		return {
-			key: 'viaProcess',
-			l: l.viaProcess,
-			values,
-			parseValue: (val: StandardPcb['viaProcess']) => values.find((v) => v.value === val)?.title
 		};
 	})();
 
@@ -694,7 +673,6 @@ export const standardPcbDetails = (lg: Lang) => {
 		edgeConnector,
 		surfaceFinish,
 		surfaceFinishLayer,
-		viaProcess,
 		finishedCopper,
 		innerCopper,
 		removeProductNo,

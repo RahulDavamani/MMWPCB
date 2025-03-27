@@ -50,19 +50,6 @@ export const apSolderMaskColor = z.enum([
 ]);
 
 export const apSilkscreenColor = z.enum(['WHITE', 'BLACK', 'YELLOW', 'BLUE', 'GREY', 'NONE']);
-export const apSurfaceFinish = z.enum([
-	'HASL_LEAD_FREE',
-	'IMMERSION_GOLD',
-	'OSP',
-	'HARD_GOLD',
-	'IMMERSION_SILVER',
-	'IMMERSION_TIN',
-	'HASL_LEAD_FREE_SELECTIVE_IMMERSION_GOLD',
-	'HASL_LEAD_FREE_SELECTIVE_HARD_GOLD',
-	'IMMERSION_GOLD_SELECTIVE_HARD_GOLD',
-	'ENEPIG',
-	'PLAIN_COPPER'
-]);
 
 export const apPeelableSolderMask = z.enum(['TOP_SIDE', 'BOTTOM_SIDE', 'BOTH_SIDES', 'NONE']);
 export const apUlMarking = z.enum([
@@ -140,7 +127,7 @@ export const advancedPcbSchema = z.object({
 	solderMaskColor: apSolderMaskColor,
 	silkscreenColor: apSilkscreenColor,
 	edgeConnector: z.boolean(),
-	surfaceFinish: apSurfaceFinish,
+	surfaceFinish: z.string(),
 	surfaceThickness: z.array(z.number()),
 	finishedCopper: z.number(),
 	innerCopper: z.number().nullish(),

@@ -130,13 +130,13 @@ export const order = derived(
 					shippingMethod.id === 'order'
 						? {
 								id,
-								countryId: undefined,
+								countryId: null,
 								countryName: shippingMethod.country.name,
-								methodId: undefined,
-								methodName: undefined,
-								price: undefined,
-								deliveryTime: undefined,
-								restriction: undefined
+								methodId: null,
+								methodName: null,
+								price: null,
+								deliveryTime: null,
+								restriction: null
 							}
 						: {
 								id,

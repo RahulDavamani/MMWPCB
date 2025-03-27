@@ -8,8 +8,6 @@ const RFMaterial = z.enum(['POLYIMIDE_FLEX_FR4']);
 
 const RFSurfaceFinish = z.enum(['IMMERSION_GOLD', 'OSP', 'IMMERSION_SILVER']);
 
-const RFViaProcess = z.enum(['TENTING_VIAS', 'PLUGGED_VIAS_WITH_SOLDER_MASK', 'VIAS_NOT_COVERED']);
-
 const RFCoverlay = z.enum(['YELLOW_COVERLAY', 'WHITE_COVERLAY', 'BLACK_COVERLAY', 'NONE']);
 
 const RFSolderMaskColor = z.enum([
@@ -82,7 +80,6 @@ export const rigidFlexSchema = z.object({
 	surfaceFinish: RFSurfaceFinish,
 	surfaceThickness: z.array(z.number()),
 	edgeConnector: z.boolean(),
-	viaProcess: RFViaProcess,
 	fpcLayers: z.number(),
 	fpcThickness: z.number(),
 	fpcCoverlay: RFCoverlay,

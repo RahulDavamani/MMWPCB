@@ -20,7 +20,6 @@
 	import UvPrinting from './uvPrinting.svelte';
 	import EdgeConnector from './edgeConnector.svelte';
 	import SurfaceFinish from './SurfaceFinish.svelte';
-	import ViaProcess from './ViaProcess.svelte';
 	import FinishedCopper from './FinishedCopper.svelte';
 	import InnerCopper from './InnerCopper.svelte';
 	import RemoveProductNo from './RemoveProductNo.svelte';
@@ -58,7 +57,6 @@
 <div class="divider" />
 <SurfaceFinish />
 <SurfaceFinishLayer />
-<ViaProcess />
 <FinishedCopper />
 <InnerCopper />
 <RemoveProductNo />
