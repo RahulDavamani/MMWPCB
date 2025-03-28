@@ -58,8 +58,6 @@ export const get = userProcedure.input(z.object({ id: z.string().min(1).nullable
 					shippingInfo: {
 						select: {
 							id: true,
-							countryId: true,
-							methodId: true,
 							countryName: true,
 							methodName: true,
 							price: true,

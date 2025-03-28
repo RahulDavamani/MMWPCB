@@ -22,8 +22,23 @@
 		},
 		{
 			title: 'Service Requests',
-			icon: 'mdi:clipboard-text-outline',
+			icon: 'mdi:clipboard-text',
 			href: '/portal/service-requests'
+		},
+		{
+			title: 'Discounts',
+			icon: 'mdi:discount',
+			href: '/portal/discounts'
+		},
+		{
+			title: 'Email Notifications',
+			icon: 'mdi:email',
+			href: '/portal/email-notifications'
+		},
+		{
+			title: 'Shipping',
+			icon: 'mdi:truck-fast',
+			href: '/portal/shipping'
 		}
 	];
 	$: ({ pathname } = $page.url);

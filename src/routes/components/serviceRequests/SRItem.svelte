@@ -125,7 +125,7 @@
 		});
 </script>
 
-<tr>
+<tr class="hover">
 	<td class="text-center w-1">
 		<IconBtn icon="mdi:info" iconClasses="text-info" on:click={openDetailsModal} />
 	</td>

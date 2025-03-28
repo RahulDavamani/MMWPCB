@@ -14,12 +14,12 @@
 	let modalId = 'selectShippingModal';
 
 	export let selectedShipping: { countryId: string | null; methodId: string | null } | null;
-	export let selectShipping: (shippingMethod: RouterOutput['shipping']['getMethods'][number]) => void;
+	export let selectShipping: (shippingMethod: RouterOutput['shipping']['getMethods']['methods'][number]) => void;
 	export let showOther = false;
 
 	let countries: RouterOutput['shipping']['getCountries'] | undefined;
 	let selectedCountryId: string | undefined;
-	let methods: RouterOutput['shipping']['getMethods'] | undefined;
+	let methods: RouterOutput['shipping']['getMethods']['methods'] | undefined;
 	let selectedMethodId: string | undefined;
 	let countryName = '';
 
@@ -35,11 +35,12 @@
 	const fetchMethods = async () => {
 		if (!selectedCountryId) return;
 		methods = undefined;
-		methods = await trpc()
+		const data = await trpc()
 			.shipping.getMethods.query({ countryId: selectedCountryId })
 			.catch((e) =>
 				tce(e, { callback: () => closeModal(modalId), showModal: { title: 'Failed to fetch shipping methods' } })
 			);
+		methods = data?.methods;
 	};
 	$: if (selectedCountryId) fetchMethods();
 

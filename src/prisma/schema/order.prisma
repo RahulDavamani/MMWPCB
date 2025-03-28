@@ -105,12 +105,6 @@ model OrderShippingInfo {
    deliveryTime String?
    restriction  String?
 
-   countryId String?
-   country   ShippingCountry? @relation(fields: [countryId], references: [id])
-
-   methodId String?
-   method   ShippingMethod? @relation(fields: [methodId], references: [id])
-
    orderId String @unique
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }
