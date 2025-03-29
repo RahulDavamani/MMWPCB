@@ -26,6 +26,7 @@ declare module 'lucia' {
 			firstName: string;
 			lastName: string;
 			role: UserRole;
+			profilePic: string;
 		};
 		DatabaseSessionAttributes: {
 			profilePic?: string;

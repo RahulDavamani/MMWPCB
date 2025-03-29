@@ -8,17 +8,42 @@
 	import { invalidateAll } from '$app/navigation';
 	import cloneDeep from 'lodash.clonedeep';
 	import { lg } from '../../../stores/i18n.store';
+	import { supabase } from '$lib/client/supabase';
+	import { onMount } from 'svelte';
 
 	$: l = $lg.profile.personalInformation;
 
 	let profile: RouterOutput['user']['getProfile'] = cloneDeep($page.data.profile);
 	let isEdit = false;
 
+	let fileInput: HTMLInputElement;
+	let ppFile: File | undefined;
+	let ppUrl: string | undefined = undefined;
+
+	onMount(async () => {
+		if (profile.profilePic) {
+			const { data } = await supabase.storage.from('profile-pictures').createSignedUrl(profile.profilePic, 300);
+			ppUrl = data?.signedUrl;
+		}
+	});
+
 	const saveProfile = async () =>
 		ui.loaderWrapper({ title: l.savingProfile }, async () => {
-			const { firstName, lastName, phone } = profile;
+			let { firstName, lastName, phone, profilePic } = profile;
+
+			if (ppFile || ppUrl === undefined) {
+				if (profilePic) {
+					await supabase.storage.from('profile-pictures').remove([profilePic]);
+					profilePic = '';
+				}
+				if (ppFile) {
+					await supabase.storage.from('profile-pictures').upload($page.data.user.id, ppFile);
+					profilePic = $page.data.user.id;
+				}
+			}
+
 			await trpc()
-				.user.updateProfile.mutate({ firstName, lastName, phone })
+				.user.updateProfile.mutate({ firstName, lastName, phone, profilePic })
 				.catch((e) => tce(e, { showModal: { title: l.saveProfileError, retryFn: saveProfile } }));
 
 			await invalidateAll();
@@ -37,9 +62,15 @@
 			<div class="flex gap-4">
 				<button
 					class="btn btn-sm btn-error"
-					on:click={() => {
+					on:click={async () => {
 						isEdit = false;
 						profile = $page.data.profile;
+						ppFile = undefined;
+						fileInput.value = '';
+						if (profile.profilePic) {
+							const { data } = await supabase.storage.from('profile-pictures').createSignedUrl(profile.profilePic, 300);
+							ppUrl = data?.signedUrl;
+						} else ppUrl = undefined;
 					}}
 				>
 					<Icon icon="mdi:remove" />
@@ -61,21 +92,40 @@
 
 	<div class="flex p-4 gap-20">
 		<div class="flex flex-col justify-center items-center">
-			<div class="avatar placeholder">
-				<div class="bg-neutral text-neutral-content w-40 rounded-full">
-					<Icon icon="mdi:person" width={80} />
+			{#if ppUrl}
+				<img src={ppUrl} alt="Profile Pic" class="w-40 rounded-full border-2" />
+			{:else}
+				<div class="avatar placeholder">
+					<div class="bg-neutral text-neutral-content w-40 rounded-full">
+						<Icon icon="mdi:person" width={80} />
+					</div>
 				</div>
-			</div>
-			<div class="flex mt-2">
-				<div class="btn btn-link no-underline">
-					<Icon icon="mdi:cloud-upload" />
-					{$lg.common.upload}
-				</div>
-				<div class="btn btn-link no-underline text-error">
+			{/if}
+
+			{#if isEdit}
+				<input
+					bind:this={fileInput}
+					type="file"
+					class="file-input file-input-bordered file-input-sm mt-4 w-60"
+					on:change={(e) => {
+						ppFile = e.currentTarget.files?.[0];
+						if (ppFile) ppUrl = URL.createObjectURL(ppFile);
+					}}
+				/>
+
+				<button
+					class="btn btn-link no-underline text-error mt-1
+                  {profile.profilePic === '' && ppUrl === undefined && 'pointer-events-none text-gray-400'}"
+					on:click={() => {
+						ppFile = undefined;
+						ppUrl = undefined;
+						fileInput.value = '';
+					}}
+				>
 					<Icon icon="mdi:delete-forever" />
 					{$lg.common.remove}
-				</div>
-			</div>
+				</button>
+			{/if}
 		</div>
 
 		<div class="grid grid-cols-2 h-fit gap-y-4">

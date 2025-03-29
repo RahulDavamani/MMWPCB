@@ -3,6 +3,7 @@
 	import Icon from '@iconify/svelte';
 	import type { PageData } from '../../$types';
 	import { lg } from '../../../stores/i18n.store';
+	import { supabase } from '$lib/client/supabase';
 
 	export let isPortal = false;
 
@@ -10,6 +11,11 @@
 	$: ({ user, session } = $page.data as PageData);
 
 	$: menuItems = [
+		{
+			name: l.profile,
+			icon: 'mdi:account-outline',
+			href: '/profile'
+		},
 		...(isPortal
 			? []
 			: [
@@ -25,11 +31,6 @@
 					}
 				]),
 		{
-			name: l.profile,
-			icon: 'mdi:account-outline',
-			href: '/profile'
-		},
-		{
 			name: l.logout,
 			icon: 'mdi:logout',
 			href: '/logout'
@@ -42,10 +43,27 @@
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<div class="dropdown dropdown-end">
 		<div tabindex={0}>
-			{#if session?.profilePic}
-				<div class="btn btn-ghost btn-circle avatar p-1">
-					<img src={session.profilePic} alt="DP" class="rounded-full" />
-				</div>
+			{#if user.profilePic}
+				{@const fileUrl = supabase.storage.from('profile-pictures').createSignedUrl(user.profilePic, 300)}
+				{#await fileUrl}
+					<div class="avatar placeholder btn btn-ghost btn-circle">
+						<div class="bg-accent text-neutral-content w-10 rounded-full">
+							<span class="font-semibold text-lg">{firstName.charAt(0)}{lastName.charAt(0)}</span>
+						</div>
+					</div>
+				{:then { data }}
+					<img
+						src={data?.signedUrl}
+						alt="Profile Pic"
+						class="w-12 rounded-full border-2 hover:outline hover:outline-gray-300 btn p-0"
+					/>
+				{/await}
+			{:else if session?.profilePic}
+				<img
+					src={session?.profilePic}
+					alt="Profile Pic"
+					class="w-12 rounded-full border-2 hover:outline hover:outline-gray-300 btn p-0"
+				/>
 			{:else}
 				<div class="avatar placeholder btn btn-ghost btn-circle">
 					<div class="bg-accent text-neutral-content w-10 rounded-full">
