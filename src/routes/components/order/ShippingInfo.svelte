@@ -106,7 +106,7 @@
 	</div>
 </div>
 
-<SelectShippingModal selectedShipping={shippingInfo} {selectShipping} showOther={true} />
+<SelectShippingModal {selectShipping} showOther={true} />
 
 <style>
 	input::-webkit-outer-spin-button,
@@ -115,6 +115,7 @@
 		margin: 0;
 	}
 	input[type='number'] {
+		appearance: textfield;
 		-moz-appearance: textfield;
 	}
 </style>

@@ -13,7 +13,7 @@
 
 	let modalId = 'selectShippingModal';
 
-	export let selectedShipping: { countryId: string | null; methodId: string | null } | null;
+	export let selectedShipping: { countryId: string | null; methodId: string | null } | null = null;
 	export let selectShipping: (shippingMethod: RouterOutput['shipping']['getMethods']['methods'][number]) => void;
 	export let showOther = false;
 

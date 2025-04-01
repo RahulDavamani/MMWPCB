@@ -8,8 +8,11 @@
 	$: section = $page.params.section.replace(/-([a-z])/g, (_, l) => l.toUpperCase());
 	$: subsection = $page.params.subsection.replace(/-([a-z])/g, (_, l) => l.toUpperCase());
 	$: question = $page.params.question;
+	// @ts-ignore
 	$: sectionTitle = $support.sections[section].title as string;
+	// @ts-ignore
 	$: subsectionTitle = $support.sections[section].subsections[subsection].title as string;
+	// @ts-ignore
 	$: ({ title, contents } = $support.sections[section].subsections[subsection].questions[question] as Question);
 </script>
 

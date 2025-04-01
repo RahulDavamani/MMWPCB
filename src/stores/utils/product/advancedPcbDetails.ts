@@ -28,12 +28,6 @@ export const advancedPcbDetails = (lg: Lang) => {
 		validate: (val: AdvancedPcb['name']) => val.length < 1
 	};
 
-	const fileName = {
-		key: 'fileName',
-		l: l.fileName,
-		parseValue: (val: AdvancedPcb['fileName']) => val?.split('__')[1]
-	};
-
 	const buildTime = {
 		key: 'buildTime',
 		l: l.buildTime
@@ -681,7 +675,6 @@ export const advancedPcbDetails = (lg: Lang) => {
 		createdAt,
 		updatedAt,
 		name,
-		fileName,
 		buildTime,
 		weight,
 		initialPrice,

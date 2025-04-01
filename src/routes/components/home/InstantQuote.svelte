@@ -100,6 +100,7 @@
 	const quoteNow = async () => {
 		await goto('/instant-quote');
 		$quoteStore.productType = productType;
+		// @ts-ignore
 		$quoteStore.products[productType] = { ...$quoteStore.products[productType], ...quote[productType] };
 	};
 </script>

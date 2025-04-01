@@ -654,10 +654,12 @@ export const es: Lang = {
 			buildTime: 'Tiempo de Construcción',
 			quantity: 'Cantidad',
 			file: 'Archivo',
+			files: 'Archivos',
 			quotePrice: 'Precio de Cotización',
 			finalPrice: 'Precio Final',
 			details: 'Detalles',
 			edit: 'Editar',
+			uploaded: 'Subido',
 			notUploaded: 'No Subido',
 			viewProgress: 'Ver Progreso',
 			productDetails: {
@@ -801,11 +803,13 @@ export const es: Lang = {
 		},
 
 		fileDrop: {
-			dragDrop: 'Arrastre y suelte sus archivos aquí o haga clic para cargar',
-			onlyAccepts20: 'Solo acepta zip o rar | Tamaño máximo de archivo: 20 MB',
-			onlyAccepts200: 'Solo acepta zip o rar | Tamaño máximo de archivo: 200 MB',
-			fileUploaded: 'Archivo cargado con éxito',
-			downloadFile: 'Descargar Archivo'
+			dragDrop: 'Arrastra y suelta tus archivos aquí o haz clic para subirlos',
+			onlyAccepts20: 'Solo acepta ZIP o RAR | Tamaño máximo: 20 MB',
+			onlyAccepts200: 'Solo acepta ZIP o RAR | Tamaño máximo: 200 MB',
+			file: 'Archivo',
+			files: 'Archivos',
+			added: 'Añadido',
+			belowFiles: 'A continuación, los archivos que has añadido'
 		},
 
 		standardPcb: {

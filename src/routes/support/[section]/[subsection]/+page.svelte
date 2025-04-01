@@ -6,7 +6,9 @@
 
 	$: section = $page.params.section.replace(/-([a-z])/g, (_, l) => l.toUpperCase());
 	$: subsection = $page.params.subsection.replace(/-([a-z])/g, (_, l) => l.toUpperCase());
+	// @ts-ignore
 	$: sectionTitle = $support.sections[section].title as string;
+	// @ts-ignore
 	$: ({ title, questions } = $support.sections[section].subsections[subsection] as SubSection);
 </script>
 

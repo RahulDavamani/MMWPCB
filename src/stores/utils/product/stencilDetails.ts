@@ -28,12 +28,6 @@ export const stencilDetails = (lg: Lang) => {
 		validate: (val: Stencil['name']) => val.length < 1
 	};
 
-	const fileName = {
-		key: 'fileName',
-		l: l.fileName,
-		parseValue: (val: Stencil['fileName']) => val?.split('__')[1]
-	};
-
 	const buildTime = {
 		key: 'buildTime',
 		l: l.buildTime
@@ -177,7 +171,6 @@ export const stencilDetails = (lg: Lang) => {
 		createdAt,
 		updatedAt,
 		name,
-		fileName,
 		buildTime,
 		weight,
 		initialPrice,

@@ -28,12 +28,6 @@ export const standardPcbDetails = (lg: Lang) => {
 		validate: (val: StandardPcb['name']) => val.length < 1
 	};
 
-	const fileName = {
-		key: 'fileName',
-		l: l.fileName,
-		parseValue: (val: StandardPcb['fileName']) => val?.split('__')[1]
-	};
-
 	const buildTime = {
 		key: 'buildTime',
 		l: l.buildTime,
@@ -640,7 +634,6 @@ export const standardPcbDetails = (lg: Lang) => {
 		createdAt,
 		updatedAt,
 		name,
-		fileName,
 		buildTime,
 		weight,
 		initialPrice,

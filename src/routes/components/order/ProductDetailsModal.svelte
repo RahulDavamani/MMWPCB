@@ -31,6 +31,7 @@
 
 	const formatEntries = (entries: [string, unknown]): { key?: string; value?: any } => {
 		if (!productDetails) return {};
+		// @ts-ignore
 		const pd = $pd[productDetails.productType as ProductType][entries[0]];
 		const key = pd?.l?.title ?? entries[0];
 		const value = (pd?.parseValue ? pd.parseValue(entries[1]) : entries[1]) ?? '-';

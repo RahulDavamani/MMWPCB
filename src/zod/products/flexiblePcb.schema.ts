@@ -58,7 +58,7 @@ export const fpCustomizedServices = z.enum([
 export const flexiblePcbSchema = z.object({
 	id: z.string().nullish(),
 	name: z.string().min(1),
-	fileName: z.string().min(1).nullish(),
+	files: z.array(z.object({ name: z.string() })),
 	buildTime: z.number().gt(0),
 	weight: z.number(),
 	initialPrice: z.number().nullish(),

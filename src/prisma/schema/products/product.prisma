@@ -8,35 +8,76 @@ model ProductFabricationStatus {
    completedAt DateTime?
 
    standardPcbId String?
-   standardPcb   StandardPcb? @relation(fields: [standardPcbId], references: [id])
+   standardPcb   StandardPcb? @relation(fields: [standardPcbId], references: [id], onDelete: Cascade)
 
    advancedPcbId String?
-   advancedPcb   AdvancedPcb? @relation(fields: [advancedPcbId], references: [id])
+   advancedPcb   AdvancedPcb? @relation(fields: [advancedPcbId], references: [id], onDelete: Cascade)
 
    flexiblePcbId String?
-   flexiblePcb   FlexiblePcb? @relation(fields: [flexiblePcbId], references: [id])
+   flexiblePcb   FlexiblePcb? @relation(fields: [flexiblePcbId], references: [id], onDelete: Cascade)
 
    rigidFlexId String?
-   rigidFlex   RigidFlex? @relation(fields: [rigidFlexId], references: [id])
+   rigidFlex   RigidFlex? @relation(fields: [rigidFlexId], references: [id], onDelete: Cascade)
 
    assemblyId String?
-   assembly   Assembly? @relation(fields: [assemblyId], references: [id])
+   assembly   Assembly? @relation(fields: [assemblyId], references: [id], onDelete: Cascade)
 
    stencilId String?
-   stencil   Stencil? @relation(fields: [stencilId], references: [id])
+   stencil   Stencil? @relation(fields: [stencilId], references: [id], onDelete: Cascade)
 
    cncId String?
-   cnc   CNC?    @relation(fields: [cncId], references: [id])
+   cnc   CNC?    @relation(fields: [cncId], references: [id], onDelete: Cascade)
 
    sheetMetalId String?
-   sheetMetal   SheetMetal? @relation(fields: [sheetMetalId], references: [id])
+   sheetMetal   SheetMetal? @relation(fields: [sheetMetalId], references: [id], onDelete: Cascade)
 
    threePrintingId String?
-   threePrinting   ThreePrinting? @relation(fields: [threePrintingId], references: [id])
+   threePrinting   ThreePrinting? @relation(fields: [threePrintingId], references: [id], onDelete: Cascade)
 
    injectionMoldingId String?
-   injectionMolding   InjectionMolding? @relation(fields: [injectionMoldingId], references: [id])
+   injectionMolding   InjectionMolding? @relation(fields: [injectionMoldingId], references: [id], onDelete: Cascade)
 
    vacuumCastingId String?
-   vacuumCasting   VacuumCasting? @relation(fields: [vacuumCastingId], references: [id])
+   vacuumCasting   VacuumCasting? @relation(fields: [vacuumCastingId], references: [id], onDelete: Cascade)
+}
+
+model ProductFiles {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   name String
+
+   standardPcbId String?
+   standardPcb   StandardPcb? @relation(fields: [standardPcbId], references: [id], onDelete: Cascade)
+
+   advancedPcbId String?
+   advancedPcb   AdvancedPcb? @relation(fields: [advancedPcbId], references: [id], onDelete: Cascade)
+
+   flexiblePcbId String?
+   flexiblePcb   FlexiblePcb? @relation(fields: [flexiblePcbId], references: [id], onDelete: Cascade)
+
+   rigidFlexId String?
+   rigidFlex   RigidFlex? @relation(fields: [rigidFlexId], references: [id], onDelete: Cascade)
+
+   assemblyId String?
+   assembly   Assembly? @relation(fields: [assemblyId], references: [id], onDelete: Cascade)
+
+   stencilId String?
+   stencil   Stencil? @relation(fields: [stencilId], references: [id], onDelete: Cascade)
+
+   cncId String?
+   cnc   CNC?    @relation(fields: [cncId], references: [id], onDelete: Cascade)
+
+   sheetMetalId String?
+   sheetMetal   SheetMetal? @relation(fields: [sheetMetalId], references: [id], onDelete: Cascade)
+
+   threePrintingId String?
+   threePrinting   ThreePrinting? @relation(fields: [threePrintingId], references: [id], onDelete: Cascade)
+
+   injectionMoldingId String?
+   injectionMolding   InjectionMolding? @relation(fields: [injectionMoldingId], references: [id], onDelete: Cascade)
+
+   vacuumCastingId String?
+   vacuumCasting   VacuumCasting? @relation(fields: [vacuumCastingId], references: [id], onDelete: Cascade)
 }

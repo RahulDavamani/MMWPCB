@@ -7,6 +7,7 @@
 	import { generateSpData } from '../utils/generateSpData';
 
 	$: section = $page.params.section.replace(/-([a-z])/g, (_, l) => l.toUpperCase());
+	// @ts-ignore
 	$: ({ subsections } = $support.sections[section] as Section);
 	$: ({ title, href } = generateSpData(section));
 </script>

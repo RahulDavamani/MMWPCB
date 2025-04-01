@@ -3,8 +3,7 @@ model StandardPcb {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   name     String
-   fileName String?
+   name String
 
    buildTime    Int
    weight       Float
@@ -66,6 +65,7 @@ model StandardPcb {
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 
    fabricationStatuses ProductFabricationStatus[]
+   files               ProductFiles[]
 }
 
 enum SPBoardType {

@@ -28,12 +28,6 @@ export const threePrintingDetails = (lg: Lang) => {
 		validate: (val: ThreePrinting['name']) => val.length < 1
 	};
 
-	const fileName = {
-		key: 'fileName',
-		l: l.fileName,
-		parseValue: (val: ThreePrinting['fileName']) => val?.split('__')[1]
-	};
-
 	const weight = {
 		key: 'weight',
 		l: l.weight,
@@ -259,7 +253,6 @@ export const threePrintingDetails = (lg: Lang) => {
 		createdAt,
 		updatedAt,
 		name,
-		fileName,
 		weight,
 		initialPrice,
 		finalPrice,

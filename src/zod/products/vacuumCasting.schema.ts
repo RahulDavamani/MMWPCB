@@ -28,7 +28,7 @@ const vcProductDescription = z.enum([
 export const vacuumCastingSchema = z.object({
 	id: z.string().nullish(),
 	name: z.string().min(1),
-	fileName: z.string().nullish(),
+	files: z.array(z.object({ name: z.string() })),
 
 	weight: z.number(),
 	initialPrice: z.number().nullish(),

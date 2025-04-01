@@ -619,10 +619,12 @@ export const zh: Lang = {
 			buildTime: '制造时间',
 			quantity: '数量',
 			file: '文件',
+			files: '文件',
 			quotePrice: '报价',
 			finalPrice: '最终价格',
 			details: '详情',
 			edit: '编辑',
+			uploaded: '已上传',
 			notUploaded: '未上传',
 			viewProgress: '查看进度',
 			productDetails: {
@@ -771,11 +773,13 @@ export const zh: Lang = {
 		},
 
 		fileDrop: {
-			dragDrop: '将您的文件拖放到此处或点击上传',
-			onlyAccepts20: '仅接受 zip 或 rar 格式 | 最大文件大小：20 MB',
-			onlyAccepts200: '仅接受 zip 或 rar 格式 | 最大文件大小：200 MB',
-			fileUploaded: '文件上传成功',
-			downloadFile: '下载文件'
+			dragDrop: '拖放您的文件到这里或点击上传',
+			onlyAccepts20: '仅接受 ZIP 或 RAR | 最大文件大小：20MB',
+			onlyAccepts200: '仅接受 ZIP 或 RAR | 最大文件大小：200MB',
+			file: '文件',
+			files: '文件',
+			added: '已添加',
+			belowFiles: '以下是您添加的文件'
 		},
 
 		standardPcb: {

@@ -28,12 +28,6 @@ export const rigidFlexDetails = (lg: Lang) => {
 		validate: (val: RigidFlex['name']) => val.length < 1
 	};
 
-	const fileName = {
-		key: 'fileName',
-		l: l.fileName,
-		parseValue: (val: RigidFlex['fileName']) => val?.split('__')[1]
-	};
-
 	const buildTime = {
 		key: 'buildTime',
 		l: l.buildTime
@@ -459,7 +453,6 @@ export const rigidFlexDetails = (lg: Lang) => {
 		createdAt,
 		updatedAt,
 		name,
-		fileName,
 		buildTime,
 		weight,
 		initialPrice,

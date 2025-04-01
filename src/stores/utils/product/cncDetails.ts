@@ -28,12 +28,6 @@ export const cncDetails = (lg: Lang) => {
 		validate: (val: CNC['name']) => val.length < 1
 	};
 
-	const fileName = {
-		key: 'fileName',
-		l: l.fileName,
-		parseValue: (val: CNC['fileName']) => val?.split('__')[1]
-	};
-
 	const weight = {
 		key: 'weight',
 		l: l.weight,
@@ -314,7 +308,6 @@ export const cncDetails = (lg: Lang) => {
 		createdAt,
 		updatedAt,
 		name,
-		fileName,
 		weight,
 		initialPrice,
 		finalPrice,

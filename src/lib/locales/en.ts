@@ -658,10 +658,12 @@ export const en = {
 			buildTime: 'Build Time',
 			quantity: 'Quantity',
 			file: 'File',
+			files: 'Files',
 			quotePrice: 'Quote Price',
 			finalPrice: 'Final Price',
 			details: 'Details',
 			edit: 'Edit',
+			uploaded: 'Uploaded',
 			notUploaded: 'Not Uploaded',
 			viewProgress: 'View Progress',
 			productDetails: {
@@ -814,8 +816,10 @@ export const en = {
 			dragDrop: 'Drag & Drop your files here or click to upload',
 			onlyAccepts20: 'Only accepts zip or rar | Max file size: 20 MB',
 			onlyAccepts200: 'Only accepts zip or rar | Max file size: 200 MB',
-			fileUploaded: 'File uploaded successfully',
-			downloadFile: 'Download File'
+			file: 'File',
+			files: 'Files',
+			added: 'Added',
+			belowFiles: 'Below are the files you added'
 		},
 
 		standardPcb: {

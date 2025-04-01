@@ -6,7 +6,6 @@ const productSelect = {
 	select: {
 		id: true,
 		name: true,
-		fileName: true,
 		quantity: true,
 		weight: true,
 		initialPrice: true,
@@ -14,6 +13,9 @@ const productSelect = {
 		fabricationStatuses: {
 			select: { id: true, status: true, completedAt: true },
 			orderBy: { num: 'asc' as 'asc' | 'desc' }
+		},
+		files: {
+			select: { id: true, name: true }
 		}
 	}
 };

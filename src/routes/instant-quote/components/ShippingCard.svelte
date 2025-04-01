@@ -9,7 +9,7 @@
 	$: l = $lg.shipping;
 
 	let modalId = 'selectShippingModal';
-	let shippingMethod: RouterOutput['shipping']['getMethods'][number] | undefined;
+	let shippingMethod: RouterOutput['shipping']['getMethods']['methods'][number] | undefined;
 </script>
 
 <div class="min-w-96 h-fit border rounded-lg shadow p-4">

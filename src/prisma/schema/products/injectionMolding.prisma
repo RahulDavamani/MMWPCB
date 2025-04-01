@@ -3,8 +3,7 @@ model InjectionMolding {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   name     String
-   fileName String?
+   name String
 
    weight       Float
    initialPrice Float?
@@ -41,6 +40,7 @@ model InjectionMolding {
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 
    fabricationStatuses ProductFabricationStatus[]
+   files               ProductFiles[]
 }
 
 enum IMDesignUnit {

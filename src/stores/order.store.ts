@@ -96,8 +96,6 @@ export const order = derived(
 		const editable = !isPortal && ['CART', 'SAVED', 'REJECTED'].includes(status);
 		const showFabrication = ['FABRICATION', 'DELIVERY', 'COMPLETED'].includes(status);
 
-		const fileNames = selectedProducts.map((p) => p.fileName).filter(Boolean) as string[];
-
 		const totalInitialPrice = selectedProducts.reduce((acc, cur) => acc + (cur.initialPrice ?? 0), 0);
 		const totalFinalPrice = products.reduce((acc, cur) => acc + (cur.finalPrice ?? 0), 0);
 
@@ -122,7 +120,7 @@ export const order = derived(
 				ui.setToast({ title: l.deliveryAddress.selectAddressSuccess, alertClasses: 'alert-success' });
 			})();
 
-		const selectShipping = (shippingMethod: RouterOutput['shipping']['getMethods'][number]) =>
+		const selectShipping = (shippingMethod: RouterOutput['shipping']['getMethods']['methods'][number]) =>
 			ui.loaderWrapper({ title: $lg.shipping.updatingShipping }, async () => {
 				closeModal('selectShippingModal');
 
@@ -167,7 +165,7 @@ export const order = derived(
 					? l.submitReview.shippingError
 					: !deliveryAddress
 						? l.submitReview.deliveryError
-						: fileNames.length !== selectedProducts.length
+						: selectedProducts.filter((p) => p.files.length === 0).length > 0
 							? l.submitReview.filesNotUploaded
 							: undefined;
 
@@ -326,10 +324,11 @@ export const order = derived(
 				{ title: productId ? l.removeProduct.removingProduct : l.removeProduct.removingProductAll },
 				async () => {
 					ui.closeAlertModal();
-					if (productId) {
-						const fileName = products.find((p) => p.id == productId)?.fileName;
-						if (fileName) await supabase.storage.from('Product Files').remove([fileName]);
-					} else await supabase.storage.from('Product Files').remove(fileNames);
+
+					const fileNames = productId
+						? (products.find((p) => p.id == productId)?.files.map((f) => `${productId}/${f.name}`) ?? [])
+						: products.flatMap((p) => p.files.map((f) => `${p.id}/${f.name}`));
+					await supabase.storage.from('Product Files').remove(fileNames);
 
 					await trpc()
 						.order.removeProduct.mutate({ orderId: id, ids: productId ? [productId] : products.map((p) => p.id) })
@@ -369,7 +368,9 @@ export const order = derived(
 
 		const removeOrder = ui.loaderWrapper({ title: l.removeOrder.removingOrder }, async () => {
 			ui.closeAlertModal();
+			const fileNames = products.flatMap((p) => p.files.map((f) => `${p.id}/${f.name}`));
 			await supabase.storage.from('Product Files').remove(fileNames);
+
 			await trpc()
 				.order.remove.mutate({ id })
 				.catch((e) => tce(e, { showModal: { title: l.removeOrder.removeOrderError, retryFn: removeOrder } }));
@@ -406,11 +407,11 @@ export const order = derived(
 			timeline,
 
 			products,
+			selectedProducts,
 
 			editable,
 			showFabrication,
 
-			fileNames,
 			totalInitialPrice,
 			totalFinalPrice,
 			totalItemsPrice,

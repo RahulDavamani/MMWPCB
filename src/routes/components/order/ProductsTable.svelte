@@ -35,7 +35,7 @@
 			<div class="text-center font-semibold my-10">{l.noProductFound}</div>
 		</div>
 	{:else}
-		<div class="overflow-x-auto max-h-[30rem]">
+		<div class="overflow-visible max-h-[30rem]">
 			<table class="table table-pin-rows">
 				<thead>
 					<tr>
@@ -70,11 +70,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each products as { id, type, name, quantity, fileName, initialPrice, finalPrice, fabricationStatuses }}
-						{@const fileUrl = fileName
-							? supabase.storage.from('Product Files').createSignedUrl(fileName, 300)
-							: undefined}
-
+					{#each products as { id, type, name, files, quantity, initialPrice, finalPrice, fabricationStatuses }}
 						{@const fabricationProgress = fabricationStatuses.length
 							? (fabricationStatuses.filter((f) => f.completedAt).length / fabricationStatuses.length) * 100
 							: status === 'FABRICATION'
@@ -136,27 +132,44 @@
 							</td>
 							<td class="text-center">{quantity}</td>
 							<td class="text-center">
-								{#if fileName && fileUrl}
-									{#await fileUrl}
-										<button class="btn btn-sm btn-link pointer-events-none text-info">
-											<Icon icon="mdi:download" />
-											{fileName.split('__')[1]}
-										</button>
-									{:then { data, error }}
-										{#if error}
-											<div class="tooltip" data-tip={error.message}>
-												<button class="btn btn-sm btn-link pointer-events-none text-error">
-													<Icon icon="mdi:download" />
-													{fileName.split('__')[1]}
-												</button>
-											</div>
-										{:else}
-											<a href={data.signedUrl} target="_blank" class="btn btn-sm btn-link text-info">
-												<Icon icon="mdi:download" />
-												{fileName.split('__')[1]}
-											</a>
-										{/if}
-									{/await}
+								{#if files.length > 0}
+									<div class="dropdown dropdown-hover dropdown-top">
+										<div tabindex="0" role="button" class="text-info hover:underline cursor-pointer">
+											{files.length}
+											{files.length === 1 ? l.file : l.files}
+											{l.uploaded}
+										</div>
+										<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+										<div tabindex="0" class="dropdown-content bg-base-200 border shadow rounded-lg w-96 z-[100] p-2">
+											<ul class="menu max-h-32 overflow-auto flex-nowrap">
+												{#each files as file}
+													{@const fileUrl = supabase.storage
+														.from('Product Files')
+														.createSignedUrl(`${id}/${file.name}`, 300)}
+
+													{#await fileUrl}
+														<li><button>{file.name}</button></li>
+													{:then { data, error }}
+														{#if error}
+															<li>
+																<button class="justify-between text-error">
+																	{file.name}
+																	<Icon icon="mdi:alert-circle" width={20} />
+																</button>
+															</li>
+														{:else}
+															<li>
+																<a href={data.signedUrl} class="justify-between">
+																	{file.name}
+																	<Icon icon="mdi:download" width={16} class="text-info" />
+																</a>
+															</li>
+														{/if}
+													{/await}
+												{/each}
+											</ul>
+										</div>
+									</div>
 								{:else}
 									<div class="text-error">{l.notUploaded}</div>
 								{/if}
@@ -234,6 +247,7 @@
 		margin: 0;
 	}
 	input[type='number'] {
+		appearance: textfield;
 		-moz-appearance: textfield;
 	}
 </style>

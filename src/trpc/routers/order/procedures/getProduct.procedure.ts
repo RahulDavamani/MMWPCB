@@ -13,17 +13,17 @@ export const getProduct = userProcedure.input(schema).query(async ({ ctx: { user
 		.findUniqueOrThrow({
 			where: { id: orderId, userId: user.role === 'USER' ? user.id : undefined },
 			select: {
-				standardPcbs: { where: { id } },
-				advancedPcbs: { where: { id } },
-				flexiblePcbs: { where: { id } },
-				rigidFlexes: { where: { id } },
-				assemblies: { where: { id } },
-				stencils: { where: { id } },
-				cncs: { where: { id } },
-				sheetMetals: { where: { id } },
-				threePrintings: { where: { id } },
-				injectionMoldings: { where: { id } },
-				vacuumCastings: { where: { id } }
+				standardPcbs: { where: { id }, include: { files: { select: { name: true } } } },
+				advancedPcbs: { where: { id }, include: { files: { select: { name: true } } } },
+				flexiblePcbs: { where: { id }, include: { files: { select: { name: true } } } },
+				rigidFlexes: { where: { id }, include: { files: { select: { name: true } } } },
+				assemblies: { where: { id }, include: { files: { select: { name: true } } } },
+				stencils: { where: { id }, include: { files: { select: { name: true } } } },
+				cncs: { where: { id }, include: { files: { select: { name: true } } } },
+				sheetMetals: { where: { id }, include: { files: { select: { name: true } } } },
+				threePrintings: { where: { id }, include: { files: { select: { name: true } } } },
+				injectionMoldings: { where: { id }, include: { files: { select: { name: true } } } },
+				vacuumCastings: { where: { id }, include: { files: { select: { id: true, name: true } } } }
 			}
 		})
 		.catch(pe);

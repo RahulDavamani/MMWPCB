@@ -28,12 +28,6 @@ export const vacuumCastingDetails = (lg: Lang) => {
 		validate: (val: VacuumCasting['name']) => val.length < 1
 	};
 
-	const fileName = {
-		key: 'fileName',
-		l: l.fileName,
-		parseValue: (val: VacuumCasting['fileName']) => val?.split('__')[1]
-	};
-
 	const weight = {
 		key: 'weight',
 		l: l.weight,
@@ -286,7 +280,6 @@ export const vacuumCastingDetails = (lg: Lang) => {
 		createdAt,
 		updatedAt,
 		name,
-		fileName,
 		weight,
 		initialPrice,
 		finalPrice,

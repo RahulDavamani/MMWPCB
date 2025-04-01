@@ -160,7 +160,9 @@
 						</div>
 						<div class="divide-y-2 max-h-40 overflow-auto">
 							{#each products as { name, type, quantity, initialPrice, finalPrice }}
-								{@const productType = $productTypes[type]}
+								{@const productType =
+									// @ts-ignore
+									$productTypes[type]}
 								<div class="p-2 flex justify-between items-center">
 									<div class="flex items-center">
 										<div>

@@ -28,12 +28,6 @@ export const flexiblePcbDetails = (lg: Lang) => {
 		validate: (val: FlexiblePcb['name']) => val.length < 1
 	};
 
-	const fileName = {
-		key: 'fileName',
-		l: l.fileName,
-		parseValue: (val: FlexiblePcb['fileName']) => val?.split('__')[1]
-	};
-
 	const buildTime = {
 		key: 'buildTime',
 		l: l.buildTime
@@ -557,7 +551,6 @@ export const flexiblePcbDetails = (lg: Lang) => {
 		createdAt,
 		updatedAt,
 		name,
-		fileName,
 		buildTime,
 		weight,
 		initialPrice,

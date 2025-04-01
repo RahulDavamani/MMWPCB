@@ -35,7 +35,7 @@ export interface AlertModal {
 	title?: string;
 	titleClasses?: string;
 
-	showCloseButton?: boolean;
+	showCloseBtn?: boolean;
 	iconClasses?: string;
 
 	showDivider?: boolean;

@@ -40,7 +40,7 @@ export interface Quote {
 		injectionMolding: InjectionMolding;
 		vacuumCasting: VacuumCasting;
 	};
-	files: { [k in ProductType]?: File };
+	files: { [k in ProductType]?: File[] };
 	buildTime: { name: string; value: number; price: number };
 }
 
@@ -62,7 +62,7 @@ export const quote = (() => {
 		}));
 
 	const init = async () => {
-		const { product, productType } = get(page).data as PageData;
+		const { product, productType } = cloneDeep(get(page).data) as PageData;
 		if (!product) {
 			set({
 				init: true,
@@ -97,33 +97,41 @@ export const quote = (() => {
 			const selectedProduct = products[productType];
 
 			const { total } = get(quotePrice);
+			selectedProduct.id = id ?? customAlphabet('1234567890', 10)();
+			// @ts-ignore
 			selectedProduct.buildTime = buildTime.value;
 			selectedProduct.initialPrice = total ? Math.round(total * 100) / 100 : null;
 
-			const file = files[productType];
-			selectedProduct.id = id ?? customAlphabet('1234567890', 10)();
-			if (isEdit && selectedProduct.fileName)
-				await supabase.storage.from('Product Files').remove([selectedProduct.fileName]);
+			ui.setLoader({ title: l.uploadingFiles });
+			const uploadedFiles = (get(page).data?.product?.files ?? []) as { name: string }[];
+			const newFiles = files[productType] ?? [];
+			const removeFiles =
+				uploadedFiles.filter((file) => !selectedProduct.files.some((f) => f.name === file.name)) ?? [];
+			const errorFiles: { name: string }[] = [];
 
-			if (file) {
-				ui.setLoader({ title: l.uploadingFiles });
-				selectedProduct.fileName = `${selectedProduct.id}__${file.name}`;
-				const { error } = await supabase.storage.from('Product Files').upload(selectedProduct.fileName, file);
-				if (error) return ui.setAlertModal({ title: l.uploadFileError, body: error.message });
+			for (const file of removeFiles)
+				await supabase.storage.from('Product Files').remove([`${selectedProduct.id}/${file.name}`]);
+
+			for (const file of newFiles) {
+				const { error } = await supabase.storage
+					.from('Product Files')
+					.upload(`${selectedProduct.id}/${file.name}`, file);
+				if (error) errorFiles.push({ name: file.name });
 			}
+
+			const allFiles = [...newFiles.map((file) => ({ name: file.name })), ...selectedProduct.files].filter(
+				(file) => !errorFiles.includes(file)
+			);
 
 			ui.setLoader({ title: isEdit ? l.updatingProduct : orderId ? l.addingOrder : l.savingCart });
 			await trpc()
 				.order.upsertProduct.mutate({
 					orderId: orderId ?? $page.data.cart.id,
+					files: allFiles,
 					[productType]: selectedProduct
 				})
 				.catch((e) =>
 					tce(e, {
-						callback: async () => {
-							if (selectedProduct.fileName)
-								await supabase.storage.from('Product Files').remove([selectedProduct.fileName]);
-						},
 						showModal: {
 							title: isEdit ? l.updateProductError : orderId ? l.addOrderError : l.saveCartError,
 							retryFn: () => upsertProduct(orderId)
@@ -138,10 +146,12 @@ export const quote = (() => {
 			reset();
 			await invalidateAll();
 
-			if (['standardPcb', 'advancedPcb', 'flexiblePcb', 'rigidFlex'].includes(productType)) {
+			if (!isEdit && ['standardPcb', 'advancedPcb', 'flexiblePcb', 'rigidFlex'].includes(productType)) {
 				ui.setAlertModal({
 					title: l.postOrderModal1.title,
 					body: l.postOrderModal1.body,
+					modalBackdrop: false,
+					showCloseBtn: false,
 					boxClasses: 'max-w-xl w-full',
 					actions: [
 						{
@@ -171,10 +181,12 @@ export const quote = (() => {
 						}
 					]
 				});
-			} else if (productType === 'assembly') {
+			} else if (!isEdit && productType === 'assembly') {
 				ui.setAlertModal({
 					title: l.postOrderModal2.title,
 					body: l.postOrderModal2.body,
+					modalBackdrop: false,
+					showCloseBtn: false,
 					boxClasses: 'max-w-xl w-full',
 					actions: [
 						{

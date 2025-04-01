@@ -16,6 +16,7 @@ import pe from '../../../../prisma/pe';
 
 const schema = z.object({
 	orderId: z.string().min(1),
+	files: z.array(z.object({ name: z.string().min(1) })),
 	standardPcb: standardPcbSchema.optional(),
 	advancedPcb: advancedPcbSchema.optional(),
 	flexiblePcb: flexiblePcbSchema.optional(),
@@ -35,6 +36,7 @@ export const upsertProduct = userProcedure
 		async ({
 			input: {
 				orderId,
+				files,
 				standardPcb,
 				advancedPcb,
 				flexiblePcb,
@@ -70,8 +72,8 @@ export const upsertProduct = userProcedure
 						[product.key]: {
 							upsert: {
 								where: { id: product.data.id },
-								create: product.data,
-								update: product.data
+								create: { ...product.data, files: { createMany: { data: files } } },
+								update: { ...product.data, files: { deleteMany: {}, createMany: { data: files } } }
 							}
 						}
 					},

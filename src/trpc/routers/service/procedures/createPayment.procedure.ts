@@ -6,7 +6,7 @@ import { TRPCError } from '@trpc/server';
 
 export const schema = z.object({
 	id: z.string().min(1),
-	currencyCode: z.enum(['usd', 'eur'])
+	currencyCode: z.enum(['usd', 'eur', 'gbp'])
 });
 
 export const createPayment = userProcedure
@@ -20,8 +20,10 @@ export const createPayment = userProcedure
 			.catch(pe);
 		if (!price) throw new TRPCError({ code: 'CONFLICT', message: 'Price not found' });
 
-		const { rate } = await prisma.exchangeRate.findFirstOrThrow({ select: { rate: true } }).catch(pe);
-		const total = (currencyCode === 'eur' ? price * rate : price).toFixed(2);
+		const { eur, gbp } = await prisma.exchangeRate
+			.findFirstOrThrow({ select: { eur: true, gbp: true }, orderBy: { createdAt: 'desc' } })
+			.catch(pe);
+		const total = (currencyCode === 'eur' ? price * eur : currencyCode === 'gbp' ? price * gbp : price).toFixed(2);
 
 		const data = await payment.createOrder(total, currencyCode);
 		return data.id as string;

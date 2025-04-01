@@ -3,8 +3,7 @@ model Stencil {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   name     String
-   fileName String?
+   name String
 
    buildTime    Int
    weight       Float
@@ -28,6 +27,7 @@ model Stencil {
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 
    fabricationStatuses ProductFabricationStatus[]
+   files               ProductFiles[]
 }
 
 enum STType {

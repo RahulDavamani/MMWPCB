@@ -8,12 +8,12 @@
 
 <Splide options={{ autoplay: true, rewind: true }}>
 	<SplideSlide>
-		<img src={Carousel1} alt="Image 1" width="100%" />
+		<img src={Carousel1} alt="Carousel 1" width="100%" />
 	</SplideSlide>
 	<SplideSlide>
-		<img src={Carousel1} alt="Image 1" width="100%" />
+		<img src={Carousel1} alt="Carousel 1" width="100%" />
 	</SplideSlide>
 	<SplideSlide>
-		<img src={Carousel1} alt="Image 1" width="100%" />
+		<img src={Carousel1} alt="Carousel 1" width="100%" />
 	</SplideSlide>
 </Splide>

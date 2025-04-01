@@ -53,7 +53,7 @@ const cncProductDescription = z.enum([
 export const cncSchema = z.object({
 	id: z.string().nullish(),
 	name: z.string().min(1),
-	fileName: z.string().nullish(),
+	files: z.array(z.object({ name: z.string() })),
 
 	weight: z.number(),
 	initialPrice: z.number().nullish(),

@@ -28,12 +28,6 @@ export const injectionMoldingDetails = (lg: Lang) => {
 		validate: (val: InjectionMolding['name']) => val.length < 1
 	};
 
-	const fileName = {
-		key: 'fileName',
-		l: l.fileName,
-		parseValue: (val: InjectionMolding['fileName']) => val?.split('__')[1]
-	};
-
 	const weight = {
 		key: 'weight',
 		l: l.weight,
@@ -324,7 +318,6 @@ export const injectionMoldingDetails = (lg: Lang) => {
 		createdAt,
 		updatedAt,
 		name,
-		fileName,
 		weight,
 		initialPrice,
 		finalPrice,

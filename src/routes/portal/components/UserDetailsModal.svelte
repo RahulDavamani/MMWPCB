@@ -8,6 +8,7 @@
 	import Loader from '../../components/UI/Loader.svelte';
 	import Icon from '@iconify/svelte';
 	import OrdersList from '../../components/OrdersList.svelte';
+	import { supabase } from '$lib/client/supabase';
 
 	let modalId = 'userDetailsModal';
 
@@ -29,23 +30,22 @@
 	{#if !user}
 		<Loader fixed={false} overlay={false} size={80} classes="pt-10" />
 	{:else}
-		{@const {
-			id,
-			createdAt,
-			firstName,
-			lastName,
-			email,
-			phone,
-			profilePic,
-			role,
-			_count: { orders }
-		} = user}
+		{@const { id, createdAt, firstName, lastName, email, phone, profilePic } = user}
 		<div class="flex gap-10 px-5">
 			<div class="mask mask-circle h-40 w-40 {!profilePic && 'bg-neutral p-1'}">
 				{#if profilePic}
-					<img src="https://img.daisyui.com/images/profile/demo/2@94.webp" alt="Profile" />
+					{@const fileUrl = supabase.storage.from('profile-pictures').createSignedUrl(profilePic, 300)}
+					{#await fileUrl}
+						<Icon icon="mdi:person" width={32} class="text-white" />
+					{:then { data, error }}
+						{#if error}
+							<Icon icon="mdi:person" width={32} class="text-white" />
+						{:else}
+							<img src={data.signedUrl} alt="Profile" />
+						{/if}
+					{/await}
 				{:else}
-					<Icon icon="mdi:person" width={150} class="text-white" />
+					<Icon icon="mdi:person" width={32} class="text-white" />
 				{/if}
 			</div>
 			<div class="grow grid grid-cols-2">

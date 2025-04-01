@@ -4,6 +4,7 @@
 	import Icon from '@iconify/svelte';
 	import { showModal } from '$lib/client/modal';
 	import UserDetailsModal from '../components/UserDetailsModal.svelte';
+	import { supabase } from '$lib/client/supabase';
 
 	export let data: PageData;
 	let search = '';
@@ -47,7 +48,16 @@
 							<td>
 								<div class="mask mask-circle h-10 w-10 {!profilePic && 'bg-neutral p-1'}">
 									{#if profilePic}
-										<img src="https://img.daisyui.com/images/profile/demo/2@94.webp" alt="Profile" />
+										{@const fileUrl = supabase.storage.from('profile-pictures').createSignedUrl(profilePic, 300)}
+										{#await fileUrl}
+											<Icon icon="mdi:person" width={32} class="text-white" />
+										{:then { data, error }}
+											{#if error}
+												<Icon icon="mdi:person" width={32} class="text-white" />
+											{:else}
+												<img src={data.signedUrl} alt="Profile" />
+											{/if}
+										{/await}
 									{:else}
 										<Icon icon="mdi:person" width={32} class="text-white" />
 									{/if}

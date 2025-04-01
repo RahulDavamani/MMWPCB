@@ -12,6 +12,7 @@ import type { VacuumCasting } from '../../../zod/products/vacuumCasting.schema';
 
 const standardPcb: StandardPcb = {
 	name: '',
+	files: [],
 	buildTime: 86400,
 	weight: 0.5,
 	initialPrice: 5,
@@ -45,6 +46,7 @@ const standardPcb: StandardPcb = {
 
 const advancedPcb: AdvancedPcb = {
 	name: '',
+	files: [],
 	buildTime: 86400,
 	weight: 0.5,
 	initialPrice: 5,
@@ -78,6 +80,7 @@ const advancedPcb: AdvancedPcb = {
 
 const flexiblePcb: FlexiblePcb = {
 	name: '',
+	files: [],
 	buildTime: 86400,
 	weight: 0.5,
 	initialPrice: 5,
@@ -111,6 +114,7 @@ const flexiblePcb: FlexiblePcb = {
 
 const rigidFlex: RigidFlex = {
 	name: '',
+	files: [],
 	buildTime: 86400,
 	weight: 0.5,
 	initialPrice: 5,
@@ -145,6 +149,7 @@ const rigidFlex: RigidFlex = {
 
 const assembly: Assembly = {
 	name: '',
+	files: [],
 	buildTime: 86400,
 	weight: 0.5,
 	initialPrice: 5,
@@ -162,6 +167,7 @@ const assembly: Assembly = {
 
 const stencil: Stencil = {
 	name: '',
+	files: [],
 	buildTime: 86400,
 	weight: 0.5,
 	initialPrice: 5,
@@ -179,6 +185,7 @@ const stencil: Stencil = {
 
 const cnc: CNC = {
 	name: '',
+	files: [],
 	weight: 0.5,
 	quantity: [1],
 	designUnits: 'MM',
@@ -201,6 +208,7 @@ const cnc: CNC = {
 
 const sheetMetal: SheetMetal = {
 	name: '',
+	files: [],
 	weight: 0.5,
 	quantity: [1],
 	designUnits: 'MM',
@@ -223,6 +231,7 @@ const sheetMetal: SheetMetal = {
 
 const threePrinting: ThreePrinting = {
 	name: '',
+	files: [],
 	weight: 0.5,
 	quantity: [1],
 	designUnits: 'MM',
@@ -244,6 +253,7 @@ const threePrinting: ThreePrinting = {
 
 const injectionMolding: InjectionMolding = {
 	name: '',
+	files: [],
 	weight: 0.5,
 	quantity: 1000,
 	minExpectedVolume: 0,
@@ -270,6 +280,7 @@ const injectionMolding: InjectionMolding = {
 
 const vacuumCasting: VacuumCasting = {
 	name: '',
+	files: [],
 	weight: 0.5,
 	quantity: [1000],
 	designUnits: 'MM',

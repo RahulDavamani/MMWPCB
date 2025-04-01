@@ -3,8 +3,7 @@ model FlexiblePcb {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   name     String
-   fileName String?
+   name String
 
    buildTime    Int
    weight       Float
@@ -56,6 +55,7 @@ model FlexiblePcb {
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 
    fabricationStatuses ProductFabricationStatus[]
+   files               ProductFiles[]
 }
 
 enum FPBoardType {
