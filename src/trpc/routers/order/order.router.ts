@@ -15,6 +15,7 @@ import { approveReview } from './procedures/approveReview.procedure';
 import { rejectReview } from './procedures/rejectReview.procedure';
 import { insertReviewMessage } from './procedures/insertReviewMessage.procedure';
 import { updateDelivery } from './procedures/updateDelivery.procedure';
+import { updateTracking } from './procedures/updateTracking.procedure';
 import { complete } from './procedures/complete.procedure';
 import { startFabrication } from './procedures/startFabrication.procedure';
 import { updateFabrication } from './procedures/updateFabrication.procedure';
@@ -47,6 +48,7 @@ export const order = router({
 	updateFabrication,
 	completeFabrication,
 	updateDelivery,
+	updateTracking,
 	complete,
 	remove
 });

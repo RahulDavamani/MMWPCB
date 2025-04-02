@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { userProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
 import { customAlphabet } from 'nanoid';
+import { sendOrderMail } from '$lib/server/mail';
 
 const schema = z.object({ id: z.string().min(1), productIds: z.array(z.string().min(1)).nullable() });
 
@@ -54,4 +55,6 @@ export const submitReview = userProcedure
 			await prisma.injectionMolding.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
 			await prisma.vacuumCasting.updateMany({ where: { orderId: id, id: { in: productIds } }, data: { orderId } });
 		}
+
+		await sendOrderMail(id, 'ORDER_SUBMIT_REVIEW');
 	});

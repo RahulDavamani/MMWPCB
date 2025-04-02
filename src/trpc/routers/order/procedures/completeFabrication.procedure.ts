@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { adminProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
+import { sendOrderMail } from '$lib/server/mail';
 
 export const completeFabrication = adminProcedure
 	.input(z.object({ id: z.string().min(1) }))
@@ -44,4 +45,6 @@ export const completeFabrication = adminProcedure
 				}
 			})
 			.catch(pe);
+
+		await sendOrderMail(id, 'ORDER_FABRICATION_COMPLETE');
 	});

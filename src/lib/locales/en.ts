@@ -596,6 +596,12 @@ export const en = {
 			updateDeliverySuccess: 'Delivery progress updated successfully'
 		},
 
+		updateTracking: {
+			updatingTracking: 'Updating Tracking Info',
+			updateTrackingError: 'Failed to update tracking info',
+			updateTrackingSuccess: 'Tracking info updated successfully'
+		},
+
 		completeOrder: {
 			completingOrder: 'Completing Order',
 			completeOrderError: 'Failed to complete order',

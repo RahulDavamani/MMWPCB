@@ -3,6 +3,7 @@ import { userProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
 import { payment } from '$lib/server/payment';
 import { TRPCError } from '@trpc/server';
+import { sendServiceMail } from '$lib/server/mail';
 
 export const schema = z.object({
 	id: z.string().min(1),
@@ -39,6 +40,8 @@ export const submitPayment = userProcedure
 					paymentInfo: { create: paymentInfo }
 				}
 			});
+
+			await sendServiceMail(id, 'SERVICE_CONFIRM_PAYMENT');
 
 			return paymentInfo;
 		} catch (_) {

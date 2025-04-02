@@ -32,6 +32,8 @@ export const get = userProcedure.input(z.object({ id: z.string().min(1).nullable
 					status: true,
 					weight: true,
 					estDeliveryDate: true,
+					trackingNumber: true,
+					trackingUrl: true,
 					standardPcbs: productSelect,
 					advancedPcbs: productSelect,
 					flexiblePcbs: productSelect,

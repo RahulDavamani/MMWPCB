@@ -55,6 +55,8 @@ export const order = derived(
 			status,
 			weight,
 			estDeliveryDate,
+			trackingNumber,
+			trackingUrl,
 			standardPcbs,
 			advancedPcbs,
 			flexiblePcbs,
@@ -285,6 +287,23 @@ export const order = derived(
 				ui.setToast({ title: l.updateDelivery.updateDeliverySuccess, alertClasses: 'alert-success' });
 			})();
 
+		const updateTracking = (trackingNumber: string, trackingUrl: string | undefined) =>
+			ui.loaderWrapper({ title: l.updateTracking.updatingTracking }, async () => {
+				await trpc()
+					.order.updateTracking.mutate({ id, trackingNumber, trackingUrl })
+					.catch((e) =>
+						tce(e, {
+							showModal: {
+								title: l.updateTracking.updateTrackingError,
+								retryFn: () => updateTracking(trackingNumber, trackingUrl)
+							}
+						})
+					);
+
+				await invalidateAll();
+				ui.setToast({ title: l.updateTracking.updateTrackingSuccess, alertClasses: 'alert-success' });
+			})();
+
 		const completeOrder = ui.loaderWrapper({ title: l.completeOrder.completingOrder }, async () => {
 			await trpc()
 				.order.complete.mutate({ id })
@@ -420,6 +439,8 @@ export const order = derived(
 			orderTotal,
 
 			estDeliveryDate,
+			trackingNumber,
+			trackingUrl,
 			weight,
 
 			selectAddress,
@@ -438,6 +459,7 @@ export const order = derived(
 			updateFabrication,
 			completeFabrication,
 			updateDelivery,
+			updateTracking,
 
 			completeOrder,
 

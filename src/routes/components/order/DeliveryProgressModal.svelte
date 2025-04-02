@@ -1,14 +1,33 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { lg } from '../../../stores/i18n.store';
 	import { order } from '../../../stores/order.store';
 	import { ui } from '../../../stores/ui.store';
 	import Modal from '../../components/UI/Modal.svelte';
+	import FormControl from '../FormControl.svelte';
 	import Loader from '../UI/Loader.svelte';
+	import { onShowModal } from '$lib/client/modal';
 
 	let modalId = 'deliveryProgressModal';
-	$: ({ isPortal, deliveryStatuses, updateDelivery } = $order);
+	$: ({ isPortal, deliveryStatuses, trackingNumber, trackingUrl, updateDelivery, updateTracking } = $order);
 	$: btnI = deliveryStatuses.findIndex((s) => !s.completedAt);
 	$: if (btnI === -1) btnI = deliveryStatuses.length;
+
+	let trackingInfo = {
+		trackingNumber: $order.trackingNumber ?? '',
+		trackingUrl: $order.trackingUrl ?? ''
+	};
+
+	onMount(() =>
+		onShowModal(
+			modalId,
+			() =>
+				(trackingInfo = {
+					trackingNumber: $order.trackingNumber ?? '',
+					trackingUrl: $order.trackingUrl ?? ''
+				})
+		)
+	);
 </script>
 
 <Modal
@@ -50,4 +69,51 @@
 			</li>
 		{/each}
 	</ul>
+
+	{#if trackingNumber && trackingUrl}
+		<div class="flex items-end gap-2 mt-2">
+			<FormControl label="Tracking Number" classes="w-full" labelClasses="text-sm">
+				<input
+					type="text"
+					placeholder={$lg.common.typeHere}
+					bind:value={$order.trackingNumber}
+					class="input input-sm pointer-events-none"
+				/>
+			</FormControl>
+
+			<FormControl label="Tracking Url" classes="w-full" labelClasses="text-sm">
+				<input
+					type="text"
+					placeholder={$lg.common.typeHere}
+					bind:value={$order.trackingUrl}
+					class="input input-sm pointer-events-none"
+				/>
+			</FormControl>
+		</div>
+	{:else}
+		<div class="flex items-end gap-2 mt-2">
+			<FormControl label="Tracking Number" classes="w-full" labelClasses="text-sm">
+				<input
+					type="text"
+					placeholder={$lg.common.typeHere}
+					bind:value={trackingInfo.trackingNumber}
+					class="input input-sm input-bordered"
+				/>
+			</FormControl>
+
+			<FormControl label="Tracking Url" classes="w-full" labelClasses="text-sm">
+				<input
+					type="text"
+					placeholder={$lg.common.typeHere}
+					bind:value={trackingInfo.trackingUrl}
+					class="input input-sm input-bordered"
+				/>
+			</FormControl>
+
+			<button
+				class="btn btn-sm btn-success"
+				on:click={() => updateTracking(trackingInfo.trackingNumber, trackingInfo.trackingUrl)}>Update</button
+			>
+		</div>
+	{/if}
 </Modal>

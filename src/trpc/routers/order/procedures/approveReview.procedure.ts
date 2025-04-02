@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { userProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
+import { sendOrderMail } from '$lib/server/mail';
 
 const schema = z.object({
 	id: z.string().min(1),
@@ -42,4 +43,6 @@ export const approveReview = userProcedure.input(schema).mutation(async ({ input
 		await prisma.injectionMolding.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
 		await prisma.vacuumCasting.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
 	}
+
+	await sendOrderMail(id, 'ORDER_APPROVE_REVIEW');
 });

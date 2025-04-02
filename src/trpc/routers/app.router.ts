@@ -9,8 +9,19 @@ import { lang } from './lang/lang.router';
 import { auth } from './auth/auth.router';
 import { service } from './service/service.router';
 import { exchangeRate } from './exchange-rate/exchangeRate.router';
+import { emailNotification } from './email-notification/emailNotification.router';
 
-export const appRouter = router({ auth, lang, user, address, shipping, order, service, exchangeRate });
+export const appRouter = router({
+	auth,
+	lang,
+	user,
+	address,
+	shipping,
+	order,
+	service,
+	exchangeRate,
+	emailNotification
+});
 export type AppRouter = typeof appRouter;
 
 export const createCaller = async (event: RequestEvent) => createCallerFactory(appRouter)(await createContext(event));

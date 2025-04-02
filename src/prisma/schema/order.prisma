@@ -8,6 +8,8 @@ model Order {
    status          OrderStatus
    weight          Float?
    estDeliveryDate DateTime?
+   trackingNumber  String?
+   trackingUrl     String?
 
    userId String
    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)

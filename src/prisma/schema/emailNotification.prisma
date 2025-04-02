@@ -1,0 +1,29 @@
+model EmailNotification {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   type        ENType  @unique
+   order       Int
+   enable      Boolean
+   title       String
+   description String
+   subject     String
+   body        String
+}
+
+enum ENType {
+   ORDER_SUBMIT_REVIEW
+   ORDER_APPROVE_REVIEW
+   ORDER_REJECT_REVIEW
+   ORDER_CONFIRM_PAYMENT
+   ORDER_FABRICATION_COMPLETE
+   ORDER_OUT_FOR_DELIVERY
+   ORDER_COMPLETE
+
+   SERVICE_SUBMIT_REVIEW
+   SERVICE_APPROVE_REVIEW
+   SERVICE_REJECT_REVIEW
+   SERVICE_CONFIRM_PAYMENT
+   SERVICE_COMPLETE
+}
