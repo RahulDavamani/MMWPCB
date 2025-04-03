@@ -10,6 +10,7 @@ import { auth } from './auth/auth.router';
 import { service } from './service/service.router';
 import { exchangeRate } from './exchange-rate/exchangeRate.router';
 import { emailNotification } from './email-notification/emailNotification.router';
+import { discount } from './discount/discount.router';
 
 export const appRouter = router({
 	auth,
@@ -19,6 +20,7 @@ export const appRouter = router({
 	shipping,
 	order,
 	service,
+	discount,
 	exchangeRate,
 	emailNotification
 });

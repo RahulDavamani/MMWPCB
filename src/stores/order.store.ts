@@ -68,6 +68,7 @@ export const order = derived(
 			threePrintings,
 			injectionMoldings,
 			vacuumCastings,
+			discount,
 			deliveryAddress,
 			shippingInfo,
 			reviewMessages,
@@ -103,8 +104,18 @@ export const order = derived(
 
 		const totalItemsPrice = selectedProducts[0]?.finalPrice ? totalFinalPrice : totalInitialPrice;
 		const shippingPrice = $orderApproveData.shippingInfo.price ?? 0;
-		const discount = totalItemsPrice * 0;
-		const orderTotal = totalItemsPrice + shippingPrice - discount;
+
+		const discountPrice = (() => {
+			if (!discount) return 0;
+			if (discount.enable === false) return 0;
+			if (discount.startDate && discount.startDate > new Date()) return 0;
+			if (discount.endDate && discount.endDate < new Date()) return 0;
+			if (discount.type === 'PERCENTAGE') return (totalItemsPrice * discount.value) / 100;
+			if (discount.type === 'FIXED') return discount.value > totalItemsPrice ? totalItemsPrice : discount.value;
+			return 0;
+		})();
+
+		const orderTotal = totalItemsPrice + shippingPrice - discountPrice;
 
 		// Methods
 		const selectAddress = async (address: RouterOutput['address']['get'][number]) =>
@@ -159,6 +170,27 @@ export const order = derived(
 				await invalidateAll();
 				ui.setToast({ title: $lg.shipping.updateShippingSuccess, alertClasses: 'alert-success' });
 			})();
+
+		const applyDiscount = async (code: string) =>
+			ui.loaderWrapper({ title: l.applyDiscount.applyingDiscount }, async () => {
+				await trpc()
+					.order.applyDiscount.mutate({ id, code })
+					.catch((e) =>
+						tce(e, { showModal: { title: l.applyDiscount.applyDiscountError, retryFn: () => applyDiscount(code) } })
+					);
+
+				await invalidateAll();
+				ui.setToast({ title: l.applyDiscount.applyDiscountSuccess, alertClasses: 'alert-success' });
+			})();
+
+		const removeDiscount = ui.loaderWrapper({ title: l.removeDiscount.removingDiscount }, async () => {
+			await trpc()
+				.order.removeDiscount.mutate({ id })
+				.catch((e) => tce(e, { showModal: { title: l.removeDiscount.removeDiscountError, retryFn: removeDiscount } }));
+
+			await invalidateAll();
+			ui.setToast({ title: l.removeDiscount.removeDiscountSuccess, alertClasses: 'alert-success' });
+		});
 
 		const submitReviewError =
 			selectedProducts.length === 0
@@ -418,6 +450,7 @@ export const order = derived(
 			injectionMoldings,
 			vacuumCastings,
 
+			discount,
 			deliveryAddress,
 			shippingInfo,
 			reviewMessages,
@@ -435,7 +468,7 @@ export const order = derived(
 			totalFinalPrice,
 			totalItemsPrice,
 			shippingPrice,
-			discount,
+			discountPrice,
 			orderTotal,
 
 			estDeliveryDate,
@@ -445,6 +478,9 @@ export const order = derived(
 
 			selectAddress,
 			selectShipping,
+
+			applyDiscount,
+			removeDiscount,
 
 			submitReviewError,
 			submitReview,

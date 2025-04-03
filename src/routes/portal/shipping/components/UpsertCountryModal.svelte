@@ -33,28 +33,27 @@
 
 	$: isError = Object.values(error).filter(Boolean).length;
 
-	const upsertCountry = async () =>
-		ui.loaderWrapper({ title: id ? 'Updating Country' : 'Adding Country' }, async () => {
-			if (!country) return;
-			closeModal(modalId);
-			await trpc()
-				.shipping.upsertCountry.mutate(country)
-				.catch((e) =>
-					tce(e, {
-						callback: () => showModal(modalId),
-						showModal: {
-							title: id ? 'Failed to Update Country' : 'Failed to Add Country',
-							retryFn: upsertCountry
-						}
-					})
-				);
+	const upsertCountry = ui.loaderWrapper({ title: id ? 'Updating Country' : 'Adding Country' }, async () => {
+		if (!country) return;
+		closeModal(modalId);
+		await trpc()
+			.shipping.upsertCountry.mutate(country)
+			.catch((e) =>
+				tce(e, {
+					callback: () => showModal(modalId),
+					showModal: {
+						title: id ? 'Failed to Update Country' : 'Failed to Add Country',
+						retryFn: upsertCountry
+					}
+				})
+			);
 
-			await invalidateAll();
-			ui.setToast({
-				title: id ? 'Country Updated Successfully' : 'Country Added Successfully',
-				alertClasses: 'alert-success'
-			});
-		})();
+		await invalidateAll();
+		ui.setToast({
+			title: id ? 'Country Updated Successfully' : 'Country Added Successfully',
+			alertClasses: 'alert-success'
+		});
+	});
 </script>
 
 <Modal

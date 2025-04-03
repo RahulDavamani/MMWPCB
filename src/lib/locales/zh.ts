@@ -495,6 +495,17 @@ export const zh: Lang = {
 		myCart: '我的购物车',
 		orderId: '订单号',
 
+		applyDiscount: {
+			applyingDiscount: '正在应用折扣',
+			applyDiscountError: '应用折扣失败',
+			applyDiscountSuccess: '折扣应用成功'
+		},
+		removeDiscount: {
+			removingDiscount: '正在移除折扣',
+			removeDiscountError: '移除折扣失败',
+			removeDiscountSuccess: '折扣移除成功'
+		},
+
 		submitReview: {
 			noProducts: '购物车中没有产品',
 			shippingError: '未提供运输信息',
@@ -555,6 +566,12 @@ export const zh: Lang = {
 			updatingDelivery: '正在更新交付进度',
 			updateDeliveryError: '更新交付进度失败',
 			updateDeliverySuccess: '交付进度更新成功'
+		},
+
+		updateTracking: {
+			updatingTracking: '正在更新追踪信息',
+			updateTrackingError: '更新追踪信息失败',
+			updateTrackingSuccess: '追踪信息更新成功'
 		},
 
 		completeOrder: {
@@ -653,6 +670,8 @@ export const zh: Lang = {
 			discount: '折扣',
 			taxes: '税费',
 			orderTotal: '订单总额',
+			promoCode: '优惠码',
+			apply: '应用',
 			estDeliveryDate: '预计交货日期',
 			estDeliveryDateDesc:
 				'预计发货日期是根据您订单中制造时间最长的物品计算得出。请注意，此日期仅供参考。如果您的订单需要确认，则发货日期可能会延长。',

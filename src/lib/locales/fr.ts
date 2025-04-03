@@ -559,6 +559,17 @@ export const fr: Lang = {
 		myCart: 'Mon Panier',
 		orderId: 'ID de commande',
 
+		applyDiscount: {
+			applyingDiscount: 'Application de la réduction',
+			applyDiscountError: "Échec de l'application de la réduction",
+			applyDiscountSuccess: 'Réduction appliquée avec succès'
+		},
+		removeDiscount: {
+			removingDiscount: 'Suppression de la réduction',
+			removeDiscountError: 'Échec de la suppression de la réduction',
+			removeDiscountSuccess: 'Réduction supprimée avec succès'
+		},
+
 		submitReview: {
 			noProducts: 'Aucun produit dans le panier',
 			shippingError: "Les informations d'expédition ne sont pas fournies",
@@ -619,6 +630,12 @@ export const fr: Lang = {
 			updatingDelivery: "Mise à jour de l'avancement de la livraison",
 			updateDeliveryError: "Échec de la mise à jour de l'avancement de la livraison",
 			updateDeliverySuccess: 'Avancement de la livraison mis à jour avec succès'
+		},
+
+		updateTracking: {
+			updatingTracking: 'Mise à jour des informations de suivi',
+			updateTrackingError: 'Échec de la mise à jour des informations de suivi',
+			updateTrackingSuccess: 'Informations de suivi mises à jour avec succès'
 		},
 
 		completeOrder: {
@@ -717,6 +734,8 @@ export const fr: Lang = {
 			discount: 'Remise',
 			taxes: 'Taxes',
 			orderTotal: 'Total de la commande',
+			promoCode: 'Code Promo',
+			apply: 'Appliquer',
 			estDeliveryDate: 'Date de livraison estimée',
 			estDeliveryDateDesc:
 				"La date d'expédition estimée est calculée en fonction de l'article ayant le temps de fabrication le plus long dans votre commande. Veuillez noter que cette date est à titre de référence uniquement. Si votre commande nécessite une confirmation, la date d'expédition peut être prolongée.",

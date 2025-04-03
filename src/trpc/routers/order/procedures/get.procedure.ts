@@ -45,6 +45,17 @@ export const get = userProcedure.input(z.object({ id: z.string().min(1).nullable
 					threePrintings: productSelect,
 					injectionMoldings: productSelect,
 					vacuumCastings: productSelect,
+					discount: {
+						select: {
+							id: true,
+							enable: true,
+							code: true,
+							type: true,
+							value: true,
+							startDate: true,
+							endDate: true
+						}
+					},
 					deliveryAddress: {
 						select: {
 							id: true,

@@ -14,6 +14,9 @@ model Order {
    userId String
    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+   discountId String?
+   discount   Discount? @relation(fields: [discountId], references: [id])
+
    standardPcbs      StandardPcb[]
    advancedPcbs      AdvancedPcb[]
    flexiblePcbs      FlexiblePcb[]

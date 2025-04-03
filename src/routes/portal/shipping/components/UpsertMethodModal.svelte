@@ -40,28 +40,27 @@
 
 	$: isError = Object.values(error).filter(Boolean).length;
 
-	const upsertMethod = async () =>
-		ui.loaderWrapper({ title: id ? 'Updating Method' : 'Adding Method' }, async () => {
-			if (!method) return;
-			closeModal(modalId);
-			await trpc()
-				.shipping.upsertMethod.mutate(method)
-				.catch((e) =>
-					tce(e, {
-						callback: () => showModal(modalId),
-						showModal: {
-							title: id ? 'Failed to Update Method' : 'Failed to Add Method',
-							retryFn: upsertMethod
-						}
-					})
-				);
+	const upsertMethod = ui.loaderWrapper({ title: id ? 'Updating Method' : 'Adding Method' }, async () => {
+		if (!method) return;
+		closeModal(modalId);
+		await trpc()
+			.shipping.upsertMethod.mutate(method)
+			.catch((e) =>
+				tce(e, {
+					callback: () => showModal(modalId),
+					showModal: {
+						title: id ? 'Failed to Update Method' : 'Failed to Add Method',
+						retryFn: upsertMethod
+					}
+				})
+			);
 
-			await invalidateAll();
-			ui.setToast({
-				title: id ? 'Method Updated Successfully' : 'Method Added Successfully',
-				alertClasses: 'alert-success'
-			});
-		})();
+		await invalidateAll();
+		ui.setToast({
+			title: id ? 'Method Updated Successfully' : 'Method Added Successfully',
+			alertClasses: 'alert-success'
+		});
+	});
 </script>
 
 <Modal

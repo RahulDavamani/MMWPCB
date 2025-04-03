@@ -534,6 +534,18 @@ export const en = {
 		myCart: 'My Cart',
 		orderId: 'Order ID',
 
+		applyDiscount: {
+			applyingDiscount: 'Applying Discount',
+			applyDiscountError: 'Failed to apply discount',
+			applyDiscountSuccess: 'Discount applied successfully'
+		},
+
+		removeDiscount: {
+			removingDiscount: 'Removing Discount',
+			removeDiscountError: 'Failed to remove discount',
+			removeDiscountSuccess: 'Discount removed successfully'
+		},
+
 		submitReview: {
 			noProducts: 'No products in the cart',
 			shippingError: 'Shipping info is not provided',
@@ -698,6 +710,8 @@ export const en = {
 			discount: 'Discount',
 			taxes: 'Taxes',
 			orderTotal: 'Order Total',
+			promoCode: 'Promo Code',
+			apply: 'Apply',
 			estDeliveryDate: 'Est Delivery Date',
 			estDeliveryDateDesc:
 				'The estimated shipping date is calculated based on the item with the longest build time in your order. Please note that this date is for reference only. If your order requires confirmation, the shipping date may be subject to extension.',

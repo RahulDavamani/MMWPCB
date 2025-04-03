@@ -3,9 +3,9 @@ model EmailNotification {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
+   enable      Boolean
    type        ENType  @unique
    order       Int
-   enable      Boolean
    title       String
    description String
    subject     String

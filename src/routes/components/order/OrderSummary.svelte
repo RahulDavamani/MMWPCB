@@ -3,23 +3,30 @@
 	import { order, orderApproveData } from '../../../stores/order.store';
 	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 	import Flatpickr from 'svelte-flatpickr';
+	import IconBtn from '../IconBtn.svelte';
 
 	$: l = $lg.order.orderSummary;
 
 	$: ({
 		isPortal,
 		status,
+		editable,
 		totalItemsPrice,
 		shippingPrice,
 		discount,
+		discountPrice,
 		orderTotal,
 		estDeliveryDate,
 		weight,
+		applyDiscount,
+		removeDiscount,
 		submitReview,
 		submitReviewError,
 		saveOrder,
 		saveOrderError
 	} = $order);
+
+	let promoCode = '';
 </script>
 
 <div class="border rounded-lg shadow p-4">
@@ -38,10 +45,12 @@
 			<div>{l.shippingCost}</div>
 			<div class="font-mono">{parsePrice($i18n.currency, shippingPrice)}</div>
 		</div>
-		<div class="flex justify-between">
-			<div>{l.discount}</div>
-			<div class="font-mono text-success">-{parsePrice($i18n.currency, discount)}</div>
-		</div>
+		{#if discount}
+			<div class="flex justify-between">
+				<div>{l.discount}</div>
+				<div class="font-mono text-success">-{parsePrice($i18n.currency, discountPrice)}</div>
+			</div>
+		{/if}
 		<div class="divider" />
 		<div class="flex justify-between">
 			<div class="text-lg font-bold">{l.orderTotal}</div>
@@ -49,6 +58,37 @@
 		</div>
 		<div class="divider" />
 	</div>
+
+	{#if editable && !discount}
+		<div class="px-2 mb-6 mt-3">
+			<div class="font-semibold ml-1 mb-1">{l.promoCode}</div>
+			<div class="flex gap-2">
+				<input type="text" class="input input-bordered input-sm w-full" bind:value={promoCode} />
+				<button class="btn btn-sm btn-secondary ml-2" on:click={() => applyDiscount(promoCode)}>{l.apply}</button>
+			</div>
+		</div>
+	{/if}
+
+	{#if discount}
+		{@const discountText =
+			discount.type === 'PERCENTAGE'
+				? `${discount.code} - ${parsePrice($i18n.currency, discount.value)}% off`
+				: `${discount.code} - Flat ${parsePrice($i18n.currency, discount.value)} off`}
+
+		<div class="flex justify-between mt-4 px-2">
+			<div class="flex items-center gap-2 font-semibold tooltip">
+				<div class="tooltip tooltip-left tooltip-info" data-tip={discountText}>
+					<Icon icon="mdi:discount" width={20} class="text-secondary" />
+				</div>
+				{l.promoCode}
+				{#if editable}
+					<IconBtn icon="mdi:trash" iconClasses="text-error" width={20} on:click={removeDiscount} />
+				{/if}
+			</div>
+
+			<div class="font-mono">{discount.code}</div>
+		</div>
+	{/if}
 
 	<div class="flex justify-between mt-4 px-2">
 		<div class="flex items-center gap-2 font-semibold tooltip">

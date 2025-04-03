@@ -11,7 +11,7 @@ export const schema = z.object({
 export const createPayment = userProcedure
 	.input(schema)
 	.mutation(async ({ ctx: { user }, input: { id, currencyCode } }) => {
-		const { shippingInfo, ...products } = await prisma.order
+		const { shippingInfo, discount, ...products } = await prisma.order
 			.findUniqueOrThrow({
 				where: { id, userId: user.id },
 				select: {
@@ -26,7 +26,8 @@ export const createPayment = userProcedure
 					threePrintings: { select: { id: true, finalPrice: true } },
 					injectionMoldings: { select: { id: true, finalPrice: true } },
 					vacuumCastings: { select: { id: true, finalPrice: true } },
-					shippingInfo: { select: { price: true } }
+					shippingInfo: { select: { price: true } },
+					discount: { select: { enable: true, type: true, value: true, endDate: true } }
 				}
 			})
 			.catch(pe);
@@ -34,9 +35,22 @@ export const createPayment = userProcedure
 		const { eur, gbp } = await prisma.exchangeRate
 			.findFirstOrThrow({ select: { eur: true, gbp: true }, orderBy: { createdAt: 'desc' } })
 			.catch(pe);
-		const price =
-			Object.values(products).reduce((acc, cur) => acc + cur.reduce((acc, cur) => acc + (cur.finalPrice ?? 0), 0), 0) +
-			(shippingInfo?.price ?? 0);
+
+		const totalItemsPrice = Object.values(products).reduce(
+			(acc, cur) => acc + cur.reduce((acc, cur) => acc + (cur.finalPrice ?? 0), 0),
+			0
+		);
+		const shippingPrice = shippingInfo?.price ?? 0;
+		const discountPrice = (() => {
+			if (!discount) return 0;
+			if (discount.enable === false) return 0;
+			if (discount.endDate && discount.endDate < new Date()) return 0;
+			if (discount.type === 'PERCENTAGE') return (totalItemsPrice * discount.value) / 100;
+			if (discount.type === 'FIXED') return discount.value > totalItemsPrice ? totalItemsPrice : discount.value;
+			return 0;
+		})();
+
+		const price = totalItemsPrice + shippingPrice - discountPrice;
 		const total = (currencyCode === 'eur' ? price * eur : currencyCode === 'gbp' ? price * gbp : price).toFixed(2);
 
 		const data = await payment.createOrder(total, currencyCode);

@@ -24,6 +24,8 @@ import { getDashboard } from './procedures/getDashboard.procedure';
 import { getSaved } from './procedures/getSaved.procedure';
 import { createPayment } from './procedures/createPayment.procedure';
 import { submitPayment } from './procedures/submitPayment.procedure';
+import { applyDiscount } from './procedures/applyDiscount.procedure';
+import { removeDiscount } from './procedures/removeDiscount.procedure';
 
 export const order = router({
 	get,
@@ -36,6 +38,8 @@ export const order = router({
 	removeProduct,
 	selectShipping,
 	selectDeliveryAddress,
+	applyDiscount,
+	removeDiscount,
 	save,
 	submitReview,
 	cancelReview,

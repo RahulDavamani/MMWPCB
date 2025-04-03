@@ -542,6 +542,18 @@ export const es: Lang = {
 		allOrders: 'Todas las Órdenes',
 		myCart: 'Mi Carrito',
 		orderId: 'ID de Orden',
+
+		applyDiscount: {
+			applyingDiscount: 'Aplicando descuento',
+			applyDiscountError: 'Error al aplicar el descuento',
+			applyDiscountSuccess: 'Descuento aplicado con éxito'
+		},
+		removeDiscount: {
+			removingDiscount: 'Eliminando descuento',
+			removeDiscountError: 'Error al eliminar el descuento',
+			removeDiscountSuccess: 'Descuento eliminado con éxito'
+		},
+
 		submitReview: {
 			noProducts: 'No hay productos en el carrito',
 			shippingError: 'La información de envío no está proporcionada',
@@ -594,6 +606,11 @@ export const es: Lang = {
 			updatingDelivery: 'Actualizando el Progreso de Entrega',
 			updateDeliveryError: 'Fallo al actualizar el progreso de entrega',
 			updateDeliverySuccess: 'Progreso de entrega actualizado con éxito'
+		},
+		updateTracking: {
+			updatingTracking: 'Actualizando información de seguimiento',
+			updateTrackingError: 'Error al actualizar la información de seguimiento',
+			updateTrackingSuccess: 'Información de seguimiento actualizada con éxito'
 		},
 		completeOrder: {
 			completingOrder: 'Completando Orden',
@@ -686,6 +703,8 @@ export const es: Lang = {
 			discount: 'Descuento',
 			taxes: 'Impuestos',
 			orderTotal: 'Total de la Orden',
+			promoCode: 'Código Promocional',
+			apply: 'Aplicar',
 			estDeliveryDate: 'Fecha Estimada de Entrega',
 			estDeliveryDateDesc:
 				'La fecha de envío estimada se calcula en base al artículo con el tiempo de construcción más largo en tu orden. Por favor ten en cuenta que esta fecha es solo para referencia. Si tu orden requiere confirmación, la fecha de envío puede estar sujeta a extensión.',

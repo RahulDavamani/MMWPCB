@@ -28,28 +28,27 @@
 
 	onMount(async () => onShowModal(modalId, fetchEmailNotification));
 
-	const updateEmailNotification = async () =>
-		ui.loaderWrapper({ title: 'Updating' }, async () => {
-			if (!emailNotification) return;
-			closeModal(modalId);
-			await trpc()
-				.emailNotification.update.mutate(emailNotification)
-				.catch((e) =>
-					tce(e, {
-						callback: () => showModal(modalId),
-						showModal: {
-							title: 'Failed to Update Email Notification',
-							retryFn: updateEmailNotification
-						}
-					})
-				);
+	const updateEmailNotification = ui.loaderWrapper({ title: 'Updating' }, async () => {
+		if (!emailNotification) return;
+		closeModal(modalId);
+		await trpc()
+			.emailNotification.update.mutate(emailNotification)
+			.catch((e) =>
+				tce(e, {
+					callback: () => showModal(modalId),
+					showModal: {
+						title: 'Failed to Update Email Notification',
+						retryFn: updateEmailNotification
+					}
+				})
+			);
 
-			await invalidateAll();
-			ui.setToast({
-				title: 'Email Notification Updated Successfully',
-				alertClasses: 'alert-success'
-			});
-		})();
+		await invalidateAll();
+		ui.setToast({
+			title: 'Email Notification Updated Successfully',
+			alertClasses: 'alert-success'
+		});
+	});
 
 	$: variables = type?.startsWith('ORDER')
 		? ['OrderNumber', 'CustomerName', 'DeliveryDate', 'TrackingNumber', 'TrackingUrl']

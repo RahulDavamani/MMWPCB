@@ -1,0 +1,20 @@
+model Discount {
+   id        String   @id @default(nanoid())
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+
+   enable     Boolean
+   code       String       @unique
+   type       DiscountType
+   value      Float
+   usageLimit Int
+   startDate  DateTime?
+   endDate    DateTime?
+
+   orders Order[]
+}
+
+enum DiscountType {
+   PERCENTAGE
+   FIXED
+}
