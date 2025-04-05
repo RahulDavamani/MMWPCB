@@ -72,10 +72,9 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>ID</th>
+					<th>Method</th>
 					<th>Created At</th>
 					<th>Updated At</th>
-					<th>Method</th>
 					<th>Price</th>
 					<th>Delivery Time</th>
 					<th>Restriction</th>
@@ -97,10 +96,9 @@
 			<tbody>
 				{#each methods as { id: methodId, createdAt, updatedAt, name, price, deliveryTime, restriction }}
 					<tr class="hover cursor-pointer">
-						<td>{methodId}</td>
+						<td class="font-semibold py-4">{name}</td>
 						<td>{createdAt.toLocaleString()}</td>
 						<td>{updatedAt.toLocaleString()}</td>
-						<td>{name}</td>
 						<td>${price}</td>
 						<td>{deliveryTime}</td>
 						<td>{restriction}</td>

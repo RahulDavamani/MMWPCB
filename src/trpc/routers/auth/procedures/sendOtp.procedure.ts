@@ -18,6 +18,13 @@ export const sendOtp = noAuthProcedure.input(schema).mutation(async ({ input: { 
 	await sendMail({
 		to: email,
 		subject: 'OTP Verification',
-		text: `Your OTP is ${otp}`
+		html: `
+         <p>Hi,</p>
+         <p>Your OTP is <b style="font-size: 20px;">${otp}</b></p>
+         <p>Do not share this OTP with anyone. If you did not request this OTP, please ignore this email.</p>
+         <p>Thank you for using our service</p>
+         <p>Best regards,</p>
+         <p>MMWPCB</p>
+      `
 	});
 });

@@ -67,10 +67,9 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>ID</th>
+					<th>Country Name</th>
 					<th>Created At</th>
 					<th>Updated At</th>
-					<th>Country Name</th>
 					<th class="text-center">Methods</th>
 					<th class="w-40">
 						<button
@@ -90,10 +89,13 @@
 			<tbody>
 				{#each countries as { id: countryId, createdAt, updatedAt, name, _count: { methods } }}
 					<tr class="hover cursor-pointer" on:click={() => goto(`/portal/shipping/${countryId}`)}>
-						<td>{countryId}</td>
+						<td>
+							<button class="btn btn-link text-info p-0">
+								{name}
+							</button>
+						</td>
 						<td>{createdAt.toLocaleString()}</td>
 						<td>{updatedAt.toLocaleString()}</td>
-						<td>{name}</td>
 						<td class="text-center">{methods}</td>
 						<td>
 							<div class="flex gap-2 justify-center">

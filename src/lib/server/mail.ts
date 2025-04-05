@@ -12,33 +12,33 @@ const transporter = nodemailer.createTransport({
 export const sendMail = async (mailOptions: nodemailer.SendMailOptions) => {
 	try {
 		const html = `
-      <div
-         style="
-         border: 1px solid #ddd; 
-         border-radius: 8px; 
-         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-         padding: 32px; 
-         width: 50%; 
-         margin: 16px auto;"
-      >
-         <div style="text-align: center;">
-            <a
-               href="https://www.mmwpcb.com/"
-               style="font-size: 22px; font-weight: bold; font-family: serif; color: #162780; text-decoration: none;"
-            >
-               MMWPCB
-            </a>
-         </div>
-         <div style="border-top: 1px solid #e5e7eb; margin: 16px 0;"></div>
+         <div
+            style="
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            padding: 32px; 
+            width: 50%; 
+            margin: 16px auto;"
+         >
+            <div style="text-align: center;">
+               <a
+                  href="https://www.mmwpcb.com/"
+                  style="font-size: 22px; font-weight: bold; font-family: serif; color: #162780; text-decoration: none;"
+               >
+                  MMWPCB
+               </a>
+            </div>
+            <div style="border-top: 1px solid #e5e7eb; margin: 16px 0;"></div>
 
-         <div>${mailOptions.html}</div>
+            <div>${mailOptions.html}</div>
 
-         <div style="border-top: 1px solid #e5e7eb; margin: 16px 0;"></div>
-         <div style="text-align: center; font-size: 14px; color: #9ca3af;">
-            <div>Copyright © 2025 Velenova Ltd. All rights reserved</div>
-            <div>Providing reliable tech since 1992</div>
+            <div style="border-top: 1px solid #e5e7eb; margin: 16px 0;"></div>
+            <div style="text-align: center; font-size: 14px; color: #9ca3af;">
+               <div>Copyright © 2025 Velenova Ltd. All rights reserved</div>
+               <div>Providing reliable tech since 1992</div>
+            </div>
          </div>
-      </div>
       `;
 
 		await transporter.sendMail({
