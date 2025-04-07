@@ -9,7 +9,7 @@
 	$: l = $lg.shipping;
 
 	let modalId = 'selectShippingModal';
-	let shippingMethod: RouterOutput['shipping']['getMethods']['methods'][number] | undefined;
+	let shippingMethod: RouterOutput['shipping']['getMethods'][number] | undefined;
 </script>
 
 <div class="min-w-96 h-fit border rounded-lg shadow p-4">
@@ -29,24 +29,20 @@
 			{l.selectShippingMethod}
 		</button>
 	{:else}
-		{@const { country, name, deliveryTime, restriction, price } = shippingMethod}
+		{@const { country, method, price, deliveryTime } = shippingMethod}
 
 		<div class="text-sm space-y-3 mt-4 px-2">
 			<div class="flex justify-between">
 				<div>{l.country}</div>
-				<div>{country.name}</div>
+				<div>{country}</div>
 			</div>
 			<div class="flex justify-between">
 				<div>{l.method}</div>
-				<div>{name}</div>
+				<div>{method}</div>
 			</div>
 			<div class="flex justify-between">
 				<div>{l.deliveryTime}</div>
-				<div>{deliveryTime}</div>
-			</div>
-			<div class="flex justify-between">
-				<div>{l.restriction}</div>
-				<div>{restriction}</div>
+				<div>{deliveryTime} {l.days}</div>
 			</div>
 		</div>
 
@@ -59,7 +55,7 @@
 </div>
 
 <SelectShippingModal
-	selectedShipping={shippingMethod ? { countryId: shippingMethod.countryId, methodId: shippingMethod.id } : null}
+	selectedShipping={shippingMethod ? { country: shippingMethod.country, methodId: shippingMethod.id } : null}
 	selectShipping={(method) => {
 		closeModal(modalId);
 		shippingMethod = method;

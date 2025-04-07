@@ -509,7 +509,7 @@ export const es: Lang = {
 		shippingMethod: 'Método de Envío',
 		price: 'Precio',
 		deliveryTime: 'Tiempo de Entrega',
-		restriction: 'Restricción',
+		days: 'Días',
 		country: 'País',
 		method: 'Método',
 		weight: 'Peso',

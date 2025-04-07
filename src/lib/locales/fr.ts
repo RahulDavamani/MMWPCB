@@ -525,7 +525,7 @@ export const fr: Lang = {
 		shippingMethod: "Méthode d'expédition",
 		price: 'Prix',
 		deliveryTime: 'Délai de livraison',
-		restriction: 'Restriction',
+		days: 'Jours',
 		country: 'Pays',
 		method: 'Méthode',
 		weight: 'Poids',

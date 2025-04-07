@@ -104,11 +104,10 @@ model OrderShippingInfo {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   countryName  String
-   methodName   String?
-   price        Float?
-   deliveryTime String?
-   restriction  String?
+   country      String
+   method       String
+   price        Float
+   deliveryTime String
 
    orderId String @unique
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)

@@ -34,7 +34,7 @@
 				{l.selectShippingMethod}
 			</button>
 		{:else}
-			{@const { countryName, methodName, price, deliveryTime, restriction } = shippingInfo}
+			{@const { country, method, price, deliveryTime } = shippingInfo}
 			<div class="space-y-1">
 				<div class="flex justify-between">
 					<div>{l.country}</div>
@@ -42,11 +42,11 @@
 						<input
 							type="text"
 							class="input input-bordered input-xs text-center
-                     {$orderApproveData.shippingInfo.countryName === '' && 'input-error'}"
-							bind:value={$orderApproveData.shippingInfo.countryName}
+                     {$orderApproveData.shippingInfo.country === '' && 'input-error'}"
+							bind:value={$orderApproveData.shippingInfo.country}
 						/>
 					{:else}
-						<div class="font-semibold">{countryName}</div>
+						<div class="font-semibold">{country}</div>
 					{/if}
 				</div>
 				<div class="flex justify-between">
@@ -55,10 +55,10 @@
 						<input
 							type="text"
 							class="input input-bordered input-xs text-center"
-							bind:value={$orderApproveData.shippingInfo.methodName}
+							bind:value={$orderApproveData.shippingInfo.method}
 						/>
 					{:else}
-						<div class="font-semibold">{methodName ?? 'TBA'}</div>
+						<div class="font-semibold">{method}</div>
 					{/if}
 				</div>
 				<div class="flex justify-between">
@@ -70,19 +70,7 @@
 							bind:value={$orderApproveData.shippingInfo.deliveryTime}
 						/>
 					{:else}
-						<div class="font-semibold">{deliveryTime ?? 'TBA'}</div>
-					{/if}
-				</div>
-				<div class="flex justify-between">
-					<div>{l.restriction}</div>
-					{#if isPortal && status === 'REVIEW'}
-						<input
-							type="text"
-							class="input input-bordered input-xs text-center"
-							bind:value={$orderApproveData.shippingInfo.restriction}
-						/>
-					{:else}
-						<div class="font-semibold">{restriction ?? 'TBA'}</div>
+						<div class="font-semibold">{deliveryTime} {l.days}</div>
 					{/if}
 				</div>
 			</div>
@@ -106,7 +94,7 @@
 	</div>
 </div>
 
-<SelectShippingModal {selectShipping} showOther={true} />
+<SelectShippingModal {selectShipping} />
 
 <style>
 	input::-webkit-outer-spin-button,

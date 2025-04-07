@@ -500,7 +500,7 @@ export const en = {
 		shippingMethod: 'Shipping Method',
 		price: 'Price',
 		deliveryTime: 'Delivery Time',
-		restriction: 'Restriction',
+		days: 'Days',
 		country: 'Country',
 		method: 'Method',
 		weight: 'Weight',

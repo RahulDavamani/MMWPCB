@@ -5,4 +5,5 @@ model ExchangeRate {
 
    eur Float
    gbp Float
+   hkd Float
 }

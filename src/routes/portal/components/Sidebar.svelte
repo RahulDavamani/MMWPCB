@@ -34,11 +34,6 @@
 			title: 'Email Notifications',
 			icon: 'mdi:email',
 			href: '/portal/email-notifications'
-		},
-		{
-			title: 'Shipping',
-			icon: 'mdi:truck-fast',
-			href: '/portal/shipping'
 		}
 	];
 	$: ({ pathname } = $page.url);

@@ -31,11 +31,10 @@ export const orderApproveData = writable<RouterInput['order']['approveReview']>(
 	estDeliveryDate: new Date(),
 	products: {},
 	shippingInfo: {
-		countryName: '',
-		methodName: '',
+		country: '',
+		method: '',
 		price: 0,
-		deliveryTime: '',
-		restriction: ''
+		deliveryTime: ''
 	}
 });
 
@@ -133,34 +132,12 @@ export const order = derived(
 				ui.setToast({ title: l.deliveryAddress.selectAddressSuccess, alertClasses: 'alert-success' });
 			})();
 
-		const selectShipping = (shippingMethod: RouterOutput['shipping']['getMethods']['methods'][number]) =>
+		const selectShipping = (shippingMethod: RouterOutput['shipping']['getMethods'][number]) =>
 			ui.loaderWrapper({ title: $lg.shipping.updatingShipping }, async () => {
 				closeModal('selectShippingModal');
 
-				const shippingInfo =
-					shippingMethod.id === 'order'
-						? {
-								id,
-								countryId: null,
-								countryName: shippingMethod.country.name,
-								methodId: null,
-								methodName: null,
-								price: null,
-								deliveryTime: null,
-								restriction: null
-							}
-						: {
-								id,
-								countryId: shippingMethod.countryId,
-								countryName: shippingMethod.country.name,
-								methodId: shippingMethod.id,
-								methodName: shippingMethod.name,
-								price: shippingMethod.price,
-								deliveryTime: shippingMethod.deliveryTime,
-								restriction: shippingMethod.restriction
-							};
 				await trpc()
-					.order.selectShipping.mutate(shippingInfo)
+					.order.selectShipping.mutate({ ...shippingMethod, id })
 					.catch((e) =>
 						tce(e, {
 							showModal: { title: $lg.shipping.updateShippingError, retryFn: () => selectShipping(shippingMethod) }
@@ -241,7 +218,7 @@ export const order = derived(
 				: // @ts-ignore
 					Object.values($orderApproveData.products).includes(null)
 					? l.approveReview.noPriceError
-					: $orderApproveData.shippingInfo.countryName === ''
+					: $orderApproveData.shippingInfo.country === ''
 						? l.approveReview.noCountryError
 						: undefined;
 

@@ -461,7 +461,7 @@ export const zh: Lang = {
 		shippingMethod: '运输方式',
 		price: '价格',
 		deliveryTime: '交货时间',
-		restriction: '限制',
+		days: '天',
 		country: '国家',
 		method: '方式',
 		weight: '重量',

@@ -4,11 +4,10 @@ import pe from '../../../../prisma/pe';
 
 export const schema = z.object({
 	id: z.string().min(1),
-	countryName: z.string().min(1),
-	methodName: z.string().min(1).nullable(),
-	price: z.number().gt(0).nullable(),
-	deliveryTime: z.string().nullable(),
-	restriction: z.string().nullable()
+	country: z.string().min(1),
+	method: z.string().min(1),
+	price: z.number().gt(0),
+	deliveryTime: z.string()
 });
 
 export const selectShipping = userProcedure.input(schema).mutation(

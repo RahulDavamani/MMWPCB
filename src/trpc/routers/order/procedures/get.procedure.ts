@@ -73,11 +73,10 @@ export const get = userProcedure.input(z.object({ id: z.string().min(1).nullable
 					shippingInfo: {
 						select: {
 							id: true,
-							countryName: true,
-							methodName: true,
+							country: true,
+							method: true,
 							price: true,
-							deliveryTime: true,
-							restriction: true
+							deliveryTime: true
 						}
 					},
 					paymentInfo: {

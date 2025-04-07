@@ -23,12 +23,11 @@
 			),
 			weight: weight ?? 0,
 			estDeliveryDate: estDeliveryDate ?? new Date(),
-			shippingInfo: {
-				countryName: shippingInfo?.countryName ?? '',
-				methodName: shippingInfo?.methodName ?? '',
-				price: shippingInfo?.price ?? 0,
-				deliveryTime: shippingInfo?.deliveryTime ?? '',
-				restriction: shippingInfo?.restriction ?? ''
+			shippingInfo: shippingInfo ?? {
+				country: '',
+				method: '',
+				price: 0,
+				deliveryTime: ''
 			}
 		};
 		$orderSelectedProducts = null;
