@@ -108,10 +108,10 @@
 
 			<div class="divider" />
 			<div class="flex justify-center gap-10 mt-6 mb-4">
-				<button class="btn btn-primary w-32">
+				<a href="/payment-receipt/service-request?id={id}" class="btn btn-primary w-32">
 					<Icon icon="mdi:printer" width={20} />
 					{l.print}
-				</button>
+				</a>
 				<button class="btn btn-error w-32" on:click={close}>
 					<Icon icon="mdi:close" width={20} />
 					{$lg.common.close}

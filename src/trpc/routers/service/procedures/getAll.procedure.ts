@@ -38,6 +38,7 @@ export const getAll = userProcedure.input(schema).query(
 				where: { userId, status: status ?? {} },
 				include: {
 					user: { select: { id: true, firstName: true, lastName: true } },
+					paymentInfo: { select: { id: true } },
 					antennaInfo: { select: { connectorType: true, impedance: true, gender: true } }
 				},
 				orderBy: { createdAt: 'desc' },
