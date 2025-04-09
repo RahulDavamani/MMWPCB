@@ -1,7 +1,19 @@
 import { z } from 'zod';
 
-const tpDesignUnit = z.enum(['MM', 'CM', 'INCH']);
-const tpMaterial = z.enum(['ALUMINUM', 'STAINLESS_STEEL', 'NYLON', 'ABS', 'PETG']);
+const tpDesignUnit = z.enum(['MM', 'CM', 'UM', 'INCH']);
+const tpMaterial = z.enum([
+	'ALUMINUM',
+	'STAINLESS_STEEL',
+	'NYLON',
+	'ABS',
+	'PETG',
+	'CO_CR_ALLOY',
+	'PURE_TITANIUM',
+	'TITANIUM_ALLOY',
+	'ALUMINUM_ALLOY',
+	'HIGH_TEMPERATURE_NICKEL_ALLOY',
+	'OTHERS'
+]);
 const tpMaterialType = z.enum([
 	'ALUMINUM',
 	'STAINLESS_STEEL',

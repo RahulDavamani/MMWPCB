@@ -21,8 +21,10 @@
 		on:drop={(e) =>
 			($quote.files[$quote.productType] = [
 				...newFiles,
-				// @ts-ignore
-				...e.detail.acceptedFiles.filter((file) => !allFiles.some((f) => f.name === file.name))
+				...e.detail.acceptedFiles
+					// @ts-ignore
+					.filter((file) => !allFiles.some((f) => f.name === file.name))
+					.slice(0, 5 - allFiles.length)
 			])}
 	>
 		{#if allFiles.length > 0}
@@ -36,7 +38,8 @@
 		{:else}
 			<Icon icon="mdi:file-upload" width={36} />
 			<div>{l.dragDrop}</div>
-			<div class="text-sm">{l.onlyAccepts20}</div>
+			<div class="text-sm">{l.onlyAcceptsZip} | {l.maxFileSize}</div>
+			<div class="text-sm">{l.maxFileCount}</div>
 		{/if}
 	</Dropzone>
 

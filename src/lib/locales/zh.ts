@@ -793,8 +793,9 @@ export const zh: Lang = {
 
 		fileDrop: {
 			dragDrop: '拖放您的文件到这里或点击上传',
-			onlyAccepts20: '仅接受 ZIP 或 RAR | 最大文件大小：20MB',
-			onlyAccepts200: '仅接受 ZIP 或 RAR | 最大文件大小：200MB',
+			onlyAcceptsZip: '只接受 zip 或 rar 格式',
+			maxFileSize: '最大文件大小：20 MB',
+			maxFileCount: '每次最多上传 5 个文件',
 			file: '文件',
 			files: '文件',
 			added: '已添加',
@@ -2855,7 +2856,13 @@ export const zh: Lang = {
 					stainlessSteel: '不锈钢',
 					nylon: '尼龙',
 					abs: 'ABS',
-					petg: 'PETG'
+					petg: 'PETG',
+					coCrAlloy: '钴铬合金',
+					pureTitanium: '纯钛',
+					titaniumAlloy: '钛合金',
+					aluminumAlloy: '铝合金',
+					highTemperatureNickelAlloy: '高温镍基合金',
+					others: '其他'
 				}
 			},
 			materialType: {

@@ -41,6 +41,7 @@ model ThreePrinting {
 enum TPDesignUnit {
    MM
    CM
+   UM
    INCH
 }
 
@@ -50,6 +51,12 @@ enum TPMaterial {
    NYLON
    ABS
    PETG
+   CO_CR_ALLOY
+   PURE_TITANIUM
+   TITANIUM_ALLOY
+   ALUMINUM_ALLOY
+   HIGH_TEMPERATURE_NICKEL_ALLOY
+   OTHERS
 }
 
 enum TPMaterialType {

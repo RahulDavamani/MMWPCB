@@ -65,7 +65,13 @@ export const threePrintingDetails = (lg: Lang) => {
 			{ title: l.material.values.stainlessSteel, value: 'STAINLESS_STEEL' },
 			{ title: l.material.values.nylon, value: 'NYLON' },
 			{ title: l.material.values.abs, value: 'ABS' },
-			{ title: l.material.values.petg, value: 'PETG' }
+			{ title: l.material.values.petg, value: 'PETG' },
+			{ title: l.material.values.coCrAlloy, value: 'CO_CR_ALLOY' },
+			{ title: l.material.values.pureTitanium, value: 'PURE_TITANIUM' },
+			{ title: l.material.values.titaniumAlloy, value: 'TITANIUM_ALLOY' },
+			{ title: l.material.values.aluminumAlloy, value: 'ALUMINUM_ALLOY' },
+			{ title: l.material.values.highTemperatureNickelAlloy, value: 'HIGH_TEMPERATURE_NICKEL_ALLOY' },
+			{ title: l.material.values.others, value: 'OTHERS' }
 		] as { title: string; value: ThreePrinting['material'] }[];
 
 		return {

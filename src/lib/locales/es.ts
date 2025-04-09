@@ -823,8 +823,9 @@ export const es: Lang = {
 
 		fileDrop: {
 			dragDrop: 'Arrastra y suelta tus archivos aquí o haz clic para subirlos',
-			onlyAccepts20: 'Solo acepta ZIP o RAR | Tamaño máximo: 20 MB',
-			onlyAccepts200: 'Solo acepta ZIP o RAR | Tamaño máximo: 200 MB',
+			onlyAcceptsZip: 'Solo se aceptan archivos zip o rar',
+			maxFileSize: 'Tamaño máximo del archivo: 20 MB',
+			maxFileCount: 'Máximo de 5 archivos por carga',
 			file: 'Archivo',
 			files: 'Archivos',
 			added: 'Añadido',
@@ -2979,7 +2980,13 @@ export const es: Lang = {
 					stainlessSteel: 'Acero inoxidable',
 					nylon: 'Nylon',
 					abs: 'ABS',
-					petg: 'PETG'
+					petg: 'PETG',
+					coCrAlloy: 'Aleación de Co-Cr',
+					pureTitanium: 'Titanio puro',
+					titaniumAlloy: 'Aleación de titanio',
+					aluminumAlloy: 'Aleación de aluminio',
+					highTemperatureNickelAlloy: 'Aleación de níquel de alta temperatura',
+					others: 'Otros'
 				}
 			},
 			materialType: {
