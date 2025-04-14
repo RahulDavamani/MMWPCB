@@ -608,6 +608,12 @@ export const fr: Lang = {
 			rejectReviewSuccess: 'Examen rejeté avec succès'
 		},
 
+		verifyPayment: {
+			verifyingPayment: 'Vérification du paiement',
+			verifyPaymentError: 'Échec de la vérification du paiement',
+			verifyPaymentSuccess: 'Paiement vérifié avec succès'
+		},
+
 		startFabrication: {
 			startingFabrication: 'Démarrage de la fabrication',
 			startFabricationError: 'Échec du démarrage de la fabrication',

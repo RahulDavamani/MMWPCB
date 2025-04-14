@@ -584,6 +584,12 @@ export const en = {
 			rejectReviewSuccess: 'Review rejected successfully'
 		},
 
+		verifyPayment: {
+			verifyingPayment: 'Verifying Payment',
+			verifyPaymentError: 'Failed to verify payment',
+			verifyPaymentSuccess: 'Payment verified successfully'
+		},
+
 		startFabrication: {
 			startingFabrication: 'Starting Fabrication',
 			startFabricationError: 'Failed to start fabrication',

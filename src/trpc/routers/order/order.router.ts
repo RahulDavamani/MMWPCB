@@ -26,6 +26,7 @@ import { createPayment } from './procedures/createPayment.procedure';
 import { submitPayment } from './procedures/submitPayment.procedure';
 import { applyDiscount } from './procedures/applyDiscount.procedure';
 import { removeDiscount } from './procedures/removeDiscount.procedure';
+import { verifyPayment } from './procedures/verifyPayment.procedure';
 
 export const order = router({
 	get,
@@ -48,6 +49,7 @@ export const order = router({
 	insertReviewMessage,
 	createPayment,
 	submitPayment,
+	verifyPayment,
 	startFabrication,
 	updateFabrication,
 	completeFabrication,

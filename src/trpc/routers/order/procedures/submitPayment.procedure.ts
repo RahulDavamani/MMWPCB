@@ -3,7 +3,6 @@ import { userProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
 import { payment } from '$lib/server/payment';
 import { TRPCError } from '@trpc/server';
-import { sendOrderMail } from '$lib/server/mail';
 
 export const schema = z.object({
 	id: z.string().min(1),
@@ -37,14 +36,12 @@ export const submitPayment = userProcedure
 				.update({
 					where: { id },
 					data: {
-						status: 'CONFIRMED',
-						timeline: { create: { action: 'CONFIRM' } },
+						status: 'PENDING',
+						timeline: { create: { action: 'PAYMENT' } },
 						paymentInfo: { create: paymentInfo }
 					}
 				})
 				.catch(pe);
-
-			await sendOrderMail(id, 'ORDER_CONFIRM_PAYMENT');
 
 			return paymentInfo;
 		} catch (_) {

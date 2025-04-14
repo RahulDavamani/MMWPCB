@@ -14,6 +14,7 @@
 		approveReviewError,
 		approveReview,
 		rejectReview,
+		verifyPayment,
 		startFabrication,
 		completeFabrication,
 		completeOrder
@@ -121,13 +122,32 @@
 					Submit Again For Review
 				</button>
 			{/if}
+		{:else if status === 'PENDING'}
+			{#if isPortal}
+				<div class="flex items-center gap-4 mb-4">
+					<Icon icon="mdi:check-circle-outline" class="text-success" width={40} />
+					<div>
+						<div class="font-semibold">Payment Success</div>
+						<div class="text-sm">Check the payment details and verify it</div>
+					</div>
+				</div>
+				<button class="btn btn-outline btn-primary btn-sm w-full" on:click={verifyPayment}>Payment Verified</button>
+			{:else}
+				<div class="flex items-center gap-4">
+					<Icon icon="mdi:check-circle-outline" class="text-success" width={40} />
+					<div>
+						<div class="font-semibold">Payment Success</div>
+						<div class="text-sm">Your order will be confirmed once verification is complete.</div>
+					</div>
+				</div>
+			{/if}
 		{:else if status === 'CONFIRMED'}
 			{#if isPortal}
 				<div class="flex items-center gap-4 mb-4">
 					<Icon icon="mdi:check-circle-outline" class="text-success" width={40} />
 					<div>
-						<div class="font-semibold">Payment Success!</div>
-						<div class="text-sm">Check the payment details</div>
+						<div class="font-semibold">Order Confirmed</div>
+						<div class="text-sm">Proceed to start the fabrication process</div>
 					</div>
 				</div>
 
@@ -138,7 +158,7 @@
 				<div class="flex items-center gap-4">
 					<Icon icon="mdi:check-circle-outline" class="text-success" width={40} />
 					<div>
-						<div class="font-semibold">Payment Success!</div>
+						<div class="font-semibold">Order Confirmed</div>
 						<div class="text-sm">Your order is confirmed and is now being processed</div>
 					</div>
 				</div>

@@ -587,6 +587,11 @@ export const es: Lang = {
 			rejectReviewError: 'Fallo al rechazar revisión',
 			rejectReviewSuccess: 'Revisión rechazada con éxito'
 		},
+		verifyPayment: {
+			verifyingPayment: 'Verificando el pago',
+			verifyPaymentError: 'Error al verificar el pago',
+			verifyPaymentSuccess: 'Pago verificado con éxito'
+		},
 		startFabrication: {
 			startingFabrication: 'Iniciando Fabricación',
 			startFabricationError: 'Fallo al iniciar fabricación',

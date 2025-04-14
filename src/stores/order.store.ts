@@ -240,6 +240,15 @@ export const order = derived(
 			ui.setToast({ title: l.rejectReview.rejectReviewSuccess, alertClasses: 'alert-success' });
 		});
 
+		const verifyPayment = ui.loaderWrapper({ title: l.verifyPayment.verifyingPayment }, async () => {
+			await trpc()
+				.order.verifyPayment.mutate({ id })
+				.catch((e) => tce(e, { showModal: { title: l.verifyPayment.verifyPaymentError, retryFn: verifyPayment } }));
+
+			await invalidateAll();
+			ui.setToast({ title: l.verifyPayment.verifyPaymentSuccess, alertClasses: 'alert-success' });
+		});
+
 		const startFabrication = ui.loaderWrapper({ title: l.startFabrication.startingFabrication }, async () => {
 			await trpc()
 				.order.startFabrication.mutate({ id })
@@ -467,7 +476,7 @@ export const order = derived(
 			approveReviewError,
 			approveReview,
 			rejectReview,
-
+			verifyPayment,
 			startFabrication,
 			updateFabrication,
 			completeFabrication,

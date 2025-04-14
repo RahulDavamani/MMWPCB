@@ -544,6 +544,12 @@ export const zh: Lang = {
 			rejectReviewSuccess: '审核已被拒绝'
 		},
 
+		verifyPayment: {
+			verifyingPayment: '正在验证付款',
+			verifyPaymentError: '验证付款失败',
+			verifyPaymentSuccess: '付款验证成功'
+		},
+
 		startFabrication: {
 			startingFabrication: '开始制造',
 			startFabricationError: '开始制造失败',
