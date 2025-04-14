@@ -726,6 +726,7 @@ export const es: Lang = {
 			amountToBePaid: 'Monto a Pagar',
 			paymentSuccess: 'Pago Exitoso',
 			paymentTotal: 'Total de Pago',
+			agree: 'Estoy de acuerdo',
 			print: 'Imprimir',
 			payNow: 'Pagar Ahora',
 			cancelPayment: 'Cancelar Pago'

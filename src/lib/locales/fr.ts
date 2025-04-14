@@ -758,6 +758,7 @@ export const fr: Lang = {
 			amountToBePaid: 'Montant à payer',
 			paymentSuccess: 'Paiement réussi',
 			paymentTotal: 'Total du paiement',
+			agree: "Je suis d'accord",
 			print: 'Imprimer',
 			payNow: 'Payer maintenant',
 			cancelPayment: 'Annuler le paiement'

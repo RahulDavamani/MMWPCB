@@ -734,6 +734,7 @@ export const en = {
 			amountToBePaid: 'Amount to be paid',
 			paymentSuccess: 'Payment Success',
 			paymentTotal: 'Payment Total',
+			agree: 'I Agree',
 			print: 'Print',
 			payNow: 'Pay Now',
 			cancelPayment: 'Cancel Payment'

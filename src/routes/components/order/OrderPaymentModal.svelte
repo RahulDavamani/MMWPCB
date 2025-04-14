@@ -10,12 +10,14 @@
 	import { invalidateAll } from '$app/navigation';
 	import { order } from '../../../stores/order.store';
 	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
+	import PaymentTerms from './PaymentTerms.svelte';
 
 	$: l = $lg.order.payment;
 
 	let modalId = 'orderPaymentModal';
 
 	let isLoading = false;
+	let termsAgreed = false;
 	let currency = $i18n.currency;
 	let paymentDetails: RouterOutput['order']['submitPayment'] | undefined;
 
@@ -51,6 +53,7 @@
 			.render('#paypal-button-container');
 
 	const init = async () => {
+		termsAgreed = false;
 		isLoading = true;
 		currency = $i18n.currency;
 		await loadPayPalSDK();
@@ -67,25 +70,43 @@
 		closeModal(modalId);
 		paymentDetails = undefined;
 		isLoading = false;
+		termsAgreed = false;
 	};
 </script>
 
-<Modal {modalId} modalBackdrop={false} boxClasses="max-w-xl w-full p-0" showCloseBtn={false} showDivider={false}>
+<Modal
+	{modalId}
+	modalBackdrop={false}
+	boxClasses="max-w-3xl w-full {termsAgreed ? 'max-w-xl p-0' : 'max-w-3xl'}"
+	showCloseBtn={false}
+	showDivider={!termsAgreed}
+>
 	<div slot="title" class="w-full">
-		<div class="flex flex-col justify-center items-center py-4 {!paymentDetails && 'bg-primary text-primary-content '}">
-			{#if paymentDetails}
-				<Icon icon="mdi:check-decagram" class="text-success text-6xl mt-2" />
-				<div class="text-lg font-semibold">{l.paymentSuccess}!</div>
-			{:else}
-				<div class="text-lg font-semibold mb-4">{l.checkout.toUpperCase()}</div>
-				<div>{l.amountToBePaid}</div>
-				<div class="text-xl font-mono font-bold">{parsePrice($i18n.currency, orderTotal)}</div>
-			{/if}
-		</div>
+		{#if termsAgreed}
+			<div
+				class="flex flex-col justify-center items-center py-4 {!paymentDetails && 'bg-primary text-primary-content '}"
+			>
+				{#if paymentDetails}
+					<Icon icon="mdi:check-decagram" class="text-success text-6xl mt-2" />
+					<div class="text-lg font-semibold">{l.paymentSuccess}!</div>
+				{:else}
+					<div class="text-lg font-semibold mb-4">{l.checkout.toUpperCase()}</div>
+					<div>{l.amountToBePaid}</div>
+					<div class="text-xl font-mono font-bold">{parsePrice($i18n.currency, orderTotal)}</div>
+				{/if}
+			</div>
+		{:else}
+			<div class="text-xl font-bold text-center">Payment Term</div>
+		{/if}
 	</div>
 
-	<div class="px-6">
-		<div id="paypal-button-container" class:hidden={isLoading || paymentDetails} class="mt-8 mb-2" />
+	<div class={termsAgreed ? 'px-6' : 'px-2'}>
+		<div id="paypal-button-container" class:hidden={isLoading || paymentDetails || !termsAgreed} class="mt-8 mb-2" />
+
+		{#if !termsAgreed}
+			<PaymentTerms />
+			<button class="btn btn-success w-full mt-4" on:click={() => (termsAgreed = true)}>{l.agree}</button>
+		{/if}
 
 		{#if isLoading}
 			<Loader fixed={false} overlay={false} size={80} classes="pt-10 pb-4" />
@@ -118,7 +139,9 @@
 				</button>
 			</div>
 		{:else}
-			<button class="btn btn-link text-sm text-error w-full mb-2" on:click={close}>{l.cancelPayment}</button>
+			<button class="btn btn-link text-sm text-error w-full {termsAgreed && 'mb-2'}" on:click={close}>
+				{l.cancelPayment}
+			</button>
 		{/if}
 	</div>
 </Modal>

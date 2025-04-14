@@ -694,6 +694,7 @@ export const zh: Lang = {
 			amountToBePaid: '待付款金额',
 			paymentSuccess: '付款成功',
 			paymentTotal: '付款总额',
+			agree: '我同意',
 			print: '打印',
 			payNow: '立即付款',
 			cancelPayment: '取消付款'
