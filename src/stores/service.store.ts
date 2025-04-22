@@ -169,5 +169,5 @@ export const services = derived(lg, ($lg) => {
 		};
 	})();
 
-	return { oscilloscopes, networkAnalyzers, antennaTestSystems, circuitTestPlatforms };
+	return { antennaTestSystems, circuitTestPlatforms };
 });

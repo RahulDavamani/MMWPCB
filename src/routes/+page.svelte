@@ -4,6 +4,7 @@
 	import InstantQuote from './components/home/InstantQuote.svelte';
 	import PlaceOrder from './components/home/PlaceOrder.svelte';
 	import ProductCards from './components/home/ProductCards.svelte';
+	import ServiceCards from './components/home/ServiceCards.svelte';
 	import Layout from './components/layout/Layout.svelte';
 </script>
 
@@ -16,5 +17,6 @@
 		<InstantQuote />
 		<PlaceOrder />
 		<ProductCards />
+		<!-- <ServiceCards /> -->
 	</div>
 </Layout>

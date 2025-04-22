@@ -71,8 +71,8 @@ export const en = {
 	},
 
 	navbar: {
-		instantQuote: 'Instant Quote',
-		services: 'Products & Services',
+		instantQuote: 'PCB | 3D Printing Instant Quote',
+		services: 'Testing Services',
 		capabilities: 'Capabilities',
 		whyUs: 'Why Us?',
 		support: 'Support',
@@ -3517,7 +3517,7 @@ export const en = {
 	},
 
 	services: {
-		title: 'Product & Services',
+		title: 'Testing Services',
 		subtitle: 'Comprehensive measurement and testing technologies for advanced industrial applications.',
 		description:
 			'We are a leading provider of advanced measurement and testing technologies, specializing in delivering high-precision solutions that address complex technical challenges across diverse industries. Our comprehensive portfolio encompasses cutting-edge spectrum analyzers, network testing equipment, calibration tools, and integrated technical services designed to meet the most demanding performance and innovation requirements. By combining sophisticated hardware, intelligent software, and expert technical support, we enable organizations to push the boundaries of technological research, development, and quality assurance.',
@@ -3529,13 +3529,13 @@ export const en = {
 		para2:
 			'Beyond equipment sales, we offer comprehensive technical services that support the entire product lifecycle. Our expert team provides specialized calibration, precision repair, technical consultation, and custom solution development. We ensure your measurement infrastructure remains at the forefront of technological capability, with global support and NIST-traceable certification guaranteeing the highest standards of technical excellence.',
 
-		explorePS: 'Explore Our Products & Services',
+		explorePS: 'Explore Our Testing Services',
 		browseSolutions: 'Browse Our Solutions',
 		browseCatalog: 'Browse Our Catalog',
-		viewAllPS: 'View All Products & Services',
+		viewAllPS: 'View All Testing Services',
 
 		catalog: {
-			title: 'Products & Services Catalog',
+			title: 'Testing Services Catalog',
 			subtitle: 'A comprehensive selection of high-quality products and custom solutions to meet your needs.'
 		},
 
