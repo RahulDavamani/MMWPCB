@@ -1,9 +1,9 @@
 import { derived } from 'svelte/store';
 import { lg } from './i18n.store';
-import Oscilloscopes from '$lib/assets/services/oscilloscopes/oscilloscopes.jpeg';
+import Oscilloscopes from '$lib/assets/services/oscilloscopes/oscilloscopes.png';
 import HD304MSO from '$lib/assets/services/oscilloscopes/HD304MSO.jpeg';
 import DSOS804A from '$lib/assets/services/oscilloscopes/DSOS804A.jpeg';
-import NetworkAnalyzers from '$lib/assets/services/network-analyzers/network-analyzers.jpeg';
+import NetworkAnalyzers from '$lib/assets/services/network-analyzers/network-analyzers.png';
 import E5080B from '$lib/assets/services/network-analyzers/E5080B.jpeg';
 import N5291A from '$lib/assets/services/network-analyzers/N5291A.jpeg';
 import AntennaTestSystems from '$lib/assets/services/antenna-test-systems/antenna-test-systems.png';
@@ -30,6 +30,8 @@ export const services = derived(lg, ($lg) => {
 			l,
 			href: '/oscilloscopes',
 			img: Oscilloscopes,
+			from: 50,
+			buildTime: 48,
 			services: {
 				HD304MSO: {
 					code: 'HD304MSO',
@@ -65,6 +67,8 @@ export const services = derived(lg, ($lg) => {
 			l,
 			href: '/network-analyzers',
 			img: NetworkAnalyzers,
+			from: 50,
+			buildTime: 48,
 			services: {
 				E5080B: {
 					code: 'E5080B',
@@ -102,6 +106,8 @@ export const services = derived(lg, ($lg) => {
 			l,
 			href: '/antenna-test-systems',
 			img: AntennaTestSystems,
+			from: 65,
+			buildTime: 48,
 			services: {
 				AP1: {
 					code: 'AP1',
@@ -154,6 +160,8 @@ export const services = derived(lg, ($lg) => {
 			l,
 			href: '/circuit-test-platforms',
 			img: CircuitTestPlatforms,
+			from: 65,
+			buildTime: 48,
 			services: {
 				CP1: {
 					code: 'CP1',
@@ -169,5 +177,5 @@ export const services = derived(lg, ($lg) => {
 		};
 	})();
 
-	return { antennaTestSystems, circuitTestPlatforms };
+	return { oscilloscopes, networkAnalyzers, antennaTestSystems, circuitTestPlatforms };
 });

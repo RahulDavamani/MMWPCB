@@ -17,6 +17,6 @@
 		<InstantQuote />
 		<PlaceOrder />
 		<ProductCards />
-		<!-- <ServiceCards /> -->
+		<ServiceCards />
 	</div>
 </Layout>

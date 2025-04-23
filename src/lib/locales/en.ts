@@ -3566,8 +3566,13 @@ export const en = {
 
 		sections: {
 			oscilloscopes: {
-				title: 'Oscilloscopes',
+				title: 'Frequency Domain RF Test',
 				subtitle: 'Accurately visualize electrical waveforms with precision and ease.',
+				description: {
+					1: 'S-parameter Analysis',
+					2: 'Spectrum-Related Measurements',
+					3: 'Material Characterization'
+				},
 
 				specs: {
 					title: 'Title',
@@ -3604,8 +3609,14 @@ export const en = {
 			},
 
 			networkAnalyzers: {
-				title: 'Network Analyzers',
+				title: 'Time Domain Measurements',
 				subtitle: 'Analyze and optimize network performance with reliable data insights.',
+				description: {
+					1: 'High-Speed Signal Analysis',
+					2: 'Time-Domain Reflectometry (TDR)',
+					3: 'Pulse & Edge Measurements',
+					4: 'Eye Diagram Analysis'
+				},
 
 				specs: {
 					title: 'Title',
@@ -3643,6 +3654,12 @@ export const en = {
 			antennaTestSystems: {
 				title: 'Antenna Test Systems',
 				subtitle: 'Optimize antenna performance with advanced testing and measurement solutions.',
+				description: {
+					1: 'Far-field testing (0.6-50GHz)',
+					2: 'Near-field testing (0.6-50GHz)',
+					3: 'Millimeter-wave near-field (75-110GHz)',
+					4: 'On-chip antenna characterization (18-500GHz)'
+				},
 
 				specs: {
 					title: 'Title',
@@ -3668,6 +3685,11 @@ export const en = {
 			circuitTestPlatforms: {
 				title: 'mmWave/THz Circuit Test Platforms',
 				subtitle: 'Accelerate mmWave/THz circuit design and test with advanced measurement solutions.',
+				description: {
+					1: 'S-parameter test, up to 110 GHz',
+					2: 'Power spectrum analysis',
+					3: 'Signal integrity measurement'
+				},
 
 				specs: {
 					title: 'Title',
