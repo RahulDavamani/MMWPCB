@@ -3565,7 +3565,7 @@ export const en = {
 		},
 
 		sections: {
-			oscilloscopes: {
+			frequencyDomainRFTest: {
 				title: 'Frequency Domain RF Test',
 				subtitle: 'Accurately visualize electrical waveforms with precision and ease.',
 				description: {
@@ -3578,75 +3578,57 @@ export const en = {
 					title: 'Title',
 					category: 'Category',
 					categories: 'Categories',
-					bandwidth: 'Bandwidth',
-					maxMemoryDepth: 'Max Memory Depth',
-					maxSampleRate: 'Max Sample Rate',
-					type: 'Type',
-					types: 'Types'
+					frequency: 'Frequency'
 				},
 
 				categories: {
-					infiniiVision: 'InfiniiVision Oscilloscopes',
-					realTime: 'Real-Time Oscilloscopes'
-				},
-
-				types: {
-					realTime: 'Real-TIme'
+					sParameterAnalysis: 'S-Parameter Analysis',
+					spectrumRelatedMeasurements: 'Spectrum-Related Measurements',
+					materialCharacterization: 'Material Characterization'
 				},
 
 				services: {
-					HD304MSO: {
-						title: 'HD304MSO InfiniiVision Oscilloscope: 4 Analog Channels',
+					sParameterAnalysis: {
+						title: 'S-Parameter Analysis',
 						subtitle:
-							'The HD3 Series boasts impressive resolution with high accuracy, deep memory, four analog channels, and all new custom technology ranging from 200 MHz to 1 GHz.'
+							'Our lab provides S-parameter analysis for high-frequency components and systems using R&S®ZNA50 Vector Network Analyzer (10 MHz to 50 GHz). With advanced calibration techniques and flexible measurement setups, we ensure reliable data for R&D, validation, and production testing for the devices like filters, amplifiers, and antennas. Our services support both linear and nonlinear network analysis, helping optimize performance across wireless, aerospace, and semiconductor applications. '
 					},
-					DSOS804A: {
-						title: 'DSOS804A High-Definition Oscilloscope: 8 GHz, 4 Analog Channels',
+					spectrumRelatedMeasurements: {
+						title: 'Spectrum-Related Measurements',
 						subtitle:
-							'The DSOS804A S-Series oscilloscopes have 8 GHz of bandwidth, a 15” XGA capacitive touch screen, and a 10-bit analog-to-digital converter'
+							'Our lab provides high-precision spectrum analysis using R&S®FSW50 Signal and Spectrum Analyzer (2 Hz – 50 GHz). With exceptional phase noise performance and dynamic range exceeding 165 dB, the equipment enables comprehensive characterization of complex signals across wireless, aerospace, and defense applications. Our testing services support R&D and production verification with accuracy and efficiency.'
+					},
+					materialCharacterization: {
+						title: 'Material Characterization',
+						subtitle:
+							'Our lab offers high-frequency material property analysis using Material Characterisation Kit (25GHz-40GHz), delivering dielectric characterization for advanced engineering applications. This waveguide-based system provides non-destructive evaluation of substrates, composites, and functional materials. Supporting 5G component development, aerospace materials research, and semiconductor packaging validation, our service enables reliable characterization of electromagnetic properties under millimeter-wave frequencies.'
 					}
 				}
 			},
 
-			networkAnalyzers: {
-				title: 'Time Domain Measurements',
+			timeDomainMeasurement: {
+				title: 'Time Domain Measurement',
 				subtitle: 'Analyze and optimize network performance with reliable data insights.',
 				description: {
-					1: 'High-Speed Signal Analysis',
-					2: 'Time-Domain Reflectometry (TDR)',
-					3: 'Pulse & Edge Measurements',
-					4: 'Eye Diagram Analysis'
+					1: 'Time-Domain Reflectometry (TDR)'
 				},
 
 				specs: {
 					title: 'Title',
 					category: 'Category',
 					categories: 'Categories',
-					builtInPorts: 'Built-In Ports',
-					maxFrequency: 'Max Frequency',
-					internalSources: 'Internal Sources',
-					vnaSeries: 'VNA Series',
-					vnaType: 'VNA Type',
-					vnaTypes: 'VNA Types'
+					maxFrequency: 'Max Frequency'
 				},
 
 				categories: {
-					ena: 'ENA Vector Network Analyzers',
-					pna: 'PNA Network Analyzers'
-				},
-
-				vnaTypes: {
-					benchtop: 'Benchtop'
+					timeDomainMeasurement: 'Time Domain Measurement'
 				},
 
 				services: {
-					E5080B: {
-						title: 'E5080B ENA Vector Network Analyzer',
-						subtitle: 'The most integrated and flexible ENA network analyzer'
-					},
-					N5291A: {
-						title: 'N5291A PNA Millimeter-wave System, 900 Hz to 120 GHz',
-						subtitle: 'Get versatility with a broadband two- or four-port network analyzer'
+					timeDomainMeasurement: {
+						title: 'Time Domain Measurement',
+						subtitle:
+							'Our lab provides time domain testing using advanced  oscilloscope, enabling accurate signal analysis for high-speed digital, RF, and communication systems. Key services include signal integrity testing, rise/fall time measurements, eye diagram analysis, and TDR (Time Domain Reflectometry).We support applications in PCB debugging and high-frequency circuit characterization.'
 					}
 				}
 			},
@@ -3675,10 +3657,10 @@ export const en = {
 				},
 
 				services: {
-					AP1: { title: 'Product 1' },
-					AP2: { title: 'Product 2' },
-					AP3: { title: 'Product 3' },
-					AP4: { title: 'Product 4' }
+					farFieldTesting: { title: 'Far-Field Testing' },
+					nearFieldTesting: { title: 'Near-Field Testing' },
+					millimeterWaveNearField: { title: 'Millimeter-Wave Near Field' },
+					onChipAntennaCharacterization: { title: 'On-Chip Antenna Characterization' }
 				}
 			},
 
@@ -3699,11 +3681,15 @@ export const en = {
 				},
 
 				categories: {
-					circuitTestPlatform: 'mmWave/THz Circuit Test Platform'
+					mmWaveCircuitTestPlatform: 'mmWave/THz Circuit Test Platform'
 				},
 
 				services: {
-					CP1: { title: 'Product 1' }
+					mmWaveCircuitTestPlatform: {
+						title: 'mmWave/THz Circuit Test Platform',
+						subtitle:
+							'The mmWave/THz circuit test platform is designed for high-frequency characterization of integrated circuits and devices. Offering precise on-wafer measurements up to sub-THz frequencies, it features advanced RF probing, high resolution microscope, and EMI shielding. Its modular design supports scalable configurations for research and production testing, enabling accurate S-parameter, noise figure, and power measurements. Ideal for 5G, radar, and terahertz applications, the test platform ensures reliable, repeatable results with high stability and minimal signal loss, making it a versatile solution for next-generation mmWave and THz device validation.'
+					}
 				}
 			}
 		}

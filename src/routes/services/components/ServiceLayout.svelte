@@ -9,7 +9,7 @@
 
 	$: ({ user } = $page.data as PageData);
 
-	export let section: { l: { title: string }; href: string };
+	export let section: { code: string; l: { title: string } };
 	export let service: { code: string; l: { title: string; subtitle?: string }; images: string[]; category: string };
 	export let specs: { title: string; value: string }[];
 </script>
@@ -18,7 +18,7 @@
 	<div class="breadcrumbs mb-4">
 		<ul>
 			<li><a href="/services" class="text-primary">{$lg.common.home}</a></li>
-			<li><a href="/services{section.href}" class="text-primary">{section.l.title}</a></li>
+			<li><a href="/services/{section.code}" class="text-primary">{section.l.title}</a></li>
 			<li>{service.l.title}</li>
 		</ul>
 	</div>
@@ -69,9 +69,7 @@
 	<div class="divider" />
 
 	<div class="font-semibold text-2xl text-center mb-4">{$lg.services.features}</div>
-	<div class="space-y-4">
-		<slot />
-	</div>
+	<slot />
 </Layout>
 
 <RequestQuoteModel serviceCode={service.code} />

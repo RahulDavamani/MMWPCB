@@ -3558,123 +3558,116 @@ export const es: Lang = {
 		},
 
 		sections: {
-			oscilloscopes: {
-				title: 'Osciloscopios',
-				subtitle: 'Visualiza con precisión las formas de onda eléctricas con facilidad y precisión.',
-
+			frequencyDomainRFTest: {
+				title: 'Prueba RF en dominio de frecuencia',
+				subtitle: 'Visualice con precisión las formas de onda eléctricas con precisión y facilidad.',
+				description: {
+					'1': 'Análisis de parámetros S',
+					'2': 'Mediciones relacionadas con el espectro',
+					'3': 'Caracterización de materiales'
+				},
 				specs: {
 					title: 'Título',
 					category: 'Categoría',
 					categories: 'Categorías',
-					bandwidth: 'Ancho de banda',
-					maxMemoryDepth: 'Profundidad máxima de memoria',
-					maxSampleRate: 'Tasa máxima de muestreo',
-					type: 'Tipo',
-					types: 'Tipos'
+					frequency: 'Frecuencia'
 				},
-
 				categories: {
-					infiniiVision: 'Osciloscopios InfiniiVision',
-					realTime: 'Osciloscopios en tiempo real'
+					sParameterAnalysis: 'Análisis de parámetros S',
+					spectrumRelatedMeasurements: 'Mediciones relacionadas con el espectro',
+					materialCharacterization: 'Caracterización de materiales'
 				},
-
-				types: {
-					realTime: 'Tiempo real'
-				},
-
 				services: {
-					HD304MSO: {
-						title: 'Osciloscopio InfiniiVision HD304MSO: 4 Canales Analógicos',
+					sParameterAnalysis: {
+						title: 'Análisis de parámetros S',
 						subtitle:
-							'La serie HD3 ofrece una impresionante resolución con alta precisión, memoria profunda, cuatro canales analógicos y una nueva tecnología personalizada que abarca desde 200 MHz hasta 1 GHz.'
+							'Nuestro laboratorio proporciona análisis de parámetros S para componentes y sistemas de alta frecuencia utilizando el analizador de redes vectoriales R&S®ZNA50 (10 MHz a 50 GHz). Con técnicas avanzadas de calibración y configuraciones de medición flexibles, garantizamos datos confiables para I+D, validación y pruebas de producción de dispositivos como filtros, amplificadores y antenas. Nuestros servicios admiten tanto análisis de redes lineales como no lineales, ayudando a optimizar el rendimiento en aplicaciones inalámbricas, aeroespaciales y de semiconductores.'
 					},
-					DSOS804A: {
-						title: 'Osciloscopio de Alta Definición DSOS804A: 8 GHz, 4 Canales Analógicos',
+					spectrumRelatedMeasurements: {
+						title: 'Mediciones relacionadas con el espectro',
 						subtitle:
-							'Los osciloscopios de la serie DSOS804A tienen un ancho de banda de 8 GHz, una pantalla táctil capacitiva XGA de 15” y un convertidor analógico-digital de 10 bits.'
+							'Nuestro laboratorio proporciona análisis de espectro de alta precisión utilizando el analizador de señal y espectro R&S®FSW50 (2 Hz – 50 GHz). Con un rendimiento excepcional en ruido de fase y un rango dinámico superior a 165 dB, el equipo permite la caracterización completa de señales complejas en aplicaciones inalámbricas, aeroespaciales y de defensa. Nuestros servicios de prueba apoyan I+D y verificación de producción con precisión y eficiencia.'
+					},
+					materialCharacterization: {
+						title: 'Caracterización de materiales',
+						subtitle:
+							'Nuestro laboratorio ofrece análisis de propiedades de materiales de alta frecuencia utilizando el kit de caracterización de materiales (25GHz-40GHz), proporcionando caracterización dieléctrica para aplicaciones avanzadas de ingeniería. Este sistema basado en guía de ondas permite una evaluación no destructiva de sustratos, compuestos y materiales funcionales. Apoyando el desarrollo de componentes 5G, la investigación de materiales aeroespaciales y la validación del empaque de semiconductores, nuestro servicio permite una caracterización confiable de las propiedades electromagnéticas a frecuencias milimétricas.'
 					}
 				}
 			},
-
-			networkAnalyzers: {
-				title: 'Analizadores de Redes',
-				subtitle: 'Analiza y optimiza el rendimiento de la red con datos confiables.',
-
+			timeDomainMeasurement: {
+				title: 'Medición en dominio temporal',
+				subtitle: 'Analice y optimice el rendimiento de la red con datos confiables.',
+				description: {
+					'1': 'Reflectometría en dominio temporal (TDR)'
+				},
 				specs: {
 					title: 'Título',
 					category: 'Categoría',
 					categories: 'Categorías',
-					builtInPorts: 'Puertos Integrados',
-					maxFrequency: 'Frecuencia Máxima',
-					internalSources: 'Fuentes Internas',
-					vnaSeries: 'Serie VNA',
-					vnaType: 'Tipo de VNA',
-					vnaTypes: 'Tipos de VNA'
+					maxFrequency: 'Frecuencia máxima'
 				},
-
 				categories: {
-					ena: 'Analizadores de Red Vectorial ENA',
-					pna: 'Analizadores de Red PNA'
+					timeDomainMeasurement: 'Medición en dominio temporal'
 				},
-
-				vnaTypes: {
-					benchtop: 'Banco de Pruebas'
-				},
-
 				services: {
-					E5080B: {
-						title: 'Analizador de Red Vectorial ENA E5080B',
-						subtitle: 'El analizador de red ENA más integrado y flexible'
-					},
-					N5291A: {
-						title: 'Sistema Milimétrico PNA N5291A, 900 Hz a 120 GHz',
-						subtitle: 'Obtén versatilidad con un analizador de red de banda ancha de dos o cuatro puertos'
+					timeDomainMeasurement: {
+						title: 'Medición en dominio temporal',
+						subtitle:
+							'Nuestro laboratorio proporciona pruebas en dominio temporal utilizando un osciloscopio avanzado, lo que permite un análisis preciso de señales para sistemas digitales de alta velocidad, RF y de comunicación. Los servicios clave incluyen pruebas de integridad de señales, mediciones de tiempo de subida/bajada, análisis de diagramas de ojo y TDR (Reflectometría en dominio temporal). Apoyamos aplicaciones como depuración de PCB y caracterización de circuitos de alta frecuencia.'
 					}
 				}
 			},
-
 			antennaTestSystems: {
-				title: 'Sistemas de Pruebas de Antenas',
-				subtitle: 'Optimiza el rendimiento de las antenas con soluciones avanzadas de pruebas y medición.',
-
+				title: 'Sistemas de prueba de antenas',
+				subtitle: 'Optimice el rendimiento de las antenas con soluciones avanzadas de prueba y medición.',
+				description: {
+					'1': 'Pruebas en campo lejano (0.6-50GHz)',
+					'2': 'Pruebas en campo cercano (0.6-50GHz)',
+					'3': 'Pruebas en campo cercano milimétrico (75-110GHz)',
+					'4': 'Caracterización de antenas en chip (18-500GHz)'
+				},
 				specs: {
 					title: 'Título',
 					category: 'Categoría',
 					categories: 'Categorías',
 					frequency: 'Frecuencia'
 				},
-
 				categories: {
-					farField: 'Campo Lejano',
-					nearField: 'Campo Cercano',
-					onChip: 'En Chip'
+					farField: 'Campo lejano',
+					nearField: 'Campo cercano',
+					onChip: 'En chip'
 				},
-
 				services: {
-					AP1: { title: 'Producto 1' },
-					AP2: { title: 'Producto 2' },
-					AP3: { title: 'Producto 3' },
-					AP4: { title: 'Producto 4' }
+					farFieldTesting: { title: 'Pruebas en campo lejano' },
+					nearFieldTesting: { title: 'Pruebas en campo cercano' },
+					millimeterWaveNearField: { title: 'Campo cercano milimétrico' },
+					onChipAntennaCharacterization: { title: 'Caracterización de antenas en chip' }
 				}
 			},
-
 			circuitTestPlatforms: {
-				title: 'Plataformas de Pruebas de Circuitos mmWave/THz',
-				subtitle: 'Acelera el diseño y las pruebas de circuitos mmWave/THz con soluciones avanzadas de medición.',
-
+				title: 'Plataformas de prueba de circuitos mmWave/THz',
+				subtitle: 'Acelere el diseño y prueba de circuitos mmWave/THz con soluciones avanzadas de medición.',
+				description: {
+					'1': 'Prueba de parámetros S, hasta 110 GHz',
+					'2': 'Análisis del espectro de potencia',
+					'3': 'Medición de la integridad de señales'
+				},
 				specs: {
 					title: 'Título',
 					category: 'Categoría',
 					categories: 'Categorías',
 					frequency: 'Frecuencia'
 				},
-
 				categories: {
-					circuitTestPlatform: 'Plataforma de Pruebas de Circuitos mmWave/THz'
+					mmWaveCircuitTestPlatform: 'Plataforma de prueba de circuitos mmWave/THz'
 				},
-
 				services: {
-					CP1: { title: 'Producto 1' }
+					mmWaveCircuitTestPlatform: {
+						title: 'Plataforma de prueba de circuitos mmWave/THz',
+						subtitle:
+							'La plataforma de prueba de circuitos mmWave/THz está diseñada para la caracterización de alta frecuencia de circuitos y dispositivos integrados. Ofreciendo mediciones precisas en wafer hasta frecuencias sub-THz, presenta sondas RF avanzadas, un microscopio de alta resolución y blindaje EMI. Su diseño modular admite configuraciones escalables para pruebas de investigación y producción, permitiendo mediciones precisas de parámetros S, figura de ruido y potencia. Ideal para aplicaciones 5G, radar y terahercios, la plataforma garantiza resultados confiables y repetibles con alta estabilidad y mínima pérdida de señal, convirtiéndola en una solución versátil para la validación de dispositivos mmWave y THz de próxima generación.'
+					}
 				}
 			}
 		}

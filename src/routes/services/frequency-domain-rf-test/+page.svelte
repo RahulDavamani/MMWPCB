@@ -11,7 +11,7 @@
 	import { getValues } from '../utils/getValues';
 	import SectionHeader from '../components/SectionHeader.svelte';
 
-	$: section = $servicesStore.circuitTestPlatforms;
+	$: section = $servicesStore.frequencyDomainRFTest;
 	$: services = Object.values(section.services);
 	$: l = section.l;
 
@@ -35,7 +35,8 @@
 		.filter(({ l: { title }, category, minFrequency, maxFrequency }) => {
 			if (!title.toLowerCase().includes(filters.search.toLowerCase())) return false;
 			if (filters.categories.length && !filters.categories.includes(category)) return false;
-			if (filters.frequency[0] > minFrequency || filters.frequency[1] < maxFrequency) return false;
+			if (minFrequency < filters.frequency[0] || minFrequency > filters.frequency[1]) return false;
+			if (maxFrequency < filters.frequency[0] || maxFrequency > filters.frequency[1]) return false;
 			return true;
 		})
 		.sort((a, b) => sortServices(filters, a, b));
@@ -56,7 +57,7 @@
 				sortBys={[
 					{ title: l.specs.title, value: 'title' },
 					{ title: l.specs.category, value: 'category' },
-					{ title: l.specs.frequency, value: 'maxFrequency' }
+					{ title: l.specs.frequency, value: 'frequency' }
 				]}
 			/>
 
@@ -65,11 +66,11 @@
 					{@const { code, minFrequency, maxFrequency } = service}
 					<ProductCard
 						{service}
-						href="/services/{$servicesStore.circuitTestPlatforms.code}/{code}"
+						href="/services/{$servicesStore.frequencyDomainRFTest.code}/{code}"
 						specs={[
 							{
 								title: l.specs.frequency,
-								value: `${minFrequency} - ${maxFrequency} GHz`
+								value: `${minFrequency}GHz - ${maxFrequency}GHz`
 							}
 						]}
 					/>

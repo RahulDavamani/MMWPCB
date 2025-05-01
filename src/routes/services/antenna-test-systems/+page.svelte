@@ -62,10 +62,10 @@
 
 			<div class="grid grid-cols-3 gap-10 mt-6">
 				{#each filteredServices as service}
-					{@const { href, minFrequency, maxFrequency } = service}
+					{@const { code, minFrequency, maxFrequency } = service}
 					<ProductCard
 						{service}
-						href="/services{$servicesStore.antennaTestSystems.href}{href}"
+						href="/services/{$servicesStore.antennaTestSystems.code}/{code}"
 						specs={[
 							{
 								title: l.specs.frequency,

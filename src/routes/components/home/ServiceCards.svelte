@@ -6,7 +6,7 @@
 <div class="text-xl font-bold mb-2">Testing Services</div>
 
 <div class="grid grid-cols-4 gap-8 mt-8">
-	{#each Object.values($services) as { l, href, img, from, buildTime }}
+	{#each Object.values($services) as { code, l, img, from, buildTime }}
 		<button class="rounded-box shadow-lg grow p-4">
 			<div class="h-20 flex justify-center">
 				<img src={img} alt="icon" />
@@ -25,7 +25,7 @@
 				</ul>
 			</div>
 
-			<a href="/services{href}" class="btn btn-sm btn-primary w-full mt-4">Browse Our Solutions</a>
+			<a href="/services/{code}" class="btn btn-sm btn-primary w-full mt-4">Browse Our Solutions</a>
 		</button>
 	{/each}
 </div>

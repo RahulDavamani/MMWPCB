@@ -3399,121 +3399,116 @@ export const zh: Lang = {
 		},
 
 		sections: {
-			oscilloscopes: {
-				title: '示波器',
-				subtitle: '精准、轻松地可视化电信号波形。',
-
+			frequencyDomainRFTest: {
+				title: '频域射频测试',
+				subtitle: '精准轻松地可视化电信号波形。',
+				description: {
+					'1': 'S参数分析',
+					'2': '频谱相关测量',
+					'3': '材料特性分析'
+				},
 				specs: {
 					title: '标题',
 					category: '类别',
-					categories: '类别',
-					bandwidth: '带宽',
-					maxMemoryDepth: '最大存储深度',
-					maxSampleRate: '最大采样率',
-					type: '类型',
-					types: '类型'
-				},
-
-				categories: {
-					infiniiVision: 'InfiniiVision 示波器',
-					realTime: '实时示波器'
-				},
-
-				types: {
-					realTime: '实时'
-				},
-
-				services: {
-					HD304MSO: {
-						title: 'HD304MSO InfiniiVision 示波器：4 通道模拟输入',
-						subtitle: 'HD3 系列具有高分辨率、高精度、深存储、四个模拟通道，并且采用 200 MHz 至 1 GHz 的全新定制技术。'
-					},
-					DSOS804A: {
-						title: 'DSOS804A 高清示波器：8 GHz，4 通道模拟输入',
-						subtitle: 'DSOS804A S 系列示波器具有 8 GHz 带宽、15 英寸 XGA 电容触摸屏，以及 10 位模数转换器。'
-					}
-				}
-			},
-
-			networkAnalyzers: {
-				title: '网络分析仪',
-				subtitle: '通过可靠的数据分析和优化网络性能。',
-
-				specs: {
-					title: '标题',
-					category: '类别',
-					categories: '类别',
-					builtInPorts: '内置端口',
-					maxFrequency: '最大频率',
-					internalSources: '内部信号源',
-					vnaSeries: 'VNA 系列',
-					vnaType: 'VNA 类型',
-					vnaTypes: 'VNA 类型'
-				},
-
-				categories: {
-					ena: 'ENA 矢量网络分析仪',
-					pna: 'PNA 网络分析仪'
-				},
-
-				vnaTypes: {
-					benchtop: '台式'
-				},
-
-				services: {
-					E5080B: {
-						title: 'E5080B ENA 矢量网络分析仪',
-						subtitle: '最集成、最灵活的 ENA 网络分析仪'
-					},
-					N5291A: {
-						title: 'N5291A PNA 毫米波系统，900 Hz 至 120 GHz',
-						subtitle: '提供多功能性，可用于宽带双端口或四端口网络分析仪'
-					}
-				}
-			},
-
-			antennaTestSystems: {
-				title: '天线测试系统',
-				subtitle: '利用先进的测试和测量解决方案优化天线性能。',
-
-				specs: {
-					title: '标题',
-					category: '类别',
-					categories: '类别',
+					categories: '分类',
 					frequency: '频率'
 				},
-
+				categories: {
+					sParameterAnalysis: 'S参数分析',
+					spectrumRelatedMeasurements: '频谱相关测量',
+					materialCharacterization: '材料特性分析'
+				},
+				services: {
+					sParameterAnalysis: {
+						title: 'S参数分析',
+						subtitle:
+							'我们的实验室使用R&S®ZNA50矢量网络分析仪（10 MHz 至 50 GHz）提供高频器件与系统的S参数分析。凭借先进的校准技术和灵活的测量设置，我们为滤波器、放大器和天线等设备在研发、验证和生产测试中提供可靠数据。服务支持线性与非线性网络分析，优化无线通信、航空航天和半导体领域的性能。'
+					},
+					spectrumRelatedMeasurements: {
+						title: '频谱相关测量',
+						subtitle:
+							'我们的实验室使用R&S®FSW50信号与频谱分析仪（2 Hz – 50 GHz）提供高精度频谱分析。该设备具有卓越的相位噪声性能和超过165 dB的动态范围，可全面表征无线通信、航空航天和国防应用中的复杂信号。我们的测试服务为研发和生产验证提供准确高效的支持。'
+					},
+					materialCharacterization: {
+						title: '材料特性分析',
+						subtitle:
+							'我们的实验室使用材料特性分析套件（25GHz-40GHz）提供高频材料属性分析，为先进工程应用进行介电特性测试。该波导系统可对基材、复合材料和功能材料进行无损评估。服务支持5G器件开发、航空材料研究和半导体封装验证，在毫米波频率下可靠表征电磁特性。'
+					}
+				}
+			},
+			timeDomainMeasurement: {
+				title: '时域测量',
+				subtitle: '通过可靠的数据洞察分析并优化网络性能。',
+				description: {
+					'1': '时域反射测量（TDR）'
+				},
+				specs: {
+					title: '标题',
+					category: '类别',
+					categories: '分类',
+					maxFrequency: '最大频率'
+				},
+				categories: {
+					timeDomainMeasurement: '时域测量'
+				},
+				services: {
+					timeDomainMeasurement: {
+						title: '时域测量',
+						subtitle:
+							'我们的实验室使用先进示波器进行时域测试，可精确分析高速数字、射频及通信系统的信号。关键服务包括信号完整性测试、上升/下降时间测量、眼图分析和时域反射（TDR）。我们支持PCB调试和高频电路特性分析等应用。'
+					}
+				}
+			},
+			antennaTestSystems: {
+				title: '天线测试系统',
+				subtitle: '利用先进的测试与测量方案优化天线性能。',
+				description: {
+					'1': '远场测试（0.6-50GHz）',
+					'2': '近场测试（0.6-50GHz）',
+					'3': '毫米波近场测试（75-110GHz）',
+					'4': '芯片上天线特性分析（18-500GHz）'
+				},
+				specs: {
+					title: '标题',
+					category: '类别',
+					categories: '分类',
+					frequency: '频率'
+				},
 				categories: {
 					farField: '远场',
 					nearField: '近场',
 					onChip: '芯片级'
 				},
-
 				services: {
-					AP1: { title: '产品 1' },
-					AP2: { title: '产品 2' },
-					AP3: { title: '产品 3' },
-					AP4: { title: '产品 4' }
+					farFieldTesting: { title: '远场测试' },
+					nearFieldTesting: { title: '近场测试' },
+					millimeterWaveNearField: { title: '毫米波近场' },
+					onChipAntennaCharacterization: { title: '芯片级天线特性分析' }
 				}
 			},
-
 			circuitTestPlatforms: {
 				title: '毫米波/太赫兹电路测试平台',
-				subtitle: '利用先进的测量解决方案加速毫米波/太赫兹电路设计和测试。',
-
+				subtitle: '通过先进测量方案加速毫米波/太赫兹电路设计与测试。',
+				description: {
+					'1': 'S参数测试，最高至110 GHz',
+					'2': '功率频谱分析',
+					'3': '信号完整性测量'
+				},
 				specs: {
 					title: '标题',
 					category: '类别',
-					categories: '类别',
+					categories: '分类',
 					frequency: '频率'
 				},
-
 				categories: {
-					circuitTestPlatform: '毫米波/太赫兹电路测试平台'
+					mmWaveCircuitTestPlatform: '毫米波/太赫兹电路测试平台'
 				},
-
 				services: {
-					CP1: { title: '产品 1' }
+					mmWaveCircuitTestPlatform: {
+						title: '毫米波/太赫兹电路测试平台',
+						subtitle:
+							'该测试平台专为集成电路和器件的高频特性测试而设计，支持亚太赫兹频率下的精确片上测试，配备先进的射频探针系统、高分辨率显微镜和电磁屏蔽结构。模块化设计适用于研究和生产测试，可进行精确的S参数、噪声系数和功率测量。广泛应用于5G、雷达和太赫兹技术领域，平台具备高稳定性与低信号损耗，是新一代毫米波与太赫兹器件验证的理想选择。'
+					}
 				}
 			}
 		}
