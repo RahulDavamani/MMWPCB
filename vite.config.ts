@@ -5,6 +5,6 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	server: { port: 3000 },
 	preview: {
-		allowedHosts: ['www.mmwpcb.com']
+		allowedHosts: ['www.mmwpcb.com', 'pcb-xmib.onrender.com']
 	}
 });

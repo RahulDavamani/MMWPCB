@@ -9,7 +9,7 @@
 </script>
 
 <Layout pageTitle={$lg.home.pageTitle}>
-	<div slot="top-main">
+	<div slot="top-main" class="container mx-auto">
 		<Carousel />
 	</div>
 
