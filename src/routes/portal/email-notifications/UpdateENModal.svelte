@@ -51,8 +51,16 @@
 	});
 
 	$: variables = type?.startsWith('ORDER')
-		? ['OrderNumber', 'CustomerName', 'DeliveryDate', 'TrackingNumber', 'TrackingUrl']
-		: ['RequestNumber', 'CustomerName', 'ReportUrl'];
+		? [
+				'OrderNumber',
+				'CustomerName',
+				'DeliveryDate',
+				'QuotationUrl',
+				'PaymentReceiptUrl',
+				'TrackingNumber',
+				'TrackingUrl'
+			]
+		: ['RequestNumber', 'CustomerName', 'PaymentReceiptUrl', 'ReportUrl'];
 </script>
 
 <svelte:head>

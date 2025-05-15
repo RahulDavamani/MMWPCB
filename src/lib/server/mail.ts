@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import { OTP_EMAIL, OTP_PASSWORD } from '$env/static/private';
+import { BASE_URL, OTP_EMAIL, OTP_PASSWORD } from '$env/static/private';
 import type { ENType } from '../../trpc/routers/email-notification/emailNotification.router';
 import pe from '../../prisma/pe';
 import { supabase } from '$lib/client/supabase';
@@ -23,7 +23,7 @@ export const sendMail = async (mailOptions: nodemailer.SendMailOptions) => {
          >
             <div style="text-align: center;">
                <a
-                  href="https://www.mmwpcb.com/"
+                  href="${BASE_URL}"
                   style="font-size: 22px; font-weight: bold; font-family: serif; color: #162780; text-decoration: none;"
                >
                   MMWPCB
@@ -73,11 +73,16 @@ export const sendOrderMail = async (id: string, type: ENType) => {
 		})
 		.catch(pe);
 
+	const quotationUrl = BASE_URL + `/quotation/order?id=${id}`;
+	const paymentReceiptUrl = BASE_URL + `/payment-receipt/order?id=${id}`;
+
 	const replaceVariables = (val: string) =>
 		val
 			.replaceAll('{OrderNumber}', id)
 			.replaceAll('{CustomerName}', `${firstName} ${lastName}`)
 			.replaceAll('{DeliveryDate}', estDeliveryDate?.toString() ?? 'TBA')
+			.replaceAll('{QuotationUrl}', quotationUrl)
+			.replaceAll('{PaymentReceiptUrl}', paymentReceiptUrl)
 			.replaceAll('{TrackingNumber}', trackingNumber ?? 'TBA')
 			.replaceAll('{TrackingUrl}', trackingUrl ?? 'TBA');
 
@@ -102,6 +107,8 @@ export const sendServiceMail = async (id: string, type: ENType) => {
 		})
 		.catch(pe);
 
+	const paymentReceiptUrl = BASE_URL + `/payment-receipt/service-request?id=${id}`;
+
 	const reportUrl =
 		report && body.includes('{ReportUrl}')
 			? await supabase.storage
@@ -114,6 +121,7 @@ export const sendServiceMail = async (id: string, type: ENType) => {
 		val
 			.replaceAll('{RequestNumber}', id)
 			.replaceAll('{CustomerName}', `${firstName} ${lastName}`)
+			.replaceAll('{PaymentReceiptUrl}', paymentReceiptUrl)
 			.replaceAll('{ReportUrl}', reportUrl?.data?.signedUrl ?? 'TBA');
 
 	await sendMail({
