@@ -16,5 +16,5 @@ export const approve = adminProcedure.input(schema).mutation(async ({ input: { i
 		})
 		.catch(pe);
 
-	await sendServiceMail(id, 'SERVICE_CONFIRM_PAYMENT');
+	await sendServiceMail(id, 'SERVICE_APPROVE_REVIEW');
 });

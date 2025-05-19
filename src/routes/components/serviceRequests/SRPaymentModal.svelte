@@ -26,7 +26,7 @@
 			const existingScript = document.querySelector('script[src*="paypal.com/sdk/js"]');
 			if (existingScript) existingScript.remove();
 			const script = Object.assign(document.createElement('script'), {
-				src: `https://www.paypal.com/sdk/js?client-id=AWauFYr9jDEBWNMvvxUaATkjpSstcS1DSeMAdXn_NzQiwSM1CgZJW8h_KhopmdB76NqGWWzKs7-6Bovq&currency=${$i18n.currency.toUpperCase()}`,
+				src: `https://www.paypal.com/sdk/js?client-id=AbjZFBGRMpldJLqSfEQHY4eTInwfYysFo3mauPezn6GvOJ19jHtX8jkzbECWHDjnwMyGuLPhHG8JtBIg&currency=${$i18n.currency.toUpperCase()}`,
 				onload: resolve
 			});
 			document.body.appendChild(script);
