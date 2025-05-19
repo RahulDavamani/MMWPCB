@@ -16,32 +16,36 @@ const schema = z.object({
 	})
 });
 
-export const approveReview = userProcedure.input(schema).mutation(async ({ input: { id, products, shippingInfo } }) => {
-	await prisma.order
-		.update({
-			where: { id },
-			data: {
-				status: 'APPROVED',
-				timeline: { create: { action: 'APPROVE' } },
-				shippingInfo: { update: shippingInfo }
-			}
-		})
-		.catch(pe);
+export const approveReview = userProcedure
+	.input(schema)
+	.mutation(async ({ input: { id, weight, estDeliveryDate, products, shippingInfo } }) => {
+		await prisma.order
+			.update({
+				where: { id },
+				data: {
+					status: 'APPROVED',
+					weight,
+					estDeliveryDate,
+					timeline: { create: { action: 'APPROVE' } },
+					shippingInfo: { update: shippingInfo }
+				}
+			})
+			.catch(pe);
 
-	for (const [id, price] of Object.entries(products)) {
-		const finalPrice = Math.round(price * 100) / 100;
-		await prisma.standardPcb.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-		await prisma.advancedPcb.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-		await prisma.flexiblePcb.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-		await prisma.rigidFlex.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-		await prisma.assembly.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-		await prisma.stencil.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-		await prisma.cNC.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-		await prisma.sheetMetal.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-		await prisma.threePrinting.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-		await prisma.injectionMolding.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-		await prisma.vacuumCasting.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
-	}
+		for (const [id, price] of Object.entries(products)) {
+			const finalPrice = Math.round(price * 100) / 100;
+			await prisma.standardPcb.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+			await prisma.advancedPcb.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+			await prisma.flexiblePcb.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+			await prisma.rigidFlex.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+			await prisma.assembly.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+			await prisma.stencil.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+			await prisma.cNC.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+			await prisma.sheetMetal.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+			await prisma.threePrinting.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+			await prisma.injectionMolding.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+			await prisma.vacuumCasting.updateMany({ where: { id }, data: { finalPrice } }).catch(pe);
+		}
 
-	await sendOrderMail(id, 'ORDER_APPROVE_REVIEW');
-});
+		await sendOrderMail(id, 'ORDER_APPROVE_REVIEW');
+	});
