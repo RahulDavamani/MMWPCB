@@ -9,6 +9,19 @@ export const cancelReview = userProcedure.input(z.object({ id: z.string().min(1)
 				where: { id, userId: user.id },
 				data: {
 					status: 'SAVED',
+					weight: null,
+					estDeliveryDate: null,
+					standardPcbs: { updateMany: { where: {}, data: { finalPrice: null } } },
+					advancedPcbs: { updateMany: { where: {}, data: { finalPrice: null } } },
+					flexiblePcbs: { updateMany: { where: {}, data: { finalPrice: null } } },
+					rigidFlexes: { updateMany: { where: {}, data: { finalPrice: null } } },
+					assemblies: { updateMany: { where: {}, data: { finalPrice: null } } },
+					stencils: { updateMany: { where: {}, data: { finalPrice: null } } },
+					cncs: { updateMany: { where: {}, data: { finalPrice: null } } },
+					sheetMetals: { updateMany: { where: {}, data: { finalPrice: null } } },
+					threePrintings: { updateMany: { where: {}, data: { finalPrice: null } } },
+					injectionMoldings: { updateMany: { where: {}, data: { finalPrice: null } } },
+					vacuumCastings: { updateMany: { where: {}, data: { finalPrice: null } } },
 					timeline: { create: { action: 'CANCEL_REVIEW' } }
 				}
 			})

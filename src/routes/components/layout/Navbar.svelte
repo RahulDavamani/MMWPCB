@@ -7,6 +7,7 @@
 	import Icon from '@iconify/svelte';
 	import type { PageData } from '../../$types';
 	import NavItem from './navbar/NavItem.svelte';
+	import MMWPCBLogo from '$lib/assets/mmwpcb-logo.png';
 
 	$: l = $lg.navbar;
 	$: ({ user } = $page.data as PageData);
@@ -23,7 +24,10 @@
 <div id="navbar" class="navbar shadow-lg">
 	<div class="container mx-auto flex justify-between items-center">
 		<div class="flex items-center">
-			<a href="/" class="text-xl font-bold font-serif text-primary">MMWPCB</a>
+			<!-- <a href="/" class="text-xl font-bold font-serif text-primary">MMWPCB</a> -->
+			<a href="/" class=" mr-2">
+				<img src={MMWPCBLogo} alt="" width="100" />
+			</a>
 
 			{#each navItems as { title, href, menu }}
 				<NavItem {title} {href} {menu} />

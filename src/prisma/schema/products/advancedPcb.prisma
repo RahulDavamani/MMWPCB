@@ -125,19 +125,8 @@ enum APMaterial {
 enum APSolderMaskColor {
    GREEN
    RED
-   YELLOW
    BLUE
-   WHITE
    BLACK
-   PINK
-   GREY
-   ORANGE
-   PURPLE
-   MATTE_BLACK
-   MATTE_GREEN
-   MATTE_BLUE
-   MATTE_RED
-   TRANSPARENT
    NONE
 }
 

@@ -18,18 +18,7 @@ export const spRogers = z.enum(['ROGERS_5880', 'ROGERS_4350', 'ROGERS_4003']);
 
 export const spStructureMCPCB = z.enum(['METAL_CORE_MIDDLE', 'METAL_BASE_BOTTOM']);
 
-export const spSolderMaskColor = z.enum([
-	'GREEN',
-	'RED',
-	'YELLOW',
-	'BLUE',
-	'WHITE',
-	'BLACK',
-	'PURPLE',
-	'MATTE_BLACK',
-	'MATTE_GREEN',
-	'NONE'
-]);
+export const spSolderMaskColor = z.enum(['GREEN', 'RED', 'BLUE', 'BLACK', 'NONE']);
 
 export const spSilkscreenColor = z.enum(['WHITE', 'BLACK', 'YELLOW', 'NONE']);
 
@@ -110,7 +99,7 @@ export const standardPcbSchema = z.object({
 	silkscreenColor: spSilkscreenColor,
 	uvPrinting: spUVPrinting,
 	edgeConnector: z.boolean(),
-	surfaceFinish: z.string(),
+	surfaceFinish: z.string().min(1),
 	surfaceFinishLayer: spSurfaceFinishLayer,
 	surfaceThickness: z.number().nullish(),
 	acceptHASLChange: z.boolean().nullish(),

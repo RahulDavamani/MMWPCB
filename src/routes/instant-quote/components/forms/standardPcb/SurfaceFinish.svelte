@@ -32,13 +32,3 @@
 		</button>
 	</div>
 </FormItem>
-
-<div class="ml-44">
-	<FormControl inputType="In" label={pd.l.acceptHASLChange} labelClasses="text-sm text-secondary">
-		<input
-			type="checkbox"
-			class="checkbox checkbox-secondary checkbox-sm"
-			bind:checked={$quote.products.standardPcb.acceptHASLChange}
-		/>
-	</FormControl>
-</div>

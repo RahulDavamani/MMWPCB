@@ -1028,7 +1028,9 @@ export const en = {
 				title: 'Thickness',
 				description:
 					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking.If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.',
-				error: 'Thickness should be greater than 0'
+				error: 'Thickness should be greater than 0',
+				disclaimer:
+					'"Thickness" refers to the total finished thickness of the PCB. For detailed layer stack-up specifications, please refer to the website documentation. Note that the total thickness may have a ±10% tolerance due to manufacturing processes.'
 			},
 			minTrack: {
 				title: 'Min Track/Spacing',
@@ -1088,8 +1090,7 @@ export const en = {
 					enepig: 'ENEPIG',
 					plainCopper: 'Plain Copper / None'
 				},
-				acceptHASLChange:
-					'Tick means you accept we might change "HASL" to "ENIG" at our discretion without extra charge.'
+				disclaimer: 'Surface finish selection is required to protect copper from oxidation'
 			},
 			surfaceFinishLayer: {
 				title: 'Surface Finish Layer',
@@ -1477,7 +1478,9 @@ export const en = {
 				title: 'Thickness',
 				description:
 					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking. If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.',
-				error: 'Thickness should be greater than 0'
+				error: 'Thickness should be greater than 0',
+				disclaimer:
+					'"Thickness" refers to the total finished thickness of the PCB. For detailed layer stack-up specifications, please refer to the website documentation. Note that the total thickness may have a ±10% tolerance due to manufacturing processes.'
 			},
 			minTrack: {
 				title: 'Min Track/Spacing',
@@ -1514,7 +1517,8 @@ export const en = {
 					immersionTin: 'Immersion Tin',
 					enepig: 'ENEPIG',
 					plainCopper: 'Plain Copper / None'
-				}
+				},
+				disclaimer: 'Surface finish selection is required to protect copper from oxidation'
 			},
 			surfaceThickness: {
 				title: 'Surface Thickness',
@@ -1823,7 +1827,8 @@ export const en = {
 			thickness: {
 				title: 'FPC Thickness',
 				description: 'The FPC thickness does not include the thickness of stiffener and 3M tape.',
-				disclaimer: '*The FPC thickness does not include the thickness of stiffener and 3M tape.'
+				disclaimer:
+					'"Thickness" refers to the total finished thickness of the PCB. For detailed layer stack-up specifications, please refer to the website documentation. Note that the total thickness may have a ±10% tolerance due to manufacturing processes.'
 			},
 			minTrack: {
 				title: 'Min Track/Spacing',
@@ -1871,7 +1876,8 @@ export const en = {
 					immersionTin: 'Immersion Tin',
 					immersionGoldHardGold: 'Immersion gold + Selective hard gold',
 					enepig: 'ENEPIG'
-				}
+				},
+				disclaimer: 'Surface finish selection is required to protect copper from oxidation'
 			},
 			surfaceThickness: {
 				title: 'Surface Thickness',
@@ -2114,7 +2120,9 @@ export const en = {
 			},
 			thickness: {
 				title: 'Rigid-Flex Thickness',
-				description: 'Total thickness of rigid and flex layers'
+				description: 'Total thickness of rigid and flex layers',
+				disclaimer:
+					'"Thickness" refers to the total finished thickness of the PCB. For detailed layer stack-up specifications, please refer to the website documentation. Note that the total thickness may have a ±10% tolerance due to manufacturing processes.'
 			},
 			minTrack: {
 				title: 'Min track/spacing',
@@ -2133,7 +2141,8 @@ export const en = {
 					immersionGold: 'Immersion Gold (ENIG)',
 					osp: 'OSP',
 					immersionSilver: 'Immersion Silver (Ag)'
-				}
+				},
+				disclaimer: 'Surface finish selection is required to protect copper from oxidation'
 			},
 			surfaceThickness: {
 				title: 'Surface Thickness',

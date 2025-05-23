@@ -34,7 +34,7 @@ model FlexiblePcb {
    edgeConnector   Boolean
    stiffener       FPStiffener
 
-   surfaceFinish    FPSurfaceFinish
+   surfaceFinish    String
    surfaceThickness Float[]
    finishedCopper   Float
 

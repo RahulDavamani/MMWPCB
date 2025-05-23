@@ -99,9 +99,15 @@ export const order = derived(
 		const showFabrication = ['FABRICATION', 'DELIVERY', 'COMPLETED'].includes(status);
 
 		const totalInitialPrice = selectedProducts.reduce((acc, cur) => acc + (cur.initialPrice ?? 0), 0);
-		const totalFinalPrice = products.reduce((acc, cur) => acc + (cur.finalPrice ?? 0), 0);
+		const totalFinalPrice = products.reduce(
+			(acc, cur) => acc + ($orderApproveData.products[cur.id] ?? cur.finalPrice ?? 0),
+			0
+		);
 
-		const totalItemsPrice = selectedProducts[0]?.finalPrice ? totalFinalPrice : totalInitialPrice;
+		const totalItemsPrice =
+			selectedProducts[0]?.finalPrice || Object.values($orderApproveData.products).length > 0
+				? totalFinalPrice
+				: totalInitialPrice;
 		const shippingPrice = $orderApproveData.shippingInfo.price ?? 0;
 
 		const discountPrice = (() => {

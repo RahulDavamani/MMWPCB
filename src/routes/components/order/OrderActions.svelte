@@ -118,9 +118,7 @@
 					Proceed to Payment
 				</button>
 				<div class="divider m-2">OR</div>
-				<button class="btn btn-outline btn-primary btn-sm w-full" on:click={submitReview}>
-					Submit Again For Review
-				</button>
+				<button class="btn btn-outline btn-error btn-sm w-full" on:click={cancelReview}>Cancel Review</button>
 			{/if}
 		{:else if status === 'PENDING'}
 			{#if isPortal}

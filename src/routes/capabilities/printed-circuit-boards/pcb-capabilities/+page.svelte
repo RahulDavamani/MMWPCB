@@ -73,8 +73,6 @@
 				<li>High-frequency material handling (e.g., Rogers).</li>
 				<li>HDI designs with microvias and via-in-pad.</li>
 			</ul>
-
-			<p class="text-gray-600">With our advanced manufacturing processes and s</p>
 		</div>
 	</Layout>
 {:else if lang === 'zh'}
@@ -138,8 +136,6 @@
 				<li>高频材料处理（例如Rogers）。</li>
 				<li>带微孔和埋孔设计的HDI。</li>
 			</ul>
-
-			<p class="text-gray-600">凭借我们先进的制造工艺和专业知识，...</p>
 		</div>
 	</Layout>
 {:else if $i18n.language === 'fr'}
@@ -212,8 +208,6 @@
 				<li>Gestion des matériaux haute fréquence (par ex. Rogers).</li>
 				<li>Conceptions HDI avec microvias et vias dans les pastilles.</li>
 			</ul>
-
-			<p class="text-gray-600">Avec nos processus de fabrication avancés et...</p>
 		</div>
 	</Layout>
 {:else}
@@ -287,8 +281,6 @@
 				<li>Manejo de materiales de alta frecuencia (por ejemplo, Rogers).</li>
 				<li>Diseños HDI con microvías y vías en las almohadillas.</li>
 			</ul>
-
-			<p class="text-gray-600">Con nuestros procesos de fabricación avanzados...</p>
 		</div>
 	</Layout>
 {/if}

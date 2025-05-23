@@ -170,7 +170,7 @@
 											<span>x</span>
 										</div>
 
-										{#await import(`$lib/assets/products/${productType.img}.png`) then { default: src }}
+										{#await import(`$lib/assets/products/${productType.img}.jpg`) then { default: src }}
 											<img {src} alt="icon" width={45} class="mx-5" />
 										{/await}
 

@@ -97,7 +97,7 @@
 							{/if}
 							<td class="px-0">
 								<div class="flex justify-center">
-									{#await import(`$lib/assets/products/${type.img}.png`) then { default: src }}
+									{#await import(`$lib/assets/products/${type.img}.jpg`) then { default: src }}
 										<img {src} alt="icon" width={45} />
 									{/await}
 								</div>

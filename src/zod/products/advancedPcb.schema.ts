@@ -30,24 +30,7 @@ export const apMaterial = z.enum([
 	'SPECIAL_MATERIAL'
 ]);
 
-export const apSolderMaskColor = z.enum([
-	'GREEN',
-	'RED',
-	'YELLOW',
-	'BLUE',
-	'WHITE',
-	'BLACK',
-	'PINK',
-	'GREY',
-	'ORANGE',
-	'PURPLE',
-	'MATTE_BLACK',
-	'MATTE_GREEN',
-	'MATTE_BLUE',
-	'MATTE_RED',
-	'TRANSPARENT',
-	'NONE'
-]);
+export const apSolderMaskColor = z.enum(['GREEN', 'RED', 'BLUE', 'BLACK', 'NONE']);
 
 export const apSilkscreenColor = z.enum(['WHITE', 'BLACK', 'YELLOW', 'BLUE', 'GREY', 'NONE']);
 
@@ -127,7 +110,7 @@ export const advancedPcbSchema = z.object({
 	solderMaskColor: apSolderMaskColor,
 	silkscreenColor: apSilkscreenColor,
 	edgeConnector: z.boolean(),
-	surfaceFinish: z.string(),
+	surfaceFinish: z.string().min(1),
 	surfaceThickness: z.array(z.number()),
 	finishedCopper: z.number(),
 	innerCopper: z.number().nullish(),

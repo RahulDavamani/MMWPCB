@@ -398,7 +398,10 @@ export const quotePrice = derived(quote, ($quote) => {
 			chargeDetails = [{ name: 'PCB Price', price: null }];
 			total = null;
 		} else {
-			chargeDetails = chargeDetails.map((charge) => ({ ...charge, price: (charge.price ?? 0) * area }));
+			chargeDetails = chargeDetails.map((charge) => ({
+				...charge,
+				price: charge.name === 'Material Price' ? (charge.price ?? 0) * area : (charge.price ?? 0)
+			}));
 			total = chargeDetails.reduce((acc, charge) => acc + (charge.price ?? 0), 0);
 		}
 

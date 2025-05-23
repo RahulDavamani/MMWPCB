@@ -14,7 +14,7 @@
          {productType !== key && 'btn-outline'}"
 			on:click={() => selectProduct(key)}
 		>
-			{#await import(`$lib/assets/products/${img}.png`) then { default: src }}
+			{#await import(`$lib/assets/products/${img}.jpg`) then { default: src }}
 				<img {src} alt="icon" width={45} />
 			{/await}
 			{title}
@@ -29,7 +29,7 @@
          {productType !== key && 'btn-outline'}"
 			on:click={() => selectProduct(key)}
 		>
-			{#await import(`$lib/assets/products/${img}.png`) then { default: src }}
+			{#await import(`$lib/assets/products/${img}.jpg`) then { default: src }}
 				<img {src} alt="icon" width={45} />
 			{/await}
 			{title}

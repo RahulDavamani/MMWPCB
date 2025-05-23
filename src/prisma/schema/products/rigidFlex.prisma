@@ -28,7 +28,7 @@ model RigidFlex {
    minTrack    Float
    minHoleSize Float
 
-   surfaceFinish    RFSurfaceFinish
+   surfaceFinish    String
    surfaceThickness Float[]
 
    edgeConnector Boolean

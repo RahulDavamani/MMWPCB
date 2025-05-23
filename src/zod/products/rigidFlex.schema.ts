@@ -6,8 +6,6 @@ const RFRouteProcess = z.enum(['VELENOVA_PREFER', 'V_SCORING', 'TAB_ROUTE', 'V_S
 
 const RFMaterial = z.enum(['POLYIMIDE_FLEX_FR4']);
 
-const RFSurfaceFinish = z.enum(['IMMERSION_GOLD', 'OSP', 'IMMERSION_SILVER']);
-
 const RFCoverlay = z.enum(['YELLOW_COVERLAY', 'WHITE_COVERLAY', 'BLACK_COVERLAY', 'NONE']);
 
 const RFSolderMaskColor = z.enum([
@@ -77,7 +75,7 @@ export const rigidFlexSchema = z.object({
 	thickness: z.number(),
 	minTrack: z.number(),
 	minHoleSize: z.number(),
-	surfaceFinish: RFSurfaceFinish,
+	surfaceFinish: z.string().min(1),
 	surfaceThickness: z.array(z.number()),
 	edgeConnector: z.boolean(),
 	fpcLayers: z.number(),

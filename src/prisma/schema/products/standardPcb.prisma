@@ -131,13 +131,8 @@ enum spStructureMCPCB {
 enum SPSolderMaskColor {
    GREEN
    RED
-   YELLOW
    BLUE
-   WHITE
    BLACK
-   PURPLE
-   MATTE_BLACK
-   MATTE_GREEN
    NONE
 }
 

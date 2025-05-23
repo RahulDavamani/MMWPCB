@@ -88,6 +88,17 @@ export const capabilities = derived(i18n, ({ language: l }) => {
 								? 'Processus de production'
 								: 'Proceso de producción',
 				href: '/printed-circuit-boards/production-process'
+			},
+			downloadCenter: {
+				title:
+					l === 'en'
+						? 'Download Center'
+						: l === 'zh'
+							? '下载中心'
+							: l === 'fr'
+								? 'Centre de téléchargement'
+								: 'Centro de descargas',
+				href: '/printed-circuit-boards/download-center'
 			}
 		}
 	};

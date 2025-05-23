@@ -203,7 +203,7 @@ export const rigidFlexDetails = (lg: Lang) => {
 			key: 'surfaceFinish',
 			l: l.surfaceFinish,
 			values,
-			parseValue: (val: RigidFlex['surfaceFinish']) => values.find((v) => v.value === val)?.title
+			parseValue: (val: RigidFlex['surfaceFinish']) => values.find((v) => v.value === val)?.title ?? val
 		};
 	})();
 

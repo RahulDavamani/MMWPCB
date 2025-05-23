@@ -304,7 +304,7 @@ export const flexiblePcbDetails = (lg: Lang) => {
 			key: 'surfaceFinish',
 			l: l.surfaceFinish,
 			values,
-			parseValue: (val: FlexiblePcb['surfaceFinish']) => values.find((v) => v.value === val)?.title
+			parseValue: (val: FlexiblePcb['surfaceFinish']) => values.find((v) => v.value === val)?.title ?? val
 		};
 	})();
 

@@ -14,16 +14,6 @@ export const fpSilkscreenColor = z.enum(['WHITE', 'BLACK', 'NONE']);
 
 export const fpStiffener = z.enum(['TOP_SIDE', 'BOTTOM_SIDE', 'BOTH_SIDES', 'NONE']);
 
-export const fpSurfaceFinish = z.enum([
-	'IMMERSION_GOLD',
-	'OSP',
-	'HARD_GOLD',
-	'IMMERSION_SILVER',
-	'IMMERSION_TIN',
-	'IMMERSION_GOLD_SELECTIVE_HARD_GOLD',
-	'ENEPIG'
-]);
-
 export const fpTape = z.enum(['THREEM_467', 'TESA_8853', 'TESA_8854', 'THREEM_9495LE', 'NONE']);
 
 export const fpDoubleSidedTape = z.enum(['HT_A1134', 'NONE']);
@@ -82,7 +72,7 @@ export const flexiblePcbSchema = z.object({
 	silkscreenColor: fpSilkscreenColor,
 	edgeConnector: z.boolean(),
 	stiffener: fpStiffener,
-	surfaceFinish: fpSurfaceFinish,
+	surfaceFinish: z.string().min(1),
 	surfaceThickness: z.array(z.number()),
 	finishedCopper: z.number(),
 	etest: z.boolean(),
