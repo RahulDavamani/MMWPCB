@@ -980,7 +980,9 @@ export const zh: Lang = {
 				title: '厚度',
 				description:
 					'对于普通材料，板的厚度指PCB生产完成后的厚度，误差约为10%（+/-10%（T>=1mm）或+/-0.1mm（T<1mm）。）。误差主要由焊膏和铜沉积造成。如果对厚度误差有其他要求，请在其他特殊要求中备注。注意：对于单面/双面Rogers板，厚度指的是基板的厚度。',
-				error: '厚度应大于 0'
+				error: '厚度应大于 0',
+				disclaimer:
+					'“厚度”指的是 PCB 的最终总厚度。有关详细的层叠结构规格，请参阅网站文档。请注意，由于制造工艺，总厚度可能存在 ±10% 的公差。'
 			},
 			minTrack: {
 				title: '最小轨道/间距',
@@ -1038,7 +1040,7 @@ export const zh: Lang = {
 					enepig: 'ENEPIG',
 					plainCopper: '普通铜 / 无'
 				},
-				acceptHASLChange: '勾选表示您接受我们可能会在不收取额外费用的情况下将“HASL”更改为“ENIG”。'
+				disclaimer: '选择表面处理是为了防止铜氧化'
 			},
 			surfaceFinishLayer: {
 				title: '表面处理层',
@@ -1414,7 +1416,9 @@ export const zh: Lang = {
 				title: '厚度',
 				description:
 					'对于普通材料，电路板的厚度是指生产完成后的PCB厚度，误差约为10%（+/-10%（T>=1mm）或+/-0.1mm（T<1mm）。误差主要由焊膏和铜下沉造成。如果对厚度误差有其他要求，请在其他特殊要求中注明。注意：对于单面/双面Rogers电路板，厚度指的是基材的厚度。',
-				error: '厚度应大于 0'
+				error: '厚度应大于 0',
+				disclaimer:
+					'“厚度”指的是 PCB 的最终总厚度。有关详细的层叠结构规格，请参阅网站文档。请注意，由于制造工艺，总厚度可能存在 ±10% 的公差。'
 			},
 			minTrack: {
 				title: '最小轨距/间距',
@@ -1450,7 +1454,8 @@ export const zh: Lang = {
 					immersionTin: '浸锡',
 					enepig: 'ENEPIG',
 					plainCopper: '裸铜/无'
-				}
+				},
+				disclaimer: '选择表面处理是为了防止铜氧化'
 			},
 			surfaceThickness: {
 				title: '表面厚度',
@@ -1751,7 +1756,8 @@ export const zh: Lang = {
 			thickness: {
 				title: 'FPC 厚度',
 				description: 'FPC 的厚度不包括加固材料和 3M 胶带的厚度。',
-				disclaimer: '*FPC 的厚度不包括加固材料和 3M 胶带的厚度。'
+				disclaimer:
+					'“厚度”指的是 PCB 的最终总厚度。有关详细的层叠结构规格，请参阅网站文档。请注意，由于制造工艺，总厚度可能存在 ±10% 的公差。'
 			},
 			minTrack: {
 				title: '最小线路宽度/间距',
@@ -1797,7 +1803,8 @@ export const zh: Lang = {
 					immersionTin: '浸锡',
 					immersionGoldHardGold: '浸金 + 选择性硬金',
 					enepig: 'ENEPIG'
-				}
+				},
+				disclaimer: '选择表面处理是为了防止铜氧化'
 			},
 			surfaceThickness: {
 				title: '表面厚度',
@@ -2035,7 +2042,9 @@ export const zh: Lang = {
 			},
 			thickness: {
 				title: '硬柔性厚度',
-				description: '刚性和柔性层的总厚度'
+				description: '刚性和柔性层的总厚度',
+				disclaimer:
+					'“厚度”指的是 PCB 的最终总厚度。有关详细的层叠结构规格，请参阅网站文档。请注意，由于制造工艺，总厚度可能存在 ±10% 的公差。'
 			},
 			minTrack: {
 				title: '最小轨迹/间距',
@@ -2053,7 +2062,8 @@ export const zh: Lang = {
 					immersionGold: '沉金（ENIG）',
 					osp: 'OSP',
 					immersionSilver: '沉银（Ag）'
-				}
+				},
+				disclaimer: '选择表面处理是为了防止铜氧化'
 			},
 			surfaceThickness: {
 				title: '表面厚度',
@@ -3527,6 +3537,7 @@ export const zh: Lang = {
 		updatedAt: '更新时间',
 		service: '服务',
 		status: '状态',
+		estDeliveryDate: '预计送达日期',
 		price: '价格',
 		payNow: '立即支付',
 		paymentSuccess: '支付成功',

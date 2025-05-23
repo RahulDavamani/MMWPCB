@@ -107,6 +107,7 @@ export const sendServiceMail = async (id: string, type: ENType) => {
 		})
 		.catch(pe);
 
+	const quotationUrl = BASE_URL + `/quotation/service-request?id=${id}`;
 	const paymentReceiptUrl = BASE_URL + `/payment-receipt/service-request?id=${id}`;
 
 	const reportUrl =
@@ -121,6 +122,7 @@ export const sendServiceMail = async (id: string, type: ENType) => {
 		val
 			.replaceAll('{RequestNumber}', id)
 			.replaceAll('{CustomerName}', `${firstName} ${lastName}`)
+			.replaceAll('{QuotationUrl}', quotationUrl)
 			.replaceAll('{PaymentReceiptUrl}', paymentReceiptUrl)
 			.replaceAll('{ReportUrl}', reportUrl?.data?.signedUrl ?? 'TBA');
 

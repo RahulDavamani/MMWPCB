@@ -1017,7 +1017,9 @@ export const es: Lang = {
 				title: 'Espesor',
 				description:
 					'Para materiales ordinarios, el grosor de la placa se refiere al grosor del PCB una vez completada la producción, y el error es de aproximadamente un 10% (+/-10% (T>=1mm) o +/- 0.1mm (T<1mm)). El error se debe principalmente al máscara de soldadura y la deposición de cobre. Si hay otros requisitos para el error de espesor, por favor haga una nota en Otros requisitos especiales. Nota: Para la placa Rogers de un solo/doble cara, el grosor se refiere al grosor del sustrato.',
-				error: 'El grosor debe ser mayor que 0'
+				error: 'El grosor debe ser mayor que 0',
+				disclaimer:
+					'“Espesor” se refiere al espesor total final del PCB. Para especificaciones detalladas del apilamiento de capas, consulte la documentación del sitio web. Tenga en cuenta que el espesor total puede tener una tolerancia de ±10 % debido a los procesos de fabricación.'
 			},
 			minTrack: {
 				title: 'Min Track/Espaciado',
@@ -1078,8 +1080,7 @@ export const es: Lang = {
 					enepig: 'ENEPIG',
 					plainCopper: 'Cobre desnudo / Ninguno'
 				},
-				acceptHASLChange:
-					'Marcar significa que acepta que podemos cambiar "HASL" a "ENIG" a nuestra discreción sin cargo adicional.'
+				disclaimer: 'Se requiere seleccionar un acabado de superficie para proteger el cobre de la oxidación'
 			},
 			surfaceFinishLayer: {
 				title: 'Capa de acabado de superficie',
@@ -1473,7 +1474,9 @@ export const es: Lang = {
 				title: 'Grosor',
 				description:
 					'Para materiales ordinarios, el grosor de la placa se refiere al grosor de la PCB una vez completada la producción, y el error es de aproximadamente 10% (+/-10% (T>=1mm) o +/- 0.1mm (T<1mm)). El error se debe principalmente a la máscara de soldadura y el hundimiento de cobre. Si hay otros requisitos para el error de grosor, por favor haga una nota en Otros Requisitos Especiales. Nota: Para placas de Rogers de un solo lado/dos lados, el grosor se refiere al grosor del sustrato.',
-				error: 'El grosor debe ser mayor que 0'
+				error: 'El grosor debe ser mayor que 0',
+				disclaimer:
+					'“Espesor” se refiere al espesor total final del PCB. Para especificaciones detalladas del apilamiento de capas, consulte la documentación del sitio web. Tenga en cuenta que el espesor total puede tener una tolerancia de ±10 % debido a los procesos de fabricación.'
 			},
 			minTrack: {
 				title: 'Min Track/Espaciado',
@@ -1511,7 +1514,8 @@ export const es: Lang = {
 					immersionTin: 'Estaño de Inmersión',
 					enepig: 'ENEPIG',
 					plainCopper: 'Cobre Simple / Ninguno'
-				}
+				},
+				disclaimer: 'Se requiere seleccionar un acabado de superficie para proteger el cobre de la oxidación'
 			},
 			surfaceThickness: {
 				title: 'Grosor de Superficie',
@@ -1824,7 +1828,8 @@ export const es: Lang = {
 			thickness: {
 				title: 'Espesor de FPC',
 				description: 'El espesor del FPC no incluye el espesor del refuerzo y de la cinta 3M.',
-				disclaimer: '*El espesor del FPC no incluye el espesor del refuerzo y de la cinta 3M.'
+				disclaimer:
+					'“Espesor” se refiere al espesor total final del PCB. Para especificaciones detalladas del apilamiento de capas, consulte la documentación del sitio web. Tenga en cuenta que el espesor total puede tener una tolerancia de ±10 % debido a los procesos de fabricación.'
 			},
 			minTrack: {
 				title: 'Min. Ancho/Separación',
@@ -1872,7 +1877,8 @@ export const es: Lang = {
 					immersionTin: 'Estaño por inmersión',
 					immersionGoldHardGold: 'Oro por inmersión + Oro duro selectivo',
 					enepig: 'ENEPIG'
-				}
+				},
+				disclaimer: 'Se requiere seleccionar un acabado de superficie para proteger el cobre de la oxidación'
 			},
 			surfaceThickness: {
 				title: 'Espesor de superficie',
@@ -2117,7 +2123,9 @@ export const es: Lang = {
 			},
 			thickness: {
 				title: 'Espesor Rigid-Flex',
-				description: 'Espesor total de las capas rígidas y flexibles'
+				description: 'Espesor total de las capas rígidas y flexibles',
+				disclaimer:
+					'“Espesor” se refiere al espesor total final del PCB. Para especificaciones detalladas del apilamiento de capas, consulte la documentación del sitio web. Tenga en cuenta que el espesor total puede tener una tolerancia de ±10 % debido a los procesos de fabricación.'
 			},
 			minTrack: {
 				title: 'Min Track/Espaciado',
@@ -2137,7 +2145,8 @@ export const es: Lang = {
 					immersionGold: 'Oro de Inmersión (ENIG)',
 					osp: 'OSP',
 					immersionSilver: 'Plata de Inmersión (Ag)'
-				}
+				},
+				disclaimer: 'Se requiere seleccionar un acabado de superficie para proteger el cobre de la oxidación'
 			},
 			surfaceThickness: {
 				title: 'Espesor de Superficie',
@@ -3686,6 +3695,7 @@ export const es: Lang = {
 		updatedAt: 'Actualizado el',
 		service: 'Servicio',
 		status: 'Estado',
+		estDeliveryDate: 'Fecha de entrega estimada',
 		price: 'Precio',
 		payNow: 'Pagar ahora',
 		paymentSuccess: 'Pago exitoso',

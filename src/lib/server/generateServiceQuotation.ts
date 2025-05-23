@@ -1,65 +1,38 @@
 import PDFDocument from 'pdfkit';
 import { PassThrough } from 'stream';
 import pe from '../../prisma/pe';
-import { standardPcbDetails } from '../../stores/utils/product/standardPcbDetails';
+import { frequencyDomainRFTest } from '../../stores/utils/service/frequencyDomainRFTest';
 import { en } from '$lib/locales/en';
+import { timeDomainMeasurement } from '../../stores/utils/service/timeDomainMeasurement';
+import { antennaTestSystems } from '../../stores/utils/service/antennaTestSystems';
+import { circuitTestPlatforms } from '../../stores/utils/service/circuitTestPlatforms';
 
-export const generateQuotation = async (id: string) => {
-	const {
-		createdAt,
-		user: { firstName, lastName, email, phone },
-		estDeliveryDate,
-		standardPcbs,
-		advancedPcbs,
-		flexiblePcbs,
-		rigidFlexes,
-		assemblies,
-		stencils,
-		cncs,
-		sheetMetals,
-		threePrintings,
-		injectionMoldings,
-		vacuumCastings,
-		shippingInfo
-	} = await prisma.order
-		.findUniqueOrThrow({
-			where: { id },
-			select: {
-				createdAt: true,
-				user: { select: { firstName: true, lastName: true, email: true, phone: true } },
-				estDeliveryDate: true,
-				standardPcbs: true,
-				advancedPcbs: true,
-				flexiblePcbs: true,
-				rigidFlexes: true,
-				assemblies: true,
-				stencils: true,
-				cncs: true,
-				sheetMetals: true,
-				threePrintings: true,
-				injectionMoldings: true,
-				vacuumCastings: true,
-				shippingInfo: { select: { price: true } }
-			}
-		})
-		.catch(pe);
+export const generateServiceQuotation = async (id: string) => {
+	const { createdAt, serviceCode, company, firstName, lastName, email, phone, estDeliveryDate, price } =
+		await prisma.service
+			.findUniqueOrThrow({
+				where: { id },
+				select: {
+					createdAt: true,
+					serviceCode: true,
+					company: true,
+					firstName: true,
+					lastName: true,
+					email: true,
+					phone: true,
+					estDeliveryDate: true,
+					price: true
+				}
+			})
+			.catch(pe);
 
-	const products = [
-		standardPcbs,
-		advancedPcbs,
-		flexiblePcbs,
-		rigidFlexes,
-		assemblies,
-		stencils,
-		cncs,
-		sheetMetals,
-		threePrintings,
-		injectionMoldings,
-		vacuumCastings
-	].flat();
-
-	const itemsPrice = products.reduce((acc, cur) => acc + (cur.finalPrice ?? 0), 0);
-	const shippingPrice = shippingInfo?.price ?? 0;
+	const services = [
+		...Object.values(frequencyDomainRFTest(en.services.sections.frequencyDomainRFTest).services),
+		...Object.values(timeDomainMeasurement(en.services.sections.timeDomainMeasurement).services),
+		...Object.values(antennaTestSystems(en.services.sections.antennaTestSystems).services),
+		...Object.values(circuitTestPlatforms(en.services.sections.circuitTestPlatforms).services)
+	];
+	const serviceTitle = services.find((s) => s.code === serviceCode)?.l.title;
 
 	const doc = new PDFDocument({ margin: 50 });
 	const stream = new PassThrough();
@@ -87,63 +60,21 @@ export const generateQuotation = async (id: string) => {
 			.text(value)
 			.moveDown(0.1);
 
-	const table = (details: unknown, product: object) => {
-		// @ts-ignore
-		field('Product Name', product.name);
-
-		let rowY = doc.y + 10;
-		Object.entries(product).forEach((row) => {
-			// @ts-ignore
-			const parseValue = details(en)[row[0]]?.parseValue;
-
-			if (rowY + 20 > doc.page.height - 50) {
-				doc.addPage();
-				rowY = 50;
-			}
-
-			doc.rect(50, rowY, 240, 20).stroke();
-			doc.font('Helvetica-Bold');
-			doc.text(row[0], 55, rowY + 5, { width: 230, height: 20 });
-
-			doc.rect(290, rowY, 240, 20).stroke();
-			doc.font('Helvetica');
-			doc.text(parseValue ? parseValue(row[1]) : (row[1] ?? '-'), 295, rowY + 5, { width: 230, height: 20 });
-
-			rowY += 20;
-		});
-		doc.x = 50;
-		gap(3);
-	};
-
-	header('PCB | 3D Printing Quotation');
+	header('Testing Services Quotation');
 	field('Quotation No.', `#${id}`);
 	field('Date', createdAt.toLocaleDateString());
 	divider();
 
 	title('Customer Information');
+	field('Company', `${company}`);
 	field('Contact Person', `${firstName} ${lastName}`);
 	field('Phone', `${phone}`);
 	field('Email', `${email}`);
 	divider();
 
-	title('Product Specifications');
-	standardPcbs.forEach((product) => table(standardPcbDetails, product));
-	advancedPcbs.forEach((product) => table(standardPcbDetails, product));
-	flexiblePcbs.forEach((product) => table(standardPcbDetails, product));
-	rigidFlexes.forEach((product) => table(standardPcbDetails, product));
-	assemblies.forEach((product) => table(standardPcbDetails, product));
-	stencils.forEach((product) => table(standardPcbDetails, product));
-	cncs.forEach((product) => table(standardPcbDetails, product));
-	sheetMetals.forEach((product) => table(standardPcbDetails, product));
-	threePrintings.forEach((product) => table(standardPcbDetails, product));
-	injectionMoldings.forEach((product) => table(standardPcbDetails, product));
-	vacuumCastings.forEach((product) => table(standardPcbDetails, product));
-	divider();
-
 	title('Quotation Details');
-	field('Items Cost', `$${itemsPrice.toFixed(2)}`);
-	field('Shipping Cost', `$${shippingPrice.toFixed(2)}`);
-	field('Total Amount', `$${(itemsPrice + shippingPrice).toFixed(2)}`);
+	field('Service', `${serviceTitle}`);
+	field('Cost', `$${price?.toFixed(2)}`);
 	gap(0.5);
 	text('Taxes and related charges are not included.');
 	divider();

@@ -3,9 +3,6 @@ model Service {
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 
-   userId String
-   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
    status ServiceStatus
 
    serviceCode         String
@@ -16,7 +13,11 @@ model Service {
    phone               String
    testingRequirements String
    price               Float?
+   estDeliveryDate     DateTime?
    report              String?
+
+   userId String
+   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
    paymentInfo   ServicePaymentInfo?
    notifications ServiceNotification[]

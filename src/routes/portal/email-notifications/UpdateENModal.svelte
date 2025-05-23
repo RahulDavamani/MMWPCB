@@ -60,7 +60,7 @@
 				'TrackingNumber',
 				'TrackingUrl'
 			]
-		: ['RequestNumber', 'CustomerName', 'PaymentReceiptUrl', 'ReportUrl'];
+		: ['RequestNumber', 'CustomerName', 'QuotationUrl', 'PaymentReceiptUrl', 'ReportUrl'];
 </script>
 
 <svelte:head>

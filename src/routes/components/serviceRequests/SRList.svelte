@@ -98,9 +98,9 @@
 							<th>{l.createdBy}</th>
 						{/if}
 						<th>{l.createdAt}</th>
-						<th>{l.updatedAt}</th>
 						<th>{l.service}</th>
 						<th>{l.status}</th>
+						<th>{l.estDeliveryDate}</th>
 						<th class="text-center">{l.price}</th>
 						<th></th>
 					</tr>

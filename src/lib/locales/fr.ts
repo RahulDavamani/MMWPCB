@@ -1053,7 +1053,9 @@ export const fr: Lang = {
 				title: 'Épaisseur',
 				description:
 					"Pour les matériaux ordinaires, l'épaisseur de la carte fait référence à l'épaisseur du PCB une fois la production terminée, et l'erreur est d'environ 10 % (+/-10 % (T>=1mm) ou +/- 0,1mm (T<1mm)). L'erreur est principalement causée par le masque de soudure et la déposition de cuivre. S'il y a d'autres exigences concernant l'erreur d'épaisseur, veuillez le noter dans Autres exigences spéciales. Remarque : Pour une carte Rogers simple/double face, l'épaisseur fait référence à l'épaisseur du substrat.",
-				error: "L'épaisseur doit être supérieure à 0"
+				error: "L'épaisseur doit être supérieure à 0",
+				disclaimer:
+					'“Épaisseur” fait référence à l’épaisseur totale finale du PCB. Pour des spécifications détaillées de l’empilement des couches, veuillez consulter la documentation du site. Notez que l’épaisseur totale peut avoir une tolérance de ±10 % en raison des procédés de fabrication.'
 			},
 			minTrack: {
 				title: 'Min Track/Espacement',
@@ -1114,8 +1116,7 @@ export const fr: Lang = {
 					enepig: 'ENEPIG',
 					plainCopper: 'Cuivre nu / Aucun'
 				},
-				acceptHASLChange:
-					"Cocher signifie que vous acceptez que nous puissions changer 'HASL' en 'ENIG' à notre discrétion sans frais supplémentaires."
+				disclaimer: 'Le choix d’une finition de surface est nécessaire pour protéger le cuivre de l’oxydation'
 			},
 			surfaceFinishLayer: {
 				title: 'Couche de finition de surface',
@@ -1509,7 +1510,9 @@ export const fr: Lang = {
 				title: 'Épaisseur',
 				description:
 					"Pour les matériaux ordinaires, l'épaisseur de la plaque se réfère à l'épaisseur du PCB après la production, et l'erreur est d'environ 10% (+/-10% (T>=1mm) ou +/- 0.1mm (T<1mm)). L'erreur est principalement causée par le masque de soudure et le cuivre qui s'enfonce. Si vous avez d'autres exigences concernant l'erreur d'épaisseur, veuillez le noter dans d'autres exigences spéciales. Remarque : Pour le circuit imprimé Rogers à une ou deux faces, l'épaisseur se réfère à l'épaisseur du substrat.",
-				error: "L'épaisseur doit être supérieure à 0"
+				error: "L'épaisseur doit être supérieure à 0",
+				disclaimer:
+					'“Épaisseur” fait référence à l’épaisseur totale finale du PCB. Pour des spécifications détaillées de l’empilement des couches, veuillez consulter la documentation du site. Notez que l’épaisseur totale peut avoir une tolérance de ±10 % en raison des procédés de fabrication.'
 			},
 			minTrack: {
 				title: 'Piste/espacement min',
@@ -1546,7 +1549,8 @@ export const fr: Lang = {
 					immersionTin: "Étain d'immersion",
 					enepig: 'ENEPIG',
 					plainCopper: 'Cuivre nu / Aucun'
-				}
+				},
+				disclaimer: 'Le choix d’une finition de surface est nécessaire pour protéger le cuivre de l’oxydation'
 			},
 			surfaceThickness: {
 				title: 'Épaisseur de surface',
@@ -1859,7 +1863,8 @@ export const fr: Lang = {
 			thickness: {
 				title: 'Épaisseur de FPC',
 				description: "L'épaisseur du FPC ne compte pas l'épaisseur du matériau d'appoint et du 3M.",
-				disclaimer: "*L'épaisseur du FPC ne compte pas l'épaisseur du matériau d'appoint et du 3M."
+				disclaimer:
+					'“Épaisseur” fait référence à l’épaisseur totale finale du PCB. Pour des spécifications détaillées de l’empilement des couches, veuillez consulter la documentation du site. Notez que l’épaisseur totale peut avoir une tolérance de ±10 % en raison des procédés de fabrication.'
 			},
 			minTrack: {
 				title: 'Nombres minima de trace / inter-trace',
@@ -1908,7 +1913,8 @@ export const fr: Lang = {
 					immersionTin: 'Plongée en étain',
 					immersionGoldHardGold: 'Plongée dorée + or dur',
 					enepig: 'Enepig'
-				}
+				},
+				disclaimer: 'Le choix d’une finition de surface est nécessaire pour protéger le cuivre de l’oxydation'
 			},
 			surfaceThickness: {
 				title: 'Épaisseur de surface',
@@ -2155,7 +2161,9 @@ export const fr: Lang = {
 			},
 			thickness: {
 				title: 'Épaisseur Rigid-Flex',
-				description: 'Épaisseur totale des couches rigides et flexibles'
+				description: 'Épaisseur totale des couches rigides et flexibles',
+				disclaimer:
+					'“Épaisseur” fait référence à l’épaisseur totale finale du PCB. Pour des spécifications détaillées de l’empilement des couches, veuillez consulter la documentation du site. Notez que l’épaisseur totale peut avoir une tolérance de ±10 % en raison des procédés de fabrication.'
 			},
 			minTrack: {
 				title: 'Min piste/espacement',
@@ -2174,7 +2182,8 @@ export const fr: Lang = {
 					immersionGold: 'Or immersion (ENIG)',
 					osp: 'OSP',
 					immersionSilver: 'Argent immersion (Ag)'
-				}
+				},
+				disclaimer: 'Le choix d’une finition de surface est nécessaire pour protéger le cuivre de l’oxydation'
 			},
 			surfaceThickness: {
 				title: 'Épaisseur de surface',
@@ -3722,6 +3731,7 @@ export const fr: Lang = {
 		updatedAt: 'Mis à jour le',
 		service: 'Service',
 		status: 'Statut',
+		estDeliveryDate: 'Date de livraison estimée',
 		price: 'Prix',
 		payNow: 'Payer maintenant',
 		paymentSuccess: 'Paiement réussi',

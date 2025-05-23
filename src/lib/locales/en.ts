@@ -3717,6 +3717,7 @@ export const en = {
 		updatedAt: 'Updated At',
 		service: 'Service',
 		status: 'Status',
+		estDeliveryDate: 'Est Delivery Date',
 		price: 'Price',
 		payNow: 'Pay Now',
 		paymentSuccess: 'Payment Success',
