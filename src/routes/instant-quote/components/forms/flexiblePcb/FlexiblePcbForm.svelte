@@ -22,7 +22,6 @@
 	import SpecialRequests from './SpecialRequests.svelte';
 	import Stiffener from './Stiffener.svelte';
 	import SurfaceFinish from './SurfaceFinish.svelte';
-	import SurfaceThickness from './SurfaceThickness.svelte';
 	import Tape from './Tape.svelte';
 	import Thickness from './Thickness.svelte';
 </script>
@@ -48,7 +47,6 @@
 <Stiffener />
 <div class="divider" />
 <SurfaceFinish />
-<SurfaceThickness />
 <FinishedCopper />
 <div class="divider" />
 <Etest />

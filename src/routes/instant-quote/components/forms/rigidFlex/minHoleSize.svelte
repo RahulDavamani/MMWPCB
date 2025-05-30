@@ -17,5 +17,18 @@
 				{pd.parseValue(value)}
 			</button>
 		{/each}
+		<button class="btn btn-sm 'btn-primary' {pd.values.includes(minHoleSize) && 'btn-outline'}">
+			<input
+				type="number"
+				class="input input-bordered input-xs w-14 text-black text-center"
+				value={pd.values.includes(minHoleSize) ? '' : minHoleSize}
+				on:change={(e) => {
+					let val = Number(e.currentTarget.value) < 0 ? 0 : Number(e.currentTarget.value);
+					e.currentTarget.value = String(val);
+					$quote.products.rigidFlex.minHoleSize = val;
+				}}
+				min={0}
+			/>
+		</button>
 	</div>
 </FormItem>

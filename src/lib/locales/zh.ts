@@ -1038,7 +1038,9 @@ export const zh: Lang = {
 					osp: 'OSP',
 					immersionTin: '沉锡',
 					enepig: 'ENEPIG',
-					plainCopper: '普通铜 / 无'
+					plainCopper: '普通铜 / 无',
+					goldPlating: '金镀层',
+					silverPlating: '银镀层'
 				},
 				disclaimer: '选择表面处理是为了防止铜氧化'
 			},
@@ -1453,7 +1455,9 @@ export const zh: Lang = {
 					osp: 'OSP',
 					immersionTin: '浸锡',
 					enepig: 'ENEPIG',
-					plainCopper: '裸铜/无'
+					plainCopper: '裸铜/无',
+					goldPlating: '金镀层',
+					silverPlating: '银镀层'
 				},
 				disclaimer: '选择表面处理是为了防止铜氧化'
 			},
@@ -1620,18 +1624,6 @@ export const zh: Lang = {
 					}
 				}
 			},
-			finalInspectionReport: {
-				title: '最终检验报告（免费）',
-				description: '常规发货报告额外包括测试报告、尺寸检验报告',
-				values: {
-					defaultInspectionReport: '默认检验报告',
-					microsectionInspectionReport: '微观截面检验报告',
-					solderabilityInspectionReport: '焊接性检验报告',
-					thermalStressInspectionReport: '热应力检验报告',
-					impedanceTestReport: '阻抗测试报告',
-					humidityIndicatorCards: '湿度指示卡'
-				}
-			},
 			specialRequests: {
 				title: '其他特殊请求',
 				placeholder: '填写任何PCB细节，以使我们尽可能清楚地了解您的要求。'
@@ -1756,6 +1748,7 @@ export const zh: Lang = {
 			thickness: {
 				title: 'FPC 厚度',
 				description: 'FPC 的厚度不包括加固材料和 3M 胶带的厚度。',
+				error: '厚度应大于 0',
 				disclaimer:
 					'“厚度”指的是 PCB 的最终总厚度。有关详细的层叠结构规格，请参阅网站文档。请注意，由于制造工艺，总厚度可能存在 ±10% 的公差。'
 			},
@@ -1798,28 +1791,9 @@ export const zh: Lang = {
 				values: {
 					immersionGold: '浸金 (ENIG)',
 					osp: 'OSP',
-					hardGold: '硬金',
-					immersionSilver: '浸银 (Ag)',
-					immersionTin: '浸锡',
-					immersionGoldHardGold: '浸金 + 选择性硬金',
-					enepig: 'ENEPIG'
+					immersionTin: '浸锡'
 				},
 				disclaimer: '选择表面处理是为了防止铜氧化'
-			},
-			surfaceThickness: {
-				title: '表面厚度',
-				immersionGold: {
-					title: '浸金厚度'
-				},
-				hardGold: {
-					title: 'Au/Ni 厚度'
-				},
-				immersionGoldHardGold: {
-					title: '浸金/硬金厚度'
-				},
-				enepig: {
-					title: 'ENEPIG 厚度'
-				}
 			},
 			finishedCopper: {
 				title: '完工铜厚度',
@@ -2040,12 +2014,6 @@ export const zh: Lang = {
 					polyimideFlex: '聚酰亚胺柔性材料 + FR4'
 				}
 			},
-			thickness: {
-				title: '硬柔性厚度',
-				description: '刚性和柔性层的总厚度',
-				disclaimer:
-					'“厚度”指的是 PCB 的最终总厚度。有关详细的层叠结构规格，请参阅网站文档。请注意，由于制造工艺，总厚度可能存在 ±10% 的公差。'
-			},
 			minTrack: {
 				title: '最小轨迹/间距',
 				description: '铜迹线的最小宽度和两条迹线之间的最小距离。PCBWay工程师将再次确认最小轨迹/间距。'
@@ -2061,15 +2029,9 @@ export const zh: Lang = {
 				values: {
 					immersionGold: '沉金（ENIG）',
 					osp: 'OSP',
-					immersionSilver: '沉银（Ag）'
+					immersionTin: '沉锡'
 				},
 				disclaimer: '选择表面处理是为了防止铜氧化'
-			},
-			surfaceThickness: {
-				title: '表面厚度',
-				immersionGold: {
-					title: '沉金厚度'
-				}
 			},
 			edgeConnector: {
 				title: '边缘连接器',
@@ -2083,7 +2045,8 @@ export const zh: Lang = {
 			},
 			fpcThickness: {
 				title: 'FPC厚度',
-				description: '柔性部分的板厚'
+				description: '柔性部分的板厚',
+				error: '厚度应大于 0'
 			},
 			fpcCoverlay: {
 				title: 'FPC覆盖层',
@@ -2167,18 +2130,6 @@ export const zh: Lang = {
 						title: 'HDI（埋孔/盲孔）',
 						description: '盲孔将外层与一个或多个内层连接，但不经过整块板。埋孔连接两个或多个内层，但不连接到外层。'
 					}
-				}
-			},
-			finalInspectionReport: {
-				title: '最终检验报告（免费）',
-				description: '定期发货报告另外包含测试报告、尺寸检验报告',
-				values: {
-					defaultInspectionReport: '默认检验报告',
-					microsectionInspectionReport: '微观剖面检查报告',
-					solderabilityInspectionReport: '可焊性检查报告',
-					thermalStressInspectionReport: '热应力检查报告',
-					impedanceTestReport: '阻抗测试报告',
-					humidityIndicatorCards: '湿度指示卡'
 				}
 			},
 			specialRequests: {

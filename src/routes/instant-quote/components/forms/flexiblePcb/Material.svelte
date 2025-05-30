@@ -6,6 +6,7 @@
 
 	$: pd = $productDetails.flexiblePcb.material;
 	$: ({ material } = $quote.products.flexiblePcb);
+	$: values = pd.values.map(({ value }) => value);
 
 	const selectMaterial = (value: FlexiblePcb['material']) => {
 		if (material !== value)
@@ -27,5 +28,16 @@
 				{title}
 			</button>
 		{/each}
+		<button class="btn btn-sm btn-primary {values.includes(material) && 'btn-outline'}">
+			<input
+				type="text"
+				class="input input-bordered input-xs w-24 text-black text-center"
+				value={values.includes(material) ? '' : material}
+				on:change={(e) => {
+					if (e.currentTarget.value.length === 0) $quote.products.flexiblePcb.material = 'POLYIMIDE_FLEX';
+					else $quote.products.flexiblePcb.material = e.currentTarget.value;
+				}}
+			/>
+		</button>
 	</div>
 </FormItem>

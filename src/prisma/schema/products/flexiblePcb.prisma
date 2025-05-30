@@ -22,7 +22,7 @@ model FlexiblePcb {
    quantity        Int
    layers          Int
 
-   material FPMaterial
+   material String
    petType  FPPetType?
 
    thickness   Float
@@ -34,9 +34,8 @@ model FlexiblePcb {
    edgeConnector   Boolean
    stiffener       FPStiffener
 
-   surfaceFinish    String
-   surfaceThickness Float[]
-   finishedCopper   Float
+   surfaceFinish  String
+   finishedCopper Float
 
    etest            Boolean
    tape             FPTape
@@ -69,12 +68,6 @@ enum FPRouteProcess {
    V_SCORING
    TAB_ROUTE
    V_SCORING_AND_TAB_ROUTE
-}
-
-enum FPMaterial {
-   POLYIMIDE_FLEX
-   PET
-   HIGH_FREQUENCY
 }
 
 enum FPPetType {

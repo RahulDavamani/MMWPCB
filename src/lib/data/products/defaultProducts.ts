@@ -74,7 +74,6 @@ const advancedPcb: AdvancedPcb = {
 	ulMarking: 'NONE',
 	dateCode: 'NONE',
 	customizedServices: [],
-	finalInspectionReport: ['DEFAULT_INSPECTION_REPORT'],
 	specialRequests: ''
 };
 
@@ -92,14 +91,13 @@ const flexiblePcb: FlexiblePcb = {
 	layers: 1,
 	material: 'POLYIMIDE_FLEX',
 	thickness: 0.1,
-	minTrack: 0.006,
+	minTrack: 0.06,
 	minHoleSize: 0.15,
 	solderMaskColor: 'YELLOW_COVERLAY',
 	silkscreenColor: 'BLACK',
 	edgeConnector: false,
 	stiffener: 'NONE',
 	surfaceFinish: 'IMMERSION_GOLD',
-	surfaceThickness: [1],
 	finishedCopper: 0.5,
 	etest: true,
 	tape: 'NONE',
@@ -125,11 +123,9 @@ const rigidFlex: RigidFlex = {
 	quantity: 0,
 	layers: 1,
 	material: 'POLYIMIDE_FLEX_FR4',
-	thickness: 2.0,
 	minTrack: 6,
 	minHoleSize: 0.3,
 	surfaceFinish: 'IMMERSION_GOLD',
-	surfaceThickness: [1],
 	edgeConnector: false,
 	fpcLayers: 1,
 	fpcThickness: 0.1,
@@ -143,7 +139,6 @@ const rigidFlex: RigidFlex = {
 	dateCode: 'NONE',
 	dateCodeDescription: '',
 	customizedServices: [],
-	finalInspectionReport: ['DEFAULT_INSPECTION_REPORT'],
 	specialRequests: ''
 };
 

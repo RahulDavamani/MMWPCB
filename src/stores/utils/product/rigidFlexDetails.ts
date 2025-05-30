@@ -172,12 +172,6 @@ export const rigidFlexDetails = (lg: Lang) => {
 		};
 	})();
 
-	const thickness = {
-		key: 'thickness',
-		l: l.thickness,
-		values: [0.4, 0.6, 0.8, 1.0, 1.2, 1.6, 2.0, 2.4, 2.8, 3.2]
-	};
-
 	const minTrack = {
 		key: 'minTrack',
 		l: l.minTrack,
@@ -196,7 +190,7 @@ export const rigidFlexDetails = (lg: Lang) => {
 		const values = [
 			{ title: l.surfaceFinish.values.immersionGold, value: 'IMMERSION_GOLD' },
 			{ title: l.surfaceFinish.values.osp, value: 'OSP' },
-			{ title: l.surfaceFinish.values.immersionSilver, value: 'IMMERSION_SILVER' }
+			{ title: l.surfaceFinish.values.immersionTin, value: 'IMMERSION_TIN' }
 		] as { title: string; value: RigidFlex['surfaceFinish'] }[];
 
 		return {
@@ -206,16 +200,6 @@ export const rigidFlexDetails = (lg: Lang) => {
 			parseValue: (val: RigidFlex['surfaceFinish']) => values.find((v) => v.value === val)?.title ?? val
 		};
 	})();
-
-	const surfaceThickness = {
-		key: 'surfaceThickness',
-		l: l.surfaceThickness,
-		immersionGold: {
-			l: l.surfaceThickness.immersionGold,
-			values: [[1], [2], [3]],
-			parseValue: (val: RigidFlex['surfaceThickness']) => `${val[0]}U"`
-		}
-	};
 
 	const edgeConnector = (() => {
 		const values = [
@@ -242,7 +226,9 @@ export const rigidFlexDetails = (lg: Lang) => {
 	const fpcThickness = {
 		key: 'fpcThickness',
 		l: l.fpcThickness,
-		values: [0.08, 0.1, 0.13, 0.15, 0.18, 0.2, 0.23, 0.26, 0.3, 0.35, 0.4]
+		values: [0.08, 0.1, 0.13, 0.15, 0.18, 0.2, 0.23, 0.26, 0.3, 0.35, 0.4],
+		parseValue: (val: RigidFlex['fpcThickness']) => `${val}mm`,
+		validate: (val: RigidFlex['fpcThickness']) => val <= 0
 	};
 
 	const fpcCoverlay = (() => {
@@ -421,28 +407,6 @@ export const rigidFlexDetails = (lg: Lang) => {
 		};
 	})();
 
-	const finalInspectionReport = (() => {
-		const values = [
-			{ title: l.finalInspectionReport.values.defaultInspectionReport, value: 'DEFAULT_INSPECTION_REPORT' },
-			{ title: l.finalInspectionReport.values.microsectionInspectionReport, value: 'MICROSECTION_INSPECTION_REPORT' },
-			{ title: l.finalInspectionReport.values.solderabilityInspectionReport, value: 'SOLDERABILITY_INSPECTION_REPORT' },
-			{
-				title: l.finalInspectionReport.values.thermalStressInspectionReport,
-				value: 'THERMAL_STRESS_INSPECTION_REPORT'
-			},
-			{ title: l.finalInspectionReport.values.impedanceTestReport, value: 'IMPEDANCE_INSPECTION_REPORT' },
-			{ title: l.finalInspectionReport.values.humidityIndicatorCards, value: 'HUMIDITY_INDICATOR_CARD' }
-		] as { title: string; value: RigidFlex['finalInspectionReport'][number] }[];
-
-		return {
-			key: 'finalInspectionReport',
-			l: l.finalInspectionReport,
-			values,
-			parseValue: (val: RigidFlex['finalInspectionReport']) =>
-				val.map((v) => values.find((x) => x.value === v)?.title).join(', ')
-		};
-	})();
-
 	const specialRequests = {
 		key: 'specialRequests',
 		l: l.specialRequests
@@ -468,11 +432,9 @@ export const rigidFlexDetails = (lg: Lang) => {
 		quantity,
 		layers,
 		material,
-		thickness,
 		minTrack,
 		minHoleSize,
 		surfaceFinish,
-		surfaceThickness,
 		edgeConnector,
 		fpcLayers,
 		fpcThickness,
@@ -486,7 +448,6 @@ export const rigidFlexDetails = (lg: Lang) => {
 		dateCode,
 		dateCodeDescription,
 		customizedServices,
-		finalInspectionReport,
 		specialRequests
 	};
 };

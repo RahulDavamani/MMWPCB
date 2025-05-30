@@ -29,7 +29,7 @@ model AdvancedPcb {
    solderMask  APSolderMask?
    silkscreen  APSilkscreen?
 
-   material      APMaterial
+   material      String
    highSpeed     String?
    highFrequency String?
 
@@ -52,9 +52,8 @@ model AdvancedPcb {
    dateCode            APDateCode
    dateCodeDescription String?
 
-   customizedServices    APCustomizedServices[]
-   finalInspectionReport APFinalInspectionReport[]
-   specialRequests       String
+   customizedServices APCustomizedServices[]
+   specialRequests    String
 
    orderId String
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
@@ -107,19 +106,6 @@ enum APSilkscreen {
    BOTTOM_SIDE
    BOTH_SIDES
    NONE
-}
-
-enum APMaterial {
-   TG140_FR4
-   TG150_FR4
-   TG170_FR4
-   TG150_FR4_HALOGEN_FREE
-   TG170_FR4_HALOGEN_FREE
-   HIGH_CTI
-   HIGH_CTI_HALOGEN_FREE
-   HIGH_SPEED
-   HIGH_FREQUENCY
-   SPECIAL_MATERIAL
 }
 
 enum APSolderMaskColor {
@@ -197,13 +183,4 @@ enum APCustomizedServices {
    WHOLE_PARTIALLY_HYBRID_PCB
    BACK_DRILL_PCB
    LEADLESS_PARTIALLY_PLATED_HARD_GOLD
-}
-
-enum APFinalInspectionReport {
-   DEFAULT_INSPECTION_REPORT
-   MICROSECTION_INSPECTION_REPORT
-   SOLDERABILITY_INSPECTION_REPORT
-   THERMAL_STRESS_INSPECTION_REPORT
-   IMPEDANCE_INSPECTION_REPORT
-   HUMIDITY_INDICATOR_CARD
 }

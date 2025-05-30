@@ -10,8 +10,6 @@ export const spSolderMask = z.enum(['TOP_SIDE', 'BOTTOM_SIDE', 'BOTH_SIDES', 'NO
 
 export const spSilkscreen = z.enum(['TOP_SIDE', 'BOTTOM_SIDE', 'BOTH_SIDES', 'NONE']);
 
-export const spMaterial = z.enum(['FR_4', 'ALUMINUM', 'ROGERS', 'HDI', 'COPPER_BASE']);
-
 export const spFr4TG = z.enum(['TG130_140', 'TG150_160', 'TG170_180', 'S1000H_TG150', 'S1000_2M_TG170']);
 
 export const spRogers = z.enum(['ROGERS_5880', 'ROGERS_4350', 'ROGERS_4003']);
@@ -86,7 +84,7 @@ export const standardPcbSchema = z.object({
 	copperLayer: spCopperLayer.nullish(),
 	solderMask: spSolderMask.nullish(),
 	silkscreen: spSilkscreen.nullish(),
-	material: spMaterial,
+	material: z.string().min(1),
 	fr4TG: spFr4TG.nullish(),
 	thermalConductivity: z.number().nullish(),
 	thermoElectricSeparation: z.boolean().nullish(),

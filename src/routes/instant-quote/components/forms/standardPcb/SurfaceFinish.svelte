@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { productDetails } from '../../../../../stores/product.store';
 	import { quote } from '../../../../../stores/quote.store';
-	import FormControl from '../../../../components/FormControl.svelte';
 	import FormItem from '../../FormItem.svelte';
 
 	$: pd = $productDetails.standardPcb.surfaceFinish;

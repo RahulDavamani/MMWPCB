@@ -1078,7 +1078,9 @@ export const es: Lang = {
 					osp: 'OSP',
 					immersionTin: 'Inmersión en estaño',
 					enepig: 'ENEPIG',
-					plainCopper: 'Cobre desnudo / Ninguno'
+					plainCopper: 'Cobre desnudo / Ninguno',
+					goldPlating: 'Chapado en oro',
+					silverPlating: 'Chapado en plata'
 				},
 				disclaimer: 'Se requiere seleccionar un acabado de superficie para proteger el cobre de la oxidación'
 			},
@@ -1513,7 +1515,9 @@ export const es: Lang = {
 					osp: 'OSP',
 					immersionTin: 'Estaño de Inmersión',
 					enepig: 'ENEPIG',
-					plainCopper: 'Cobre Simple / Ninguno'
+					plainCopper: 'Cobre Simple / Ninguno',
+					goldPlating: 'Chapado en oro',
+					silverPlating: 'Chapado en plata'
 				},
 				disclaimer: 'Se requiere seleccionar un acabado de superficie para proteger el cobre de la oxidación'
 			},
@@ -1686,19 +1690,6 @@ export const es: Lang = {
 					}
 				}
 			},
-			finalInspectionReport: {
-				title: 'Informe de Inspección Final (Gratuito)',
-				description:
-					'El informe de envío regular incluye adicionalmente el informe de prueba y el informe de inspección dimensional.',
-				values: {
-					defaultInspectionReport: 'Informe de Inspección Predeterminado',
-					microsectionInspectionReport: 'Informe de Inspección de Microsección',
-					solderabilityInspectionReport: 'Informe de Inspección de Soldabilidad',
-					thermalStressInspectionReport: 'Informe de Inspección de Estrés Térmico',
-					impedanceTestReport: 'Informe de Prueba de Impedancia',
-					humidityIndicatorCards: 'Tarjetas Indicadoras de Humedad'
-				}
-			},
 			specialRequests: {
 				title: 'Otras Solicitudes Especiales',
 				placeholder:
@@ -1828,6 +1819,7 @@ export const es: Lang = {
 			thickness: {
 				title: 'Espesor de FPC',
 				description: 'El espesor del FPC no incluye el espesor del refuerzo y de la cinta 3M.',
+				error: 'El grosor debe ser mayor que 0',
 				disclaimer:
 					'“Espesor” se refiere al espesor total final del PCB. Para especificaciones detalladas del apilamiento de capas, consulte la documentación del sitio web. Tenga en cuenta que el espesor total puede tener una tolerancia de ±10 % debido a los procesos de fabricación.'
 			},
@@ -1872,28 +1864,9 @@ export const es: Lang = {
 				values: {
 					immersionGold: 'Oro por inmersión (ENIG)',
 					osp: 'OSP',
-					hardGold: 'Oro duro',
-					immersionSilver: 'Plata por inmersión (Ag)',
-					immersionTin: 'Estaño por inmersión',
-					immersionGoldHardGold: 'Oro por inmersión + Oro duro selectivo',
-					enepig: 'ENEPIG'
+					immersionTin: 'Estaño por inmersión'
 				},
 				disclaimer: 'Se requiere seleccionar un acabado de superficie para proteger el cobre de la oxidación'
-			},
-			surfaceThickness: {
-				title: 'Espesor de superficie',
-				immersionGold: {
-					title: 'Espesor de oro por inmersión'
-				},
-				hardGold: {
-					title: 'Espesor de Au/Ni'
-				},
-				immersionGoldHardGold: {
-					title: 'Espesor de oro por inmersión / oro duro'
-				},
-				enepig: {
-					title: 'Espesor de ENEPIG'
-				}
 			},
 			finishedCopper: {
 				title: 'Cobre terminado',
@@ -2121,12 +2094,6 @@ export const es: Lang = {
 					polyimideFlex: 'Flex de Poliamida + FR4'
 				}
 			},
-			thickness: {
-				title: 'Espesor Rigid-Flex',
-				description: 'Espesor total de las capas rígidas y flexibles',
-				disclaimer:
-					'“Espesor” se refiere al espesor total final del PCB. Para especificaciones detalladas del apilamiento de capas, consulte la documentación del sitio web. Tenga en cuenta que el espesor total puede tener una tolerancia de ±10 % debido a los procesos de fabricación.'
-			},
 			minTrack: {
 				title: 'Min Track/Espaciado',
 				description:
@@ -2144,15 +2111,9 @@ export const es: Lang = {
 				values: {
 					immersionGold: 'Oro de Inmersión (ENIG)',
 					osp: 'OSP',
-					immersionSilver: 'Plata de Inmersión (Ag)'
+					immersionTin: 'Estaño por inmersión'
 				},
 				disclaimer: 'Se requiere seleccionar un acabado de superficie para proteger el cobre de la oxidación'
-			},
-			surfaceThickness: {
-				title: 'Espesor de Superficie',
-				immersionGold: {
-					title: 'Espesor de Oro de Inmersión'
-				}
 			},
 			edgeConnector: {
 				title: 'Conector de Borde',
@@ -2166,7 +2127,8 @@ export const es: Lang = {
 			},
 			fpcThickness: {
 				title: 'Espesor FPC',
-				description: 'El espesor de la placa para la parte Flex'
+				description: 'El espesor de la placa para la parte Flex',
+				error: 'El grosor debe ser mayor que 0'
 			},
 			fpcCoverlay: {
 				title: 'Cubierta FPC',
@@ -2256,19 +2218,6 @@ export const es: Lang = {
 						description:
 							'Una Vía Sorda conecta una capa exterior a una o más capas internas, pero no atraviesa toda la placa. Una Vía Sepultada conecta dos o más capas internas, pero no atraviesa a una capa externa.'
 					}
-				}
-			},
-			finalInspectionReport: {
-				title: 'Informe de Inspección Final (Gratis)',
-				description:
-					'El informe de envío regular incluye adicionalmente el informe de prueba, el informe de inspección dimensional',
-				values: {
-					defaultInspectionReport: 'Informe de Inspección Predeterminado',
-					microsectionInspectionReport: 'Informe de Inspección de Microsección',
-					solderabilityInspectionReport: 'Informe de Inspección de Soldabilidad',
-					thermalStressInspectionReport: 'Informe de Inspección de Estrés Térmico',
-					impedanceTestReport: 'Informe de Prueba de Impedancia',
-					humidityIndicatorCards: 'Tarjetas Indicadoras de Humedad'
 				}
 			},
 			specialRequests: {

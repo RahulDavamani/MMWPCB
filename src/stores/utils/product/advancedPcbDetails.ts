@@ -254,7 +254,7 @@ export const advancedPcbDetails = (lg: Lang) => {
 			key: 'material',
 			l: l.material,
 			values,
-			parseValue: (val: AdvancedPcb['material']) => values.find((v) => v.value === val)?.l.title
+			parseValue: (val: AdvancedPcb['material']) => values.find((v) => v.value === val)?.l.title ?? val
 		};
 	})();
 
@@ -294,7 +294,8 @@ export const advancedPcbDetails = (lg: Lang) => {
 		l: l.thickness,
 		imgSrc: '',
 		values: [0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 4.8, 5.2, 5.6, 6.0, 7.0, 8.0],
-		parseValue: (val: AdvancedPcb['thickness']) => `${val}mm`
+		parseValue: (val: AdvancedPcb['thickness']) => `${val}mm`,
+		validate: (val: AdvancedPcb['thickness']) => val <= 0
 	};
 
 	const minTrack = {
@@ -370,7 +371,9 @@ export const advancedPcbDetails = (lg: Lang) => {
 			{ title: l.surfaceFinish.values.osp, value: 'OSP' },
 			{ title: l.surfaceFinish.values.immersionTin, value: 'IMMERSION_TIN' },
 			{ title: l.surfaceFinish.values.enepig, value: 'ENEPIG' },
-			{ title: l.surfaceFinish.values.plainCopper, value: 'PLAIN_COPPER' }
+			{ title: l.surfaceFinish.values.plainCopper, value: 'PLAIN_COPPER' },
+			{ title: l.surfaceFinish.values.goldPlating, value: 'GOLD_PLATING' },
+			{ title: l.surfaceFinish.values.silverPlating, value: 'SILVER_PLATING' }
 		] as { title: string; value: AdvancedPcb['surfaceFinish'] }[];
 
 		return {
@@ -631,28 +634,6 @@ export const advancedPcbDetails = (lg: Lang) => {
 		};
 	})();
 
-	const finalInspectionReport = (() => {
-		const values = [
-			{ title: l.finalInspectionReport.values.defaultInspectionReport, value: 'DEFAULT_INSPECTION_REPORT' },
-			{ title: l.finalInspectionReport.values.microsectionInspectionReport, value: 'MICROSECTION_INSPECTION_REPORT' },
-			{ title: l.finalInspectionReport.values.solderabilityInspectionReport, value: 'SOLDERABILITY_INSPECTION_REPORT' },
-			{
-				title: l.finalInspectionReport.values.thermalStressInspectionReport,
-				value: 'THERMAL_STRESS_INSPECTION_REPORT'
-			},
-			{ title: l.finalInspectionReport.values.impedanceTestReport, value: 'IMPEDANCE_INSPECTION_REPORT' },
-			{ title: l.finalInspectionReport.values.humidityIndicatorCards, value: 'HUMIDITY_INDICATOR_CARD' }
-		] as { title: string; value: AdvancedPcb['finalInspectionReport'][number] }[];
-
-		return {
-			key: 'finalInspectionReport',
-			l: l.finalInspectionReport,
-			values,
-			parseValue: (val: AdvancedPcb['finalInspectionReport']) =>
-				val.map((v) => values.find((x) => x.value === v)?.title).join(', ')
-		};
-	})();
-
 	const specialRequests = {
 		key: 'specialRequests',
 		l: l.specialRequests
@@ -701,7 +682,6 @@ export const advancedPcbDetails = (lg: Lang) => {
 		dateCode,
 		dateCodeDescription,
 		customizedServices,
-		finalInspectionReport,
 		specialRequests
 	};
 };

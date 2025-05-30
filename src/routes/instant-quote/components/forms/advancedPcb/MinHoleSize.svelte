@@ -19,5 +19,18 @@
 			class="btn btn-sm btn-primary {minHoleSize !== 0 && 'btn-outline'}"
 			on:click={() => ($quote.products.advancedPcb.minHoleSize = 0)}>{pd.l.noDrill}</button
 		>
+		<button class="btn btn-sm 'btn-primary' {pd.values.includes(minHoleSize) && 'btn-outline'}">
+			<input
+				type="number"
+				class="input input-bordered input-xs w-14 text-black text-center"
+				value={pd.values.includes(minHoleSize) ? '' : minHoleSize}
+				on:change={(e) => {
+					let val = Number(e.currentTarget.value) < 0 ? 0 : Number(e.currentTarget.value);
+					e.currentTarget.value = String(val);
+					$quote.products.advancedPcb.minHoleSize = val;
+				}}
+				min={0}
+			/>
+		</button>
 	</div>
 </FormItem>

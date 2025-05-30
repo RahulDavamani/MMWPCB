@@ -17,19 +17,6 @@ export const apCopperLayer = z.enum(['TOP_LAYER', 'BOTTOM_LAYER', 'NONE']);
 export const apSolderMask = z.enum(['TOP_SIDE', 'BOTTOM_SIDE', 'BOTH_SIDES', 'NONE']);
 export const apSilkscreen = z.enum(['TOP_SIDE', 'BOTTOM_SIDE', 'BOTH_SIDES', 'NONE']);
 
-export const apMaterial = z.enum([
-	'TG140_FR4',
-	'TG150_FR4',
-	'TG170_FR4',
-	'TG150_FR4_HALOGEN_FREE',
-	'TG170_FR4_HALOGEN_FREE',
-	'HIGH_CTI',
-	'HIGH_CTI_HALOGEN_FREE',
-	'HIGH_SPEED',
-	'HIGH_FREQUENCY',
-	'SPECIAL_MATERIAL'
-]);
-
 export const apSolderMaskColor = z.enum(['GREEN', 'RED', 'BLUE', 'BLACK', 'NONE']);
 
 export const apSilkscreenColor = z.enum(['WHITE', 'BLACK', 'YELLOW', 'BLUE', 'GREY', 'NONE']);
@@ -68,15 +55,6 @@ export const apCustomizedServices = z.enum([
 	'LEADLESS_PARTIALLY_PLATED_HARD_GOLD'
 ]);
 
-export const apFinalInspectionReport = z.enum([
-	'DEFAULT_INSPECTION_REPORT',
-	'MICROSECTION_INSPECTION_REPORT',
-	'SOLDERABILITY_INSPECTION_REPORT',
-	'THERMAL_STRESS_INSPECTION_REPORT',
-	'IMPEDANCE_INSPECTION_REPORT',
-	'HUMIDITY_INDICATOR_CARD'
-]);
-
 export const advancedPcbSchema = z.object({
 	id: z.string().nullish(),
 	name: z.string().min(1),
@@ -101,7 +79,7 @@ export const advancedPcbSchema = z.object({
 	copperLayer: apCopperLayer.nullish(),
 	solderMask: apSolderMask.nullish(),
 	silkscreen: apSilkscreen.nullish(),
-	material: apMaterial,
+	material: z.string().min(1),
 	highSpeed: z.string().nullish(),
 	highFrequency: z.string().nullish(),
 	thickness: z.number(),
@@ -120,7 +98,6 @@ export const advancedPcbSchema = z.object({
 	dateCode: apDateCode,
 	dateCodeDescription: z.string().nullish(),
 	customizedServices: z.array(apCustomizedServices),
-	finalInspectionReport: z.array(apFinalInspectionReport),
 	specialRequests: z.string()
 });
 

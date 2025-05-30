@@ -4,8 +4,6 @@ export const fpBoardType = z.enum(['SINGLE_PIECES', 'PANEL_BY_CUSTOMER', 'PANEL_
 
 export const fpRouteProcess = z.enum(['VELENOVA_PREFER', 'V_SCORING', 'TAB_ROUTE', 'V_SCORING_AND_TAB_ROUTE']);
 
-export const fpMaterial = z.enum(['POLYIMIDE_FLEX', 'PET', 'HIGH_FREQUENCY']);
-
 export const fpPetType = z.enum(['TRANSPARENT', 'TRANSLUCENT']);
 
 export const fpSolderMaskColor = z.enum(['YELLOW_COVERLAY', 'WHITE_COVERLAY', 'BLACK_COVERLAY', 'TRANSPARENT', 'NONE']);
@@ -63,7 +61,7 @@ export const flexiblePcbSchema = z.object({
 	width: z.number().gt(0),
 	quantity: z.number().gt(0),
 	layers: z.number().gt(0),
-	material: fpMaterial,
+	material: z.string().min(1),
 	petType: fpPetType.nullish(),
 	thickness: z.number(),
 	minTrack: z.number(),
@@ -73,7 +71,6 @@ export const flexiblePcbSchema = z.object({
 	edgeConnector: z.boolean(),
 	stiffener: fpStiffener,
 	surfaceFinish: z.string().min(1),
-	surfaceThickness: z.array(z.number()),
 	finishedCopper: z.number(),
 	etest: z.boolean(),
 	tape: fpTape,

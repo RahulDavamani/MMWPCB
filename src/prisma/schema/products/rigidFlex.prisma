@@ -24,13 +24,10 @@ model RigidFlex {
 
    material RFMaterial
 
-   thickness   Float
    minTrack    Float
    minHoleSize Float
 
-   surfaceFinish    String
-   surfaceThickness Float[]
-
+   surfaceFinish String
    edgeConnector Boolean
 
    fpcLayers          Int
@@ -47,9 +44,8 @@ model RigidFlex {
    dateCode            FPDateCode
    dateCodeDescription String?
 
-   customizedServices    RFCustomizedServices[]
-   finalInspectionReport RFFinalInspectionReport[]
-   specialRequests       String
+   customizedServices RFCustomizedServices[]
+   specialRequests    String
 
    orderId String
    order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
@@ -131,13 +127,4 @@ enum RFCustomizedServices {
    ALL_VIAS_FILLED_WITH_RESIN_AND_CAPPED
    VIA_IN_PAD
    HDI
-}
-
-enum RFFinalInspectionReport {
-   DEFAULT_INSPECTION_REPORT
-   MICROSECTION_INSPECTION_REPORT
-   SOLDERABILITY_INSPECTION_REPORT
-   THERMAL_STRESS_INSPECTION_REPORT
-   IMPEDANCE_INSPECTION_REPORT
-   HUMIDITY_INDICATOR_CARD
 }

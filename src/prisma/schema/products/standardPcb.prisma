@@ -27,7 +27,7 @@ model StandardPcb {
    solderMask  SPSolderMask?
    silkscreen  SPSilkscreen?
 
-   material                 SPMaterial
+   material                 String
    fr4TG                    SPFr4TG?
    thermalConductivity      Float?
    thermoElectricSeparation Boolean?
@@ -99,14 +99,6 @@ enum SPSilkscreen {
    BOTTOM_SIDE
    BOTH_SIDES
    NONE
-}
-
-enum SPMaterial {
-   FR_4
-   ALUMINUM
-   ROGERS
-   HDI
-   COPPER_BASE
 }
 
 enum SPFr4TG {

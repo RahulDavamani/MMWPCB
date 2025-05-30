@@ -411,12 +411,16 @@ export const quotePrice = derived(quote, ($quote) => {
 			if (surfaceFinish === 'IMMERSION_TIN') surfaceFinishPrice = 45;
 			if (surfaceFinish === 'OSP') surfaceFinishPrice = 22.5;
 			if (surfaceFinish === 'ENEPIG') surfaceFinishPrice = 585;
+			if (surfaceFinish === 'GOLD_PLATING') surfaceFinishPrice = 450;
+			if (surfaceFinish === 'SILVER_PLATING') surfaceFinishPrice = 416.25;
 		}
 		if (surfaceFinishLayer === 'DOUBLE_SIDE') {
 			if (surfaceFinish === 'IMMERSION_GOLD') surfaceFinishPrice = 787.5;
 			if (surfaceFinish === 'IMMERSION_TIN') surfaceFinishPrice = 67.5;
 			if (surfaceFinish === 'OSP') surfaceFinishPrice = 22.5;
 			if (surfaceFinish === 'ENEPIG') surfaceFinishPrice = 1125;
+			if (surfaceFinish === 'GOLD_PLATING') surfaceFinishPrice = 900;
+			if (surfaceFinish === 'SILVER_PLATING') surfaceFinishPrice = 787.5;
 		}
 
 		if (surfaceFinishPrice) {

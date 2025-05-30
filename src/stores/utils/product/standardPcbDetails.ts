@@ -237,7 +237,7 @@ export const standardPcbDetails = (lg: Lang) => {
 			key: 'material',
 			l: l.material,
 			values,
-			parseValue: (val: StandardPcb['material']) => values.find((v) => v.value === val)?.title
+			parseValue: (val: StandardPcb['material']) => values.find((v) => v.value === val)?.title ?? val
 		};
 	})();
 
@@ -396,7 +396,9 @@ export const standardPcbDetails = (lg: Lang) => {
 			{ title: l.surfaceFinish.values.osp, value: 'OSP' },
 			{ title: l.surfaceFinish.values.immersionTin, value: 'IMMERSION_TIN' },
 			{ title: l.surfaceFinish.values.enepig, value: 'ENEPIG' },
-			{ title: l.surfaceFinish.values.plainCopper, value: 'PLAIN_COPPER' }
+			{ title: l.surfaceFinish.values.plainCopper, value: 'PLAIN_COPPER' },
+			{ title: l.surfaceFinish.values.goldPlating, value: 'GOLD_PLATING' },
+			{ title: l.surfaceFinish.values.silverPlating, value: 'SILVER_PLATING' }
 		] as { title: string; value: StandardPcb['surfaceFinish'] }[];
 
 		return {

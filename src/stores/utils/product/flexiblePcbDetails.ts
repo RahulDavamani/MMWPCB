@@ -169,7 +169,7 @@ export const flexiblePcbDetails = (lg: Lang) => {
 			key: 'material',
 			l: l.material,
 			values,
-			parseValue: (val: FlexiblePcb['material']) => values.find((v) => v.value === val)?.title
+			parseValue: (val: FlexiblePcb['material']) => values.find((v) => v.value === val)?.title ?? val
 		};
 	})();
 
@@ -193,7 +193,9 @@ export const flexiblePcbDetails = (lg: Lang) => {
 		values: [
 			0.025, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.2, 0.22, 0.23, 0.24,
 			0.25, 0.26, 0.27, 0.28, 0.29, 0.3, 0.33, 0.34, 0.35, 0.4
-		]
+		],
+		parseValue: (val: FlexiblePcb['thickness']) => `${val}mm`,
+		validate: (val: FlexiblePcb['thickness']) => val <= 0
 	};
 
 	const minTrack = {
@@ -293,11 +295,7 @@ export const flexiblePcbDetails = (lg: Lang) => {
 		const values = [
 			{ title: l.surfaceFinish.values.immersionGold, value: 'IMMERSION_GOLD' },
 			{ title: l.surfaceFinish.values.osp, value: 'OSP' },
-			{ title: l.surfaceFinish.values.hardGold, value: 'HARD_GOLD' },
-			{ title: l.surfaceFinish.values.immersionSilver, value: 'IMMERSION_SILVER' },
-			{ title: l.surfaceFinish.values.immersionTin, value: 'IMMERSION_TIN' },
-			{ title: l.surfaceFinish.values.immersionGoldHardGold, value: 'IMMERSION_GOLD_SELECTIVE_HARD_GOLD' },
-			{ title: l.surfaceFinish.values.enepig, value: 'ENEPIG' }
+			{ title: l.surfaceFinish.values.immersionTin, value: 'IMMERSION_TIN' }
 		] as { title: string; value: FlexiblePcb['surfaceFinish'] }[];
 
 		return {
@@ -307,66 +305,6 @@ export const flexiblePcbDetails = (lg: Lang) => {
 			parseValue: (val: FlexiblePcb['surfaceFinish']) => values.find((v) => v.value === val)?.title ?? val
 		};
 	})();
-
-	const surfaceThickness = {
-		key: 'surfaceThickness',
-		l: l.surfaceThickness,
-		immersionGold: {
-			l: l.surfaceThickness.immersionGold,
-			values: [[1], [2], [3]],
-			parseValue: (val: FlexiblePcb['surfaceThickness']) => `${val[0]}U"`
-		},
-		hardGold: {
-			l: l.surfaceThickness.hardGold,
-			values: [
-				[3, 120],
-				[5, 120],
-				[10, 120],
-				[15, 120],
-				[20, 120],
-				[25, 120],
-				[30, 120]
-			],
-			parseValue: (val: FlexiblePcb['surfaceThickness']) => `Au:${val[0]}U"/Ni:${val[1]}U"`
-		},
-		immersionGoldHardGold: {
-			l: l.surfaceThickness.immersionGoldHardGold,
-			values: [
-				[1, 3, 120],
-				[1, 5, 120],
-				[1, 10, 120],
-				[1, 15, 120],
-				[1, 20, 120],
-				[1, 25, 120],
-				[1, 30, 120],
-				[2, 3, 120],
-				[2, 5, 120],
-				[2, 10, 120],
-				[2, 15, 120],
-				[2, 20, 120],
-				[2, 25, 120],
-				[2, 30, 120],
-				[3, 3, 120],
-				[3, 5, 120],
-				[3, 10, 120],
-				[3, 15, 120],
-				[3, 20, 120],
-				[3, 25, 120],
-				[3, 30, 120]
-			],
-			parseValue: (val: FlexiblePcb['surfaceThickness']) => `Au:${val[0]}U" Au:${val[1]}U"/Pd:${val[2]}U"`
-		},
-		enepig: {
-			l: l.surfaceThickness.enepig,
-			values: [
-				[200, 1, 1],
-				[200, 2, 2],
-				[200, 3, 3],
-				[200, 4, 4]
-			],
-			parseValue: (val: FlexiblePcb['surfaceThickness']) => `Ni:${val[0]}U"/Pd:${val[1]}U"/Au:${val[2]}U"`
-		}
-	};
 
 	const finishedCopper = {
 		key: 'finishedCopper',
@@ -575,7 +513,6 @@ export const flexiblePcbDetails = (lg: Lang) => {
 		edgeConnector,
 		stiffener,
 		surfaceFinish,
-		surfaceThickness,
 		finishedCopper,
 		etest,
 		tape,

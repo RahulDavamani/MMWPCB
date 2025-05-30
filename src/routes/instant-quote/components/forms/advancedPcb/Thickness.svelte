@@ -26,6 +26,7 @@
 					e.currentTarget.value = String(val);
 					$quote.products.advancedPcb.thickness = val;
 				}}
+				min={0}
 			/>
 		</button>
 	</div>

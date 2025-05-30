@@ -5,7 +5,6 @@
 	import CustomizedServices from './CustomizedServices.svelte';
 	import DifferentDesign from './DifferentDesign.svelte';
 	import EdgeConnector from './EdgeConnector.svelte';
-	import FinalInspectionReport from './FinalInspectionReport.svelte';
 	import FinishedCopper from './FinishedCopper.svelte';
 	import InnerCopper from './InnerCopper.svelte';
 	import LayerOptions from './LayerOptions.svelte';
@@ -54,5 +53,4 @@
 <FinishedCopper />
 <InnerCopper />
 <CustomizedServices />
-<FinalInspectionReport />
 <SpecialRequests />

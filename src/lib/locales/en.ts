@@ -1025,7 +1025,7 @@ export const en = {
 				}
 			},
 			thickness: {
-				title: 'Thickness',
+				title: 'Thickness (mm)',
 				description:
 					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking.If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.',
 				error: 'Thickness should be greater than 0',
@@ -1088,7 +1088,9 @@ export const en = {
 					osp: 'OSP',
 					immersionTin: 'Immersion Tin',
 					enepig: 'ENEPIG',
-					plainCopper: 'Plain Copper / None'
+					plainCopper: 'Plain Copper / None',
+					goldPlating: 'Gold Plating',
+					silverPlating: 'Silver Plating'
 				},
 				disclaimer: 'Surface finish selection is required to protect copper from oxidation'
 			},
@@ -1475,7 +1477,7 @@ export const en = {
 				description: 'High Frequency PCBs(DK)'
 			},
 			thickness: {
-				title: 'Thickness',
+				title: 'Thickness (mm)',
 				description:
 					'For ordinary materials, the board thickness refers to the thickness of the PCB after production is complete, and the error is about 10% (+/-10% (T>=1mm) or +/- 0.1mm (T<1mm).). The error is mainly caused by solder mask and copper sinking. If there are other requirements for thickness error, please make a note in Other Special Requirements. Note: For single sided/double sided Rogers board, the thickness refers to thickness of substrate.',
 				error: 'Thickness should be greater than 0',
@@ -1516,7 +1518,9 @@ export const en = {
 					osp: 'OSP',
 					immersionTin: 'Immersion Tin',
 					enepig: 'ENEPIG',
-					plainCopper: 'Plain Copper / None'
+					plainCopper: 'Plain Copper / None',
+					goldPlating: 'Gold Plating',
+					silverPlating: 'Silver Plating'
 				},
 				disclaimer: 'Surface finish selection is required to protect copper from oxidation'
 			},
@@ -1688,18 +1692,6 @@ export const en = {
 					}
 				}
 			},
-			finalInspectionReport: {
-				title: 'Final Inspection Report (Free)',
-				description: 'Regular shipment report additionally includes test report, dimensional inspection report',
-				values: {
-					defaultInspectionReport: 'Default Inspection Report',
-					microsectionInspectionReport: 'Microsection Inspection Report',
-					solderabilityInspectionReport: 'Solderability Inspection Report',
-					thermalStressInspectionReport: 'Thermal Stress Inspection Report',
-					impedanceTestReport: 'Impedance Test Report',
-					humidityIndicatorCards: 'Humidity Indicator Cards'
-				}
-			},
 			specialRequests: {
 				title: 'Other Special Requests',
 				placeholder: 'Fill in any PCB details to make it as clear as possible for us to understand your requirements.'
@@ -1825,8 +1817,9 @@ export const en = {
 				}
 			},
 			thickness: {
-				title: 'FPC Thickness',
+				title: 'FPC Thickness (mm)',
 				description: 'The FPC thickness does not include the thickness of stiffener and 3M tape.',
+				error: 'Thickness should be greater than 0',
 				disclaimer:
 					'"Thickness" refers to the total finished thickness of the PCB. For detailed layer stack-up specifications, please refer to the website documentation. Note that the total thickness may have a ±10% tolerance due to manufacturing processes.'
 			},
@@ -1871,28 +1864,9 @@ export const en = {
 				values: {
 					immersionGold: 'Immersion Gold (ENIG)',
 					osp: 'OSP',
-					hardGold: 'Hard Gold',
-					immersionSilver: 'Immersion Silver (Ag)',
-					immersionTin: 'Immersion Tin',
-					immersionGoldHardGold: 'Immersion gold + Selective hard gold',
-					enepig: 'ENEPIG'
+					immersionTin: 'Immersion Tin'
 				},
 				disclaimer: 'Surface finish selection is required to protect copper from oxidation'
-			},
-			surfaceThickness: {
-				title: 'Surface Thickness',
-				immersionGold: {
-					title: 'Thickness of Immersion Gold'
-				},
-				hardGold: {
-					title: 'Au/Ni thickness'
-				},
-				immersionGoldHardGold: {
-					title: 'Immersion gold / Hard gold thickness'
-				},
-				enepig: {
-					title: 'Thickness of ENEPIG'
-				}
 			},
 			finishedCopper: {
 				title: 'Finished Copper',
@@ -2118,12 +2092,6 @@ export const en = {
 					polyimideFlex: 'Polyimide Flex + FR4'
 				}
 			},
-			thickness: {
-				title: 'Rigid-Flex Thickness',
-				description: 'Total thickness of rigid and flex layers',
-				disclaimer:
-					'"Thickness" refers to the total finished thickness of the PCB. For detailed layer stack-up specifications, please refer to the website documentation. Note that the total thickness may have a ±10% tolerance due to manufacturing processes.'
-			},
 			minTrack: {
 				title: 'Min track/spacing',
 				description:
@@ -2140,15 +2108,9 @@ export const en = {
 				values: {
 					immersionGold: 'Immersion Gold (ENIG)',
 					osp: 'OSP',
-					immersionSilver: 'Immersion Silver (Ag)'
+					immersionTin: 'Immersion Tin'
 				},
 				disclaimer: 'Surface finish selection is required to protect copper from oxidation'
-			},
-			surfaceThickness: {
-				title: 'Surface Thickness',
-				immersionGold: {
-					title: 'Thickness of Immersion Gold'
-				}
 			},
 			edgeConnector: {
 				title: 'Edge Connector',
@@ -2161,8 +2123,9 @@ export const en = {
 				description: 'The number of conductive layers for Flex part.'
 			},
 			fpcThickness: {
-				title: 'FPC Thickness',
-				description: 'The board thickness for Flex part'
+				title: 'FPC Thickness (mm)',
+				description: 'The board thickness for Flex part',
+				error: 'Thickness should be greater than 0'
 			},
 			fpcCoverlay: {
 				title: 'FPC Coverlay',
@@ -2250,18 +2213,6 @@ export const en = {
 						description:
 							'A Blind Via connects an outer layer to one or more inner layers but does not go through the entire board. A Buried Via connects two or more inner layers but does not go through to an outer layer.'
 					}
-				}
-			},
-			finalInspectionReport: {
-				title: 'Final Inspection Report (Free)',
-				description: 'Regular shipment report additionally includes test report, dimensional inspection report',
-				values: {
-					defaultInspectionReport: 'Default Inspection Report',
-					microsectionInspectionReport: 'Microsection Inspection Report',
-					solderabilityInspectionReport: 'Solderability Inspection Report',
-					thermalStressInspectionReport: 'Thermal Stress Inspection Report',
-					impedanceTestReport: 'Impedance Test Report',
-					humidityIndicatorCards: 'Humidity Indicator Cards'
 				}
 			},
 			specialRequests: {

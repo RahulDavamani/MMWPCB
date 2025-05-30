@@ -44,15 +44,6 @@ const RFCustomizedServices = z.enum([
 	'HDI'
 ]);
 
-const RFFinalInspectionReport = z.enum([
-	'DEFAULT_INSPECTION_REPORT',
-	'MICROSECTION_INSPECTION_REPORT',
-	'SOLDERABILITY_INSPECTION_REPORT',
-	'THERMAL_STRESS_INSPECTION_REPORT',
-	'IMPEDANCE_INSPECTION_REPORT',
-	'HUMIDITY_INDICATOR_CARD'
-]);
-
 export const rigidFlexSchema = z.object({
 	id: z.string().nullish(),
 	name: z.string().min(1),
@@ -72,11 +63,9 @@ export const rigidFlexSchema = z.object({
 	quantity: z.number().gt(0),
 	layers: z.number().gt(0),
 	material: RFMaterial,
-	thickness: z.number(),
 	minTrack: z.number(),
 	minHoleSize: z.number(),
 	surfaceFinish: z.string().min(1),
-	surfaceThickness: z.array(z.number()),
 	edgeConnector: z.boolean(),
 	fpcLayers: z.number(),
 	fpcThickness: z.number(),
@@ -90,7 +79,6 @@ export const rigidFlexSchema = z.object({
 	dateCode: RFDateCode,
 	dateCodeDescription: z.string().nullish(),
 	customizedServices: z.array(RFCustomizedServices),
-	finalInspectionReport: z.array(RFFinalInspectionReport),
 	specialRequests: z.string()
 });
 

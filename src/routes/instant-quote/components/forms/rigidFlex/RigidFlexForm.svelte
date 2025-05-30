@@ -4,7 +4,6 @@
 	import CustomizedServices from './CustomizedServices.svelte';
 	import DifferentDesign from './DifferentDesign.svelte';
 	import EdgeConnector from './EdgeConnector.svelte';
-	import FinalInspectionReport from './FinalInspectionReport.svelte';
 	import FpcCoverlay from './FpcCoverlay.svelte';
 	import FpcFinishedCoper from './FpcFinishedCoper.svelte';
 	import FpcLayers from './FpcLayers.svelte';
@@ -23,8 +22,6 @@
 	import Size from './Size.svelte';
 	import SpecialRequests from './SpecialRequests.svelte';
 	import SurfaceFinish from './SurfaceFinish.svelte';
-	import SurfaceThickness from './SurfaceThickness.svelte';
-	import Thickness from './Thickness.svelte';
 </script>
 
 <GerberFile />
@@ -37,12 +34,10 @@
 <Layers />
 <div class="divider" />
 <Material />
-<Thickness />
 <MinTrack />
 <MinHoleSize />
 <div class="divider" />
 <SurfaceFinish />
-<SurfaceThickness />
 <EdgeConnector />
 <div class="divider" />
 <div class="text-xl font-semibold">Flex Part</div>
@@ -57,5 +52,4 @@
 <RpcSilkscreen />
 <RpcFinishedCopper />
 <CustomizedServices />
-<FinalInspectionReport />
 <SpecialRequests />

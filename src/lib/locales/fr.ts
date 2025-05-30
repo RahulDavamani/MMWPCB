@@ -1114,7 +1114,9 @@ export const fr: Lang = {
 					osp: 'OSP',
 					immersionTin: 'Étain immersion',
 					enepig: 'ENEPIG',
-					plainCopper: 'Cuivre nu / Aucun'
+					plainCopper: 'Cuivre nu / Aucun',
+					goldPlating: 'Placage or',
+					silverPlating: 'Placage argent'
 				},
 				disclaimer: 'Le choix d’une finition de surface est nécessaire pour protéger le cuivre de l’oxydation'
 			},
@@ -1548,7 +1550,9 @@ export const fr: Lang = {
 					osp: 'OSP',
 					immersionTin: "Étain d'immersion",
 					enepig: 'ENEPIG',
-					plainCopper: 'Cuivre nu / Aucun'
+					plainCopper: 'Cuivre nu / Aucun',
+					goldPlating: 'Placage or',
+					silverPlating: 'Placage argent'
 				},
 				disclaimer: 'Le choix d’une finition de surface est nécessaire pour protéger le cuivre de l’oxydation'
 			},
@@ -1721,19 +1725,6 @@ export const fr: Lang = {
 					}
 				}
 			},
-			finalInspectionReport: {
-				title: "Rapport d'inspection final (gratuit)",
-				description:
-					"Le rapport d'expédition régulier inclut également le rapport de test, le rapport d'inspection dimensionnelle.",
-				values: {
-					defaultInspectionReport: "Rapport d'inspection par défaut",
-					microsectionInspectionReport: "Rapport d'inspection de microsection",
-					solderabilityInspectionReport: "Rapport d'inspection de soudabilité",
-					thermalStressInspectionReport: "Rapport d'inspection de stress thermique",
-					impedanceTestReport: "Rapport de test d'impédance",
-					humidityIndicatorCards: "Cartes indicatrices d'humidité"
-				}
-			},
 			specialRequests: {
 				title: 'Autres demandes spéciales',
 				placeholder:
@@ -1863,6 +1854,7 @@ export const fr: Lang = {
 			thickness: {
 				title: 'Épaisseur de FPC',
 				description: "L'épaisseur du FPC ne compte pas l'épaisseur du matériau d'appoint et du 3M.",
+				error: "L'épaisseur doit être supérieure à 0",
 				disclaimer:
 					'“Épaisseur” fait référence à l’épaisseur totale finale du PCB. Pour des spécifications détaillées de l’empilement des couches, veuillez consulter la documentation du site. Notez que l’épaisseur totale peut avoir une tolérance de ±10 % en raison des procédés de fabrication.'
 			},
@@ -1908,28 +1900,9 @@ export const fr: Lang = {
 				values: {
 					immersionGold: 'Plongée dorée (ENIG)',
 					osp: 'OSP',
-					hardGold: 'Or dur',
-					immersionSilver: 'Plongée argentée (Ag)',
-					immersionTin: 'Plongée en étain',
-					immersionGoldHardGold: 'Plongée dorée + or dur',
-					enepig: 'Enepig'
+					immersionTin: 'Plongée en étain'
 				},
 				disclaimer: 'Le choix d’une finition de surface est nécessaire pour protéger le cuivre de l’oxydation'
-			},
-			surfaceThickness: {
-				title: 'Épaisseur de surface',
-				immersionGold: {
-					title: 'Nombres épaisseurs dorée'
-				},
-				hardGold: {
-					title: 'Épaisseur or/Nickel'
-				},
-				immersionGoldHardGold: {
-					title: 'Épaisseur dorée + or dur'
-				},
-				enepig: {
-					title: 'Épaisseur enepig'
-				}
 			},
 			finishedCopper: {
 				title: 'Épaisseur du cuivre',
@@ -2159,12 +2132,6 @@ export const fr: Lang = {
 					polyimideFlex: 'Polyimide Flex + FR4'
 				}
 			},
-			thickness: {
-				title: 'Épaisseur Rigid-Flex',
-				description: 'Épaisseur totale des couches rigides et flexibles',
-				disclaimer:
-					'“Épaisseur” fait référence à l’épaisseur totale finale du PCB. Pour des spécifications détaillées de l’empilement des couches, veuillez consulter la documentation du site. Notez que l’épaisseur totale peut avoir une tolérance de ±10 % en raison des procédés de fabrication.'
-			},
 			minTrack: {
 				title: 'Min piste/espacement',
 				description:
@@ -2181,15 +2148,9 @@ export const fr: Lang = {
 				values: {
 					immersionGold: 'Or immersion (ENIG)',
 					osp: 'OSP',
-					immersionSilver: 'Argent immersion (Ag)'
+					immersionTin: 'Plongée en étain'
 				},
 				disclaimer: 'Le choix d’une finition de surface est nécessaire pour protéger le cuivre de l’oxydation'
-			},
-			surfaceThickness: {
-				title: 'Épaisseur de surface',
-				immersionGold: {
-					title: "Épaisseur de l'or immersion"
-				}
 			},
 			edgeConnector: {
 				title: "Connecteur d'aplomb",
@@ -2203,7 +2164,8 @@ export const fr: Lang = {
 			},
 			fpcThickness: {
 				title: 'Épaisseur FPC',
-				description: "L'épaisseur de la carte pour la partie flexible"
+				description: "L'épaisseur de la carte pour la partie flexible",
+				error: "L'épaisseur doit être supérieure à 0"
 			},
 			fpcCoverlay: {
 				title: 'Couverture FPC',
@@ -2292,19 +2254,6 @@ export const fr: Lang = {
 						description:
 							"Un via aveugle connecte une couche externe à une ou plusieurs couches internes mais ne traverse pas l'ensemble du PCB. Un via enterré connecte deux ou plusieurs couches internes mais ne traverse pas jusqu'à une couche externe."
 					}
-				}
-			},
-			finalInspectionReport: {
-				title: "Rapport d'inspection finale (Gratuit)",
-				description:
-					"Le rapport d'expédition régulier comprend également le rapport de test et le rapport d'inspection dimensionnelle",
-				values: {
-					defaultInspectionReport: "Rapport d'inspection par défaut",
-					microsectionInspectionReport: "Rapport d'inspection microscopique",
-					solderabilityInspectionReport: "Rapport d'inspection de soudabilité",
-					thermalStressInspectionReport: "Rapport d'inspection de contrainte thermique",
-					impedanceTestReport: "Rapport de test d'impédance",
-					humidityIndicatorCards: "Cartes indicatrices d'humidité"
 				}
 			},
 			specialRequests: {
