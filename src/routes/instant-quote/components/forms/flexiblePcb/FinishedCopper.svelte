@@ -3,8 +3,8 @@
 	import { quote } from '../../../../../stores/quote.store';
 	import FormItem from '../../FormItem.svelte';
 
-	$: pd = $productDetails.advancedPcb.finishedCopper;
-	$: ({ finishedCopper } = $quote.products.advancedPcb);
+	$: pd = $productDetails.flexiblePcb.finishedCopper;
+	$: ({ finishedCopper } = $quote.products.flexiblePcb);
 </script>
 
 <FormItem {pd}>
@@ -12,7 +12,7 @@
 		{#each pd.values as value}
 			<button
 				class="btn btn-sm btn-primary {finishedCopper !== value && 'btn-outline'}"
-				on:click={() => ($quote.products.advancedPcb.finishedCopper = value)}>{pd.parseValue(value)}</button
+				on:click={() => ($quote.products.flexiblePcb.finishedCopper = value)}>{pd.parseValue(value)}</button
 			>
 		{/each}
 	</div>

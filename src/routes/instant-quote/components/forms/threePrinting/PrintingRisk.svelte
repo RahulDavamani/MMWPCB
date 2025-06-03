@@ -30,18 +30,4 @@
 			<div class="text-sm opacity-80 text-gray-600">{l.printedThreadsRisk.description}</div>
 		</div>
 	</div>
-	<!-- <FormItem pd={{ l: l.wallThicknessRisk }} classes="items-start mb-4">
-		<input
-			type="checkbox"
-			class="checkbox checkbox-primary checkbox-sm"
-			bind:checked={$quote.products.threePrinting.wallThicknessRisk}
-		/>
-	</FormItem>
-	<FormItem pd={{ l: l.printedThreadsRisk }} classes="items-start">
-		<input
-			type="checkbox"
-			class="checkbox checkbox-primary checkbox-sm"
-			bind:checked={$quote.products.threePrinting.printedThreadsRisk}
-		/>
-	</FormItem> -->
 </FormItem>

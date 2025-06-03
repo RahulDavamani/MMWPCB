@@ -9,14 +9,11 @@ model ThreePrinting {
    initialPrice Float?
    finalPrice   Float?
 
-   quantity           Int[]
-   designUnits        TPDesignUnit
-   material           TPMaterial
-   materialType       TPMaterialType
-   color              TPColor
-   process            TPProcess
-   surfaceFinish      TPSurfaceFinish
-   surfaceFinishColor String?
+   quantity    Int[]
+   designUnits TPDesignUnit
+   material    TPMaterial
+   color       TPColor
+   process     TPProcess
 
    technicalDrawing   String?
    threadsTappedHoles Boolean
@@ -59,17 +56,6 @@ enum TPMaterial {
    OTHERS
 }
 
-enum TPMaterialType {
-   ALUMINUM
-   STAINLESS_STEEL
-   PA_12
-   HP_PA_12
-   GLASS_FIBER_NYLON
-   ABS
-   STRATASYS_ABS
-   PETG
-}
-
 enum TPColor {
    METALLIC
    SILVER
@@ -87,14 +73,6 @@ enum TPProcess {
    SLM
    SLS
    FDM
-}
-
-enum TPSurfaceFinish {
-   NONE
-   SPRAY_PAINTING_MATT
-   SPRAY_PAINTING_HIGH_GLOSS
-   SANDING_1000
-   DYING
 }
 
 enum TPPartsAssembly {

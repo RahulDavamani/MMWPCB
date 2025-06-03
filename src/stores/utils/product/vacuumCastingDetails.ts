@@ -77,23 +77,6 @@ export const vacuumCastingDetails = (lg: Lang) => {
 		};
 	})();
 
-	const materialType = (() => {
-		const values = [
-			{ title: l.materialType.values.abs, value: 'ABS' },
-			{ title: l.materialType.values.pom, value: 'POM' },
-			{ title: l.materialType.values.nylon, value: 'NYLON' },
-			{ title: l.materialType.values.pvc, value: 'PVC' },
-			{ title: l.materialType.values.tpu, value: 'TPU' }
-		] as { title: string; value: VacuumCasting['materialType'] }[];
-
-		return {
-			key: 'materialType',
-			l: l.materialType,
-			values,
-			parseValue: (val: VacuumCasting['materialType']) => values.find((v) => v.value === val)?.title
-		};
-	})();
-
 	const color = (() => {
 		const values = [
 			{ title: lg.color.black, color: 'bg-black', value: 'BLACK' },
@@ -113,40 +96,6 @@ export const vacuumCastingDetails = (lg: Lang) => {
 			parseValue: (val: VacuumCasting['color']) => values.find((v) => v.value === val)?.title
 		};
 	})();
-
-	const surfaceFinish = (() => {
-		const values = [
-			{ title: lg.common.none, section: '', value: 'NONE' },
-			{ title: l.surfaceFinish.values.beadBlast, section: l.surfaceFinish.sections.beadBlast, value: 'BEAD_BLAST' },
-			{
-				title: l.surfaceFinish.values.sprayPaintingMatt,
-				section: l.surfaceFinish.sections.sprayPainting,
-				value: 'SPRAY_PAINTING_MATT'
-			},
-			{
-				title: l.surfaceFinish.values.sprayPaintingHighGloss,
-				section: l.surfaceFinish.sections.sprayPainting,
-				value: 'SPRAY_PAINTING_HIGH_GLOSS'
-			},
-			{
-				title: l.surfaceFinish.values.sanding1000,
-				section: l.surfaceFinish.sections.detailSanding,
-				value: 'SANDING_1000'
-			}
-		] as { title: string; section: string; value: VacuumCasting['surfaceFinish'] }[];
-
-		return {
-			key: 'surfaceFinish',
-			l: l.surfaceFinish,
-			values,
-			parseValue: (val: VacuumCasting['surfaceFinish']) => values.find((v) => v.value === val)?.title
-		};
-	})();
-
-	const surfaceFinishColor = {
-		key: 'surfaceFinishColor',
-		l: l.surfaceFinishColor
-	};
 
 	const technicalDrawing = {
 		key: 'technicalDrawing',
@@ -286,10 +235,7 @@ export const vacuumCastingDetails = (lg: Lang) => {
 		quantity,
 		designUnits,
 		material,
-		materialType,
 		color,
-		surfaceFinish,
-		surfaceFinishColor,
 		technicalDrawing,
 		threadsTappedHoles,
 		inserts,

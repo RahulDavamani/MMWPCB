@@ -77,29 +77,6 @@ export const sheetMetalDetails = (lg: Lang) => {
 		};
 	})();
 
-	const materialType = (() => {
-		const values = [
-			{ title: l.materialType.values.aluminum5052, value: 'ALUMINUM_5052' },
-			{ title: l.materialType.values.aluminum6061, value: 'ALUMINUM_6061' },
-			{ title: l.materialType.values.stainlessSteel201, value: 'STAINLESS_STEEL_201' },
-			{ title: l.materialType.values.stainlessSteel303, value: 'STAINLESS_STEEL_303' },
-			{ title: l.materialType.values.stainlessSteel304, value: 'STAINLESS_STEEL_304' },
-			{ title: l.materialType.values.stainlessSteel316, value: 'STAINLESS_STEEL_316' },
-			{ title: l.materialType.values.mildSteel1018, value: 'MILD_STEEL_1018' },
-			{ title: l.materialType.values.copper101, value: 'COPPER_101' },
-			{ title: l.materialType.values.copper260, value: 'COPPER_260' },
-			{ title: l.materialType.values.copperC110, value: 'COPPER_C110' },
-			{ title: l.materialType.values.carbonFiberPlate, value: 'CARBON_FIBER_PLATE' }
-		] as { title: string; value: SheetMetal['materialType'] }[];
-
-		return {
-			key: 'materialType',
-			l: l.materialType,
-			values,
-			parseValue: (val: SheetMetal['materialType']) => values.find((v) => v.value === val)?.title
-		};
-	})();
-
 	const color = (() => {
 		const values = [
 			{ title: lg.color.silverWhite, color: 'bg-slate-200', value: 'SILVER_WHITE' },
@@ -116,53 +93,6 @@ export const sheetMetalDetails = (lg: Lang) => {
 			parseValue: (val: SheetMetal['color']) => values.find((v) => v.value === val)?.title
 		};
 	})();
-
-	const surfaceFinish = (() => {
-		const values = [
-			{ title: lg.common.none, section: '', value: 'NONE' },
-			{ title: l.surfaceFinish.values.standard, section: l.surfaceFinish.sections.standard, value: 'STANDARD' },
-			{ title: l.surfaceFinish.values.brushed, section: l.surfaceFinish.sections.brushed, value: 'BRUSHED' },
-			{ title: l.surfaceFinish.values.beadBlast, section: l.surfaceFinish.sections.beadBlast, value: 'BEAD_BLAST' },
-			{
-				title: l.surfaceFinish.values.sprayPaintingMatt,
-				section: l.surfaceFinish.sections.sprayPainting,
-				value: 'SPRAY_PAINTING_MATT'
-			},
-			{
-				title: l.surfaceFinish.values.sprayPaintingHighGloss,
-				section: l.surfaceFinish.sections.sprayPainting,
-				value: 'SPRAY_PAINTING_HIGH_GLOSS'
-			},
-			{
-				title: l.surfaceFinish.values.powderCoatMatt,
-				section: l.surfaceFinish.sections.powderCoat,
-				value: 'POWDER_COAT_MATT'
-			},
-			{
-				title: l.surfaceFinish.values.powderCoatHighGloss,
-				section: l.surfaceFinish.sections.powderCoat,
-				value: 'POWDER_COAT_HIGH_GLOSS'
-			},
-			{
-				title: l.surfaceFinish.values.sanding1000,
-				section: l.surfaceFinish.sections.detailSanding,
-				value: 'SANDING_1000'
-			},
-			{ title: l.surfaceFinish.values.others, section: l.surfaceFinish.sections.others, value: 'OTHERS' }
-		] as { title: string; section: string; value: SheetMetal['surfaceFinish'] }[];
-
-		return {
-			key: 'surfaceFinish',
-			l: l.surfaceFinish,
-			values,
-			parseValue: (val: SheetMetal['surfaceFinish']) => values.find((v) => v.value === val)?.title
-		};
-	})();
-
-	const surfaceFinishColor = {
-		key: 'surfaceFinishColor',
-		l: l.surfaceFinishColor
-	};
 
 	const technicalDrawing = {
 		key: 'technicalDrawing',
@@ -318,10 +248,7 @@ export const sheetMetalDetails = (lg: Lang) => {
 		quantity,
 		designUnits,
 		material,
-		materialType,
 		color,
-		surfaceFinish,
-		surfaceFinishColor,
 		technicalDrawing,
 		threadsTappedHoles,
 		inserts,

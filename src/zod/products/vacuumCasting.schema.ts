@@ -2,15 +2,7 @@ import { z } from 'zod';
 
 const vcDesignUnit = z.enum(['MM', 'CM', 'INCH']);
 const vcMaterial = z.enum(['ABS', 'POM', 'NYLON', 'PVC', 'TPU']);
-const vcMaterialType = z.enum(['ABS', 'POM', 'NYLON', 'PVC', 'TPU']);
 const vcColor = z.enum(['BLACK', 'WHITE', 'TRANSPARENT', 'GRAY', 'RED', 'BLUE', 'GREEN', 'YELLOW']);
-const vcSurfaceFinish = z.enum([
-	'NONE',
-	'BEAD_BLAST',
-	'SPRAY_PAINTING_MATT',
-	'SPRAY_PAINTING_HIGH_GLOSS',
-	'SANDING_1000'
-]);
 const vcPartsAssembly = z.enum(['NO', 'ASSEMBLY_TEST', 'SHIP_ASSEMBLY']);
 const vcFinishedAppearance = z.enum(['STANDARD', 'PREMIUM']);
 const vcInspection = z.enum(['STANDARD_INSPECTION', 'SOURCE_MATERIAL_CERTIFICATION']);
@@ -37,10 +29,7 @@ export const vacuumCastingSchema = z.object({
 	quantity: z.array(z.number()),
 	designUnits: vcDesignUnit,
 	material: vcMaterial,
-	materialType: vcMaterialType,
 	color: vcColor,
-	surfaceFinish: vcSurfaceFinish,
-	surfaceFinishColor: z.string().nullish(),
 
 	technicalDrawing: z.string().nullish(),
 	threadsTappedHoles: z.boolean(),

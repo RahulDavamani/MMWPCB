@@ -9,23 +9,20 @@ model InjectionMolding {
    initialPrice Float?
    finalPrice   Float?
 
-   quantity           Int
-   minExpectedVolume  Int
-   maxExpectedVolume  Int?
-   designUnits        IMDesignUnit
-   material           IMMaterial
-   materialType       IMMaterialType
-   color              IMColor
-   spiFinish          IMSPIFinish
-   toolRequirements   String
-   molds              IMMolds
-   surfaceFinish      IMSurfaceFinish
-   surfaceFinishColor String?
+   quantity          Int
+   minExpectedVolume Int
+   maxExpectedVolume Int?
+   designUnits       IMDesignUnit
+   material          IMMaterial
+   color             IMColor
+   spiFinish         IMSPIFinish
+   toolRequirements  String
+   molds             IMMolds
 
    technicalDrawing   String?
    threadsTappedHoles Boolean
    inserts            Boolean
-   tolerance          Int
+   tolerance          Float
 
    silkScreen         String
    laserEngraving     Boolean
@@ -50,14 +47,6 @@ enum IMDesignUnit {
 }
 
 enum IMMaterial {
-   ABS
-   POM
-   NYLON
-   PVC
-   TPU
-}
-
-enum IMMaterialType {
    ABS
    POM
    NYLON
@@ -94,10 +83,6 @@ enum IMSPIFinish {
 enum IMMolds {
    KEEP_MOLDS_FACTORY
    MOLDS_SHIPPED
-}
-
-enum IMSurfaceFinish {
-   NONE
 }
 
 enum IMPartsAssembly {

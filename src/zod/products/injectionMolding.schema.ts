@@ -2,7 +2,6 @@ import { z } from 'zod';
 
 const imDesignUnit = z.enum(['MM', 'CM', 'INCH']);
 const imMaterial = z.enum(['ABS', 'POM', 'NYLON', 'PVC', 'TPU']);
-const imMaterialType = z.enum(['ABS', 'POM', 'NYLON', 'PVC', 'TPU']);
 const imColor = z.enum(['BLACK', 'WHITE', 'TRANSPARENT', 'GRAY', 'RED', 'BLUE', 'GREEN', 'YELLOW']);
 const imSPIFinish = z.enum([
 	'SPI_A1',
@@ -19,7 +18,6 @@ const imSPIFinish = z.enum([
 	'SPI_D3'
 ]);
 const imMolds = z.enum(['KEEP_MOLDS_FACTORY', 'MOLDS_SHIPPED']);
-const imSurfaceFinish = z.enum(['NONE']);
 const imPartsAssembly = z.enum(['NO', 'ASSEMBLY_TEST', 'SHIP_ASSEMBLY']);
 const imFinishedAppearance = z.enum(['STANDARD', 'PREMIUM']);
 const imInspection = z.enum(['STANDARD_INSPECTION', 'SOURCE_MATERIAL_CERTIFICATION']);
@@ -48,13 +46,10 @@ export const injectionMoldingSchema = z.object({
 	maxExpectedVolume: z.number().nullish(),
 	designUnits: imDesignUnit,
 	material: imMaterial,
-	materialType: imMaterialType,
 	color: imColor,
 	spiFinish: imSPIFinish,
 	toolRequirements: z.string(),
 	molds: imMolds,
-	surfaceFinish: imSurfaceFinish,
-	surfaceFinishColor: z.string().nullish(),
 
 	technicalDrawing: z.string().nullish(),
 	threadsTappedHoles: z.boolean(),

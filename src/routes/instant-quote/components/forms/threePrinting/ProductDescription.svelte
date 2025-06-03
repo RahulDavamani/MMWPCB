@@ -4,8 +4,6 @@
 	import FormItem from '../../FormItem.svelte';
 
 	$: pd = $productDetails.threePrinting.productDescription;
-	$: console.log($productDetails.threePrinting.productDescription);
-	$: console.log($quote.products.threePrinting.productDescription);
 </script>
 
 <FormItem {pd}>

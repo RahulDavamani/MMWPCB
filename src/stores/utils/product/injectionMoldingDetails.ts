@@ -86,23 +86,6 @@ export const injectionMoldingDetails = (lg: Lang) => {
 		};
 	})();
 
-	const materialType = (() => {
-		const values = [
-			{ title: l.materialType.values.abs, value: 'ABS' },
-			{ title: l.materialType.values.pom, value: 'POM' },
-			{ title: l.materialType.values.nylon, value: 'NYLON' },
-			{ title: l.materialType.values.pvc, value: 'PVC' },
-			{ title: l.materialType.values.tpu, value: 'TPU' }
-		] as { title: string; value: InjectionMolding['materialType'] }[];
-
-		return {
-			key: 'materialType',
-			l: l.materialType,
-			values,
-			parseValue: (val: InjectionMolding['materialType']) => values.find((v) => v.value === val)?.title
-		};
-	})();
-
 	const color = (() => {
 		const values = [
 			{ title: lg.color.black, color: 'bg-black', value: 'BLACK' },
@@ -165,26 +148,6 @@ export const injectionMoldingDetails = (lg: Lang) => {
 			parseValue: (val: InjectionMolding['molds']) => values.find((v) => v.value === val)?.title
 		};
 	})();
-
-	const surfaceFinish = (() => {
-		const values = [{ title: lg.common.none, section: '', value: 'NONE' }] as {
-			title: string;
-			section: string;
-			value: InjectionMolding['surfaceFinish'];
-		}[];
-
-		return {
-			key: 'surfaceFinish',
-			l: l.surfaceFinish,
-			values,
-			parseValue: (val: InjectionMolding['surfaceFinish']) => values.find((v) => v.value === val)?.title
-		};
-	})();
-
-	const surfaceFinishColor = {
-		key: 'surfaceFinishColor',
-		l: l.surfaceFinishColor
-	};
 
 	const technicalDrawing = {
 		key: 'technicalDrawing',
@@ -326,13 +289,10 @@ export const injectionMoldingDetails = (lg: Lang) => {
 		maxExpectedVolume,
 		designUnits,
 		material,
-		materialType,
 		color,
 		spiFinish,
 		toolRequirements,
 		molds,
-		surfaceFinish,
-		surfaceFinishColor,
 		technicalDrawing,
 		threadsTappedHoles,
 		inserts,

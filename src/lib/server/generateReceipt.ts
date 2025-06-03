@@ -91,7 +91,7 @@ export const generateReceipt = async ({
 	items.forEach(({ name, quantity, unitPrice, amount }) => {
 		doc.text(name, xDescription, y);
 		doc.text(String(quantity), xQty, y, { width: 50, align: 'right' });
-		doc.text(String(unitPrice), xUnitPrice, y, { width: 70, align: 'right' });
+		doc.text(unitPrice.toFixed(2), xUnitPrice, y, { width: 70, align: 'right' });
 		doc.text(amount.toFixed(2), xAmount, y, { width: 70, align: 'right' });
 		y += itemGap;
 	});

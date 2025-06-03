@@ -4,8 +4,6 @@
 	import FormItem from '../../FormItem.svelte';
 
 	$: pd = $productDetails.vacuumCasting.productDescription;
-	$: console.log($productDetails.vacuumCasting.productDescription);
-	$: console.log($quote.products.vacuumCasting.productDescription);
 </script>
 
 <FormItem {pd}>

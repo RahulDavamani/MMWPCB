@@ -9,18 +9,15 @@ model VacuumCasting {
    initialPrice Float?
    finalPrice   Float?
 
-   quantity           Int[]
-   designUnits        VCDesignUnit
-   material           VCMaterial
-   materialType       VCMaterialType
-   color              VCColor
-   surfaceFinish      VCSurfaceFinish
-   surfaceFinishColor String?
+   quantity    Int[]
+   designUnits VCDesignUnit
+   material    VCMaterial
+   color       VCColor
 
    technicalDrawing   String?
    threadsTappedHoles Boolean
    inserts            Boolean
-   tolerance          Int
+   tolerance          Float
 
    silkScreen         String
    laserEngraving     Boolean
@@ -52,14 +49,6 @@ enum VCMaterial {
    TPU
 }
 
-enum VCMaterialType {
-   ABS
-   POM
-   NYLON
-   PVC
-   TPU
-}
-
 enum VCColor {
    BLACK
    WHITE
@@ -69,14 +58,6 @@ enum VCColor {
    BLUE
    GREEN
    YELLOW
-}
-
-enum VCSurfaceFinish {
-   NONE
-   BEAD_BLAST
-   SPRAY_PAINTING_MATT
-   SPRAY_PAINTING_HIGH_GLOSS
-   SANDING_1000
 }
 
 enum VCPartsAssembly {

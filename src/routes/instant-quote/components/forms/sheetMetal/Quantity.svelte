@@ -18,7 +18,7 @@
 				bind:value={$quote.products.sheetMetal.quantity[value]}
 			/>
 		{/each}
-		{#if quantity.length > 1}
+		<!-- {#if quantity.length > 1}
 			<button
 				class="btn btn-sm btn-square btn-error"
 				on:click={() => ($quote.products.sheetMetal.quantity = quantity.slice(0, quantity.length - 1))}
@@ -31,6 +31,6 @@
 			on:click={() => ($quote.products.sheetMetal.quantity = [...quantity, 0])}
 		>
 			<Icon icon="mdi:plus" />
-		</button>
+		</button> -->
 	</div>
 </FormItem>

@@ -4,8 +4,6 @@
 	import FormItem from '../../FormItem.svelte';
 
 	$: pd = $productDetails.injectionMolding.productDescription;
-	$: console.log($productDetails.injectionMolding.productDescription);
-	$: console.log($quote.products.injectionMolding.productDescription);
 </script>
 
 <FormItem {pd}>

@@ -15,7 +15,7 @@
 	<a
 		tabindex="0"
 		{href}
-		class="btn btn-link text-black text-base underline-offset-8 decoration-secondary decoration-2
+		class="btn btn-link text-black lg:text-base lg:underline-offset-8 decoration-secondary decoration-2
       {selected && '!underline'}"
 	>
 		{title}

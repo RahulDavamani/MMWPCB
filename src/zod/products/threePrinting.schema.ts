@@ -14,16 +14,6 @@ const tpMaterial = z.enum([
 	'HIGH_TEMPERATURE_NICKEL_ALLOY',
 	'OTHERS'
 ]);
-const tpMaterialType = z.enum([
-	'ALUMINUM',
-	'STAINLESS_STEEL',
-	'PA_12',
-	'HP_PA_12',
-	'GLASS_FIBER_NYLON',
-	'ABS',
-	'STRATASYS_ABS',
-	'PETG'
-]);
 const tpColor = z.enum([
 	'METALLIC',
 	'SILVER',
@@ -37,7 +27,6 @@ const tpColor = z.enum([
 	'GREEN'
 ]);
 const tpProcess = z.enum(['SLM', 'SLS', 'FDM']);
-const tpSurfaceFinish = z.enum(['NONE', 'SPRAY_PAINTING_MATT', 'SPRAY_PAINTING_HIGH_GLOSS', 'SANDING_1000', 'DYING']);
 const tpPartsAssembly = z.enum(['NO', 'ASSEMBLY_TEST', 'SHIP_ASSEMBLY']);
 const tpProductDescription = z.enum([
 	'PRINTER_ENCLOSURE',
@@ -62,11 +51,8 @@ export const threePrintingSchema = z.object({
 	quantity: z.array(z.number()).min(1),
 	designUnits: tpDesignUnit,
 	material: tpMaterial,
-	materialType: tpMaterialType,
 	color: tpColor,
 	process: tpProcess,
-	surfaceFinish: tpSurfaceFinish,
-	surfaceFinishColor: z.string().nullish(),
 
 	technicalDrawing: z.string().nullish(),
 	threadsTappedHoles: z.boolean(),

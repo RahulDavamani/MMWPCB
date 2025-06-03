@@ -11,7 +11,6 @@
 	import ProductDescription from './ProductDescription.svelte';
 	import Quantity from './Quantity.svelte';
 	import SpecialRequests from './SpecialRequests.svelte';
-	import SurfaceFinish from './SurfaceFinish.svelte';
 	import ThreadsTappedHoles from './ThreadsTappedHoles.svelte';
 	import Tolerance from './Tolerance.svelte';
 	import Wielding from './Wielding.svelte';
@@ -22,7 +21,6 @@
 <Quantity />
 <DesignUnits />
 <Material />
-<SurfaceFinish />
 <div class="divider" />
 <ThreadsTappedHoles />
 <Inserts />

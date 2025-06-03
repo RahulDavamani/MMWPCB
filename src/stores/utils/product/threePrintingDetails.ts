@@ -82,24 +82,6 @@ export const threePrintingDetails = (lg: Lang) => {
 		};
 	})();
 
-	const materialType = (() => {
-		const values = [
-			{ title: l.materialType.values.aluminum, value: 'ALUMINUM' },
-			{ title: l.materialType.values.stainlessSteel, value: 'STAINLESS_STEEL' },
-			{ title: l.materialType.values.pa12, value: 'PA_12' },
-			{ title: l.materialType.values.hppa12, value: 'HP_PA_12' },
-			{ title: l.materialType.values.glassFiberNylon, value: 'GLASS_FIBER_NYLON' },
-			{ title: l.materialType.values.petg, value: 'PETG' }
-		] as { title: string; value: ThreePrinting['materialType'] }[];
-
-		return {
-			key: 'materialType',
-			l: l.materialType,
-			values,
-			parseValue: (val: ThreePrinting['materialType']) => values.find((v) => v.value === val)?.title
-		};
-	})();
-
 	const color = (() => {
 		const values = [
 			{ title: lg.color.metallic, color: 'bg-slate-200', value: 'METALLIC' },
@@ -126,40 +108,6 @@ export const threePrintingDetails = (lg: Lang) => {
 		key: 'process',
 		l: l.process,
 		values: ['SLM', 'SLS', 'FDM'] as ThreePrinting['process'][]
-	};
-
-	const surfaceFinish = (() => {
-		const values = [
-			{ title: lg.common.none, section: '', value: 'NONE' },
-			{
-				title: l.surfaceFinish.values.sprayPaintingMatt,
-				section: l.surfaceFinish.sections.sprayPainting,
-				value: 'SPRAY_PAINTING_MATT'
-			},
-			{
-				title: l.surfaceFinish.values.sprayPaintingHighGloss,
-				section: l.surfaceFinish.sections.sprayPainting,
-				value: 'SPRAY_PAINTING_HIGH_GLOSS'
-			},
-			{
-				title: l.surfaceFinish.values.sanding1000,
-				section: l.surfaceFinish.sections.detailSanding,
-				value: 'SANDING_1000'
-			},
-			{ title: l.surfaceFinish.values.dying, section: l.surfaceFinish.sections.dying, value: 'DYING' }
-		] as { title: string; section: string; value: ThreePrinting['surfaceFinish'] }[];
-
-		return {
-			key: 'surfaceFinish',
-			l: l.surfaceFinish,
-			values,
-			parseValue: (val: ThreePrinting['surfaceFinish']) => values.find((v) => v.value === val)?.title
-		};
-	})();
-
-	const surfaceFinishColor = {
-		key: 'surfaceFinishColor',
-		l: l.surfaceFinishColor
 	};
 
 	const technicalDrawing = {
@@ -265,11 +213,8 @@ export const threePrintingDetails = (lg: Lang) => {
 		quantity,
 		designUnits,
 		material,
-		materialType,
 		color,
 		process,
-		surfaceFinish,
-		surfaceFinishColor,
 		technicalDrawing,
 		threadsTappedHoles,
 		inserts,

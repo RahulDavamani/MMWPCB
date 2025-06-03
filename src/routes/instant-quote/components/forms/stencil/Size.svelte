@@ -25,7 +25,13 @@
 						type="number"
 						class="grow w-full"
 						placeholder={l.length.title}
-						bind:value={$quote.products.stencil.length}
+						value={$quote.products.stencil.length}
+						on:change={(e) => {
+							let val = Number(e.currentTarget.value) < 0 ? 0 : Number(e.currentTarget.value);
+							e.currentTarget.value = String(val);
+							$quote.products.stencil.length = val;
+						}}
+						min={0}
 					/>
 					<span class="opacity-75">mm</span>
 				</label>
@@ -36,7 +42,13 @@
 							type="number"
 							class="grow w-full"
 							placeholder={l.width.title}
-							bind:value={$quote.products.stencil.width}
+							value={$quote.products.stencil.width}
+							on:change={(e) => {
+								let val = Number(e.currentTarget.value) < 0 ? 0 : Number(e.currentTarget.value);
+								e.currentTarget.value = String(val);
+								$quote.products.stencil.width = val;
+							}}
+							min={0}
 						/>
 						<span class="opacity-75">mm</span>
 					</label>

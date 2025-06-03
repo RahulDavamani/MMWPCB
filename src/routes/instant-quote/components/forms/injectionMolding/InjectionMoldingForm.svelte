@@ -13,7 +13,6 @@
 	import Quantity from './Quantity.svelte';
 	import SpecialRequests from './SpecialRequests.svelte';
 	import SPIFinish from './SPIFinish.svelte';
-	import SurfaceFinish from './SurfaceFinish.svelte';
 	import ThreadsTappedHoles from './ThreadsTappedHoles.svelte';
 	import Tolerance from './Tolerance.svelte';
 	import ToolRequirements from './ToolRequirements.svelte';
@@ -27,7 +26,6 @@
 <SPIFinish />
 <ToolRequirements />
 <Molds />
-<SurfaceFinish />
 <div class="divider" />
 <ThreadsTappedHoles />
 <Inserts />
