@@ -4,6 +4,7 @@ import { getCart } from './procedures/getCart.procedure';
 import { upsertProduct } from './procedures/upsertProduct.procedure';
 import { selectDeliveryAddress } from './procedures/selectDeliveryAddress.procedure';
 import { selectShipping } from './procedures/selectShipping.procedure';
+import { removeShipping } from './procedures/removeShipping.procedure';
 import { getProduct } from './procedures/getProduct.procedure';
 import { removeProduct } from './procedures/removeProduct.procedure';
 import { submitReview } from './procedures/submitReview.procedure';
@@ -38,6 +39,7 @@ export const order = router({
 	upsertProduct,
 	removeProduct,
 	selectShipping,
+	removeShipping,
 	selectDeliveryAddress,
 	applyDiscount,
 	removeDiscount,

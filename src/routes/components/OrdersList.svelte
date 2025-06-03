@@ -65,7 +65,7 @@
 
 	<button class="btn btn-sm btn-primary" on:click={() => fetchOrders()}>{$lg.common.search}</button>
 
-	<a href="/order" class="btn btn-secondary btn-outline btn-sm">
+	<a href="/cart" class="btn btn-secondary btn-outline btn-sm">
 		<Icon icon="mdi:cart" />
 		{l.viewCart}
 	</a>

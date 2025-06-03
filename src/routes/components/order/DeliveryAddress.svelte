@@ -13,7 +13,7 @@
 	$: ({ deliveryAddress, editable } = $order);
 </script>
 
-<div class="grow border rounded-lg shadow p-4 flex flex-col">
+<div class="w-1/2 border rounded-lg shadow p-4 flex flex-col">
 	<div class="flex justify-between items-center mb-2">
 		<div class="text-lg font-bold flex items-center gap-2">
 			<Icon icon="mdi:address-marker-outline" width={20} />

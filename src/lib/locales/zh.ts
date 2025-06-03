@@ -456,6 +456,7 @@ export const zh: Lang = {
 		shippingEstimate: '运费估算',
 		shippingInfo: '运输信息',
 		selectShippingMethod: '选择运输方式',
+		shippingNotSelected: '未选择配送方式',
 		shippingTo: '运输到',
 		selectCountry: '选择国家',
 		shippingMethod: '运输方式',
@@ -469,7 +470,10 @@ export const zh: Lang = {
 		noShippingMethods: '没有可用的运输方式',
 		updatingShipping: '正在更新运输方式',
 		updateShippingError: '更新运输信息失败',
-		updateShippingSuccess: '运输信息更新成功'
+		updateShippingSuccess: '运输信息更新成功',
+		removingShipping: '正在移除配送方式',
+		removeShippingError: '移除配送方式失败',
+		removeShippingSuccess: '配送方式移除成功'
 	},
 
 	orders: {

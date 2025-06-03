@@ -495,6 +495,7 @@ export const en = {
 		shippingEstimate: 'Shipping Estimate',
 		shippingInfo: 'Shipping Info',
 		selectShippingMethod: 'Select Shipping Method',
+		shippingNotSelected: 'Shipping not selected',
 		shippingTo: 'Shipping to',
 		selectCountry: 'Select Country',
 		shippingMethod: 'Shipping Method',
@@ -508,7 +509,10 @@ export const en = {
 		noShippingMethods: 'No Shipping Methods Available',
 		updatingShipping: 'Updating Shipping Method',
 		updateShippingError: 'Failed to update shipping info',
-		updateShippingSuccess: 'Shipping info updated successfully'
+		updateShippingSuccess: 'Shipping info updated successfully',
+		removingShipping: 'Removing Shipping Method',
+		removeShippingError: 'Failed to remove shipping method',
+		removeShippingSuccess: 'Shipping method removed successfully'
 	},
 
 	orders: {

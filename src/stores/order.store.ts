@@ -154,6 +154,15 @@ export const order = derived(
 				ui.setToast({ title: $lg.shipping.updateShippingSuccess, alertClasses: 'alert-success' });
 			})();
 
+		const removeShipping = () =>
+			ui.loaderWrapper({ title: $lg.shipping.removingShipping }, async () => {
+				await trpc()
+					.order.removeShipping.mutate({ id })
+					.catch((e) => tce(e, { showModal: { title: $lg.shipping.removeShippingError, retryFn: removeShipping } }));
+				await invalidateAll();
+				ui.setToast({ title: $lg.shipping.removeShippingSuccess, alertClasses: 'alert-success' });
+			})();
+
 		const applyDiscount = async (code: string) =>
 			ui.loaderWrapper({ title: l.applyDiscount.applyingDiscount }, async () => {
 				await trpc()
@@ -178,13 +187,11 @@ export const order = derived(
 		const submitReviewError =
 			selectedProducts.length === 0
 				? l.submitReview.noProducts
-				: !shippingInfo
-					? l.submitReview.shippingError
-					: !deliveryAddress
-						? l.submitReview.deliveryError
-						: selectedProducts.filter((p) => p.files.length === 0).length > 0
-							? l.submitReview.filesNotUploaded
-							: undefined;
+				: !deliveryAddress
+					? l.submitReview.deliveryError
+					: selectedProducts.filter((p) => p.files.length === 0).length > 0
+						? l.submitReview.filesNotUploaded
+						: undefined;
 
 		const submitReview = ui.loaderWrapper({ title: l.submitReview.submittingOrder }, async () => {
 			await trpc()
@@ -470,6 +477,7 @@ export const order = derived(
 
 			selectAddress,
 			selectShipping,
+			removeShipping,
 
 			applyDiscount,
 			removeDiscount,

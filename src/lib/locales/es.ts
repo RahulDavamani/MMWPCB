@@ -504,6 +504,7 @@ export const es: Lang = {
 		shippingEstimate: 'Estimación de Envío',
 		shippingInfo: 'Información de Envío',
 		selectShippingMethod: 'Seleccionar Método de Envío',
+		shippingNotSelected: 'Método de envío no seleccionado',
 		shippingTo: 'Envío a',
 		selectCountry: 'Seleccionar País',
 		shippingMethod: 'Método de Envío',
@@ -517,7 +518,10 @@ export const es: Lang = {
 		noShippingMethods: 'No hay Métodos de Envío Disponibles',
 		updatingShipping: 'Actualizando Método de Envío',
 		updateShippingError: 'Fallo al actualizar la información de envío',
-		updateShippingSuccess: 'Información de envío actualizada con éxito'
+		updateShippingSuccess: 'Información de envío actualizada con éxito',
+		removingShipping: 'Eliminando método de envío',
+		removeShippingError: 'No se pudo eliminar el método de envío',
+		removeShippingSuccess: 'Método de envío eliminado con éxito'
 	},
 
 	orders: {

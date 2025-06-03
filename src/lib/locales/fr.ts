@@ -520,6 +520,7 @@ export const fr: Lang = {
 		shippingEstimate: "Estimation des frais d'expédition",
 		shippingInfo: "Informations d'expédition",
 		selectShippingMethod: "Sélectionner la méthode d'expédition",
+		shippingNotSelected: 'Mode de livraison non sélectionné',
 		shippingTo: 'Expédition vers',
 		selectCountry: 'Sélectionner le pays',
 		shippingMethod: "Méthode d'expédition",
@@ -533,7 +534,10 @@ export const fr: Lang = {
 		noShippingMethods: "Aucune méthode d'expédition disponible",
 		updatingShipping: "Mise à jour de la méthode d'expédition",
 		updateShippingError: "Échec de la mise à jour des informations d'expédition",
-		updateShippingSuccess: "Informations d'expédition mises à jour avec succès"
+		updateShippingSuccess: "Informations d'expédition mises à jour avec succès",
+		removingShipping: 'Suppression du mode de livraison',
+		removeShippingError: 'Échec de la suppression du mode de livraison',
+		removeShippingSuccess: 'Mode de livraison supprimé avec succès'
 	},
 
 	orders: {

@@ -8,31 +8,38 @@
 
 	$: l = $lg.shipping;
 
-	$: ({ isPortal, status, shippingInfo, selectShipping, editable } = $order);
+	$: ({ isPortal, status, shippingInfo, selectShipping, removeShipping, editable } = $order);
 
 	let modalId = 'selectShippingModal';
 </script>
 
-<div class="grow border rounded-lg shadow p-4 flex flex-col">
+<div class="w-1/2 border rounded-lg shadow p-4 flex flex-col">
 	<div class="flex justify-between items-center mb-2">
 		<div class="text-lg font-bold flex items-center gap-2">
 			<Icon icon="mdi:truck-fast-outline" width={20} />
 			{l.shippingInfo}
 		</div>
 		{#if shippingInfo && editable}
-			<IconBtn icon="mdi:exchange" iconClasses="text-secondary" on:click={() => showModal(modalId)} />
+			<div>
+				<IconBtn icon="mdi:close" iconClasses="text-error" on:click={removeShipping} />
+				<IconBtn icon="mdi:exchange" iconClasses="text-secondary" on:click={() => showModal(modalId)} />
+			</div>
 		{/if}
 	</div>
 	<div class="divider mt-0 mb-1" />
 
 	<div class="grow flex flex-col justify-center">
 		{#if !shippingInfo}
-			<button
-				class="btn btn-link border-primary border-dashed hover:border-primary hover:border-dashed hover:no-underline h-32"
-				on:click={() => showModal(modalId)}
-			>
-				{l.selectShippingMethod}
-			</button>
+			{#if editable}
+				<button
+					class="btn btn-link border-primary border-dashed hover:border-primary hover:border-dashed hover:no-underline h-32"
+					on:click={() => showModal(modalId)}
+				>
+					{l.selectShippingMethod}
+				</button>
+			{:else}
+				<button class="btn btn-disabled h-32">{l.shippingNotSelected}</button>
+			{/if}
 		{:else}
 			{@const { country, method, price, deliveryTime } = shippingInfo}
 			<div class="space-y-1">
