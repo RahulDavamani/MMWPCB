@@ -9,12 +9,29 @@ const schema = z.object({ id: z.string().min(1), productIds: z.array(z.string().
 export const submitReview = userProcedure
 	.input(schema)
 	.mutation(async ({ ctx: { user }, input: { id, productIds } }) => {
-		const { status } = await prisma.order
+		const { status, shippingInfo } = await prisma.order
 			.findUniqueOrThrow({
 				where: { id, userId: user.id },
-				select: { status: true }
+				select: { status: true, shippingInfo: true }
 			})
 			.catch(pe);
+
+		if (!shippingInfo)
+			await prisma.order
+				.update({
+					where: { id },
+					data: {
+						shippingInfo: {
+							create: {
+								method: '',
+								country: '',
+								deliveryTime: '',
+								price: 0
+							}
+						}
+					}
+				})
+				.catch(pe);
 
 		await prisma.order
 			.update({

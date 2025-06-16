@@ -5,8 +5,9 @@ import pe from '../../prisma/pe';
 import { supabase } from '$lib/client/supabase';
 
 const transporter = nodemailer.createTransport({
-	service: 'gmail',
-	auth: { user: OTP_EMAIL, pass: OTP_PASSWORD }
+	host: 'mail.velenova.com.hk',
+	auth: { user: OTP_EMAIL, pass: OTP_PASSWORD },
+	tls: { rejectUnauthorized: false }
 });
 
 export const sendMail = async (mailOptions: nodemailer.SendMailOptions) => {
@@ -42,7 +43,7 @@ export const sendMail = async (mailOptions: nodemailer.SendMailOptions) => {
       `;
 
 		await transporter.sendMail({
-			from: OTP_EMAIL,
+			from: `"MMWPCB" <${OTP_EMAIL}>`,
 			...mailOptions,
 			html
 		});

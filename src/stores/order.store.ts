@@ -231,9 +231,7 @@ export const order = derived(
 				: // @ts-ignore
 					Object.values($orderApproveData.products).includes(null)
 					? l.approveReview.noPriceError
-					: $orderApproveData.shippingInfo.country === ''
-						? l.approveReview.noCountryError
-						: undefined;
+					: undefined;
 
 		const approveReview = ui.loaderWrapper({ title: l.approveReview.approvingReview }, async () => {
 			await trpc()

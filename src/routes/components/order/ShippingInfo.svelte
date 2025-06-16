@@ -48,12 +48,11 @@
 					{#if isPortal && status === 'REVIEW'}
 						<input
 							type="text"
-							class="input input-bordered input-xs text-center
-                     {$orderApproveData.shippingInfo.country === '' && 'input-error'}"
+							class="input input-bordered input-xs text-center"
 							bind:value={$orderApproveData.shippingInfo.country}
 						/>
 					{:else}
-						<div class="font-semibold">{country}</div>
+						<div class="font-semibold">{country === '' ? 'N/A' : country}</div>
 					{/if}
 				</div>
 				<div class="flex justify-between">
@@ -65,7 +64,7 @@
 							bind:value={$orderApproveData.shippingInfo.method}
 						/>
 					{:else}
-						<div class="font-semibold">{method}</div>
+						<div class="font-semibold">{method === '' ? 'N/A' : method}</div>
 					{/if}
 				</div>
 				<div class="flex justify-between">
@@ -77,7 +76,7 @@
 							bind:value={$orderApproveData.shippingInfo.deliveryTime}
 						/>
 					{:else}
-						<div class="font-semibold">{deliveryTime} {l.days}</div>
+						<div class="font-semibold">{deliveryTime === '' ? 'N/A' : `${deliveryTime} ${l.days}`}</div>
 					{/if}
 				</div>
 			</div>
