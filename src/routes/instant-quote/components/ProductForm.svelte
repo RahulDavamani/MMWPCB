@@ -16,7 +16,7 @@
 	import VacuumCastingForm from './forms/vacuumCasting/VacuumCastingForm.svelte';
 
 	$: ({ productType } = $quote);
-	$: productName = $productTypes[productType].title;
+	$: productName = $productTypes[productType].l.title;
 </script>
 
 <div class="grow border rounded-lg shadow p-4 h-fit">

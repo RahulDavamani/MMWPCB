@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { i18n, parsePrice } from '../../../stores/i18n.store';
+	import { i18n, lg, parsePrice } from '../../../stores/i18n.store';
 	import { services } from '../../../stores/service.store';
+
+	$: l = $lg.home;
 </script>
 
-<div class="text-xl font-bold mb-2">Testing Services</div>
+<div class="text-xl font-bold mb-2">{l.services}</div>
 
 <div class="grid grid-cols-4 gap-8 mt-8">
 	{#each Object.values($services) as { code, l, img, from, buildTime }}

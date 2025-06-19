@@ -210,10 +210,18 @@ export const es: Lang = {
 
 	home: {
 		pageTitle: 'Inicio',
-		instantQuote: 'Cotización Instantánea',
-		quoteNow: 'Cotizar Ahora'
+		instantQuote: 'Cotización instantánea',
+		quoteNow: 'Cotizar ahora',
+		products: 'Productos',
+		services: 'Servicios de prueba',
+		browseOurSolutions: 'Explora nuestras soluciones',
+		cards: {
+			from: 'Desde',
+			pcs: 'pzs',
+			buildTime: 'Tiempo de fabricación',
+			hours: 'horas'
+		}
 	},
-
 	support: {
 		title: 'Soporte',
 		subtitle: 'Hola, ¿Cómo podemos ayudar?',
@@ -487,19 +495,95 @@ export const es: Lang = {
 	},
 
 	products: {
-		standardPcb: 'PCB Estándar',
-		advancedPcb: 'PCB Avanzado',
-		flexiblePcb: 'PCB Flexible',
-		rigidFlex: 'Rigid-Flex',
-		assembly: 'Ensamblaje',
-		stencil: 'Plantilla SMD',
-		cnc: 'Mecanizado CNC',
-		sheetMetal: 'Chapa Metálica',
-		threePrinting: 'Impresión 3D',
-		injectionMolding: 'Moldeo por Inyección',
-		vacuumCasting: 'Fundición al Vacío'
+		standardPcb: {
+			title: 'PCB Estándar',
+			description: {
+				1: '1-2 capas - $2 por PCBs de 100x100mm',
+				2: 'Compatible con ensamblaje de PCB',
+				3: 'FR4, Aluminio, Cobre, Rogers, PTFE'
+			}
+		},
+		advancedPcb: {
+			title: 'PCB Avanzado',
+			description: {
+				1: 'PCBs Multicapa',
+				2: 'Compatible con ensamblaje de PCB',
+				3: 'Materiales avanzados'
+			}
+		},
+		flexiblePcb: {
+			title: 'PCB Flexible',
+			description: {
+				1: 'PCBs Flexibles de 1-6 capas',
+				2: 'Compatible con ensamblaje flexible',
+				3: 'PET, PI, LCP'
+			}
+		},
+		rigidFlex: {
+			title: 'PCB Rígido-Flexible',
+			description: {
+				1: 'PCBs Rígido-Flexibles Multicapa',
+				2: 'Compatible con ensamblaje rígido-flexible',
+				3: 'Materiales avanzados'
+			}
+		},
+		assembly: {
+			title: 'Ensamblaje de PCB',
+			description: {
+				1: 'Prototipado rápido en 24 horas',
+				2: 'Cumple con una amplia gama de estándares',
+				3: 'Capacidad multiproceso'
+			}
+		},
+		stencil: {
+			title: 'Plantilla SMD',
+			description: {
+				1: 'Prototipado rápido en 24 horas',
+				2: 'Alta precisión',
+				3: 'Compatible con todos los tipos de ensamblaje SMD'
+			}
+		},
+		cnc: {
+			title: 'Mecanizado CNC',
+			description: {
+				1: 'Rápido y repetible',
+				2: 'Alta precisión',
+				3: 'Amplia gama de materiales'
+			}
+		},
+		sheetMetal: {
+			title: 'Fabricación de Chapa Metálica',
+			description: {
+				1: 'Volumen escalable',
+				2: 'Alta durabilidad',
+				3: 'Amplia gama de materiales'
+			}
+		},
+		threePrinting: {
+			title: 'Impresión 3D',
+			description: {
+				1: 'Prototipado rápido',
+				2: 'Rentable',
+				3: 'Ecológico'
+			}
+		},
+		injectionMolding: {
+			title: 'Moldeo por Inyección',
+			description: {
+				1: 'Prototipado rápido',
+				2: 'Compatible con geometrías complejas',
+				3: 'Opciones de materiales disponibles'
+			}
+		},
+		vacuumCasting: {
+			title: 'Moldeo al Vacío',
+			description: {
+				1: 'Prototipado rápido',
+				2: 'Moldeo de precisión',
+				3: 'Opciones de materiales disponibles'
+			}
+		}
 	},
-
 	shipping: {
 		shippingEstimate: 'Estimación de Envío',
 		shippingInfo: 'Información de Envío',
@@ -3561,7 +3645,10 @@ export const es: Lang = {
 				title: 'Medición en dominio temporal',
 				subtitle: 'Analice y optimice el rendimiento de la red con datos confiables.',
 				description: {
-					'1': 'Reflectometría en dominio temporal (TDR)'
+					1: 'Análisis de señales de alta velocidad',
+					2: 'Reflectometría en el dominio del tiempo (TDR)',
+					3: 'Medición de pulsos y bordes',
+					4: 'Análisis de diagrama de ojo'
 				},
 				specs: {
 					title: 'Título',

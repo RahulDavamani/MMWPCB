@@ -220,9 +220,17 @@ export const fr: Lang = {
 	home: {
 		pageTitle: 'Accueil',
 		instantQuote: 'Devis instantané',
-		quoteNow: 'Obtenir un devis'
+		quoteNow: 'Obtenir un devis',
+		products: 'Produits',
+		services: 'Services de test',
+		browseOurSolutions: 'Parcourez nos solutions',
+		cards: {
+			from: 'À partir de',
+			pcs: 'pcs',
+			buildTime: 'Temps de fabrication',
+			hours: 'heures'
+		}
 	},
-
 	support: {
 		title: 'Support',
 		subtitle: 'Bonjour, comment pouvons-nous vous aider ?',
@@ -503,19 +511,95 @@ export const fr: Lang = {
 	},
 
 	products: {
-		standardPcb: 'PCB standard',
-		advancedPcb: 'PCB avancé',
-		flexiblePcb: 'PCB flexible',
-		rigidFlex: 'Rigide-flex',
-		assembly: 'Assemblage',
-		stencil: 'SMD-Masque',
-		cnc: 'Usinage CNC',
-		sheetMetal: 'Tôle',
-		threePrinting: 'Impression 3D',
-		injectionMolding: 'Moulage par injection',
-		vacuumCasting: 'Moulage sous vide'
+		standardPcb: {
+			title: 'PCB Standard',
+			description: {
+				1: '1-2 couches - 2$ pour des PCB 100x100mm',
+				2: 'Compatible avec l’assemblage PCB',
+				3: 'FR4, Aluminium, Cuivre, Rogers, PTFE'
+			}
+		},
+		advancedPcb: {
+			title: 'PCB Avancé',
+			description: {
+				1: 'PCB Multicouches',
+				2: 'Compatible avec l’assemblage PCB',
+				3: 'Matériaux avancés'
+			}
+		},
+		flexiblePcb: {
+			title: 'PCB Flexible',
+			description: {
+				1: 'PCB Flexibles 1-6 couches',
+				2: 'Compatible avec l’assemblage flexible',
+				3: 'PET, PI, LCP'
+			}
+		},
+		rigidFlex: {
+			title: 'PCB Rigide-Flexible',
+			description: {
+				1: 'PCB Rigide-Flexible Multicouches',
+				2: 'Compatible avec l’assemblage rigide-flexible',
+				3: 'Matériaux avancés'
+			}
+		},
+		assembly: {
+			title: 'Assemblage PCB',
+			description: {
+				1: 'Prototypage rapide en 24h',
+				2: 'Conforme à une large gamme de normes',
+				3: 'Capacité multiprocessus'
+			}
+		},
+		stencil: {
+			title: 'Pochoir SMD',
+			description: {
+				1: 'Prototypage rapide en 24h',
+				2: 'Haute précision',
+				3: 'Compatible avec tous les types d’assemblage SMD'
+			}
+		},
+		cnc: {
+			title: 'Usinage CNC',
+			description: {
+				1: 'Rapide et répétable',
+				2: 'Haute précision',
+				3: 'Large choix de matériaux'
+			}
+		},
+		sheetMetal: {
+			title: 'Fabrication de Tôle',
+			description: {
+				1: 'Volume évolutif',
+				2: 'Haute durabilité',
+				3: 'Large choix de matériaux'
+			}
+		},
+		threePrinting: {
+			title: 'Impression 3D',
+			description: {
+				1: 'Prototypage rapide',
+				2: 'Rentable',
+				3: 'Écologique'
+			}
+		},
+		injectionMolding: {
+			title: 'Moulage par Injection',
+			description: {
+				1: 'Prototypage rapide',
+				2: 'Compatible avec des géométries complexes',
+				3: 'Options de matériaux disponibles'
+			}
+		},
+		vacuumCasting: {
+			title: 'Moulage sous Vide',
+			description: {
+				1: 'Prototypage rapide',
+				2: 'Formage de précision',
+				3: 'Options de matériaux disponibles'
+			}
+		}
 	},
-
 	shipping: {
 		shippingEstimate: "Estimation des frais d'expédition",
 		shippingInfo: "Informations d'expédition",
@@ -3597,7 +3681,10 @@ export const fr: Lang = {
 				title: 'Mesure en domaine temporel',
 				subtitle: 'Analysez et optimisez les performances du réseau avec des informations fiables.',
 				description: {
-					'1': 'Réflectométrie en domaine temporel (TDR)'
+					1: 'Analyse de signaux haute vitesse',
+					2: 'Réflectométrie dans le domaine temporel (TDR)',
+					3: 'Mesures d’impulsions et de fronts',
+					4: 'Analyse de diagramme de l’œil'
 				},
 				specs: {
 					title: 'Titre',

@@ -216,9 +216,18 @@ export const zh: Lang = {
 	},
 
 	home: {
-		pageTitle: '主页',
+		pageTitle: '首页',
 		instantQuote: '即时报价',
-		quoteNow: '立即报价'
+		quoteNow: '立即报价',
+		products: '产品',
+		services: '测试服务',
+		browseOurSolutions: '浏览我们的解决方案',
+		cards: {
+			from: '起',
+			pcs: '件',
+			buildTime: '生产时间',
+			hours: '小时'
+		}
 	},
 
 	support: {
@@ -439,19 +448,95 @@ export const zh: Lang = {
 	},
 
 	products: {
-		standardPcb: '标准PCB',
-		advancedPcb: '高级PCB',
-		flexiblePcb: '柔性PCB',
-		rigidFlex: '刚柔结合',
-		assembly: '组装',
-		stencil: 'SMD模具',
-		cnc: 'CNC加工',
-		sheetMetal: '钣金',
-		threePrinting: '3D打印',
-		injectionMolding: '注射成型',
-		vacuumCasting: '真空铸造'
+		standardPcb: {
+			title: '标准PCB',
+			description: {
+				1: '1-2层 - 100x100mm PCB仅需$2',
+				2: '支持PCB组装',
+				3: 'FR4、铝、铜、Rogers、PTFE'
+			}
+		},
+		advancedPcb: {
+			title: '高阶PCB',
+			description: {
+				1: '多层PCB',
+				2: '支持PCB组装',
+				3: '高阶材料'
+			}
+		},
+		flexiblePcb: {
+			title: '柔性PCB',
+			description: {
+				1: '1-6层柔性PCB',
+				2: '支持柔性PCB组装',
+				3: 'PET、PI、LCP'
+			}
+		},
+		rigidFlex: {
+			title: '刚柔结合PCB',
+			description: {
+				1: '多层刚柔结合PCB',
+				2: '支持刚柔结合PCB组装',
+				3: '高阶材料'
+			}
+		},
+		assembly: {
+			title: 'PCB组装',
+			description: {
+				1: '24小时快速打样',
+				2: '符合多种标准',
+				3: '多工艺能力'
+			}
+		},
+		stencil: {
+			title: '钢网制作',
+			description: {
+				1: '24小时快速打样',
+				2: '高精度',
+				3: '支持所有SMD组装类型'
+			}
+		},
+		cnc: {
+			title: 'CNC加工',
+			description: {
+				1: '快速且可重复',
+				2: '高精度',
+				3: '多种材料可选'
+			}
+		},
+		sheetMetal: {
+			title: '钣金加工',
+			description: {
+				1: '可扩展产量',
+				2: '高度耐用',
+				3: '多种材料可选'
+			}
+		},
+		threePrinting: {
+			title: '3D打印',
+			description: {
+				1: '快速打样',
+				2: '成本效益高',
+				3: '环保'
+			}
+		},
+		injectionMolding: {
+			title: '注塑成型',
+			description: {
+				1: '快速打样',
+				2: '支持复杂几何形状',
+				3: '多种材料选项'
+			}
+		},
+		vacuumCasting: {
+			title: '真空铸造',
+			description: {
+				1: '快速打样',
+				2: '高精度成型',
+				3: '多种材料选项'
+			}
+		}
 	},
-
 	shipping: {
 		shippingEstimate: '运费估算',
 		shippingInfo: '运输信息',
@@ -3405,7 +3490,10 @@ export const zh: Lang = {
 				title: '时域测量',
 				subtitle: '通过可靠的数据洞察分析并优化网络性能。',
 				description: {
-					'1': '时域反射测量（TDR）'
+					1: '高速信号分析',
+					2: '时域反射（TDR）',
+					3: '脉冲与边缘测量',
+					4: '眼图分析'
 				},
 				specs: {
 					title: '标题',

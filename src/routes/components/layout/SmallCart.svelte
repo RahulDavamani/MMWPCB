@@ -42,7 +42,7 @@
 				{#each Object.entries(cartItems) as [key, items]}
 					{@const product = Object.values($productTypes).find((p) => p.keys === key)}
 					{#if items.length > 0}
-						<div class="text-sm font-semibold text-secondary mb-2">{product?.title}</div>
+						<div class="text-sm font-semibold text-secondary mb-2">{product?.l.title}</div>
 					{/if}
 					{#each items as { name, quantity, initialPrice }}
 						<div class="flex justify-between gap-x-4 mb-2">

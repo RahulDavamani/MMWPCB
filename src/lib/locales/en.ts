@@ -216,7 +216,16 @@ export const en = {
 	home: {
 		pageTitle: 'Home',
 		instantQuote: 'Instant Quote',
-		quoteNow: 'Quote Now'
+		quoteNow: 'Quote Now',
+		products: 'Products',
+		services: 'Testing Services',
+		browseOurSolutions: 'Browse Our Solutions',
+		cards: {
+			from: 'From',
+			pcs: 'pcs',
+			buildTime: 'Build Time',
+			hours: 'hours'
+		}
 	},
 
 	support: {
@@ -478,17 +487,94 @@ export const en = {
 	},
 
 	products: {
-		standardPcb: 'Standard PCB',
-		advancedPcb: 'Advanced PCB',
-		flexiblePcb: 'Flexible PCB',
-		rigidFlex: 'Rigid-Flex',
-		assembly: 'Assembly',
-		stencil: 'SMD-Stencil',
-		cnc: 'CNC Machining',
-		sheetMetal: 'Sheet Metal',
-		threePrinting: '3D Printing',
-		injectionMolding: 'Injection Molding',
-		vacuumCasting: 'Vacuum Casting'
+		standardPcb: {
+			title: 'Standard PCB',
+			description: {
+				1: '1-2L - $2 for 100x100mm PCBs',
+				2: 'Supports PCB Assembly',
+				3: 'FR4, Aluminum, Copper, Rogers, PTFE'
+			}
+		},
+		advancedPcb: {
+			title: 'Advanced PCB',
+			description: {
+				1: 'Multilayer PCBs',
+				2: 'Supports PCB Assembly',
+				3: 'Advanced Materials'
+			}
+		},
+		flexiblePcb: {
+			title: 'Flexible PCB',
+			description: {
+				1: '1-6L Flexible PCBs',
+				2: 'Supports Flexible PCB Assembly',
+				3: 'PET, PI, LCP'
+			}
+		},
+		rigidFlex: {
+			title: 'Rigid-Flex PCB',
+			description: {
+				1: 'Multilayer Rigid-Flex PCBs',
+				2: 'Supports Rigid-Flex PCB Assembly',
+				3: 'Advanced Materials'
+			}
+		},
+		assembly: {
+			title: 'PCB Assembly',
+			description: {
+				1: '24-Hour Rapid Prototyping',
+				2: 'Compliant with Wide Range of Standards',
+				3: 'Multi-Process Capability'
+			}
+		},
+		stencil: {
+			title: 'SMD Stencil',
+			description: {
+				1: '24-Hour Rapid Prototyping',
+				2: 'High-Precision',
+				3: 'Supports All SMD Assembly Types'
+			}
+		},
+		cnc: {
+			title: 'CNC Machining',
+			description: {
+				1: 'Fast and Repeatable',
+				2: 'High Accuracy',
+				3: 'Wide Range of Materials'
+			}
+		},
+		sheetMetal: {
+			title: 'Sheet Metal Fabrication',
+			description: {
+				1: 'Scalable Volume',
+				2: 'Highly Durable',
+				3: 'Wide Range of Materials'
+			}
+		},
+		threePrinting: {
+			title: '3D Printing',
+			description: {
+				1: 'Rapid Prototyping',
+				2: 'Cost Effective',
+				3: 'Environmentally Friendly'
+			}
+		},
+		injectionMolding: {
+			title: 'Injection Molding',
+			description: {
+				1: 'Rapid Prototyping',
+				2: 'Supports Complex Geometries',
+				3: 'Provide Material Options'
+			}
+		},
+		vacuumCasting: {
+			title: 'Vacuum Casting',
+			description: {
+				1: 'Rapid Prototyping',
+				2: 'Precision Forming',
+				3: 'Provide Material Options'
+			}
+		}
 	},
 
 	shipping: {
@@ -3574,7 +3660,10 @@ export const en = {
 				title: 'Time Domain Measurement',
 				subtitle: 'Analyze and optimize network performance with reliable data insights.',
 				description: {
-					1: 'Time-Domain Reflectometry (TDR)'
+					1: 'High-Speed Signal Analysis',
+					2: 'Time-Domain Reflectometry (TDR)',
+					3: 'Pulse & Edge Measurements',
+					4: 'Eye Diagram Analysis'
 				},
 
 				specs: {

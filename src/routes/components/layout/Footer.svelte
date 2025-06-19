@@ -42,7 +42,7 @@
 
 	<nav class="leading-4">
 		<h6 class="footer-title">Instant Quote</h6>
-		{#each Object.values($productTypes).slice(0, 6) as { title, key }}
+		{#each Object.values($productTypes).slice(0, 6) as { key, l: { title } }}
 			<button
 				on:click={async () => {
 					await goto('/instant-quote');
@@ -54,7 +54,7 @@
 	</nav>
 	<nav class="leading-4">
 		<h6 class="footer-title opacity-0">Instant Quote</h6>
-		{#each Object.values($productTypes).slice(6, 11) as { title, key }}
+		{#each Object.values($productTypes).slice(6, 11) as { key, l: { title } }}
 			<button
 				on:click={async () => {
 					await goto('/instant-quote');

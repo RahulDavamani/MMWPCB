@@ -107,7 +107,7 @@
 
 <div class="border rounded-box shadow">
 	<div class="join flex rounded-b-none">
-		{#each Object.values($productTypes).slice(0, 6) as { key, title }, i}
+		{#each Object.values($productTypes).slice(0, 6) as { key, l: { title } }, i}
 			<input
 				type="radio"
 				name="productType"
@@ -119,7 +119,7 @@
 		{/each}
 	</div>
 	<div class="join flex rounded-none">
-		{#each Object.values($productTypes).slice(6, 11) as { key, title }, i}
+		{#each Object.values($productTypes).slice(6, 11) as { key, l: { title } }, i}
 			<input
 				type="radio"
 				name="productType"
