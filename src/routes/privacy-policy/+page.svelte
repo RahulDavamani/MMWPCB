@@ -389,7 +389,7 @@
 		<h2>Contact Us</h2>
 		<p>If you have any questions about this Privacy Policy, You can contact us:</p>
 		<ul class="list-disc pl-6">
-			<li>By email: support@mmwpcb.com</li>
+			<li>By email: mmwpcb@velenova.com.hk</li>
 		</ul>
 	</div>
 </Layout>

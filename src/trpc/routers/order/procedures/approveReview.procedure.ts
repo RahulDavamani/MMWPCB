@@ -9,7 +9,7 @@ const schema = z.object({
 	estDeliveryDate: z.date(),
 	products: z.record(z.string(), z.number()),
 	shippingInfo: z.object({
-		country: z.string().min(1),
+		country: z.string(),
 		method: z.string(),
 		price: z.number(),
 		deliveryTime: z.string()

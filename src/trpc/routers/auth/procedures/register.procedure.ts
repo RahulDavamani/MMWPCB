@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { noAuthProcedure } from '../../../server';
 import pe from '../../../../prisma/pe';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { lucia } from '$lib/server/auth/lucia';
 import { customAlphabet } from 'nanoid';
 

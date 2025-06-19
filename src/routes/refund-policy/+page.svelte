@@ -74,7 +74,7 @@
 			<h3 class="text-xl font-bold">Contact Us</h3>
 			<p>If you have any questions about our Returns and Refunds Policy, please contact us:</p>
 			<ul class="list-disc pl-6">
-				<li>By email: support@mmwpcb.com</li>
+				<li>By email: mmwpcb@velenova.com.hk</li>
 			</ul>
 		</div>
 	</Layout>
