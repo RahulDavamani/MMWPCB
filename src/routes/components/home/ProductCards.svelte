@@ -14,7 +14,7 @@
 
 <div class="text-xl font-bold mb-2">{l.products}</div>
 
-<div class="grid grid-cols-4 gap-8 mt-8">
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
 	{#each Object.values($productTypes) as { key, l: { title, description }, img, from, buildTime }}
 		<button class="rounded-box shadow-lg grow p-4">
 			<div class="h-20 flex justify-center">

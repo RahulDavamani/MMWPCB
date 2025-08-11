@@ -14,8 +14,8 @@
 		</a>
 	</div>
 
-	<div class="flex justify-between items-center text-gray-500 flex-wrap gap-2">
-		<div class="font-semibold flex items-center">
+	<div class="flex justify-between items-center text-gray-500 flex-wrap space-x-2">
+		<div class="font-semibold flex">
 			<div class="border border-gray-400 px-2 rounded-full text-sm mr-2">1</div>
 			Instant Quote
 		</div>

@@ -7,10 +7,17 @@
 	import Loader from './components/UI/Loader.svelte';
 	import '../app.css';
 	import '../../node_modules/.pnpm/flatpickr@4.6.13/node_modules/flatpickr/dist/flatpickr.min.css';
+	import { ui } from '../stores/ui.store';
+	import { onMount } from 'svelte';
 
 	NProgress.configure({ minimum: 0.16 });
 	$: if ($navigating) NProgress.start();
 	else NProgress.done();
+
+	onMount(() => {
+		$ui.isMobile = window.innerWidth < 768;
+		window.addEventListener('resize', () => ($ui.isMobile = window.innerWidth < 768));
+	});
 </script>
 
 <Ui />

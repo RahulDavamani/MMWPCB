@@ -8,6 +8,7 @@
 	import type { PageData } from '../../$types';
 	import NavItem from './navbar/NavItem.svelte';
 	import MMWPCBLogo from '$lib/assets/mmwpcb-logo.png';
+	import { ui } from '../../../stores/ui.store';
 
 	$: l = $lg.navbar;
 	$: ({ user } = $page.data as PageData);
@@ -24,24 +25,31 @@
 <div id="navbar" class="navbar shadow-lg">
 	<div class="container mx-auto flex justify-between items-center">
 		<div class="flex items-center">
-			<!-- <a href="/" class="text-xl font-bold font-serif text-primary">MMWPCB</a> -->
-			<a href="/" class=" mr-2">
-				<img src={MMWPCBLogo} alt="" width="100" />
+			<a href="/" class="mr-2">
+				<img src={MMWPCBLogo} alt="MMWPCB Logo" width="100" />
 			</a>
 
-			{#each navItems as { title, href, menu }}
-				<NavItem {title} {href} {menu} />
-			{/each}
+			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<div class="dropdown md:hidden">
+				<label tabindex="0" class="btn btn-ghost btn-circle">
+					<Icon icon="mdi:menu" width="24" />
+				</label>
+				<ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+					{#each navItems as { title, href, menu }}
+						<li><NavItem {title} {href} {menu} /></li>
+					{/each}
+				</ul>
+			</div>
+
+			<div class="hidden md:flex">
+				{#each navItems as { title, href, menu }}
+					<NavItem {title} {href} {menu} />
+				{/each}
+			</div>
 		</div>
 
-		<div class="flex items-center gap-6">
-			{#if user?.role === 'ADMIN'}
-				<a href="/portal/dashboard" class="btn btn-sm btn-link underline-offset-4">
-					<Icon icon="mdi:person" width="18" />
-					{l.adminPortal}
-				</a>
-			{/if}
-
+		<div class="flex items-center gap-4">
 			<I18N />
 			<SmallCart />
 			<NavUser />

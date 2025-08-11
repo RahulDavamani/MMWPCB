@@ -10,11 +10,6 @@
 	<div class="navbar bg-base-300 px-6 border border-gray-300 shadow-md rounded-box flex justify-between min-h-14 h-14">
 		<div class="text-lg font-bold">{pageTitle}</div>
 		<div class="flex items-center gap-6">
-			<a href="/" class="btn btn-sm btn-link underline-offset-4">
-				<Icon icon="mdi:application-outline" width="18" />
-				{$lg.navbar.backToApp}
-			</a>
-
 			<I18N />
 			<NavUser isPortal={true} />
 		</div>

@@ -9,3 +9,7 @@
 .btn-link {
 	text-decoration: none;
 }
+
+html {
+	font-size: 75%;
+}

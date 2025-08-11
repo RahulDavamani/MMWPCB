@@ -7,7 +7,7 @@
 	import Carousel4 from '$lib/assets/carousel/carousel4.jpg';
 </script>
 
-<Splide options={{ autoplay: true, rewind: true }}>
+<Splide options={{ autoplay: true, rewind: true }} class="-z-10">
 	<SplideSlide>
 		<img src={Carousel1} alt="Carousel 1" width="100%" />
 	</SplideSlide>

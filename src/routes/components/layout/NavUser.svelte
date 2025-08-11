@@ -17,7 +17,13 @@
 			href: '/profile'
 		},
 		...(isPortal
-			? []
+			? [
+					{
+						name: $lg.navbar.backToApp,
+						icon: 'mdi:application-outline',
+						href: '/'
+					}
+				]
 			: [
 					{
 						name: l.orders,
@@ -30,6 +36,16 @@
 						href: '/service-requests'
 					}
 				]),
+
+		...(!isPortal && user?.role === 'ADMIN'
+			? [
+					{
+						name: $lg.navbar.adminPortal,
+						icon: 'mdi:administrator',
+						href: '/portal/dashboard'
+					}
+				]
+			: []),
 		{
 			name: l.logout,
 			icon: 'mdi:logout',

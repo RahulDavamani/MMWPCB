@@ -2,6 +2,7 @@ import { closeModal, showModal } from '$lib/client/modal';
 import { writable } from 'svelte/store';
 
 export interface UI {
+	isMobile: boolean;
 	loader?: Loader;
 	toast?: Toast;
 	alertModal?: AlertModal;
@@ -57,7 +58,7 @@ export interface AlertModalAction {
 }
 
 export const ui = (() => {
-	const { subscribe, set, update } = writable<UI>({});
+	const { subscribe, set, update } = writable<UI>({ isMobile: false });
 
 	// Methods
 	const setLoader = (loader?: Loader) => update((state) => ({ ...state, loader }));
