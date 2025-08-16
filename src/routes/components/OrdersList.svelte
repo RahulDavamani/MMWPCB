@@ -48,27 +48,29 @@
 	let userDetailsId: string | undefined = undefined;
 </script>
 
-<div class="flex gap-4">
+<div class="flex flex-col lg:flex-row gap-4">
 	<input
 		type="text"
-		class="input input-sm input-bordered w-full"
+		class="input input-sm input-bordered grow"
 		placeholder={$lg.common.typeHere}
 		bind:value={filters.search}
 	/>
 
-	<select class="select select-sm select-bordered min-w-60" bind:value={filters.status}>
-		<option value={null}>{l.allOrders}</option>
-		{#each statuses as status}
-			<option value={status}>{$orderStatuses[status]}</option>
-		{/each}
-	</select>
+	<div class="flex gap-4">
+		<select class="select select-sm select-bordered min-w-60 grow" bind:value={filters.status}>
+			<option value={null}>{l.allOrders}</option>
+			{#each statuses as status}
+				<option value={status}>{$orderStatuses[status]}</option>
+			{/each}
+		</select>
 
-	<button class="btn btn-sm btn-primary" on:click={() => fetchOrders()}>{$lg.common.search}</button>
+		<button class="btn btn-sm btn-primary" on:click={() => fetchOrders()}>{$lg.common.search}</button>
 
-	<a href="/cart" class="btn btn-secondary btn-outline btn-sm">
-		<Icon icon="mdi:cart" />
-		{l.viewCart}
-	</a>
+		<a href="/cart" class="btn btn-secondary btn-outline btn-sm">
+			<Icon icon="mdi:cart" />
+			{l.viewCart}
+		</a>
+	</div>
 </div>
 
 {#if !data}
@@ -99,7 +101,7 @@
 					...injectionMoldings.map((p) => ({ ...p, type: 'injectionMolding' })),
 					...vacuumCastings.map((p) => ({ ...p, type: 'vacuumCasting' }))
 				]}
-				<div class="border rounded-lg shadow p-4 flex">
+				<div class="border rounded-lg shadow p-4 flex flex-col md:flex-row">
 					<div class="w-60 flex flex-col justify-between gap-4">
 						<div>
 							<div class="font-semibold">
@@ -145,7 +147,8 @@
 							{$orderStatuses[status]}
 						</div>
 					</div>
-					<div class="divider divider-horizontal" />
+
+					<div class="divider divider-vertical md:divider-horizontal" />
 
 					<div class="grow">
 						<div class="flex justify-between mb-2">
@@ -176,7 +179,7 @@
 
 										<div>
 											<div class="font-semibold text-primary">{name}</div>
-											<div class="italic opacity-75">{productType.title}</div>
+											<div class="italic opacity-75">{productType.l.title}</div>
 										</div>
 									</div>
 

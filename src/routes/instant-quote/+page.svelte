@@ -13,9 +13,9 @@
 
 <Layout pageTitle={$lg.instantQuote.pageTitle}>
 	<ProductsList />
-	<div class="flex gap-10 mt-6">
+	<div class="flex flex-col md:flex-row gap-10 mt-6">
 		<ProductForm />
-		<div class="space-y-6 sticky top-4 max-h-screen">
+		<div class="flex flex-col space-y-6 sticky top-4 max-h-screen">
 			<PricingCard />
 			<ShippingCard />
 		</div>

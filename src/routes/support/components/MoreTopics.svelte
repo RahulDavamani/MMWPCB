@@ -8,10 +8,10 @@
 </script>
 
 <div class="flex justify-center font-bold text-2xl mb-4">{l.moreTopics}</div>
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10">
 	{#each Object.entries($support.sections) as [section, { subsections }]}
 		{@const { title, href } = generateSpData(section)}
-		<div class="border shadow rounded-lg max-w-96 px-3 py-2">
+		<div class="border shadow rounded-lg px-3 py-2">
 			<div class="divider">
 				<a {href} class="btn btn-link text-lg p-0">{title}</a>
 			</div>
@@ -22,7 +22,8 @@
 				{/each}
 			</ul>
 			<a {href} class="btn btn-sm btn-outline btn-info w-full mt-4">
-				View More<Icon icon="mdi:chevron-right" width={20} />
+				View More
+				<Icon icon="mdi:chevron-right" width={20} />
 			</a>
 		</div>
 	{/each}

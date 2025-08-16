@@ -32,8 +32,8 @@
 		</div>
 	</div>
 
-	<div class="flex gap-10">
-		<div class="join join-vertical rounded-none w-[24rem]">
+	<div class="flex flex-col md:flex-row gap-10">
+		<div class="join join-vertical rounded-none w-full md:w-[24rem]">
 			<button class="btn join-item justify-between flex-nowrap text-left">
 				{sectionTitle}
 				<Icon icon="mdi:menu" width={24} />

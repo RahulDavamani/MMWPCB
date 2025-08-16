@@ -21,10 +21,10 @@
 		</div>
 	</div>
 
-	<div class="grid grid-cols-4 gap-10">
+	<div class="grid grid-cols-2 md:grid-cols-4 gap-10">
 		{#each Object.values($services) as { code, l: { title }, services }}
 			<div class="flex flex-col items-start">
-				<a href="/services/{code}" class="btn btn-link btn-lg text-xl p-0">
+				<a href="/services/{code}" class="btn btn-link btn-lg text-xl text-left p-0">
 					{title}
 				</a>
 				{#each Object.values(services) as { code: c, l: { title } }}

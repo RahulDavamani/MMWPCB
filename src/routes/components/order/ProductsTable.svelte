@@ -35,7 +35,7 @@
 			<div class="text-center font-semibold my-10">{l.noProductFound}</div>
 		</div>
 	{:else}
-		<div class="overflow-visible max-h-[30rem]">
+		<div class="overflow-auto max-h-[30rem]">
 			<table class="table table-pin-rows">
 				<thead>
 					<tr>

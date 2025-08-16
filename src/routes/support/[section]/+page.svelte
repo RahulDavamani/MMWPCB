@@ -28,7 +28,7 @@
 				{title}
 			</div>
 
-			<div class="grid grid-cols-3 gap-4">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{#each Object.entries(subsections) as [subsection, { questions }]}
 					{@const { title, href } = generateSpData(section, subsection)}
 					<div class="max-w-96 px-3 py-2 border shadow rounded-box">

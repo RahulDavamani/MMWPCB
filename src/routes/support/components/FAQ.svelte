@@ -31,8 +31,9 @@
 		</ul>
 	</div>
 </div>
+
 <div class="flex flex-col">
-	<div class="text-2xl font-bold mb-4 opacity-0">{l.faqs}</div>
+	<div class="text-2xl font-bold mb-4 opacity-0 hidden lg:block">{l.faqs}</div>
 	<div class="border shadow rounded-lg p-3 grow">
 		<ul class="list-disc pl-6 space-y-1 text-sm">
 			{#each faqs.slice(0, 4) as { section, subsection, question }}

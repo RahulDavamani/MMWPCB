@@ -28,10 +28,12 @@
 				{title}
 			</div>
 
-			<ul class="list-disc pl-4">
+			<ul class="list-disc pl-4 space-y-2">
 				{#each questions as { title }, i}
 					<li>
-						<a href="/support/{section}/{subsection}/{i}" class="btn btn-sm btn-link text-base">{title}</a>
+						<a href="/support/{section}/{subsection}/{i}" class="btn btn-sm btn-link text-base h-auto text-left"
+							>{title}</a
+						>
 					</li>
 				{/each}
 			</ul>

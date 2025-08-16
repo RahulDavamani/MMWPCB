@@ -40,7 +40,7 @@
 	</div>
 
 	<div class="font-bold text-3xl text-primary text-center">{l.explorePS}</div>
-	<div class="grid grid-cols-3 gap-y-10 my-10">
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-12 my-10">
 		{#each Object.values($services) as { code, l: { title, subtitle }, img }}
 			<div
 				class="card bg-base-100 image-full cursor-default w-96 h-60 shadow-xl hover:shadow-2xl hover:outline hover:outline-accent"

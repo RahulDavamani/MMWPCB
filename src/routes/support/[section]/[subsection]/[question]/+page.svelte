@@ -22,7 +22,7 @@
 		<div class="divider divider-horizontal" />
 		<div>
 			<div class="breadcrumbs text-sm mb-2">
-				<ul>
+				<ul class="flex flex-wrap">
 					<li><a href="/support">Support</a></li>
 					<li><a href="/support/{section}">{sectionTitle}</a></li>
 					<li><a href="/support/{section}/{subsection}">{subsectionTitle}</a></li>

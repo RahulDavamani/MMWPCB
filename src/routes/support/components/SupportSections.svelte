@@ -7,7 +7,7 @@
 	$: pageSubsection = $page.params.subsection?.replace(/-([a-z])/g, (_, l) => l.toUpperCase()) as string | undefined;
 </script>
 
-<ul class="menu rounded-box min-w-52 pb-2">
+<ul class="menu rounded-box w-32 md:w-40 lg:w-48 xl:w-52 pb-2">
 	{#each Object.entries($support.sections) as [section, { subsections }]}
 		{@const { title, href } = generateSpData(section)}
 		<li>

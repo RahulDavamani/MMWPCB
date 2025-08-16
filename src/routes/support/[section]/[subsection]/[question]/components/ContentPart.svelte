@@ -9,5 +9,5 @@
 {:else if part.type === 'bold'}
 	<span class="font-bold">{part.text}</span>
 {:else if part.type === 'link'}
-	<a href={part.url} class="btn btn-link btn-sm text-base px-0">{part.text}</a>
+	<a href={part.url} class="btn btn-link btn-sm text-base px-0 h-auto">{part.text}</a>
 {/if}

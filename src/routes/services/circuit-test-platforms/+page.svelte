@@ -44,8 +44,8 @@
 <Layout pageTitle={l.title}>
 	<SectionHeader title={l.title} count={services.length} />
 
-	<div class="flex gap-10">
-		<div class="w-1/4">
+	<div class="flex flex-col md:flex-row gap-10">
+		<div class="w-full md:w-1/4">
 			<ListFilter title={l.specs.categories} list={categories} bind:values={filters.categories} />
 			<RangeFilter title={l.specs.frequency} unit="GHz" max={maxFrequency} bind:values={filters.frequency} />
 		</div>
@@ -60,7 +60,7 @@
 				]}
 			/>
 
-			<div class="grid grid-cols-3 gap-10 mt-6">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-6">
 				{#each filteredServices as service}
 					{@const { code, minFrequency, maxFrequency } = service}
 					<ProductCard

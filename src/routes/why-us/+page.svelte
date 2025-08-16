@@ -64,8 +64,8 @@
 				customization, one-stop" experience.
 			</div>
 
-			<div class="flex items-center gap-10">
-				<img src={HigherQuality} alt="Higher Quality" class="w-1/3" />
+			<div class="flex items-center gap-10 my-4">
+				<img src={HigherQuality} alt="Higher Quality" class="w-1/4" />
 				<div>
 					<div class="text-2xl font-semibold mb-4">Higher Quality</div>
 					<div>
@@ -77,7 +77,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex items-center gap-10">
+			<div class="flex items-center gap-10 my-4">
 				<div>
 					<div class="text-2xl font-semibold mb-4">Lower Cost</div>
 					<div>
@@ -86,10 +86,10 @@
 						scale effect, extremely high production efficiency and less manpower cost.
 					</div>
 				</div>
-				<img src={LowerCost} alt="Lower Cost" class="w-1/3" />
+				<img src={LowerCost} alt="Lower Cost" class="w-1/4" />
 			</div>
-			<div class="flex items-center gap-10 mt-10">
-				<img src={FasterDelivery} alt="Faster Delivery" class="w-1/3" />
+			<div class="flex items-center gap-10 my-4">
+				<img src={FasterDelivery} alt="Faster Delivery" class="w-1/4" />
 				<div>
 					<div class="text-2xl font-semibold mb-4">Faster Delivery</div>
 					<div>
@@ -100,7 +100,7 @@
 				</div>
 			</div>
 
-			<div class="grid grid-cols-3 mt-20 gap-10">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 gap-10">
 				<div class="text-center">
 					<div class="text-xl font-semibold mb-2">No Minimum Requirements</div>
 					<div class="text-base">
@@ -201,8 +201,8 @@
 				旨在通过提供包括EDA软件、PCB制造、PCB组装、3D打印和CNC加工在内的一站式集成电子/机械服务，加速硬件创新。通过数字技术、订单平台、自建自动化生产和智能仓储的整合，我们实现了灵活的制造，满足客户对原型、小批量生产以及“快速交付、高质量、定制化、一站式”体验的需求。
 			</div>
 
-			<div class="flex items-center gap-10">
-				<img src={HigherQuality} alt="更高质量" class="w-1/3" />
+			<div class="flex items-center gap-10 my-4">
+				<img src={HigherQuality} alt="更高质量" class="w-1/4" />
 				<div>
 					<div class="text-2xl font-semibold mb-4">更高质量</div>
 					<div>
@@ -210,7 +210,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex items-center gap-10">
+			<div class="flex items-center gap-10 my-4">
 				<div>
 					<div class="text-2xl font-semibold mb-4">更低成本</div>
 					<div>
@@ -218,10 +218,10 @@
 						一直致力于提高效率并降低成本。我们承诺始终为客户提供最经济的PCB。规模效应、极高的生产效率以及更低的人力成本使我们能够提供最便宜但高质量的PCB。
 					</div>
 				</div>
-				<img src={LowerCost} alt="更低成本" class="w-1/3" />
+				<img src={LowerCost} alt="更低成本" class="w-1/4" />
 			</div>
-			<div class="flex items-center gap-10 mt-10">
-				<img src={FasterDelivery} alt="更快交付" class="w-1/3" />
+			<div class="flex items-center gap-10 my-4">
+				<img src={FasterDelivery} alt="更快交付" class="w-1/4" />
 				<div>
 					<div class="text-2xl font-semibold mb-4">更快交付</div>
 					<div>
@@ -230,7 +230,7 @@
 				</div>
 			</div>
 
-			<div class="grid grid-cols-3 mt-20 gap-10">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 gap-10">
 				<div class="text-center">
 					<div class="text-xl font-semibold mb-2">无最小起订量</div>
 					<div class="text-base">
@@ -325,8 +325,8 @@
 				besoins de prototypes, de petites séries et d'expériences "rapide, haute qualité, personnalisée, tout-en-un".
 			</div>
 
-			<div class="flex items-center gap-10">
-				<img src={HigherQuality} alt="Qualité Supérieure" class="w-1/3" />
+			<div class="flex items-center gap-10 my-4">
+				<img src={HigherQuality} alt="Qualité Supérieure" class="w-1/4" />
 				<div>
 					<div class="text-2xl font-semibold mb-4">Qualité Supérieure</div>
 					<div>
@@ -338,7 +338,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex items-center gap-10">
+			<div class="flex items-center gap-10 my-4">
 				<div>
 					<div class="text-2xl font-semibold mb-4">Coût Réduit</div>
 					<div>
@@ -348,10 +348,10 @@
 						de haute qualité.
 					</div>
 				</div>
-				<img src={LowerCost} alt="Coût Réduit" class="w-1/3" />
+				<img src={LowerCost} alt="Coût Réduit" class="w-1/4" />
 			</div>
-			<div class="flex items-center gap-10 mt-10">
-				<img src={FasterDelivery} alt="Livraison Plus Rapide" class="w-1/3" />
+			<div class="flex items-center gap-10 my-4">
+				<img src={FasterDelivery} alt="Livraison Plus Rapide" class="w-1/4" />
 				<div>
 					<div class="text-2xl font-semibold mb-4">Livraison Plus Rapide</div>
 					<div>
@@ -362,7 +362,7 @@
 				</div>
 			</div>
 
-			<div class="grid grid-cols-3 mt-20 gap-10">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 gap-10">
 				<div class="text-center">
 					<div class="text-xl font-semibold mb-2">Pas de Quantité Minimale</div>
 					<div class="text-base">
@@ -474,8 +474,8 @@
 				todo-en-uno".
 			</div>
 
-			<div class="flex items-center gap-10">
-				<img src={HigherQuality} alt="Mayor Calidad" class="w-1/3" />
+			<div class="flex items-center gap-10 my-4">
+				<img src={HigherQuality} alt="Mayor Calidad" class="w-1/4" />
 				<div>
 					<div class="text-2xl font-semibold mb-4">Mayor Calidad</div>
 					<div>
@@ -487,7 +487,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex items-center gap-10">
+			<div class="flex items-center gap-10 my-4">
 				<div>
 					<div class="text-2xl font-semibold mb-4">Menor Costo</div>
 					<div>
@@ -496,10 +496,10 @@
 						alta y menores costos de mano de obra, logramos producir PCB económicos pero de alta calidad.
 					</div>
 				</div>
-				<img src={LowerCost} alt="Menor Costo" class="w-1/3" />
+				<img src={LowerCost} alt="Menor Costo" class="w-1/4" />
 			</div>
-			<div class="flex items-center gap-10 mt-10">
-				<img src={FasterDelivery} alt="Entrega Más Rápida" class="w-1/3" />
+			<div class="flex items-center gap-10 my-4">
+				<img src={FasterDelivery} alt="Entrega Más Rápida" class="w-1/4" />
 				<div>
 					<div class="text-2xl font-semibold mb-4">Entrega Más Rápida</div>
 					<div>
@@ -510,7 +510,7 @@
 				</div>
 			</div>
 
-			<div class="grid grid-cols-3 mt-20 gap-10">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 gap-10">
 				<div class="text-center">
 					<div class="text-xl font-semibold mb-2">Sin Requisitos Mínimos</div>
 					<div class="text-base">

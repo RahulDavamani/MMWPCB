@@ -54,7 +54,7 @@
 	</div>
 {/if}
 
-<div class="flex gap-8 mt-4">
+<div class="flex {['CART', 'SAVED'].includes(status) ? 'flex-col' : 'flex-col-reverse'} md:flex-row gap-8 mt-4">
 	<div class="grow space-y-8">
 		<div class="flex gap-10 h-64">
 			<ShippingInfo />
@@ -64,7 +64,7 @@
 		<ReviewMessages />
 	</div>
 
-	<div class="min-w-96 w-96 space-y-8">
+	<div class="min-w-96 w-full md:w-96 space-y-8">
 		<OrderActions />
 		<OrderSummary />
 		<PaymentDetails />

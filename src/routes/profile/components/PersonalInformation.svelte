@@ -90,7 +90,7 @@
 	</div>
 	<div class="divider mt-1" />
 
-	<div class="flex p-4 gap-20">
+	<div class="flex flex-col md:flex-row p-4 gap-20">
 		<div class="flex flex-col justify-center items-center">
 			{#if ppUrl}
 				<img src={ppUrl} alt="Profile Pic" class="w-40 rounded-full border-2" />
@@ -154,7 +154,7 @@
 			{/if}
 
 			<div class="w-40 font-semibold">{$lg.user.email}:</div>
-			<div>{profile.email}</div>
+			<div class="text-wrap break-words">{profile.email}</div>
 
 			<div class="w-40 font-semibold">{$lg.user.phone}:</div>
 			{#if isEdit}

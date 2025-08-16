@@ -17,7 +17,7 @@
 
 	<QuickLinks />
 
-	<div class="grid grid-cols-3 gap-10 mb-10">
+	<div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-10">
 		<FAQ />
 		<QA />
 	</div>
