@@ -44,6 +44,16 @@
 						Non-Metal 3D Printing Capacity
 					</a>
 				</li>
+				<li>
+					<a href="/download-center/product-catalogue.pdf" class="btn btn-sm text-base btn-link p-0" download>
+						Product Catalogue
+					</a>
+				</li>
+				<li>
+					<a href="/download-center/product-catalogue-japanese.pdf" class="btn btn-sm text-base btn-link p-0" download>
+						Product Catalogue (Japanese)
+					</a>
+				</li>
 			</ul>
 			<p class="text-gray-600 mb-4">
 				<b>Note:</b> All files are provided free of charge for technical reference. For further assistance, contact our support
