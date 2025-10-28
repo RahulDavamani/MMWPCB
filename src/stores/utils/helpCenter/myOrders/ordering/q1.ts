@@ -16,18 +16,11 @@ export const q1 = (lg: Lang): Question => {
 			},
 			{
 				type: 'para',
-				parts: [
-					{ type: 'bold', text: contents[1][0] },
-					{ type: 'link', url: '', text: contents[1][1] }
-				]
+				parts: [{ type: 'bold', text: contents[1][0] }]
 			},
 			{
 				type: 'para',
-				parts: [{ type: 'bold', text: contents[2][0] }]
-			},
-			{
-				type: 'para',
-				parts: [{ type: 'text', text: contents[3][0] }]
+				parts: [{ type: 'text', text: contents[2][0] }]
 			}
 		]
 	};

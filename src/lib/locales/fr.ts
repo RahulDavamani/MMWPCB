@@ -257,7 +257,6 @@ export const fr: Lang = {
 										'MMWPCB.com',
 										'est facile et pratique. En quelques étapes, vous pouvez bénéficier de services de prototypage PCB abordables et de haute qualité.'
 									],
-									['Vidéo :', "Comment passer une commande en ligne chez PCBWay ? Guide vidéo d'une minute."],
 									['Étape 1 : Cliquez sur le type de service que vous souhaitez. Par exemple : PCB.'],
 									[
 										"Sélectionnez et remplissez les spécifications, puis cliquez sur le bouton 'Calculer' pour continuer."

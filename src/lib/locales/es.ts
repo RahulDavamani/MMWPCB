@@ -248,7 +248,6 @@ export const es: Lang = {
 										'MMWPCB.com',
 										'es fácil y conveniente. Con solo unos pocos pasos, puedes disfrutar de servicios de prototipado de PCB de alta calidad a precios asequibles.'
 									],
-									['Video:', '¿Cómo hacer un pedido en línea en PCBWay? Guía en video de un minuto.'],
 									['Paso 1: Haga clic en el tipo de servicio que desea. Por ejemplo: PCB.'],
 									["Seleccione y complete las especificaciones, luego haga clic en el botón 'Calcular' para continuar."]
 								]

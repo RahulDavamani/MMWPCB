@@ -254,7 +254,6 @@ export const en = {
 										'MMWPCB.com',
 										'is easy and convenient. With just a few steps, you can enjoy affordable yet high-quality PCB prototyping services.'
 									],
-									['Video:', 'How to place an online order in PCBWay? One-minute video guide.'],
 									['Step 1: Click the service type you want. For example: PCB.'],
 									["Select and fill in the specifications, then click the 'Calculate' button to continue."]
 								]
