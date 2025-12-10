@@ -4,10 +4,11 @@ import type { Session, User } from 'lucia';
 import superjson from 'superjson';
 
 // Context
-export const createContext = async ({ locals: { user, session }, cookies }: RequestEvent) => ({
+export const createContext = async ({ locals: { user, session }, cookies, fetch }: RequestEvent) => ({
 	user,
 	session,
-	cookies
+	cookies,
+	fetch
 });
 
 // TRPC

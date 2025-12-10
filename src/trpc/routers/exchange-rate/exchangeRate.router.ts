@@ -5,7 +5,10 @@ import pe from '../../../prisma/pe';
 export const exchangeRate = router({
 	get: procedure.query(async () => {
 		const exchangeRate = await prisma.exchangeRate
-			.findFirst({ select: { id: true, createdAt: true, eur: true, gbp: true }, orderBy: { createdAt: 'desc' } })
+			.findFirst({
+				select: { id: true, createdAt: true, eur: true, gbp: true, hkd: true },
+				orderBy: { createdAt: 'desc' }
+			})
 			.catch(pe);
 
 		if (!exchangeRate || exchangeRate.createdAt.toDateString() !== new Date().toDateString()) {
@@ -13,7 +16,7 @@ export const exchangeRate = router({
 			const { EUR, GBP, HKD } = (await response.json()).conversion_rates as { EUR: number; GBP: number; HKD: number };
 
 			return await prisma.exchangeRate
-				.create({ data: { eur: EUR, gbp: GBP, hkd: HKD }, select: { eur: true, gbp: true } })
+				.create({ data: { eur: EUR, gbp: GBP, hkd: HKD }, select: { eur: true, gbp: true, hkd: true } })
 				.catch(pe);
 		}
 
